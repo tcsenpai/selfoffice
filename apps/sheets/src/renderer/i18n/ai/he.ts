@@ -59,7 +59,8 @@ export const he = {
   aiRegionError: 'ספק המודל הזה אינו פועל באזור הנוכחי שלך — בחרו מודל אחר או החליפו רשת',
   aiOverloadedError: 'שירות ה-AI עמוס כרגע — נסו שוב בעוד רגע',
   aiNetworkError: 'בעיית רשת: לא ניתן להתחבר לשירות ה-AI. בדוק את החיבור ונסה שוב',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiToolWorkbookContext: 'קריאת פרטי חוברת העבודה',
   aiToolReadRange: 'קריאת טווח',
   aiToolReadRangeOf: 'קריאת הטווח {range}',

@@ -115,7 +115,8 @@ export const vi = {
   aiOverloadedError: 'Dịch vụ AI hiện đang bận — vui lòng thử lại sau giây lát',
   aiNetworkError:
     'Sự cố mạng: không thể kết nối tới dịch vụ AI. Kiểm tra kết nối của bạn và thử lại',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiSumReadAttachment: 'Đọc tệp đính kèm',
   aiSumImageAttachment: 'Hình ảnh đính kèm {name}',
   aiSumRead: 'Đọc {name}',

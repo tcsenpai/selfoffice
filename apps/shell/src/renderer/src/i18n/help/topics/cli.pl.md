@@ -31,8 +31,8 @@ W macOS i Windows polecenie siedzi w pakiecie aplikacji. Aby wołać je po imien
 | `merge`           | Wypełnia symbole zastępcze `{{key}}` w szablonie `.docx`, `.pptx` lub `.xlsx`.                                                                                                                                                           |
 | `capabilities`    | Zgłasza, które funkcje chmurowe są skonfigurowane na tym komputerze.                                                                                                                                                                     |
 | `guide`           | Referencja op i przewodniki projektowe, wygenerowane z tych samych definicji, względem których waliduje executor — więc nie może się rozjechać z tym, co przyjmuje `apply`. `--json` zwraca je ze schematem każdej op.                   |
-| `install-cli`     | Umieszcza `selfoffice` w `PATH`.                                                                                                                                                                                                          |
-| `skill`           | Wypisuje agentów programistycznych znalezionych na tym komputerze i instaluje w nich lub aktualizuje skill SelfOffice.                                                                                                                    |
+| `install-cli`     | Umieszcza `selfoffice` w `PATH`.                                                                                                                                                                                                         |
+| `skill`           | Wypisuje agentów programistycznych znalezionych na tym komputerze i instaluje w nich lub aktualizuje skill SelfOffice.                                                                                                                   |
 | `mcp`             | Udostępnia każde polecenie jako narzędzie Model Context Protocol. Zobacz **Podłączenie z agentem programistycznym**.                                                                                                                     |
 
 ## Edycja: Docs, Sheets, Slides

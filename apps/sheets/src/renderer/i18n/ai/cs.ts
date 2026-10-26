@@ -64,7 +64,8 @@ export const cs = {
   aiOverloadedError: 'Služba AI je právě zaneprázdněná — zkuste to prosím za chvíli znovu',
   aiNetworkError:
     'Problém se sítí: službu AI se nepodařilo kontaktovat. Zkontrolujte připojení a zkuste to znovu',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiToolWorkbookContext: 'Načtení informací o sešitu',
   aiToolReadRange: 'Načtení oblasti',
   aiToolReadRangeOf: 'Načtení oblasti {range}',

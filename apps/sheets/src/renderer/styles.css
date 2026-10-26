@@ -283,8 +283,9 @@
   font-family: Calibri;
   font-style: italic;
   src:
-    local('Calibri Italic'), local('Carlito Italic'), url('@selfoffice/ui/fonts/Carlito-Italic.ttf'),
-    local('Helvetica Neue Italic'), local('Arial Italic');
+    local('Calibri Italic'), local('Carlito Italic'),
+    url('@selfoffice/ui/fonts/Carlito-Italic.ttf'), local('Helvetica Neue Italic'),
+    local('Arial Italic');
   font-display: block;
 }
 

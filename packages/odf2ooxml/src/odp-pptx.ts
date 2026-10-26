@@ -44,6 +44,11 @@ export interface OdpToPptxResult {
   slides: number
   /** constructs the filter could not represent, with how often each occurred */
   dropped: Array<{ what: string; count: number }>
+  /**
+   * per emitted slide (in order), the index of its source draw:page among the
+   * element children of office:presentation — what a diff-based save patches by
+   */
+  sourceMap: number[]
 }
 
 /** 16:9 — the fallback when the ODF file declares no page size */
@@ -76,10 +81,11 @@ export async function convertOdpToPptx(odp: Uint8Array): Promise<OdpToPptxResult
   const opened = await openPptx(await createBlankPptx())
   setSlideSize(opened, deckSize.widthEmu, deckSize.heightEmu)
 
-  const pages = childElements(presentation).filter(({ name }) => name === 'draw:page')
-  const imageTasks: Array<Promise<void>> = []
+  const children = childElements(presentation)
+  const sourceMap: number[] = []
   let slideCount = 0
-  for (const page of pages) {
+  for (const [index, page] of children.entries()) {
+    if (page.name !== 'draw:page') continue
     // page 1 lands in the blank template's own slide; the rest append after it
     const slide =
       slideCount === 0
@@ -87,19 +93,19 @@ export async function convertOdpToPptx(odp: Uint8Array): Promise<OdpToPptxResult
         : insertBlankSlide(opened, opened.deck.slides.length - 1)
     if (!slide) break
     slideCount++
+    sourceMap.push(index)
     for (const { name, node } of childElements(page.node)) {
-      if (name === 'draw:frame') addFrame(opened, slide, node, ctx, deckSize, pack, imageTasks)
+      // awaited in document order: a slide's elements must follow its frames'
+      // order, which is how the .odp patcher maps them back
+      if (name === 'draw:frame') await addFrame(opened, slide, node, ctx, deckSize, pack)
       else if (name === 'presentation:notes') drops.add('notes')
       else if (SHAPES.has(name)) drops.add('shapes')
       // anything else on the page (thumbnails, settings) is page furniture
     }
   }
 
-  // picture bytes resolve asynchronously out of the ODF zip — the save must
-  // not race them
-  await Promise.all(imageTasks)
   const pptx = await savePptx(opened)
-  return { pptx, slides: slideCount, dropped: drops.list() }
+  return { pptx, slides: slideCount, dropped: drops.list(), sourceMap }
 }
 
 const SHAPES = new Set([
@@ -115,26 +121,41 @@ const SHAPES = new Set([
   'math:math',
 ])
 
-function addFrame(
+/**
+ * What a direct draw:page child frame becomes on import. 'text' and 'image'
+ * produce exactly one slide element each (an image only once its bytes load);
+ * everything else produces none. Shared with the .odp patcher.
+ */
+export function frameKind(
+  frame: XNode,
+): 'notes' | 'no-geometry' | 'text' | 'image' | 'table' | 'shape' {
+  if (attr(frame, 'presentation:class') === 'notes') return 'notes'
+  if (!frameBox(frame, DEFAULT_DECK_EMU)) return 'no-geometry'
+  if (firstDescendant(frame, 'draw:text-box')) return 'text'
+  if (imageRefOfFrame(frame)) return 'image'
+  return firstDescendant(frame, 'table:table') ? 'table' : 'shape'
+}
+
+async function addFrame(
   opened: OpenedPptx,
   slide: Slide,
   frame: XNode,
   ctx: WalkContext,
   deck: { widthEmu: number; heightEmu: number },
   pack: OdfPackage,
-  imageTasks: Array<Promise<void>>,
-): void {
-  if (attr(frame, 'presentation:class') === 'notes') {
+): Promise<void> {
+  const kind = frameKind(frame)
+  const box = frameBox(frame, deck)
+  if (kind === 'notes') {
     ctx.drops.add('notes')
     return
   }
-  const box = frameBox(frame, deck)
-  if (!box) {
+  if (kind === 'no-geometry' || !box) {
     ctx.drops.add('frames-without-geometry')
     return
   }
   const textBox = firstDescendant(frame, 'draw:text-box')
-  if (textBox) {
+  if (kind === 'text' && textBox) {
     const paragraphs: Paragraph[] = []
     collectParagraphs(textBox, ctx, paragraphs, 0)
     addElement(slide, {
@@ -145,11 +166,11 @@ function addFrame(
     return
   }
   const ref = imageRefOfFrame(frame)
-  if (ref) {
-    imageTasks.push(addImage(opened, slide, ref, box, ctx, pack))
+  if (kind === 'image' && ref) {
+    await addImage(opened, slide, ref, box, ctx, pack)
     return
   }
-  if (firstDescendant(frame, 'table:table')) {
+  if (kind === 'table') {
     ctx.drops.add('tables')
     return
   }

@@ -63,7 +63,8 @@ export const vi = {
     'Nhà cung cấp của mô hình này không phục vụ khu vực hiện tại của bạn — hãy chọn mô hình khác hoặc đổi mạng',
   aiOverloadedError: 'Dịch vụ AI hiện đang bận — vui lòng thử lại sau giây lát',
   aiNetworkError: 'Sự cố mạng: không thể kết nối với dịch vụ AI. Hãy kiểm tra kết nối và thử lại',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiToolWorkbookContext: 'Đọc thông tin sổ làm việc',
   aiToolReadRange: 'Đọc dải ô',
   aiToolReadRangeOf: 'Đọc dải ô {range}',

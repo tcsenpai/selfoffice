@@ -64,7 +64,8 @@ export const tr = {
     'Bu modelin sağlayıcısı bulunduğunuz bölgeye hizmet vermiyor — başka bir model seçin veya ağınızı değiştirin',
   aiOverloadedError: 'AI hizmeti şu anda meşgul — lütfen birazdan yeniden deneyin',
   aiNetworkError: 'Ağ sorunu: AI hizmetine ulaşılamadı. Bağlantınızı kontrol edip yeniden deneyin',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiToolWorkbookContext: 'Çalışma kitabı bilgisini oku',
   aiToolReadRange: 'Aralığı oku',
   aiToolReadRangeOf: '{range} aralığını oku',

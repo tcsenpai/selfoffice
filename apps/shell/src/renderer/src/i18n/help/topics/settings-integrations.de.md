@@ -56,8 +56,8 @@ Unter **Lokaler HTTP-Server** kann die App den Server auch selbst betreiben — 
 
 ## Spickzettel für die Kommandozeile
 
-| Befehl             | Was er bewirkt             |
-| ------------------ | -------------------------- |
+| Befehl              | Was er bewirkt             |
+| ------------------- | -------------------------- |
 | `selfoffice <file>` | eine Datei öffnen          |
 | `selfoffice mcp`    | lokalen MCP-Server starten |
 | `selfoffice --help` | alle Befehle und Optionen  |

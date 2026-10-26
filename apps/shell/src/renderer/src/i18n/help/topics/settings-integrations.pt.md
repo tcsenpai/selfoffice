@@ -56,8 +56,8 @@ Em **Servidor HTTP local**, a aplicação também pode arrancar o servidor por s
 
 ## Folha de referência da linha de comandos
 
-| Comando            | O que faz                    |
-| ------------------ | ---------------------------- |
+| Comando             | O que faz                    |
+| ------------------- | ---------------------------- |
 | `selfoffice <file>` | abrir um ficheiro            |
 | `selfoffice mcp`    | iniciar o servidor MCP local |
 | `selfoffice --help` | todos os comandos e opções   |

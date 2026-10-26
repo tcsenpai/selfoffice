@@ -145,15 +145,15 @@ still needs a cross build for `aarch64-pc-windows-msvc`).
 None are required — the apps run with all of these unset. They exist for
 testing and local overrides:
 
-| Variable                                                                                          | Effect                                                                           |
-| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `BUILD_DIR`                                                                                       | Override the electron-builder output directory (default `apps/shell/release`)    |
-| `SELFOFFICE_USER_DATA`                                                                             | Override the Electron userData directory (test isolation)                        |
-| `SELFOFFICE_LANG`                                                                                  | Force the UI language instead of following the OS locale                         |
-| `SELFOFFICE_FAKE_UPDATE`                                                                           | Exercise the updater UI without a real release feed                              |
-| `SERPER_API_KEY`, `SERPLY_API_KEY`, `TAVILY_API_KEY`, `PARALLEL_API_KEY` | Keys for the keyed web-search backends (all optional) |
-| `XLSX_SIDECAR_PATH`, `XLSX_OPEN_PATH`, `XLSX_DEBUG_PORT`                                          | Point at a locally built xlsx sidecar and its debug port                         |
-| `*_DEV_PORT`, `*_RENDERER_URL`                                                                    | Per-app Vite dev server ports and renderer URLs (set by `npm run dev`)           |
+| Variable                                                                 | Effect                                                                        |
+| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| `BUILD_DIR`                                                              | Override the electron-builder output directory (default `apps/shell/release`) |
+| `SELFOFFICE_USER_DATA`                                                   | Override the Electron userData directory (test isolation)                     |
+| `SELFOFFICE_LANG`                                                        | Force the UI language instead of following the OS locale                      |
+| `SELFOFFICE_FAKE_UPDATE`                                                 | Exercise the updater UI without a real release feed                           |
+| `SERPER_API_KEY`, `SERPLY_API_KEY`, `TAVILY_API_KEY`, `PARALLEL_API_KEY` | Keys for the keyed web-search backends (all optional)                         |
+| `XLSX_SIDECAR_PATH`, `XLSX_OPEN_PATH`, `XLSX_DEBUG_PORT`                 | Point at a locally built xlsx sidecar and its debug port                      |
+| `*_DEV_PORT`, `*_RENDERER_URL`                                           | Per-app Vite dev server ports and renderer URLs (set by `npm run dev`)        |
 
 AI features degrade rather than break without credentials: requests surface an
 inline sign-in prompt, and web search falls back to keyless backends (Parallel's

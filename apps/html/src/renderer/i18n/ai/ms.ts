@@ -4,7 +4,8 @@ export const ms = {
   aiCollapsePanel: 'Runtuhkan panel',
   aiComposerPlaceholder: 'Minta AI menulis atau menyunting…',
   aiCopyReplyTitle: 'Salin balasan',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiEmptyTitle: 'Reka halaman dengan AI',
   aiEmptyBody:
     'Halaman pendaratan, laporan, poster: nyatakan tujuan dan khalayak; AI mencadangkan ringkasan dahulu, kemudian membina halaman',

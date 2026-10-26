@@ -56,8 +56,8 @@ Dưới **Máy chủ HTTP cục bộ**, ứng dụng cũng có thể tự chạy
 
 ## Bảng tra nhanh dòng lệnh
 
-| Lệnh               | Tác dụng                     |
-| ------------------ | ---------------------------- |
+| Lệnh                | Tác dụng                     |
+| ------------------- | ---------------------------- |
 | `selfoffice <file>` | mở một tập tin               |
 | `selfoffice mcp`    | khởi động máy chủ MCP cục bộ |
 | `selfoffice --help` | mọi lệnh và tuỳ chọn         |

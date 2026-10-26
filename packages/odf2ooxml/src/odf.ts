@@ -33,7 +33,7 @@ function declaredSize(entry: JSZipObject): number {
   )
 }
 
-function exceedsCap(entry: JSZipObject): boolean {
+export function exceedsCap(entry: JSZipObject): boolean {
   return declaredSize(entry) > MAX_ODF_PART_BYTES
 }
 
@@ -50,7 +50,7 @@ interface ChunkStream {
   resume(): ChunkStream
 }
 
-function inflateCapped(entry: JSZipObject): Promise<Uint8Array> {
+export function inflateCapped(entry: JSZipObject): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     const chunks: Uint8Array[] = []
     let total = 0

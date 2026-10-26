@@ -56,8 +56,8 @@ Under **Local HTTP server** the app can run the server itself — an enable swit
 
 ## Command-line cheat sheet
 
-| Command            | What it does               |
-| ------------------ | -------------------------- |
+| Command             | What it does               |
+| ------------------- | -------------------------- |
 | `selfoffice <file>` | open a file                |
 | `selfoffice mcp`    | start the local MCP server |
 | `selfoffice --help` | every command and flag     |

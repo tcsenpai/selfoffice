@@ -114,7 +114,8 @@ export const tr = {
     'Bu modelin sağlayıcısı bulunduğunuz bölgeye hizmet vermiyor — başka bir model seçin veya ağınızı değiştirin',
   aiOverloadedError: 'AI hizmeti şu anda yoğun — lütfen biraz sonra yeniden deneyin',
   aiNetworkError: 'Ağ sorunu: AI hizmetine ulaşılamadı. Bağlantınızı kontrol edip yeniden deneyin',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiSumReadAttachment: 'Ek okundu',
   aiSumImageAttachment: 'Resim eki {name}',
   aiSumRead: '{name} okundu',

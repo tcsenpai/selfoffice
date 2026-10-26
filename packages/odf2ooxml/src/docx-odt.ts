@@ -133,14 +133,15 @@ class StyleRegistry {
   readonly xml: string[] = []
   readonly listStyles = new Map<string, string>()
 
+  /** names already taken in the target package (odt-patch seeds it from the original) */
+  constructor(private reserved: ReadonlySet<string> = new Set()) {}
+
   /** one automatic style per unique (family, parent, body) */
   add(family: string, prefix: string, body: string, parent?: string): string {
     const key = `${family}|${parent ?? ''}|${body}`
     const hit = this.byKey.get(key)
     if (hit) return hit
-    const n = (this.counters.get(prefix) ?? 0) + 1
-    this.counters.set(prefix, n)
-    const name = `${prefix}${n}`
+    const name = this.nextName(prefix)
     const p = parent ? ` style:parent-style-name="${esc(parent)}"` : ''
     this.xml.push(
       `<style:style style:name="${name}" style:family="${family}"${p}>${body}</style:style>`,
@@ -150,7 +151,9 @@ class StyleRegistry {
   }
 
   nextName(prefix: string): string {
-    const n = (this.counters.get(prefix) ?? 0) + 1
+    let n = this.counters.get(prefix) ?? 0
+    do n++
+    while (this.reserved.has(`${prefix}${n}`))
     this.counters.set(prefix, n)
     return `${prefix}${n}`
   }
@@ -280,7 +283,13 @@ function parseRels(xml: string | null): Map<string, Rel> {
 
 // -- the converter ----------------------------------------------------------
 
-class Converter {
+/** keep an original ODF paragraph's style when only its text was edited (odt-patch) */
+export interface ParaOverride {
+  styleName: string
+  outlineLevel?: string
+}
+
+export class Converter {
   readonly drops = new Drops()
   blockCount = 0
   countBlocks = true
@@ -296,8 +305,8 @@ class Converter {
   private notes = { footnote: new Map<string, XNode>(), endnote: new Map<string, XNode>() }
   readonly media: Array<{ name: string; mime: string; bytes: Uint8Array }> = []
   private mediaByPath = new Map<string, string>()
-  private imageCount = 0
-  private tableCount = 0
+  /** paragraphs (by node) that keep their original ODF style instead of a generated one */
+  readonly paraOverrides = new Map<XNode, ParaOverride>()
   contentWidthTw = 9360
   part: Part
   readonly contentPart: Part
@@ -307,9 +316,10 @@ class Converter {
   constructor(
     private zip: JSZip,
     private mediaBytes: Map<string, Uint8Array>,
+    reserved: ReadonlySet<string> = new Set(),
   ) {
-    this.contentPart = { reg: new StyleRegistry(), rels: new Map(), dir: 'word' }
-    this.stylesPart = { reg: new StyleRegistry(), rels: new Map(), dir: 'word' }
+    this.contentPart = { reg: new StyleRegistry(reserved), rels: new Map(), dir: 'word' }
+    this.stylesPart = { reg: new StyleRegistry(reserved), rels: new Map(), dir: 'word' }
     this.part = this.contentPart
   }
 
@@ -896,6 +906,12 @@ class Converter {
     this.inline(els(p), segs)
     // a leading page break makes the (empty) first segment redundant
     if (segs.length > 1 && segs[0].xml === '') segs.shift()
+    const keep = this.paraOverrides.get(p)
+    if (keep && segs.length === 1 && !segs[0].breakBefore) {
+      const tag = keep.outlineLevel ? 'text:h' : 'text:p'
+      const level = keep.outlineLevel ? ` text:outline-level="${esc(keep.outlineLevel)}"` : ''
+      return `<${tag} text:style-name="${esc(keep.styleName)}"${level}>${segs[0].xml}</${tag}>`
+    }
     return segs
       .map((s) => {
         const style = styleFor(s.breakBefore)
@@ -1175,7 +1191,7 @@ class Converter {
     const ext = (/\.([A-Za-z0-9]+)$/.exec(path)?.[1] ?? 'bin').toLowerCase()
     let name = this.mediaByPath.get(path)
     if (!name) {
-      name = `Pictures/image${this.media.length + 1}.${ext}`
+      name = `${this.contentPart.reg.nextName('Pictures/image')}.${ext}`
       this.mediaByPath.set(path, name)
       this.media.push({
         name,
@@ -1202,7 +1218,7 @@ class Converter {
       '<style:graphic-properties style:wrap="none" style:vertical-pos="top" style:vertical-rel="baseline"/>',
     )
     return (
-      `<draw:frame draw:style-name="${style}" draw:name="Image${++this.imageCount}" text:anchor-type="as-char" svg:width="${cm(cx)}" svg:height="${cm(cy)}">` +
+      `<draw:frame draw:style-name="${style}" draw:name="${this.contentPart.reg.nextName('Image')}" text:anchor-type="as-char" svg:width="${cm(cx)}" svg:height="${cm(cy)}">` +
       `<draw:image xlink:href="${name}" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>` +
       (alt ? `<svg:desc>${esc(alt)}</svg:desc>` : '') +
       '</draw:frame>'
@@ -1288,7 +1304,7 @@ class Converter {
           : { 'fo:margin-left': inch(ind) }),
       }),
     )
-    const name = `Table${++this.tableCount}`
+    const name = this.contentPart.reg.nextName('Table')
     let out = `<table:table table:name="${name}" table:style-name="${tableStyle}">`
     grid.forEach((w) => {
       const cs = reg.add(
@@ -1403,10 +1419,16 @@ class Converter {
     const stdDef = [...this.styles.values()].find((s) => s.type === 'paragraph' && s.isDefault)
     if (stdDef) this.usedStyles.set(stdDef.id, 'Standard')
     else out += '<style:style style:name="Standard" style:family="paragraph" style:class="text"/>'
+    return out + this.usedNamedStylesXml(new Set())
+  }
+
+  /** the used docx styles as ODF common styles, minus the names in `existing` */
+  usedNamedStylesXml(existing: ReadonlySet<string>): string {
+    let out = ''
     // emitting a style may use further styles (via rStyle in nothing — safe), so snapshot
     for (const [id, name] of [...this.usedStyles]) {
       const def = this.styles.get(id)
-      if (!def) continue
+      if (!def || existing.has(name)) continue
       const family = def.type === 'character' ? 'text' : 'paragraph'
       const parent = def.basedOn ? this.usedStyles.get(def.basedOn) : undefined
       const level = /^Heading_20_(\d)$/.exec(name)?.[1]
@@ -1426,7 +1448,16 @@ class Converter {
 
 // -- package assembly ---------------------------------------------------------------------
 
-export async function convertDocxToOdt(docx: Uint8Array): Promise<DocxToOdtResult> {
+/**
+ * A docx loaded into a Converter (styles, numbering, notes, body rels, media),
+ * plus its parsed w:body. `reserved` names (style, frame, table names and
+ * package paths) are never handed out — odt-patch passes the original
+ * package's so generated names cannot collide with ones already there.
+ */
+export async function loadDocxConverter(
+  docx: Uint8Array,
+  reserved?: ReadonlySet<string>,
+): Promise<{ c: Converter; body: XNode }> {
   const zip = await JSZip.loadAsync(docx)
   const docXml = await zip.file('word/document.xml')?.async('string')
   if (!docXml) throw new Error('not a docx: word/document.xml is missing')
@@ -1439,11 +1470,16 @@ export async function convertDocxToOdt(docx: Uint8Array): Promise<DocxToOdtResul
     if (/^word\/media\/[^/]+$/.test(path))
       mediaBytes.set(path, await zip.files[path].async('uint8array'))
   }
-  const c = new Converter(zip, mediaBytes)
+  const c = new Converter(zip, mediaBytes, reserved)
   await c.loadStyles()
   await c.loadNumbering()
   await c.loadNotes()
   c.contentPart.rels = parseRels(await c.readText('word/_rels/document.xml.rels'))
+  return { c, body }
+}
+
+export async function convertDocxToOdt(docx: Uint8Array): Promise<DocxToOdtResult> {
+  const { c, body } = await loadDocxConverter(docx)
 
   // -- page layout from the final section -------------------------------------
   const sectPr = [...els(body)].reverse().find((n) => nodeName(n) === 'w:sectPr') ?? null

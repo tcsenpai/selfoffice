@@ -20,7 +20,7 @@ export interface PptxToOdpResult {
   dropped: string[]
 }
 
-const NS =
+export const NS =
   'xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"' +
   ' xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"' +
   ' xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"' +
@@ -33,7 +33,7 @@ const NS =
   ' xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0"'
 
 const ODP_MIME = 'application/vnd.oasis.opendocument.presentation'
-const IMAGE_MIME: Record<string, string> = {
+export const IMAGE_MIME: Record<string, string> = {
   png: 'image/png',
   jpg: 'image/jpeg',
   jpeg: 'image/jpeg',
@@ -107,12 +107,12 @@ interface Rel {
   target: string
   external: boolean
 }
-interface Part {
+export interface Part {
   path: string
   root: XNode
   rels: Map<string, Rel>
 }
-interface Theme {
+export interface Theme {
   colors: Record<string, string>
   major?: string
   minor?: string
@@ -128,7 +128,7 @@ interface Env {
   doc: Doc
 }
 
-class Pkg {
+export class Pkg {
   private parts = new Map<string, Part | null>()
   constructor(readonly zip: JSZip) {}
 
@@ -162,7 +162,7 @@ class Pkg {
   }
 }
 
-const relOfType = (part: Part, suffix: string): Rel | undefined =>
+export const relOfType = (part: Part, suffix: string): Rel | undefined =>
   [...part.rels.values()].find((r) => r.type.endsWith(suffix))
 
 function parseTheme(root: XNode | null): Theme {
@@ -185,7 +185,7 @@ function parseTheme(root: XNode | null): Theme {
 
 // ---------- ODF output registry ----------
 
-class Doc {
+export class Doc {
   readonly auto: string[] = []
   readonly fillImages: string[] = []
   readonly pictures = new Map<string, string>()
@@ -193,6 +193,23 @@ class Doc {
   private names = new Map<string, string>()
   private counters: Record<string, number> = {}
   private drops = new Map<string, number>()
+
+  /** `reserved`: style names / package paths already taken by the file being patched */
+  constructor(private readonly reserved: ReadonlySet<string> = new Set()) {}
+
+  private nextName(prefix: string, suffix = ''): string {
+    let name: string
+    do {
+      this.counters[prefix] = (this.counters[prefix] ?? 0) + 1
+      name = `${prefix}${this.counters[prefix]}${suffix}`
+    } while (this.reserved.has(name))
+    return name
+  }
+
+  /** a fresh `draw:fill-image` name */
+  fillImageName(): string {
+    return this.nextName('bg')
+  }
 
   drop(kind: string): void {
     this.drops.set(kind, (this.drops.get(kind) ?? 0) + 1)
@@ -224,8 +241,7 @@ class Doc {
     const full = prefix + key
     let name = this.names.get(full)
     if (!name) {
-      this.counters[prefix] = (this.counters[prefix] ?? 0) + 1
-      name = `${prefix}${this.counters[prefix]}`
+      name = this.nextName(prefix)
       this.names.set(full, name)
       this.auto.push(build(name))
     }
@@ -239,7 +255,7 @@ class Doc {
     const ext = (abs.split('.').pop() ?? '').toLowerCase()
     const bytes = await pkg.bytes(abs)
     if (!bytes || bytes.length === 0 || !IMAGE_MIME[ext]) return null
-    const name = `Pictures/img${this.pictureFiles.length + 1}.${ext}`
+    const name = this.nextName('Pictures/img', `.${ext}`)
     this.pictureFiles.push({ name, bytes, ext })
     this.pictures.set(abs, name)
     return name
@@ -612,7 +628,7 @@ interface Xfrm {
   flipH: boolean
   flipV: boolean
 }
-interface Tx {
+export interface Tx {
   ox: number
   oy: number
   sx: number
@@ -652,7 +668,7 @@ const boxAttrs = (b: Box): string =>
 
 // ---------- shapes ----------
 
-interface RenderCtx {
+export interface RenderCtx {
   pkg: Pkg
   env: Env
   part: Part
@@ -1033,7 +1049,7 @@ async function renderGraphicFrame(gf: XNode, tx: Tx, rc: RenderCtx): Promise<str
   return ''
 }
 
-async function renderTree(tree: XNode | null, tx: Tx, rc: RenderCtx): Promise<string> {
+export async function renderTree(tree: XNode | null, tx: Tx, rc: RenderCtx): Promise<string> {
   let out = ''
   for (const n of kids(tree)) {
     switch (nodeName(n)) {
@@ -1085,16 +1101,24 @@ async function renderTree(tree: XNode | null, tx: Tx, rc: RenderCtx): Promise<st
 
 // ---------- backgrounds, notes ----------
 
-/** drawing-page style for a slide: first background found slide → layout → master */
-async function pageStyle(
+/**
+ * drawing-page style for a slide: first background found slide → layout → master
+ * (`inherit` false: the slide's own background only — a patched file's ODF master
+ * paints the rest). `extra` is appended to the drawing-page properties verbatim.
+ */
+export async function pageStyle(
   slide: Part,
   layout: Part | null,
   rc: RenderCtx,
   hidden: boolean,
+  inherit = true,
+  extra = '',
 ): Promise<string> {
   const { env, pkg } = rc
   const doc = env.doc
-  const chain: Part[] = [slide, ...(layout ? [layout] : []), ...(env.master ? [env.master] : [])]
+  const chain: Part[] = inherit
+    ? [slide, ...(layout ? [layout] : []), ...(env.master ? [env.master] : [])]
+    : [slide]
   let props = ''
   for (const part of chain) {
     const bg = kid(part.root, 'p:cSld', 'p:bg')
@@ -1108,7 +1132,7 @@ async function pageStyle(
       const rel = part.rels.get(val(kid(fill, 'a:blip'), 'r:embed') ?? '')
       const href = rel && !rel.external ? await doc.picture(pkg, rel.target) : null
       if (href && !kid(fill, 'a:tile')) {
-        const fname = `bg${doc.fillImages.length + 1}`
+        const fname = doc.fillImageName()
         doc.fillImages.push(
           `<draw:fill-image draw:name="${fname}" xlink:href="${href}" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>`,
         )
@@ -1127,11 +1151,13 @@ async function pageStyle(
     break
   }
   if (hidden) props += ' presentation:visibility="hidden"'
-  const inner = `<style:drawing-page-properties draw:background-size="border" ${props || 'draw:fill="none"'}/>`
+  if (!props && !inherit) props = 'draw:background-size="border"'
+  else props = `draw:background-size="border" ${props || 'draw:fill="none"'}`
+  const inner = `<style:drawing-page-properties ${props}${extra ? ` ${extra}` : ''}/>`
   return doc.style('dp', 'drawing-page', inner)
 }
 
-async function notesXml(slide: Part, rc: RenderCtx): Promise<string> {
+export async function notesXml(slide: Part, rc: RenderCtx): Promise<string> {
   const rel = relOfType(slide, '/notesSlide')
   const notes = rel ? await rc.pkg.part(rel.target) : null
   if (!notes) return ''
@@ -1154,7 +1180,19 @@ async function notesXml(slide: Part, rc: RenderCtx): Promise<string> {
 
 // ---------- main ----------
 
-export async function convertPptxToOdp(pptx: Uint8Array): Promise<PptxToOdpResult> {
+/** an opened pptx plus the ODF output registry its slides serialise into */
+export interface OdpWriter {
+  pkg: Pkg
+  presentation: Part
+  doc: Doc
+  themeCache: Map<string, Theme>
+  counter: { n: number }
+}
+
+export async function openOdpWriter(
+  pptx: Uint8Array,
+  reserved?: ReadonlySet<string>,
+): Promise<OdpWriter> {
   let zip: JSZip
   try {
     zip = await JSZip.loadAsync(pptx)
@@ -1165,63 +1203,90 @@ export async function convertPptxToOdp(pptx: Uint8Array): Promise<PptxToOdpResul
   const pkg = new Pkg(zip)
   const presentation = await pkg.part('ppt/presentation.xml')
   if (!presentation) throw new OdfConvertError('unreadable')
-  const doc = new Doc()
+  return { pkg, presentation, doc: new Doc(reserved), themeCache: new Map(), counter: { n: 0 } }
+}
+
+/** slides in deck order: the sldId's id and the slide part path (null: dangling rel) */
+export function slideRefs(w: OdpWriter): Array<{ id: string; path: string | null }> {
+  return kids(kid(w.presentation.root, 'p:sldIdLst'), 'p:sldId').map((id) => ({
+    id: val(id, 'id') ?? '',
+    path: w.presentation.rels.get(val(id, 'r:id') ?? '')?.target ?? null,
+  }))
+}
+
+export const IDENT: Tx = { ox: 0, oy: 0, sx: 1, sy: 1 }
+
+/** everything one slide needs to serialise: its part, layout, and a slide render context */
+export interface SlideScope {
+  slide: Part
+  layout: Part | null
+  master: Part | null
+  rc: RenderCtx
+}
+
+export async function slideScope(w: OdpWriter, path: string): Promise<SlideScope | null> {
+  const { pkg, doc, themeCache } = w
+  const slide = await pkg.part(path)
+  if (!slide) return null
+  const layoutRel = relOfType(slide, '/slideLayout')
+  const layout = layoutRel ? await pkg.part(layoutRel.target) : null
+  const masterRel = layout ? relOfType(layout, '/slideMaster') : undefined
+  const master = masterRel ? await pkg.part(masterRel.target) : null
+  const themeRel = master ? relOfType(master, '/theme') : undefined
+  let theme = themeRel ? themeCache.get(themeRel.target) : undefined
+  if (themeRel && !theme) {
+    theme = parseTheme((await pkg.part(themeRel.target))?.root ?? null)
+    themeCache.set(themeRel.target, theme)
+  }
+  const map = kid(master?.root ?? null, 'p:clrMap')
+  const clrMap = { bg1: 'lt1', tx1: 'dk1', bg2: 'lt2', tx2: 'dk2' } as Record<string, string>
+  for (const [k, v] of Object.entries((map?.[':@'] as Record<string, string> | undefined) ?? {}))
+    clrMap[k] = v
+  const env: Env = {
+    theme: theme ?? { colors: {}, lnWidths: [], fillKinds: [], bgKinds: [] },
+    clrMap,
+    master,
+    presentation: w.presentation.root,
+    doc,
+  }
+  const rc: RenderCtx = { pkg, env, part: slide, layout, slide: true, counter: w.counter }
+  return { slide, layout, master, rc }
+}
+
+/** master + layout decorations painted onto a slide (showMasterSp rules) */
+async function decorations(scope: SlideScope): Promise<string> {
+  const { slide, layout, master, rc } = scope
+  let shapes = ''
+  // slide hides layout+master with showMasterSp=0, layout hides master
+  if (val(slide.root, 'showMasterSp') === '0') return shapes
+  if (master && layout && val(layout.root, 'showMasterSp') !== '0') {
+    const tree = kid(master.root, 'p:cSld', 'p:spTree')
+    shapes += await renderTree(tree, IDENT, { ...rc, part: master, slide: false })
+  }
+  if (layout) {
+    const tree = kid(layout.root, 'p:cSld', 'p:spTree')
+    shapes += await renderTree(tree, IDENT, { ...rc, part: layout, slide: false })
+  }
+  return shapes
+}
+
+export async function convertPptxToOdp(pptx: Uint8Array): Promise<PptxToOdpResult> {
+  const w = await openOdpWriter(pptx)
+  const { presentation, doc } = w
   const size = kid(presentation.root, 'p:sldSz')
   const width = num(val(size, 'cx')) ?? 9_144_000
   const height = num(val(size, 'cy')) ?? 6_858_000
 
-  const themeCache = new Map<string, Theme>()
   const pages: string[] = []
-  const counter = { n: 0 }
-  for (const id of kids(kid(presentation.root, 'p:sldIdLst'), 'p:sldId')) {
-    const rel = presentation.rels.get(val(id, 'r:id') ?? '')
-    const slide = rel ? await pkg.part(rel.target) : null
-    if (!slide) {
+  for (const ref of slideRefs(w)) {
+    const scope = ref.path ? await slideScope(w, ref.path) : null
+    if (!scope) {
       doc.drop('unreadable-slides')
       continue
     }
-    const layoutRel = relOfType(slide, '/slideLayout')
-    const layout = layoutRel ? await pkg.part(layoutRel.target) : null
-    const masterRel = layout ? relOfType(layout, '/slideMaster') : undefined
-    const master = masterRel ? await pkg.part(masterRel.target) : null
-    const themeRel = master ? relOfType(master, '/theme') : undefined
-    let theme = themeRel ? themeCache.get(themeRel.target) : undefined
-    if (themeRel && !theme) {
-      theme = parseTheme((await pkg.part(themeRel.target))?.root ?? null)
-      themeCache.set(themeRel.target, theme)
-    }
-    const map = kid(master?.root ?? null, 'p:clrMap')
-    const clrMap = { bg1: 'lt1', tx1: 'dk1', bg2: 'lt2', tx2: 'dk2' } as Record<string, string>
-    for (const [k, v] of Object.entries((map?.[':@'] as Record<string, string> | undefined) ?? {}))
-      clrMap[k] = v
-    const env: Env = {
-      theme: theme ?? { colors: {}, lnWidths: [], fillKinds: [], bgKinds: [] },
-      clrMap,
-      master,
-      presentation: presentation.root,
-      doc,
-    }
-    const mk = (part: Part, isSlide: boolean): RenderCtx => ({
-      pkg,
-      env,
-      part,
-      layout,
-      slide: isSlide,
-      counter,
-    })
-    const ident: Tx = { ox: 0, oy: 0, sx: 1, sy: 1 }
-
-    let shapes = ''
-    // decorations: slide hides layout+master with showMasterSp=0, layout hides master
-    if (val(slide.root, 'showMasterSp') !== '0') {
-      if (master && layout && val(layout.root, 'showMasterSp') !== '0') {
-        shapes += await renderTree(kid(master.root, 'p:cSld', 'p:spTree'), ident, mk(master, false))
-      }
-      if (layout)
-        shapes += await renderTree(kid(layout.root, 'p:cSld', 'p:spTree'), ident, mk(layout, false))
-    }
-    const rc = mk(slide, true)
-    shapes += await renderTree(kid(slide.root, 'p:cSld', 'p:spTree'), ident, rc)
+    const { slide, layout, rc } = scope
+    let shapes = await decorations(scope)
+    shapes += await renderTree(kid(slide.root, 'p:cSld', 'p:spTree'), IDENT, rc)
     if (deepHas(slide.root, 'p:transition')) doc.drop('transitions')
     if (kid(slide.root, 'p:timing')) doc.drop('animations')
 

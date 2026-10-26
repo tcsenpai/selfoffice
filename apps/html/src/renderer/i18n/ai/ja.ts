@@ -4,7 +4,8 @@ export const ja = {
   aiCollapsePanel: 'パネルを折りたたむ',
   aiComposerPlaceholder: 'AI に執筆・編集を依頼…',
   aiCopyReplyTitle: '返信をコピー',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiEmptyTitle: 'AI でページをデザイン',
   aiEmptyBody:
     'ランディングページ、レポート、ポスターなど。用途と対象を伝えると、AI がまず概要を提案し、確認後にページを生成します',

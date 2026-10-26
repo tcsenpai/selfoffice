@@ -115,7 +115,8 @@ export const pt = {
   aiErrOverloaded: 'O serviço de IA está sobrecarregado no momento — tente novamente em instantes',
   aiErrNetwork:
     'Problema de rede: não foi possível conectar ao serviço de IA. Verifique sua conexão e tente novamente',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiErrRequestFailed: 'Falha ao enviar a solicitação: {msg}',
   aiErrGenerateFailed: 'Falha na geração',
   aiErrRegenFailed: 'Falha ao refazer o slide',

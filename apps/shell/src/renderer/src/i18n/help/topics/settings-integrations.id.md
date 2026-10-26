@@ -56,8 +56,8 @@ Di bawah **Server HTTP lokal**, aplikasi juga bisa menjalankan server itu sendir
 
 ## Lembar pintasan baris perintah
 
-| Perintah           | Fungsinya                |
-| ------------------ | ------------------------ |
+| Perintah            | Fungsinya                |
+| ------------------- | ------------------------ |
 | `selfoffice <file>` | membuka sebuah file      |
 | `selfoffice mcp`    | memulai server MCP lokal |
 | `selfoffice --help` | semua perintah dan opsi  |

@@ -58,7 +58,8 @@ export const zh = {
   aiRegionError: '该模型的厂商不向当前地区提供服务，请换一个模型或切换网络',
   aiOverloadedError: 'AI 服务当前繁忙，请稍后重试',
   aiNetworkError: '网络有问题，无法连接 AI 服务。请检查网络后重试',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiToolWorkbookContext: '读取工作表信息',
   aiToolReadRange: '读取范围',
   aiToolReadRangeOf: '读取范围 {range}',

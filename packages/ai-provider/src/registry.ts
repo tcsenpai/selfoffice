@@ -15,7 +15,8 @@ export { normalizeBaseUrl } from './url-compose'
 export { modelEchoesReasoning, modelHasFixedSampling, modelLacksVision } from './model-heuristics'
 
 /** Wire protocols every provider maps onto, including the official Codex app-server bridge. */
-export type AiProtocol = 'anthropic' | 'gemini' | 'openai-compatible' | 'codex-app-server' | 'claude-cli'
+export type AiProtocol =
+  'anthropic' | 'gemini' | 'openai-compatible' | 'codex-app-server' | 'claude-cli'
 
 export interface ProviderCapabilities {
   /** How the provider authenticates: app login, user key, or the Codex CLI's existing login. */

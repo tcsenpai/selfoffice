@@ -114,7 +114,8 @@ export const en = {
   aiErrOverloaded: 'The AI service is busy right now — please try again in a moment',
   aiErrNetwork:
     'Network problem: could not reach the AI service. Check your connection and try again',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiErrRequestFailed: 'Failed to send request: {msg}',
   aiErrGenerateFailed: 'Generation failed',
   aiErrRegenFailed: 'Slide redo failed',

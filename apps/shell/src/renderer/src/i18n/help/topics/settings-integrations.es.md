@@ -56,8 +56,8 @@ En **Servidor HTTP local**, la aplicación también puede ejecutar el servidor p
 
 ## Chuleta de la línea de comandos
 
-| Comando            | Qué hace                      |
-| ------------------ | ----------------------------- |
+| Comando             | Qué hace                      |
+| ------------------- | ----------------------------- |
 | `selfoffice <file>` | abrir un archivo              |
 | `selfoffice mcp`    | iniciar el servidor MCP local |
 | `selfoffice --help` | todos los comandos y opciones |

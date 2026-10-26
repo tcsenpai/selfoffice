@@ -56,8 +56,8 @@ Ayarlar, SelfOffice'i .docx / .xlsx / .pptx / .pdf ve benzerleri için işleyici
 
 ## Komut satırı kopya kağıdı
 
-| Komut              | Ne yapar                      |
-| ------------------ | ----------------------------- |
+| Komut               | Ne yapar                      |
+| ------------------- | ----------------------------- |
 | `selfoffice <file>` | bir dosya açar                |
 | `selfoffice mcp`    | yerel MCP sunucusunu başlatır |
 | `selfoffice --help` | tüm komutlar ve bayraklar     |

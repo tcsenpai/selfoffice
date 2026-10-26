@@ -64,7 +64,8 @@ export const it = {
   aiOverloadedError: 'Il servizio IA è momentaneamente sovraccarico — riprova tra poco',
   aiNetworkError:
     'Problema di rete: impossibile raggiungere il servizio IA. Controlla la connessione e riprova',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiToolWorkbookContext: 'Lettura delle informazioni della cartella di lavoro',
   aiToolReadRange: "Lettura dell'intervallo",
   aiToolReadRangeOf: "Lettura dell'intervallo {range}",

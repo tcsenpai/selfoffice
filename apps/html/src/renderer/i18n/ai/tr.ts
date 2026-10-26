@@ -4,7 +4,8 @@ export const tr = {
   aiCollapsePanel: 'Paneli daralt',
   aiComposerPlaceholder: "AI'dan belgeyi yazmasını veya düzenlemesini isteyin…",
   aiCopyReplyTitle: 'Yanıtı kopyala',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiEmptyTitle: 'AI ile bir sayfa tasarlayın',
   aiEmptyBody:
     'Açılış sayfası, rapor, afiş — ne için ve kimin için olduğunu söyleyin; AI önce bir brief önerir, sonra sayfayı oluşturur',

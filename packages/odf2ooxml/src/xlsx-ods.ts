@@ -1356,7 +1356,9 @@ function cellBody(c: RawCell, fmt: Fmt | null, date1904: boolean): string {
   switch (fmt?.kind) {
     case 'date': {
       const iso = serialToIso(num, date1904, !!fmt.hasTime)
-      if (iso) return `${formulaAttr} office:value-type="date" office:date-value="${iso}">${shown}`
+      // the paragraph is the cached display text: the ISO date, not the serial
+      if (iso)
+        return `${formulaAttr} office:value-type="date" office:date-value="${iso}"><text:p>${iso.replace('T', ' ')}</text:p>`
       break
     }
     case 'time': {

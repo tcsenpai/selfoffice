@@ -56,8 +56,8 @@ W sekcji **Lokalny serwer HTTP** aplikacja może też sama uruchomić ten serwer
 
 ## Ściągawka z poleceń
 
-| Polecenie          | Co robi                      |
-| ------------------ | ---------------------------- |
+| Polecenie           | Co robi                      |
+| ------------------- | ---------------------------- |
 | `selfoffice <plik>` | otwiera plik                 |
 | `selfoffice mcp`    | uruchamia lokalny serwer MCP |
 | `selfoffice --help` | wszystkie polecenia i opcje  |

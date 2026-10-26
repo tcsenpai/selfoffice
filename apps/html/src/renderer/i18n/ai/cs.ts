@@ -4,7 +4,8 @@ export const cs = {
   aiCollapsePanel: 'Sbalit panel',
   aiComposerPlaceholder: 'Požádejte AI o napsání nebo úpravu dokumentu…',
   aiCopyReplyTitle: 'Kopírovat odpověď',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiEmptyTitle: 'Navrhněte stránku s AI',
   aiEmptyBody:
     'Vstupní stránka, report, plakát — řekněte, k čemu a pro koho má být; AI nejprve navrhne zadání a poté stránku sestaví',

@@ -112,7 +112,8 @@ export const th = {
   aiErrOverloaded: 'บริการ AI มีผู้ใช้งานจำนวนมากในขณะนี้ โปรดลองอีกครั้งในอีกสักครู่',
   aiErrNetwork:
     'เครือข่ายมีปัญหา ไม่สามารถเชื่อมต่อบริการ AI ได้ โปรดตรวจสอบการเชื่อมต่อแล้วลองใหม่',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiErrRequestFailed: 'ส่งคำขอไม่สำเร็จ: {msg}',
   aiErrGenerateFailed: 'สร้างไม่สำเร็จ',
   aiErrRegenFailed: 'ทำหน้าใหม่ไม่สำเร็จ',

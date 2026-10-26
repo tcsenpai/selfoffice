@@ -56,8 +56,8 @@ Sous **Serveur HTTP local**, l’application peut aussi lancer le serveur elle-m
 
 ## Aide-mémoire de la ligne de commande
 
-| Commande           | Ce qu’elle fait                 |
-| ------------------ | ------------------------------- |
+| Commande            | Ce qu’elle fait                 |
+| ------------------- | ------------------------------- |
 | `selfoffice <file>` | ouvrir un fichier               |
 | `selfoffice mcp`    | démarrer le serveur MCP local   |
 | `selfoffice --help` | toutes les commandes et options |

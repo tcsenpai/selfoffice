@@ -4,7 +4,8 @@ export const ru = {
   aiCollapsePanel: 'Свернуть панель',
   aiComposerPlaceholder: 'Попросите ИИ написать или изменить…',
   aiCopyReplyTitle: 'Копировать ответ',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiEmptyTitle: 'Создайте страницу с помощью ИИ',
   aiEmptyBody:
     'Лендинг, отчёт, постер: скажите, для чего и для кого; ИИ сначала предложит бриф, затем соберёт страницу',

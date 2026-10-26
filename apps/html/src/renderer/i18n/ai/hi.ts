@@ -4,7 +4,8 @@ export const hi = {
   aiCollapsePanel: 'पैनल संक्षिप्त करें',
   aiComposerPlaceholder: 'AI से लिखने या संपादित करने को कहें…',
   aiCopyReplyTitle: 'जवाब कॉपी करें',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiEmptyTitle: 'AI से पेज डिज़ाइन करें',
   aiEmptyBody:
     'लैंडिंग पेज, रिपोर्ट, पोस्टर: बताएँ किसके लिए और किस उद्देश्य से; AI पहले ब्रीफ़ सुझाएगा, फिर पेज बनाएगा',

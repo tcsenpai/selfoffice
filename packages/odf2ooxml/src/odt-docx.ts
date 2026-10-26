@@ -49,6 +49,13 @@ export interface OdtToDocxResult {
   blocks: number
   /** constructs the filter could not represent, with how often each occurred */
   dropped: Array<{ what: string; count: number }>
+  /**
+   * One entry per body block of word/document.xml (w:sectPr excluded): the
+   * index of the office:text element child it came from, or -1 for a block
+   * the filter synthesised (the paragraph that must follow a trailing table).
+   * odt-patch.ts uses it to copy untouched ODF children back byte-for-byte.
+   */
+  sourceMap: number[]
 }
 
 type Draft =
@@ -246,7 +253,12 @@ export async function convertOdtToDocx(odt: Uint8Array): Promise<OdtToDocxResult
     for (const ref of inlineImages) out.push({ kind: 'image', ref })
   }
 
-  walkElements(nodeChildren(body), { list: null, depth: 0 })
+  // walked one top-level child at a time so every draft knows its source child
+  const draftSources: number[] = []
+  elements(nodeChildren(body)).forEach((element, index) => {
+    walkElements([element.node], { list: null, depth: 0 })
+    while (draftSources.length < drafts.length) draftSources.push(index)
+  })
 
   // -- assembly ---------------------------------------------------------------
 
@@ -267,19 +279,25 @@ export async function convertOdtToDocx(odt: Uint8Array): Promise<OdtToDocxResult
     : undefined
 
   const blocks: SaveBlock[] = []
-  for (const draft of drafts) {
+  const sourceMap: number[] = []
+  for (const [index, draft] of drafts.entries()) {
     if (draft.kind === 'generated') blocks.push({ kind: 'generated', block: draft.block })
     else if (draft.kind === 'xml') blocks.push({ kind: 'xml', xml: draft.xml })
     else {
       const image = await resolveImage(draft.ref, pack)
-      if (image) blocks.push({ kind: 'image', image })
-      else drops.add('images')
+      if (!image) {
+        drops.add('images')
+        continue
+      }
+      blocks.push({ kind: 'image', image })
     }
+    sourceMap.push(draftSources[index])
   }
   // a document that ends on a table needs a paragraph after it (Word merges
   // two adjacent tables and swallows a trailing one into the sectPr otherwise)
   if (blocks.length > 0 && blocks[blocks.length - 1].kind === 'xml') {
     blocks.push({ kind: 'generated', block: { type: 'paragraph', runs: [] } })
+    sourceMap.push(-1)
   }
 
   const parsed = await parseDocx(await buildBlankDocx())
@@ -287,7 +305,7 @@ export async function convertOdtToDocx(odt: Uint8Array): Promise<OdtToDocxResult
     ...(section ? { section } : {}),
     ...(numbering.length > 0 ? { numbering: { newDefs: numbering } } : {}),
   })
-  return { docx, blocks: blocks.length, dropped: drops.list() }
+  return { docx, blocks: blocks.length, dropped: drops.list(), sourceMap }
 }
 
 // -- runs and formatting ----------------------------------------------------

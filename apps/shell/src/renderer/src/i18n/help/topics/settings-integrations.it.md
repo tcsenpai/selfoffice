@@ -56,8 +56,8 @@ Sotto **Server HTTP locale** l'app può anche eseguire il server per conto propr
 
 ## Riepilogo rapido dei comandi
 
-| Comando            | Cosa fa                      |
-| ------------------ | ---------------------------- |
+| Comando             | Cosa fa                      |
+| ------------------- | ---------------------------- |
 | `selfoffice <file>` | apre un file                 |
 | `selfoffice mcp`    | avvia il server MCP locale   |
 | `selfoffice --help` | tutti i comandi e le opzioni |

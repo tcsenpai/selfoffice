@@ -116,7 +116,8 @@ export const fr = {
   aiErrOverloaded: "Le service d'IA est actuellement surchargé — réessayez dans un instant",
   aiErrNetwork:
     'Problème réseau : impossible de joindre le service IA. Vérifiez votre connexion et réessayez',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiErrRequestFailed: "Échec de l'envoi de la requête : {msg}",
   aiErrGenerateFailed: 'Échec de la génération',
   aiErrRegenFailed: 'Échec de la régénération de la diapositive',

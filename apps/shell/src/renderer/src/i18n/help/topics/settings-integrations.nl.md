@@ -56,8 +56,8 @@ Onder **Lokale HTTP-server** kan de app de server ook zelf draaien — een insch
 
 ## Commandoregel in één oogopslag
 
-| Opdracht              | Wat het doet               |
-| --------------------- | -------------------------- |
+| Opdracht               | Wat het doet               |
+| ---------------------- | -------------------------- |
 | `selfoffice <bestand>` | opent een bestand          |
 | `selfoffice mcp`       | start de lokale MCP-server |
 | `selfoffice --help`    | alle opdrachten en opties  |

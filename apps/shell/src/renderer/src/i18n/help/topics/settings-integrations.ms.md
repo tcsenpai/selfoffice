@@ -56,8 +56,8 @@ Di bawah **Pelayan HTTP tempatan**, aplikasi ini juga boleh menjalankan pelayan 
 
 ## Ringkasan baris arahan
 
-| Perintah           | Fungsinya                             |
-| ------------------ | ------------------------------------- |
+| Perintah            | Fungsinya                             |
+| ------------------- | ------------------------------------- |
 | `selfoffice <fail>` | membuka fail                          |
 | `selfoffice mcp`    | memulakan pelayan MCP tempatan        |
 | `selfoffice --help` | memaparkan semua perintah dan pilihan |

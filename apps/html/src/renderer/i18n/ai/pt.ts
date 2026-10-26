@@ -4,7 +4,8 @@ export const pt = {
   aiCollapsePanel: 'Recolher painel',
   aiComposerPlaceholder: 'Peça à IA para escrever ou editar…',
   aiCopyReplyTitle: 'Copiar resposta',
-  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
+  aiCreditsExhausted:
+    'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiEmptyTitle: 'Crie uma página com IA',
   aiEmptyBody:
     'Landing page, relatório, cartaz: diga para que serve e para quem; a IA propõe primeiro um briefing e depois monta a página',
