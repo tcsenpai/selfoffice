@@ -6,7 +6,7 @@ import type { AiProviderId, AiProviderMeta, AiSettings, LegacyAiSettings } from 
 
 /**
  * OpenCode Zen / Go route and cache per conversation and answer 400
- * MissingSessionID without this header (genoffice#331). The renderer's
+ * MissingSessionID without this header (selfoffice#331). The renderer's
  * transport id is stable for a chat; a one-shot call is its own conversation.
  */
 export function opencodeSessionHeaders(

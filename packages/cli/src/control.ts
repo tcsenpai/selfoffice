@@ -9,12 +9,12 @@ import {
   type ControlReply,
   type ControlRequest,
 } from './control-protocol'
-import { genofficeUserDataDirs } from './gui'
+import { selfofficeUserDataDirs } from './gui'
 import { CliError, EXIT, type ErrorReason } from './result'
 
 /** The running shell's control endpoint, or null when no live shell published one. */
 export function controlEndpoint(env: NodeJS.ProcessEnv): ControlEndpoint | null {
-  for (const dir of genofficeUserDataDirs(env)) {
+  for (const dir of selfofficeUserDataDirs(env)) {
     const file = join(dir, CONTROL_FILE)
     if (!existsSync(file)) continue
     try {
@@ -74,9 +74,9 @@ export function controlRequest(
     const unavailable = (why: string) =>
       settle(() =>
         reject(
-          new CliError(EXIT.app, `GenOffice did not answer: ${why}`, undefined, {
+          new CliError(EXIT.app, `SelfOffice did not answer: ${why}`, undefined, {
             reason: 'app_unavailable',
-            suggestion: 'start GenOffice (or `genoffice open <file>`) and retry',
+            suggestion: 'start SelfOffice (or `selfoffice open <file>`) and retry',
           }),
         ),
       )
@@ -132,7 +132,7 @@ function defaultSuggestion(reason: ErrorReason, detail: Record<string, unknown>)
     case 'sheet_not_found':
       return 'use one of `detail.sheets` verbatim'
     case 'file_not_open_in_gui':
-      return 'run `genoffice open <file>` first'
+      return 'run `selfoffice open <file>` first'
     default:
       return 'check the target and retry'
   }

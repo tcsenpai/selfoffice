@@ -1,5 +1,5 @@
-; Keeps the genoffice command line (resources\cli, holding genoffice.cmd and the
-; extension-less genoffice for Git Bash) on the installing user's PATH for the
+; Keeps the selfoffice command line (resources\cli, holding selfoffice.cmd and the
+; extension-less selfoffice for Git Bash) on the installing user's PATH for the
 ; lifetime of the install. The value is read and written unexpanded
 ; (REG_EXPAND_SZ) so entries such as %USERPROFILE%\bin survive, and Explorer
 ; is told about the change so terminals opened afterwards see it.
@@ -10,7 +10,7 @@
 !include "StrFunc.nsh"
 !include "nsProcess.nsh"
 
-!macro GenOfficeKillHelper NAME
+!macro SelfOfficeKillHelper NAME
   ${nsProcess::FindProcess} "${NAME}" $R0
   ${if} $R0 == 0
     ${nsProcess::KillProcess} "${NAME}" $R0
@@ -28,18 +28,18 @@
     ${if} ${isUpdated}
       ; let the app finish quitting on its own
       Sleep 1000
-      Goto genofficeStopApp
+      Goto selfofficeStopApp
     ${endIf}
-    MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(appRunning)" /SD IDOK IDOK genofficeStopApp
+    MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(appRunning)" /SD IDOK IDOK selfofficeStopApp
     Quit
 
-    genofficeStopApp:
+    selfofficeStopApp:
     DetailPrint "$(appClosing)"
     ${nsProcess::CloseProcess} "${APP_EXECUTABLE_FILENAME}" $R0
     Sleep 300
     StrCpy $R1 0
 
-    genofficeWaitLoop:
+    selfofficeWaitLoop:
       IntOp $R1 $R1 + 1
       ${nsProcess::FindProcess} "${APP_EXECUTABLE_FILENAME}" $R0
       ${if} $R0 == 0
@@ -50,36 +50,36 @@
           DetailPrint `Waiting for "${PRODUCT_NAME}" to close.`
           Sleep 2000
         ${else}
-          Goto genofficeAppClosed
+          Goto selfofficeAppClosed
         ${endIf}
       ${else}
-        Goto genofficeAppClosed
+        Goto selfofficeAppClosed
       ${endIf}
       ${if} $R1 > 1
-        MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(appCannotBeClosed)" /SD IDCANCEL IDRETRY genofficeWaitLoop
+        MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "$(appCannotBeClosed)" /SD IDCANCEL IDRETRY selfofficeWaitLoop
         Quit
       ${else}
-        Goto genofficeWaitLoop
+        Goto selfofficeWaitLoop
       ${endIf}
-    genofficeAppClosed:
+    selfofficeAppClosed:
   ${endIf}
   ; the stock macro closed every process under $INSTDIR; a killed app can
   ; orphan its helpers, which keep their binaries locked
-  !insertmacro GenOfficeKillHelper "xlsx-sidecar.exe"
-  !insertmacro GenOfficeKillHelper "win-ocr.exe"
+  !insertmacro SelfOfficeKillHelper "xlsx-sidecar.exe"
+  !insertmacro SelfOfficeKillHelper "win-ocr.exe"
   ${nsProcess::Unload}
 !macroend
 
-!define GENOFFICE_PATH_MAX 7900
+!define SELFOFFICE_PATH_MAX 7900
 
 ; Scope templates to our ProgIDs (electron-builder uses fileAssociations.name).
 ; A shared .ext\ShellNew would overwrite Office/WPS templates. OOXML files
 ; must be copied from valid packages, never created with NullFile.
-!macro GenOfficeRegisterShellNew EXT PROGID
+!macro SelfOfficeRegisterShellNew EXT PROGID
   WriteRegStr SHELL_CONTEXT "Software\Classes\.${EXT}\${PROGID}\ShellNew" "FileName" "$INSTDIR\resources\shell-new\blank.${EXT}"
 !macroend
 
-!macro GenOfficeUnregisterShellNew EXT PROGID
+!macro SelfOfficeUnregisterShellNew EXT PROGID
   ; Only remove our own registration, including when uninstalling for an update.
   ReadRegStr $0 SHELL_CONTEXT "Software\Classes\.${EXT}\${PROGID}\ShellNew" "FileName"
   ${If} $0 == "$INSTDIR\resources\shell-new\blank.${EXT}"
@@ -90,20 +90,20 @@
 
 !macro customInstall
   Push "$INSTDIR\resources\cli"
-  Call GenOfficeAddToUserPath
-  !insertmacro GenOfficeRegisterShellNew "docx" "Word Document"
-  !insertmacro GenOfficeRegisterShellNew "xlsx" "Excel Workbook"
-  !insertmacro GenOfficeRegisterShellNew "pptx" "PowerPoint Presentation"
+  Call SelfOfficeAddToUserPath
+  !insertmacro SelfOfficeRegisterShellNew "docx" "Word Document"
+  !insertmacro SelfOfficeRegisterShellNew "xlsx" "Excel Workbook"
+  !insertmacro SelfOfficeRegisterShellNew "pptx" "PowerPoint Presentation"
   !insertmacro UPDATEFILEASSOC
 !macroend
 
 !macro customUnInstall
   Push "$INSTDIR\resources\cli"
-  Call un.GenOfficeRemoveFromUserPath
+  Call un.SelfOfficeRemoveFromUserPath
   Push $0
-  !insertmacro GenOfficeUnregisterShellNew "docx" "Word Document"
-  !insertmacro GenOfficeUnregisterShellNew "xlsx" "Excel Workbook"
-  !insertmacro GenOfficeUnregisterShellNew "pptx" "PowerPoint Presentation"
+  !insertmacro SelfOfficeUnregisterShellNew "docx" "Word Document"
+  !insertmacro SelfOfficeUnregisterShellNew "xlsx" "Excel Workbook"
+  !insertmacro SelfOfficeUnregisterShellNew "pptx" "PowerPoint Presentation"
   Pop $0
   !insertmacro UPDATEFILEASSOC
 !macroend
@@ -111,7 +111,7 @@
 !ifndef BUILD_UNINSTALLER
 ${StrStr}
 
-Function GenOfficeAddToUserPath
+Function SelfOfficeAddToUserPath
   Exch $0 ; directory
   Push $1
   Push $2
@@ -119,7 +119,7 @@ Function GenOfficeAddToUserPath
   ReadRegStr $1 HKCU "Environment" "Path"
   StrLen $2 $1
   ; leave an already oversized PATH alone rather than truncate it
-  IntCmp $2 ${GENOFFICE_PATH_MAX} done 0 done
+  IntCmp $2 ${SELFOFFICE_PATH_MAX} done 0 done
   ${StrStr} $3 ";$1;" ";$0;"
   StrCmp $3 "" 0 done
   StrCmp $1 "" 0 +3
@@ -141,7 +141,7 @@ FunctionEnd
 ${UnStrStr}
 ${UnStrRep}
 
-Function un.GenOfficeRemoveFromUserPath
+Function un.SelfOfficeRemoveFromUserPath
   Exch $0 ; directory
   Push $1
   Push $2

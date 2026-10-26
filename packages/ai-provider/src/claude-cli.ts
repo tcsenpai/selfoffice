@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { tmpdir } from 'node:os'
-import type { AgentMessage, AgentToolDef } from '@genoffice/agent-core'
+import type { AgentMessage, AgentToolDef } from '@selfoffice/agent-core'
 import {
   buildCodexAppServerPrompt,
   codexAppServerOutputSchema,

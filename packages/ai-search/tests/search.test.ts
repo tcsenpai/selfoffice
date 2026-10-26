@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { webSearch, imageSearch } from '../src/index'
 import { searchOptionsFromSettings, testSearchProvider } from '../src/search-tools'
-import { defaultAiSettings } from '@genoffice/ai-provider'
+import { defaultAiSettings } from '@selfoffice/ai-provider'
 
 const realFetch = globalThis.fetch
 afterEach(() => {
@@ -495,7 +495,7 @@ describe('webSearch (Keenable)', () => {
     expect(urls).toEqual(['https://api.keenable.ai/v1/search/public'])
     expect(init?.headers).toEqual({
       'Content-Type': 'application/json',
-      'X-Keenable-Title': 'GenOffice',
+      'X-Keenable-Title': 'SelfOffice',
     })
     expect(JSON.parse(String(init?.body))).toEqual({ query: 'q', max_results: 5 })
     expect(r.method).toBe('keenable')

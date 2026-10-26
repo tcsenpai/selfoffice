@@ -1,4 +1,4 @@
-# Contributing to GenOffice
+# Contributing to SelfOffice
 
 Thanks for your interest in contributing. This document covers the local
 setup, the checks a change must pass, and the conventions used in this
@@ -130,14 +130,14 @@ over them. Point the output directory at an APFS path instead of moving the
 repository:
 
 ```bash
-BUILD_DIR=/tmp/genoffice-release npm run dist:mac
+BUILD_DIR=/tmp/selfoffice-release npm run dist:mac
 ```
 
 `dist:win` takes the xlsx sidecar from the MinGW cross-compilation path when it
 is there (that is what the release pipeline builds). On a Windows host the plain
 `npm run build:all` compiles it with the host toolchain into
 `target/release/xlsx-sidecar.exe` instead, and packaging accepts that build as
-long as the host architecture matches the packaged one (`GENOFFICE_WIN_ARM64=1`
+long as the host architecture matches the packaged one (`SELFOFFICE_WIN_ARM64=1`
 still needs a cross build for `aarch64-pc-windows-msvc`).
 
 ## Environment variables
@@ -148,9 +148,9 @@ testing and local overrides:
 | Variable                                                                                          | Effect                                                                           |
 | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `BUILD_DIR`                                                                                       | Override the electron-builder output directory (default `apps/shell/release`)    |
-| `GENOFFICE_USER_DATA`                                                                             | Override the Electron userData directory (test isolation)                        |
-| `GENOFFICE_LANG`                                                                                  | Force the UI language instead of following the OS locale                         |
-| `GENOFFICE_FAKE_UPDATE`                                                                           | Exercise the updater UI without a real release feed                              |
+| `SELFOFFICE_USER_DATA`                                                                             | Override the Electron userData directory (test isolation)                        |
+| `SELFOFFICE_LANG`                                                                                  | Force the UI language instead of following the OS locale                         |
+| `SELFOFFICE_FAKE_UPDATE`                                                                           | Exercise the updater UI without a real release feed                              |
 | `SERPER_API_KEY`, `SERPLY_API_KEY`, `TAVILY_API_KEY`, `PARALLEL_API_KEY` | Keys for the keyed web-search backends (all optional) |
 | `XLSX_SIDECAR_PATH`, `XLSX_OPEN_PATH`, `XLSX_DEBUG_PORT`                                          | Point at a locally built xlsx sidecar and its debug port                         |
 | `*_DEV_PORT`, `*_RENDERER_URL`                                                                    | Per-app Vite dev server ports and renderer URLs (set by `npm run dev`)           |

@@ -7,7 +7,7 @@
 import type {
   PivotAggregation,
   PivotShowDataAs,
-} from '@genoffice/xlsx-gateway/domain/pivot-value-modes'
+} from '@selfoffice/xlsx-gateway/domain/pivot-value-modes'
 
 export interface PivotField {
   readonly label: string

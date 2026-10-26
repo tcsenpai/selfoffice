@@ -1,4 +1,4 @@
-import type { AgentMessage, AgentToolCall, AgentToolDef } from '@genoffice/agent-core'
+import type { AgentMessage, AgentToolCall, AgentToolDef } from '@selfoffice/agent-core'
 
 export type AiProviderId =
   | 'codex'
@@ -27,7 +27,6 @@ export type AiProviderId =
   | 'opencode-zen'
   | 'opencode-go'
   | 'custom'
-
 
 export interface AiProviderConfig {
   apiKey: string
@@ -161,15 +160,7 @@ export interface AiProviderMeta {
 
 /** Image generation / media analysis backends (separate from the chat provider) */
 export type AiMediaProviderId =
-  | 'openai'
-  | 'gemini'
-  | 'doubao'
-  | 'glm'
-  | 'xai'
-  | 'qwen'
-  | 'minimax'
-  | 'deepseek'
-  | 'custom'
+  'openai' | 'gemini' | 'doubao' | 'glm' | 'xai' | 'qwen' | 'minimax' | 'deepseek' | 'custom'
 
 /** wire shape of the image endpoint */
 export type AiImageProtocol = 'openai-images' | 'gemini' | 'dashscope' | 'minimax'

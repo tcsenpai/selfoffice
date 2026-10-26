@@ -1,6 +1,6 @@
 # L’écran d’accueil : où vivent vos fichiers
 
-Accueil est la page de démarrage de GenOffice : une barre de navigation à gauche, des listes de fichiers et des cartes de création rapide à droite.
+Accueil est la page de démarrage de SelfOffice : une barre de navigation à gauche, des listes de fichiers et des cartes de création rapide à droite.
 
 ![L’écran d’accueil](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Cochez la case d’une ligne, ou faites ⌘/ctrl-clic, pour composer une sélect
 La zone de recherche en haut porte sur deux choses à la fois :
 
 - **Les noms de fichiers** : filtrage rapide par nom.
-- **Le contenu des fichiers** : GenOffice indexe vos fichiers en arrière-plan (le texte des .docx/xlsx/pptx/pdf/md/html), si bien que chercher dans le corps du texte trouve aussi des fichiers. La portée et les interrupteurs se règlent dans les paramètres de recherche.
+- **Le contenu des fichiers** : SelfOffice indexe vos fichiers en arrière-plan (le texte des .docx/xlsx/pptx/pdf/md/html), si bien que chercher dans le corps du texte trouve aussi des fichiers. La portée et les interrupteurs se règlent dans les paramètres de recherche.
 
 ## Cartes de démarrage rapide
 

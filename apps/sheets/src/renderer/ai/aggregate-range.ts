@@ -9,8 +9,8 @@ import {
   parseAddress,
   rangeCellCount,
   type RangeBounds,
-} from '@genoffice/xlsx-gateway/domain/cell-address'
-import type { CellScalar } from '@genoffice/xlsx-gateway/domain/workbook.types'
+} from '@selfoffice/xlsx-gateway/domain/cell-address'
+import type { CellScalar } from '@selfoffice/xlsx-gateway/domain/workbook.types'
 import { isSheetRemoved, journalEntriesInRange } from '../edit-journal'
 import { createRangeAggregator, type RangeAggregate } from './aggregate'
 import { redactionsOf, type WorkbookReadContext } from './workbook-readers'

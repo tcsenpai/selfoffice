@@ -1,6 +1,6 @@
 # O ecrã Início: onde ficam os seus arquivos
 
-O ecrã Início é a página inicial do GenOffice: uma barra de navegação à esquerda e, à direita, as listas de arquivos e os cartões de criação rápida.
+O ecrã Início é a página inicial do SelfOffice: uma barra de navegação à esquerda e, à direita, as listas de arquivos e os cartões de criação rápida.
 
 ![O ecrã Início](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Marque a caixa de uma linha, ou faça ⌘/ctrl-clique, para construir uma seleç
 A caixa de pesquisa no topo corresponde a duas coisas ao mesmo tempo:
 
 - **Nomes de arquivos**: filtragem rápida por nome.
-- **Conteúdo dos arquivos**: o GenOffice indexa seus arquivos em segundo plano (texto dentro de docx/xlsx/pptx/pdf/md/html), pelo que pesquisar no corpo do texto também encontra arquivos. O âmbito e as opções ficam nas configurações de pesquisa.
+- **Conteúdo dos arquivos**: o SelfOffice indexa seus arquivos em segundo plano (texto dentro de docx/xlsx/pptx/pdf/md/html), pelo que pesquisar no corpo do texto também encontra arquivos. O âmbito e as opções ficam nas configurações de pesquisa.
 
 ## Cartões de início rápido
 

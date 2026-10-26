@@ -4,7 +4,7 @@ import { rename, rm } from 'node:fs/promises'
 import { basename, dirname, join } from 'node:path'
 
 import JSZip from 'jszip'
-import { assertZipInflatesWithinLimits } from '@genoffice/zip-gate'
+import { assertZipInflatesWithinLimits } from '@selfoffice/zip-gate'
 
 import type {
   CellState,
@@ -555,7 +555,7 @@ export async function readBasicWorkbook(buffer: Buffer): Promise<ImportedXlsx> {
  * merge) holds what the file last calculated. So the cell's own <v> is what
  * this reads, exactly like the pivot source reader does.
  *
- * The first sheet is read unless a sheet is named. genoffice#2097.
+ * The first sheet is read unless a sheet is named. selfoffice#2097.
  */
 export async function readSheetRows(buffer: Buffer, sheetName?: string): Promise<string[][]> {
   const zip = await createBufferEntrySource(buffer)
@@ -2140,7 +2140,7 @@ export function sha256(input: Buffer | string): string {
 
 /// Package-relative form of a ZIP entry name, null when it escapes the root.
 /// '\' separators, a leading '/' and empty segments are producer quirks Excel
-/// tolerates (genoffice#196 shipped `/xl/workbook.xml`); folding them keeps
+/// tolerates (selfoffice#196 shipped `/xl/workbook.xml`); folding them keeps
 /// lookups and the saved package on conformant names.
 function canonicalEntryName(raw: string): string | null {
   if (raw.includes('\0')) return null

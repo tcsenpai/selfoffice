@@ -10,7 +10,7 @@ import {
   activeSearchProvider,
   type AiSearchProviderId,
   type AiSettings,
-} from '@genoffice/ai-provider'
+} from '@selfoffice/ai-provider'
 import { imageSearch, webSearch, type SearchOptions } from './index'
 import { readAiSettingsFile } from './media-tools'
 
@@ -53,7 +53,7 @@ export async function testSearchProvider(
     keenableKey: provider === 'keenable' ? apiKey : '',
     prefer: provider,
   }
-  const r = await webSearch('GenOffice', 1, options)
+  const r = await webSearch('SelfOffice', 1, options)
   if (r.method === provider) return { ok: true }
   return {
     ok: false,

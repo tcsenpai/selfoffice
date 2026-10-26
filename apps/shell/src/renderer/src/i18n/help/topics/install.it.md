@@ -1,4 +1,4 @@
-# Installare GenOffice
+# Installare SelfOffice
 
 Ogni build viene pubblicato sulla [pagina Releases](https://github.com/tcsenpai/selfoffice/releases/latest). Provengono tutti da `main`; i programmi di installazione per macOS e Windows sono firmati.
 
@@ -18,32 +18,32 @@ Le versioni più vecchie restano sulla pagina Releases.
 
 ## Su macOS
 
-Apri il file `.dmg` e trascina **GenOffice** in Applicazioni. Su una build Intel il primo avvio ti chiede di confermare l'apertura: fai clic con il tasto destro sull'app in Applicazioni ▸ Apri. Non è un download danneggiato: è Gatekeeper che incontra un'immagine disco che sembra non firmata.
+Apri il file `.dmg` e trascina **SelfOffice** in Applicazioni. Su una build Intel il primo avvio ti chiede di confermare l'apertura: fai clic con il tasto destro sull'app in Applicazioni ▸ Apri. Non è un download danneggiato: è Gatekeeper che incontra un'immagine disco che sembra non firmata.
 
 ## Su Windows
 
-Esegui il programma di installazione `.exe`. Inserisce GenOffice nel menu Start e registra `.docx`, `.xlsx`, `.pptx`, `.pdf` e simili, così un doppio clic su un file lo apre.
+Esegui il programma di installazione `.exe`. Inserisce SelfOffice nel menu Start e registra `.docx`, `.xlsx`, `.pptx`, `.pdf` e simili, così un doppio clic su un file lo apre.
 
 ## Su Linux
 
 **Debian / Ubuntu**
 
 ```sh
-sudo apt install ./genoffice_<version>_amd64.deb
+sudo apt install ./selfoffice_<version>_amd64.deb
 ```
 
 **Fedora / RHEL / openSUSE**
 
 ```sh
-sudo dnf install ./genoffice-<version>.x86_64.rpm     # Fedora / RHEL family
-sudo zypper install ./genoffice-<version>.x86_64.rpm  # openSUSE
+sudo dnf install ./selfoffice-<version>.x86_64.rpm     # Fedora / RHEL family
+sudo zypper install ./selfoffice-<version>.x86_64.rpm  # openSUSE
 ```
 
 **AppImage** — funziona da dove si trova, senza alcuna fase di installazione:
 
 ```sh
-chmod +x GenOffice-<version>.AppImage
-./GenOffice-<version>.AppImage
+chmod +x SelfOffice-<version>.AppImage
+./SelfOffice-<version>.AppImage
 ```
 
 Richiede il runtime FUSE 2. Se preferisci non installarlo, avvialo con `--appimage-extract-and-run`: la sandbox funziona dalla directory estratta.
@@ -64,4 +64,4 @@ Tutte e tre avvolgono gli artefatti pubblicati invece di ricompilare l'app, cos�
 
 ## La riga di comando è inclusa
 
-Ogni installazione include il comando `genoffice`, che comunica con gli stessi motori della finestra, così i due non si contraddicono mai su un file. Su macOS e Windows si trova dentro il bundle dell'app; `genoffice install-cli` lo mette sul tuo `PATH`. Vedi **Riga di comando e agenti** per scoprire cosa può fare.
+Ogni installazione include il comando `selfoffice`, che comunica con gli stessi motori della finestra, così i due non si contraddicono mai su un file. Su macOS e Windows si trova dentro il bundle dell'app; `selfoffice install-cli` lo mette sul tuo `PATH`. Vedi **Riga di comando e agenti** per scoprire cosa può fare.

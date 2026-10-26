@@ -23,7 +23,7 @@ Jasny / Ciemny / Zgodnie z systemem. Opcja Zgodnie z systemem podąża za wyglą
 - **Położenie panelu bocznego AI** (po lewej lub po prawej), **Rozmiar tekstu panelu AI** i **Sprawdzanie pisowni w czacie AI**.
 - **Otwieraj panel AI w nowych dokumentach** — wyłączone, nowy dokument zaczyna się ze zwiniętym panelem, jedno kliknięcie stąd.
 - **Automatycznie zapisuj wszystkie dokumenty** włącza AutoSave domyślnie w każdym edytorze; nadal można je wyłączyć dla jednego okna.
-- **Lokalizacja zapisu** z przyciskiem **Zmień** oraz **Domyślna aplikacja dla dokumentów Office**, aby przejąć .docx / .xlsx / .pptx dla GenOffice.
+- **Lokalizacja zapisu** z przyciskiem **Zmień** oraz **Domyślna aplikacja dla dokumentów Office**, aby przejąć .docx / .xlsx / .pptx dla SelfOffice.
 
 ## Media i wyszukiwanie AI
 
@@ -39,7 +39,7 @@ To nie są przełączniki — każda możliwość wybiera dostawcę, który ją 
 
 ## Powiązanie z aplikacją domyślną
 
-Ustawienia mogą zarejestrować GenOffice jako obsługę plików .docx / .xlsx / .pptx / .pdf i podobnych (rejestracja aplikacji domyślnej na poziomie systemu; potwierdzenie, gdy aplikacja o to poprosi).
+Ustawienia mogą zarejestrować SelfOffice jako obsługę plików .docx / .xlsx / .pptx / .pdf i podobnych (rejestracja aplikacji domyślnej na poziomie systemu; potwierdzenie, gdy aplikacja o to poprosi).
 
 ## Informacje o oprogramowaniu innych firm i aktualizacje
 
@@ -48,7 +48,7 @@ Ustawienia mogą zarejestrować GenOffice jako obsługę plików .docx / .xlsx /
 
 ## Integracja MCP (dla zaawansowanych użytkowników i klientów AI)
 
-Do **Integracji** łączy GenOffice z agentem programistycznym i ma własny artykuł: Podłączenie z agentem programistycznym. Wersja skrócona — wybierz drogę (wiersz poleceń albo MCP), przejdź tę część, a potem rozpocznij nową rozmowę i zapytaj.
+Do **Integracji** łączy SelfOffice z agentem programistycznym i ma własny artykuł: Podłączenie z agentem programistycznym. Wersja skrócona — wybierz drogę (wiersz poleceń albo MCP), przejdź tę część, a potem rozpocznij nową rozmowę i zapytaj.
 
 ![Ustawienia ▸ Integracje: trzy kroki, potem wiersze umiejętności i opcje MCP](img/settings-integrations.png)
 
@@ -58,6 +58,6 @@ W sekcji **Lokalny serwer HTTP** aplikacja może też sama uruchomić ten serwer
 
 | Polecenie          | Co robi                      |
 | ------------------ | ---------------------------- |
-| `genoffice <plik>` | otwiera plik                 |
-| `genoffice mcp`    | uruchamia lokalny serwer MCP |
-| `genoffice --help` | wszystkie polecenia i opcje  |
+| `selfoffice <plik>` | otwiera plik                 |
+| `selfoffice mcp`    | uruchamia lokalny serwer MCP |
+| `selfoffice --help` | wszystkie polecenia i opcje  |

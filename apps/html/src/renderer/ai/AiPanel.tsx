@@ -5,13 +5,13 @@ import {
   type AiModelPickerBridge,
   AiSkillChips,
   AiSkillsMenu,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { useEffect, useRef, useState } from 'react'
 import type { PointerEvent as ReactPointerEvent, ReactElement, ReactNode } from 'react'
-import { AgentLoop, composeSkills, withAttachedSkills } from '@genoffice/agent-core'
-import type { AgentImage } from '@genoffice/agent-core'
-import type { AiSettings } from '@genoffice/ai-provider'
-import { imageGenerationAvailable } from '@genoffice/ai-provider/browser'
+import { AgentLoop, composeSkills, withAttachedSkills } from '@selfoffice/agent-core'
+import type { AgentImage } from '@selfoffice/agent-core'
+import type { AiSettings } from '@selfoffice/ai-provider'
+import { imageGenerationAvailable } from '@selfoffice/ai-provider/browser'
 import { ATTACHMENT_IMAGE_EXTS } from '../../shared/ipc'
 import type { AttachmentAddResult, AttachmentMeta } from '../../shared/ipc'
 import {
@@ -27,7 +27,7 @@ import {
   useChatRunQueue,
   type AiScopeQuoteData,
   type AiTokenUsageView,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { aiLangDirective, t as tGlobal, useI18n } from '../i18n/locale'
 import sendEnterOn from '../assets/send-enter-on.png'
 import sendEnterOff from '../assets/send-enter-off.png'

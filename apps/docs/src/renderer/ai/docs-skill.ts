@@ -1,7 +1,7 @@
 import { placeholderInstruction } from './redact'
 import { redactLabelsOf } from './redact-view'
 import type { Editor } from '@tiptap/core'
-import type { AgentSkill } from '@genoffice/agent-core'
+import type { AgentSkill } from '@selfoffice/agent-core'
 import {
   AGENT_SYSTEM_PROMPT,
   buildDocContext,

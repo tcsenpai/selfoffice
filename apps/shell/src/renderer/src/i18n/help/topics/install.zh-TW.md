@@ -1,4 +1,4 @@
-# 安裝 GenOffice
+# 安裝 SelfOffice
 
 每個版本都發布在 [Releases 頁面](https://github.com/tcsenpai/selfoffice/releases/latest)。它們全部出自 `main`；macOS 與 Windows 的安裝程式已簽署。
 
@@ -18,32 +18,32 @@
 
 ## 在 macOS 上
 
-開啟 `.dmg`，把 **GenOffice** 拖進「應用程式」資料夾。Intel 版首次啟動時會請你確認開啟：在「應用程式」裡按右鍵點這個應用程式 ▸ 打開。這只是 Gatekeeper 遇到一個看起來未簽署的磁碟映像，並不是下載損毀。
+開啟 `.dmg`，把 **SelfOffice** 拖進「應用程式」資料夾。Intel 版首次啟動時會請你確認開啟：在「應用程式」裡按右鍵點這個應用程式 ▸ 打開。這只是 Gatekeeper 遇到一個看起來未簽署的磁碟映像，並不是下載損毀。
 
 ## 在 Windows 上
 
-執行 `.exe` 安裝程式。它會把 GenOffice 放進開始功能表，並註冊 `.docx`、`.xlsx`、`.pptx`、`.pdf` 等格式，按兩下檔案就會用 GenOffice 開啟。
+執行 `.exe` 安裝程式。它會把 SelfOffice 放進開始功能表，並註冊 `.docx`、`.xlsx`、`.pptx`、`.pdf` 等格式，按兩下檔案就會用 SelfOffice 開啟。
 
 ## 在 Linux 上
 
 **Debian / Ubuntu**
 
 ```sh
-sudo apt install ./genoffice_<version>_amd64.deb
+sudo apt install ./selfoffice_<version>_amd64.deb
 ```
 
 **Fedora / RHEL / openSUSE**
 
 ```sh
-sudo dnf install ./genoffice-<version>.x86_64.rpm     # Fedora / RHEL family
-sudo zypper install ./genoffice-<version>.x86_64.rpm  # openSUSE
+sudo dnf install ./selfoffice-<version>.x86_64.rpm     # Fedora / RHEL family
+sudo zypper install ./selfoffice-<version>.x86_64.rpm  # openSUSE
 ```
 
 **AppImage** — 免安裝，放在哪裡就在哪裡執行：
 
 ```sh
-chmod +x GenOffice-<version>.AppImage
-./GenOffice-<version>.AppImage
+chmod +x SelfOffice-<version>.AppImage
+./SelfOffice-<version>.AppImage
 ```
 
 它需要 FUSE 2 執行環境。如果不想安裝它，可以用 `--appimage-extract-and-run` 來執行，沙箱會從解壓出來的目錄運作。
@@ -64,4 +64,4 @@ chmod +x GenOffice-<version>.AppImage
 
 ## 命令列隨著一起安裝
 
-每次安裝都會附帶一個 `genoffice` 命令，它與視窗呼叫的是同一套引擎，因此兩者對同一個檔案不會有分歧。在 macOS 與 Windows 上它位於應用程式套件內；`genoffice install-cli` 會把它放進你的 `PATH`。它能做什麼，見**命令列與代理**。
+每次安裝都會附帶一個 `selfoffice` 命令，它與視窗呼叫的是同一套引擎，因此兩者對同一個檔案不會有分歧。在 macOS 與 Windows 上它位於應用程式套件內；`selfoffice install-cli` 會把它放進你的 `PATH`。它能做什麼，見**命令列與代理**。

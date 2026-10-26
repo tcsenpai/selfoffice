@@ -10,14 +10,14 @@ function settingsFile(dir: string, settings: Record<string, unknown>): string {
   return path
 }
 
-describe('genoffice capabilities', () => {
+describe('selfoffice capabilities', () => {
   it('reports nothing configured with default settings', async () => {
     const dir = tempDir()
     const r = await run(['capabilities', '--json'], {
       env: {
         ...process.env,
-        GENOFFICE_AI_SETTINGS: join(dir, 'missing.json'),
-        GENOFFICE_APP_BIN: '',
+        SELFOFFICE_AI_SETTINGS: join(dir, 'missing.json'),
+        SELFOFFICE_APP_BIN: '',
       },
     })
     expect(r.code).toBe(0)
@@ -44,8 +44,8 @@ describe('genoffice capabilities', () => {
     const r = await run(['capabilities', '--json'], {
       env: {
         ...process.env,
-        GENOFFICE_AI_SETTINGS: settings,
-        GENOFFICE_APP_BIN: join(dir, 'bin', 'app'),
+        SELFOFFICE_AI_SETTINGS: settings,
+        SELFOFFICE_APP_BIN: join(dir, 'bin', 'app'),
       },
     })
     expect(r.code).toBe(0)
@@ -63,7 +63,7 @@ describe('genoffice capabilities', () => {
       search: { provider: 'serply', providers: { serply: { apiKey: 'k' } } },
     })
     const r = await run(['capabilities', '--json'], {
-      env: { ...process.env, GENOFFICE_AI_SETTINGS: settings },
+      env: { ...process.env, SELFOFFICE_AI_SETTINGS: settings },
     })
     const d = r.json().detail
     expect(d.search).toEqual({ available: true, via: 'serply' })
@@ -79,7 +79,7 @@ describe('genoffice capabilities', () => {
       },
     })
     const r = await run(['capabilities', '--json'], {
-      env: { ...process.env, GENOFFICE_AI_SETTINGS: settings },
+      env: { ...process.env, SELFOFFICE_AI_SETTINGS: settings },
     })
     const d = r.json().detail
     expect(d.search).toEqual({ available: true, via: provider })
@@ -91,7 +91,7 @@ describe('genoffice capabilities', () => {
       search: { provider: 'parallel', providers: { parallel: { apiKey: '' } } },
     })
     const r = await run(['capabilities', '--json'], {
-      env: { ...process.env, GENOFFICE_AI_SETTINGS: settings },
+      env: { ...process.env, SELFOFFICE_AI_SETTINGS: settings },
     })
     expect(r.json().detail.search).toEqual({ available: true, via: 'parallel' })
     expect(r.json().detail.image_search).toEqual({ available: false, via: null })

@@ -25,7 +25,7 @@ import {
   createZoomWheelClassifier,
   useAutoSavePref,
   useAiSidebarEnabled,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { wordRangeAtCaret } from './editor/comments'
 import { setFieldInstr, toggleAllFieldCodes, type FieldRange } from './editor/field-codes'
 import { linkTarget } from './editor/link-actions'
@@ -92,7 +92,7 @@ import {
   type ThemeFonts,
   type PictureWatermarkSpec,
   type WatermarkSpec,
-} from '@genoffice/docx-engine'
+} from '@selfoffice/docx-engine'
 import type {
   AiDocContent,
   AiSettings,
@@ -836,7 +836,7 @@ export function App() {
   const multipageActiveRef = useRef<number | null>(null)
   const mpFramesRef = useRef<PageFrame[]>([])
   // Word-style dark page (editor/dark-page.ts): the shell's document-page-theme
-  // setting (genoffice#1811) decides which theme the page follows; a light
+  // setting (selfoffice#1811) decides which theme the page follows; a light
   // page theme never shows a dark page, in the dark one it is on by default
   // until the user switches it off, and that choice sticks (dark-page-pref.ts)
   const themeDark = useUiThemeIsDark()
@@ -1897,7 +1897,7 @@ export function App() {
 
   // window title follows the document, so the OS window list and Switch Window show file names
   useEffect(() => {
-    document.title = doc ? doc.fileName : 'GenOffice Docs'
+    document.title = doc ? doc.fileName : 'SelfOffice Docs'
   }, [doc])
 
   useEffect(() => window.desktop.onTeardown?.(() => setTornDown(true)), [])
@@ -2705,7 +2705,7 @@ export function App() {
       window.desktop.onZoteroRequest(async (request) => {
         try {
           const activeEditor = editorRef.current
-          if (!activeEditor) throw new Error('No active GenOffice document')
+          if (!activeEditor) throw new Error('No active SelfOffice document')
           const controller =
             zoteroControllerRef.current ??
             new ZoteroDocumentController(activeEditor, {
@@ -3706,7 +3706,7 @@ export function App() {
     // pixels, so block heights read under a 10% (or 88%) canvas zoom differ from
     // the 100% layout by up to a pixel per line — enough to move page breaks and
     // to park a paragraph in the wrong column of an unequal-width section
-    // (genoffice#1970). Passes measure the canvas at zoom 1 and restore the
+    // (selfoffice#1970). Passes measure the canvas at zoom 1 and restore the
     // view zoom before the viewport-dependent reads (locate).
     let factor = zoom / 100
     const mTopPx = canvasTop
@@ -6338,9 +6338,9 @@ export function App() {
     if (gap) startGapHfEditRef.current(gap)
   }, [])
 
-  // genoffice CLI (`open --block`, `selection`): the shell evaluates this hook
+  // selfoffice CLI (`open --block`, `selection`): the shell evaluates this hook
   useEffect(() => {
-    ;(window as unknown as Record<string, unknown>).__genofficeControl = (req: ControlRequest) =>
+    ;(window as unknown as Record<string, unknown>).__selfofficeControl = (req: ControlRequest) =>
       handleDocsControl(req, editor, doc !== null)
   })
 

@@ -18,15 +18,18 @@ import {
   type AiSettings,
   type LegacyAiSettings,
   type MediaBlob,
-} from '@genoffice/ai-provider'
-// deep imports: the package root re-exports Electron-bound modules, and this file also runs in the genoffice CLI
-import { readGeneratedImage, storeGeneratedImage } from '@genoffice/electron-utils/generated-images'
+} from '@selfoffice/ai-provider'
+// deep imports: the package root re-exports Electron-bound modules, and this file also runs in the selfoffice CLI
+import {
+  readGeneratedImage,
+  storeGeneratedImage,
+} from '@selfoffice/electron-utils/generated-images'
 import {
   ResponseTooLargeError,
   fetchRemoteImage,
   readBodyCapped,
-} from '@genoffice/electron-utils/remote-image'
-import { fetchWithSsrfGuard } from '@genoffice/electron-utils/safe-remote-url'
+} from '@selfoffice/electron-utils/remote-image'
+import { fetchWithSsrfGuard } from '@selfoffice/electron-utils/safe-remote-url'
 
 export const MEDIA_NOT_CONFIGURED_ERROR =
   'No media provider is configured; set one under Settings (AI Media) to use this tool'

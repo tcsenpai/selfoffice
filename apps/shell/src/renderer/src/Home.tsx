@@ -4,7 +4,7 @@ import type {
   PointerEvent as ReactPointerEvent,
   ReactElement,
 } from 'react'
-import logoLockup from './assets/genoffice-logo.svg'
+import logoLockup from './assets/selfoffice-logo.svg'
 import { KbAskPanel } from './KbAskPanel'
 import { FileBadge } from './file-badge'
 import { placeFolderMenu } from './folder-menu-position'
@@ -21,7 +21,7 @@ import type {
 } from '../../shared/home-api'
 import type { IntegrationsApi } from '../../shared/integrations-api'
 import { markText } from '../../shared/text-marks'
-import { useDismissablePopover } from '@genoffice/ui'
+import { useDismissablePopover } from '@selfoffice/ui'
 import { fileCountLabel, visiblePageCount } from './counts'
 import { useI18n } from './locale'
 import type { I18n, StringKey } from './locale'
@@ -30,7 +30,7 @@ import type { SettingsTarget } from './SettingsModal'
 import { skillUpdateDue } from './IntegrationsPane'
 import { onFilesChanged } from './file-events'
 
-import type { ProjectApi } from '@genoffice/project-store'
+import type { ProjectApi } from '@selfoffice/project-store'
 
 declare global {
   interface Window {
@@ -61,12 +61,12 @@ const OPEN_LOCAL_EXTENSIONS =
   '.docx / .odt / .ott / .xlsx / .xlsm / .xls / .csv / .tsv / .ods / .ots / .pptx / .odp / .otp / .pdf / .md / .html'
 
 /** drag payload of home file/folder rows (JSON array of absolute paths) */
-const DRAG_PATHS_MIME = 'application/x-genoffice-paths'
+const DRAG_PATHS_MIME = 'application/x-selfoffice-paths'
 /** hovering a collapsed folder this long while dragging expands it */
 const DRAG_EXPAND_DELAY_MS = 600
 /** expanded folders survive a home reload; the selection is per session */
 const TREE_STATE_KEY = 'home.folderTree'
-/** user-dragged sidebar width; unset keeps the stylesheet's default (genoffice#2169) */
+/** user-dragged sidebar width; unset keeps the stylesheet's default (selfoffice#2169) */
 const SIDEBAR_WIDTH_KEY = 'home.sidebarWidth'
 const SIDEBAR_MIN_WIDTH = 180
 const SIDEBAR_MAX_WIDTH = 480
@@ -84,7 +84,7 @@ function readSidebarWidth(): number | null {
  * Width of the viewport that `position: fixed` elements anchor to. The layout
  * engine owns this coordinate system, so documentElement's client rect is the
  * value to compute menu offsets from; window.innerWidth can disagree on scaled
- * Linux desktops, which pushed row menus past the window's left edge (genoffice#1946).
+ * Linux desktops, which pushed row menus past the window's left edge (selfoffice#1946).
  */
 function fixedViewportWidth(): number {
   return document.documentElement.clientWidth
@@ -2899,7 +2899,7 @@ export function Home() {
         style={sidebarWidth === null ? undefined : { width: sidebarWidth }}
       >
         <div className="sidebar-logo">
-          <img className="logo-lockup" src={logoLockup} alt="GenOffice" />
+          <img className="logo-lockup" src={logoLockup} alt="SelfOffice" />
         </div>
         <nav className="sidebar-nav">
           <button

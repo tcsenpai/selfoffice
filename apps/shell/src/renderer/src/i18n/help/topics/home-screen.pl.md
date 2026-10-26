@@ -1,6 +1,6 @@
 # Ekran strony głównej: gdzie mieszkają Twoje pliki
 
-Strona główna to punkt wyjścia GenOffice: pasek nawigacyjny po lewej, listy plików i karty szybkiego tworzenia po prawej.
+Strona główna to punkt wyjścia SelfOffice: pasek nawigacyjny po lewej, listy plików i karty szybkiego tworzenia po prawej.
 
 ![Ekran strony głównej](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Zaznacz pole wyboru w wierszu lub kliknij ⌘/ctrl, aby zbudować zaznaczenie; p
 Pole wyszukiwania u góry filtruje naraz dwie rzeczy:
 
 - **Nazwy plików**: szybkie filtrowanie po nazwie.
-- **Zawartość plików**: GenOffice indeksuje Twoje pliki w tle (tekst w docx/xlsx/pptx/pdf/md/html), więc wyszukiwanie po treści znajduje również pliki. Zakres i przełączniki ustawia się w ustawieniach wyszukiwania.
+- **Zawartość plików**: SelfOffice indeksuje Twoje pliki w tle (tekst w docx/xlsx/pptx/pdf/md/html), więc wyszukiwanie po treści znajduje również pliki. Zakres i przełączniki ustawia się w ustawieniach wyszukiwania.
 
 ## Karty szybkiego startu
 

@@ -1,6 +1,6 @@
 # Giriş ekranı: dosyalarınızın yaşadığı yer
 
-Giriş, GenOffice'in başlangıç sayfasıdır: solda bir gezinti kenar çubuğu, sağda dosya listeleri ve hızlı oluşturma kartları.
+Giriş, SelfOffice'in başlangıç sayfasıdır: solda bir gezinti kenar çubuğu, sağda dosya listeleri ve hızlı oluşturma kartları.
 
 ![Giriş ekranı](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Bir seçim oluşturmak için bir satırdaki onay kutusunu işaretleyin veya ⌘/
 Üstteki arama kutusu aynı anda iki şeyi eşleştirir:
 
 - **Dosya adları**: ada göre hızlı süzme.
-- **Dosya içerikleri**: GenOffice dosyalarınızı arka planda dizinler (docx/xlsx/pptx/pdf/md/html içindeki metin), böylece gövde metni aramak da dosya bulur. Kapsam ve anahtarlar arama ayarlarındadır.
+- **Dosya içerikleri**: SelfOffice dosyalarınızı arka planda dizinler (docx/xlsx/pptx/pdf/md/html içindeki metin), böylece gövde metni aramak da dosya bulur. Kapsam ve anahtarlar arama ayarlarındadır.
 
 ## Hızlı başlangıç kartları
 

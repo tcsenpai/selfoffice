@@ -5,7 +5,7 @@ import {
   type AiModelPickerBridge,
   AiSkillChips,
   AiSkillsMenu,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import {
   AgentLoop,
@@ -14,9 +14,9 @@ import {
   IPC_STREAM_SILENCE_TIMEOUT_MS,
   type AgentImage,
   type ToolDisplay,
-} from '@genoffice/agent-core'
-import type { RenderSlide } from '@genoffice/pptx-render'
-import { imageGenerationAvailable, mediaAnalysisAvailable } from '@genoffice/ai-provider/browser'
+} from '@selfoffice/agent-core'
+import type { RenderSlide } from '@selfoffice/pptx-render'
+import { imageGenerationAvailable, mediaAnalysisAvailable } from '@selfoffice/ai-provider/browser'
 import type { AiSettings, AttachmentAddResult, AttachmentMeta } from '../../shared/ipc'
 import { ATTACHMENT_IMAGE_EXTS } from '../../shared/ipc'
 import {
@@ -60,7 +60,7 @@ import {
   useChatRunQueue,
   type AiScopeQuoteData,
   type AiTokenUsageView,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { AiMark } from '../components/icons'
 import sendEnterOn from '../assets/send-enter-on.png'
 import sendEnterOff from '../assets/send-enter-off.png'

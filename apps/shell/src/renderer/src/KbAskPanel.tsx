@@ -8,14 +8,14 @@ import {
   createDocumentSkill,
   createIpcTransport,
   createKnowledgeBaseSkill,
-  RUN_GENOFFICE_TOOL,
+  RUN_SELFOFFICE_TOOL,
   withAttachedSkills,
   type AgentImage,
   type AttachmentInfo,
   type CliContext,
   type CreateDocumentFormat,
   type KbFileInfo,
-} from '@genoffice/agent-core'
+} from '@selfoffice/agent-core'
 import {
   AiComposer,
   AiModelPicker,
@@ -28,10 +28,10 @@ import {
   createFileNav,
   Markdown,
   type AiTokenUsageView,
-} from '@genoffice/ui'
-import type { AiSettings } from '@genoffice/ai-provider'
-import { activeProvider } from '@genoffice/ai-provider/browser'
-import type { ChatMessage, ChatMeta, ProjectApi } from '@genoffice/project-store'
+} from '@selfoffice/ui'
+import type { AiSettings } from '@selfoffice/ai-provider'
+import { activeProvider } from '@selfoffice/ai-provider/browser'
+import type { ChatMessage, ChatMeta, ProjectApi } from '@selfoffice/project-store'
 import { useI18n } from './locale'
 import type { AttachmentAddResult } from '../../shared/home-api'
 import { AskAttachments } from './AskAttachments'
@@ -400,7 +400,7 @@ export function KbAskPanel({
     })
     const docSkill = createDocumentSkill({
       create: (request) => window.aiOffice.kbCreateDocument(request),
-      alsoSaves: [RUN_GENOFFICE_TOOL],
+      alsoSaves: [RUN_SELFOFFICE_TOOL],
     })
     loopRef.current = new AgentLoop({
       transport: createIpcTransport<AiSettings>({

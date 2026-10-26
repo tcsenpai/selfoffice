@@ -32,7 +32,7 @@ own server.
   in plain language; every answer cites the file it came from, one click away.
 - **Skills.** Ready-made skills, or your own `SKILL.md`, attached from
   the **+** menu of any AI panel.
-- **Scriptable.** A `genoffice` command line, an agent skill and an MCP server
+- **Scriptable.** A `selfoffice` command line, an agent skill and an MCP server
   put every engine at the service of Claude Code, Claude Desktop, Codex, Cursor
   and other agents, still on-device.
 - **Free**, for individuals and teams alike.
@@ -68,7 +68,7 @@ colors.
 ## Skills
 
 A skill is a `SKILL.md` that tells the AI how to do one job well: a weekly
-report, an NDA, a lesson plan. GenOffice ships a set of them and takes your own,
+report, an NDA, a lesson plan. SelfOffice ships a set of them and takes your own,
 in the same format coding agents use.
 
 - **Settings → Skills.** **Install** a recommended skill, or **Import** a
@@ -80,10 +80,10 @@ in the same format coding agents use.
 
 ## Command line and agent skill
 
-Everything the apps can do to a file, the `genoffice` command line can do from
+Everything the apps can do to a file, the `selfoffice` command line can do from
 a terminal: inspect, convert, create, read and edit Word, Excel, PowerPoint,
 PDF, Markdown and HTML on the same engines, headless. It installs with
-GenOffice, needs no runtime of its own, and never sends a document anywhere.
+SelfOffice, needs no runtime of its own, and never sends a document anywhere.
 Paired with the bundled **agent skill**, it turns a coding agent into a
 document worker that produces real Office files instead of Markdown
 approximations.
@@ -96,31 +96,31 @@ through the [MCP server](#mcp-server), Claude Desktop and every MCP client.
 
 | How                                    | What happens                                                                                                                                                             |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Settings → Integrations** in the app | Lists the agents found on this computer; one click writes the skill into each one you choose. An **Update** button appears when a GenOffice release ships a newer skill. |
+| **Settings → Integrations** in the app | Lists the agents found on this computer; one click writes the skill into each one you choose. An **Update** button appears when a SelfOffice release ships a newer skill. |
 | **Download as zip** on the same page   | The layout claude.ai, the Claude desktop apps and other assistants accept as an uploaded skill.                                                                          |
 | `npx skills add tcsenpai/selfoffice` | Installs from this repository into any skills-compatible agent.                                                                                                          |
 
 Then start a new chat and ask for a document. The skill teaches the agent when
-to reach for `genoffice`, how to read a file before editing it, and how to
+to reach for `selfoffice`, how to read a file before editing it, and how to
 check its own work.
 
 ### Quickstart from the terminal
 
 ```bash
-genoffice --version
-genoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
-genoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx, …
-genoffice create --type docx --from notes.md --out notes.docx
-genoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
-genoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
-genoffice docs compare original.docx revised.docx --out redline.docx   # the differences as tracked Word revisions
-genoffice render report.docx --out shots/          # one PNG per page, to look at what you made
-genoffice open sales.xlsx                          # hand the result to the editor
+selfoffice --version
+selfoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
+selfoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx, …
+selfoffice create --type docx --from notes.md --out notes.docx
+selfoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
+selfoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
+selfoffice docs compare original.docx revised.docx --out redline.docx   # the differences as tracked Word revisions
+selfoffice render report.docx --out shots/          # one PNG per page, to look at what you made
+selfoffice open sales.xlsx                          # hand the result to the editor
 ```
 
 Every command prints a one-line summary, or a single JSON object with
 `--json`. Edits are atomic: a rejected op leaves the file untouched and comes
-back with a guided error. `genoffice help` lists the current command surface;
+back with a guided error. `selfoffice help` lists the current command surface;
 the full reference is [packages/cli/README.md](packages/cli/README.md).
 
 ### What the agent actually runs
@@ -130,21 +130,21 @@ Behind it, the agent followed the skill's staged workflow and the CLI checked
 every stage before the next one started:
 
 ```bash
-genoffice capabilities --json                        # which cloud tools GenOffice has configured
-genoffice guide slides design                        # the deck workflow and layout library
-genoffice image "the eight planets in a row …" --aspect 16:9 --out deck/assets/cover.jpg
-genoffice slides check deck/outline.json --json      # 8 pages, no findings
-genoffice slides check deck/pages/01.json --json     # builds one slide, audits overflow and overlap
+selfoffice capabilities --json                        # which cloud tools SelfOffice has configured
+selfoffice guide slides design                        # the deck workflow and layout library
+selfoffice image "the eight planets in a row …" --aspect 16:9 --out deck/assets/cover.jpg
+selfoffice slides check deck/outline.json --json      # 8 pages, no findings
+selfoffice slides check deck/pages/01.json --json     # builds one slide, audits overflow and overlap
 …                                                    # one page file per slide, fixed until each check is clean
-genoffice create --type pptx --spec deck/pages --outline deck/outline.json --out deck/solar-system.pptx --json
-genoffice slides render deck/solar-system.pptx --out deck/shots --json
-genoffice slides audit deck/solar-system.pptx --json    # 8 slides, no layout issues
-genoffice slides replace deck/solar-system.pptx --slide 4 --spec deck/pages/05.json --json
-genoffice open deck/solar-system.pptx
+selfoffice create --type pptx --spec deck/pages --outline deck/outline.json --out deck/solar-system.pptx --json
+selfoffice slides render deck/solar-system.pptx --out deck/shots --json
+selfoffice slides audit deck/solar-system.pptx --json    # 8 slides, no layout issues
+selfoffice slides replace deck/solar-system.pptx --slide 4 --spec deck/pages/05.json --json
+selfoffice open deck/solar-system.pptx
 ```
 
-No model call happens inside `genoffice`: the agent does the thinking, the CLI
-does the building and the checking, and the result opens in GenOffice or
+No model call happens inside `selfoffice`: the agent does the thinking, the CLI
+does the building and the checking, and the result opens in SelfOffice or
 PowerPoint as an ordinary `.pptx`.
 
 ### MCP server
@@ -156,26 +156,26 @@ give one. There are two ways in, both shown with copy-ready snippets in
 
 | Way                                   | What it is                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **A · `genoffice mcp`** (recommended) | A stdio server the assistant starts itself; GenOffice does not need to be open. One tool per command (`info`, `convert`, `create_docx`, `create_xlsx`, `create_pptx`, `create_pdf`, `docs_read` / `docs_apply` / `docs_check`, `sheet_*`, `slides_*`, `render`, `guide`, `search`, `image`, `media`, `open`) plus the staged deck flow `deck_start` → `deck_page` → `deck_build` → `deck_replace`. Ops, specs and Markdown are passed inline, so a client without a file system still works. |
-| **B · Local HTTP server**             | Runs inside the GenOffice app on `http://127.0.0.1:3093/mcp` (Streamable HTTP, with legacy SSE). Its tools drive a visible Word editor tab: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, and you watch the document take shape. Off by default; switch it on in the same settings pane.                                                                                                                                               |
-| **C · `genoffice mcp --http`**        | The stdio tool set as a Streamable HTTP server for clients on other machines: a container, a sandbox, a shared box on your network. Files travel with the calls: `PUT /files/<name>` uploads one and returns a URL, every `file` parameter takes an http(s) URL, and a tool that writes a file hands it back as a download URL plus, when small, the bytes as an MCP resource. `--host 0.0.0.0` opens it to the network, `--token` protects it.                                              |
+| **A · `selfoffice mcp`** (recommended) | A stdio server the assistant starts itself; SelfOffice does not need to be open. One tool per command (`info`, `convert`, `create_docx`, `create_xlsx`, `create_pptx`, `create_pdf`, `docs_read` / `docs_apply` / `docs_check`, `sheet_*`, `slides_*`, `render`, `guide`, `search`, `image`, `media`, `open`) plus the staged deck flow `deck_start` → `deck_page` → `deck_build` → `deck_replace`. Ops, specs and Markdown are passed inline, so a client without a file system still works. |
+| **B · Local HTTP server**             | Runs inside the SelfOffice app on `http://127.0.0.1:3093/mcp` (Streamable HTTP, with legacy SSE). Its tools drive a visible Word editor tab: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, and you watch the document take shape. Off by default; switch it on in the same settings pane.                                                                                                                                               |
+| **C · `selfoffice mcp --http`**        | The stdio tool set as a Streamable HTTP server for clients on other machines: a container, a sandbox, a shared box on your network. Files travel with the calls: `PUT /files/<name>` uploads one and returns a URL, every `file` parameter takes an http(s) URL, and a tool that writes a file hands it back as a download URL plus, when small, the bytes as an MCP resource. `--host 0.0.0.0` opens it to the network, `--token` protects it.                                              |
 
 ```bash
 # Claude Code
-claude mcp add --transport stdio genoffice -- genoffice mcp
+claude mcp add --transport stdio selfoffice -- selfoffice mcp
 ```
 
 ```jsonc
 // Cursor, Claude Desktop or any other MCP client
-{ "mcpServers": { "genoffice": { "command": "genoffice", "args": ["mcp"] } } }
+{ "mcpServers": { "selfoffice": { "command": "selfoffice", "args": ["mcp"] } } }
 ```
 
 ```bash
-# On the machine that has GenOffice (private network; add --token for a shared box)
-genoffice mcp --http 3093 --host 0.0.0.0 --token "$GENOFFICE_MCP_TOKEN"
+# On the machine that has SelfOffice (private network; add --token for a shared box)
+selfoffice mcp --http 3093 --host 0.0.0.0 --token "$SELFOFFICE_MCP_TOKEN"
 
 # From the client: upload, then use the URL wherever a tool takes a file
-curl -T report.docx -H "Authorization: Bearer $GENOFFICE_MCP_TOKEN" http://server:3093/files/
+curl -T report.docx -H "Authorization: Bearer $SELFOFFICE_MCP_TOKEN" http://server:3093/files/
 #   → { "url": "http://server:3093/files/<id>/report.docx", ... }
 #   docs_read({ "file": "http://server:3093/files/<id>/report.docx" })
 #   docs_apply(...) → output_url, downloadable with curl -o
@@ -183,22 +183,22 @@ curl -T report.docx -H "Authorization: Bearer $GENOFFICE_MCP_TOKEN" http://serve
 
 Over HTTP every session gets a private scratch folder, relative paths and deck
 folders resolve inside it, `open` is not offered, and with
-`GENOFFICE_ALLOWED_ROOTS` unset the tools cannot leave the server's own file
+`SELFOFFICE_ALLOWED_ROOTS` unset the tools cannot leave the server's own file
 store. `render`, `convert` to PDF and `create_pdf` still start a hidden
-GenOffice process, so a headless host needs the app installed and a virtual
+SelfOffice process, so a headless host needs the app installed and a virtual
 display (`xvfb-run`).
 
-`genoffice` here is the CLI shipped inside the app (on macOS
-`/Applications/GenOffice.app/Contents/Resources/cli/genoffice`; the settings
+`selfoffice` here is the CLI shipped inside the app (on macOS
+`/Applications/SelfOffice.app/Contents/Resources/cli/selfoffice`; the settings
 pane prints the exact path for your install). The server carries its own
-workflow instructions and exposes the op references as `genoffice://guide/*`
+workflow instructions and exposes the op references as `selfoffice://guide/*`
 resources, so no skill is needed; the skill and the MCP server can coexist and
 the assistant picks one. Cloud features (`search`, `image`, `media`) still go
-through the provider configured in GenOffice; everything else runs locally, and
-`GENOFFICE_ALLOWED_ROOTS` confines every tool to the folders you list.
+through the provider configured in SelfOffice; everything else runs locally, and
+`SELFOFFICE_ALLOWED_ROOTS` confines every tool to the folders you list.
 
 The renewable-energy deck in the [demo](#demo) is what one prompt in Claude Code
-with only the `genoffice` MCP server attached looks like from the protocol
+with only the `selfoffice` MCP server attached looks like from the protocol
 side:
 
 ```text
@@ -219,7 +219,7 @@ deck_replace(dir, n, page) ×3 · slides_render(file, out)
 Thirty-eight calls, about thirteen minutes, and the assistant never touched a
 shell: the figures, the photos, the guides, the checks and the renders all
 travelled as MCP tool results. Only `search` and `media` left the machine, to
-the provider configured in GenOffice.
+the provider configured in SelfOffice.
 
 ## How it works
 
@@ -256,7 +256,7 @@ npm run dist:linux   # package Linux AppImage + deb + rpm
 ```
 
 The sheets app additionally needs a Rust toolchain for its xlsx sidecar
-(`cargo` on PATH); `npm run build -w @genoffice/sheets` compiles it
+(`cargo` on PATH); `npm run build -w @selfoffice/sheets` compiles it
 automatically. See [CONTRIBUTING.md](CONTRIBUTING.md) for the checks every
 change must pass and how pull requests land.
 
@@ -268,7 +268,7 @@ AI-generated content.
 
 ## Acknowledgements
 
-GenOffice would not be possible without these open-source projects:
+SelfOffice would not be possible without these open-source projects:
 
 - [Electron](https://www.electronjs.org/) — the desktop runtime for every app.
 - [Univer](https://github.com/dream-num/univer) (Apache-2.0) — the spreadsheet
@@ -313,6 +313,6 @@ MIT/Apache-2.0/BSD-3-Clause/OFL.
 ## License
 
 SelfOffice is licensed under the [Apache License 2.0](LICENSE), as is upstream
-GenOffice. The `ee/` directory is covered by the upstream
-[GenOffice Enterprise License](ee/LICENSE) and is not part of this fork's
+SelfOffice. The `ee/` directory is covered by the upstream
+[SelfOffice Enterprise License](ee/LICENSE) and is not part of this fork's
 distribution.

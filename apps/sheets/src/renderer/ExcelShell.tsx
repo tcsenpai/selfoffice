@@ -1,6 +1,6 @@
 import type { IFunctionInfo } from '@univerjs/engine-formula'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { platformShortcuts } from '@genoffice/i18n'
+import { platformShortcuts } from '@selfoffice/i18n'
 import {
   Dropdown,
   SHAPE_GALLERY_GROUPS,
@@ -11,7 +11,7 @@ import {
   rememberAiPanelOpen,
   useAiSidebarEnabled,
   type AiTokenUsageView,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 
 import {
   BorderAllIcon,
@@ -36,7 +36,7 @@ import { ColorDropdown } from './ColorDropdown'
 import { FormatCellsDialog } from './FormatCellsDialog'
 import { AllowEditRangesDialog } from './AllowEditRangesDialog'
 import { ProtectSheetDialog } from './ProtectSheetDialog'
-import type { SheetProtectionAllow } from '@genoffice/xlsx-gateway/gateway/xlsx-protection'
+import type { SheetProtectionAllow } from '@selfoffice/xlsx-gateway/gateway/xlsx-protection'
 import { GoToDialog } from './GoToDialog'
 import { SheetTabContextMenu } from './SheetTabContextMenu'
 import type { SheetTabActions } from './sheet-tab-actions'
@@ -71,8 +71,8 @@ import {
 import { isModalOpen, resolveGlobalShortcut } from './global-shortcuts'
 import { stepFontSize } from './font-size-ladder'
 
-import type { ChartSeriesVisualState } from '@genoffice/xlsx-gateway/domain/chart-visual'
-import type { ChangePlan } from '@genoffice/xlsx-gateway/domain/workbook.types'
+import type { ChartSeriesVisualState } from '@selfoffice/xlsx-gateway/domain/chart-visual'
+import type { ChangePlan } from '@selfoffice/xlsx-gateway/domain/workbook.types'
 import type { AttachmentMeta } from '../shared/desktop-api'
 import { AiChatPanel, type AiChatMessage } from './ai/AiChatPanel'
 import { AiSelectionAsk } from './ai/AiSelectionAsk'
@@ -649,7 +649,7 @@ export function ExcelShell({
     // right-clicking anywhere in it outside the tab strip opens our menu.
     // Everything else the decision covers is sheet-context-menu.ts's: the
     // grid right-click must cancel the DOM event or Electron's native menu
-    // stacks on top of Univer's own (genoffice#1816).
+    // stacks on top of Univer's own (selfoffice#1816).
     const onContextMenu = (event: MouseEvent): void => {
       const action = sheetContextMenuAction(event.target)
       if (action.statsMenu) openStatsMenu(event)

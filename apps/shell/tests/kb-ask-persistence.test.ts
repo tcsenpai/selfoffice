@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import type { ChatMessage, ChatMeta, ProjectApi } from '@genoffice/project-store'
+import type { ChatMessage, ChatMeta, ProjectApi } from '@selfoffice/project-store'
 
 import {
   claimThread,

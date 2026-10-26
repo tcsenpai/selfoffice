@@ -33,7 +33,7 @@ export interface PickImageResult {
   name: string
 }
 
-// ---- mail merge (genoffice#2097) ----
+// ---- mail merge (selfoffice#2097) ----
 
 /** a recipient list read from a local .xlsx or .csv */
 export interface MergeDataSource {
@@ -80,7 +80,7 @@ export interface MergeOutputResponse {
   error?: string
 }
 
-// ---- AI provider settings/config/streaming: canonical types live in @genoffice/ai-provider ----
+// ---- AI provider settings/config/streaming: canonical types live in @selfoffice/ai-provider ----
 
 import type {
   AiChatRequest,
@@ -88,10 +88,10 @@ import type {
   AiSettings,
   AiStreamChunk,
   AiStreamRequest,
-} from '@genoffice/ai-provider'
-import type { HeadlessExportTarget } from '@genoffice/electron-utils/headless-export'
-import type { FaceVerticalMetrics } from '@genoffice/font-metrics'
-import type { AiPanelPrefs } from '@genoffice/ui'
+} from '@selfoffice/ai-provider'
+import type { HeadlessExportTarget } from '@selfoffice/electron-utils/headless-export'
+import type { FaceVerticalMetrics } from '@selfoffice/font-metrics'
+import type { AiPanelPrefs } from '@selfoffice/ui'
 
 export type { FaceVerticalMetrics }
 
@@ -104,17 +104,17 @@ export type {
   AiSettings,
   AiStreamChunk,
   AiStreamRequest,
-} from '@genoffice/ai-provider'
-export { AI_PROVIDERS } from '@genoffice/ai-provider/browser'
+} from '@selfoffice/ai-provider'
+export { AI_PROVIDERS } from '@selfoffice/ai-provider/browser'
 
-// ---- agent protocol: canonical types live in @genoffice/agent-core ----
+// ---- agent protocol: canonical types live in @selfoffice/agent-core ----
 
 export type {
   AgentMessage,
   AgentToolCall,
   AgentToolDef,
   AgentToolResult,
-} from '@genoffice/agent-core'
+} from '@selfoffice/agent-core'
 
 // ---- PDF export ----
 
@@ -271,7 +271,7 @@ export type MenuCommand =
 export type UiTheme = 'light' | 'dark' | 'system'
 
 /**
- * Document page theme preference (genoffice#1811): what the canvas/paper does relative
+ * Document page theme preference (selfoffice#1811): what the canvas/paper does relative
  * to the UI theme. 'follow' keeps the previous single-theme behavior.
  */
 export type DocTheme = 'follow' | 'light' | 'dark'
@@ -405,7 +405,7 @@ export interface DesktopApi {
   getTheme(): Promise<UiTheme>
   /** theme switched from the shell home page */
   onThemeChanged(handler: (theme: UiTheme) => void): () => void
-  /** current document page theme preference (genoffice#1811, persisted by the shell in app-settings.json) */
+  /** current document page theme preference (selfoffice#1811, persisted by the shell in app-settings.json) */
   getDocumentTheme(): Promise<DocTheme>
   /** document page theme switched from the shell home page */
   onDocumentThemeChanged(handler: (theme: DocTheme) => void): () => void
@@ -707,7 +707,7 @@ export interface DesktopApi {
   skillsList(): Promise<UserSkillEntry[]>
   /** the body of one installed skill, by name — the main process resolves the path */
   skillText(name: string): Promise<string>
-  /** run the bundled genoffice CLI; failures come back as ok:false, never a throw */
+  /** run the bundled selfoffice CLI; failures come back as ok:false, never a throw */
   runCli(args: string[]): Promise<UserCliRun>
 }
 
@@ -737,5 +737,5 @@ export interface UserCliRun {
   allowedRoots?: string[]
 }
 
-/** mirrors VIEW_IMAGE_CHANNEL in @genoffice/electron-utils (kept literal so the preload stays free of main-only deps) */
-export const VIEW_IMAGE_CHANNEL = 'genoffice:view-image'
+/** mirrors VIEW_IMAGE_CHANNEL in @selfoffice/electron-utils (kept literal so the preload stays free of main-only deps) */
+export const VIEW_IMAGE_CHANNEL = 'selfoffice:view-image'

@@ -8,7 +8,7 @@ import {
   RibbonExpandButton,
   useDismissablePopover,
   useRibbonCollapse,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { useI18n } from '../i18n/locale'
 import { MARKDOWN_THEME_IDS, type MarkdownTheme } from '../../shared/markdown-theme'
 import type { StringKey } from '../i18n/locale'
@@ -49,7 +49,7 @@ interface Props {
   onToggleAutoSave: (on: boolean) => void
   imageEnabled: boolean
   onInsertImage: () => void
-  /** open the image host configuration (genoffice#388) */
+  /** open the image host configuration (selfoffice#388) */
   onImageHost: () => void
   frontmatterOpen: boolean
   onToggleFrontmatter: () => void

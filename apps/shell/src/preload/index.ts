@@ -5,11 +5,11 @@ import {
   AI_PROVIDERS,
   AI_SEARCH_PROVIDERS,
   getProviderAdapter,
-} from '@genoffice/ai-provider/browser'
-import type { AiSettings, CodexModelCatalog } from '@genoffice/ai-provider/browser'
-import { installDropOpenBridge } from '@genoffice/electron-utils/drop-open'
+} from '@selfoffice/ai-provider/browser'
+import type { AiSettings, CodexModelCatalog } from '@selfoffice/ai-provider/browser'
+import { installDropOpenBridge } from '@selfoffice/electron-utils/drop-open'
 import type { UpdateUiState } from '../shared/update-api'
-import { normalizeAiPanelPrefs } from '@genoffice/ui/ai-panel-prefs'
+import { normalizeAiPanelPrefs } from '@selfoffice/ui/ai-panel-prefs'
 import type {
   DefaultAppStatus,
   FolderListing,
@@ -25,7 +25,7 @@ import type {
   FileSearchRerank,
   FileSearchSettings,
 } from '../shared/home-api'
-import type { ProjectApi } from '@genoffice/project-store'
+import type { ProjectApi } from '@selfoffice/project-store'
 import { HOME_CHANNELS } from '../shared/home-api'
 import { INTEGRATIONS_CHANNELS } from '../shared/integrations-api'
 import type {

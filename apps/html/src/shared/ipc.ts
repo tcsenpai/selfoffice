@@ -1,7 +1,7 @@
-import type { AiPanelPrefs } from '@genoffice/ui'
-import type { HeadlessExportTarget } from '@genoffice/electron-utils/headless-export'
-import type { Lang } from '@genoffice/i18n'
-import type { AiSettings, AiStreamChunk, AiStreamRequest } from '@genoffice/ai-provider'
+import type { AiPanelPrefs } from '@selfoffice/ui'
+import type { HeadlessExportTarget } from '@selfoffice/electron-utils/headless-export'
+import type { Lang } from '@selfoffice/i18n'
+import type { AiSettings, AiStreamChunk, AiStreamRequest } from '@selfoffice/ai-provider'
 
 export const HTML_CHANNELS = {
   consumePending: 'html:consume-pending',
@@ -306,7 +306,7 @@ export interface HtmlApi {
   openAiModelSettings(): Promise<void>
   /** shell only: switch to Home and open Settings › Integrations (the skills list) */
   openSkillsSettings(): Promise<void>
-  /** the skills the user installed into GenOffice (userData/skills) */
+  /** the skills the user installed into SelfOffice (userData/skills) */
   skillsList(): Promise<UserSkillEntry[]>
   /** the body of one installed skill, by name — the main process resolves the path */
   skillText(name: string): Promise<string>

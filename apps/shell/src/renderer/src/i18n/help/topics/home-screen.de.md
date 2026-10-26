@@ -1,6 +1,6 @@
 # Der Startbildschirm: wo Ihre Dateien liegen
 
-Die Startseite ist GenOffices Startseite: eine Navigationsleiste links, Dateilisten und Schnellerstellungskarten rechts.
+Die Startseite ist SelfOffices Startseite: eine Navigationsleiste links, Dateilisten und Schnellerstellungskarten rechts.
 
 ![Der Startbildschirm](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Haken Sie das Kontrollkästchen einer Zeile an oder klicken Sie mit ⌘/Strg, um
 Das Suchfeld oben erfasst gleichzeitig zwei Dinge:
 
 - **Dateinamen**: schnelles Filtern nach Namen.
-- **Dateinhalte**: GenOffice indexiert Ihre Dateien im Hintergrund (Text in docx/xlsx/pptx/pdf/md/html), sodass die Volltextsuche auch Dateien findet. Umfang und Schalter stehen in den Sucheinstellungen.
+- **Dateinhalte**: SelfOffice indexiert Ihre Dateien im Hintergrund (Text in docx/xlsx/pptx/pdf/md/html), sodass die Volltextsuche auch Dateien findet. Umfang und Schalter stehen in den Sucheinstellungen.
 
 ## Schnellstart-Karten
 

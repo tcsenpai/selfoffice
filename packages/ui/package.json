@@ -1,5 +1,5 @@
 {
-  "name": "@genoffice/ui",
+  "name": "@selfoffice/ui",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "private": true,
@@ -38,9 +38,9 @@
     "vitest": "^4.1.12"
   },
   "dependencies": {
-    "@genoffice/i18n": "*",
-    "@genoffice/pptx-render": "*",
-    "@genoffice/agent-core": "*",
-    "@genoffice/ai-provider": "*"
+    "@selfoffice/i18n": "*",
+    "@selfoffice/pptx-render": "*",
+    "@selfoffice/agent-core": "*",
+    "@selfoffice/ai-provider": "*"
   }
 }

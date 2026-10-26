@@ -23,7 +23,7 @@ Light / Dark / System. System follows the OS appearance, and the editors re-skin
 - **AI sidebar position** (left or right), **AI panel text size**, and **Spell check in AI chat**.
 - **Open the AI panel in new documents** — off, a new document starts with the panel collapsed and one click away.
 - **Auto-save all documents** turns AutoSave on by default in every editor; you can still switch it off for one window.
-- **Save Location** with a **Change** button, and **Default app for Office documents** to claim .docx / .xlsx / .pptx for GenOffice.
+- **Save Location** with a **Change** button, and **Default app for Office documents** to claim .docx / .xlsx / .pptx for SelfOffice.
 
 ## AI Media & Search
 
@@ -39,7 +39,7 @@ Not switches — each capability picks the vendor that serves it, and a vendor's
 
 ## Default app bindings
 
-Settings can register GenOffice as the handler for .docx / .xlsx / .pptx / .pdf and friends (platform-level default-app registration; confirm when prompted).
+Settings can register SelfOffice as the handler for .docx / .xlsx / .pptx / .pdf and friends (platform-level default-app registration; confirm when prompted).
 
 ## Third-party notices and updates
 
@@ -48,7 +48,7 @@ Settings can register GenOffice as the handler for .docx / .xlsx / .pptx / .pdf 
 
 ## MCP integration (for advanced users / AI clients)
 
-**Integrations** is the pane that connects GenOffice to a coding agent, and it has its own article: Connecting a coding agent. The short version — pick a route (the command line, or MCP), follow that section, then start a new chat and ask.
+**Integrations** is the pane that connects SelfOffice to a coding agent, and it has its own article: Connecting a coding agent. The short version — pick a route (the command line, or MCP), follow that section, then start a new chat and ask.
 
 ![Settings ▸ Integrations: the three steps, then the skill rows and the MCP options](img/settings-integrations.png)
 
@@ -58,6 +58,6 @@ Under **Local HTTP server** the app can run the server itself — an enable swit
 
 | Command            | What it does               |
 | ------------------ | -------------------------- |
-| `genoffice <file>` | open a file                |
-| `genoffice mcp`    | start the local MCP server |
-| `genoffice --help` | every command and flag     |
+| `selfoffice <file>` | open a file                |
+| `selfoffice mcp`    | start the local MCP server |
+| `selfoffice --help` | every command and flag     |

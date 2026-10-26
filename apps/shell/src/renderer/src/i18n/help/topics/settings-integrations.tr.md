@@ -23,7 +23,7 @@ Açık / Koyu / Sistem. Sistem, işletim sisteminin görünümünü izler ve dü
 - **AI kenar çubuğu konumu** (sol veya sağ), **AI paneli metin boyutu** ve **AI sohbetinde yazım denetimi**.
 - **Yeni belgelerde AI panelini aç** — kapalıyken yeni bir belge, panel daraltılmış ve tek tık uzakta olarak başlar.
 - **Tüm belgeleri otomatik kaydet** her düzenleyicide Otomatik Kaydet'i varsayılan olarak açar; tek bir pencere için yine de kapatabilirsiniz.
-- **Değiştir** düğmesiyle **Kayıt Konumu** ve .docx / .xlsx / .pptx dosyalarını GenOffice'e atamak için **Office belgeleri için varsayılan uygulama**.
+- **Değiştir** düğmesiyle **Kayıt Konumu** ve .docx / .xlsx / .pptx dosyalarını SelfOffice'e atamak için **Office belgeleri için varsayılan uygulama**.
 
 ## AI Medya ve Arama
 
@@ -39,7 +39,7 @@ Anahtar değil — her yetenek ona hizmet eden satıcıyı seçer ve bir satıc�
 
 ## Varsayılan uygulama bağlamaları
 
-Ayarlar, GenOffice'i .docx / .xlsx / .pptx / .pdf ve benzerleri için işleyici olarak kaydedebilir (platform düzeyinde varsayılan uygulama kaydı; istendiğinde onaylayın).
+Ayarlar, SelfOffice'i .docx / .xlsx / .pptx / .pdf ve benzerleri için işleyici olarak kaydedebilir (platform düzeyinde varsayılan uygulama kaydı; istendiğinde onaylayın).
 
 ## Üçüncü taraf bildirimleri ve güncellemeler
 
@@ -48,7 +48,7 @@ Ayarlar, GenOffice'i .docx / .xlsx / .pptx / .pdf ve benzerleri için işleyici 
 
 ## MCP tümleştirmesi (ileri düzey kullanıcılar / AI istemcileri için)
 
-**Tümleştirmeler**, GenOffice'i bir kodlama aracısına bağlayan bölmedir ve kendi makalesi vardır: Bir kodlama aracısını bağlama. Kısa sürüm — bir yol seçin (komut satırı veya MCP), o bölümü izleyin, sonra yeni bir sohbet başlatıp sorun.
+**Tümleştirmeler**, SelfOffice'i bir kodlama aracısına bağlayan bölmedir ve kendi makalesi vardır: Bir kodlama aracısını bağlama. Kısa sürüm — bir yol seçin (komut satırı veya MCP), o bölümü izleyin, sonra yeni bir sohbet başlatıp sorun.
 
 ![Ayarlar ▸ Tümleştirmeler: üç adım, ardından beceri satırları ve MCP seçenekleri](img/settings-integrations.png)
 
@@ -58,6 +58,6 @@ Ayarlar, GenOffice'i .docx / .xlsx / .pptx / .pdf ve benzerleri için işleyici 
 
 | Komut              | Ne yapar                      |
 | ------------------ | ----------------------------- |
-| `genoffice <file>` | bir dosya açar                |
-| `genoffice mcp`    | yerel MCP sunucusunu başlatır |
-| `genoffice --help` | tüm komutlar ve bayraklar     |
+| `selfoffice <file>` | bir dosya açar                |
+| `selfoffice mcp`    | yerel MCP sunucusunu başlatır |
+| `selfoffice --help` | tüm komutlar ve bayraklar     |

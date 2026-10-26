@@ -7,8 +7,8 @@ import {
   Dropdown,
   aiPanelFontPx,
   clampAiCustomFontSize,
-} from '@genoffice/ui'
-import type { AiFontSize, AiPanelPrefs, AiPanelSide } from '@genoffice/ui'
+} from '@selfoffice/ui'
+import type { AiFontSize, AiPanelPrefs, AiPanelSide } from '@selfoffice/ui'
 import type { DecisionEndpoint, DefaultAppStatus, FileSearchSettings } from '../../shared/home-api'
 import { AUTHOR_NAME_MAX, isCloudflareEndpoint } from '../../shared/home-api'
 import type { UpdateUiState } from '../../shared/update-api'
@@ -24,7 +24,7 @@ import {
   selectCustomEndpoint,
   upsertCustomEndpoint,
   AI_CUSTOM_PROTOCOLS,
-} from '@genoffice/ai-provider/browser'
+} from '@selfoffice/ai-provider/browser'
 import type {
   AiCustomCompat,
   AiCustomEndpoint,
@@ -36,7 +36,7 @@ import type {
   AiSearchProviderMeta,
   AiSearchSettings,
   AiSettings,
-} from '@genoffice/ai-provider'
+} from '@selfoffice/ai-provider'
 import { useI18n } from './locale'
 import type { StringKey, TFunc } from './locale'
 import type { AiCatalogEntry, AuthorNameSetting, DocTheme, UiTheme } from '../../shared/home-api'
@@ -83,7 +83,7 @@ const THEME_OPTIONS = [
   { value: 'dark', labelKey: 'themeDark' },
 ] as const satisfies readonly { value: UiTheme; labelKey: StringKey }[]
 
-// Document page theme (genoffice#1811): the canvas/paper preference the editors follow;
+// Document page theme (selfoffice#1811): the canvas/paper preference the editors follow;
 // 'follow' keeps the pre-existing behavior of riding the UI theme
 const DOC_THEME_OPTIONS = [
   { value: 'follow', labelKey: 'docThemeFollowApp' },

@@ -23,7 +23,7 @@ Licht / Donker / Systeem volgen. Systeem volgen volgt het uiterlijk van het best
 - **Positie AI-zijbalk** (links of rechts), **Tekstgrootte AI-paneel** en **Spellingcontrole in AI-chat**.
 - **AI-paneel openen in nieuwe documenten** — uit, een nieuw document begint met het paneel ingeklapt, één klik verderop.
 - **Alle documenten automatisch opslaan** zet AutoSave standaard aan in elke editor; u kunt het voor één venster nog steeds uitschakelen.
-- **Opslaglocatie** met de knop **Wijzigen** en **Standaardapp voor Office-documenten** om .docx / .xlsx / .pptx aan GenOffice toe te kennen.
+- **Opslaglocatie** met de knop **Wijzigen** en **Standaardapp voor Office-documenten** om .docx / .xlsx / .pptx aan SelfOffice toe te kennen.
 
 ## AI-media en zoeken
 
@@ -39,7 +39,7 @@ Geen schakelaars — elke functie kiest de leverancier die haar bedient, en de s
 
 ## Standaardapp-koppelingen
 
-Met de instellingen kun je GenOffice registreren als verwerker van .docx / .xlsx / .pptx / .pdf en vergelijkbare bestanden (registratie van de standaardapp op systeemniveau; bevestiging wanneer daarom wordt gevraagd).
+Met de instellingen kun je SelfOffice registreren als verwerker van .docx / .xlsx / .pptx / .pdf en vergelijkbare bestanden (registratie van de standaardapp op systeemniveau; bevestiging wanneer daarom wordt gevraagd).
 
 ## Mededelingen over software van derden en updates
 
@@ -48,7 +48,7 @@ Met de instellingen kun je GenOffice registreren als verwerker van .docx / .xlsx
 
 ## MCP-integratie (voor gevorderde gebruikers / AI-clients)
 
-**Integraties** is het paneel dat GenOffice met een coding agent verbindt, en daarvoor is er een eigen artikel: Verbinden met een coding agent. De korte versie — kies een route (de opdrachtregel, of MCP), volg dat onderdeel en start daarna een nieuw gesprek en stel je vraag.
+**Integraties** is het paneel dat SelfOffice met een coding agent verbindt, en daarvoor is er een eigen artikel: Verbinden met een coding agent. De korte versie — kies een route (de opdrachtregel, of MCP), volg dat onderdeel en start daarna een nieuw gesprek en stel je vraag.
 
 ![Instellingen ▸ Integraties: de drie stappen, daarna de skill-rijen en de MCP-opties](img/settings-integrations.png)
 
@@ -58,6 +58,6 @@ Onder **Lokale HTTP-server** kan de app de server ook zelf draaien — een insch
 
 | Opdracht              | Wat het doet               |
 | --------------------- | -------------------------- |
-| `genoffice <bestand>` | opent een bestand          |
-| `genoffice mcp`       | start de lokale MCP-server |
-| `genoffice --help`    | alle opdrachten en opties  |
+| `selfoffice <bestand>` | opent een bestand          |
+| `selfoffice mcp`       | start de lokale MCP-server |
+| `selfoffice --help`    | alle opdrachten en opties  |

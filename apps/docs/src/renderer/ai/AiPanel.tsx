@@ -11,10 +11,10 @@ import {
   addTokenUsage,
   type AiTokenUsageView,
   useChatRunQueue,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { useEffect, useRef, useState } from 'react'
 import type { Editor } from '@tiptap/core'
-import type { Block } from '@genoffice/docx-engine'
+import type { Block } from '@selfoffice/docx-engine'
 import {
   AgentLoop,
   composeSkills,
@@ -24,9 +24,9 @@ import {
   type AgentImage,
   type KbFileInfo,
   type MindMapTreeNode,
-} from '@genoffice/agent-core'
+} from '@selfoffice/agent-core'
 import { redactTextBetween, type RedactableNode } from './redact-view'
-import { imageGenerationAvailable, mediaAnalysisAvailable } from '@genoffice/ai-provider/browser'
+import { imageGenerationAvailable, mediaAnalysisAvailable } from '@selfoffice/ai-provider/browser'
 import type { AiSettings, AttachmentAddResult, AttachmentMeta } from '../../shared/ipc'
 import { ATTACHMENT_IMAGE_EXTS } from '../../shared/ipc'
 import type { PmNode } from '../editor/convert'
@@ -69,8 +69,8 @@ import { createSkillsSkill } from './skills-skill'
 import { boundChatHistory } from './chat-retention'
 import { createElectronTransport } from './transport'
 import { useI18n, t as tModule, aiLangDirective, type StringKey } from '../i18n/locale'
-import { createFileNav, Markdown } from '@genoffice/ui'
-import { AiComposer, AiScopeQuote, AiTypingIndicator, type AiScopeQuoteData } from '@genoffice/ui'
+import { createFileNav, Markdown } from '@selfoffice/ui'
+import { AiComposer, AiScopeQuote, AiTypingIndicator, type AiScopeQuoteData } from '@selfoffice/ui'
 import { AiMark } from '../components/icons'
 import sendEnterOn from '../assets/send-enter-on.png'
 import sendEnterOff from '../assets/send-enter-off.png'

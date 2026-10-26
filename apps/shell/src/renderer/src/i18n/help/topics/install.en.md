@@ -1,4 +1,4 @@
-# Installing GenOffice
+# Installing SelfOffice
 
 Every build is published on the [Releases page](https://github.com/tcsenpai/selfoffice/releases/latest). All of them come from `main`; the macOS and Windows installers are signed.
 
@@ -18,32 +18,32 @@ Older versions stay on the Releases page.
 
 ## On macOS
 
-Open the `.dmg` and drag **GenOffice** into Applications. On an Intel build the first launch asks you to confirm opening it: right-click the app in Applications ▸ Open. That is Gatekeeper meeting an unsigned-seeming disk image, not a damaged download.
+Open the `.dmg` and drag **SelfOffice** into Applications. On an Intel build the first launch asks you to confirm opening it: right-click the app in Applications ▸ Open. That is Gatekeeper meeting an unsigned-seeming disk image, not a damaged download.
 
 ## On Windows
 
-Run the `.exe` installer. It puts GenOffice in the Start menu and registers `.docx`, `.xlsx`, `.pptx`, `.pdf` and friends so double-clicking a file opens it.
+Run the `.exe` installer. It puts SelfOffice in the Start menu and registers `.docx`, `.xlsx`, `.pptx`, `.pdf` and friends so double-clicking a file opens it.
 
 ## On Linux
 
 **Debian / Ubuntu**
 
 ```sh
-sudo apt install ./genoffice_<version>_amd64.deb
+sudo apt install ./selfoffice_<version>_amd64.deb
 ```
 
 **Fedora / RHEL / openSUSE**
 
 ```sh
-sudo dnf install ./genoffice-<version>.x86_64.rpm     # Fedora / RHEL family
-sudo zypper install ./genoffice-<version>.x86_64.rpm  # openSUSE
+sudo dnf install ./selfoffice-<version>.x86_64.rpm     # Fedora / RHEL family
+sudo zypper install ./selfoffice-<version>.x86_64.rpm  # openSUSE
 ```
 
 **AppImage** — runs where it is, with no install step:
 
 ```sh
-chmod +x GenOffice-<version>.AppImage
-./GenOffice-<version>.AppImage
+chmod +x SelfOffice-<version>.AppImage
+./SelfOffice-<version>.AppImage
 ```
 
 It needs the FUSE 2 runtime. If you would rather not install it, run it with `--appimage-extract-and-run` and the sandbox works from the extracted directory.
@@ -64,4 +64,4 @@ All three wrap the published artifacts rather than rebuilding the app, so they t
 
 ## The command line comes with it
 
-Every install ships a `genoffice` command that talks to the same engines the window does, so the two never disagree about a file. On macOS and Windows it is inside the app bundle; `genoffice install-cli` puts it on your `PATH`. See **Command line and agents** for what it can do.
+Every install ships a `selfoffice` command that talks to the same engines the window does, so the two never disagree about a file. On macOS and Windows it is inside the app bundle; `selfoffice install-cli` puts it on your `PATH`. See **Command line and agents** for what it can do.

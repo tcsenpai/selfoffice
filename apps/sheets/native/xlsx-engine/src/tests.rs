@@ -1288,7 +1288,7 @@ fn opens_backslash_and_case_drifted_package() {
     assert_eq!(metadata.sheets[0].column_count, 2);
 }
 
-/// genoffice#196: a producer wrote every entry as `/xl/...`. The names never
+/// selfoffice#196: a producer wrote every entry as `/xl/...`. The names never
 /// leave the archive, so they only need to stay inside the package root.
 #[test]
 fn opens_leading_slash_package() {
@@ -1737,7 +1737,7 @@ fn tint_matches_excel_shades() {
 }
 
 /// Built-in family rules, per the Excel calibration workbook
-/// (genoffice-sample/sheets/calib): totals bands, dk1-gray Medium 15-21
+/// (selfoffice-sample/sheets/calib): totals bands, dk1-gray Medium 15-21
 /// stripes, tinted Medium 22-28, solid Dark bodies, paired Dark 8-11.
 #[test]
 fn builtin_palette_matches_calibration() {
@@ -2555,7 +2555,7 @@ fn pivot_light_low_stripes_off_stays_styled() {
     assert!(json.contains("\"styled\":true"));
 }
 
-/// Excel-calibrated pivot palettes (genoffice-sample/sheets/calib/
+/// Excel-calibrated pivot palettes (selfoffice-sample/sheets/calib/
 /// pivot-style-truths.json, Office 2007 theme): one representative per
 /// block of seven, exact RGB.
 #[test]
@@ -4900,12 +4900,12 @@ fn an_uncancelled_open_completes_and_keeps_its_cache_directory() {
 /// A workbook part that lies about its size inflates fully on the XML read path.
 ///
 /// `read_media` is capped by `copy_entry_bounded`, and the docx/pptx hosts run
-/// `@genoffice/zip-gate` before opening at all — but `read_zip_string` is a
+/// `@selfoffice/zip-gate` before opening at all — but `read_zip_string` is a
 /// plain `read_to_string`, and it is how nearly every workbook part is loaded.
 /// `validate_entries` checks the entry *count* and the paths, never the bytes.
 /// A workbook therefore gets a full unbounded allocation out of one crafted
 /// entry, where every other ingest path in the product refuses it
-/// (genoffice#781, genoffice#1386).
+/// (selfoffice#781, selfoffice#1386).
 #[test]
 fn rejects_xml_entry_that_inflates_past_its_declared_size() {
     let dir = tempfile::tempdir().unwrap();
@@ -4932,7 +4932,7 @@ fn rejects_xml_entry_that_inflates_past_its_declared_size() {
 
 /// An honestly declared metadata part still has a ceiling: a highly
 /// compressible `xl/workbook.xml` far past `MAX_METADATA_PART_BYTES` is refused
-/// before it is materialised (genoffice#1002).
+/// before it is materialised (selfoffice#1002).
 #[test]
 fn rejects_oversized_metadata_part_that_declares_its_size() {
     let dir = tempfile::tempdir().unwrap();
@@ -4988,7 +4988,7 @@ fn reads_xml_entry_that_matches_its_declaration() {
 
 /// A password-encrypted .xlsx is an OLE2 compound container, not a ZIP
 /// package: the open must explain that instead of surfacing the zip
-/// reader's "invalid Zip archive: Could not find EOCD" (genoffice#2076).
+/// reader's "invalid Zip archive: Could not find EOCD" (selfoffice#2076).
 #[test]
 fn encrypted_workbook_reports_password_protection() {
     let dir = tempfile::tempdir().unwrap();

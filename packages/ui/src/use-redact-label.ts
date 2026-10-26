@@ -4,7 +4,7 @@ import {
   MAX_LABEL_LENGTH,
   placeholderSource,
   sanitizeLabel,
-} from '@genoffice/agent-core/redact-core'
+} from '@selfoffice/agent-core/redact-core'
 
 /**
  * The label field of a "hide from the model" dialog.

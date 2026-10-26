@@ -1,12 +1,12 @@
 import { randomBytes } from 'node:crypto'
 import { dirname, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { generateImageTool, localMediaRoots } from '@genoffice/ai-search'
+import { generateImageTool, localMediaRoots } from '@selfoffice/ai-search'
 import {
   MAX_REMOTE_IMAGE_BYTES,
   fetchRemoteImage,
   readBodyCapped,
-} from '@genoffice/electron-utils/remote-image'
+} from '@selfoffice/electron-utils/remote-image'
 import { flagBool, flagString } from '../args'
 import { aiSettingsPath, prepareCloud } from '../cloud'
 import { resolveInput, resolveOutput, writeOutput } from '../fs'

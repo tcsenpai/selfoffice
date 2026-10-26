@@ -3,11 +3,11 @@
   "compilerOptions": {
     "types": ["node"],
     "paths": {
-      "@genoffice/pptx-engine": ["../pptx-engine/src/index.ts"],
-      "@genoffice/pptx-engine/table-grid": ["../pptx-engine/src/table-grid.ts"],
-      "@genoffice/pptx-engine/identity": ["../pptx-engine/src/identity.ts"],
-      "@genoffice/pptx-engine/background-promote": ["../pptx-engine/src/background-promote.ts"],
-      "@genoffice/docx-engine/math": ["../docx-engine/src/math.ts"]
+      "@selfoffice/pptx-engine": ["../pptx-engine/src/index.ts"],
+      "@selfoffice/pptx-engine/table-grid": ["../pptx-engine/src/table-grid.ts"],
+      "@selfoffice/pptx-engine/identity": ["../pptx-engine/src/identity.ts"],
+      "@selfoffice/pptx-engine/background-promote": ["../pptx-engine/src/background-promote.ts"],
+      "@selfoffice/docx-engine/math": ["../docx-engine/src/math.ts"]
     }
   },
   "include": ["src"]

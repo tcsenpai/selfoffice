@@ -1,6 +1,6 @@
 # La schermata Home: dove si trovano i tuoi file
 
-Home è la pagina iniziale di GenOffice: una barra di navigazione a sinistra, elenchi di file e schede di creazione rapida a destra.
+Home è la pagina iniziale di SelfOffice: una barra di navigazione a sinistra, elenchi di file e schede di creazione rapida a destra.
 
 ![La schermata Home](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Spunta la casella di una riga, o fai ⌘/ctrl-clic, per comporre una selezione; 
 La casella di ricerca in alto filtra contemporaneamente due cose:
 
 - **Nomi dei file**: filtro rapido per nome.
-- **Contenuto dei file**: GenOffice indicizza i tuoi file in background (il testo dentro docx/xlsx/pptx/pdf/md/html), così cercando nel corpo del testo trovi file. L'ambito e le opzioni si impostano nelle impostazioni di ricerca.
+- **Contenuto dei file**: SelfOffice indicizza i tuoi file in background (il testo dentro docx/xlsx/pptx/pdf/md/html), così cercando nel corpo del testo trovi file. L'ambito e le opzioni si impostano nelle impostazioni di ricerca.
 
 ## Schede di avvio rapido
 

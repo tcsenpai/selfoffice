@@ -197,7 +197,7 @@ export const strings = {
     docThemeFollowApp: '跟随应用主题',
     saveLocation: '默认保存位置',
     setRestoreSession: '启动时重新打开上次的文档',
-    setRestoreSessionDesc: '关闭 GenOffice 时打开的文档会在下次启动时自动重新打开。',
+    setRestoreSessionDesc: '关闭 SelfOffice 时打开的文档会在下次启动时自动重新打开。',
     setTabSleep: '休眠不活跃的标签页',
     setTabSleepDesc:
       '标签页多到一定数量后，长时间没有查看的会释放内存；回到它时会重新打开文件。有未保存修改或已固定的标签页不会休眠。',
@@ -226,8 +226,8 @@ export const strings = {
     aiFontSizeCustom: '自定义',
     setAiSpellcheck: 'AI 对话拼写检查',
     setDefaultApp: '设为 Office 文档默认程序',
-    setDefaultAppDesc: '双击 .docx、.xlsx、.pptx 文件时用 GenOffice 打开。',
-    setDefaultAppIs: 'GenOffice 已是默认程序。',
+    setDefaultAppDesc: '双击 .docx、.xlsx、.pptx 文件时用 SelfOffice 打开。',
+    setDefaultAppIs: 'SelfOffice 已是默认程序。',
     setDefaultAppOther: '当前默认程序：{app}',
     setDefaultAppSet: '设为默认',
     setDefaultAppOpenSettings: '打开系统设置',
@@ -269,7 +269,7 @@ export const strings = {
     setSecAbout: '关于',
     setSecIntegrations: '集成',
     setSecSkills: '技能',
-    intgHeroTitle: '在 AI 助手里使用 GenOffice',
+    intgHeroTitle: '在 AI 助手里使用 SelfOffice',
     intgHeroDesc:
       '接好后，Claude Code、Codex、Cursor、Claude Desktop 等助手就能替你创建、转换、读取和编辑 Word、Excel、PowerPoint、PDF 和 Markdown 文件。全部在本机完成，不会上传任何内容。',
     intgHeroStep1: '选接法：助手能运行终端命令就用 CLI，不能就用 MCP',
@@ -277,14 +277,14 @@ export const strings = {
     intgHeroStep3: '新开一个对话，直接提需求',
     intgStep1Title: '把 skill 安装到你的助手',
     intgStep1Desc: '这里只列出本机检测到的助手。装到你实际在用的那一个即可，不必全装。',
-    intgStep1Update: 'GenOffice 升级带来新版 skill 时，对应助手旁会出现「更新」按钮。',
+    intgStep1Update: 'SelfOffice 升级带来新版 skill 时，对应助手旁会出现「更新」按钮。',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'skill 未安装',
     intgStateInstalled: '已安装 skill {v} · 下次对话即可使用',
     intgOtherToggle: '没有列出我的助手',
     intgOtherDesc: '以下三种方式任选一种即可。装的是同一份 skill，不需要重复操作。',
     intgOtherFolderTitle: '任何能读取 SKILL.md 目录的助手',
-    intgOtherFolderDesc: '选择它的 skills 目录，GenOffice 把文件写进去。',
+    intgOtherFolderDesc: '选择它的 skills 目录，SelfOffice 把文件写进去。',
     intgOtherZipTitle: '把文件交给助手',
     intgOtherZipDesc: '把 skill 保存为 zip，然后让助手自己安装。',
     intgOtherNpxTitle: '用 skills 命令安装（需要 Node.js）',
@@ -295,32 +295,32 @@ export const strings = {
     intgStep2DescBefore: '装好后，在助手里新开一个对话，用平常说话的方式提需求，例如：',
     intgExample1: '把 ~/Downloads/report.md 转成 Word 文档',
     intgExample2: '做一份 6 页的幻灯片，介绍我们第三季度的业绩',
-    intgExample3: '把 budget.xlsx 转成 PDF，并在 GenOffice 里打开',
-    intgStep2Note: '助手会自己调用 genoffice 命令行，你不需要输入任何命令。',
+    intgExample3: '把 budget.xlsx 转成 PDF，并在 SelfOffice 里打开',
+    intgStep2Note: '助手会自己调用 selfoffice 命令行，你不需要输入任何命令。',
     intgCliPartTitle: 'CLI · 命令行 + skill',
     intgCliPartDesc:
-      '适合能运行终端命令的助手（Claude Code、Codex、Cursor 等）。安装 skill 后，助手会自己调用 genoffice 命令行创建、转换、读取和编辑文件，你不需要输入任何命令。',
+      '适合能运行终端命令的助手（Claude Code、Codex、Cursor 等）。安装 skill 后，助手会自己调用 selfoffice 命令行创建、转换、读取和编辑文件，你不需要输入任何命令。',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP 是 AI 助手调用外部工具的通用协议。助手不能运行命令（如 Claude Desktop），或你想让它直接操作 GenOffice 窗口时用这条路。下面两种接法任选一种。',
+      'MCP 是 AI 助手调用外部工具的通用协议。助手不能运行命令（如 Claude Desktop），或你想让它直接操作 SelfOffice 窗口时用这条路。下面两种接法任选一种。',
     intgMcpStdioTitle: '由助手启动（推荐）',
     intgMcpStdioDesc:
-      '助手自己拉起 genoffice mcp，不需要在这里开任何开关，GenOffice 也不用开着。功能与 CLI 完全相同。',
+      '助手自己拉起 selfoffice mcp，不需要在这里开任何开关，SelfOffice 也不用开着。功能与 CLI 完全相同。',
     intgMcpHttpTitle: '本地 HTTP 服务',
     intgMcpHttpDesc:
-      '在 GenOffice 内运行，助手通过网址连接，可以看着它在 Word 编辑器里逐步生成。需要 GenOffice 保持打开；目前只支持 Word。',
+      '在 SelfOffice 内运行，助手通过网址连接，可以看着它在 Word 编辑器里逐步生成。需要 SelfOffice 保持打开；目前只支持 Word。',
     intgMcpHttpAdvanced: '高级：其他地址与日志',
-    intgMcpTryNote: '助手会通过 MCP 调用 GenOffice，你不需要输入任何命令。',
+    intgMcpTryNote: '助手会通过 MCP 调用 SelfOffice，你不需要输入任何命令。',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: '在终端运行一次：',
     intgMcpOtherTitle: 'Cursor、Claude Desktop 或其他支持 MCP 的助手',
     intgMcpOtherDesc:
       '把这段加进它的 MCP 服务器配置（一个 JSON 文件，或设置里的「添加 MCP 服务器」）：',
     intgMcpNote: 'skill 和 MCP 可以同时存在，助手会自己选用；两者做的事完全一样。',
-    intgCliTitle: '高级：命令行 genoffice',
-    intgCliReady: 'genoffice {v} · 已可在终端直接使用（{path}）',
+    intgCliTitle: '高级：命令行 selfoffice',
+    intgCliReady: 'selfoffice {v} · 已可在终端直接使用（{path}）',
     intgCliNotOnPath:
-      'genoffice {v} · 尚未加入终端 PATH。助手仍能通过 ~/.genoffice/launcher 找到它，skill 不受影响。若想自己在终端输入 genoffice，运行一次：',
+      'selfoffice {v} · 尚未加入终端 PATH。助手仍能通过 ~/.selfoffice/launcher 找到它，skill 不受影响。若想自己在终端输入 selfoffice，运行一次：',
     intgCliLauncher: '启动器目录',
     intgStateOutdated: '已安装 {v}，可更新到 {next}',
     intgStateModified: '已安装 {v}（已被修改）',
@@ -344,9 +344,9 @@ export const strings = {
     intgSaveZipTitle: '保存 skill',
     intgSavedTo: '已保存到 {path}',
     intgCopied: '已复制',
-    intgCliEphemeral: '请先把 GenOffice 拖到「应用程序」，再使用命令行。',
+    intgCliEphemeral: '请先把 SelfOffice 拖到「应用程序」，再使用命令行。',
     intgCopyPath: '复制路径',
-    intgCliNeedsUpdate: '此 skill 需要命令行 {v} 或更新版本，请更新 GenOffice。',
+    intgCliNeedsUpdate: '此 skill 需要命令行 {v} 或更新版本，请更新 SelfOffice。',
     intgLoading: '正在检测…',
     intgUpdateDue: 'skill 有新版本可更新',
     setSecAiModel: 'AI 模型',
@@ -367,7 +367,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: '留空自动检测（推荐）',
     setAiCodexHint:
       '自动查找并使用当前 Codex CLI，更新后无需重新选择；也可填写自定义路径。无需 API Key。',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '保存',
     setAiSaved: '已保存',
     setAiTest: '测试连接',
@@ -393,13 +394,13 @@ export const strings = {
     setAiSharedKeyHint: '同一服务商的 key 与 Base URL 在各项能力间共用，只需填一次。',
     setGithub: '开源项目',
     starOnGitHub: '去 GitHub 点 Star',
-    starPromptTitle: '喜欢 GenOffice 吗？',
-    starPromptTitleN: '你已经用 GenOffice 打开了 {n} 个文档',
-    starPromptBody: 'GenOffice 是免费开源软件。到 GitHub 给我们一个 Star，是对团队最好的支持。',
+    starPromptTitle: '喜欢 SelfOffice 吗？',
+    starPromptTitleN: '你已经用 SelfOffice 打开了 {n} 个文档',
+    starPromptBody: 'SelfOffice 是免费开源软件。到 GitHub 给我们一个 Star，是对团队最好的支持。',
     starPromptGo: '去点 Star',
     starPromptDone: '已经点过了',
     starPromptLater: '以后再说',
-    onbStarHint: '如果你喜欢 GenOffice，欢迎到 GitHub 给我们一个 Star。',
+    onbStarHint: '如果你喜欢 SelfOffice，欢迎到 GitHub 给我们一个 Star。',
     setEmail: '邮箱',
     setNotLoggedIn: '未登录',
     setViewUsage: '查看用量',
@@ -414,7 +415,7 @@ export const strings = {
     appMenu: '菜单',
     newTab: '新建标签页',
     // First-run onboarding
-    onbTitle1: '欢迎使用 GenOffice',
+    onbTitle1: '欢迎使用 SelfOffice',
     onbSubtitle1: '第一个开源的 AI 原生 Office 套件',
     onbBody1: '创建文档、制作表格、生成演示、审阅 PDF。AI 深度融入每个环节。',
     onbSkip: '跳过',
@@ -425,7 +426,7 @@ export const strings = {
     onbBody3: '无授权费用，无广告，无水印。',
     onbBack: '上一步',
     intgSkillsDesc:
-      'GenOffice 只使用自己技能文件夹里的技能。从文件夹或 zip 导入会把整个技能复制进来；导入不会自动运行任何东西。',
+      'SelfOffice 只使用自己技能文件夹里的技能。从文件夹或 zip 导入会把整个技能复制进来；导入不会自动运行任何东西。',
     intgSkillsEmpty: '还没有安装技能。',
     intgSkillsImportFolder: '导入文件夹…',
     intgSkillsImportZip: '导入技能包（zip / .md）…',
@@ -434,7 +435,7 @@ export const strings = {
     intgSkillsImportDone: '已导入 {name}',
     intgSkillsImportFailed: '导入失败：{reason}',
     intgSkillsRemove: '移除',
-    intgSkillsRemoveConfirm: '移除技能「{name}」？其文件夹会从 GenOffice 中删除。',
+    intgSkillsRemoveConfirm: '移除技能「{name}」？其文件夹会从 SelfOffice 中删除。',
     intgSkillsRemoved: '已移除 {name}',
     intgSkillsRead: '详情',
     intgSkillsMine: '我的技能',
@@ -670,7 +671,7 @@ export const strings = {
     setUpdateRestart: 'Restart & install',
     setAutoUpdateCheck: 'Check for updates automatically',
     setAutoUpdateCheckDesc:
-      'When off, GenOffice no longer checks for new versions at launch or in the background. You can still check from Help › Check for Updates.',
+      'When off, SelfOffice no longer checks for new versions at launch or in the background. You can still check from Help › Check for Updates.',
     updateChannel: 'Update Channel',
     channelStable: 'Stable',
     channelBeta: 'Beta',
@@ -683,7 +684,7 @@ export const strings = {
     saveLocation: 'Save Location',
     setRestoreSession: 'Reopen documents from last time',
     setRestoreSessionDesc:
-      'Documents open when GenOffice closes reopen automatically the next time it starts.',
+      'Documents open when SelfOffice closes reopen automatically the next time it starts.',
     setTabSleep: 'Sleep inactive tabs',
     setTabSleepDesc:
       'Once many tabs are open, ones you have not looked at for a while release their memory and reopen their file when you return. Tabs with unsaved changes or pinned tabs never sleep.',
@@ -713,8 +714,8 @@ export const strings = {
     aiFontSizeCustom: 'Custom',
     setAiSpellcheck: 'Spell check in AI chat',
     setDefaultApp: 'Default app for Office documents',
-    setDefaultAppDesc: 'Open .docx, .xlsx and .pptx files in GenOffice when double-clicked.',
-    setDefaultAppIs: 'GenOffice is already the default.',
+    setDefaultAppDesc: 'Open .docx, .xlsx and .pptx files in SelfOffice when double-clicked.',
+    setDefaultAppIs: 'SelfOffice is already the default.',
     setDefaultAppOther: 'Current default: {app}',
     setDefaultAppSet: 'Make default',
     setDefaultAppOpenSettings: 'Open system settings',
@@ -759,7 +760,7 @@ export const strings = {
     setSecAbout: 'About',
     setSecIntegrations: 'Integrations',
     setSecSkills: 'Skills',
-    intgHeroTitle: 'Use GenOffice from your AI assistant',
+    intgHeroTitle: 'Use SelfOffice from your AI assistant',
     intgHeroDesc:
       'Once connected, Claude Code, Codex, Cursor, Claude Desktop and similar assistants can create, convert, read and edit Word, Excel, PowerPoint, PDF and Markdown files for you. Everything runs on this computer; nothing is uploaded.',
     intgHeroStep1:
@@ -770,7 +771,7 @@ export const strings = {
     intgStep1Desc:
       'Only assistants found on this computer are listed. Install into the one you actually use; you do not need all of them.',
     intgStep1Update:
-      'When a GenOffice update ships a newer skill, an Update button appears next to that assistant.',
+      'When a SelfOffice update ships a newer skill, an Update button appears next to that assistant.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill not installed',
     intgStateInstalled: 'Skill {v} installed · ready in your next chat',
@@ -778,7 +779,7 @@ export const strings = {
     intgOtherDesc:
       'Pick any one of these three ways. They all install the same skill, so there is no need to do more than one.',
     intgOtherFolderTitle: 'Any assistant that reads SKILL.md folders',
-    intgOtherFolderDesc: 'Pick its skills folder and GenOffice writes the file there.',
+    intgOtherFolderDesc: 'Pick its skills folder and SelfOffice writes the file there.',
     intgOtherZipTitle: 'Hand the file to the assistant',
     intgOtherZipDesc: 'Save the skill as a zip, then ask the assistant to install it.',
     intgOtherNpxTitle: 'With the skills command (needs Node.js)',
@@ -790,23 +791,23 @@ export const strings = {
       'Once installed, open a new chat in your assistant and ask in plain words, for example:',
     intgExample1: 'Turn ~/Downloads/report.md into a Word document',
     intgExample2: 'Make a 6-slide deck about our Q3 results',
-    intgExample3: 'Convert budget.xlsx to PDF and open it in GenOffice',
+    intgExample3: 'Convert budget.xlsx to PDF and open it in SelfOffice',
     intgStep2Note:
-      'The assistant runs the genoffice command line itself; you never have to type it.',
+      'The assistant runs the selfoffice command line itself; you never have to type it.',
     intgCliPartTitle: 'CLI · command line + skill',
     intgCliPartDesc:
-      'For assistants that can run terminal commands (Claude Code, Codex, Cursor and others). Once the skill is installed, the assistant calls the genoffice command line itself to create, convert, read and edit files; you never type a command.',
+      'For assistants that can run terminal commands (Claude Code, Codex, Cursor and others). Once the skill is installed, the assistant calls the selfoffice command line itself to create, convert, read and edit files; you never type a command.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP is the common protocol AI assistants use to call external tools. Use it when your assistant cannot run commands (Claude Desktop, for example) or when you want it to drive the GenOffice window directly. Pick either of the two ways below.',
+      'MCP is the common protocol AI assistants use to call external tools. Use it when your assistant cannot run commands (Claude Desktop, for example) or when you want it to drive the SelfOffice window directly. Pick either of the two ways below.',
     intgMcpStdioTitle: 'Started by the assistant (recommended)',
     intgMcpStdioDesc:
-      'The assistant launches genoffice mcp itself: nothing to switch on here, and GenOffice does not need to be open. Same features as the CLI.',
+      'The assistant launches selfoffice mcp itself: nothing to switch on here, and SelfOffice does not need to be open. Same features as the CLI.',
     intgMcpHttpTitle: 'Local HTTP server',
     intgMcpHttpDesc:
-      'Runs inside GenOffice; the assistant connects to a URL and you can watch it build the document step by step in the Word editor. GenOffice must stay open; Word documents only for now.',
+      'Runs inside SelfOffice; the assistant connects to a URL and you can watch it build the document step by step in the Word editor. SelfOffice must stay open; Word documents only for now.',
     intgMcpHttpAdvanced: 'Advanced: other endpoints and log',
-    intgMcpTryNote: 'The assistant calls GenOffice through MCP; you never type a command.',
+    intgMcpTryNote: 'The assistant calls SelfOffice through MCP; you never type a command.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Run this once in a terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop or any other MCP-capable assistant',
@@ -814,10 +815,10 @@ export const strings = {
       'Add this to its MCP server settings (a JSON file, or "Add MCP server" in its settings):',
     intgMcpNote:
       'The skill and MCP can be set up side by side; the assistant picks one. They do exactly the same things.',
-    intgCliTitle: 'Advanced: genoffice command line',
-    intgCliReady: 'genoffice {v} · ready in your terminal ({path})',
+    intgCliTitle: 'Advanced: selfoffice command line',
+    intgCliReady: 'selfoffice {v} · ready in your terminal ({path})',
     intgCliNotOnPath:
-      "genoffice {v} · not on your terminal's PATH. Assistants still find it through ~/.genoffice/launcher, so the skill works. To type genoffice yourself, run this once:",
+      "selfoffice {v} · not on your terminal's PATH. Assistants still find it through ~/.selfoffice/launcher, so the skill works. To type selfoffice yourself, run this once:",
     intgCliLauncher: 'Launcher folder',
     intgStateOutdated: 'Installed {v}, update to {next} available',
     intgStateModified: 'Installed {v} (modified)',
@@ -841,9 +842,9 @@ export const strings = {
     intgSaveZipTitle: 'Save skill',
     intgSavedTo: 'Saved to {path}',
     intgCopied: 'Copied',
-    intgCliEphemeral: 'Drag GenOffice into Applications first, then use the command line.',
+    intgCliEphemeral: 'Drag SelfOffice into Applications first, then use the command line.',
     intgCopyPath: 'Copy path',
-    intgCliNeedsUpdate: 'This skill needs command line {v} or newer; update GenOffice.',
+    intgCliNeedsUpdate: 'This skill needs command line {v} or newer; update SelfOffice.',
     intgLoading: 'Checking…',
     intgUpdateDue: 'Skill update available',
     setSecAiModel: 'AI Model',
@@ -864,7 +865,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: 'Auto-detect (recommended)',
     setAiCodexHint:
       'Automatically finds the current signed-in Codex CLI after updates; a custom path is optional. No API key is needed.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Save',
     setAiSaved: 'Saved',
     setAiTest: 'Test connection',
@@ -892,14 +894,14 @@ export const strings = {
       "A vendor's key and base URL are shared across capabilities; enter them once.",
     setGithub: 'Open Source',
     starOnGitHub: 'Star on GitHub',
-    starPromptTitle: 'Enjoying GenOffice?',
-    starPromptTitleN: "You've opened {n} documents with GenOffice",
+    starPromptTitle: 'Enjoying SelfOffice?',
+    starPromptTitleN: "You've opened {n} documents with SelfOffice",
     starPromptBody:
-      'GenOffice is free and open source. A star on GitHub is the best way to support the team.',
+      'SelfOffice is free and open source. A star on GitHub is the best way to support the team.',
     starPromptGo: 'Star on GitHub',
     starPromptDone: 'Already starred',
     starPromptLater: 'Maybe later',
-    onbStarHint: 'If you like GenOffice, give us a star on GitHub.',
+    onbStarHint: 'If you like SelfOffice, give us a star on GitHub.',
     setEmail: 'Email',
     setNotLoggedIn: 'Not signed in',
     setViewUsage: 'View usage',
@@ -912,7 +914,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'New tab',
     // First-run onboarding
-    onbTitle1: 'Welcome to GenOffice',
+    onbTitle1: 'Welcome to SelfOffice',
     onbSubtitle1: 'The first open-source, AI-native office suite',
     onbBody1:
       'Create docs, build sheets, make slides, and review PDFs. AI is built into every step.',
@@ -924,7 +926,7 @@ export const strings = {
     onbBody3: 'No license fees. No ads. No watermarks.',
     onbBack: 'Back',
     intgSkillsDesc:
-      'GenOffice only uses skills in its own skills folder. Importing a folder or a zip copies the whole skill in; nothing runs on import.',
+      'SelfOffice only uses skills in its own skills folder. Importing a folder or a zip copies the whole skill in; nothing runs on import.',
     intgSkillsEmpty: 'No skills installed yet.',
     intgSkillsImportFolder: 'Import folder…',
     intgSkillsImportZip: 'Import skill package (zip / .md)…',
@@ -933,7 +935,7 @@ export const strings = {
     intgSkillsImportDone: 'Imported {name}',
     intgSkillsImportFailed: 'Import failed: {reason}',
     intgSkillsRemove: 'Remove',
-    intgSkillsRemoveConfirm: 'Remove the skill "{name}"? Its folder is deleted from GenOffice.',
+    intgSkillsRemoveConfirm: 'Remove the skill "{name}"? Its folder is deleted from SelfOffice.',
     intgSkillsRemoved: 'Removed {name}',
     intgSkillsRead: 'Details',
     intgSkillsMine: 'My skills',
@@ -1172,7 +1174,7 @@ export const strings = {
     setUpdateRestart: 'Khởi động lại và cài đặt',
     setAutoUpdateCheck: 'Tự động kiểm tra cập nhật',
     setAutoUpdateCheckDesc:
-      'Khi tắt, GenOffice không còn kiểm tra phiên bản mới khi khởi động hoặc chạy nền. Bạn vẫn có thể kiểm tra trong Trợ giúp › Kiểm tra bản cập nhật.',
+      'Khi tắt, SelfOffice không còn kiểm tra phiên bản mới khi khởi động hoặc chạy nền. Bạn vẫn có thể kiểm tra trong Trợ giúp › Kiểm tra bản cập nhật.',
     updateChannel: 'Kênh cập nhật',
     channelStable: 'Ổn định',
     channelBeta: 'Beta',
@@ -1185,7 +1187,7 @@ export const strings = {
     saveLocation: 'Vị trí lưu',
     setRestoreSession: 'Mở lại tài liệu của lần trước',
     setRestoreSessionDesc:
-      'Các tài liệu đang mở khi đóng GenOffice sẽ tự động mở lại vào lần khởi động tiếp theo.',
+      'Các tài liệu đang mở khi đóng SelfOffice sẽ tự động mở lại vào lần khởi động tiếp theo.',
     setTabSleep: 'Tạm ngủ các thẻ không hoạt động',
     setTabSleepDesc:
       'Khi mở nhiều thẻ, những thẻ lâu không xem sẽ giải phóng bộ nhớ và mở lại tệp khi bạn quay lại. Thẻ có thay đổi chưa lưu hoặc đã ghim sẽ không ngủ.',
@@ -1215,8 +1217,8 @@ export const strings = {
     aiFontSizeCustom: 'Tùy chỉnh',
     setAiSpellcheck: 'Kiểm tra chính tả trong trò chuyện AI',
     setDefaultApp: 'Ứng dụng mặc định cho tài liệu Office',
-    setDefaultAppDesc: 'Mở các tệp .docx, .xlsx và .pptx bằng GenOffice khi bấm đúp.',
-    setDefaultAppIs: 'GenOffice đã là ứng dụng mặc định.',
+    setDefaultAppDesc: 'Mở các tệp .docx, .xlsx và .pptx bằng SelfOffice khi bấm đúp.',
+    setDefaultAppIs: 'SelfOffice đã là ứng dụng mặc định.',
     setDefaultAppOther: 'Mặc định hiện tại: {app}',
     setDefaultAppSet: 'Đặt làm mặc định',
     setDefaultAppOpenSettings: 'Mở cài đặt hệ thống',
@@ -1261,7 +1263,7 @@ export const strings = {
     setSecAbout: 'Giới thiệu',
     setSecIntegrations: 'Tích hợp',
     setSecSkills: 'Kỹ năng',
-    intgHeroTitle: 'Sử dụng GenOffice từ trợ lý AI của bạn',
+    intgHeroTitle: 'Sử dụng SelfOffice từ trợ lý AI của bạn',
     intgHeroDesc:
       'Sau khi kết nối, Claude Code, Codex, Cursor, Claude Desktop và các trợ lý tương tự có thể tạo, chuyển đổi, đọc và chỉnh sửa các tệp Word, Excel, PowerPoint, PDF và Markdown cho bạn. Mọi thứ đều chạy trên máy tính này; không có gì được tải lên.',
     intgHeroStep1:
@@ -1272,7 +1274,7 @@ export const strings = {
     intgStep1Desc:
       'Chỉ các trợ lý được tìm thấy trên máy tính này mới được liệt kê. Hãy cài đặt vào trợ lý bạn thực sự sử dụng; bạn không cần phải cài đặt tất cả.',
     intgStep1Update:
-      'Khi bản cập nhật GenOffice cung cấp kỹ năng mới hơn, nút Cập nhật sẽ xuất hiện bên cạnh trợ lý đó.',
+      'Khi bản cập nhật SelfOffice cung cấp kỹ năng mới hơn, nút Cập nhật sẽ xuất hiện bên cạnh trợ lý đó.',
     intgSkillVersion: 'kỹ năng {v}',
     intgStateMissing: 'Chưa cài đặt kỹ năng',
     intgStateInstalled: 'Đã cài đặt kỹ năng {v} · sẵn sàng cho cuộc trò chuyện tiếp theo của bạn',
@@ -1280,7 +1282,7 @@ export const strings = {
     intgOtherDesc:
       'Chọn bất kỳ cách nào trong ba cách này. Tất cả đều cài đặt cùng một kỹ năng, vì vậy không cần làm nhiều hơn một cách.',
     intgOtherFolderTitle: 'Bất kỳ trợ lý nào đọc thư mục SKILL.md',
-    intgOtherFolderDesc: 'Chọn thư mục kỹ năng của trợ lý và GenOffice sẽ ghi tệp vào đó.',
+    intgOtherFolderDesc: 'Chọn thư mục kỹ năng của trợ lý và SelfOffice sẽ ghi tệp vào đó.',
     intgOtherZipTitle: 'Giao tệp cho trợ lý',
     intgOtherZipDesc: 'Lưu kỹ năng dưới dạng zip, sau đó yêu cầu trợ lý cài đặt.',
     intgOtherNpxTitle: 'Bằng lệnh skills (yêu cầu Node.js)',
@@ -1293,22 +1295,22 @@ export const strings = {
       'Sau khi cài đặt, hãy mở một cuộc trò chuyện mới trong trợ lý của bạn và hỏi bằng ngôn ngữ tự nhiên, ví dụ:',
     intgExample1: 'Chuyển đổi ~/Downloads/report.md thành tài liệu Word',
     intgExample2: 'Tạo bài thuyết trình 6 trang trình bày về kết quả quý 3 của chúng tôi',
-    intgExample3: 'Chuyển đổi budget.xlsx sang PDF và mở trong GenOffice',
-    intgStep2Note: 'Trợ lý tự chạy dòng lệnh genoffice; bạn không bao giờ phải nhập lệnh.',
+    intgExample3: 'Chuyển đổi budget.xlsx sang PDF và mở trong SelfOffice',
+    intgStep2Note: 'Trợ lý tự chạy dòng lệnh selfoffice; bạn không bao giờ phải nhập lệnh.',
     intgCliPartTitle: 'CLI · dòng lệnh + kỹ năng',
     intgCliPartDesc:
-      'Dành cho các trợ lý có thể chạy lệnh terminal (Claude Code, Codex, Cursor và các trợ lý khác). Khi kỹ năng đã được cài đặt, trợ lý sẽ tự gọi dòng lệnh genoffice để tạo, chuyển đổi, đọc và chỉnh sửa tệp; bạn không cần nhập lệnh.',
+      'Dành cho các trợ lý có thể chạy lệnh terminal (Claude Code, Codex, Cursor và các trợ lý khác). Khi kỹ năng đã được cài đặt, trợ lý sẽ tự gọi dòng lệnh selfoffice để tạo, chuyển đổi, đọc và chỉnh sửa tệp; bạn không cần nhập lệnh.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP là giao thức tiêu chuẩn mà các trợ lý AI dùng để gọi công cụ bên ngoài. Sử dụng khi trợ lý của bạn không thể chạy lệnh (ví dụ Claude Desktop) hoặc khi bạn muốn trợ lý điều khiển trực tiếp cửa sổ GenOffice. Chọn một trong hai cách bên dưới.',
+      'MCP là giao thức tiêu chuẩn mà các trợ lý AI dùng để gọi công cụ bên ngoài. Sử dụng khi trợ lý của bạn không thể chạy lệnh (ví dụ Claude Desktop) hoặc khi bạn muốn trợ lý điều khiển trực tiếp cửa sổ SelfOffice. Chọn một trong hai cách bên dưới.',
     intgMcpStdioTitle: 'Được khởi động bởi trợ lý (khuyến nghị)',
     intgMcpStdioDesc:
-      'Trợ lý sẽ tự khởi chạy genoffice mcp: không cần bật gì ở đây và GenOffice không cần phải mở. Có đầy đủ tính năng tương tự CLI.',
+      'Trợ lý sẽ tự khởi chạy selfoffice mcp: không cần bật gì ở đây và SelfOffice không cần phải mở. Có đầy đủ tính năng tương tự CLI.',
     intgMcpHttpTitle: 'Máy chủ HTTP cục bộ',
     intgMcpHttpDesc:
-      'Chạy bên trong GenOffice; trợ lý kết nối với một URL và bạn có thể theo dõi nó tạo tài liệu từng bước trong trình chỉnh sửa Word. GenOffice phải luôn mở; hiện tại chỉ hỗ trợ tài liệu Word.',
+      'Chạy bên trong SelfOffice; trợ lý kết nối với một URL và bạn có thể theo dõi nó tạo tài liệu từng bước trong trình chỉnh sửa Word. SelfOffice phải luôn mở; hiện tại chỉ hỗ trợ tài liệu Word.',
     intgMcpHttpAdvanced: 'Nâng cao: các điểm cuối khác và nhật ký',
-    intgMcpTryNote: 'Trợ lý gọi GenOffice thông qua MCP; bạn không bao giờ phải nhập lệnh.',
+    intgMcpTryNote: 'Trợ lý gọi SelfOffice thông qua MCP; bạn không bao giờ phải nhập lệnh.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Chạy lệnh này một lần trong terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop hoặc bất kỳ trợ lý hỗ trợ MCP nào khác',
@@ -1316,10 +1318,10 @@ export const strings = {
       'Thêm nội dung này vào cài đặt máy chủ MCP của trợ lý (tệp JSON hoặc "Add MCP server" trong phần cài đặt):',
     intgMcpNote:
       'Kỹ năng và MCP có thể được thiết lập song song; trợ lý sẽ chọn một trong hai. Chúng thực hiện chức năng hoàn toàn giống nhau.',
-    intgCliTitle: 'Nâng cao: dòng lệnh genoffice',
-    intgCliReady: 'genoffice {v} · đã sẵn sàng trong terminal của bạn ({path})',
+    intgCliTitle: 'Nâng cao: dòng lệnh selfoffice',
+    intgCliReady: 'selfoffice {v} · đã sẵn sàng trong terminal của bạn ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · không có trong PATH của terminal. Trợ lý vẫn tìm thấy qua ~/.genoffice/launcher, vì vậy kỹ năng vẫn hoạt động. Để tự chạy lệnh genoffice, hãy thực hiện lệnh này một lần:',
+      'selfoffice {v} · không có trong PATH của terminal. Trợ lý vẫn tìm thấy qua ~/.selfoffice/launcher, vì vậy kỹ năng vẫn hoạt động. Để tự chạy lệnh selfoffice, hãy thực hiện lệnh này một lần:',
     intgCliLauncher: 'Thư mục trình khởi chạy',
     intgStateOutdated: 'Đã cài đặt {v}, có bản cập nhật lên {next}',
     intgStateModified: 'Đã cài đặt {v} (đã sửa đổi)',
@@ -1344,10 +1346,10 @@ export const strings = {
     intgSavedTo: 'Đã lưu vào {path}',
     intgCopied: 'Đã sao chép',
     intgCliEphemeral:
-      'Trước tiên hãy kéo GenOffice vào Applications, sau đó mới sử dụng dòng lệnh.',
+      'Trước tiên hãy kéo SelfOffice vào Applications, sau đó mới sử dụng dòng lệnh.',
     intgCopyPath: 'Sao chép đường dẫn',
     intgCliNeedsUpdate:
-      'Kỹ năng này yêu cầu dòng lệnh {v} hoặc mới hơn; vui lòng cập nhật GenOffice.',
+      'Kỹ năng này yêu cầu dòng lệnh {v} hoặc mới hơn; vui lòng cập nhật SelfOffice.',
     intgLoading: 'Đang kiểm tra…',
     intgUpdateDue: 'Có bản cập nhật kỹ năng',
     setSecAiModel: 'Mô hình AI',
@@ -1368,7 +1370,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: 'Tự động phát hiện (khuyến nghị)',
     setAiCodexHint:
       'Tự động tìm CLI Codex đã đăng nhập hiện tại sau các bản cập nhật; đường dẫn tùy chỉnh là không bắt buộc. Không cần khóa API.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Lưu',
     setAiSaved: 'Đã lưu',
     setAiTest: 'Kiểm tra kết nối',
@@ -1396,14 +1399,14 @@ export const strings = {
       'Khóa và URL cơ sở của nhà cung cấp được dùng chung cho các chức năng; chỉ cần nhập một lần.',
     setGithub: 'Mã nguồn mở',
     starOnGitHub: 'Gắn sao trên GitHub',
-    starPromptTitle: 'Bạn thích GenOffice chứ?',
-    starPromptTitleN: 'Bạn đã mở {n} tài liệu với GenOffice',
+    starPromptTitle: 'Bạn thích SelfOffice chứ?',
+    starPromptTitleN: 'Bạn đã mở {n} tài liệu với SelfOffice',
     starPromptBody:
-      'GenOffice là phần mềm nguồn mở và miễn phí. Tặng một sao trên GitHub là cách tuyệt vời nhất để ủng hộ đội ngũ phát triển.',
+      'SelfOffice là phần mềm nguồn mở và miễn phí. Tặng một sao trên GitHub là cách tuyệt vời nhất để ủng hộ đội ngũ phát triển.',
     starPromptGo: 'Gắn sao trên GitHub',
     starPromptDone: 'Đã gắn sao',
     starPromptLater: 'Để sau',
-    onbStarHint: 'Nếu bạn yêu thích GenOffice, hãy tặng chúng tôi một sao trên GitHub.',
+    onbStarHint: 'Nếu bạn yêu thích SelfOffice, hãy tặng chúng tôi một sao trên GitHub.',
     setEmail: 'Email',
     setNotLoggedIn: 'Chưa đăng nhập',
     setViewUsage: 'Xem mức sử dụng',
@@ -1416,7 +1419,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Tab mới',
     // First-run onboarding
-    onbTitle1: 'Chào mừng đến với GenOffice',
+    onbTitle1: 'Chào mừng đến với SelfOffice',
     onbSubtitle1: 'Bộ ứng dụng văn phòng AI nguồn mở đầu tiên',
     onbBody1:
       'Tạo tài liệu, xây dựng bảng tính, tạo bản trình bày và xem lại PDF. AI được tích hợp trong từng bước.',
@@ -1428,7 +1431,7 @@ export const strings = {
     onbBody3: 'Không phí bản quyền. Không quảng cáo. Không hình mờ.',
     onbBack: 'Quay lại',
     intgSkillsDesc:
-      'GenOffice chỉ dùng kỹ năng trong thư mục kỹ năng của chính nó. Nhập từ thư mục hoặc zip sẽ sao chép toàn bộ kỹ năng vào; không có gì chạy khi nhập.',
+      'SelfOffice chỉ dùng kỹ năng trong thư mục kỹ năng của chính nó. Nhập từ thư mục hoặc zip sẽ sao chép toàn bộ kỹ năng vào; không có gì chạy khi nhập.',
     intgSkillsEmpty: 'Chưa cài kỹ năng nào.',
     intgSkillsImportFolder: 'Nhập thư mục…',
     intgSkillsImportZip: 'Nhập gói kỹ năng (zip / .md)…',
@@ -1437,7 +1440,7 @@ export const strings = {
     intgSkillsImportDone: 'Đã nhập {name}',
     intgSkillsImportFailed: 'Nhập thất bại: {reason}',
     intgSkillsRemove: 'Gỡ bỏ',
-    intgSkillsRemoveConfirm: 'Gỡ kỹ năng "{name}"? Thư mục của nó sẽ bị xóa khỏi GenOffice.',
+    intgSkillsRemoveConfirm: 'Gỡ kỹ năng "{name}"? Thư mục của nó sẽ bị xóa khỏi SelfOffice.',
     intgSkillsRemoved: 'Đã gỡ {name}',
     intgSkillsRead: 'Chi tiết',
     intgSkillsMine: 'Kỹ năng của tôi',
@@ -1677,7 +1680,7 @@ export const strings = {
     setUpdateRestart: 'Yeniden başlat ve yükle',
     setAutoUpdateCheck: 'Güncellemeleri otomatik denetle',
     setAutoUpdateCheckDesc:
-      'Kapalıyken GenOffice açılışta veya arka planda yeni sürümleri denetlemez. Yardım › Güncellemeleri Denetle üzerinden yine de denetleyebilirsiniz.',
+      'Kapalıyken SelfOffice açılışta veya arka planda yeni sürümleri denetlemez. Yardım › Güncellemeleri Denetle üzerinden yine de denetleyebilirsiniz.',
     updateChannel: 'Güncelleme Kanalı',
     channelStable: 'Kararlı',
     channelBeta: 'Beta',
@@ -1690,7 +1693,7 @@ export const strings = {
     saveLocation: 'Kayıt Konumu',
     setRestoreSession: 'Son oturumdaki belgeleri yeniden aç',
     setRestoreSessionDesc:
-      'GenOffice kapatılırken açık olan belgeler bir sonraki başlatmada otomatik olarak yeniden açılır.',
+      'SelfOffice kapatılırken açık olan belgeler bir sonraki başlatmada otomatik olarak yeniden açılır.',
     setTabSleep: 'Etkin olmayan sekmeleri uyut',
     setTabSleepDesc:
       'Çok sayıda sekme açıkken bir süredir bakmadıklarınız belleklerini serbest bırakır ve geri döndüğünüzde dosyalarını yeniden açar. Kaydedilmemiş değişiklikleri olan veya sabitlenmiş sekmeler hiçbir zaman uyumaz.',
@@ -1720,8 +1723,8 @@ export const strings = {
     aiFontSizeCustom: 'Özel',
     setAiSpellcheck: 'AI sohbetinde yazım denetimi',
     setDefaultApp: 'Office belgeleri için varsayılan uygulama',
-    setDefaultAppDesc: '.docx, .xlsx ve .pptx dosyalarını çift tıklandığında GenOffice ile açar.',
-    setDefaultAppIs: 'GenOffice zaten varsayılan.',
+    setDefaultAppDesc: '.docx, .xlsx ve .pptx dosyalarını çift tıklandığında SelfOffice ile açar.',
+    setDefaultAppIs: 'SelfOffice zaten varsayılan.',
     setDefaultAppOther: 'Geçerli varsayılan: {app}',
     setDefaultAppSet: 'Varsayılan yap',
     setDefaultAppOpenSettings: 'Sistem ayarlarını aç',
@@ -1766,7 +1769,7 @@ export const strings = {
     setSecAbout: 'Hakkında',
     setSecIntegrations: 'Tümleştirmeler',
     setSecSkills: 'Beceriler',
-    intgHeroTitle: 'GenOffice’i AI asistanınızdan kullanın',
+    intgHeroTitle: 'SelfOffice’i AI asistanınızdan kullanın',
     intgHeroDesc:
       'Bağlandıktan sonra Claude Code, Codex, Cursor, Claude Desktop ve benzeri asistanlar sizin için Word, Excel, PowerPoint, PDF ve Markdown dosyaları oluşturabilir, dönüştürebilir, okuyabilir ve düzenleyebilir. Her şey bu bilgisayarda çalışır; hiçbir şey yüklenmez.',
     intgHeroStep1:
@@ -1777,7 +1780,7 @@ export const strings = {
     intgStep1Desc:
       'Yalnızca bu bilgisayarda bulunan asistanlar listelenir. Gerçekten kullandığınıza yükleyin; hepsine gerek yok.',
     intgStep1Update:
-      'Bir GenOffice güncellemesi daha yeni bir beceri getirdiğinde o asistanın yanında bir Güncelle düğmesi görünür.',
+      'Bir SelfOffice güncellemesi daha yeni bir beceri getirdiğinde o asistanın yanında bir Güncelle düğmesi görünür.',
     intgSkillVersion: 'beceri {v}',
     intgStateMissing: 'Beceri yüklü değil',
     intgStateInstalled: 'Beceri {v} yüklü · bir sonraki sohbetinizde hazır',
@@ -1785,7 +1788,7 @@ export const strings = {
     intgOtherDesc:
       'Bu üç yoldan herhangi birini seçin. Hepsi aynı beceriyi yükler, bu yüzden birden fazlasını yapmanıza gerek yok.',
     intgOtherFolderTitle: 'SKILL.md klasörlerini okuyan herhangi bir asistan',
-    intgOtherFolderDesc: 'Beceri klasörünü seçin, GenOffice dosyayı oraya yazsın.',
+    intgOtherFolderDesc: 'Beceri klasörünü seçin, SelfOffice dosyayı oraya yazsın.',
     intgOtherZipTitle: 'Dosyayı asistana verin',
     intgOtherZipDesc: 'Beceriyi zip olarak kaydedin, sonra asistandan yüklemesini isteyin.',
     intgOtherNpxTitle: 'skills komutuyla (Node.js gerekir)',
@@ -1797,23 +1800,23 @@ export const strings = {
       'Yükledikten sonra asistanınızda yeni bir sohbet açın ve düz sözcüklerle isteyin, örneğin:',
     intgExample1: '~/Downloads/report.md dosyasını Word belgesine dönüştür',
     intgExample2: '3. çeyrek sonuçlarımız hakkında 6 slaytlık bir sunu hazırla',
-    intgExample3: 'budget.xlsx dosyasını PDF’e dönüştür ve GenOffice’te aç',
+    intgExample3: 'budget.xlsx dosyasını PDF’e dönüştür ve SelfOffice’te aç',
     intgStep2Note:
-      'genoffice komut satırını asistan kendisi çalıştırır; sizin yazmanız hiç gerekmez.',
+      'selfoffice komut satırını asistan kendisi çalıştırır; sizin yazmanız hiç gerekmez.',
     intgCliPartTitle: 'CLI · komut satırı + beceri',
     intgCliPartDesc:
-      'Terminal komutları çalıştırabilen asistanlar için (Claude Code, Codex, Cursor ve diğerleri). Beceri yüklendikten sonra asistan, dosya oluşturmak, dönüştürmek, okumak ve düzenlemek için genoffice komut satırını kendisi çağırır; siz hiç komut yazmazsınız.',
+      'Terminal komutları çalıştırabilen asistanlar için (Claude Code, Codex, Cursor ve diğerleri). Beceri yüklendikten sonra asistan, dosya oluşturmak, dönüştürmek, okumak ve düzenlemek için selfoffice komut satırını kendisi çağırır; siz hiç komut yazmazsınız.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP, AI asistanlarının harici araçları çağırmak için kullandığı ortak protokoldür. Asistanınız komut çalıştıramıyorsa (örneğin Claude Desktop) ya da GenOffice penceresini doğrudan yönetmesini istiyorsanız kullanın. Aşağıdaki iki yoldan birini seçin.',
+      'MCP, AI asistanlarının harici araçları çağırmak için kullandığı ortak protokoldür. Asistanınız komut çalıştıramıyorsa (örneğin Claude Desktop) ya da SelfOffice penceresini doğrudan yönetmesini istiyorsanız kullanın. Aşağıdaki iki yoldan birini seçin.',
     intgMcpStdioTitle: 'Asistan tarafından başlatılır (önerilen)',
     intgMcpStdioDesc:
-      'Asistan genoffice mcp’yi kendisi başlatır: burada açılacak bir şey yoktur ve GenOffice’in açık olması gerekmez. CLI ile aynı özellikler.',
+      'Asistan selfoffice mcp’yi kendisi başlatır: burada açılacak bir şey yoktur ve SelfOffice’in açık olması gerekmez. CLI ile aynı özellikler.',
     intgMcpHttpTitle: 'Yerel HTTP sunucusu',
     intgMcpHttpDesc:
-      'GenOffice içinde çalışır; asistan bir URL’ye bağlanır ve belgeyi Word düzenleyicisinde adım adım oluşturmasını izleyebilirsiniz. GenOffice açık kalmalıdır; şimdilik yalnızca Word belgeleri.',
+      'SelfOffice içinde çalışır; asistan bir URL’ye bağlanır ve belgeyi Word düzenleyicisinde adım adım oluşturmasını izleyebilirsiniz. SelfOffice açık kalmalıdır; şimdilik yalnızca Word belgeleri.',
     intgMcpHttpAdvanced: 'Gelişmiş: diğer uç noktalar ve günlük',
-    intgMcpTryNote: 'Asistan GenOffice’i MCP üzerinden çağırır; siz hiç komut yazmazsınız.',
+    intgMcpTryNote: 'Asistan SelfOffice’i MCP üzerinden çağırır; siz hiç komut yazmazsınız.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Bunu bir terminalde bir kez çalıştırın:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop veya MCP destekli başka bir asistan',
@@ -1821,10 +1824,10 @@ export const strings = {
       'Bunu MCP sunucu ayarlarına ekleyin (bir JSON dosyası ya da ayarlarındaki "MCP sunucusu ekle"):',
     intgMcpNote:
       'Beceri ve MCP yan yana kurulabilir; asistan birini seçer. İkisi de tamamen aynı şeyleri yapar.',
-    intgCliTitle: 'Gelişmiş: genoffice komut satırı',
-    intgCliReady: 'genoffice {v} · terminalinizde hazır ({path})',
+    intgCliTitle: 'Gelişmiş: selfoffice komut satırı',
+    intgCliReady: 'selfoffice {v} · terminalinizde hazır ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · terminalinizin PATH’inde değil. Asistanlar onu yine de ~/.genoffice/launcher üzerinden bulur, bu yüzden beceri çalışır. genoffice’i kendiniz yazmak için bunu bir kez çalıştırın:',
+      'selfoffice {v} · terminalinizin PATH’inde değil. Asistanlar onu yine de ~/.selfoffice/launcher üzerinden bulur, bu yüzden beceri çalışır. selfoffice’i kendiniz yazmak için bunu bir kez çalıştırın:',
     intgCliLauncher: 'Başlatıcı klasörü',
     intgStateOutdated: '{v} yüklü, {next} sürümüne güncelleme mevcut',
     intgStateModified: '{v} yüklü (değiştirilmiş)',
@@ -1849,10 +1852,10 @@ export const strings = {
     intgSavedTo: '{path} konumuna kaydedildi',
     intgCopied: 'Kopyalandı',
     intgCliEphemeral:
-      'Önce GenOffice’i Uygulamalar klasörüne sürükleyin, sonra komut satırını kullanın.',
+      'Önce SelfOffice’i Uygulamalar klasörüne sürükleyin, sonra komut satırını kullanın.',
     intgCopyPath: 'Yolu kopyala',
     intgCliNeedsUpdate:
-      'Bu beceri komut satırı {v} veya daha yenisini gerektirir; GenOffice’i güncelleyin.',
+      'Bu beceri komut satırı {v} veya daha yenisini gerektirir; SelfOffice’i güncelleyin.',
     intgLoading: 'Denetleniyor…',
     intgUpdateDue: 'Beceri güncellemesi mevcut',
     setSecAiModel: 'AI Modeli',
@@ -1875,7 +1878,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: 'Otomatik algıla (önerilen)',
     setAiCodexHint:
       'Güncellemelerden sonra oturum açılmış geçerli Codex CLI’yi otomatik bulur; özel yol isteğe bağlıdır. API anahtarı gerekmez.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Kaydet',
     setAiSaved: 'Kaydedildi',
     setAiTest: 'Bağlantıyı sına',
@@ -1903,14 +1907,14 @@ export const strings = {
       'Bir sağlayıcının anahtarı ve temel URL’si yetenekler arasında paylaşılır; bir kez girin.',
     setGithub: 'Açık Kaynak',
     starOnGitHub: 'GitHub’da yıldızla',
-    starPromptTitle: 'GenOffice’i beğeniyor musunuz?',
-    starPromptTitleN: 'GenOffice ile {n} belge açtınız',
+    starPromptTitle: 'SelfOffice’i beğeniyor musunuz?',
+    starPromptTitleN: 'SelfOffice ile {n} belge açtınız',
     starPromptBody:
-      'GenOffice ücretsiz ve açık kaynaklıdır. GitHub’da bir yıldız, ekibi desteklemenin en iyi yoludur.',
+      'SelfOffice ücretsiz ve açık kaynaklıdır. GitHub’da bir yıldız, ekibi desteklemenin en iyi yoludur.',
     starPromptGo: 'GitHub’da yıldızla',
     starPromptDone: 'Zaten yıldızladım',
     starPromptLater: 'Belki daha sonra',
-    onbStarHint: 'GenOffice’i beğendiyseniz GitHub’da bize bir yıldız verin.',
+    onbStarHint: 'SelfOffice’i beğendiyseniz GitHub’da bize bir yıldız verin.',
     setEmail: 'E-posta',
     setNotLoggedIn: 'Giriş yapılmadı',
     setViewUsage: 'Kullanımı görüntüle',
@@ -1923,7 +1927,7 @@ export const strings = {
     appMenu: 'Menü',
     newTab: 'Yeni sekme',
     // First-run onboarding
-    onbTitle1: 'GenOffice’e hoş geldiniz',
+    onbTitle1: 'SelfOffice’e hoş geldiniz',
     onbSubtitle1: 'İlk açık kaynaklı, AI yerlisi ofis paketi',
     onbBody1:
       'Belgeler oluşturun, tablolar hazırlayın, sunular yapın ve PDF’leri inceleyin. AI her adıma yerleşiktir.',
@@ -1935,7 +1939,7 @@ export const strings = {
     onbBody3: 'Lisans ücreti yok. Reklam yok. Filigran yok.',
     onbBack: 'Geri',
     intgSkillsDesc:
-      'GenOffice yalnızca kendi beceri klasöründeki becerileri kullanır. Bir klasör veya zip içe aktarıldığında becerinin tamamı kopyalanır; içe aktarma sırasında hiçbir şey çalıştırılmaz.',
+      'SelfOffice yalnızca kendi beceri klasöründeki becerileri kullanır. Bir klasör veya zip içe aktarıldığında becerinin tamamı kopyalanır; içe aktarma sırasında hiçbir şey çalıştırılmaz.',
     intgSkillsEmpty: 'Henüz beceri yüklenmedi.',
     intgSkillsImportFolder: 'Klasörü içe aktar…',
     intgSkillsImportZip: 'Beceri paketini içe aktar (zip / .md)…',
@@ -1944,7 +1948,7 @@ export const strings = {
     intgSkillsImportDone: '{name} içe aktarıldı',
     intgSkillsImportFailed: 'İçe aktarma başarısız oldu: {reason}',
     intgSkillsRemove: 'Kaldır',
-    intgSkillsRemoveConfirm: '"{name}" becerisi kaldırılsın mı? Klasörü GenOffice’ten silinir.',
+    intgSkillsRemoveConfirm: '"{name}" becerisi kaldırılsın mı? Klasörü SelfOffice’ten silinir.',
     intgSkillsRemoved: '{name} kaldırıldı',
     intgSkillsRead: 'Ayrıntılar',
     intgSkillsMine: 'Becerilerim',
@@ -2206,7 +2210,7 @@ export const strings = {
     saveLocation: '保存先',
     setRestoreSession: '前回のドキュメントを再度開く',
     setRestoreSessionDesc:
-      'GenOffice を閉じたときに開いていたドキュメントを、次回起動時に自動で開き直します。',
+      'SelfOffice を閉じたときに開いていたドキュメントを、次回起動時に自動で開き直します。',
     setTabSleep: '非アクティブなタブをスリープ',
     setTabSleepDesc:
       '多くのタブを開いているとき、しばらく見ていないタブはメモリを解放し、戻ったときにファイルを再度開きます。未保存の変更があるタブやピン留めしたタブはスリープしません。',
@@ -2237,8 +2241,8 @@ export const strings = {
     setAiSpellcheck: 'AI チャットのスペルチェック',
     setDefaultApp: 'Office 文書の既定のアプリ',
     setDefaultAppDesc:
-      '.docx、.xlsx、.pptx ファイルをダブルクリックしたとき GenOffice で開きます。',
-    setDefaultAppIs: 'GenOffice はすでに既定のアプリです。',
+      '.docx、.xlsx、.pptx ファイルをダブルクリックしたとき SelfOffice で開きます。',
+    setDefaultAppIs: 'SelfOffice はすでに既定のアプリです。',
     setDefaultAppOther: '現在の既定：{app}',
     setDefaultAppSet: '既定にする',
     setDefaultAppOpenSettings: 'システム設定を開く',
@@ -2283,7 +2287,7 @@ export const strings = {
     setSecAbout: '情報',
     setSecIntegrations: '連携',
     setSecSkills: 'スキル',
-    intgHeroTitle: 'AI アシスタントから GenOffice を使う',
+    intgHeroTitle: 'AI アシスタントから SelfOffice を使う',
     intgHeroDesc:
       '接続すると、Claude Code、Codex、Cursor、Claude Desktop などのアシスタントが Word、Excel、PowerPoint、PDF、Markdown ファイルの作成・変換・読み取り・編集を代行します。すべてこの PC 上で完結し、何もアップロードされません。',
     intgHeroStep1:
@@ -2294,7 +2298,7 @@ export const strings = {
     intgStep1Desc:
       'このパソコンで見つかったアシスタントだけを表示しています。実際に使っているものにだけインストールすれば十分で、すべてに入れる必要はありません。',
     intgStep1Update:
-      'GenOffice の更新で新しいスキルが届くと、そのアシスタントの横に「更新」ボタンが表示されます。',
+      'SelfOffice の更新で新しいスキルが届くと、そのアシスタントの横に「更新」ボタンが表示されます。',
     intgSkillVersion: 'スキル {v}',
     intgStateMissing: 'スキル未インストール',
     intgStateInstalled: 'スキル {v} をインストール済み · 次のチャットから使えます',
@@ -2302,7 +2306,7 @@ export const strings = {
     intgOtherDesc:
       '次の 3 つの方法からどれか 1 つを選んでください。どれも同じスキルをインストールするので、複数行う必要はありません。',
     intgOtherFolderTitle: 'SKILL.md フォルダーを読むアシスタント全般',
-    intgOtherFolderDesc: 'その skills フォルダーを選ぶと、GenOffice がファイルを書き込みます。',
+    intgOtherFolderDesc: 'その skills フォルダーを選ぶと、SelfOffice がファイルを書き込みます。',
     intgOtherZipTitle: 'ファイルをアシスタントに渡す',
     intgOtherZipDesc: 'スキルを zip で保存し、アシスタントにインストールを頼みます。',
     intgOtherNpxTitle: 'skills コマンドで入れる（Node.js が必要）',
@@ -2314,24 +2318,24 @@ export const strings = {
       'インストール後、アシスタントで新しいチャットを開き、普通の言葉で頼んでください。例：',
     intgExample1: '~/Downloads/report.md を Word 文書にして',
     intgExample2: '第 3 四半期の業績について 6 枚のスライドを作って',
-    intgExample3: 'budget.xlsx を PDF に変換して GenOffice で開いて',
+    intgExample3: 'budget.xlsx を PDF に変換して SelfOffice で開いて',
     intgStep2Note:
-      'genoffice コマンドラインはアシスタントが自分で実行します。あなたが入力する必要はありません。',
+      'selfoffice コマンドラインはアシスタントが自分で実行します。あなたが入力する必要はありません。',
     intgCliPartTitle: 'CLI · コマンドライン + skill',
     intgCliPartDesc:
-      'ターミナルコマンドを実行できるアシスタント（Claude Code、Codex、Cursor など）向け。skill をインストールすると、アシスタントが自分で genoffice コマンドラインを呼び出してファイルを作成・変換・読み取り・編集します。コマンドを入力する必要はありません。',
+      'ターミナルコマンドを実行できるアシスタント（Claude Code、Codex、Cursor など）向け。skill をインストールすると、アシスタントが自分で selfoffice コマンドラインを呼び出してファイルを作成・変換・読み取り・編集します。コマンドを入力する必要はありません。',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP は AI アシスタントが外部ツールを呼び出すための共通プロトコルです。アシスタントがコマンドを実行できない場合（Claude Desktop など）や、GenOffice のウィンドウを直接操作させたい場合に使います。下の 2 つの方法からどちらか 1 つを選んでください。',
+      'MCP は AI アシスタントが外部ツールを呼び出すための共通プロトコルです。アシスタントがコマンドを実行できない場合（Claude Desktop など）や、SelfOffice のウィンドウを直接操作させたい場合に使います。下の 2 つの方法からどちらか 1 つを選んでください。',
     intgMcpStdioTitle: 'アシスタントが起動する（推奨）',
     intgMcpStdioDesc:
-      'アシスタントが genoffice mcp を自分で起動します。ここで何かをオンにする必要はなく、GenOffice を開いておく必要もありません。機能は CLI と同じです。',
+      'アシスタントが selfoffice mcp を自分で起動します。ここで何かをオンにする必要はなく、SelfOffice を開いておく必要もありません。機能は CLI と同じです。',
     intgMcpHttpTitle: 'ローカル HTTP サーバー',
     intgMcpHttpDesc:
-      'GenOffice 内で動作し、アシスタントは URL で接続します。Word エディター上で文書が段階的に生成される様子を見られます。GenOffice を開いたままにする必要があり、現時点では Word のみ対応です。',
+      'SelfOffice 内で動作し、アシスタントは URL で接続します。Word エディター上で文書が段階的に生成される様子を見られます。SelfOffice を開いたままにする必要があり、現時点では Word のみ対応です。',
     intgMcpHttpAdvanced: '詳細：その他のエンドポイントとログ',
     intgMcpTryNote:
-      'アシスタントが MCP 経由で GenOffice を呼び出します。コマンドを入力する必要はありません。',
+      'アシスタントが MCP 経由で SelfOffice を呼び出します。コマンドを入力する必要はありません。',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'ターミナルで一度だけ実行します：',
     intgMcpOtherTitle: 'Cursor、Claude Desktop、その他 MCP 対応のアシスタント',
@@ -2339,10 +2343,10 @@ export const strings = {
       'これを MCP サーバー設定（JSON ファイル、または設定の「MCP サーバーを追加」）に追加します：',
     intgMcpNote:
       'スキルと MCP は併用できます。アシスタントがどちらかを選びます。両者の機能はまったく同じです。',
-    intgCliTitle: '上級：コマンドライン genoffice',
-    intgCliReady: 'genoffice {v} · ターミナルで使えます（{path}）',
+    intgCliTitle: '上級：コマンドライン selfoffice',
+    intgCliReady: 'selfoffice {v} · ターミナルで使えます（{path}）',
     intgCliNotOnPath:
-      'genoffice {v} · ターミナルの PATH にありません。アシスタントは ~/.genoffice/launcher 経由で見つけられるため、スキルは動作します。自分で genoffice を入力したい場合は一度だけ次を実行：',
+      'selfoffice {v} · ターミナルの PATH にありません。アシスタントは ~/.selfoffice/launcher 経由で見つけられるため、スキルは動作します。自分で selfoffice を入力したい場合は一度だけ次を実行：',
     intgCliLauncher: 'ランチャーフォルダー',
     intgStateOutdated: 'インストール済み {v}、{next} に更新できます',
     intgStateModified: 'インストール済み {v}（変更されています）',
@@ -2367,10 +2371,10 @@ export const strings = {
     intgSavedTo: '{path} に保存しました',
     intgCopied: 'コピーしました',
     intgCliEphemeral:
-      '先に GenOffice を「アプリケーション」に移してから、コマンドラインを使ってください。',
+      '先に SelfOffice を「アプリケーション」に移してから、コマンドラインを使ってください。',
     intgCopyPath: 'パスをコピー',
     intgCliNeedsUpdate:
-      'このスキルにはコマンドライン {v} 以降が必要です。GenOffice を更新してください。',
+      'このスキルにはコマンドライン {v} 以降が必要です。SelfOffice を更新してください。',
     intgLoading: '確認中…',
     intgUpdateDue: 'スキルの更新があります',
     setSecAiModel: 'AIモデル',
@@ -2390,7 +2394,8 @@ export const strings = {
     setAiCodexPathHint: 'カスタムインストール時のみ指定します。空欄なら自動検出します。',
     setAiCodexAutoPlaceholder: '自動検出（推奨）',
     setAiCodexHint: 'ローカルでサインイン済みの Codex CLI を使用します。API キーは不要です。',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '保存',
     setAiSaved: '保存しました',
     setAiTest: '接続テスト',
@@ -2418,14 +2423,14 @@ export const strings = {
       '同じプロバイダーのキーと Base URL は各機能で共有されます。一度入力すれば済みます。',
     setGithub: 'オープンソース',
     starOnGitHub: 'GitHub でスターを付ける',
-    starPromptTitle: 'GenOffice はいかがですか？',
-    starPromptTitleN: 'GenOffice で {n} 件のドキュメントを開きました',
+    starPromptTitle: 'SelfOffice はいかがですか？',
+    starPromptTitleN: 'SelfOffice で {n} 件のドキュメントを開きました',
     starPromptBody:
-      'GenOffice は無料のオープンソースソフトウェアです。GitHub のスターがチームへの何よりの応援になります。',
+      'SelfOffice は無料のオープンソースソフトウェアです。GitHub のスターがチームへの何よりの応援になります。',
     starPromptGo: 'スターを付ける',
     starPromptDone: 'スター済み',
     starPromptLater: 'あとで',
-    onbStarHint: 'GenOffice が気に入ったら、GitHub でスターをお願いします。',
+    onbStarHint: 'SelfOffice が気に入ったら、GitHub でスターをお願いします。',
     setEmail: 'メール',
     setNotLoggedIn: '未ログイン',
     setViewUsage: '使用状況を見る',
@@ -2440,7 +2445,7 @@ export const strings = {
     appMenu: 'メニュー',
     newTab: '新しいタブ',
     // First-run onboarding
-    onbTitle1: 'GenOffice へようこそ',
+    onbTitle1: 'SelfOffice へようこそ',
     onbSubtitle1: '初のオープンソース AI ネイティブ Office スイート',
     onbBody1:
       '文書の作成、表計算、プレゼン作成、PDF のレビュー。あらゆるステップに AI が組み込まれています。',
@@ -2452,7 +2457,7 @@ export const strings = {
     onbBody3: 'ライセンス料なし、広告なし、透かしなし。',
     onbBack: '戻る',
     intgSkillsDesc:
-      'GenOffice は自身のスキルフォルダ内のスキルのみ使用します。フォルダまたは zip からの読み込みはスキル全体をコピーします。読み込み時に何も実行されません。',
+      'SelfOffice は自身のスキルフォルダ内のスキルのみ使用します。フォルダまたは zip からの読み込みはスキル全体をコピーします。読み込み時に何も実行されません。',
     intgSkillsEmpty: 'スキルはまだインストールされていません。',
     intgSkillsImportFolder: 'フォルダを読み込む…',
     intgSkillsImportZip: 'スキルパッケージを読み込む（zip / .md）…',
@@ -2462,7 +2467,7 @@ export const strings = {
     intgSkillsImportFailed: '読み込みに失敗しました：{reason}',
     intgSkillsRemove: '削除',
     intgSkillsRemoveConfirm:
-      'スキル「{name}」を削除しますか？フォルダーは GenOffice から削除されます。',
+      'スキル「{name}」を削除しますか？フォルダーは SelfOffice から削除されます。',
     intgSkillsRemoved: '{name} を削除しました',
     intgSkillsRead: '詳細',
     intgSkillsMine: 'マイスキル',
@@ -2720,7 +2725,7 @@ export const strings = {
     saveLocation: '저장 위치',
     setRestoreSession: '지난번 문서 다시 열기',
     setRestoreSessionDesc:
-      'GenOffice를 닫을 때 열려 있던 문서를 다음 실행 시 자동으로 다시 엽니다.',
+      'SelfOffice를 닫을 때 열려 있던 문서를 다음 실행 시 자동으로 다시 엽니다.',
     setTabSleep: '비활성 탭 절전',
     setTabSleepDesc:
       '탭이 많이 열려 있으면 한동안 보지 않은 탭은 메모리를 해제하고 돌아올 때 파일을 다시 엽니다. 저장하지 않은 변경이 있거나 고정된 탭은 절전되지 않습니다.',
@@ -2749,8 +2754,8 @@ export const strings = {
     aiFontSizeCustom: '사용자 지정',
     setAiSpellcheck: 'AI 채팅 맞춤법 검사',
     setDefaultApp: 'Office 문서 기본 앱',
-    setDefaultAppDesc: '.docx, .xlsx, .pptx 파일을 두 번 클릭하면 GenOffice로 엽니다.',
-    setDefaultAppIs: 'GenOffice가 이미 기본 앱입니다.',
+    setDefaultAppDesc: '.docx, .xlsx, .pptx 파일을 두 번 클릭하면 SelfOffice로 엽니다.',
+    setDefaultAppIs: 'SelfOffice가 이미 기본 앱입니다.',
     setDefaultAppOther: '현재 기본 앱: {app}',
     setDefaultAppSet: '기본으로 설정',
     setDefaultAppOpenSettings: '시스템 설정 열기',
@@ -2795,7 +2800,7 @@ export const strings = {
     setSecAbout: '정보',
     setSecIntegrations: '연동',
     setSecSkills: '스킬',
-    intgHeroTitle: 'AI 어시스턴트에서 GenOffice 사용하기',
+    intgHeroTitle: 'AI 어시스턴트에서 SelfOffice 사용하기',
     intgHeroDesc:
       '연결하면 Claude Code, Codex, Cursor, Claude Desktop 등의 어시스턴트가 Word, Excel, PowerPoint, PDF, Markdown 파일을 대신 만들고 변환하고 읽고 편집합니다. 모두 이 컴퓨터에서 처리되며 어떤 내용도 업로드되지 않습니다.',
     intgHeroStep1: '연결 방식 선택: 어시스턴트가 터미널 명령을 실행할 수 있으면 CLI, 없으면 MCP',
@@ -2805,7 +2810,7 @@ export const strings = {
     intgStep1Desc:
       '이 컴퓨터에서 발견된 어시스턴트만 표시됩니다. 실제로 사용하는 하나에만 설치하면 되고, 모두 설치할 필요는 없습니다.',
     intgStep1Update:
-      'GenOffice 업데이트에 새 스킬이 포함되면 해당 어시스턴트 옆에 업데이트 버튼이 나타납니다.',
+      'SelfOffice 업데이트에 새 스킬이 포함되면 해당 어시스턴트 옆에 업데이트 버튼이 나타납니다.',
     intgSkillVersion: '스킬 {v}',
     intgStateMissing: '스킬 미설치',
     intgStateInstalled: '스킬 {v} 설치됨 · 다음 대화부터 사용 가능',
@@ -2813,7 +2818,7 @@ export const strings = {
     intgOtherDesc:
       '다음 세 가지 방법 중 하나만 선택하세요. 모두 같은 스킬을 설치하므로 여러 번 할 필요가 없습니다.',
     intgOtherFolderTitle: 'SKILL.md 폴더를 읽는 모든 어시스턴트',
-    intgOtherFolderDesc: '해당 skills 폴더를 선택하면 GenOffice가 파일을 기록합니다.',
+    intgOtherFolderDesc: '해당 skills 폴더를 선택하면 SelfOffice가 파일을 기록합니다.',
     intgOtherZipTitle: '파일을 어시스턴트에게 전달',
     intgOtherZipDesc: '스킬을 zip으로 저장한 뒤 어시스턴트에게 설치를 요청하세요.',
     intgOtherNpxTitle: 'skills 명령으로 설치(Node.js 필요)',
@@ -2824,24 +2829,24 @@ export const strings = {
     intgStep2DescBefore: '설치 후 어시스턴트에서 새 대화를 열고 평소 말투로 요청하세요. 예:',
     intgExample1: '~/Downloads/report.md를 Word 문서로 만들어 줘',
     intgExample2: '3분기 실적을 소개하는 6장짜리 슬라이드를 만들어 줘',
-    intgExample3: 'budget.xlsx를 PDF로 변환해서 GenOffice에서 열어 줘',
+    intgExample3: 'budget.xlsx를 PDF로 변환해서 SelfOffice에서 열어 줘',
     intgStep2Note:
-      'genoffice 명령줄은 어시스턴트가 직접 실행하므로 여러분이 입력할 필요가 없습니다.',
+      'selfoffice 명령줄은 어시스턴트가 직접 실행하므로 여러분이 입력할 필요가 없습니다.',
     intgCliPartTitle: 'CLI · 명령줄 + skill',
     intgCliPartDesc:
-      '터미널 명령을 실행할 수 있는 어시스턴트(Claude Code, Codex, Cursor 등)용입니다. skill을 설치하면 어시스턴트가 스스로 genoffice 명령줄을 호출해 파일을 만들고 변환하고 읽고 편집합니다. 명령을 직접 입력할 필요가 없습니다.',
+      '터미널 명령을 실행할 수 있는 어시스턴트(Claude Code, Codex, Cursor 등)용입니다. skill을 설치하면 어시스턴트가 스스로 selfoffice 명령줄을 호출해 파일을 만들고 변환하고 읽고 편집합니다. 명령을 직접 입력할 필요가 없습니다.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP는 AI 어시스턴트가 외부 도구를 호출하는 공통 프로토콜입니다. 어시스턴트가 명령을 실행할 수 없거나(예: Claude Desktop) GenOffice 창을 직접 조작하게 하려면 이 방식을 사용하세요. 아래 두 방법 중 하나를 선택하면 됩니다.',
+      'MCP는 AI 어시스턴트가 외부 도구를 호출하는 공통 프로토콜입니다. 어시스턴트가 명령을 실행할 수 없거나(예: Claude Desktop) SelfOffice 창을 직접 조작하게 하려면 이 방식을 사용하세요. 아래 두 방법 중 하나를 선택하면 됩니다.',
     intgMcpStdioTitle: '어시스턴트가 실행(권장)',
     intgMcpStdioDesc:
-      '어시스턴트가 genoffice mcp를 직접 실행합니다. 여기서 켤 것이 없고 GenOffice가 열려 있을 필요도 없습니다. 기능은 CLI와 같습니다.',
+      '어시스턴트가 selfoffice mcp를 직접 실행합니다. 여기서 켤 것이 없고 SelfOffice가 열려 있을 필요도 없습니다. 기능은 CLI와 같습니다.',
     intgMcpHttpTitle: '로컬 HTTP 서버',
     intgMcpHttpDesc:
-      'GenOffice 안에서 실행되며 어시스턴트가 URL로 연결합니다. Word 편집기에서 문서가 단계별로 만들어지는 과정을 볼 수 있습니다. GenOffice를 열어 두어야 하며 현재는 Word만 지원합니다.',
+      'SelfOffice 안에서 실행되며 어시스턴트가 URL로 연결합니다. Word 편집기에서 문서가 단계별로 만들어지는 과정을 볼 수 있습니다. SelfOffice를 열어 두어야 하며 현재는 Word만 지원합니다.',
     intgMcpHttpAdvanced: '고급: 기타 주소와 로그',
     intgMcpTryNote:
-      '어시스턴트가 MCP를 통해 GenOffice를 호출합니다. 명령을 직접 입력할 필요가 없습니다.',
+      '어시스턴트가 MCP를 통해 SelfOffice를 호출합니다. 명령을 직접 입력할 필요가 없습니다.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: '터미널에서 한 번만 실행하세요:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop 또는 MCP를 지원하는 다른 어시스턴트',
@@ -2849,10 +2854,10 @@ export const strings = {
       '이 내용을 해당 어시스턴트의 MCP 서버 설정(JSON 파일 또는 설정의 "MCP 서버 추가")에 추가하세요:',
     intgMcpNote:
       '스킬과 MCP는 함께 설정할 수 있으며 어시스턴트가 하나를 선택합니다. 두 방식이 하는 일은 완전히 같습니다.',
-    intgCliTitle: '고급: 명령줄 genoffice',
-    intgCliReady: 'genoffice {v} · 터미널에서 바로 사용 가능({path})',
+    intgCliTitle: '고급: 명령줄 selfoffice',
+    intgCliReady: 'selfoffice {v} · 터미널에서 바로 사용 가능({path})',
     intgCliNotOnPath:
-      'genoffice {v} · 터미널 PATH에 없습니다. 어시스턴트는 ~/.genoffice/launcher로 찾을 수 있어 스킬은 정상 작동합니다. 직접 genoffice를 입력하려면 한 번만 실행:',
+      'selfoffice {v} · 터미널 PATH에 없습니다. 어시스턴트는 ~/.selfoffice/launcher로 찾을 수 있어 스킬은 정상 작동합니다. 직접 selfoffice를 입력하려면 한 번만 실행:',
     intgCliLauncher: '런처 폴더',
     intgStateOutdated: '설치됨 {v}, {next}(으)로 업데이트 가능',
     intgStateModified: '설치됨 {v} (수정됨)',
@@ -2876,9 +2881,9 @@ export const strings = {
     intgSaveZipTitle: '스킬 저장',
     intgSavedTo: '{path}에 저장됨',
     intgCopied: '복사됨',
-    intgCliEphemeral: '먼저 GenOffice를 응용 프로그램 폴더로 옮긴 뒤 명령줄을 사용하세요.',
+    intgCliEphemeral: '먼저 SelfOffice를 응용 프로그램 폴더로 옮긴 뒤 명령줄을 사용하세요.',
     intgCopyPath: '경로 복사',
-    intgCliNeedsUpdate: '이 스킬은 명령줄 {v} 이상이 필요합니다. GenOffice를 업데이트하세요.',
+    intgCliNeedsUpdate: '이 스킬은 명령줄 {v} 이상이 필요합니다. SelfOffice를 업데이트하세요.',
     intgLoading: '확인 중…',
     intgUpdateDue: '스킬 업데이트 가능',
     setSecAiModel: 'AI 모델',
@@ -2898,7 +2903,8 @@ export const strings = {
     setAiCodexPathHint: '사용자 지정 설치에만 입력하세요. 비워 두면 자동 감지합니다.',
     setAiCodexAutoPlaceholder: '자동 감지(권장)',
     setAiCodexHint: '로컬에서 로그인된 Codex CLI를 사용하므로 API 키가 필요 없습니다.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '저장',
     setAiSaved: '저장됨',
     setAiTest: '연결 테스트',
@@ -2926,14 +2932,14 @@ export const strings = {
       '같은 제공자의 키와 Base URL은 모든 기능에서 공유되므로 한 번만 입력하면 됩니다.',
     setGithub: '오픈 소스',
     starOnGitHub: 'GitHub에서 스타 누르기',
-    starPromptTitle: 'GenOffice가 마음에 드시나요?',
-    starPromptTitleN: 'GenOffice로 문서를 {n}개 열어보셨네요',
+    starPromptTitle: 'SelfOffice가 마음에 드시나요?',
+    starPromptTitleN: 'SelfOffice로 문서를 {n}개 열어보셨네요',
     starPromptBody:
-      'GenOffice는 무료 오픈 소스 소프트웨어입니다. GitHub 스타 하나가 팀에게 가장 큰 응원이 됩니다.',
+      'SelfOffice는 무료 오픈 소스 소프트웨어입니다. GitHub 스타 하나가 팀에게 가장 큰 응원이 됩니다.',
     starPromptGo: '스타 누르기',
     starPromptDone: '이미 눌렀어요',
     starPromptLater: '나중에',
-    onbStarHint: 'GenOffice가 마음에 들면 GitHub에서 스타를 눌러 주세요.',
+    onbStarHint: 'SelfOffice가 마음에 들면 GitHub에서 스타를 눌러 주세요.',
     setEmail: '이메일',
     setNotLoggedIn: '로그인되지 않음',
     setViewUsage: '사용량 보기',
@@ -2948,7 +2954,7 @@ export const strings = {
     appMenu: '메뉴',
     newTab: '새 탭',
     // First-run onboarding
-    onbTitle1: 'GenOffice에 오신 것을 환영합니다',
+    onbTitle1: 'SelfOffice에 오신 것을 환영합니다',
     onbSubtitle1: '최초의 오픈소스 AI 네이티브 오피스 제품군',
     onbBody1:
       '문서 작성, 스프레드시트 제작, 프레젠테이션 생성, PDF 검토. 모든 단계에 AI가 녹아 있습니다.',
@@ -2960,7 +2966,7 @@ export const strings = {
     onbBody3: '라이선스 비용 없음, 광고 없음, 워터마크 없음.',
     onbBack: '이전',
     intgSkillsDesc:
-      'GenOffice는 자체 스킬 폴더의 스킬만 사용합니다. 폴더나 zip에서 가져오면 스킬 전체가 복사되며, 가져오기 시 아무것도 실행되지 않습니다.',
+      'SelfOffice는 자체 스킬 폴더의 스킬만 사용합니다. 폴더나 zip에서 가져오면 스킬 전체가 복사되며, 가져오기 시 아무것도 실행되지 않습니다.',
     intgSkillsEmpty: '설치된 스킬이 없습니다.',
     intgSkillsImportFolder: '폴더 가져오기…',
     intgSkillsImportZip: '스킬 패키지 가져오기(zip / .md)…',
@@ -2970,7 +2976,7 @@ export const strings = {
     intgSkillsImportFailed: '가져오기 실패: {reason}',
     intgSkillsRemove: '제거',
     intgSkillsRemoveConfirm:
-      '스킬 "{name}"을(를) 제거할까요? 해당 폴더가 GenOffice에서 삭제됩니다.',
+      '스킬 "{name}"을(를) 제거할까요? 해당 폴더가 SelfOffice에서 삭제됩니다.',
     intgSkillsRemoved: '{name} 제거됨',
     intgSkillsRead: '상세',
     intgSkillsMine: '내 스킬',
@@ -3220,7 +3226,7 @@ export const strings = {
     setUpdateRestart: 'Redémarrer et installer',
     setAutoUpdateCheck: 'Rechercher automatiquement les mises à jour',
     setAutoUpdateCheckDesc:
-      'Désactivé, GenOffice ne recherche plus de nouvelle version au démarrage ni en arrière-plan. Vous pouvez toujours vérifier via Aide › Rechercher des mises à jour.',
+      'Désactivé, SelfOffice ne recherche plus de nouvelle version au démarrage ni en arrière-plan. Vous pouvez toujours vérifier via Aide › Rechercher des mises à jour.',
     updateChannel: 'Canal de mise à jour',
     channelStable: 'Stable',
     channelBeta: 'Bêta',
@@ -3233,7 +3239,7 @@ export const strings = {
     saveLocation: "Emplacement d'enregistrement",
     setRestoreSession: 'Rouvrir les documents de la dernière fois',
     setRestoreSessionDesc:
-      'Les documents ouverts à la fermeture de GenOffice se rouvrent automatiquement au prochain démarrage.',
+      'Les documents ouverts à la fermeture de SelfOffice se rouvrent automatiquement au prochain démarrage.',
     setTabSleep: 'Mettre en veille les onglets inactifs',
     setTabSleepDesc:
       'Lorsque de nombreux onglets sont ouverts, ceux que vous n’avez pas consultés depuis un moment libèrent leur mémoire et rouvrent leur fichier à votre retour. Les onglets avec des modifications non enregistrées ou épinglés ne sont jamais mis en veille.',
@@ -3263,8 +3269,8 @@ export const strings = {
     aiFontSizeCustom: 'Personnalisé',
     setAiSpellcheck: 'Correction orthographique dans le chat IA',
     setDefaultApp: 'Application par défaut pour les documents Office',
-    setDefaultAppDesc: 'Ouvrir les fichiers .docx, .xlsx et .pptx dans GenOffice par double-clic.',
-    setDefaultAppIs: 'GenOffice est déjà l’application par défaut.',
+    setDefaultAppDesc: 'Ouvrir les fichiers .docx, .xlsx et .pptx dans SelfOffice par double-clic.',
+    setDefaultAppIs: 'SelfOffice est déjà l’application par défaut.',
     setDefaultAppOther: 'Par défaut actuellement : {app}',
     setDefaultAppSet: 'Définir par défaut',
     setDefaultAppOpenSettings: 'Ouvrir les réglages système',
@@ -3310,7 +3316,7 @@ export const strings = {
     setSecAbout: 'À propos',
     setSecIntegrations: 'Intégrations',
     setSecSkills: 'Compétences',
-    intgHeroTitle: 'Utiliser GenOffice depuis votre assistant IA',
+    intgHeroTitle: 'Utiliser SelfOffice depuis votre assistant IA',
     intgHeroDesc:
       'Une fois connectés, Claude Code, Codex, Cursor, Claude Desktop et les assistants similaires peuvent créer, convertir, lire et modifier vos fichiers Word, Excel, PowerPoint, PDF et Markdown. Tout se passe sur cet ordinateur ; rien n’est envoyé.',
     intgHeroStep1:
@@ -3321,7 +3327,7 @@ export const strings = {
     intgStep1Desc:
       'Seuls les assistants trouvés sur cet ordinateur sont listés. Installez-le dans celui que vous utilisez vraiment ; inutile de le faire pour tous.',
     intgStep1Update:
-      'Quand une mise à jour de GenOffice apporte un skill plus récent, un bouton Mettre à jour apparaît à côté de cet assistant.',
+      'Quand une mise à jour de SelfOffice apporte un skill plus récent, un bouton Mettre à jour apparaît à côté de cet assistant.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill non installé',
     intgStateInstalled: 'Skill {v} installé · prêt pour votre prochaine discussion',
@@ -3329,7 +3335,7 @@ export const strings = {
     intgOtherDesc:
       "Choisissez une seule de ces trois méthodes. Elles installent toutes le même skill : inutile d'en faire plusieurs.",
     intgOtherFolderTitle: 'Tout assistant qui lit des dossiers SKILL.md',
-    intgOtherFolderDesc: 'Choisissez son dossier skills et GenOffice y écrit le fichier.',
+    intgOtherFolderDesc: 'Choisissez son dossier skills et SelfOffice y écrit le fichier.',
     intgOtherZipTitle: "Remettre le fichier à l'assistant",
     intgOtherZipDesc: "Enregistrez le skill en zip, puis demandez à l'assistant de l'installer.",
     intgOtherNpxTitle: 'Avec la commande skills (nécessite Node.js)',
@@ -3342,23 +3348,23 @@ export const strings = {
       'Une fois installé, ouvrez une nouvelle discussion dans votre assistant et demandez simplement, par exemple :',
     intgExample1: 'Transforme ~/Downloads/report.md en document Word',
     intgExample2: 'Prépare une présentation de 6 diapositives sur nos résultats du T3',
-    intgExample3: 'Convertis budget.xlsx en PDF et ouvre-le dans GenOffice',
+    intgExample3: 'Convertis budget.xlsx en PDF et ouvre-le dans SelfOffice',
     intgStep2Note:
-      "L'assistant lance lui-même la ligne de commande genoffice ; vous n'avez jamais à la saisir.",
+      "L'assistant lance lui-même la ligne de commande selfoffice ; vous n'avez jamais à la saisir.",
     intgCliPartTitle: 'CLI · ligne de commande + skill',
     intgCliPartDesc:
-      'Pour les assistants capables de lancer des commandes dans le terminal (Claude Code, Codex, Cursor, etc.). Une fois le skill installé, l’assistant appelle lui-même la ligne de commande genoffice pour créer, convertir, lire et modifier les fichiers ; vous ne tapez jamais de commande.',
+      'Pour les assistants capables de lancer des commandes dans le terminal (Claude Code, Codex, Cursor, etc.). Une fois le skill installé, l’assistant appelle lui-même la ligne de commande selfoffice pour créer, convertir, lire et modifier les fichiers ; vous ne tapez jamais de commande.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP est le protocole commun que les assistants IA utilisent pour appeler des outils externes. Utilisez-le si votre assistant ne peut pas lancer de commandes (Claude Desktop, par exemple) ou si vous voulez qu’il pilote directement la fenêtre GenOffice. Choisissez l’une des deux méthodes ci-dessous.',
+      'MCP est le protocole commun que les assistants IA utilisent pour appeler des outils externes. Utilisez-le si votre assistant ne peut pas lancer de commandes (Claude Desktop, par exemple) ou si vous voulez qu’il pilote directement la fenêtre SelfOffice. Choisissez l’une des deux méthodes ci-dessous.',
     intgMcpStdioTitle: 'Lancé par l’assistant (recommandé)',
     intgMcpStdioDesc:
-      'L’assistant lance lui-même genoffice mcp : rien à activer ici, et GenOffice n’a pas besoin d’être ouvert. Mêmes fonctions que la CLI.',
+      'L’assistant lance lui-même selfoffice mcp : rien à activer ici, et SelfOffice n’a pas besoin d’être ouvert. Mêmes fonctions que la CLI.',
     intgMcpHttpTitle: 'Serveur HTTP local',
     intgMcpHttpDesc:
-      'Tourne dans GenOffice ; l’assistant se connecte à une URL et vous voyez le document se construire pas à pas dans l’éditeur Word. GenOffice doit rester ouvert ; documents Word uniquement pour l’instant.',
+      'Tourne dans SelfOffice ; l’assistant se connecte à une URL et vous voyez le document se construire pas à pas dans l’éditeur Word. SelfOffice doit rester ouvert ; documents Word uniquement pour l’instant.',
     intgMcpHttpAdvanced: 'Avancé : autres adresses et journal',
-    intgMcpTryNote: 'L’assistant appelle GenOffice via MCP ; vous ne tapez jamais de commande.',
+    intgMcpTryNote: 'L’assistant appelle SelfOffice via MCP ; vous ne tapez jamais de commande.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Exécutez ceci une fois dans un terminal :',
     intgMcpOtherTitle: 'Cursor, Claude Desktop ou tout autre assistant compatible MCP',
@@ -3366,10 +3372,10 @@ export const strings = {
       'Ajoutez ceci à sa configuration de serveurs MCP (un fichier JSON, ou « Ajouter un serveur MCP » dans ses réglages) :',
     intgMcpNote:
       "Le skill et MCP peuvent coexister ; l'assistant choisit l'un des deux. Ils font exactement la même chose.",
-    intgCliTitle: 'Avancé : ligne de commande genoffice',
-    intgCliReady: 'genoffice {v} · prêt dans votre terminal ({path})',
+    intgCliTitle: 'Avancé : ligne de commande selfoffice',
+    intgCliReady: 'selfoffice {v} · prêt dans votre terminal ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · absent du PATH de votre terminal. Les assistants le trouvent quand même via ~/.genoffice/launcher, le skill fonctionne donc. Pour taper genoffice vous-même, exécutez ceci une fois :',
+      'selfoffice {v} · absent du PATH de votre terminal. Les assistants le trouvent quand même via ~/.selfoffice/launcher, le skill fonctionne donc. Pour taper selfoffice vous-même, exécutez ceci une fois :',
     intgCliLauncher: 'Dossier du lanceur',
     intgStateOutdated: 'Installé {v}, mise à jour {next} disponible',
     intgStateModified: 'Installé {v} (modifié)',
@@ -3394,10 +3400,10 @@ export const strings = {
     intgSavedTo: 'Enregistré dans {path}',
     intgCopied: 'Copié',
     intgCliEphemeral:
-      "Glissez d'abord GenOffice dans Applications, puis utilisez la ligne de commande.",
+      "Glissez d'abord SelfOffice dans Applications, puis utilisez la ligne de commande.",
     intgCopyPath: 'Copier le chemin',
     intgCliNeedsUpdate:
-      'Ce skill requiert la ligne de commande {v} ou plus récente ; mettez GenOffice à jour.',
+      'Ce skill requiert la ligne de commande {v} ou plus récente ; mettez SelfOffice à jour.',
     intgLoading: 'Vérification…',
     intgUpdateDue: 'Mise à jour du skill disponible',
     setSecAiModel: 'Modèle IA',
@@ -3418,7 +3424,8 @@ export const strings = {
       'À renseigner uniquement pour une installation personnalisée ; sinon, détection automatique.',
     setAiCodexAutoPlaceholder: 'Détection auto (recommandé)',
     setAiCodexHint: 'Utilise le CLI Codex connecté localement ; aucune clé API requise.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Enregistrer',
     setAiSaved: 'Enregistré',
     setAiTest: 'Tester la connexion',
@@ -3448,14 +3455,14 @@ export const strings = {
       "La clé et l'URL de base d'un fournisseur sont partagées entre les capacités ; saisissez-les une seule fois.",
     setGithub: 'Open source',
     starOnGitHub: 'Mettre une étoile sur GitHub',
-    starPromptTitle: 'GenOffice vous plaît ?',
-    starPromptTitleN: 'Vous avez ouvert {n} documents avec GenOffice',
+    starPromptTitle: 'SelfOffice vous plaît ?',
+    starPromptTitleN: 'Vous avez ouvert {n} documents avec SelfOffice',
     starPromptBody:
-      'GenOffice est gratuit et open source. Une étoile sur GitHub est le meilleur moyen de soutenir l’équipe.',
+      'SelfOffice est gratuit et open source. Une étoile sur GitHub est le meilleur moyen de soutenir l’équipe.',
     starPromptGo: 'Mettre une étoile',
     starPromptDone: 'Déjà fait',
     starPromptLater: 'Plus tard',
-    onbStarHint: 'Si GenOffice vous plaît, mettez-nous une étoile sur GitHub.',
+    onbStarHint: 'Si SelfOffice vous plaît, mettez-nous une étoile sur GitHub.',
     setEmail: 'E-mail',
     setNotLoggedIn: 'Non connecté',
     setViewUsage: "Voir l'utilisation",
@@ -3470,7 +3477,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Nouvel onglet',
     // First-run onboarding
-    onbTitle1: 'Bienvenue dans GenOffice',
+    onbTitle1: 'Bienvenue dans SelfOffice',
     onbSubtitle1: 'La première suite bureautique open source et native IA',
     onbBody1:
       'Créez des documents, des feuilles de calcul et des présentations, et relisez des PDF. L’IA est intégrée à chaque étape.',
@@ -3482,7 +3489,7 @@ export const strings = {
     onbBody3: 'Pas de licence. Pas de publicité. Pas de filigrane.',
     onbBack: 'Retour',
     intgSkillsDesc:
-      'GenOffice n’utilise que les compétences de son propre dossier. Importer un dossier ou un zip copie toute la compétence ; rien ne s’exécute à l’import.',
+      'SelfOffice n’utilise que les compétences de son propre dossier. Importer un dossier ou un zip copie toute la compétence ; rien ne s’exécute à l’import.',
     intgSkillsEmpty: 'Aucune compétence installée.',
     intgSkillsImportFolder: 'Importer un dossier…',
     intgSkillsImportZip: 'Importer un paquet de compétence (zip / .md)…',
@@ -3492,7 +3499,7 @@ export const strings = {
     intgSkillsImportFailed: 'Échec de l’import : {reason}',
     intgSkillsRemove: 'Supprimer',
     intgSkillsRemoveConfirm:
-      'Supprimer la compétence « {name} » ? Son dossier sera supprimé de GenOffice.',
+      'Supprimer la compétence « {name} » ? Son dossier sera supprimé de SelfOffice.',
     intgSkillsRemoved: '{name} supprimée',
     intgSkillsRead: 'Détails',
     intgSkillsMine: 'Mes compétences',
@@ -3746,7 +3753,7 @@ export const strings = {
     setUpdateRestart: 'Neustarten & installieren',
     setAutoUpdateCheck: 'Automatisch nach Updates suchen',
     setAutoUpdateCheckDesc:
-      'Wenn aus, sucht GenOffice weder beim Start noch im Hintergrund nach neuen Versionen. Über Hilfe › Nach Updates suchen können Sie weiterhin selbst prüfen.',
+      'Wenn aus, sucht SelfOffice weder beim Start noch im Hintergrund nach neuen Versionen. Über Hilfe › Nach Updates suchen können Sie weiterhin selbst prüfen.',
     updateChannel: 'Update-Kanal',
     channelStable: 'Stabil',
     channelBeta: 'Beta',
@@ -3759,7 +3766,7 @@ export const strings = {
     saveLocation: 'Speicherort',
     setRestoreSession: 'Dokumente vom letzten Mal wieder öffnen',
     setRestoreSessionDesc:
-      'Dokumente, die beim Schließen von GenOffice geöffnet waren, werden beim nächsten Start automatisch wieder geöffnet.',
+      'Dokumente, die beim Schließen von SelfOffice geöffnet waren, werden beim nächsten Start automatisch wieder geöffnet.',
     setTabSleep: 'Inaktive Tabs schlafen legen',
     setTabSleepDesc:
       'Sind viele Tabs offen, geben länger nicht angesehene ihren Speicher frei und öffnen ihre Datei bei der Rückkehr neu. Tabs mit ungespeicherten Änderungen oder angeheftete Tabs schlafen nie.',
@@ -3789,8 +3796,8 @@ export const strings = {
     aiFontSizeCustom: 'Benutzerdefiniert',
     setAiSpellcheck: 'Rechtschreibprüfung im KI-Chat',
     setDefaultApp: 'Standard-App für Office-Dokumente',
-    setDefaultAppDesc: '.docx-, .xlsx- und .pptx-Dateien per Doppelklick in GenOffice öffnen.',
-    setDefaultAppIs: 'GenOffice ist bereits die Standard-App.',
+    setDefaultAppDesc: '.docx-, .xlsx- und .pptx-Dateien per Doppelklick in SelfOffice öffnen.',
+    setDefaultAppIs: 'SelfOffice ist bereits die Standard-App.',
     setDefaultAppOther: 'Aktueller Standard: {app}',
     setDefaultAppSet: 'Als Standard festlegen',
     setDefaultAppOpenSettings: 'Systemeinstellungen öffnen',
@@ -3836,7 +3843,7 @@ export const strings = {
     setSecAbout: 'Über',
     setSecIntegrations: 'Integrationen',
     setSecSkills: 'Skills',
-    intgHeroTitle: 'GenOffice aus Ihrem KI-Assistenten nutzen',
+    intgHeroTitle: 'SelfOffice aus Ihrem KI-Assistenten nutzen',
     intgHeroDesc:
       'Einmal verbunden, können Claude Code, Codex, Cursor, Claude Desktop und ähnliche Assistenten Word-, Excel-, PowerPoint-, PDF- und Markdown-Dateien für Sie erstellen, konvertieren, lesen und bearbeiten. Alles läuft auf diesem Rechner; nichts wird hochgeladen.',
     intgHeroStep1: 'Weg wählen: CLI, wenn der Assistent Terminalbefehle ausführen kann, sonst MCP',
@@ -3846,7 +3853,7 @@ export const strings = {
     intgStep1Desc:
       'Es werden nur Assistenten angezeigt, die auf diesem Rechner gefunden wurden. Installieren Sie ihn in dem, den Sie tatsächlich nutzen; Sie brauchen nicht alle.',
     intgStep1Update:
-      'Bringt ein GenOffice-Update einen neueren Skill mit, erscheint neben diesem Assistenten ein Aktualisieren-Button.',
+      'Bringt ein SelfOffice-Update einen neueren Skill mit, erscheint neben diesem Assistenten ein Aktualisieren-Button.',
     intgSkillVersion: 'Skill {v}',
     intgStateMissing: 'Skill nicht installiert',
     intgStateInstalled: 'Skill {v} installiert · ab dem nächsten Chat bereit',
@@ -3855,7 +3862,7 @@ export const strings = {
       'Wählen Sie genau einen dieser drei Wege. Alle installieren denselben Skill, mehr als einer ist nicht nötig.',
     intgOtherFolderTitle: 'Jeder Assistent, der SKILL.md-Ordner liest',
     intgOtherFolderDesc:
-      'Wählen Sie seinen Skills-Ordner, und GenOffice schreibt die Datei dorthin.',
+      'Wählen Sie seinen Skills-Ordner, und SelfOffice schreibt die Datei dorthin.',
     intgOtherZipTitle: 'Datei an den Assistenten übergeben',
     intgOtherZipDesc:
       'Speichern Sie den Skill als Zip und bitten Sie den Assistenten, ihn zu installieren.',
@@ -3869,23 +3876,23 @@ export const strings = {
       'Öffnen Sie nach der Installation einen neuen Chat in Ihrem Assistenten und fragen Sie in normalen Worten, zum Beispiel:',
     intgExample1: 'Mach aus ~/Downloads/report.md ein Word-Dokument',
     intgExample2: 'Erstelle eine Präsentation mit 6 Folien zu unseren Q3-Ergebnissen',
-    intgExample3: 'Wandle budget.xlsx in PDF um und öffne es in GenOffice',
+    intgExample3: 'Wandle budget.xlsx in PDF um und öffne es in SelfOffice',
     intgStep2Note:
-      'Der Assistent ruft die genoffice-Befehlszeile selbst auf; Sie müssen sie nie eintippen.',
+      'Der Assistent ruft die selfoffice-Befehlszeile selbst auf; Sie müssen sie nie eintippen.',
     intgCliPartTitle: 'CLI · Kommandozeile + Skill',
     intgCliPartDesc:
-      'Für Assistenten, die Terminalbefehle ausführen können (Claude Code, Codex, Cursor u. a.). Nach der Installation des Skills ruft der Assistent die genoffice-Kommandozeile selbst auf, um Dateien zu erstellen, zu konvertieren, zu lesen und zu bearbeiten; Sie tippen nie einen Befehl.',
+      'Für Assistenten, die Terminalbefehle ausführen können (Claude Code, Codex, Cursor u. a.). Nach der Installation des Skills ruft der Assistent die selfoffice-Kommandozeile selbst auf, um Dateien zu erstellen, zu konvertieren, zu lesen und zu bearbeiten; Sie tippen nie einen Befehl.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP ist das gemeinsame Protokoll, über das KI-Assistenten externe Werkzeuge aufrufen. Nutzen Sie es, wenn der Assistent keine Befehle ausführen kann (z. B. Claude Desktop) oder wenn er das GenOffice-Fenster direkt steuern soll. Wählen Sie einen der beiden Wege unten.',
+      'MCP ist das gemeinsame Protokoll, über das KI-Assistenten externe Werkzeuge aufrufen. Nutzen Sie es, wenn der Assistent keine Befehle ausführen kann (z. B. Claude Desktop) oder wenn er das SelfOffice-Fenster direkt steuern soll. Wählen Sie einen der beiden Wege unten.',
     intgMcpStdioTitle: 'Vom Assistenten gestartet (empfohlen)',
     intgMcpStdioDesc:
-      'Der Assistent startet genoffice mcp selbst: hier ist nichts einzuschalten, und GenOffice muss nicht geöffnet sein. Gleicher Funktionsumfang wie die CLI.',
+      'Der Assistent startet selfoffice mcp selbst: hier ist nichts einzuschalten, und SelfOffice muss nicht geöffnet sein. Gleicher Funktionsumfang wie die CLI.',
     intgMcpHttpTitle: 'Lokaler HTTP-Server',
     intgMcpHttpDesc:
-      'Läuft in GenOffice; der Assistent verbindet sich über eine URL, und Sie sehen im Word-Editor zu, wie das Dokument Schritt für Schritt entsteht. GenOffice muss geöffnet bleiben; derzeit nur Word-Dokumente.',
+      'Läuft in SelfOffice; der Assistent verbindet sich über eine URL, und Sie sehen im Word-Editor zu, wie das Dokument Schritt für Schritt entsteht. SelfOffice muss geöffnet bleiben; derzeit nur Word-Dokumente.',
     intgMcpHttpAdvanced: 'Erweitert: weitere Adressen und Protokoll',
-    intgMcpTryNote: 'Der Assistent ruft GenOffice über MCP auf; Sie tippen nie einen Befehl.',
+    intgMcpTryNote: 'Der Assistent ruft SelfOffice über MCP auf; Sie tippen nie einen Befehl.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Einmal im Terminal ausführen:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop oder ein anderer MCP-fähiger Assistent',
@@ -3893,10 +3900,10 @@ export const strings = {
       'Fügen Sie dies in seine MCP-Server-Konfiguration ein (eine JSON-Datei oder „MCP-Server hinzufügen“ in den Einstellungen):',
     intgMcpNote:
       'Skill und MCP können nebeneinander eingerichtet sein; der Assistent wählt eines. Beide tun genau dasselbe.',
-    intgCliTitle: 'Erweitert: Befehlszeile genoffice',
-    intgCliReady: 'genoffice {v} · im Terminal verfügbar ({path})',
+    intgCliTitle: 'Erweitert: Befehlszeile selfoffice',
+    intgCliReady: 'selfoffice {v} · im Terminal verfügbar ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · nicht im PATH Ihres Terminals. Assistenten finden es trotzdem über ~/.genoffice/launcher, der Skill funktioniert also. Um genoffice selbst einzugeben, führen Sie dies einmal aus:',
+      'selfoffice {v} · nicht im PATH Ihres Terminals. Assistenten finden es trotzdem über ~/.selfoffice/launcher, der Skill funktioniert also. Um selfoffice selbst einzugeben, führen Sie dies einmal aus:',
     intgCliLauncher: 'Launcher-Ordner',
     intgStateOutdated: 'Installiert {v}, Update auf {next} verfügbar',
     intgStateModified: 'Installiert {v} (geändert)',
@@ -3921,10 +3928,10 @@ export const strings = {
     intgSavedTo: 'Gespeichert unter {path}',
     intgCopied: 'Kopiert',
     intgCliEphemeral:
-      'Ziehen Sie GenOffice zuerst in „Programme“, dann nutzen Sie die Befehlszeile.',
+      'Ziehen Sie SelfOffice zuerst in „Programme“, dann nutzen Sie die Befehlszeile.',
     intgCopyPath: 'Pfad kopieren',
     intgCliNeedsUpdate:
-      'Dieser Skill braucht Befehlszeile {v} oder neuer; aktualisieren Sie GenOffice.',
+      'Dieser Skill braucht Befehlszeile {v} oder neuer; aktualisieren Sie SelfOffice.',
     intgLoading: 'Prüfe …',
     intgUpdateDue: 'Skill-Update verfügbar',
     setSecAiModel: 'KI-Modell',
@@ -3945,7 +3952,8 @@ export const strings = {
       'Nur bei einer benutzerdefinierten Installation angeben; leer lassen für automatische Erkennung.',
     setAiCodexAutoPlaceholder: 'Automatisch erkennen (empfohlen)',
     setAiCodexHint: 'Verwendet die lokal angemeldete Codex CLI; kein API-Schlüssel nötig.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Speichern',
     setAiSaved: 'Gespeichert',
     setAiTest: 'Verbindung testen',
@@ -3973,14 +3981,14 @@ export const strings = {
       'Schlüssel und Base URL eines Anbieters gelten für alle Fähigkeiten; einmal eintragen genügt.',
     setGithub: 'Open Source',
     starOnGitHub: 'Auf GitHub Stern geben',
-    starPromptTitle: 'Gefällt Ihnen GenOffice?',
-    starPromptTitleN: 'Sie haben {n} Dokumente mit GenOffice geöffnet',
+    starPromptTitle: 'Gefällt Ihnen SelfOffice?',
+    starPromptTitleN: 'Sie haben {n} Dokumente mit SelfOffice geöffnet',
     starPromptBody:
-      'GenOffice ist kostenlos und Open Source. Ein Stern auf GitHub ist die beste Unterstützung für das Team.',
+      'SelfOffice ist kostenlos und Open Source. Ein Stern auf GitHub ist die beste Unterstützung für das Team.',
     starPromptGo: 'Stern geben',
     starPromptDone: 'Schon erledigt',
     starPromptLater: 'Später',
-    onbStarHint: 'Wenn Ihnen GenOffice gefällt, geben Sie uns einen Stern auf GitHub.',
+    onbStarHint: 'Wenn Ihnen SelfOffice gefällt, geben Sie uns einen Stern auf GitHub.',
     setEmail: 'E-Mail',
     setNotLoggedIn: 'Nicht angemeldet',
     setViewUsage: 'Verbrauch anzeigen',
@@ -3995,7 +4003,7 @@ export const strings = {
     appMenu: 'Menü',
     newTab: 'Neuer Tab',
     // First-run onboarding
-    onbTitle1: 'Willkommen bei GenOffice',
+    onbTitle1: 'Willkommen bei SelfOffice',
     onbSubtitle1: 'Die erste quelloffene, KI-native Office-Suite',
     onbBody1:
       'Dokumente erstellen, Tabellen bauen, Präsentationen gestalten und PDFs prüfen. KI ist in jedem Schritt integriert.',
@@ -4007,7 +4015,7 @@ export const strings = {
     onbBody3: 'Keine Lizenzgebühren. Keine Werbung. Keine Wasserzeichen.',
     onbBack: 'Zurück',
     intgSkillsDesc:
-      'GenOffice verwendet nur Skills aus seinem eigenen Skills-Ordner. Der Import eines Ordners oder einer ZIP kopiert den ganzen Skill; beim Import wird nichts ausgeführt.',
+      'SelfOffice verwendet nur Skills aus seinem eigenen Skills-Ordner. Der Import eines Ordners oder einer ZIP kopiert den ganzen Skill; beim Import wird nichts ausgeführt.',
     intgSkillsEmpty: 'Noch keine Skills installiert.',
     intgSkillsImportFolder: 'Ordner importieren…',
     intgSkillsImportZip: 'Skill-Paket importieren (ZIP / .md)…',
@@ -4016,7 +4024,7 @@ export const strings = {
     intgSkillsImportDone: '{name} importiert',
     intgSkillsImportFailed: 'Import fehlgeschlagen: {reason}',
     intgSkillsRemove: 'Entfernen',
-    intgSkillsRemoveConfirm: 'Skill „{name}“ entfernen? Sein Ordner wird aus GenOffice gelöscht.',
+    intgSkillsRemoveConfirm: 'Skill „{name}“ entfernen? Sein Ordner wird aus SelfOffice gelöscht.',
     intgSkillsRemoved: '{name} entfernt',
     intgSkillsRead: 'Details',
     intgSkillsMine: 'Meine Skills',
@@ -4267,7 +4275,7 @@ export const strings = {
     setUpdateRestart: 'Reiniciar e instalar',
     setAutoUpdateCheck: 'Buscar actualizaciones automáticamente',
     setAutoUpdateCheckDesc:
-      'Si está desactivado, GenOffice deja de buscar nuevas versiones al iniciar y en segundo plano. Puede seguir comprobándolo en Ayuda › Buscar actualizaciones.',
+      'Si está desactivado, SelfOffice deja de buscar nuevas versiones al iniciar y en segundo plano. Puede seguir comprobándolo en Ayuda › Buscar actualizaciones.',
     updateChannel: 'Canal de actualización',
     channelStable: 'Estable',
     channelBeta: 'Beta',
@@ -4280,7 +4288,7 @@ export const strings = {
     saveLocation: 'Ubicación de guardado',
     setRestoreSession: 'Volver a abrir los documentos de la última vez',
     setRestoreSessionDesc:
-      'Los documentos abiertos al cerrar GenOffice se vuelven a abrir automáticamente la próxima vez que se inicie.',
+      'Los documentos abiertos al cerrar SelfOffice se vuelven a abrir automáticamente la próxima vez que se inicie.',
     setTabSleep: 'Suspender pestañas inactivas',
     setTabSleepDesc:
       'Con muchas pestañas abiertas, las que no has mirado durante un tiempo liberan su memoria y vuelven a abrir el archivo al regresar. Las pestañas con cambios sin guardar o fijadas nunca se suspenden.',
@@ -4310,8 +4318,8 @@ export const strings = {
     aiFontSizeCustom: 'Personalizado',
     setAiSpellcheck: 'Corrección ortográfica en el chat de IA',
     setDefaultApp: 'App predeterminada para documentos de Office',
-    setDefaultAppDesc: 'Abrir archivos .docx, .xlsx y .pptx en GenOffice al hacer doble clic.',
-    setDefaultAppIs: 'GenOffice ya es la app predeterminada.',
+    setDefaultAppDesc: 'Abrir archivos .docx, .xlsx y .pptx en SelfOffice al hacer doble clic.',
+    setDefaultAppIs: 'SelfOffice ya es la app predeterminada.',
     setDefaultAppOther: 'Predeterminada actual: {app}',
     setDefaultAppSet: 'Establecer como predeterminada',
     setDefaultAppOpenSettings: 'Abrir ajustes del sistema',
@@ -4358,7 +4366,7 @@ export const strings = {
     setSecAbout: 'Acerca de',
     setSecIntegrations: 'Integraciones',
     setSecSkills: 'Habilidades',
-    intgHeroTitle: 'Usa GenOffice desde tu asistente de IA',
+    intgHeroTitle: 'Usa SelfOffice desde tu asistente de IA',
     intgHeroDesc:
       'Una vez conectados, Claude Code, Codex, Cursor, Claude Desktop y asistentes similares pueden crear, convertir, leer y editar archivos Word, Excel, PowerPoint, PDF y Markdown por ti. Todo ocurre en este equipo; no se sube nada.',
     intgHeroStep1:
@@ -4369,7 +4377,7 @@ export const strings = {
     intgStep1Desc:
       'Solo se muestran los asistentes encontrados en este equipo. Instálalo en el que realmente usas; no necesitas todos.',
     intgStep1Update:
-      'Cuando una actualización de GenOffice traiga un skill más nuevo, aparecerá un botón Actualizar junto a ese asistente.',
+      'Cuando una actualización de SelfOffice traiga un skill más nuevo, aparecerá un botón Actualizar junto a ese asistente.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill no instalado',
     intgStateInstalled: 'Skill {v} instalado · listo en tu próximo chat',
@@ -4377,7 +4385,7 @@ export const strings = {
     intgOtherDesc:
       'Elige solo una de estas tres formas. Todas instalan el mismo skill, así que no hace falta hacer más de una.',
     intgOtherFolderTitle: 'Cualquier asistente que lea carpetas SKILL.md',
-    intgOtherFolderDesc: 'Elige su carpeta de skills y GenOffice escribe el archivo ahí.',
+    intgOtherFolderDesc: 'Elige su carpeta de skills y SelfOffice escribe el archivo ahí.',
     intgOtherZipTitle: 'Entrega el archivo al asistente',
     intgOtherZipDesc: 'Guarda el skill como zip y pide al asistente que lo instale.',
     intgOtherNpxTitle: 'Con el comando skills (requiere Node.js)',
@@ -4389,23 +4397,23 @@ export const strings = {
       'Una vez instalado, abre un chat nuevo en tu asistente y pídelo con tus palabras, por ejemplo:',
     intgExample1: 'Convierte ~/Downloads/report.md en un documento de Word',
     intgExample2: 'Haz una presentación de 6 diapositivas sobre nuestros resultados del T3',
-    intgExample3: 'Convierte budget.xlsx a PDF y ábrelo en GenOffice',
+    intgExample3: 'Convierte budget.xlsx a PDF y ábrelo en SelfOffice',
     intgStep2Note:
-      'El asistente ejecuta la línea de comandos genoffice por sí mismo; nunca tienes que escribirla.',
+      'El asistente ejecuta la línea de comandos selfoffice por sí mismo; nunca tienes que escribirla.',
     intgCliPartTitle: 'CLI · línea de comandos + skill',
     intgCliPartDesc:
-      'Para asistentes que pueden ejecutar comandos de terminal (Claude Code, Codex, Cursor y otros). Con el skill instalado, el asistente llama por sí mismo a la línea de comandos genoffice para crear, convertir, leer y editar archivos; nunca escribes un comando.',
+      'Para asistentes que pueden ejecutar comandos de terminal (Claude Code, Codex, Cursor y otros). Con el skill instalado, el asistente llama por sí mismo a la línea de comandos selfoffice para crear, convertir, leer y editar archivos; nunca escribes un comando.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP es el protocolo común con el que los asistentes de IA llaman a herramientas externas. Úsalo cuando tu asistente no pueda ejecutar comandos (Claude Desktop, por ejemplo) o cuando quieras que controle directamente la ventana de GenOffice. Elige una de las dos formas de abajo.',
+      'MCP es el protocolo común con el que los asistentes de IA llaman a herramientas externas. Úsalo cuando tu asistente no pueda ejecutar comandos (Claude Desktop, por ejemplo) o cuando quieras que controle directamente la ventana de SelfOffice. Elige una de las dos formas de abajo.',
     intgMcpStdioTitle: 'Iniciado por el asistente (recomendado)',
     intgMcpStdioDesc:
-      'El asistente lanza genoffice mcp por sí mismo: nada que activar aquí, y GenOffice no necesita estar abierto. Mismas funciones que la CLI.',
+      'El asistente lanza selfoffice mcp por sí mismo: nada que activar aquí, y SelfOffice no necesita estar abierto. Mismas funciones que la CLI.',
     intgMcpHttpTitle: 'Servidor HTTP local',
     intgMcpHttpDesc:
-      'Se ejecuta dentro de GenOffice; el asistente se conecta a una URL y puedes ver cómo construye el documento paso a paso en el editor de Word. GenOffice debe permanecer abierto; por ahora solo documentos Word.',
+      'Se ejecuta dentro de SelfOffice; el asistente se conecta a una URL y puedes ver cómo construye el documento paso a paso en el editor de Word. SelfOffice debe permanecer abierto; por ahora solo documentos Word.',
     intgMcpHttpAdvanced: 'Avanzado: otras direcciones y registro',
-    intgMcpTryNote: 'El asistente llama a GenOffice a través de MCP; nunca escribes un comando.',
+    intgMcpTryNote: 'El asistente llama a SelfOffice a través de MCP; nunca escribes un comando.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Ejecuta esto una vez en una terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop o cualquier otro asistente compatible con MCP',
@@ -4413,10 +4421,10 @@ export const strings = {
       'Añade esto a su configuración de servidores MCP (un archivo JSON, o «Añadir servidor MCP» en sus ajustes):',
     intgMcpNote:
       'El skill y MCP pueden convivir; el asistente elige uno. Ambos hacen exactamente lo mismo.',
-    intgCliTitle: 'Avanzado: línea de comandos genoffice',
-    intgCliReady: 'genoffice {v} · listo en tu terminal ({path})',
+    intgCliTitle: 'Avanzado: línea de comandos selfoffice',
+    intgCliReady: 'selfoffice {v} · listo en tu terminal ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · no está en el PATH de tu terminal. Los asistentes lo encuentran igualmente mediante ~/.genoffice/launcher, así que el skill funciona. Para escribir genoffice tú mismo, ejecuta esto una vez:',
+      'selfoffice {v} · no está en el PATH de tu terminal. Los asistentes lo encuentran igualmente mediante ~/.selfoffice/launcher, así que el skill funciona. Para escribir selfoffice tú mismo, ejecuta esto una vez:',
     intgCliLauncher: 'Carpeta del lanzador',
     intgStateOutdated: 'Instalado {v}, actualización a {next} disponible',
     intgStateModified: 'Instalado {v} (modificado)',
@@ -4440,10 +4448,11 @@ export const strings = {
     intgSaveZipTitle: 'Guardar skill',
     intgSavedTo: 'Guardado en {path}',
     intgCopied: 'Copiado',
-    intgCliEphemeral: 'Arrastra primero GenOffice a Aplicaciones y luego usa la línea de comandos.',
+    intgCliEphemeral:
+      'Arrastra primero SelfOffice a Aplicaciones y luego usa la línea de comandos.',
     intgCopyPath: 'Copiar ruta',
     intgCliNeedsUpdate:
-      'Este skill necesita la línea de comandos {v} o superior; actualiza GenOffice.',
+      'Este skill necesita la línea de comandos {v} o superior; actualiza SelfOffice.',
     intgLoading: 'Comprobando…',
     intgUpdateDue: 'Actualización del skill disponible',
     setSecAiModel: 'Modelo de IA',
@@ -4464,7 +4473,8 @@ export const strings = {
       'Indícalo solo para una instalación personalizada; déjalo vacío para detectarlo automáticamente.',
     setAiCodexAutoPlaceholder: 'Detección automática (recomendado)',
     setAiCodexHint: 'Usa la CLI de Codex con sesión local; no se necesita clave de API.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Guardar',
     setAiSaved: 'Guardado',
     setAiTest: 'Probar conexión',
@@ -4492,14 +4502,14 @@ export const strings = {
       'La clave y la URL base de un proveedor se comparten entre capacidades; introdúcelas una sola vez.',
     setGithub: 'Código abierto',
     starOnGitHub: 'Dar una estrella en GitHub',
-    starPromptTitle: '¿Te gusta GenOffice?',
-    starPromptTitleN: 'Has abierto {n} documentos con GenOffice',
+    starPromptTitle: '¿Te gusta SelfOffice?',
+    starPromptTitleN: 'Has abierto {n} documentos con SelfOffice',
     starPromptBody:
-      'GenOffice es gratuito y de código abierto. Una estrella en GitHub es la mejor forma de apoyar al equipo.',
+      'SelfOffice es gratuito y de código abierto. Una estrella en GitHub es la mejor forma de apoyar al equipo.',
     starPromptGo: 'Dar una estrella',
     starPromptDone: 'Ya la di',
     starPromptLater: 'Más tarde',
-    onbStarHint: 'Si te gusta GenOffice, danos una estrella en GitHub.',
+    onbStarHint: 'Si te gusta SelfOffice, danos una estrella en GitHub.',
     setEmail: 'Correo electrónico',
     setNotLoggedIn: 'Sesión no iniciada',
     setViewUsage: 'Ver uso',
@@ -4514,7 +4524,7 @@ export const strings = {
     appMenu: 'Menú',
     newTab: 'Nueva pestaña',
     // First-run onboarding
-    onbTitle1: 'Bienvenido a GenOffice',
+    onbTitle1: 'Bienvenido a SelfOffice',
     onbSubtitle1: 'La primera suite ofimática de código abierto y nativa de IA',
     onbBody1:
       'Crea documentos, hojas de cálculo y presentaciones, y revisa PDF. La IA está integrada en cada paso.',
@@ -4526,7 +4536,7 @@ export const strings = {
     onbBody3: 'Sin licencias. Sin anuncios. Sin marcas de agua.',
     onbBack: 'Atrás',
     intgSkillsDesc:
-      'GenOffice solo usa habilidades de su propia carpeta. Importar una carpeta o un zip copia la habilidad completa; nada se ejecuta al importar.',
+      'SelfOffice solo usa habilidades de su propia carpeta. Importar una carpeta o un zip copia la habilidad completa; nada se ejecuta al importar.',
     intgSkillsEmpty: 'Aún no hay habilidades instaladas.',
     intgSkillsImportFolder: 'Importar carpeta…',
     intgSkillsImportZip: 'Importar paquete de habilidad (zip / .md)…',
@@ -4535,7 +4545,8 @@ export const strings = {
     intgSkillsImportDone: '{name} importada',
     intgSkillsImportFailed: 'Error al importar: {reason}',
     intgSkillsRemove: 'Quitar',
-    intgSkillsRemoveConfirm: '¿Quitar la habilidad "{name}"? Su carpeta se eliminará de GenOffice.',
+    intgSkillsRemoveConfirm:
+      '¿Quitar la habilidad "{name}"? Su carpeta se eliminará de SelfOffice.',
     intgSkillsRemoved: '{name} quitada',
     intgSkillsRead: 'Detalles',
     intgSkillsMine: 'Mis habilidades',
@@ -4782,7 +4793,7 @@ export const strings = {
     setUpdateRestart: 'รีสตาร์ตและติดตั้ง',
     setAutoUpdateCheck: 'ตรวจหาอัปเดตโดยอัตโนมัติ',
     setAutoUpdateCheckDesc:
-      'เมื่อปิด GenOffice จะไม่ตรวจหาเวอร์ชันใหม่ตอนเปิดโปรแกรมหรือในเบื้องหลัง คุณยังตรวจเองได้จาก วิธีใช้ › ตรวจหาการอัปเดต',
+      'เมื่อปิด SelfOffice จะไม่ตรวจหาเวอร์ชันใหม่ตอนเปิดโปรแกรมหรือในเบื้องหลัง คุณยังตรวจเองได้จาก วิธีใช้ › ตรวจหาการอัปเดต',
     updateChannel: 'ช่องทางอัปเดต',
     channelStable: 'เสถียร',
     channelBeta: 'เบต้า',
@@ -4795,7 +4806,7 @@ export const strings = {
     saveLocation: 'ตำแหน่งบันทึก',
     setRestoreSession: 'เปิดเอกสารจากครั้งที่แล้วอีกครั้ง',
     setRestoreSessionDesc:
-      'เอกสารที่เปิดอยู่ตอนปิด GenOffice จะเปิดขึ้นอีกครั้งโดยอัตโนมัติเมื่อเริ่มโปรแกรมครั้งถัดไป',
+      'เอกสารที่เปิดอยู่ตอนปิด SelfOffice จะเปิดขึ้นอีกครั้งโดยอัตโนมัติเมื่อเริ่มโปรแกรมครั้งถัดไป',
     setTabSleep: 'พักแท็บที่ไม่ได้ใช้งาน',
     setTabSleepDesc:
       'เมื่อเปิดแท็บจำนวนมาก แท็บที่ไม่ได้ดูสักพักจะคืนหน่วยความจำและเปิดไฟล์ใหม่เมื่อคุณกลับมา แท็บที่มีการเปลี่ยนแปลงที่ยังไม่บันทึกหรือปักหมุดไว้จะไม่พัก',
@@ -4824,8 +4835,8 @@ export const strings = {
     aiFontSizeCustom: 'กำหนดเอง',
     setAiSpellcheck: 'ตรวจการสะกดในแชท AI',
     setDefaultApp: 'แอปเริ่มต้นสำหรับเอกสาร Office',
-    setDefaultAppDesc: 'เปิดไฟล์ .docx, .xlsx และ .pptx ด้วย GenOffice เมื่อดับเบิลคลิก',
-    setDefaultAppIs: 'GenOffice เป็นแอปเริ่มต้นอยู่แล้ว',
+    setDefaultAppDesc: 'เปิดไฟล์ .docx, .xlsx และ .pptx ด้วย SelfOffice เมื่อดับเบิลคลิก',
+    setDefaultAppIs: 'SelfOffice เป็นแอปเริ่มต้นอยู่แล้ว',
     setDefaultAppOther: 'แอปเริ่มต้นปัจจุบัน: {app}',
     setDefaultAppSet: 'ตั้งเป็นค่าเริ่มต้น',
     setDefaultAppOpenSettings: 'เปิดการตั้งค่าระบบ',
@@ -4869,7 +4880,7 @@ export const strings = {
     setSecAbout: 'เกี่ยวกับ',
     setSecIntegrations: 'การเชื่อมต่อ',
     setSecSkills: 'ทักษะ',
-    intgHeroTitle: 'ใช้ GenOffice จากผู้ช่วย AI ของคุณ',
+    intgHeroTitle: 'ใช้ SelfOffice จากผู้ช่วย AI ของคุณ',
     intgHeroDesc:
       'เมื่อเชื่อมต่อแล้ว Claude Code, Codex, Cursor, Claude Desktop และผู้ช่วยลักษณะเดียวกันจะสร้าง แปลง อ่าน และแก้ไขไฟล์ Word, Excel, PowerPoint, PDF และ Markdown แทนคุณได้ ทุกอย่างทำงานบนคอมพิวเตอร์เครื่องนี้ ไม่มีการอัปโหลดใด ๆ',
     intgHeroStep1: 'เลือกวิธี: ใช้ CLI ถ้าผู้ช่วยรันคำสั่งเทอร์มินัลได้ ใช้ MCP ถ้าไม่ได้',
@@ -4879,7 +4890,7 @@ export const strings = {
     intgStep1Desc:
       'แสดงเฉพาะผู้ช่วยที่พบบนคอมพิวเตอร์เครื่องนี้ ติดตั้งเฉพาะตัวที่คุณใช้จริงก็พอ ไม่จำเป็นต้องติดตั้งทั้งหมด',
     intgStep1Update:
-      'เมื่อการอัปเดต GenOffice มาพร้อมสกิลเวอร์ชันใหม่ ปุ่มอัปเดตจะปรากฏข้างผู้ช่วยนั้น',
+      'เมื่อการอัปเดต SelfOffice มาพร้อมสกิลเวอร์ชันใหม่ ปุ่มอัปเดตจะปรากฏข้างผู้ช่วยนั้น',
     intgSkillVersion: 'สกิล {v}',
     intgStateMissing: 'ยังไม่ติดตั้งสกิล',
     intgStateInstalled: 'ติดตั้งสกิล {v} แล้ว · พร้อมใช้ในแชตถัดไป',
@@ -4887,7 +4898,7 @@ export const strings = {
     intgOtherDesc:
       'เลือกเพียงวิธีใดวิธีหนึ่งจากสามวิธีนี้ ทุกวิธีติดตั้งสกิลเดียวกัน จึงไม่ต้องทำมากกว่าหนึ่งวิธี',
     intgOtherFolderTitle: 'ผู้ช่วยใดก็ได้ที่อ่านโฟลเดอร์ SKILL.md',
-    intgOtherFolderDesc: 'เลือกโฟลเดอร์ skills ของผู้ช่วย แล้ว GenOffice จะเขียนไฟล์ลงไป',
+    intgOtherFolderDesc: 'เลือกโฟลเดอร์ skills ของผู้ช่วย แล้ว SelfOffice จะเขียนไฟล์ลงไป',
     intgOtherZipTitle: 'ส่งไฟล์ให้ผู้ช่วย',
     intgOtherZipDesc: 'บันทึกสกิลเป็น zip แล้วขอให้ผู้ช่วยติดตั้งเอง',
     intgOtherNpxTitle: 'ใช้คำสั่ง skills (ต้องมี Node.js)',
@@ -4898,22 +4909,22 @@ export const strings = {
     intgStep2DescBefore: 'เมื่อติดตั้งแล้ว เปิดแชตใหม่ในผู้ช่วยแล้วสั่งด้วยภาษาธรรมดา เช่น:',
     intgExample1: 'แปลง ~/Downloads/report.md เป็นเอกสาร Word',
     intgExample2: 'ทำสไลด์ 6 หน้าเกี่ยวกับผลประกอบการไตรมาส 3 ของเรา',
-    intgExample3: 'แปลง budget.xlsx เป็น PDF แล้วเปิดใน GenOffice',
-    intgStep2Note: 'ผู้ช่วยจะเรียกใช้บรรทัดคำสั่ง genoffice เอง คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
+    intgExample3: 'แปลง budget.xlsx เป็น PDF แล้วเปิดใน SelfOffice',
+    intgStep2Note: 'ผู้ช่วยจะเรียกใช้บรรทัดคำสั่ง selfoffice เอง คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
     intgCliPartTitle: 'CLI · บรรทัดคำสั่ง + skill',
     intgCliPartDesc:
-      'สำหรับผู้ช่วยที่รันคำสั่งเทอร์มินัลได้ (Claude Code, Codex, Cursor และอื่น ๆ) เมื่อติดตั้ง skill แล้ว ผู้ช่วยจะเรียกบรรทัดคำสั่ง genoffice เองเพื่อสร้าง แปลง อ่าน และแก้ไขไฟล์ คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
+      'สำหรับผู้ช่วยที่รันคำสั่งเทอร์มินัลได้ (Claude Code, Codex, Cursor และอื่น ๆ) เมื่อติดตั้ง skill แล้ว ผู้ช่วยจะเรียกบรรทัดคำสั่ง selfoffice เองเพื่อสร้าง แปลง อ่าน และแก้ไขไฟล์ คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP คือโปรโตคอลกลางที่ผู้ช่วย AI ใช้เรียกเครื่องมือภายนอก ใช้เมื่อผู้ช่วยรันคำสั่งไม่ได้ (เช่น Claude Desktop) หรือเมื่อต้องการให้มันควบคุมหน้าต่าง GenOffice โดยตรง เลือกวิธีใดวิธีหนึ่งจากสองวิธีด้านล่าง',
+      'MCP คือโปรโตคอลกลางที่ผู้ช่วย AI ใช้เรียกเครื่องมือภายนอก ใช้เมื่อผู้ช่วยรันคำสั่งไม่ได้ (เช่น Claude Desktop) หรือเมื่อต้องการให้มันควบคุมหน้าต่าง SelfOffice โดยตรง เลือกวิธีใดวิธีหนึ่งจากสองวิธีด้านล่าง',
     intgMcpStdioTitle: 'ให้ผู้ช่วยเป็นผู้เริ่ม (แนะนำ)',
     intgMcpStdioDesc:
-      'ผู้ช่วยจะเรียก genoffice mcp ขึ้นมาเอง ไม่ต้องเปิดสวิตช์ใดที่นี่ และไม่ต้องเปิด GenOffice ไว้ ความสามารถเหมือน CLI ทุกประการ',
+      'ผู้ช่วยจะเรียก selfoffice mcp ขึ้นมาเอง ไม่ต้องเปิดสวิตช์ใดที่นี่ และไม่ต้องเปิด SelfOffice ไว้ ความสามารถเหมือน CLI ทุกประการ',
     intgMcpHttpTitle: 'เซิร์ฟเวอร์ HTTP ในเครื่อง',
     intgMcpHttpDesc:
-      'ทำงานอยู่ใน GenOffice ผู้ช่วยเชื่อมต่อผ่าน URL และคุณจะเห็นเอกสารค่อย ๆ ถูกสร้างขึ้นในตัวแก้ไข Word ต้องเปิด GenOffice ไว้ตลอด ปัจจุบันรองรับเฉพาะ Word',
+      'ทำงานอยู่ใน SelfOffice ผู้ช่วยเชื่อมต่อผ่าน URL และคุณจะเห็นเอกสารค่อย ๆ ถูกสร้างขึ้นในตัวแก้ไข Word ต้องเปิด SelfOffice ไว้ตลอด ปัจจุบันรองรับเฉพาะ Word',
     intgMcpHttpAdvanced: 'ขั้นสูง: ที่อยู่อื่นและบันทึก',
-    intgMcpTryNote: 'ผู้ช่วยจะเรียก GenOffice ผ่าน MCP คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
+    intgMcpTryNote: 'ผู้ช่วยจะเรียก SelfOffice ผ่าน MCP คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'รันคำสั่งนี้ครั้งเดียวในเทอร์มินัล:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop หรือผู้ช่วยอื่นที่รองรับ MCP',
@@ -4921,10 +4932,10 @@ export const strings = {
       'เพิ่มส่วนนี้ลงในการตั้งค่าเซิร์ฟเวอร์ MCP ของผู้ช่วย (ไฟล์ JSON หรือ "เพิ่มเซิร์ฟเวอร์ MCP" ในการตั้งค่า):',
     intgMcpNote:
       'สกิลและ MCP ตั้งค่าไว้พร้อมกันได้ ผู้ช่วยจะเลือกใช้เอง ทั้งสองทำงานเหมือนกันทุกอย่าง',
-    intgCliTitle: 'ขั้นสูง: บรรทัดคำสั่ง genoffice',
-    intgCliReady: 'genoffice {v} · พร้อมใช้ในเทอร์มินัล ({path})',
+    intgCliTitle: 'ขั้นสูง: บรรทัดคำสั่ง selfoffice',
+    intgCliReady: 'selfoffice {v} · พร้อมใช้ในเทอร์มินัล ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · ยังไม่อยู่ใน PATH ของเทอร์มินัล ผู้ช่วยยังหาเจอผ่าน ~/.genoffice/launcher สกิลจึงใช้งานได้ตามปกติ หากต้องการพิมพ์ genoffice เอง ให้รันคำสั่งนี้ครั้งเดียว:',
+      'selfoffice {v} · ยังไม่อยู่ใน PATH ของเทอร์มินัล ผู้ช่วยยังหาเจอผ่าน ~/.selfoffice/launcher สกิลจึงใช้งานได้ตามปกติ หากต้องการพิมพ์ selfoffice เอง ให้รันคำสั่งนี้ครั้งเดียว:',
     intgCliLauncher: 'โฟลเดอร์ตัวเรียกใช้',
     intgStateOutdated: 'ติดตั้งแล้ว {v} อัปเดตเป็น {next} ได้',
     intgStateModified: 'ติดตั้งแล้ว {v} (ถูกแก้ไข)',
@@ -4948,9 +4959,9 @@ export const strings = {
     intgSaveZipTitle: 'บันทึกสกิล',
     intgSavedTo: 'บันทึกไว้ที่ {path}',
     intgCopied: 'คัดลอกแล้ว',
-    intgCliEphemeral: 'กรุณาลาก GenOffice ไปที่ Applications ก่อน แล้วจึงใช้บรรทัดคำสั่ง',
+    intgCliEphemeral: 'กรุณาลาก SelfOffice ไปที่ Applications ก่อน แล้วจึงใช้บรรทัดคำสั่ง',
     intgCopyPath: 'คัดลอกพาธ',
-    intgCliNeedsUpdate: 'สกิลนี้ต้องใช้บรรทัดคำสั่ง {v} หรือใหม่กว่า โปรดอัปเดต GenOffice',
+    intgCliNeedsUpdate: 'สกิลนี้ต้องใช้บรรทัดคำสั่ง {v} หรือใหม่กว่า โปรดอัปเดต SelfOffice',
     intgLoading: 'กำลังตรวจสอบ…',
     intgUpdateDue: 'มีอัปเดตสกิล',
     setSecAiModel: 'โมเดล AI',
@@ -4970,7 +4981,8 @@ export const strings = {
     setAiCodexPathHint: 'กรอกเฉพาะเมื่อติดตั้งแบบกำหนดเอง เว้นว่างไว้เพื่อค้นหาอัตโนมัติ',
     setAiCodexAutoPlaceholder: 'ค้นหาอัตโนมัติ (แนะนำ)',
     setAiCodexHint: 'ใช้ Codex CLI ที่เข้าสู่ระบบไว้ในเครื่อง โดยไม่ต้องใช้คีย์ API',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'บันทึก',
     setAiSaved: 'บันทึกแล้ว',
     setAiTest: 'ทดสอบการเชื่อมต่อ',
@@ -4998,14 +5010,14 @@ export const strings = {
       'คีย์และ Base URL ของผู้ให้บริการเดียวกันใช้ร่วมกันทุกความสามารถ กรอกครั้งเดียวพอ',
     setGithub: 'โอเพนซอร์ส',
     starOnGitHub: 'กดดาวบน GitHub',
-    starPromptTitle: 'ชอบ GenOffice ไหม?',
-    starPromptTitleN: 'คุณเปิดเอกสารด้วย GenOffice ไปแล้ว {n} ไฟล์',
+    starPromptTitle: 'ชอบ SelfOffice ไหม?',
+    starPromptTitleN: 'คุณเปิดเอกสารด้วย SelfOffice ไปแล้ว {n} ไฟล์',
     starPromptBody:
-      'GenOffice ฟรีและเป็นโอเพนซอร์ส การกดดาวบน GitHub คือกำลังใจที่ดีที่สุดสำหรับทีม',
+      'SelfOffice ฟรีและเป็นโอเพนซอร์ส การกดดาวบน GitHub คือกำลังใจที่ดีที่สุดสำหรับทีม',
     starPromptGo: 'กดดาวเลย',
     starPromptDone: 'กดแล้ว',
     starPromptLater: 'ไว้ทีหลัง',
-    onbStarHint: 'ถ้าชอบ GenOffice ฝากกดดาวให้เราบน GitHub ด้วยนะ',
+    onbStarHint: 'ถ้าชอบ SelfOffice ฝากกดดาวให้เราบน GitHub ด้วยนะ',
     setEmail: 'อีเมล',
     setNotLoggedIn: 'ยังไม่ได้เข้าสู่ระบบ',
     setViewUsage: 'ดูการใช้งาน',
@@ -5020,7 +5032,7 @@ export const strings = {
     appMenu: 'เมนู',
     newTab: 'แท็บใหม่',
     // First-run onboarding
-    onbTitle1: 'ยินดีต้อนรับสู่ GenOffice',
+    onbTitle1: 'ยินดีต้อนรับสู่ SelfOffice',
     onbSubtitle1: 'ชุดโปรแกรมออฟฟิศ AI-native โอเพนซอร์สตัวแรก',
     onbBody1: 'สร้างเอกสาร ทำสเปรดชีต สร้างงานนำเสนอ และตรวจทาน PDF ทุกขั้นตอนมี AI ในตัว',
     onbSkip: 'ข้าม',
@@ -5031,7 +5043,7 @@ export const strings = {
     onbBody3: 'ไม่มีค่าลิขสิทธิ์ ไม่มีโฆษณา ไม่มีลายน้ำ',
     onbBack: 'ย้อนกลับ',
     intgSkillsDesc:
-      'GenOffice ใช้เฉพาะทักษะในโฟลเดอร์ทักษะของตัวเอง การนำเข้าจากโฟลเดอร์หรือ zip จะคัดลอกทักษะทั้งชุด และไม่มีสิ่งใดทำงานเมื่อนำเข้า',
+      'SelfOffice ใช้เฉพาะทักษะในโฟลเดอร์ทักษะของตัวเอง การนำเข้าจากโฟลเดอร์หรือ zip จะคัดลอกทักษะทั้งชุด และไม่มีสิ่งใดทำงานเมื่อนำเข้า',
     intgSkillsEmpty: 'ยังไม่ได้ติดตั้งทักษะ',
     intgSkillsImportFolder: 'นำเข้าโฟลเดอร์…',
     intgSkillsImportZip: 'นำเข้าแพ็กเกจทักษะ (zip / .md)…',
@@ -5040,7 +5052,7 @@ export const strings = {
     intgSkillsImportDone: 'นำเข้า {name} แล้ว',
     intgSkillsImportFailed: 'นำเข้าไม่สำเร็จ: {reason}',
     intgSkillsRemove: 'ลบ',
-    intgSkillsRemoveConfirm: 'ลบทักษะ "{name}" หรือไม่ โฟลเดอร์ของทักษะจะถูกลบออกจาก GenOffice',
+    intgSkillsRemoveConfirm: 'ลบทักษะ "{name}" หรือไม่ โฟลเดอร์ของทักษะจะถูกลบออกจาก SelfOffice',
     intgSkillsRemoved: 'ลบ {name} แล้ว',
     intgSkillsRead: 'รายละเอียด',
     intgSkillsMine: 'สกิลของฉัน',
@@ -5287,7 +5299,7 @@ export const strings = {
     setUpdateRestart: 'Mulai ulang & instal',
     setAutoUpdateCheck: 'Periksa pembaruan secara otomatis',
     setAutoUpdateCheckDesc:
-      'Jika dimatikan, GenOffice tidak lagi memeriksa versi baru saat dijalankan atau di latar belakang. Anda tetap bisa memeriksa dari Bantuan › Periksa Pembaruan.',
+      'Jika dimatikan, SelfOffice tidak lagi memeriksa versi baru saat dijalankan atau di latar belakang. Anda tetap bisa memeriksa dari Bantuan › Periksa Pembaruan.',
     updateChannel: 'Saluran Pembaruan',
     channelStable: 'Stabil',
     channelBeta: 'Beta',
@@ -5300,7 +5312,7 @@ export const strings = {
     saveLocation: 'Lokasi penyimpanan',
     setRestoreSession: 'Buka kembali dokumen dari sesi terakhir',
     setRestoreSessionDesc:
-      'Dokumen yang terbuka saat GenOffice ditutup akan dibuka kembali secara otomatis saat dijalankan berikutnya.',
+      'Dokumen yang terbuka saat SelfOffice ditutup akan dibuka kembali secara otomatis saat dijalankan berikutnya.',
     setTabSleep: 'Tidurkan tab tidak aktif',
     setTabSleepDesc:
       'Saat banyak tab terbuka, tab yang lama tidak dilihat melepaskan memorinya dan membuka kembali berkasnya saat Anda kembali. Tab dengan perubahan belum disimpan atau yang disematkan tidak pernah tidur.',
@@ -5330,8 +5342,8 @@ export const strings = {
     aiFontSizeCustom: 'Kustom',
     setAiSpellcheck: 'Pemeriksaan ejaan di obrolan AI',
     setDefaultApp: 'Aplikasi default untuk dokumen Office',
-    setDefaultAppDesc: 'Buka file .docx, .xlsx, dan .pptx di GenOffice saat diklik dua kali.',
-    setDefaultAppIs: 'GenOffice sudah menjadi aplikasi default.',
+    setDefaultAppDesc: 'Buka file .docx, .xlsx, dan .pptx di SelfOffice saat diklik dua kali.',
+    setDefaultAppIs: 'SelfOffice sudah menjadi aplikasi default.',
     setDefaultAppOther: 'Default saat ini: {app}',
     setDefaultAppSet: 'Jadikan default',
     setDefaultAppOpenSettings: 'Buka pengaturan sistem',
@@ -5376,7 +5388,7 @@ export const strings = {
     setSecAbout: 'Tentang',
     setSecIntegrations: 'Integrasi',
     setSecSkills: 'Keterampilan',
-    intgHeroTitle: 'Gunakan GenOffice dari asisten AI Anda',
+    intgHeroTitle: 'Gunakan SelfOffice dari asisten AI Anda',
     intgHeroDesc:
       'Setelah terhubung, Claude Code, Codex, Cursor, Claude Desktop, dan asisten serupa dapat membuat, mengonversi, membaca, dan mengedit file Word, Excel, PowerPoint, PDF, dan Markdown untuk Anda. Semuanya berjalan di komputer ini; tidak ada yang diunggah.',
     intgHeroStep1:
@@ -5387,7 +5399,7 @@ export const strings = {
     intgStep1Desc:
       'Hanya asisten yang ditemukan di komputer ini yang ditampilkan. Pasang ke yang benar-benar Anda pakai; tidak perlu semuanya.',
     intgStep1Update:
-      'Saat pembaruan GenOffice membawa skill yang lebih baru, tombol Perbarui muncul di samping asisten itu.',
+      'Saat pembaruan SelfOffice membawa skill yang lebih baru, tombol Perbarui muncul di samping asisten itu.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill belum terpasang',
     intgStateInstalled: 'Skill {v} terpasang · siap di obrolan berikutnya',
@@ -5395,7 +5407,7 @@ export const strings = {
     intgOtherDesc:
       'Pilih salah satu saja dari tiga cara ini. Semuanya memasang skill yang sama, jadi tidak perlu lebih dari satu.',
     intgOtherFolderTitle: 'Asisten apa pun yang membaca folder SKILL.md',
-    intgOtherFolderDesc: 'Pilih folder skills-nya dan GenOffice menulis file di sana.',
+    intgOtherFolderDesc: 'Pilih folder skills-nya dan SelfOffice menulis file di sana.',
     intgOtherZipTitle: 'Serahkan file ke asisten',
     intgOtherZipDesc: 'Simpan skill sebagai zip, lalu minta asisten memasangnya.',
     intgOtherNpxTitle: 'Dengan perintah skills (butuh Node.js)',
@@ -5407,23 +5419,24 @@ export const strings = {
       'Setelah terpasang, buka obrolan baru di asisten Anda dan minta dengan bahasa biasa, misalnya:',
     intgExample1: 'Ubah ~/Downloads/report.md menjadi dokumen Word',
     intgExample2: 'Buat presentasi 6 slide tentang hasil Q3 kami',
-    intgExample3: 'Konversi budget.xlsx ke PDF dan buka di GenOffice',
+    intgExample3: 'Konversi budget.xlsx ke PDF dan buka di SelfOffice',
     intgStep2Note:
-      'Asisten menjalankan baris perintah genoffice sendiri; Anda tidak perlu mengetiknya.',
+      'Asisten menjalankan baris perintah selfoffice sendiri; Anda tidak perlu mengetiknya.',
     intgCliPartTitle: 'CLI · baris perintah + skill',
     intgCliPartDesc:
-      'Untuk asisten yang bisa menjalankan perintah terminal (Claude Code, Codex, Cursor, dan lainnya). Setelah skill terpasang, asisten memanggil baris perintah genoffice sendiri untuk membuat, mengonversi, membaca, dan mengedit file; Anda tidak pernah mengetik perintah.',
+      'Untuk asisten yang bisa menjalankan perintah terminal (Claude Code, Codex, Cursor, dan lainnya). Setelah skill terpasang, asisten memanggil baris perintah selfoffice sendiri untuk membuat, mengonversi, membaca, dan mengedit file; Anda tidak pernah mengetik perintah.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP adalah protokol umum yang dipakai asisten AI untuk memanggil alat eksternal. Gunakan saat asisten Anda tidak bisa menjalankan perintah (misalnya Claude Desktop) atau saat Anda ingin ia mengendalikan jendela GenOffice secara langsung. Pilih salah satu dari dua cara di bawah.',
+      'MCP adalah protokol umum yang dipakai asisten AI untuk memanggil alat eksternal. Gunakan saat asisten Anda tidak bisa menjalankan perintah (misalnya Claude Desktop) atau saat Anda ingin ia mengendalikan jendela SelfOffice secara langsung. Pilih salah satu dari dua cara di bawah.',
     intgMcpStdioTitle: 'Dijalankan oleh asisten (disarankan)',
     intgMcpStdioDesc:
-      'Asisten menjalankan genoffice mcp sendiri: tidak ada yang perlu dinyalakan di sini, dan GenOffice tidak perlu terbuka. Fitur sama dengan CLI.',
+      'Asisten menjalankan selfoffice mcp sendiri: tidak ada yang perlu dinyalakan di sini, dan SelfOffice tidak perlu terbuka. Fitur sama dengan CLI.',
     intgMcpHttpTitle: 'Server HTTP lokal',
     intgMcpHttpDesc:
-      'Berjalan di dalam GenOffice; asisten terhubung lewat URL dan Anda bisa melihat dokumen dibangun langkah demi langkah di editor Word. GenOffice harus tetap terbuka; untuk saat ini hanya dokumen Word.',
+      'Berjalan di dalam SelfOffice; asisten terhubung lewat URL dan Anda bisa melihat dokumen dibangun langkah demi langkah di editor Word. SelfOffice harus tetap terbuka; untuk saat ini hanya dokumen Word.',
     intgMcpHttpAdvanced: 'Lanjutan: alamat lain dan log',
-    intgMcpTryNote: 'Asisten memanggil GenOffice melalui MCP; Anda tidak pernah mengetik perintah.',
+    intgMcpTryNote:
+      'Asisten memanggil SelfOffice melalui MCP; Anda tidak pernah mengetik perintah.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Jalankan ini sekali di terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop, atau asisten lain yang mendukung MCP',
@@ -5431,10 +5444,10 @@ export const strings = {
       'Tambahkan ini ke pengaturan server MCP miliknya (berkas JSON, atau "Tambah server MCP" di pengaturannya):',
     intgMcpNote:
       'Skill dan MCP bisa dipasang bersamaan; asisten akan memilih salah satu. Keduanya melakukan hal yang sama persis.',
-    intgCliTitle: 'Lanjutan: baris perintah genoffice',
-    intgCliReady: 'genoffice {v} · siap di terminal Anda ({path})',
+    intgCliTitle: 'Lanjutan: baris perintah selfoffice',
+    intgCliReady: 'selfoffice {v} · siap di terminal Anda ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · belum ada di PATH terminal Anda. Asisten tetap menemukannya lewat ~/.genoffice/launcher, jadi skill tetap berfungsi. Untuk mengetik genoffice sendiri, jalankan ini sekali:',
+      'selfoffice {v} · belum ada di PATH terminal Anda. Asisten tetap menemukannya lewat ~/.selfoffice/launcher, jadi skill tetap berfungsi. Untuk mengetik selfoffice sendiri, jalankan ini sekali:',
     intgCliLauncher: 'Folder peluncur',
     intgStateOutdated: 'Terpasang {v}, pembaruan ke {next} tersedia',
     intgStateModified: 'Terpasang {v} (dimodifikasi)',
@@ -5458,10 +5471,10 @@ export const strings = {
     intgSaveZipTitle: 'Simpan skill',
     intgSavedTo: 'Disimpan ke {path}',
     intgCopied: 'Disalin',
-    intgCliEphemeral: 'Seret GenOffice ke Applications dulu, lalu gunakan baris perintah.',
+    intgCliEphemeral: 'Seret SelfOffice ke Applications dulu, lalu gunakan baris perintah.',
     intgCopyPath: 'Salin path',
     intgCliNeedsUpdate:
-      'Skill ini memerlukan baris perintah {v} atau lebih baru; perbarui GenOffice.',
+      'Skill ini memerlukan baris perintah {v} atau lebih baru; perbarui SelfOffice.',
     intgLoading: 'Memeriksa…',
     intgUpdateDue: 'Pembaruan skill tersedia',
     setSecAiModel: 'Model AI',
@@ -5481,7 +5494,8 @@ export const strings = {
     setAiCodexPathHint: 'Isi hanya untuk instalasi khusus; kosongkan agar terdeteksi otomatis.',
     setAiCodexAutoPlaceholder: 'Deteksi otomatis (disarankan)',
     setAiCodexHint: 'Menggunakan Codex CLI yang sudah login secara lokal; tanpa kunci API.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Simpan',
     setAiSaved: 'Tersimpan',
     setAiTest: 'Uji koneksi',
@@ -5509,14 +5523,14 @@ export const strings = {
       'Kunci dan Base URL satu penyedia dipakai bersama oleh semua kemampuan; cukup isi sekali.',
     setGithub: 'Sumber Terbuka',
     starOnGitHub: 'Beri Bintang di GitHub',
-    starPromptTitle: 'Suka GenOffice?',
-    starPromptTitleN: 'Anda telah membuka {n} dokumen dengan GenOffice',
+    starPromptTitle: 'Suka SelfOffice?',
+    starPromptTitleN: 'Anda telah membuka {n} dokumen dengan SelfOffice',
     starPromptBody:
-      'GenOffice gratis dan open source. Bintang di GitHub adalah dukungan terbaik untuk tim kami.',
+      'SelfOffice gratis dan open source. Bintang di GitHub adalah dukungan terbaik untuk tim kami.',
     starPromptGo: 'Beri Bintang',
     starPromptDone: 'Sudah',
     starPromptLater: 'Nanti saja',
-    onbStarHint: 'Jika Anda menyukai GenOffice, beri kami bintang di GitHub.',
+    onbStarHint: 'Jika Anda menyukai SelfOffice, beri kami bintang di GitHub.',
     setEmail: 'Email',
     setNotLoggedIn: 'Belum masuk',
     setViewUsage: 'Lihat penggunaan',
@@ -5531,7 +5545,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Tab baru',
     // First-run onboarding
-    onbTitle1: 'Selamat datang di GenOffice',
+    onbTitle1: 'Selamat datang di SelfOffice',
     onbSubtitle1: 'Suite office open source AI-native pertama',
     onbBody1:
       'Buat dokumen, susun spreadsheet, rancang presentasi, dan tinjau PDF. AI hadir di setiap langkah.',
@@ -5543,7 +5557,7 @@ export const strings = {
     onbBody3: 'Tanpa biaya lisensi. Tanpa iklan. Tanpa watermark.',
     onbBack: 'Kembali',
     intgSkillsDesc:
-      'GenOffice hanya memakai keterampilan di folder keterampilannya sendiri. Mengimpor folder atau zip menyalin seluruh keterampilan; tidak ada yang dijalankan saat impor.',
+      'SelfOffice hanya memakai keterampilan di folder keterampilannya sendiri. Mengimpor folder atau zip menyalin seluruh keterampilan; tidak ada yang dijalankan saat impor.',
     intgSkillsEmpty: 'Belum ada keterampilan terpasang.',
     intgSkillsImportFolder: 'Impor folder…',
     intgSkillsImportZip: 'Impor paket keterampilan (zip / .md)…',
@@ -5552,7 +5566,7 @@ export const strings = {
     intgSkillsImportDone: '{name} diimpor',
     intgSkillsImportFailed: 'Impor gagal: {reason}',
     intgSkillsRemove: 'Hapus',
-    intgSkillsRemoveConfirm: 'Hapus keterampilan "{name}"? Foldernya akan dihapus dari GenOffice.',
+    intgSkillsRemoveConfirm: 'Hapus keterampilan "{name}"? Foldernya akan dihapus dari SelfOffice.',
     intgSkillsRemoved: '{name} dihapus',
     intgSkillsRead: 'Detail',
     intgSkillsMine: 'Skill saya',
@@ -5800,7 +5814,7 @@ export const strings = {
     setUpdateRestart: 'Перезапустить и установить',
     setAutoUpdateCheck: 'Автоматически проверять обновления',
     setAutoUpdateCheckDesc:
-      'Если выключено, GenOffice не проверяет новые версии при запуске и в фоне. Проверить вручную можно через Справка › Проверить обновления.',
+      'Если выключено, SelfOffice не проверяет новые версии при запуске и в фоне. Проверить вручную можно через Справка › Проверить обновления.',
     updateChannel: 'Канал обновлений',
     channelStable: 'Стабильный',
     channelBeta: 'Бета',
@@ -5813,7 +5827,7 @@ export const strings = {
     saveLocation: 'Папка сохранения',
     setRestoreSession: 'Открывать документы прошлого сеанса',
     setRestoreSessionDesc:
-      'Документы, открытые при закрытии GenOffice, автоматически откроются при следующем запуске.',
+      'Документы, открытые при закрытии SelfOffice, автоматически откроются при следующем запуске.',
     setTabSleep: 'Усыплять неактивные вкладки',
     setTabSleepDesc:
       'Когда открыто много вкладок, давно не просматриваемые освобождают память и заново открывают файл при возврате. Вкладки с несохранёнными изменениями и закреплённые не усыпляются.',
@@ -5843,8 +5857,8 @@ export const strings = {
     aiFontSizeCustom: 'Другой',
     setAiSpellcheck: 'Проверка орфографии в чате ИИ',
     setDefaultApp: 'Приложение по умолчанию для документов Office',
-    setDefaultAppDesc: 'Открывать файлы .docx, .xlsx и .pptx в GenOffice по двойному щелчку.',
-    setDefaultAppIs: 'GenOffice уже является приложением по умолчанию.',
+    setDefaultAppDesc: 'Открывать файлы .docx, .xlsx и .pptx в SelfOffice по двойному щелчку.',
+    setDefaultAppIs: 'SelfOffice уже является приложением по умолчанию.',
     setDefaultAppOther: 'Сейчас по умолчанию: {app}',
     setDefaultAppSet: 'Сделать по умолчанию',
     setDefaultAppOpenSettings: 'Открыть системные настройки',
@@ -5889,7 +5903,7 @@ export const strings = {
     setSecAbout: 'О программе',
     setSecIntegrations: 'Интеграции',
     setSecSkills: 'Навыки',
-    intgHeroTitle: 'Используйте GenOffice из своего ИИ-ассистента',
+    intgHeroTitle: 'Используйте SelfOffice из своего ИИ-ассистента',
     intgHeroDesc:
       'После подключения Claude Code, Codex, Cursor, Claude Desktop и похожие ассистенты смогут создавать, конвертировать, читать и редактировать файлы Word, Excel, PowerPoint, PDF и Markdown за вас. Всё выполняется на этом компьютере; ничего не загружается.',
     intgHeroStep1:
@@ -5900,7 +5914,7 @@ export const strings = {
     intgStep1Desc:
       'Показаны только ассистенты, найденные на этом компьютере. Установите скилл в тот, которым действительно пользуетесь; все не нужны.',
     intgStep1Update:
-      'Когда обновление GenOffice принесёт более новый скилл, рядом с этим ассистентом появится кнопка «Обновить».',
+      'Когда обновление SelfOffice принесёт более новый скилл, рядом с этим ассистентом появится кнопка «Обновить».',
     intgSkillVersion: 'скилл {v}',
     intgStateMissing: 'Скилл не установлен',
     intgStateInstalled: 'Скилл {v} установлен · готов к следующему чату',
@@ -5908,7 +5922,7 @@ export const strings = {
     intgOtherDesc:
       'Выберите только один из трёх способов. Все они устанавливают один и тот же скилл, повторять не нужно.',
     intgOtherFolderTitle: 'Любой ассистент, читающий папки SKILL.md',
-    intgOtherFolderDesc: 'Выберите его папку skills, и GenOffice запишет файл туда.',
+    intgOtherFolderDesc: 'Выберите его папку skills, и SelfOffice запишет файл туда.',
     intgOtherZipTitle: 'Передать файл ассистенту',
     intgOtherZipDesc: 'Сохраните скилл как zip и попросите ассистента установить его.',
     intgOtherNpxTitle: 'Командой skills (нужен Node.js)',
@@ -5920,23 +5934,23 @@ export const strings = {
       'После установки откройте новый чат в ассистенте и попросите обычными словами, например:',
     intgExample1: 'Преврати ~/Downloads/report.md в документ Word',
     intgExample2: 'Сделай презентацию из 6 слайдов о наших результатах за 3-й квартал',
-    intgExample3: 'Конвертируй budget.xlsx в PDF и открой в GenOffice',
+    intgExample3: 'Конвертируй budget.xlsx в PDF и открой в SelfOffice',
     intgStep2Note:
-      'Ассистент сам запускает командную строку genoffice; вводить её вам не придётся.',
+      'Ассистент сам запускает командную строку selfoffice; вводить её вам не придётся.',
     intgCliPartTitle: 'CLI · командная строка + skill',
     intgCliPartDesc:
-      'Для ассистентов, умеющих выполнять команды терминала (Claude Code, Codex, Cursor и другие). После установки skill ассистент сам вызывает командную строку genoffice, чтобы создавать, конвертировать, читать и редактировать файлы; вам не нужно вводить команды.',
+      'Для ассистентов, умеющих выполнять команды терминала (Claude Code, Codex, Cursor и другие). После установки skill ассистент сам вызывает командную строку selfoffice, чтобы создавать, конвертировать, читать и редактировать файлы; вам не нужно вводить команды.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP — общий протокол, через который ИИ-ассистенты вызывают внешние инструменты. Используйте его, если ассистент не умеет выполнять команды (например, Claude Desktop) или если хотите, чтобы он напрямую управлял окном GenOffice. Выберите один из двух способов ниже.',
+      'MCP — общий протокол, через который ИИ-ассистенты вызывают внешние инструменты. Используйте его, если ассистент не умеет выполнять команды (например, Claude Desktop) или если хотите, чтобы он напрямую управлял окном SelfOffice. Выберите один из двух способов ниже.',
     intgMcpStdioTitle: 'Запускает ассистент (рекомендуется)',
     intgMcpStdioDesc:
-      'Ассистент сам запускает genoffice mcp: здесь ничего включать не нужно, и GenOffice не обязан быть открыт. Те же возможности, что у CLI.',
+      'Ассистент сам запускает selfoffice mcp: здесь ничего включать не нужно, и SelfOffice не обязан быть открыт. Те же возможности, что у CLI.',
     intgMcpHttpTitle: 'Локальный HTTP-сервер',
     intgMcpHttpDesc:
-      'Работает внутри GenOffice; ассистент подключается по URL, и вы видите, как документ шаг за шагом собирается в редакторе Word. GenOffice должен оставаться открытым; пока только документы Word.',
+      'Работает внутри SelfOffice; ассистент подключается по URL, и вы видите, как документ шаг за шагом собирается в редакторе Word. SelfOffice должен оставаться открытым; пока только документы Word.',
     intgMcpHttpAdvanced: 'Дополнительно: другие адреса и журнал',
-    intgMcpTryNote: 'Ассистент обращается к GenOffice через MCP; вам не нужно вводить команды.',
+    intgMcpTryNote: 'Ассистент обращается к SelfOffice через MCP; вам не нужно вводить команды.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Выполните один раз в терминале:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop или другой ассистент с поддержкой MCP',
@@ -5944,10 +5958,10 @@ export const strings = {
       'Добавьте это в его настройки MCP-серверов (JSON-файл или «Добавить MCP-сервер» в настройках):',
     intgMcpNote:
       'Скилл и MCP могут быть настроены одновременно; ассистент выберет один из них. Они делают одно и то же.',
-    intgCliTitle: 'Дополнительно: командная строка genoffice',
-    intgCliReady: 'genoffice {v} · доступен в терминале ({path})',
+    intgCliTitle: 'Дополнительно: командная строка selfoffice',
+    intgCliReady: 'selfoffice {v} · доступен в терминале ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · отсутствует в PATH терминала. Ассистенты всё равно находят его через ~/.genoffice/launcher, так что скилл работает. Чтобы вводить genoffice самостоятельно, выполните один раз:',
+      'selfoffice {v} · отсутствует в PATH терминала. Ассистенты всё равно находят его через ~/.selfoffice/launcher, так что скилл работает. Чтобы вводить selfoffice самостоятельно, выполните один раз:',
     intgCliLauncher: 'Папка лаунчера',
     intgStateOutdated: 'Установлен {v}, доступно обновление до {next}',
     intgStateModified: 'Установлен {v} (изменён)',
@@ -5972,9 +5986,9 @@ export const strings = {
     intgSavedTo: 'Сохранено в {path}',
     intgCopied: 'Скопировано',
     intgCliEphemeral:
-      'Сначала перетащите GenOffice в «Программы», затем используйте командную строку.',
+      'Сначала перетащите SelfOffice в «Программы», затем используйте командную строку.',
     intgCopyPath: 'Копировать путь',
-    intgCliNeedsUpdate: 'Этому скиллу нужна командная строка {v} или новее; обновите GenOffice.',
+    intgCliNeedsUpdate: 'Этому скиллу нужна командная строка {v} или новее; обновите SelfOffice.',
     intgLoading: 'Проверка…',
     intgUpdateDue: 'Доступно обновление скилла',
     setSecAiModel: 'Модель ИИ',
@@ -5995,7 +6009,8 @@ export const strings = {
       'Указывайте только для нестандартной установки; оставьте пустым для автоопределения.',
     setAiCodexAutoPlaceholder: 'Автоопределение (рекомендуется)',
     setAiCodexHint: 'Использует локально авторизованный Codex CLI; ключ API не нужен.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Сохранить',
     setAiSaved: 'Сохранено',
     setAiTest: 'Проверить подключение',
@@ -6023,14 +6038,14 @@ export const strings = {
       'Ключ и базовый URL провайдера общие для всех функций; введите их один раз.',
     setGithub: 'Открытый код',
     starOnGitHub: 'Поставить звезду на GitHub',
-    starPromptTitle: 'Нравится GenOffice?',
-    starPromptTitleN: 'Вы уже открыли {n} документов в GenOffice',
+    starPromptTitle: 'Нравится SelfOffice?',
+    starPromptTitleN: 'Вы уже открыли {n} документов в SelfOffice',
     starPromptBody:
-      'GenOffice — бесплатное ПО с открытым кодом. Звезда на GitHub — лучшая поддержка для команды.',
+      'SelfOffice — бесплатное ПО с открытым кодом. Звезда на GitHub — лучшая поддержка для команды.',
     starPromptGo: 'Поставить звезду',
     starPromptDone: 'Уже поставлена',
     starPromptLater: 'Позже',
-    onbStarHint: 'Если вам нравится GenOffice, поставьте нам звезду на GitHub.',
+    onbStarHint: 'Если вам нравится SelfOffice, поставьте нам звезду на GitHub.',
     setEmail: 'Эл. почта',
     setNotLoggedIn: 'Вы не вошли',
     setViewUsage: 'Посмотреть расход',
@@ -6045,7 +6060,7 @@ export const strings = {
     appMenu: 'Меню',
     newTab: 'Новая вкладка',
     // First-run onboarding
-    onbTitle1: 'Добро пожаловать в GenOffice',
+    onbTitle1: 'Добро пожаловать в SelfOffice',
     onbSubtitle1: 'Первый открытый ИИ-нативный офисный пакет',
     onbBody1:
       'Создавайте документы, таблицы и презентации, работайте с PDF. ИИ встроен в каждый шаг.',
@@ -6057,7 +6072,7 @@ export const strings = {
     onbBody3: 'Без лицензий. Без рекламы. Без водяных знаков.',
     onbBack: 'Назад',
     intgSkillsDesc:
-      'GenOffice использует только навыки из своей папки навыков. Импорт папки или zip копирует навык целиком; при импорте ничего не запускается.',
+      'SelfOffice использует только навыки из своей папки навыков. Импорт папки или zip копирует навык целиком; при импорте ничего не запускается.',
     intgSkillsEmpty: 'Навыки ещё не установлены.',
     intgSkillsImportFolder: 'Импорт папки…',
     intgSkillsImportZip: 'Импорт пакета навыка (zip / .md)…',
@@ -6066,7 +6081,7 @@ export const strings = {
     intgSkillsImportDone: 'Импортирован {name}',
     intgSkillsImportFailed: 'Ошибка импорта: {reason}',
     intgSkillsRemove: 'Удалить',
-    intgSkillsRemoveConfirm: 'Удалить навык «{name}»? Его папка будет удалена из GenOffice.',
+    intgSkillsRemoveConfirm: 'Удалить навык «{name}»? Его папка будет удалена из SelfOffice.',
     intgSkillsRemoved: '{name} удалён',
     intgSkillsRead: 'Подробнее',
     intgSkillsMine: 'Мои навыки',
@@ -6313,7 +6328,7 @@ export const strings = {
     setUpdateRestart: 'إعادة التشغيل والتثبيت',
     setAutoUpdateCheck: 'التحقق من التحديثات تلقائيًا',
     setAutoUpdateCheckDesc:
-      'عند الإيقاف، لن يتحقق GenOffice من الإصدارات الجديدة عند التشغيل أو في الخلفية. يمكنك التحقق يدويًا من تعليمات › التحقق من التحديثات.',
+      'عند الإيقاف، لن يتحقق SelfOffice من الإصدارات الجديدة عند التشغيل أو في الخلفية. يمكنك التحقق يدويًا من تعليمات › التحقق من التحديثات.',
     updateChannel: 'قناة التحديث',
     channelStable: 'مستقر',
     channelBeta: 'تجريبي',
@@ -6326,7 +6341,7 @@ export const strings = {
     saveLocation: 'موقع الحفظ',
     setRestoreSession: 'إعادة فتح مستندات المرة السابقة',
     setRestoreSessionDesc:
-      'تُعاد فتح المستندات المفتوحة عند إغلاق GenOffice تلقائيًا في المرة التالية التي يبدأ فيها.',
+      'تُعاد فتح المستندات المفتوحة عند إغلاق SelfOffice تلقائيًا في المرة التالية التي يبدأ فيها.',
     setTabSleep: 'إسبات علامات التبويب غير النشطة',
     setTabSleepDesc:
       'عند فتح علامات تبويب كثيرة، تحرّر التي لم تطّلع عليها منذ فترة ذاكرتها وتعيد فتح ملفها عند عودتك. علامات التبويب ذات التغييرات غير المحفوظة أو المثبّتة لا تُسبَت أبدًا.',
@@ -6356,8 +6371,8 @@ export const strings = {
     aiFontSizeCustom: 'مخصص',
     setAiSpellcheck: 'التدقيق الإملائي في محادثة الذكاء الاصطناعي',
     setDefaultApp: 'التطبيق الافتراضي لمستندات Office',
-    setDefaultAppDesc: 'فتح ملفات .docx و.xlsx و.pptx في GenOffice عند النقر المزدوج.',
-    setDefaultAppIs: 'GenOffice هو التطبيق الافتراضي بالفعل.',
+    setDefaultAppDesc: 'فتح ملفات .docx و.xlsx و.pptx في SelfOffice عند النقر المزدوج.',
+    setDefaultAppIs: 'SelfOffice هو التطبيق الافتراضي بالفعل.',
     setDefaultAppOther: 'الافتراضي الحالي: {app}',
     setDefaultAppSet: 'تعيين كافتراضي',
     setDefaultAppOpenSettings: 'فتح إعدادات النظام',
@@ -6403,7 +6418,7 @@ export const strings = {
     setSecAbout: 'حول',
     setSecIntegrations: 'التكاملات',
     setSecSkills: 'المهارات',
-    intgHeroTitle: 'استخدم GenOffice من مساعد الذكاء الاصطناعي',
+    intgHeroTitle: 'استخدم SelfOffice من مساعد الذكاء الاصطناعي',
     intgHeroDesc:
       'بعد الربط، يمكن لـ Claude Code وCodex وCursor وClaude Desktop والمساعدين المشابهين إنشاء ملفات Word وExcel وPowerPoint وPDF وMarkdown وتحويلها وقراءتها وتحريرها نيابةً عنك. كل شيء يعمل على هذا الجهاز؛ لا يُرفع أي شيء.',
     intgHeroStep1: 'اختر الطريقة: CLI إذا كان مساعدك يستطيع تنفيذ أوامر الطرفية، وMCP إذا لم يستطع',
@@ -6412,7 +6427,7 @@ export const strings = {
     intgStep1Title: 'ثبّت المهارة في مساعدك',
     intgStep1Desc:
       'تُعرض فقط المساعدات الموجودة على هذا الجهاز. ثبّتها في المساعد الذي تستخدمه فعلاً؛ لا حاجة لتثبيتها في الجميع.',
-    intgStep1Update: 'عندما يجلب تحديث GenOffice مهارة أحدث، يظهر زر «تحديث» بجوار ذلك المساعد.',
+    intgStep1Update: 'عندما يجلب تحديث SelfOffice مهارة أحدث، يظهر زر «تحديث» بجوار ذلك المساعد.',
     intgSkillVersion: 'المهارة {v}',
     intgStateMissing: 'المهارة غير مثبّتة',
     intgStateInstalled: 'المهارة {v} مثبّتة · جاهزة في محادثتك التالية',
@@ -6420,7 +6435,7 @@ export const strings = {
     intgOtherDesc:
       'اختر طريقة واحدة فقط من هذه الطرق الثلاث. جميعها تثبّت المهارة نفسها، فلا حاجة لأكثر من واحدة.',
     intgOtherFolderTitle: 'أي مساعد يقرأ مجلدات SKILL.md',
-    intgOtherFolderDesc: 'اختر مجلد skills الخاص به وسيكتب GenOffice الملف هناك.',
+    intgOtherFolderDesc: 'اختر مجلد skills الخاص به وسيكتب SelfOffice الملف هناك.',
     intgOtherZipTitle: 'سلّم الملف إلى المساعد',
     intgOtherZipDesc: 'احفظ المهارة كملف zip ثم اطلب من المساعد تثبيتها.',
     intgOtherNpxTitle: 'بأمر skills (يتطلب Node.js)',
@@ -6431,22 +6446,22 @@ export const strings = {
     intgStep2DescBefore: 'بعد التثبيت، افتح محادثة جديدة في مساعدك واطلب بكلمات عادية، مثلاً:',
     intgExample1: 'حوّل ~/Downloads/report.md إلى مستند Word',
     intgExample2: 'أنشئ عرضاً من 6 شرائح عن نتائج الربع الثالث',
-    intgExample3: 'حوّل budget.xlsx إلى PDF وافتحه في GenOffice',
-    intgStep2Note: 'المساعد يشغّل سطر أوامر genoffice بنفسه؛ لن تحتاج إلى كتابته أبداً.',
+    intgExample3: 'حوّل budget.xlsx إلى PDF وافتحه في SelfOffice',
+    intgStep2Note: 'المساعد يشغّل سطر أوامر selfoffice بنفسه؛ لن تحتاج إلى كتابته أبداً.',
     intgCliPartTitle: 'CLI · سطر الأوامر + skill',
     intgCliPartDesc:
-      'للمساعدين الذين يستطيعون تنفيذ أوامر الطرفية (Claude Code وCodex وCursor وغيرها). بعد تثبيت skill، يستدعي المساعد سطر أوامر genoffice بنفسه لإنشاء الملفات وتحويلها وقراءتها وتحريرها؛ لن تكتب أي أمر.',
+      'للمساعدين الذين يستطيعون تنفيذ أوامر الطرفية (Claude Code وCodex وCursor وغيرها). بعد تثبيت skill، يستدعي المساعد سطر أوامر selfoffice بنفسه لإنشاء الملفات وتحويلها وقراءتها وتحريرها؛ لن تكتب أي أمر.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP هو البروتوكول المشترك الذي يستخدمه مساعدو الذكاء الاصطناعي لاستدعاء أدوات خارجية. استخدمه إذا كان مساعدك لا يستطيع تنفيذ الأوامر (مثل Claude Desktop) أو إذا أردت أن يتحكم في نافذة GenOffice مباشرة. اختر إحدى الطريقتين أدناه.',
+      'MCP هو البروتوكول المشترك الذي يستخدمه مساعدو الذكاء الاصطناعي لاستدعاء أدوات خارجية. استخدمه إذا كان مساعدك لا يستطيع تنفيذ الأوامر (مثل Claude Desktop) أو إذا أردت أن يتحكم في نافذة SelfOffice مباشرة. اختر إحدى الطريقتين أدناه.',
     intgMcpStdioTitle: 'يشغّله المساعد (موصى به)',
     intgMcpStdioDesc:
-      'يشغّل المساعد genoffice mcp بنفسه: لا شيء لتفعيله هنا، ولا يلزم أن يكون GenOffice مفتوحًا. نفس إمكانات CLI.',
+      'يشغّل المساعد selfoffice mcp بنفسه: لا شيء لتفعيله هنا، ولا يلزم أن يكون SelfOffice مفتوحًا. نفس إمكانات CLI.',
     intgMcpHttpTitle: 'خادم HTTP محلي',
     intgMcpHttpDesc:
-      'يعمل داخل GenOffice؛ يتصل المساعد عبر عنوان URL ويمكنك مشاهدة المستند يُبنى خطوة بخطوة في محرر Word. يجب أن يبقى GenOffice مفتوحًا؛ مستندات Word فقط حاليًا.',
+      'يعمل داخل SelfOffice؛ يتصل المساعد عبر عنوان URL ويمكنك مشاهدة المستند يُبنى خطوة بخطوة في محرر Word. يجب أن يبقى SelfOffice مفتوحًا؛ مستندات Word فقط حاليًا.',
     intgMcpHttpAdvanced: 'متقدم: عناوين أخرى والسجل',
-    intgMcpTryNote: 'يستدعي المساعد GenOffice عبر MCP؛ لن تكتب أي أمر.',
+    intgMcpTryNote: 'يستدعي المساعد SelfOffice عبر MCP؛ لن تكتب أي أمر.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'شغّل هذا مرة واحدة في الطرفية:',
     intgMcpOtherTitle: 'Cursor أو Claude Desktop أو أي مساعد آخر يدعم MCP',
@@ -6454,10 +6469,10 @@ export const strings = {
       'أضف هذا إلى إعدادات خوادم MCP لديه (ملف JSON، أو «إضافة خادم MCP» في إعداداته):',
     intgMcpNote:
       'يمكن إعداد المهارة و MCP معاً؛ يختار المساعد أحدهما. كلاهما يقوم بالأشياء نفسها تماماً.',
-    intgCliTitle: 'متقدم: سطر أوامر genoffice',
-    intgCliReady: 'genoffice {v} · جاهز في الطرفية ({path})',
+    intgCliTitle: 'متقدم: سطر أوامر selfoffice',
+    intgCliReady: 'selfoffice {v} · جاهز في الطرفية ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · غير موجود في PATH الطرفية. ما زال المساعدون يجدونه عبر ~/.genoffice/launcher، فالمهارة تعمل. لكتابة genoffice بنفسك، شغّل هذا مرة واحدة:',
+      'selfoffice {v} · غير موجود في PATH الطرفية. ما زال المساعدون يجدونه عبر ~/.selfoffice/launcher، فالمهارة تعمل. لكتابة selfoffice بنفسك، شغّل هذا مرة واحدة:',
     intgCliLauncher: 'مجلد المشغّل',
     intgStateOutdated: 'مثبّت {v}، يتوفر تحديث إلى {next}',
     intgStateModified: 'مثبّت {v} (تم تعديله)',
@@ -6481,9 +6496,9 @@ export const strings = {
     intgSaveZipTitle: 'حفظ المهارة',
     intgSavedTo: 'تم الحفظ في {path}',
     intgCopied: 'تم النسخ',
-    intgCliEphemeral: 'اسحب GenOffice إلى مجلد التطبيقات أولاً، ثم استخدم سطر الأوامر.',
+    intgCliEphemeral: 'اسحب SelfOffice إلى مجلد التطبيقات أولاً، ثم استخدم سطر الأوامر.',
     intgCopyPath: 'نسخ المسار',
-    intgCliNeedsUpdate: 'تحتاج هذه المهارة إلى سطر الأوامر {v} أو أحدث؛ حدّث GenOffice.',
+    intgCliNeedsUpdate: 'تحتاج هذه المهارة إلى سطر الأوامر {v} أو أحدث؛ حدّث SelfOffice.',
     intgLoading: 'جارٍ التحقق…',
     intgUpdateDue: 'يتوفر تحديث للمهارة',
     setSecAiModel: 'نموذج الذكاء الاصطناعي',
@@ -6503,7 +6518,8 @@ export const strings = {
     setAiCodexPathHint: 'حدده فقط للتثبيت المخصص؛ اتركه فارغًا للاكتشاف التلقائي.',
     setAiCodexAutoPlaceholder: 'اكتشاف تلقائي (موصى به)',
     setAiCodexHint: 'يستخدم Codex CLI المسجل محليًا؛ لا حاجة إلى مفتاح API.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'حفظ',
     setAiSaved: 'تم الحفظ',
     setAiTest: 'اختبار الاتصال',
@@ -6531,13 +6547,13 @@ export const strings = {
       'مفتاح المزوّد وعنوان Base URL مشتركان بين جميع القدرات؛ أدخلهما مرة واحدة فقط.',
     setGithub: 'مفتوح المصدر',
     starOnGitHub: 'ضع نجمة على GitHub',
-    starPromptTitle: 'هل أعجبك GenOffice؟',
-    starPromptTitleN: 'لقد فتحت {n} من المستندات في GenOffice',
-    starPromptBody: 'GenOffice مجاني ومفتوح المصدر. نجمة على GitHub هي أفضل دعم للفريق.',
+    starPromptTitle: 'هل أعجبك SelfOffice؟',
+    starPromptTitleN: 'لقد فتحت {n} من المستندات في SelfOffice',
+    starPromptBody: 'SelfOffice مجاني ومفتوح المصدر. نجمة على GitHub هي أفضل دعم للفريق.',
     starPromptGo: 'ضع نجمة',
     starPromptDone: 'وضعتها بالفعل',
     starPromptLater: 'لاحقًا',
-    onbStarHint: 'إذا أعجبك GenOffice، ضع لنا نجمة على GitHub.',
+    onbStarHint: 'إذا أعجبك SelfOffice، ضع لنا نجمة على GitHub.',
     setEmail: 'البريد الإلكتروني',
     setNotLoggedIn: 'لم يتم تسجيل الدخول',
     setViewUsage: 'عرض الاستخدام',
@@ -6552,7 +6568,7 @@ export const strings = {
     appMenu: 'القائمة',
     newTab: 'علامة تبويب جديدة',
     // First-run onboarding
-    onbTitle1: 'مرحبًا بك في GenOffice',
+    onbTitle1: 'مرحبًا بك في SelfOffice',
     onbSubtitle1: 'أول حزمة مكتبية مفتوحة المصدر وأصيلة في الذكاء الاصطناعي',
     onbBody1:
       'أنشئ المستندات وجداول البيانات والعروض التقديمية وراجع ملفات PDF. الذكاء الاصطناعي مدمج في كل خطوة.',
@@ -6564,7 +6580,7 @@ export const strings = {
     onbBody3: 'بلا رسوم ترخيص، بلا إعلانات، بلا علامات مائية.',
     onbBack: 'رجوع',
     intgSkillsDesc:
-      'يستخدم GenOffice المهارات الموجودة في مجلد مهاراته فقط. استيراد مجلد أو ملف zip ينسخ المهارة كاملة؛ ولا يُشغَّل شيء عند الاستيراد.',
+      'يستخدم SelfOffice المهارات الموجودة في مجلد مهاراته فقط. استيراد مجلد أو ملف zip ينسخ المهارة كاملة؛ ولا يُشغَّل شيء عند الاستيراد.',
     intgSkillsEmpty: 'لم تُثبَّت أي مهارات بعد.',
     intgSkillsImportFolder: 'استيراد مجلد…',
     intgSkillsImportZip: 'استيراد حزمة مهارة (zip / .md)…',
@@ -6573,7 +6589,7 @@ export const strings = {
     intgSkillsImportDone: 'تم استيراد {name}',
     intgSkillsImportFailed: 'فشل الاستيراد: {reason}',
     intgSkillsRemove: 'إزالة',
-    intgSkillsRemoveConfirm: 'هل تريد إزالة المهارة "{name}"؟ سيتم حذف مجلدها من GenOffice.',
+    intgSkillsRemoveConfirm: 'هل تريد إزالة المهارة "{name}"؟ سيتم حذف مجلدها من SelfOffice.',
     intgSkillsRemoved: 'تمت إزالة {name}',
     intgSkillsRead: 'التفاصيل',
     intgSkillsMine: 'مهاراتي',
@@ -6815,7 +6831,7 @@ export const strings = {
     setUpdateRestart: 'Reiniciar e instalar',
     setAutoUpdateCheck: 'Verificar atualizações automaticamente',
     setAutoUpdateCheckDesc:
-      'Desligado, o GenOffice deixa de procurar novas versões ao iniciar e em segundo plano. Você ainda pode verificar em Ajuda › Procurar atualizações.',
+      'Desligado, o SelfOffice deixa de procurar novas versões ao iniciar e em segundo plano. Você ainda pode verificar em Ajuda › Procurar atualizações.',
     updateChannel: 'Canal de atualização',
     channelStable: 'Estável',
     channelBeta: 'Beta',
@@ -6828,7 +6844,7 @@ export const strings = {
     saveLocation: 'Local de salvamento',
     setRestoreSession: 'Reabrir os documentos da última vez',
     setRestoreSessionDesc:
-      'Os documentos abertos ao fechar o GenOffice são reabertos automaticamente na próxima vez que ele for iniciado.',
+      'Os documentos abertos ao fechar o SelfOffice são reabertos automaticamente na próxima vez que ele for iniciado.',
     setTabSleep: 'Suspender separadores inativos',
     setTabSleepDesc:
       'Com muitos separadores abertos, os que não vê há algum tempo libertam a memória e reabrem o ficheiro quando regressa. Separadores com alterações por guardar ou fixados nunca são suspensos.',
@@ -6858,8 +6874,8 @@ export const strings = {
     aiFontSizeCustom: 'Personalizado',
     setAiSpellcheck: 'Verificação ortográfica no chat de IA',
     setDefaultApp: 'App padrão para documentos do Office',
-    setDefaultAppDesc: 'Abrir arquivos .docx, .xlsx e .pptx no GenOffice ao clicar duas vezes.',
-    setDefaultAppIs: 'O GenOffice já é o app padrão.',
+    setDefaultAppDesc: 'Abrir arquivos .docx, .xlsx e .pptx no SelfOffice ao clicar duas vezes.',
+    setDefaultAppIs: 'O SelfOffice já é o app padrão.',
     setDefaultAppOther: 'Padrão atual: {app}',
     setDefaultAppSet: 'Definir como padrão',
     setDefaultAppOpenSettings: 'Abrir configurações do sistema',
@@ -6906,7 +6922,7 @@ export const strings = {
     setSecAbout: 'Sobre',
     setSecIntegrations: 'Integrações',
     setSecSkills: 'Habilidades',
-    intgHeroTitle: 'Use o GenOffice a partir do seu assistente de IA',
+    intgHeroTitle: 'Use o SelfOffice a partir do seu assistente de IA',
     intgHeroDesc:
       'Depois de conectados, Claude Code, Codex, Cursor, Claude Desktop e assistentes semelhantes podem criar, converter, ler e editar arquivos Word, Excel, PowerPoint, PDF e Markdown por você. Tudo roda neste computador; nada é enviado.',
     intgHeroStep1:
@@ -6917,7 +6933,7 @@ export const strings = {
     intgStep1Desc:
       'Só aparecem os assistentes encontrados neste computador. Instale no que você realmente usa; não precisa de todos.',
     intgStep1Update:
-      'Quando uma atualização do GenOffice trouxer um skill mais novo, um botão Atualizar aparece ao lado desse assistente.',
+      'Quando uma atualização do SelfOffice trouxer um skill mais novo, um botão Atualizar aparece ao lado desse assistente.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill não instalado',
     intgStateInstalled: 'Skill {v} instalado · pronto no seu próximo chat',
@@ -6925,7 +6941,7 @@ export const strings = {
     intgOtherDesc:
       'Escolha apenas uma destas três formas. Todas instalam o mesmo skill, então não é preciso fazer mais de uma.',
     intgOtherFolderTitle: 'Qualquer assistente que leia pastas SKILL.md',
-    intgOtherFolderDesc: 'Escolha a pasta de skills dele e o GenOffice grava o arquivo lá.',
+    intgOtherFolderDesc: 'Escolha a pasta de skills dele e o SelfOffice grava o arquivo lá.',
     intgOtherZipTitle: 'Entregue o arquivo ao assistente',
     intgOtherZipDesc: 'Salve o skill como zip e peça ao assistente para instalá-lo.',
     intgOtherNpxTitle: 'Com o comando skills (requer Node.js)',
@@ -6937,23 +6953,23 @@ export const strings = {
       'Depois de instalar, abra um chat novo no seu assistente e peça com suas palavras, por exemplo:',
     intgExample1: 'Transforme ~/Downloads/report.md em um documento Word',
     intgExample2: 'Monte uma apresentação de 6 slides sobre nossos resultados do 3º trimestre',
-    intgExample3: 'Converta budget.xlsx para PDF e abra no GenOffice',
+    intgExample3: 'Converta budget.xlsx para PDF e abra no SelfOffice',
     intgStep2Note:
-      'O assistente executa a linha de comando genoffice sozinho; você nunca precisa digitá-la.',
+      'O assistente executa a linha de comando selfoffice sozinho; você nunca precisa digitá-la.',
     intgCliPartTitle: 'CLI · linha de comando + skill',
     intgCliPartDesc:
-      'Para assistentes que executam comandos de terminal (Claude Code, Codex, Cursor e outros). Com o skill instalado, o assistente chama a linha de comando genoffice sozinho para criar, converter, ler e editar arquivos; você nunca digita um comando.',
+      'Para assistentes que executam comandos de terminal (Claude Code, Codex, Cursor e outros). Com o skill instalado, o assistente chama a linha de comando selfoffice sozinho para criar, converter, ler e editar arquivos; você nunca digita um comando.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP é o protocolo comum que assistentes de IA usam para chamar ferramentas externas. Use-o quando o assistente não puder executar comandos (Claude Desktop, por exemplo) ou quando quiser que ele controle a janela do GenOffice diretamente. Escolha uma das duas formas abaixo.',
+      'MCP é o protocolo comum que assistentes de IA usam para chamar ferramentas externas. Use-o quando o assistente não puder executar comandos (Claude Desktop, por exemplo) ou quando quiser que ele controle a janela do SelfOffice diretamente. Escolha uma das duas formas abaixo.',
     intgMcpStdioTitle: 'Iniciado pelo assistente (recomendado)',
     intgMcpStdioDesc:
-      'O assistente inicia o genoffice mcp sozinho: nada para ligar aqui, e o GenOffice não precisa estar aberto. Mesmos recursos da CLI.',
+      'O assistente inicia o selfoffice mcp sozinho: nada para ligar aqui, e o SelfOffice não precisa estar aberto. Mesmos recursos da CLI.',
     intgMcpHttpTitle: 'Servidor HTTP local',
     intgMcpHttpDesc:
-      'Roda dentro do GenOffice; o assistente conecta por URL e você acompanha o documento sendo montado passo a passo no editor Word. O GenOffice precisa ficar aberto; por enquanto só documentos Word.',
+      'Roda dentro do SelfOffice; o assistente conecta por URL e você acompanha o documento sendo montado passo a passo no editor Word. O SelfOffice precisa ficar aberto; por enquanto só documentos Word.',
     intgMcpHttpAdvanced: 'Avançado: outros endereços e log',
-    intgMcpTryNote: 'O assistente chama o GenOffice via MCP; você nunca digita um comando.',
+    intgMcpTryNote: 'O assistente chama o SelfOffice via MCP; você nunca digita um comando.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Execute isto uma vez no terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop ou qualquer outro assistente compatível com MCP',
@@ -6961,10 +6977,10 @@ export const strings = {
       'Adicione isto à configuração de servidores MCP dele (um arquivo JSON, ou "Adicionar servidor MCP" nas configurações):',
     intgMcpNote:
       'O skill e o MCP podem coexistir; o assistente escolhe um deles. Ambos fazem exatamente as mesmas coisas.',
-    intgCliTitle: 'Avançado: linha de comando genoffice',
-    intgCliReady: 'genoffice {v} · pronto no seu terminal ({path})',
+    intgCliTitle: 'Avançado: linha de comando selfoffice',
+    intgCliReady: 'selfoffice {v} · pronto no seu terminal ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · não está no PATH do seu terminal. Os assistentes ainda o encontram por ~/.genoffice/launcher, então o skill funciona. Para digitar genoffice você mesmo, execute isto uma vez:',
+      'selfoffice {v} · não está no PATH do seu terminal. Os assistentes ainda o encontram por ~/.selfoffice/launcher, então o skill funciona. Para digitar selfoffice você mesmo, execute isto uma vez:',
     intgCliLauncher: 'Pasta do inicializador',
     intgStateOutdated: 'Instalado {v}, atualização para {next} disponível',
     intgStateModified: 'Instalado {v} (modificado)',
@@ -6989,10 +7005,10 @@ export const strings = {
     intgSavedTo: 'Salvo em {path}',
     intgCopied: 'Copiado',
     intgCliEphemeral:
-      'Arraste o GenOffice para Aplicativos primeiro e depois use a linha de comando.',
+      'Arraste o SelfOffice para Aplicativos primeiro e depois use a linha de comando.',
     intgCopyPath: 'Copiar caminho',
     intgCliNeedsUpdate:
-      'Este skill precisa da linha de comando {v} ou mais recente; atualize o GenOffice.',
+      'Este skill precisa da linha de comando {v} ou mais recente; atualize o SelfOffice.',
     intgLoading: 'Verificando…',
     intgUpdateDue: 'Atualização do skill disponível',
     setSecAiModel: 'Modelo de IA',
@@ -7013,7 +7029,8 @@ export const strings = {
       'Preencha apenas para uma instalação personalizada; deixe em branco para detectar automaticamente.',
     setAiCodexAutoPlaceholder: 'Detectar automaticamente (recomendado)',
     setAiCodexHint: 'Usa o Codex CLI conectado localmente; nenhuma chave de API é necessária.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Salvar',
     setAiSaved: 'Salvo',
     setAiTest: 'Testar conexão',
@@ -7041,14 +7058,14 @@ export const strings = {
       'A chave e a URL base de um provedor são compartilhadas entre as capacidades; insira-as uma só vez.',
     setGithub: 'Código aberto',
     starOnGitHub: 'Dar uma estrela no GitHub',
-    starPromptTitle: 'Gostando do GenOffice?',
-    starPromptTitleN: 'Você já abriu {n} documentos com o GenOffice',
+    starPromptTitle: 'Gostando do SelfOffice?',
+    starPromptTitleN: 'Você já abriu {n} documentos com o SelfOffice',
     starPromptBody:
-      'O GenOffice é gratuito e de código aberto. Uma estrela no GitHub é a melhor forma de apoiar a equipe.',
+      'O SelfOffice é gratuito e de código aberto. Uma estrela no GitHub é a melhor forma de apoiar a equipe.',
     starPromptGo: 'Dar uma estrela',
     starPromptDone: 'Já dei',
     starPromptLater: 'Mais tarde',
-    onbStarHint: 'Se você gosta do GenOffice, deixe uma estrela no GitHub.',
+    onbStarHint: 'Se você gosta do SelfOffice, deixe uma estrela no GitHub.',
     setEmail: 'E-mail',
     setNotLoggedIn: 'Não conectado',
     setViewUsage: 'Ver uso',
@@ -7061,7 +7078,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Nova guia',
     // First-run onboarding
-    onbTitle1: 'Bem-vindo ao GenOffice',
+    onbTitle1: 'Bem-vindo ao SelfOffice',
     onbSubtitle1: 'A primeira suíte de escritório open source e nativa de IA',
     onbBody1:
       'Crie documentos, planilhas e apresentações e revise PDFs. A IA está integrada em cada etapa.',
@@ -7073,7 +7090,7 @@ export const strings = {
     onbBody3: "Sem licenças. Sem anúncios. Sem marcas d'água.",
     onbBack: 'Voltar',
     intgSkillsDesc:
-      'O GenOffice só usa habilidades da sua própria pasta. Importar uma pasta ou um zip copia a habilidade inteira; nada é executado na importação.',
+      'O SelfOffice só usa habilidades da sua própria pasta. Importar uma pasta ou um zip copia a habilidade inteira; nada é executado na importação.',
     intgSkillsEmpty: 'Nenhuma habilidade instalada.',
     intgSkillsImportFolder: 'Importar pasta…',
     intgSkillsImportZip: 'Importar pacote de habilidade (zip / .md)…',
@@ -7083,7 +7100,7 @@ export const strings = {
     intgSkillsImportFailed: 'Falha na importação: {reason}',
     intgSkillsRemove: 'Remover',
     intgSkillsRemoveConfirm:
-      'Remover a habilidade "{name}"? A pasta dela será excluída do GenOffice.',
+      'Remover a habilidade "{name}"? A pasta dela será excluída do SelfOffice.',
     intgSkillsRemoved: '{name} removida',
     intgSkillsRead: 'Detalhes',
     intgSkillsMine: 'As minhas competências',
@@ -7326,7 +7343,7 @@ export const strings = {
     setUpdateRestart: 'Riavvia e installa',
     setAutoUpdateCheck: 'Controlla automaticamente gli aggiornamenti',
     setAutoUpdateCheckDesc:
-      "Se disattivato, GenOffice non cerca più nuove versioni all'avvio o in background. Puoi comunque controllare da Aiuto › Controlla aggiornamenti.",
+      "Se disattivato, SelfOffice non cerca più nuove versioni all'avvio o in background. Puoi comunque controllare da Aiuto › Controlla aggiornamenti.",
     updateChannel: 'Canale di aggiornamento',
     channelStable: 'Stabile',
     channelBeta: 'Beta',
@@ -7339,7 +7356,7 @@ export const strings = {
     saveLocation: 'Posizione di salvataggio',
     setRestoreSession: "Riapri i documenti dell'ultima volta",
     setRestoreSessionDesc:
-      'I documenti aperti alla chiusura di GenOffice si riaprono automaticamente al successivo avvio.',
+      'I documenti aperti alla chiusura di SelfOffice si riaprono automaticamente al successivo avvio.',
     setTabSleep: 'Sospendi le schede inattive',
     setTabSleepDesc:
       'Con molte schede aperte, quelle che non guardi da un po’ liberano la memoria e riaprono il file al tuo ritorno. Le schede con modifiche non salvate o fissate non vengono mai sospese.',
@@ -7369,8 +7386,8 @@ export const strings = {
     aiFontSizeCustom: 'Personalizzato',
     setAiSpellcheck: 'Controllo ortografico nella chat IA',
     setDefaultApp: 'App predefinita per i documenti Office',
-    setDefaultAppDesc: 'Apri i file .docx, .xlsx e .pptx in GenOffice con un doppio clic.',
-    setDefaultAppIs: 'GenOffice è già l’app predefinita.',
+    setDefaultAppDesc: 'Apri i file .docx, .xlsx e .pptx in SelfOffice con un doppio clic.',
+    setDefaultAppIs: 'SelfOffice è già l’app predefinita.',
     setDefaultAppOther: 'Predefinita attuale: {app}',
     setDefaultAppSet: 'Imposta come predefinita',
     setDefaultAppOpenSettings: 'Apri impostazioni di sistema',
@@ -7416,7 +7433,7 @@ export const strings = {
     setSecAbout: 'Informazioni',
     setSecIntegrations: 'Integrazioni',
     setSecSkills: 'Competenze',
-    intgHeroTitle: 'Usa GenOffice dal tuo assistente IA',
+    intgHeroTitle: 'Usa SelfOffice dal tuo assistente IA',
     intgHeroDesc:
       'Una volta collegati, Claude Code, Codex, Cursor, Claude Desktop e assistenti simili possono creare, convertire, leggere e modificare file Word, Excel, PowerPoint, PDF e Markdown per te. Tutto avviene su questo computer; nulla viene caricato.',
     intgHeroStep1:
@@ -7427,7 +7444,7 @@ export const strings = {
     intgStep1Desc:
       'Sono elencati solo gli assistenti trovati su questo computer. Installalo in quello che usi davvero; non servono tutti.',
     intgStep1Update:
-      "Quando un aggiornamento di GenOffice porta uno skill più recente, accanto a quell'assistente compare un pulsante Aggiorna.",
+      "Quando un aggiornamento di SelfOffice porta uno skill più recente, accanto a quell'assistente compare un pulsante Aggiorna.",
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill non installato',
     intgStateInstalled: 'Skill {v} installato · pronto nella prossima chat',
@@ -7435,7 +7452,7 @@ export const strings = {
     intgOtherDesc:
       'Scegli una sola di queste tre strade. Installano tutte lo stesso skill, quindi non serve farne più di una.',
     intgOtherFolderTitle: 'Qualsiasi assistente che legge cartelle SKILL.md',
-    intgOtherFolderDesc: 'Scegli la sua cartella skills e GenOffice vi scrive il file.',
+    intgOtherFolderDesc: 'Scegli la sua cartella skills e SelfOffice vi scrive il file.',
     intgOtherZipTitle: "Consegna il file all'assistente",
     intgOtherZipDesc: "Salva lo skill come zip, poi chiedi all'assistente di installarlo.",
     intgOtherNpxTitle: 'Con il comando skills (richiede Node.js)',
@@ -7448,23 +7465,23 @@ export const strings = {
       "Dopo l'installazione, apri una nuova chat nel tuo assistente e chiedi con parole semplici, ad esempio:",
     intgExample1: 'Trasforma ~/Downloads/report.md in un documento Word',
     intgExample2: 'Prepara una presentazione di 6 slide sui nostri risultati del terzo trimestre',
-    intgExample3: 'Converti budget.xlsx in PDF e aprilo in GenOffice',
+    intgExample3: 'Converti budget.xlsx in PDF e aprilo in SelfOffice',
     intgStep2Note:
-      "L'assistente esegue da solo la riga di comando genoffice; non dovrai mai digitarla.",
+      "L'assistente esegue da solo la riga di comando selfoffice; non dovrai mai digitarla.",
     intgCliPartTitle: 'CLI · riga di comando + skill',
     intgCliPartDesc:
-      'Per assistenti che possono eseguire comandi da terminale (Claude Code, Codex, Cursor e altri). Installato lo skill, l’assistente richiama da sé la riga di comando genoffice per creare, convertire, leggere e modificare file; non digiti mai un comando.',
+      'Per assistenti che possono eseguire comandi da terminale (Claude Code, Codex, Cursor e altri). Installato lo skill, l’assistente richiama da sé la riga di comando selfoffice per creare, convertire, leggere e modificare file; non digiti mai un comando.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP è il protocollo comune con cui gli assistenti IA richiamano strumenti esterni. Usalo quando l’assistente non può eseguire comandi (Claude Desktop, ad esempio) o quando vuoi che controlli direttamente la finestra di GenOffice. Scegli uno dei due modi qui sotto.',
+      'MCP è il protocollo comune con cui gli assistenti IA richiamano strumenti esterni. Usalo quando l’assistente non può eseguire comandi (Claude Desktop, ad esempio) o quando vuoi che controlli direttamente la finestra di SelfOffice. Scegli uno dei due modi qui sotto.',
     intgMcpStdioTitle: 'Avviato dall’assistente (consigliato)',
     intgMcpStdioDesc:
-      'L’assistente avvia genoffice mcp da sé: niente da attivare qui, e GenOffice non deve essere aperto. Stesse funzioni della CLI.',
+      'L’assistente avvia selfoffice mcp da sé: niente da attivare qui, e SelfOffice non deve essere aperto. Stesse funzioni della CLI.',
     intgMcpHttpTitle: 'Server HTTP locale',
     intgMcpHttpDesc:
-      'Gira dentro GenOffice; l’assistente si collega a un URL e puoi vedere il documento prendere forma passo dopo passo nell’editor Word. GenOffice deve restare aperto; per ora solo documenti Word.',
+      'Gira dentro SelfOffice; l’assistente si collega a un URL e puoi vedere il documento prendere forma passo dopo passo nell’editor Word. SelfOffice deve restare aperto; per ora solo documenti Word.',
     intgMcpHttpAdvanced: 'Avanzato: altri indirizzi e registro',
-    intgMcpTryNote: 'L’assistente richiama GenOffice tramite MCP; non digiti mai un comando.',
+    intgMcpTryNote: 'L’assistente richiama SelfOffice tramite MCP; non digiti mai un comando.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Esegui questo una volta nel terminale:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop o qualsiasi altro assistente compatibile con MCP',
@@ -7472,10 +7489,10 @@ export const strings = {
       'Aggiungi questo alla sua configurazione dei server MCP (un file JSON, oppure «Aggiungi server MCP» nelle impostazioni):',
     intgMcpNote:
       "Skill e MCP possono convivere; l'assistente ne sceglie uno. Fanno esattamente le stesse cose.",
-    intgCliTitle: 'Avanzato: riga di comando genoffice',
-    intgCliReady: 'genoffice {v} · pronto nel terminale ({path})',
+    intgCliTitle: 'Avanzato: riga di comando selfoffice',
+    intgCliReady: 'selfoffice {v} · pronto nel terminale ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · non è nel PATH del terminale. Gli assistenti lo trovano comunque tramite ~/.genoffice/launcher, quindi lo skill funziona. Per digitare genoffice tu stesso, esegui questo una volta:',
+      'selfoffice {v} · non è nel PATH del terminale. Gli assistenti lo trovano comunque tramite ~/.selfoffice/launcher, quindi lo skill funziona. Per digitare selfoffice tu stesso, esegui questo una volta:',
     intgCliLauncher: 'Cartella del launcher',
     intgStateOutdated: 'Installato {v}, aggiornamento a {next} disponibile',
     intgStateModified: 'Installato {v} (modificato)',
@@ -7499,10 +7516,10 @@ export const strings = {
     intgSaveZipTitle: 'Salva skill',
     intgSavedTo: 'Salvato in {path}',
     intgCopied: 'Copiato',
-    intgCliEphemeral: 'Trascina prima GenOffice in Applicazioni, poi usa la riga di comando.',
+    intgCliEphemeral: 'Trascina prima SelfOffice in Applicazioni, poi usa la riga di comando.',
     intgCopyPath: 'Copia percorso',
     intgCliNeedsUpdate:
-      'Questo skill richiede la riga di comando {v} o successiva; aggiorna GenOffice.',
+      'Questo skill richiede la riga di comando {v} o successiva; aggiorna SelfOffice.',
     intgLoading: 'Verifica in corso…',
     intgUpdateDue: 'Aggiornamento dello skill disponibile',
     setSecAiModel: 'Modello IA',
@@ -7523,7 +7540,8 @@ export const strings = {
       'Compila solo per un’installazione personalizzata; lascia vuoto per il rilevamento automatico.',
     setAiCodexAutoPlaceholder: 'Rilevamento automatico (consigliato)',
     setAiCodexHint: 'Usa Codex CLI con accesso locale; non è richiesta alcuna chiave API.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Salva',
     setAiSaved: 'Salvato',
     setAiTest: 'Prova connessione',
@@ -7551,14 +7569,14 @@ export const strings = {
       "La chiave e l'URL base di un provider sono condivisi tra le capacità; inseriscili una volta sola.",
     setGithub: 'Open source',
     starOnGitHub: 'Metti una stella su GitHub',
-    starPromptTitle: 'Ti piace GenOffice?',
-    starPromptTitleN: 'Hai aperto {n} documenti con GenOffice',
+    starPromptTitle: 'Ti piace SelfOffice?',
+    starPromptTitleN: 'Hai aperto {n} documenti con SelfOffice',
     starPromptBody:
-      'GenOffice è gratuito e open source. Una stella su GitHub è il modo migliore per sostenere il team.',
+      'SelfOffice è gratuito e open source. Una stella su GitHub è il modo migliore per sostenere il team.',
     starPromptGo: 'Metti una stella',
     starPromptDone: 'Già fatto',
     starPromptLater: 'Più tardi',
-    onbStarHint: 'Se ti piace GenOffice, lasciaci una stella su GitHub.',
+    onbStarHint: 'Se ti piace SelfOffice, lasciaci una stella su GitHub.',
     setEmail: 'Email',
     setNotLoggedIn: 'Non connesso',
     setViewUsage: 'Vedi utilizzo',
@@ -7571,7 +7589,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Nuova scheda',
     // First-run onboarding
-    onbTitle1: 'Benvenuto in GenOffice',
+    onbTitle1: 'Benvenuto in SelfOffice',
     onbSubtitle1: 'La prima suite per ufficio open source e nativa per l’IA',
     onbBody1:
       'Crea documenti, fogli di calcolo e presentazioni e rivedi i PDF. L’IA è integrata in ogni passaggio.',
@@ -7583,7 +7601,7 @@ export const strings = {
     onbBody3: 'Nessuna licenza. Nessuna pubblicità. Nessuna filigrana.',
     onbBack: 'Indietro',
     intgSkillsDesc:
-      'GenOffice usa solo le competenze nella propria cartella. Importare una cartella o uno zip copia l’intera competenza; nulla viene eseguito all’importazione.',
+      'SelfOffice usa solo le competenze nella propria cartella. Importare una cartella o uno zip copia l’intera competenza; nulla viene eseguito all’importazione.',
     intgSkillsEmpty: 'Nessuna competenza installata.',
     intgSkillsImportFolder: 'Importa cartella…',
     intgSkillsImportZip: 'Importa pacchetto competenza (zip / .md)…',
@@ -7593,7 +7611,7 @@ export const strings = {
     intgSkillsImportFailed: 'Importazione non riuscita: {reason}',
     intgSkillsRemove: 'Rimuovi',
     intgSkillsRemoveConfirm:
-      'Rimuovere la competenza "{name}"? La sua cartella sarà eliminata da GenOffice.',
+      'Rimuovere la competenza "{name}"? La sua cartella sarà eliminata da SelfOffice.',
     intgSkillsRemoved: '{name} rimossa',
     intgSkillsRead: 'Dettagli',
     intgSkillsMine: 'Le mie competenze',
@@ -7836,7 +7854,7 @@ export const strings = {
     setUpdateRestart: 'Uruchom ponownie i zainstaluj',
     setAutoUpdateCheck: 'Automatycznie sprawdzaj aktualizacje',
     setAutoUpdateCheckDesc:
-      'Po wyłączeniu GenOffice nie sprawdza nowych wersji przy uruchomieniu ani w tle. Nadal możesz sprawdzić ręcznie w Pomoc › Sprawdź aktualizacje.',
+      'Po wyłączeniu SelfOffice nie sprawdza nowych wersji przy uruchomieniu ani w tle. Nadal możesz sprawdzić ręcznie w Pomoc › Sprawdź aktualizacje.',
     updateChannel: 'Kanał aktualizacji',
     channelStable: 'Stabilny',
     channelBeta: 'Beta',
@@ -7849,7 +7867,7 @@ export const strings = {
     saveLocation: 'Lokalizacja zapisu',
     setRestoreSession: 'Otwieraj ponownie dokumenty z ostatniej sesji',
     setRestoreSessionDesc:
-      'Dokumenty otwarte w chwili zamknięcia GenOffice zostaną automatycznie otwarte przy następnym uruchomieniu.',
+      'Dokumenty otwarte w chwili zamknięcia SelfOffice zostaną automatycznie otwarte przy następnym uruchomieniu.',
     setTabSleep: 'Usypiaj nieaktywne karty',
     setTabSleepDesc:
       'Gdy otwartych jest wiele kart, te dawno nieoglądane zwalniają pamięć i ponownie otwierają plik po powrocie. Karty z niezapisanymi zmianami lub przypięte nigdy nie są usypiane.',
@@ -7879,8 +7897,8 @@ export const strings = {
     aiFontSizeCustom: 'Niestandardowy',
     setAiSpellcheck: 'Sprawdzanie pisowni w czacie AI',
     setDefaultApp: 'Domyślna aplikacja dla dokumentów Office',
-    setDefaultAppDesc: 'Otwieraj pliki .docx, .xlsx i .pptx w GenOffice po dwukrotnym kliknięciu.',
-    setDefaultAppIs: 'GenOffice jest już aplikacją domyślną.',
+    setDefaultAppDesc: 'Otwieraj pliki .docx, .xlsx i .pptx w SelfOffice po dwukrotnym kliknięciu.',
+    setDefaultAppIs: 'SelfOffice jest już aplikacją domyślną.',
     setDefaultAppOther: 'Obecnie domyślna: {app}',
     setDefaultAppSet: 'Ustaw jako domyślną',
     setDefaultAppOpenSettings: 'Otwórz ustawienia systemu',
@@ -7925,7 +7943,7 @@ export const strings = {
     setSecAbout: 'O aplikacji',
     setSecIntegrations: 'Integracje',
     setSecSkills: 'Umiejętności',
-    intgHeroTitle: 'Używaj GenOffice ze swojego asystenta AI',
+    intgHeroTitle: 'Używaj SelfOffice ze swojego asystenta AI',
     intgHeroDesc:
       'Po połączeniu Claude Code, Codex, Cursor, Claude Desktop i podobni asystenci mogą tworzyć, konwertować, czytać i edytować pliki Word, Excel, PowerPoint, PDF i Markdown za Ciebie. Wszystko działa na tym komputerze; nic nie jest przesyłane.',
     intgHeroStep1:
@@ -7936,7 +7954,7 @@ export const strings = {
     intgStep1Desc:
       'Widoczne są tylko asystenty znalezione na tym komputerze. Zainstaluj w tym, którego naprawdę używasz; nie potrzebujesz wszystkich.',
     intgStep1Update:
-      'Gdy aktualizacja GenOffice przyniesie nowszy skill, obok tego asystenta pojawi się przycisk Aktualizuj.',
+      'Gdy aktualizacja SelfOffice przyniesie nowszy skill, obok tego asystenta pojawi się przycisk Aktualizuj.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill niezainstalowany',
     intgStateInstalled: 'Skill {v} zainstalowany · gotowy w następnym czacie',
@@ -7944,7 +7962,7 @@ export const strings = {
     intgOtherDesc:
       'Wybierz tylko jeden z tych trzech sposobów. Wszystkie instalują ten sam skill, więc nie trzeba robić więcej niż jednego.',
     intgOtherFolderTitle: 'Dowolny asystent czytający foldery SKILL.md',
-    intgOtherFolderDesc: 'Wybierz jego folder skills, a GenOffice zapisze tam plik.',
+    intgOtherFolderDesc: 'Wybierz jego folder skills, a SelfOffice zapisze tam plik.',
     intgOtherZipTitle: 'Przekaż plik asystentowi',
     intgOtherZipDesc: 'Zapisz skill jako zip, a potem poproś asystenta o instalację.',
     intgOtherNpxTitle: 'Poleceniem skills (wymaga Node.js)',
@@ -7956,22 +7974,23 @@ export const strings = {
       'Po instalacji otwórz nowy czat w asystencie i poproś zwykłymi słowami, na przykład:',
     intgExample1: 'Zamień ~/Downloads/report.md na dokument Word',
     intgExample2: 'Zrób prezentację z 6 slajdów o naszych wynikach za III kwartał',
-    intgExample3: 'Przekonwertuj budget.xlsx do PDF i otwórz w GenOffice',
-    intgStep2Note: 'Asystent sam uruchamia wiersz poleceń genoffice; nigdy nie musisz go wpisywać.',
+    intgExample3: 'Przekonwertuj budget.xlsx do PDF i otwórz w SelfOffice',
+    intgStep2Note:
+      'Asystent sam uruchamia wiersz poleceń selfoffice; nigdy nie musisz go wpisywać.',
     intgCliPartTitle: 'CLI · wiersz poleceń + skill',
     intgCliPartDesc:
-      'Dla asystentów, które potrafią uruchamiać polecenia terminala (Claude Code, Codex, Cursor i inne). Po zainstalowaniu skilla asystent sam wywołuje wiersz poleceń genoffice, aby tworzyć, konwertować, czytać i edytować pliki; nigdy nie wpisujesz polecenia.',
+      'Dla asystentów, które potrafią uruchamiać polecenia terminala (Claude Code, Codex, Cursor i inne). Po zainstalowaniu skilla asystent sam wywołuje wiersz poleceń selfoffice, aby tworzyć, konwertować, czytać i edytować pliki; nigdy nie wpisujesz polecenia.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP to wspólny protokół, którym asystenci AI wywołują zewnętrzne narzędzia. Użyj go, gdy asystent nie potrafi uruchamiać poleceń (np. Claude Desktop) lub gdy chcesz, aby bezpośrednio sterował oknem GenOffice. Wybierz jeden z dwóch sposobów poniżej.',
+      'MCP to wspólny protokół, którym asystenci AI wywołują zewnętrzne narzędzia. Użyj go, gdy asystent nie potrafi uruchamiać poleceń (np. Claude Desktop) lub gdy chcesz, aby bezpośrednio sterował oknem SelfOffice. Wybierz jeden z dwóch sposobów poniżej.',
     intgMcpStdioTitle: 'Uruchamiany przez asystenta (zalecane)',
     intgMcpStdioDesc:
-      'Asystent sam uruchamia genoffice mcp: nic tu nie trzeba włączać, a GenOffice nie musi być otwarty. Te same funkcje co CLI.',
+      'Asystent sam uruchamia selfoffice mcp: nic tu nie trzeba włączać, a SelfOffice nie musi być otwarty. Te same funkcje co CLI.',
     intgMcpHttpTitle: 'Lokalny serwer HTTP',
     intgMcpHttpDesc:
-      'Działa wewnątrz GenOffice; asystent łączy się przez URL, a Ty widzisz, jak dokument powstaje krok po kroku w edytorze Word. GenOffice musi pozostać otwarty; na razie tylko dokumenty Word.',
+      'Działa wewnątrz SelfOffice; asystent łączy się przez URL, a Ty widzisz, jak dokument powstaje krok po kroku w edytorze Word. SelfOffice musi pozostać otwarty; na razie tylko dokumenty Word.',
     intgMcpHttpAdvanced: 'Zaawansowane: inne adresy i dziennik',
-    intgMcpTryNote: 'Asystent wywołuje GenOffice przez MCP; nigdy nie wpisujesz polecenia.',
+    intgMcpTryNote: 'Asystent wywołuje SelfOffice przez MCP; nigdy nie wpisujesz polecenia.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Uruchom to raz w terminalu:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop lub inny asystent obsługujący MCP',
@@ -7979,10 +7998,10 @@ export const strings = {
       'Dodaj to do jego konfiguracji serwerów MCP (plik JSON lub „Dodaj serwer MCP” w ustawieniach):',
     intgMcpNote:
       'Skill i MCP mogą działać obok siebie; asystent wybiera jedno z nich. Oba robią dokładnie to samo.',
-    intgCliTitle: 'Zaawansowane: wiersz poleceń genoffice',
-    intgCliReady: 'genoffice {v} · gotowy w terminalu ({path})',
+    intgCliTitle: 'Zaawansowane: wiersz poleceń selfoffice',
+    intgCliReady: 'selfoffice {v} · gotowy w terminalu ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · nie ma go w PATH terminala. Asystenty i tak znajdą go przez ~/.genoffice/launcher, więc skill działa. Aby samodzielnie wpisywać genoffice, uruchom to raz:',
+      'selfoffice {v} · nie ma go w PATH terminala. Asystenty i tak znajdą go przez ~/.selfoffice/launcher, więc skill działa. Aby samodzielnie wpisywać selfoffice, uruchom to raz:',
     intgCliLauncher: 'Folder programu uruchamiającego',
     intgStateOutdated: 'Zainstalowano {v}, dostępna aktualizacja do {next}',
     intgStateModified: 'Zainstalowano {v} (zmodyfikowano)',
@@ -8006,9 +8025,10 @@ export const strings = {
     intgSaveZipTitle: 'Zapisz skill',
     intgSavedTo: 'Zapisano w {path}',
     intgCopied: 'Skopiowano',
-    intgCliEphemeral: 'Najpierw przenieś GenOffice do Aplikacji, potem użyj wiersza poleceń.',
+    intgCliEphemeral: 'Najpierw przenieś SelfOffice do Aplikacji, potem użyj wiersza poleceń.',
     intgCopyPath: 'Kopiuj ścieżkę',
-    intgCliNeedsUpdate: 'Ten skill wymaga wiersza poleceń {v} lub nowszego; zaktualizuj GenOffice.',
+    intgCliNeedsUpdate:
+      'Ten skill wymaga wiersza poleceń {v} lub nowszego; zaktualizuj SelfOffice.',
     intgLoading: 'Sprawdzanie…',
     intgUpdateDue: 'Dostępna aktualizacja skilla',
     setSecAiModel: 'Model AI',
@@ -8030,7 +8050,8 @@ export const strings = {
       'Ustaw tylko dla instalacji niestandardowej; pozostaw puste, aby wykryć automatycznie.',
     setAiCodexAutoPlaceholder: 'Wykryj automatycznie (zalecane)',
     setAiCodexHint: 'Używa lokalnie zalogowanego Codex CLI; klucz API nie jest potrzebny.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Zapisz',
     setAiSaved: 'Zapisano',
     setAiTest: 'Testuj połączenie',
@@ -8058,14 +8079,14 @@ export const strings = {
       'Klucz i bazowy URL dostawcy są wspólne dla wszystkich funkcji; wpisz je raz.',
     setGithub: 'Open source',
     starOnGitHub: 'Gwiazdka na GitHubie',
-    starPromptTitle: 'Podoba Ci się GenOffice?',
-    starPromptTitleN: 'Otwarto już {n} dokumentów w GenOffice',
+    starPromptTitle: 'Podoba Ci się SelfOffice?',
+    starPromptTitleN: 'Otwarto już {n} dokumentów w SelfOffice',
     starPromptBody:
-      'GenOffice jest darmowy i open source. Gwiazdka na GitHubie to najlepsze wsparcie dla zespołu.',
+      'SelfOffice jest darmowy i open source. Gwiazdka na GitHubie to najlepsze wsparcie dla zespołu.',
     starPromptGo: 'Daj gwiazdkę',
     starPromptDone: 'Już zrobione',
     starPromptLater: 'Później',
-    onbStarHint: 'Jeśli podoba Ci się GenOffice, zostaw nam gwiazdkę na GitHubie.',
+    onbStarHint: 'Jeśli podoba Ci się SelfOffice, zostaw nam gwiazdkę na GitHubie.',
     setEmail: 'E-mail',
     setNotLoggedIn: 'Nie zalogowano',
     setViewUsage: 'Zobacz zużycie',
@@ -8078,7 +8099,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Nowa karta',
     // First-run onboarding
-    onbTitle1: 'Witamy w GenOffice',
+    onbTitle1: 'Witamy w SelfOffice',
     onbSubtitle1: 'Pierwszy otwartoźródłowy, natywnie oparty na AI pakiet biurowy',
     onbBody1:
       'Twórz dokumenty, arkusze i prezentacje oraz przeglądaj pliki PDF. AI jest wbudowana w każdy etap.',
@@ -8090,7 +8111,7 @@ export const strings = {
     onbBody3: 'Bez opłat licencyjnych. Bez reklam. Bez znaków wodnych.',
     onbBack: 'Wstecz',
     intgSkillsDesc:
-      'GenOffice używa tylko umiejętności z własnego folderu. Import folderu lub pliku zip kopiuje całą umiejętność; podczas importu nic nie jest uruchamiane.',
+      'SelfOffice używa tylko umiejętności z własnego folderu. Import folderu lub pliku zip kopiuje całą umiejętność; podczas importu nic nie jest uruchamiane.',
     intgSkillsEmpty: 'Brak zainstalowanych umiejętności.',
     intgSkillsImportFolder: 'Importuj folder…',
     intgSkillsImportZip: 'Importuj pakiet umiejętności (zip / .md)…',
@@ -8100,7 +8121,7 @@ export const strings = {
     intgSkillsImportFailed: 'Import nie powiódł się: {reason}',
     intgSkillsRemove: 'Usuń',
     intgSkillsRemoveConfirm:
-      'Usunąć umiejętność „{name}”? Jej folder zostanie usunięty z GenOffice.',
+      'Usunąć umiejętność „{name}”? Jej folder zostanie usunięty z SelfOffice.',
     intgSkillsRemoved: 'Usunięto {name}',
     intgSkillsRead: 'Szczegóły',
     intgSkillsMine: 'Moje umiejętności',
@@ -8340,7 +8361,7 @@ export const strings = {
     setUpdateRestart: 'Restartovat a nainstalovat',
     setAutoUpdateCheck: 'Automaticky kontrolovat aktualizace',
     setAutoUpdateCheckDesc:
-      'Po vypnutí GenOffice nekontroluje nové verze při spuštění ani na pozadí. Ručně můžete zkontrolovat v Nápověda › Zkontrolovat aktualizace.',
+      'Po vypnutí SelfOffice nekontroluje nové verze při spuštění ani na pozadí. Ručně můžete zkontrolovat v Nápověda › Zkontrolovat aktualizace.',
     updateChannel: 'Kanál aktualizací',
     channelStable: 'Stabilní',
     channelBeta: 'Beta',
@@ -8384,7 +8405,7 @@ export const strings = {
     setSecAbout: 'O aplikaci',
     setSecIntegrations: 'Integrace',
     setSecSkills: 'Dovednosti',
-    intgHeroTitle: 'Používejte GenOffice ze svého AI asistenta',
+    intgHeroTitle: 'Používejte SelfOffice ze svého AI asistenta',
     intgHeroDesc:
       'Po připojení mohou Claude Code, Codex, Cursor, Claude Desktop a podobní asistenti za vás vytvářet, převádět, číst a upravovat soubory Word, Excel, PowerPoint, PDF a Markdown. Vše běží na tomto počítači; nic se neodesílá.',
     intgHeroStep1: 'Zvolte cestu: CLI, pokud asistent umí spouštět příkazy terminálu, jinak MCP',
@@ -8394,7 +8415,7 @@ export const strings = {
     intgStep1Desc:
       'Zobrazeni jsou jen asistenti nalezení na tomto počítači. Nainstalujte jej do toho, který skutečně používáte; všechny nepotřebujete.',
     intgStep1Update:
-      'Když aktualizace GenOffice přinese novější skill, u daného asistenta se objeví tlačítko Aktualizovat.',
+      'Když aktualizace SelfOffice přinese novější skill, u daného asistenta se objeví tlačítko Aktualizovat.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill není nainstalován',
     intgStateInstalled: 'Skill {v} nainstalován · připraven v příštím chatu',
@@ -8402,7 +8423,7 @@ export const strings = {
     intgOtherDesc:
       'Zvolte pouze jeden z těchto tří způsobů. Všechny instalují stejný skill, takže není třeba dělat více než jeden.',
     intgOtherFolderTitle: 'Jakýkoli asistent, který čte složky SKILL.md',
-    intgOtherFolderDesc: 'Vyberte jeho složku skills a GenOffice tam soubor zapíše.',
+    intgOtherFolderDesc: 'Vyberte jeho složku skills a SelfOffice tam soubor zapíše.',
     intgOtherZipTitle: 'Předejte soubor asistentovi',
     intgOtherZipDesc: 'Uložte skill jako zip a požádejte asistenta, aby jej nainstaloval.',
     intgOtherNpxTitle: 'Příkazem skills (vyžaduje Node.js)',
@@ -8414,22 +8435,22 @@ export const strings = {
       'Po instalaci otevřete v asistentovi nový chat a požádejte běžnými slovy, například:',
     intgExample1: 'Převeď ~/Downloads/report.md na dokument Word',
     intgExample2: 'Udělej prezentaci o 6 snímcích o našich výsledcích za 3. čtvrtletí',
-    intgExample3: 'Převeď budget.xlsx do PDF a otevři ho v GenOffice',
-    intgStep2Note: 'Asistent spouští příkazový řádek genoffice sám; nikdy ho nemusíte psát.',
+    intgExample3: 'Převeď budget.xlsx do PDF a otevři ho v SelfOffice',
+    intgStep2Note: 'Asistent spouští příkazový řádek selfoffice sám; nikdy ho nemusíte psát.',
     intgCliPartTitle: 'CLI · příkazový řádek + skill',
     intgCliPartDesc:
-      'Pro asistenty, kteří umí spouštět příkazy terminálu (Claude Code, Codex, Cursor a další). Po instalaci skillu asistent sám volá příkazový řádek genoffice k vytváření, převodu, čtení a úpravám souborů; žádný příkaz nepíšete.',
+      'Pro asistenty, kteří umí spouštět příkazy terminálu (Claude Code, Codex, Cursor a další). Po instalaci skillu asistent sám volá příkazový řádek selfoffice k vytváření, převodu, čtení a úpravám souborů; žádný příkaz nepíšete.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP je společný protokol, kterým AI asistenti volají externí nástroje. Použijte ho, když asistent neumí spouštět příkazy (např. Claude Desktop) nebo když chcete, aby přímo ovládal okno GenOffice. Vyberte jeden ze dvou způsobů níže.',
+      'MCP je společný protokol, kterým AI asistenti volají externí nástroje. Použijte ho, když asistent neumí spouštět příkazy (např. Claude Desktop) nebo když chcete, aby přímo ovládal okno SelfOffice. Vyberte jeden ze dvou způsobů níže.',
     intgMcpStdioTitle: 'Spouští asistent (doporučeno)',
     intgMcpStdioDesc:
-      'Asistent spustí genoffice mcp sám: tady není co zapínat a GenOffice nemusí být otevřený. Stejné funkce jako CLI.',
+      'Asistent spustí selfoffice mcp sám: tady není co zapínat a SelfOffice nemusí být otevřený. Stejné funkce jako CLI.',
     intgMcpHttpTitle: 'Místní HTTP server',
     intgMcpHttpDesc:
-      'Běží uvnitř GenOffice; asistent se připojí přes URL a v editoru Word sledujete, jak dokument krok za krokem vzniká. GenOffice musí zůstat otevřený; zatím jen dokumenty Word.',
+      'Běží uvnitř SelfOffice; asistent se připojí přes URL a v editoru Word sledujete, jak dokument krok za krokem vzniká. SelfOffice musí zůstat otevřený; zatím jen dokumenty Word.',
     intgMcpHttpAdvanced: 'Pokročilé: další adresy a protokol',
-    intgMcpTryNote: 'Asistent volá GenOffice přes MCP; žádný příkaz nepíšete.',
+    intgMcpTryNote: 'Asistent volá SelfOffice přes MCP; žádný příkaz nepíšete.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Spusťte jednou v terminálu:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop nebo jiný asistent s podporou MCP',
@@ -8437,10 +8458,10 @@ export const strings = {
       'Přidejte toto do jeho nastavení MCP serverů (soubor JSON nebo „Přidat MCP server“ v nastavení):',
     intgMcpNote:
       'Skill a MCP mohou být nastaveny současně; asistent si jeden vybere. Oba dělají přesně to samé.',
-    intgCliTitle: 'Pokročilé: příkazový řádek genoffice',
-    intgCliReady: 'genoffice {v} · připraven v terminálu ({path})',
+    intgCliTitle: 'Pokročilé: příkazový řádek selfoffice',
+    intgCliReady: 'selfoffice {v} · připraven v terminálu ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · není v PATH terminálu. Asistenti ho i tak najdou přes ~/.genoffice/launcher, skill tedy funguje. Chcete-li genoffice psát sami, spusťte jednou:',
+      'selfoffice {v} · není v PATH terminálu. Asistenti ho i tak najdou přes ~/.selfoffice/launcher, skill tedy funguje. Chcete-li selfoffice psát sami, spusťte jednou:',
     intgCliLauncher: 'Složka spouštěče',
     intgStateOutdated: 'Nainstalováno {v}, k dispozici aktualizace na {next}',
     intgStateModified: 'Nainstalováno {v} (upraveno)',
@@ -8464,10 +8485,10 @@ export const strings = {
     intgSaveZipTitle: 'Uložit skill',
     intgSavedTo: 'Uloženo do {path}',
     intgCopied: 'Zkopírováno',
-    intgCliEphemeral: 'Nejprve přetáhněte GenOffice do Aplikací a poté použijte příkazový řádek.',
+    intgCliEphemeral: 'Nejprve přetáhněte SelfOffice do Aplikací a poté použijte příkazový řádek.',
     intgCopyPath: 'Kopírovat cestu',
     intgCliNeedsUpdate:
-      'Tento skill vyžaduje příkazový řádek {v} nebo novější; aktualizujte GenOffice.',
+      'Tento skill vyžaduje příkazový řádek {v} nebo novější; aktualizujte SelfOffice.',
     intgLoading: 'Kontrola…',
     intgUpdateDue: 'K dispozici je aktualizace skillu',
     setSecAiModel: 'Model AI',
@@ -8489,7 +8510,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: 'Nechte prázdné pro automatickou detekci (doporučeno)',
     setAiCodexHint:
       'Automaticky najde a použije aktuální Codex CLI, po aktualizaci není třeba nic měnit; lze zadat i vlastní cestu. API klíč není potřeba.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Uložit',
     setAiSaved: 'Uloženo',
     setAiTest: 'Otestovat připojení',
@@ -8517,14 +8539,14 @@ export const strings = {
       'Klíč a základní URL jednoho poskytovatele se sdílejí mezi funkcemi; zadejte je jen jednou.',
     setGithub: 'Open source',
     starOnGitHub: 'Dát hvězdičku na GitHubu',
-    starPromptTitle: 'Líbí se vám GenOffice?',
-    starPromptTitleN: 'V GenOffice jste otevřeli už {n} dokumentů',
+    starPromptTitle: 'Líbí se vám SelfOffice?',
+    starPromptTitleN: 'V SelfOffice jste otevřeli už {n} dokumentů',
     starPromptBody:
-      'GenOffice je zdarma a open source. Hvězdička na GitHubu je nejlepší způsob, jak tým podpořit.',
+      'SelfOffice je zdarma a open source. Hvězdička na GitHubu je nejlepší způsob, jak tým podpořit.',
     starPromptGo: 'Dát hvězdičku na GitHubu',
     starPromptDone: 'Hvězdička už udělena',
     starPromptLater: 'Možná později',
-    onbStarHint: 'Pokud se vám GenOffice líbí, dejte nám hvězdičku na GitHubu.',
+    onbStarHint: 'Pokud se vám SelfOffice líbí, dejte nám hvězdičku na GitHubu.',
     setEmail: 'E-mail',
     setNotLoggedIn: 'Nepřihlášeno',
     setViewUsage: 'Zobrazit využití',
@@ -8537,7 +8559,7 @@ export const strings = {
     appMenu: 'Nabídka',
     newTab: 'Nová karta',
     // First-run onboarding
-    onbTitle1: 'Vítejte v GenOffice',
+    onbTitle1: 'Vítejte v SelfOffice',
     onbSubtitle1: 'První open-source kancelářský balík s nativní AI',
     onbBody1:
       'Vytvářejte dokumenty, tabulky a prezentace a kontrolujte PDF. AI je součástí každého kroku.',
@@ -8550,7 +8572,7 @@ export const strings = {
     onbBack: 'Zpět',
     setRestoreSession: 'Znovu otevřít dokumenty z minula',
     setRestoreSessionDesc:
-      'Dokumenty otevřené při zavření GenOffice se při příštím spuštění automaticky znovu otevřou.',
+      'Dokumenty otevřené při zavření SelfOffice se při příštím spuštění automaticky znovu otevřou.',
     setTabSleep: 'Uspávat neaktivní karty',
     setTabSleepDesc:
       'Když je otevřeno mnoho karet, ty dlouho nezobrazené uvolní paměť a při návratu znovu otevřou soubor. Karty s neuloženými změnami nebo připnuté se nikdy neuspí.',
@@ -8577,8 +8599,8 @@ export const strings = {
     aiFontSizeCustom: 'Vlastní',
     setAiSpellcheck: 'Kontrola pravopisu v chatu AI',
     setDefaultApp: 'Výchozí aplikace pro dokumenty Office',
-    setDefaultAppDesc: 'Otevírat soubory .docx, .xlsx a .pptx v GenOffice poklepáním.',
-    setDefaultAppIs: 'GenOffice už je výchozí aplikací.',
+    setDefaultAppDesc: 'Otevírat soubory .docx, .xlsx a .pptx v SelfOffice poklepáním.',
+    setDefaultAppIs: 'SelfOffice už je výchozí aplikací.',
     setDefaultAppOther: 'Aktuální výchozí: {app}',
     setDefaultAppSet: 'Nastavit jako výchozí',
     setDefaultAppOpenSettings: 'Otevřít nastavení systému',
@@ -8591,7 +8613,7 @@ export const strings = {
     setAiOpenInNewDocsDesc:
       'Když je vypnuto, nově otevřené dokumenty začínají se sbaleným panelem AI; v případě potřeby stačí jedno kliknutí.',
     intgSkillsDesc:
-      'GenOffice používá pouze dovednosti ze své vlastní složky. Import složky nebo zipu zkopíruje celou dovednost; při importu se nic nespouští.',
+      'SelfOffice používá pouze dovednosti ze své vlastní složky. Import složky nebo zipu zkopíruje celou dovednost; při importu se nic nespouští.',
     intgSkillsEmpty: 'Zatím nejsou nainstalovány žádné dovednosti.',
     intgSkillsImportFolder: 'Importovat složku…',
     intgSkillsImportZip: 'Importovat balíček dovednosti (zip / .md)…',
@@ -8600,7 +8622,7 @@ export const strings = {
     intgSkillsImportDone: 'Importováno: {name}',
     intgSkillsImportFailed: 'Import se nezdařil: {reason}',
     intgSkillsRemove: 'Odebrat',
-    intgSkillsRemoveConfirm: 'Odebrat dovednost „{name}“? Její složka bude z GenOffice smazána.',
+    intgSkillsRemoveConfirm: 'Odebrat dovednost „{name}“? Její složka bude z SelfOffice smazána.',
     intgSkillsRemoved: '{name} odebrána',
     intgSkillsRead: 'Podrobnosti',
     intgSkillsMine: 'Moje dovednosti',
@@ -8842,7 +8864,7 @@ export const strings = {
     setUpdateRestart: 'Herstarten en installeren',
     setAutoUpdateCheck: 'Automatisch controleren op updates',
     setAutoUpdateCheckDesc:
-      'Uitgeschakeld controleert GenOffice niet meer op nieuwe versies bij het starten of op de achtergrond. Je kunt nog steeds controleren via Help › Controleren op updates.',
+      'Uitgeschakeld controleert SelfOffice niet meer op nieuwe versies bij het starten of op de achtergrond. Je kunt nog steeds controleren via Help › Controleren op updates.',
     updateChannel: 'Updatekanaal',
     channelStable: 'Stabiel',
     channelBeta: 'Bèta',
@@ -8855,7 +8877,7 @@ export const strings = {
     saveLocation: 'Opslaglocatie',
     setRestoreSession: 'Documenten van de vorige keer opnieuw openen',
     setRestoreSessionDesc:
-      'Documenten die open waren toen GenOffice werd gesloten, worden bij de volgende start automatisch opnieuw geopend.',
+      'Documenten die open waren toen SelfOffice werd gesloten, worden bij de volgende start automatisch opnieuw geopend.',
     setTabSleep: 'Inactieve tabbladen laten slapen',
     setTabSleepDesc:
       'Als er veel tabbladen open zijn, geven tabbladen die u een tijd niet hebt bekeken hun geheugen vrij en openen ze het bestand opnieuw als u terugkeert. Tabbladen met niet-opgeslagen wijzigingen of vastgemaakte tabbladen slapen nooit.',
@@ -8885,8 +8907,8 @@ export const strings = {
     aiFontSizeCustom: 'Aangepast',
     setAiSpellcheck: 'Spellingcontrole in AI-chat',
     setDefaultApp: 'Standaardapp voor Office-documenten',
-    setDefaultAppDesc: '.docx-, .xlsx- en .pptx-bestanden in GenOffice openen bij dubbelklikken.',
-    setDefaultAppIs: 'GenOffice is al de standaardapp.',
+    setDefaultAppDesc: '.docx-, .xlsx- en .pptx-bestanden in SelfOffice openen bij dubbelklikken.',
+    setDefaultAppIs: 'SelfOffice is al de standaardapp.',
     setDefaultAppOther: 'Huidige standaard: {app}',
     setDefaultAppSet: 'Als standaard instellen',
     setDefaultAppOpenSettings: 'Systeeminstellingen openen',
@@ -8932,7 +8954,7 @@ export const strings = {
     setSecAbout: 'Over',
     setSecIntegrations: 'Integraties',
     setSecSkills: 'Vaardigheden',
-    intgHeroTitle: 'GenOffice gebruiken vanuit uw AI-assistent',
+    intgHeroTitle: 'SelfOffice gebruiken vanuit uw AI-assistent',
     intgHeroDesc:
       'Eenmaal verbonden kunnen Claude Code, Codex, Cursor, Claude Desktop en vergelijkbare assistenten Word-, Excel-, PowerPoint-, PDF- en Markdown-bestanden voor je maken, converteren, lezen en bewerken. Alles draait op deze computer; er wordt niets geüpload.',
     intgHeroStep1:
@@ -8943,7 +8965,7 @@ export const strings = {
     intgStep1Desc:
       'Alleen assistenten die op deze computer zijn gevonden staan hier. Installeer in die u echt gebruikt; u hebt ze niet allemaal nodig.',
     intgStep1Update:
-      'Wanneer een GenOffice-update een nieuwere skill meebrengt, verschijnt naast die assistent een knop Bijwerken.',
+      'Wanneer een SelfOffice-update een nieuwere skill meebrengt, verschijnt naast die assistent een knop Bijwerken.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill niet geïnstalleerd',
     intgStateInstalled: 'Skill {v} geïnstalleerd · klaar in uw volgende chat',
@@ -8951,7 +8973,7 @@ export const strings = {
     intgOtherDesc:
       'Kies één van deze drie manieren. Ze installeren allemaal dezelfde skill, dus meer dan één is niet nodig.',
     intgOtherFolderTitle: 'Elke assistent die SKILL.md-mappen leest',
-    intgOtherFolderDesc: 'Kies zijn skills-map en GenOffice schrijft het bestand daar.',
+    intgOtherFolderDesc: 'Kies zijn skills-map en SelfOffice schrijft het bestand daar.',
     intgOtherZipTitle: 'Geef het bestand aan de assistent',
     intgOtherZipDesc: 'Sla de skill op als zip en vraag de assistent hem te installeren.',
     intgOtherNpxTitle: 'Met de skills-opdracht (vereist Node.js)',
@@ -8964,23 +8986,23 @@ export const strings = {
       'Open na de installatie een nieuwe chat in uw assistent en vraag het in gewone woorden, bijvoorbeeld:',
     intgExample1: 'Maak van ~/Downloads/report.md een Word-document',
     intgExample2: 'Maak een presentatie van 6 dia’s over onze Q3-resultaten',
-    intgExample3: 'Zet budget.xlsx om naar PDF en open het in GenOffice',
+    intgExample3: 'Zet budget.xlsx om naar PDF en open het in SelfOffice',
     intgStep2Note:
-      'De assistent voert de genoffice-opdrachtregel zelf uit; u hoeft die nooit te typen.',
+      'De assistent voert de selfoffice-opdrachtregel zelf uit; u hoeft die nooit te typen.',
     intgCliPartTitle: 'CLI · opdrachtregel + skill',
     intgCliPartDesc:
-      'Voor assistenten die terminalopdrachten kunnen uitvoeren (Claude Code, Codex, Cursor en andere). Na installatie van de skill roept de assistent zelf de genoffice-opdrachtregel aan om bestanden te maken, converteren, lezen en bewerken; je typt nooit een opdracht.',
+      'Voor assistenten die terminalopdrachten kunnen uitvoeren (Claude Code, Codex, Cursor en andere). Na installatie van de skill roept de assistent zelf de selfoffice-opdrachtregel aan om bestanden te maken, converteren, lezen en bewerken; je typt nooit een opdracht.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP is het gemeenschappelijke protocol waarmee AI-assistenten externe tools aanroepen. Gebruik het als je assistent geen opdrachten kan uitvoeren (bijvoorbeeld Claude Desktop) of als je wilt dat hij het GenOffice-venster rechtstreeks bestuurt. Kies een van de twee manieren hieronder.',
+      'MCP is het gemeenschappelijke protocol waarmee AI-assistenten externe tools aanroepen. Gebruik het als je assistent geen opdrachten kan uitvoeren (bijvoorbeeld Claude Desktop) of als je wilt dat hij het SelfOffice-venster rechtstreeks bestuurt. Kies een van de twee manieren hieronder.',
     intgMcpStdioTitle: 'Gestart door de assistent (aanbevolen)',
     intgMcpStdioDesc:
-      'De assistent start genoffice mcp zelf: hier hoeft niets aan, en GenOffice hoeft niet open te staan. Dezelfde functies als de CLI.',
+      'De assistent start selfoffice mcp zelf: hier hoeft niets aan, en SelfOffice hoeft niet open te staan. Dezelfde functies als de CLI.',
     intgMcpHttpTitle: 'Lokale HTTP-server',
     intgMcpHttpDesc:
-      'Draait in GenOffice; de assistent verbindt via een URL en je ziet het document stap voor stap ontstaan in de Word-editor. GenOffice moet open blijven; voorlopig alleen Word-documenten.',
+      'Draait in SelfOffice; de assistent verbindt via een URL en je ziet het document stap voor stap ontstaan in de Word-editor. SelfOffice moet open blijven; voorlopig alleen Word-documenten.',
     intgMcpHttpAdvanced: 'Geavanceerd: andere adressen en logboek',
-    intgMcpTryNote: 'De assistent roept GenOffice aan via MCP; je typt nooit een opdracht.',
+    intgMcpTryNote: 'De assistent roept SelfOffice aan via MCP; je typt nooit een opdracht.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Voer dit één keer uit in een terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop of een andere assistent met MCP-ondersteuning',
@@ -8988,10 +9010,10 @@ export const strings = {
       'Voeg dit toe aan de MCP-serverinstellingen (een JSON-bestand, of "MCP-server toevoegen" in de instellingen):',
     intgMcpNote:
       'De skill en MCP kunnen naast elkaar bestaan; de assistent kiest er een. Ze doen precies hetzelfde.',
-    intgCliTitle: 'Geavanceerd: genoffice-opdrachtregel',
-    intgCliReady: 'genoffice {v} · klaar in uw terminal ({path})',
+    intgCliTitle: 'Geavanceerd: selfoffice-opdrachtregel',
+    intgCliReady: 'selfoffice {v} · klaar in uw terminal ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · staat niet in het PATH van uw terminal. Assistenten vinden het toch via ~/.genoffice/launcher, dus de skill werkt. Om zelf genoffice te typen, voert u dit één keer uit:',
+      'selfoffice {v} · staat niet in het PATH van uw terminal. Assistenten vinden het toch via ~/.selfoffice/launcher, dus de skill werkt. Om zelf selfoffice te typen, voert u dit één keer uit:',
     intgCliLauncher: 'Launcher-map',
     intgStateOutdated: 'Geïnstalleerd {v}, update naar {next} beschikbaar',
     intgStateModified: 'Geïnstalleerd {v} (gewijzigd)',
@@ -9015,9 +9037,9 @@ export const strings = {
     intgSaveZipTitle: 'Skill opslaan',
     intgSavedTo: 'Opgeslagen in {path}',
     intgCopied: 'Gekopieerd',
-    intgCliEphemeral: "Sleep GenOffice eerst naar Programma's en gebruik daarna de opdrachtregel.",
+    intgCliEphemeral: "Sleep SelfOffice eerst naar Programma's en gebruik daarna de opdrachtregel.",
     intgCopyPath: 'Pad kopiëren',
-    intgCliNeedsUpdate: 'Deze skill vereist opdrachtregel {v} of nieuwer; werk GenOffice bij.',
+    intgCliNeedsUpdate: 'Deze skill vereist opdrachtregel {v} of nieuwer; werk SelfOffice bij.',
     intgLoading: 'Controleren…',
     intgUpdateDue: 'Skill-update beschikbaar',
     setSecAiModel: 'AI-model',
@@ -9038,7 +9060,8 @@ export const strings = {
       'Alleen invullen voor een aangepaste installatie; laat leeg voor automatische detectie.',
     setAiCodexAutoPlaceholder: 'Automatisch detecteren (aanbevolen)',
     setAiCodexHint: 'Gebruikt de lokaal aangemelde Codex CLI; geen API-sleutel nodig.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Opslaan',
     setAiSaved: 'Opgeslagen',
     setAiTest: 'Verbinding testen',
@@ -9066,14 +9089,14 @@ export const strings = {
       'De sleutel en basis-URL van een provider gelden voor alle functies; één keer invoeren volstaat.',
     setGithub: 'Open source',
     starOnGitHub: 'Geef een ster op GitHub',
-    starPromptTitle: 'Bevalt GenOffice?',
-    starPromptTitleN: 'Je hebt al {n} documenten geopend met GenOffice',
+    starPromptTitle: 'Bevalt SelfOffice?',
+    starPromptTitleN: 'Je hebt al {n} documenten geopend met SelfOffice',
     starPromptBody:
-      'GenOffice is gratis en open source. Een ster op GitHub is de beste steun voor het team.',
+      'SelfOffice is gratis en open source. Een ster op GitHub is de beste steun voor het team.',
     starPromptGo: 'Geef een ster',
     starPromptDone: 'Al gedaan',
     starPromptLater: 'Later',
-    onbStarHint: 'Als GenOffice je bevalt, geef ons dan een ster op GitHub.',
+    onbStarHint: 'Als SelfOffice je bevalt, geef ons dan een ster op GitHub.',
     setEmail: 'E-mail',
     setNotLoggedIn: 'Niet ingelogd',
     setViewUsage: 'Verbruik bekijken',
@@ -9086,7 +9109,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Nieuw tabblad',
     // First-run onboarding
-    onbTitle1: 'Welkom bij GenOffice',
+    onbTitle1: 'Welkom bij SelfOffice',
     onbSubtitle1: 'De eerste open source, AI-native officesuite',
     onbBody1:
       'Maak documenten, bouw spreadsheets, maak presentaties en beoordeel PDF-bestanden. AI zit in elke stap ingebouwd.',
@@ -9098,7 +9121,7 @@ export const strings = {
     onbBody3: 'Geen licentiekosten. Geen advertenties. Geen watermerken.',
     onbBack: 'Terug',
     intgSkillsDesc:
-      'GenOffice gebruikt alleen vaardigheden uit zijn eigen map. Een map of zip importeren kopieert de hele vaardigheid; bij het importeren wordt niets uitgevoerd.',
+      'SelfOffice gebruikt alleen vaardigheden uit zijn eigen map. Een map of zip importeren kopieert de hele vaardigheid; bij het importeren wordt niets uitgevoerd.',
     intgSkillsEmpty: 'Nog geen vaardigheden geïnstalleerd.',
     intgSkillsImportFolder: 'Map importeren…',
     intgSkillsImportZip: 'Vaardigheidspakket importeren (zip / .md)…',
@@ -9108,7 +9131,7 @@ export const strings = {
     intgSkillsImportFailed: 'Importeren mislukt: {reason}',
     intgSkillsRemove: 'Verwijderen',
     intgSkillsRemoveConfirm:
-      'Vaardigheid "{name}" verwijderen? De map wordt uit GenOffice verwijderd.',
+      'Vaardigheid "{name}" verwijderen? De map wordt uit SelfOffice verwijderd.',
     intgSkillsRemoved: '{name} verwijderd',
     intgSkillsRead: 'Details',
     intgSkillsMine: 'Mijn vaardigheden',
@@ -9349,7 +9372,7 @@ export const strings = {
     setUpdateRestart: 'Mulakan semula dan pasang',
     setAutoUpdateCheck: 'Semak kemas kini secara automatik',
     setAutoUpdateCheckDesc:
-      'Apabila dimatikan, GenOffice tidak lagi menyemak versi baharu semasa dimulakan atau di latar belakang. Anda masih boleh menyemak melalui Bantuan › Semak Kemas Kini.',
+      'Apabila dimatikan, SelfOffice tidak lagi menyemak versi baharu semasa dimulakan atau di latar belakang. Anda masih boleh menyemak melalui Bantuan › Semak Kemas Kini.',
     updateChannel: 'Saluran Kemas Kini',
     channelStable: 'Stabil',
     channelBeta: 'Beta',
@@ -9362,7 +9385,7 @@ export const strings = {
     saveLocation: 'Lokasi simpanan',
     setRestoreSession: 'Buka semula dokumen dari kali terakhir',
     setRestoreSessionDesc:
-      'Dokumen yang dibuka semasa GenOffice ditutup akan dibuka semula secara automatik apabila ia dimulakan seterusnya.',
+      'Dokumen yang dibuka semasa SelfOffice ditutup akan dibuka semula secara automatik apabila ia dimulakan seterusnya.',
     setTabSleep: 'Tidurkan tab tidak aktif',
     setTabSleepDesc:
       'Apabila banyak tab dibuka, tab yang lama tidak dilihat melepaskan memorinya dan membuka semula failnya apabila anda kembali. Tab dengan perubahan belum disimpan atau yang disemat tidak akan tidur.',
@@ -9392,8 +9415,8 @@ export const strings = {
     aiFontSizeCustom: 'Tersuai',
     setAiSpellcheck: 'Semakan ejaan dalam sembang AI',
     setDefaultApp: 'Apl lalai untuk dokumen Office',
-    setDefaultAppDesc: 'Buka fail .docx, .xlsx dan .pptx dalam GenOffice apabila diklik dua kali.',
-    setDefaultAppIs: 'GenOffice sudah menjadi apl lalai.',
+    setDefaultAppDesc: 'Buka fail .docx, .xlsx dan .pptx dalam SelfOffice apabila diklik dua kali.',
+    setDefaultAppIs: 'SelfOffice sudah menjadi apl lalai.',
     setDefaultAppOther: 'Lalai semasa: {app}',
     setDefaultAppSet: 'Jadikan lalai',
     setDefaultAppOpenSettings: 'Buka tetapan sistem',
@@ -9439,7 +9462,7 @@ export const strings = {
     setSecAbout: 'Perihal',
     setSecIntegrations: 'Integrasi',
     setSecSkills: 'Kemahiran',
-    intgHeroTitle: 'Gunakan GenOffice daripada pembantu AI anda',
+    intgHeroTitle: 'Gunakan SelfOffice daripada pembantu AI anda',
     intgHeroDesc:
       'Setelah disambungkan, Claude Code, Codex, Cursor, Claude Desktop dan pembantu serupa boleh mencipta, menukar, membaca dan mengedit fail Word, Excel, PowerPoint, PDF dan Markdown untuk anda. Semuanya berjalan di komputer ini; tiada apa yang dimuat naik.',
     intgHeroStep1:
@@ -9450,7 +9473,7 @@ export const strings = {
     intgStep1Desc:
       'Hanya pembantu yang ditemui pada komputer ini disenaraikan. Pasang pada yang anda benar-benar guna; tidak perlu kesemuanya.',
     intgStep1Update:
-      'Apabila kemas kini GenOffice membawa skill yang lebih baharu, butang Kemas kini muncul di sebelah pembantu itu.',
+      'Apabila kemas kini SelfOffice membawa skill yang lebih baharu, butang Kemas kini muncul di sebelah pembantu itu.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill belum dipasang',
     intgStateInstalled: 'Skill {v} dipasang · sedia dalam sembang seterusnya',
@@ -9458,7 +9481,7 @@ export const strings = {
     intgOtherDesc:
       'Pilih satu sahaja daripada tiga cara ini. Semuanya memasang skill yang sama, jadi tidak perlu lebih daripada satu.',
     intgOtherFolderTitle: 'Mana-mana pembantu yang membaca folder SKILL.md',
-    intgOtherFolderDesc: 'Pilih folder skills pembantu itu dan GenOffice menulis fail di sana.',
+    intgOtherFolderDesc: 'Pilih folder skills pembantu itu dan SelfOffice menulis fail di sana.',
     intgOtherZipTitle: 'Serahkan fail kepada pembantu',
     intgOtherZipDesc: 'Simpan skill sebagai zip, kemudian minta pembantu memasangnya.',
     intgOtherNpxTitle: 'Dengan arahan skills (perlukan Node.js)',
@@ -9471,24 +9494,24 @@ export const strings = {
       'Selepas dipasang, buka sembang baharu dalam pembantu anda dan minta dengan bahasa biasa, contohnya:',
     intgExample1: 'Tukar ~/Downloads/report.md kepada dokumen Word',
     intgExample2: 'Buat pembentangan 6 slaid tentang hasil S3 kami',
-    intgExample3: 'Tukar budget.xlsx kepada PDF dan buka dalam GenOffice',
+    intgExample3: 'Tukar budget.xlsx kepada PDF dan buka dalam SelfOffice',
     intgStep2Note:
-      'Pembantu menjalankan baris arahan genoffice sendiri; anda tidak perlu menaipnya.',
+      'Pembantu menjalankan baris arahan selfoffice sendiri; anda tidak perlu menaipnya.',
     intgCliPartTitle: 'CLI · baris arahan + skill',
     intgCliPartDesc:
-      'Untuk pembantu yang boleh menjalankan arahan terminal (Claude Code, Codex, Cursor dan lain-lain). Setelah skill dipasang, pembantu memanggil baris arahan genoffice sendiri untuk mencipta, menukar, membaca dan mengedit fail; anda tidak perlu menaip sebarang arahan.',
+      'Untuk pembantu yang boleh menjalankan arahan terminal (Claude Code, Codex, Cursor dan lain-lain). Setelah skill dipasang, pembantu memanggil baris arahan selfoffice sendiri untuk mencipta, menukar, membaca dan mengedit fail; anda tidak perlu menaip sebarang arahan.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP ialah protokol umum yang digunakan pembantu AI untuk memanggil alat luaran. Gunakannya apabila pembantu anda tidak boleh menjalankan arahan (contohnya Claude Desktop) atau apabila anda mahu ia mengawal tetingkap GenOffice secara langsung. Pilih salah satu daripada dua cara di bawah.',
+      'MCP ialah protokol umum yang digunakan pembantu AI untuk memanggil alat luaran. Gunakannya apabila pembantu anda tidak boleh menjalankan arahan (contohnya Claude Desktop) atau apabila anda mahu ia mengawal tetingkap SelfOffice secara langsung. Pilih salah satu daripada dua cara di bawah.',
     intgMcpStdioTitle: 'Dimulakan oleh pembantu (disyorkan)',
     intgMcpStdioDesc:
-      'Pembantu melancarkan genoffice mcp sendiri: tiada apa yang perlu dihidupkan di sini, dan GenOffice tidak perlu dibuka. Ciri sama seperti CLI.',
+      'Pembantu melancarkan selfoffice mcp sendiri: tiada apa yang perlu dihidupkan di sini, dan SelfOffice tidak perlu dibuka. Ciri sama seperti CLI.',
     intgMcpHttpTitle: 'Pelayan HTTP tempatan',
     intgMcpHttpDesc:
-      'Berjalan di dalam GenOffice; pembantu menyambung melalui URL dan anda boleh melihat dokumen dibina langkah demi langkah dalam editor Word. GenOffice mesti kekal dibuka; buat masa ini dokumen Word sahaja.',
+      'Berjalan di dalam SelfOffice; pembantu menyambung melalui URL dan anda boleh melihat dokumen dibina langkah demi langkah dalam editor Word. SelfOffice mesti kekal dibuka; buat masa ini dokumen Word sahaja.',
     intgMcpHttpAdvanced: 'Lanjutan: alamat lain dan log',
     intgMcpTryNote:
-      'Pembantu memanggil GenOffice melalui MCP; anda tidak perlu menaip sebarang arahan.',
+      'Pembantu memanggil SelfOffice melalui MCP; anda tidak perlu menaip sebarang arahan.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Jalankan ini sekali dalam terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop atau pembantu lain yang menyokong MCP',
@@ -9496,10 +9519,10 @@ export const strings = {
       'Tambahkan ini pada tetapan pelayan MCP pembantu tersebut (fail JSON, atau "Tambah pelayan MCP" dalam tetapannya):',
     intgMcpNote:
       'Skill dan MCP boleh dipasang serentak; pembantu akan memilih satu. Kedua-duanya melakukan perkara yang sama.',
-    intgCliTitle: 'Lanjutan: baris arahan genoffice',
-    intgCliReady: 'genoffice {v} · sedia dalam terminal anda ({path})',
+    intgCliTitle: 'Lanjutan: baris arahan selfoffice',
+    intgCliReady: 'selfoffice {v} · sedia dalam terminal anda ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · tiada dalam PATH terminal anda. Pembantu masih menemuinya melalui ~/.genoffice/launcher, jadi skill berfungsi. Untuk menaip genoffice sendiri, jalankan ini sekali:',
+      'selfoffice {v} · tiada dalam PATH terminal anda. Pembantu masih menemuinya melalui ~/.selfoffice/launcher, jadi skill berfungsi. Untuk menaip selfoffice sendiri, jalankan ini sekali:',
     intgCliLauncher: 'Folder pelancar',
     intgStateOutdated: 'Dipasang {v}, kemas kini ke {next} tersedia',
     intgStateModified: 'Dipasang {v} (diubah suai)',
@@ -9523,10 +9546,10 @@ export const strings = {
     intgSaveZipTitle: 'Simpan skill',
     intgSavedTo: 'Disimpan ke {path}',
     intgCopied: 'Disalin',
-    intgCliEphemeral: 'Seret GenOffice ke Applications dahulu, kemudian gunakan baris arahan.',
+    intgCliEphemeral: 'Seret SelfOffice ke Applications dahulu, kemudian gunakan baris arahan.',
     intgCopyPath: 'Salin laluan',
     intgCliNeedsUpdate:
-      'Skill ini memerlukan baris arahan {v} atau lebih baharu; kemas kini GenOffice.',
+      'Skill ini memerlukan baris arahan {v} atau lebih baharu; kemas kini SelfOffice.',
     intgLoading: 'Menyemak…',
     intgUpdateDue: 'Kemas kini skill tersedia',
     setSecAiModel: 'Model AI',
@@ -9548,7 +9571,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: 'Kesan automatik (disyorkan)',
     setAiCodexHint:
       'Menggunakan Codex CLI yang telah log masuk secara setempat; tiada kunci API diperlukan.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Simpan',
     setAiSaved: 'Disimpan',
     setAiTest: 'Uji sambungan',
@@ -9576,14 +9600,14 @@ export const strings = {
       'Kunci dan Base URL pembekal dikongsi oleh semua keupayaan; isi sekali sahaja.',
     setGithub: 'Sumber Terbuka',
     starOnGitHub: 'Beri Bintang di GitHub',
-    starPromptTitle: 'Suka GenOffice?',
-    starPromptTitleN: 'Anda telah membuka {n} dokumen dengan GenOffice',
+    starPromptTitle: 'Suka SelfOffice?',
+    starPromptTitleN: 'Anda telah membuka {n} dokumen dengan SelfOffice',
     starPromptBody:
-      'GenOffice percuma dan sumber terbuka. Bintang di GitHub ialah sokongan terbaik untuk pasukan kami.',
+      'SelfOffice percuma dan sumber terbuka. Bintang di GitHub ialah sokongan terbaik untuk pasukan kami.',
     starPromptGo: 'Beri Bintang',
     starPromptDone: 'Sudah',
     starPromptLater: 'Kemudian',
-    onbStarHint: 'Jika anda suka GenOffice, beri kami bintang di GitHub.',
+    onbStarHint: 'Jika anda suka SelfOffice, beri kami bintang di GitHub.',
     setEmail: 'E-mel',
     setNotLoggedIn: 'Belum log masuk',
     setViewUsage: 'Lihat penggunaan',
@@ -9596,7 +9620,7 @@ export const strings = {
     appMenu: 'Menu',
     newTab: 'Tab baharu',
     // First-run onboarding
-    onbTitle1: 'Selamat datang ke GenOffice',
+    onbTitle1: 'Selamat datang ke SelfOffice',
     onbSubtitle1: 'Suite pejabat sumber terbuka natif AI yang pertama',
     onbBody1:
       'Cipta dokumen, bina hamparan, hasilkan persembahan dan semak PDF. AI tersedia pada setiap langkah.',
@@ -9608,7 +9632,7 @@ export const strings = {
     onbBody3: 'Tiada yuran lesen. Tiada iklan. Tiada tera air.',
     onbBack: 'Kembali',
     intgSkillsDesc:
-      'GenOffice hanya menggunakan kemahiran dalam folder kemahirannya sendiri. Mengimport folder atau zip menyalin keseluruhan kemahiran; tiada apa yang dijalankan semasa import.',
+      'SelfOffice hanya menggunakan kemahiran dalam folder kemahirannya sendiri. Mengimport folder atau zip menyalin keseluruhan kemahiran; tiada apa yang dijalankan semasa import.',
     intgSkillsEmpty: 'Belum ada kemahiran dipasang.',
     intgSkillsImportFolder: 'Import folder…',
     intgSkillsImportZip: 'Import pakej kemahiran (zip / .md)…',
@@ -9617,7 +9641,8 @@ export const strings = {
     intgSkillsImportDone: '{name} diimport',
     intgSkillsImportFailed: 'Import gagal: {reason}',
     intgSkillsRemove: 'Buang',
-    intgSkillsRemoveConfirm: 'Buang kemahiran "{name}"? Foldernya akan dipadam daripada GenOffice.',
+    intgSkillsRemoveConfirm:
+      'Buang kemahiran "{name}"? Foldernya akan dipadam daripada SelfOffice.',
     intgSkillsRemoved: '{name} dibuang',
     intgSkillsRead: 'Detail',
     intgSkillsMine: 'Kemahiran saya',
@@ -9856,7 +9881,7 @@ export const strings = {
     setUpdateRestart: 'הפעל מחדש והתקן',
     setAutoUpdateCheck: 'בדיקת עדכונים אוטומטית',
     setAutoUpdateCheckDesc:
-      'כשהאפשרות כבויה, GenOffice לא בודקת גרסאות חדשות בהפעלה או ברקע. עדיין אפשר לבדוק ידנית דרך עזרה › בדוק עדכונים.',
+      'כשהאפשרות כבויה, SelfOffice לא בודקת גרסאות חדשות בהפעלה או ברקע. עדיין אפשר לבדוק ידנית דרך עזרה › בדוק עדכונים.',
     updateChannel: 'ערוץ עדכונים',
     channelStable: 'יציב',
     channelBeta: 'בטא',
@@ -9869,7 +9894,7 @@ export const strings = {
     saveLocation: 'מיקום שמירה',
     setRestoreSession: 'פתיחה מחדש של המסמכים מהפעם הקודמת',
     setRestoreSessionDesc:
-      'מסמכים שהיו פתוחים כש-GenOffice נסגרה ייפתחו מחדש אוטומטית בהפעלה הבאה.',
+      'מסמכים שהיו פתוחים כש-SelfOffice נסגרה ייפתחו מחדש אוטומטית בהפעלה הבאה.',
     setTabSleep: 'השהה כרטיסיות לא פעילות',
     setTabSleepDesc:
       'כשפתוחות כרטיסיות רבות, כרטיסיות שלא נצפו זמן מה משחררות את הזיכרון ופותחות מחדש את הקובץ כשחוזרים אליהן. כרטיסיות עם שינויים שלא נשמרו או מוצמדות לעולם לא מושהות.',
@@ -9898,8 +9923,8 @@ export const strings = {
     aiFontSizeCustom: 'מותאם אישית',
     setAiSpellcheck: 'בדיקת איות בצ׳אט ה-AI',
     setDefaultApp: 'אפליקציית ברירת המחדל למסמכי Office',
-    setDefaultAppDesc: 'פתיחת קובצי .docx‏, .xlsx ו‑.pptx ב‑GenOffice בלחיצה כפולה.',
-    setDefaultAppIs: 'GenOffice היא כבר ברירת המחדל.',
+    setDefaultAppDesc: 'פתיחת קובצי .docx‏, .xlsx ו‑.pptx ב‑SelfOffice בלחיצה כפולה.',
+    setDefaultAppIs: 'SelfOffice היא כבר ברירת המחדל.',
     setDefaultAppOther: 'ברירת המחדל הנוכחית: {app}',
     setDefaultAppSet: 'הגדרה כברירת מחדל',
     setDefaultAppOpenSettings: 'פתיחת הגדרות המערכת',
@@ -9944,7 +9969,7 @@ export const strings = {
     setSecAbout: 'אודות',
     setSecIntegrations: 'שילובים',
     setSecSkills: 'מיומנויות',
-    intgHeroTitle: 'שימוש ב-GenOffice מתוך עוזר ה-AI שלכם',
+    intgHeroTitle: 'שימוש ב-SelfOffice מתוך עוזר ה-AI שלכם',
     intgHeroDesc:
       'לאחר החיבור, Claude Code‏, Codex‏, Cursor‏, Claude Desktop ועוזרים דומים יכולים ליצור, להמיר, לקרוא ולערוך עבורך קובצי Word‏, Excel‏, PowerPoint‏, PDF ו‑Markdown. הכול פועל במחשב זה; דבר אינו נשלח.',
     intgHeroStep1: 'בחרו מסלול: CLI אם העוזר יכול להריץ פקודות טרמינל, MCP אם לא',
@@ -9953,7 +9978,7 @@ export const strings = {
     intgStep1Title: 'התקינו את ה-skill בעוזר שלכם',
     intgStep1Desc:
       'מוצגים רק עוזרים שנמצאו במחשב הזה. התקינו בזה שבו אתם משתמשים באמת; אין צורך בכולם.',
-    intgStep1Update: 'כשעדכון של GenOffice מביא skill חדש יותר, ליד אותו עוזר יופיע כפתור עדכון.',
+    intgStep1Update: 'כשעדכון של SelfOffice מביא skill חדש יותר, ליד אותו עוזר יופיע כפתור עדכון.',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'ה-skill לא מותקן',
     intgStateInstalled: 'skill {v} מותקן · מוכן בשיחה הבאה',
@@ -9961,7 +9986,7 @@ export const strings = {
     intgOtherDesc:
       'בחרו רק דרך אחת מבין השלוש. כולן מתקינות את אותו skill, ולכן אין צורך ביותר מאחת.',
     intgOtherFolderTitle: 'כל עוזר שקורא תיקיות SKILL.md',
-    intgOtherFolderDesc: 'בחרו את תיקיית ה-skills שלו ו-GenOffice יכתוב שם את הקובץ.',
+    intgOtherFolderDesc: 'בחרו את תיקיית ה-skills שלו ו-SelfOffice יכתוב שם את הקובץ.',
     intgOtherZipTitle: 'מסרו את הקובץ לעוזר',
     intgOtherZipDesc: 'שמרו את ה-skill כ-zip ובקשו מהעוזר להתקין אותו.',
     intgOtherNpxTitle: 'באמצעות פקודת skills (דורש Node.js)',
@@ -9972,32 +9997,32 @@ export const strings = {
     intgStep2DescBefore: 'לאחר ההתקנה, פתחו שיחה חדשה בעוזר ובקשו במילים פשוטות, למשל:',
     intgExample1: 'הפוך את ~/Downloads/report.md למסמך Word',
     intgExample2: 'הכן מצגת של 6 שקופיות על תוצאות הרבעון השלישי שלנו',
-    intgExample3: 'המר את budget.xlsx ל-PDF ופתח אותו ב-GenOffice',
-    intgStep2Note: 'העוזר מריץ בעצמו את שורת הפקודה genoffice; לעולם לא תצטרכו להקליד אותה.',
+    intgExample3: 'המר את budget.xlsx ל-PDF ופתח אותו ב-SelfOffice',
+    intgStep2Note: 'העוזר מריץ בעצמו את שורת הפקודה selfoffice; לעולם לא תצטרכו להקליד אותה.',
     intgCliPartTitle: 'CLI · שורת פקודה + skill',
     intgCliPartDesc:
-      'לעוזרים שיכולים להריץ פקודות טרמינל (Claude Code‏, Codex‏, Cursor ואחרים). לאחר התקנת ה‑skill העוזר קורא בעצמו לשורת הפקודה genoffice כדי ליצור, להמיר, לקרוא ולערוך קבצים; אתם לא מקלידים שום פקודה.',
+      'לעוזרים שיכולים להריץ פקודות טרמינל (Claude Code‏, Codex‏, Cursor ואחרים). לאחר התקנת ה‑skill העוזר קורא בעצמו לשורת הפקודה selfoffice כדי ליצור, להמיר, לקרוא ולערוך קבצים; אתם לא מקלידים שום פקודה.',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP הוא הפרוטוקול המשותף שבו עוזרי AI קוראים לכלים חיצוניים. השתמשו בו כשהעוזר אינו יכול להריץ פקודות (למשל Claude Desktop) או כשאתם רוצים שהוא ישלוט ישירות בחלון GenOffice. בחרו אחת משתי הדרכים למטה.',
+      'MCP הוא הפרוטוקול המשותף שבו עוזרי AI קוראים לכלים חיצוניים. השתמשו בו כשהעוזר אינו יכול להריץ פקודות (למשל Claude Desktop) או כשאתם רוצים שהוא ישלוט ישירות בחלון SelfOffice. בחרו אחת משתי הדרכים למטה.',
     intgMcpStdioTitle: 'מופעל על ידי העוזר (מומלץ)',
     intgMcpStdioDesc:
-      'העוזר מפעיל את genoffice mcp בעצמו: אין מה להפעיל כאן, ו‑GenOffice לא חייב להיות פתוח. אותן יכולות כמו ב‑CLI.',
+      'העוזר מפעיל את selfoffice mcp בעצמו: אין מה להפעיל כאן, ו‑SelfOffice לא חייב להיות פתוח. אותן יכולות כמו ב‑CLI.',
     intgMcpHttpTitle: 'שרת HTTP מקומי',
     intgMcpHttpDesc:
-      'פועל בתוך GenOffice; העוזר מתחבר דרך כתובת URL ואפשר לראות את המסמך נבנה צעד אחר צעד בעורך Word. GenOffice חייב להישאר פתוח; בשלב זה מסמכי Word בלבד.',
+      'פועל בתוך SelfOffice; העוזר מתחבר דרך כתובת URL ואפשר לראות את המסמך נבנה צעד אחר צעד בעורך Word. SelfOffice חייב להישאר פתוח; בשלב זה מסמכי Word בלבד.',
     intgMcpHttpAdvanced: 'מתקדם: כתובות נוספות ויומן',
-    intgMcpTryNote: 'העוזר קורא ל‑GenOffice דרך MCP; אתם לא מקלידים שום פקודה.',
+    intgMcpTryNote: 'העוזר קורא ל‑SelfOffice דרך MCP; אתם לא מקלידים שום פקודה.',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'הריצו זאת פעם אחת בטרמינל:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop או כל עוזר אחר התומך ב-MCP',
     intgMcpOtherDesc: 'הוסיפו זאת להגדרות שרתי ה-MCP שלו (קובץ JSON, או "הוספת שרת MCP" בהגדרות):',
     intgMcpNote:
       'הסקיל ו-MCP יכולים להיות מוגדרים יחד; העוזר יבחר אחד מהם. שניהם עושים בדיוק את אותם הדברים.',
-    intgCliTitle: 'מתקדם: שורת הפקודה genoffice',
-    intgCliReady: 'genoffice {v} · מוכן בטרמינל ({path})',
+    intgCliTitle: 'מתקדם: שורת הפקודה selfoffice',
+    intgCliReady: 'selfoffice {v} · מוכן בטרמינל ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · לא נמצא ב-PATH של הטרמינל. העוזרים עדיין מוצאים אותו דרך ~/.genoffice/launcher, ולכן ה-skill עובד. כדי להקליד genoffice בעצמכם, הריצו זאת פעם אחת:',
+      'selfoffice {v} · לא נמצא ב-PATH של הטרמינל. העוזרים עדיין מוצאים אותו דרך ~/.selfoffice/launcher, ולכן ה-skill עובד. כדי להקליד selfoffice בעצמכם, הריצו זאת פעם אחת:',
     intgCliLauncher: 'תיקיית המשגר',
     intgStateOutdated: 'מותקן {v}, זמין עדכון ל-{next}',
     intgStateModified: 'מותקן {v} (שונה)',
@@ -10021,9 +10046,9 @@ export const strings = {
     intgSaveZipTitle: 'שמירת skill',
     intgSavedTo: 'נשמר אל {path}',
     intgCopied: 'הועתק',
-    intgCliEphemeral: 'גררו קודם את GenOffice לתיקיית היישומים, ואז השתמשו בשורת הפקודה.',
+    intgCliEphemeral: 'גררו קודם את SelfOffice לתיקיית היישומים, ואז השתמשו בשורת הפקודה.',
     intgCopyPath: 'העתקת נתיב',
-    intgCliNeedsUpdate: 'skill זה דורש שורת פקודה {v} ומעלה; עדכנו את GenOffice.',
+    intgCliNeedsUpdate: 'skill זה דורש שורת פקודה {v} ומעלה; עדכנו את SelfOffice.',
     intgLoading: 'בודק…',
     intgUpdateDue: 'עדכון skill זמין',
     setSecAiModel: 'מודל AI',
@@ -10043,7 +10068,8 @@ export const strings = {
     setAiCodexPathHint: 'יש למלא רק בהתקנה מותאמת; השאר ריק לזיהוי אוטומטי.',
     setAiCodexAutoPlaceholder: 'זיהוי אוטומטי (מומלץ)',
     setAiCodexHint: 'משתמש ב-Codex CLI המחובר מקומית; אין צורך במפתח API.',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'שמירה',
     setAiSaved: 'נשמר',
     setAiTest: 'בדיקת חיבור',
@@ -10071,13 +10097,13 @@ export const strings = {
       'המפתח וכתובת ה-Base URL של ספק משותפים לכל היכולות; יש להזין אותם פעם אחת בלבד.',
     setGithub: 'קוד פתוח',
     starOnGitHub: 'תנו כוכב ב-GitHub',
-    starPromptTitle: 'נהנים מ-GenOffice?',
-    starPromptTitleN: 'פתחת {n} מסמכים עם GenOffice',
-    starPromptBody: 'GenOffice חינמי ובקוד פתוח. כוכב ב-GitHub הוא התמיכה הטובה ביותר בצוות.',
+    starPromptTitle: 'נהנים מ-SelfOffice?',
+    starPromptTitleN: 'פתחת {n} מסמכים עם SelfOffice',
+    starPromptBody: 'SelfOffice חינמי ובקוד פתוח. כוכב ב-GitHub הוא התמיכה הטובה ביותר בצוות.',
     starPromptGo: 'לתת כוכב',
     starPromptDone: 'כבר נתתי',
     starPromptLater: 'אחר כך',
-    onbStarHint: 'אם GenOffice מוצא חן בעיניכם, תנו לנו כוכב ב-GitHub.',
+    onbStarHint: 'אם SelfOffice מוצא חן בעיניכם, תנו לנו כוכב ב-GitHub.',
     setEmail: 'אימייל',
     setNotLoggedIn: 'לא מחובר',
     setViewUsage: 'הצגת שימוש',
@@ -10090,7 +10116,7 @@ export const strings = {
     appMenu: 'תפריט',
     newTab: 'כרטיסייה חדשה',
     // First-run onboarding
-    onbTitle1: 'ברוכים הבאים ל-GenOffice',
+    onbTitle1: 'ברוכים הבאים ל-SelfOffice',
     onbSubtitle1: 'חבילת המשרד הראשונה בקוד פתוח שהיא AI-נייטיב',
     onbBody1: 'צרו מסמכים, בנו גיליונות, הכינו מצגות ובדקו קובצי PDF. ה-AI מובנה בכל שלב.',
     onbSkip: 'דילוג',
@@ -10101,7 +10127,7 @@ export const strings = {
     onbBody3: 'ללא דמי רישיון, ללא פרסומות, ללא סימני מים.',
     onbBack: 'חזרה',
     intgSkillsDesc:
-      'GenOffice משתמש רק במיומנויות שבתיקיית המיומנויות שלו. ייבוא תיקייה או zip מעתיק את המיומנות כולה; שום דבר לא מופעל בייבוא.',
+      'SelfOffice משתמש רק במיומנויות שבתיקיית המיומנויות שלו. ייבוא תיקייה או zip מעתיק את המיומנות כולה; שום דבר לא מופעל בייבוא.',
     intgSkillsEmpty: 'עדיין לא הותקנו מיומנויות.',
     intgSkillsImportFolder: 'ייבוא תיקייה…',
     intgSkillsImportZip: 'ייבוא חבילת מיומנות (zip / .md)…',
@@ -10110,7 +10136,7 @@ export const strings = {
     intgSkillsImportDone: '{name} יובאה',
     intgSkillsImportFailed: 'הייבוא נכשל: {reason}',
     intgSkillsRemove: 'הסרה',
-    intgSkillsRemoveConfirm: 'להסיר את המיומנות "{name}"? התיקייה שלה תימחק מ-GenOffice.',
+    intgSkillsRemoveConfirm: 'להסיר את המיומנות "{name}"? התיקייה שלה תימחק מ-SelfOffice.',
     intgSkillsRemoved: '{name} הוסרה',
     intgSkillsRead: 'פרטים',
     intgSkillsMine: 'הכישורים שלי',
@@ -10351,7 +10377,7 @@ export const strings = {
     setUpdateRestart: 'रीस्टार्ट कर इंस्टॉल करें',
     setAutoUpdateCheck: 'अपडेट अपने-आप जाँचें',
     setAutoUpdateCheckDesc:
-      'बंद होने पर GenOffice शुरू होते समय या बैकग्राउंड में नए संस्करण नहीं जाँचता। आप फिर भी सहायता › अपडेट जांचें से जाँच सकते हैं।',
+      'बंद होने पर SelfOffice शुरू होते समय या बैकग्राउंड में नए संस्करण नहीं जाँचता। आप फिर भी सहायता › अपडेट जांचें से जाँच सकते हैं।',
     updateChannel: 'अपडेट चैनल',
     channelStable: 'स्थिर',
     channelBeta: 'बीटा',
@@ -10364,7 +10390,7 @@ export const strings = {
     saveLocation: 'सहेजने का स्थान',
     setRestoreSession: 'पिछली बार के दस्तावेज़ फिर से खोलें',
     setRestoreSessionDesc:
-      'GenOffice बंद करते समय खुले दस्तावेज़ अगली बार शुरू होने पर अपने-आप फिर से खुल जाते हैं।',
+      'SelfOffice बंद करते समय खुले दस्तावेज़ अगली बार शुरू होने पर अपने-आप फिर से खुल जाते हैं।',
     setTabSleep: 'निष्क्रिय टैब को सुलाएँ',
     setTabSleepDesc:
       'कई टैब खुले होने पर, जिन्हें आपने कुछ समय से नहीं देखा वे मेमोरी छोड़ देते हैं और लौटने पर फ़ाइल फिर खोलते हैं। बिना सहेजे बदलाव वाले या पिन किए गए टैब कभी नहीं सोते।',
@@ -10394,8 +10420,8 @@ export const strings = {
     aiFontSizeCustom: 'कस्टम',
     setAiSpellcheck: 'AI चैट में वर्तनी जाँच',
     setDefaultApp: 'Office दस्तावेज़ों के लिए डिफ़ॉल्ट ऐप',
-    setDefaultAppDesc: '.docx, .xlsx और .pptx फ़ाइलें डबल-क्लिक करने पर GenOffice में खोलें।',
-    setDefaultAppIs: 'GenOffice पहले से डिफ़ॉल्ट ऐप है।',
+    setDefaultAppDesc: '.docx, .xlsx और .pptx फ़ाइलें डबल-क्लिक करने पर SelfOffice में खोलें।',
+    setDefaultAppIs: 'SelfOffice पहले से डिफ़ॉल्ट ऐप है।',
     setDefaultAppOther: 'वर्तमान डिफ़ॉल्ट: {app}',
     setDefaultAppSet: 'डिफ़ॉल्ट बनाएँ',
     setDefaultAppOpenSettings: 'सिस्टम सेटिंग खोलें',
@@ -10440,7 +10466,7 @@ export const strings = {
     setSecAbout: 'जानकारी',
     setSecIntegrations: 'इंटीग्रेशन',
     setSecSkills: 'कौशल',
-    intgHeroTitle: 'अपने AI असिस्टेंट से GenOffice इस्तेमाल करें',
+    intgHeroTitle: 'अपने AI असिस्टेंट से SelfOffice इस्तेमाल करें',
     intgHeroDesc:
       'कनेक्ट होने के बाद Claude Code, Codex, Cursor, Claude Desktop और ऐसे ही सहायक आपके लिए Word, Excel, PowerPoint, PDF और Markdown फ़ाइलें बना, बदल, पढ़ और संपादित कर सकते हैं। सब कुछ इसी कंप्यूटर पर चलता है; कुछ भी अपलोड नहीं होता।',
     intgHeroStep1: 'रास्ता चुनें: सहायक टर्मिनल कमांड चला सकता है तो CLI, नहीं तो MCP',
@@ -10450,7 +10476,7 @@ export const strings = {
     intgStep1Desc:
       'यहाँ केवल इस कंप्यूटर पर मिले असिस्टेंट दिखते हैं। जिसे आप सच में इस्तेमाल करते हैं उसी में इंस्टॉल करें; सभी की ज़रूरत नहीं।',
     intgStep1Update:
-      'जब GenOffice के अपडेट में नया skill आता है, तो उस असिस्टेंट के पास अपडेट बटन दिखता है।',
+      'जब SelfOffice के अपडेट में नया skill आता है, तो उस असिस्टेंट के पास अपडेट बटन दिखता है।',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'skill इंस्टॉल नहीं है',
     intgStateInstalled: 'skill {v} इंस्टॉल हो गया · अगली चैट में तैयार',
@@ -10458,7 +10484,7 @@ export const strings = {
     intgOtherDesc:
       'इन तीन तरीकों में से कोई एक ही चुनें। सभी एक ही skill इंस्टॉल करते हैं, इसलिए एक से ज़्यादा की ज़रूरत नहीं।',
     intgOtherFolderTitle: 'कोई भी असिस्टेंट जो SKILL.md फ़ोल्डर पढ़ता है',
-    intgOtherFolderDesc: 'उसका skills फ़ोल्डर चुनें, GenOffice वहाँ फ़ाइल लिख देगा।',
+    intgOtherFolderDesc: 'उसका skills फ़ोल्डर चुनें, SelfOffice वहाँ फ़ाइल लिख देगा।',
     intgOtherZipTitle: 'फ़ाइल असिस्टेंट को दें',
     intgOtherZipDesc: 'skill को zip के रूप में सहेजें, फिर असिस्टेंट से इंस्टॉल करने को कहें।',
     intgOtherNpxTitle: 'skills कमांड से (Node.js ज़रूरी)',
@@ -10470,23 +10496,23 @@ export const strings = {
       'इंस्टॉल होने के बाद अपने असिस्टेंट में नई चैट खोलें और सादे शब्दों में कहें, जैसे:',
     intgExample1: '~/Downloads/report.md को Word दस्तावेज़ बना दो',
     intgExample2: 'हमारे Q3 नतीजों पर 6 स्लाइड का प्रेज़ेंटेशन बनाओ',
-    intgExample3: 'budget.xlsx को PDF में बदलो और GenOffice में खोलो',
-    intgStep2Note: 'genoffice कमांड लाइन असिस्टेंट खुद चलाता है; आपको कभी टाइप नहीं करना पड़ता।',
+    intgExample3: 'budget.xlsx को PDF में बदलो और SelfOffice में खोलो',
+    intgStep2Note: 'selfoffice कमांड लाइन असिस्टेंट खुद चलाता है; आपको कभी टाइप नहीं करना पड़ता।',
     intgCliPartTitle: 'CLI · कमांड लाइन + skill',
     intgCliPartDesc:
-      'उन सहायकों के लिए जो टर्मिनल कमांड चला सकते हैं (Claude Code, Codex, Cursor आदि)। skill इंस्टॉल होने के बाद सहायक फ़ाइलें बनाने, बदलने, पढ़ने और संपादित करने के लिए खुद genoffice कमांड लाइन चलाता है; आपको कोई कमांड टाइप नहीं करना पड़ता।',
+      'उन सहायकों के लिए जो टर्मिनल कमांड चला सकते हैं (Claude Code, Codex, Cursor आदि)। skill इंस्टॉल होने के बाद सहायक फ़ाइलें बनाने, बदलने, पढ़ने और संपादित करने के लिए खुद selfoffice कमांड लाइन चलाता है; आपको कोई कमांड टाइप नहीं करना पड़ता।',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP वह साझा प्रोटोकॉल है जिससे AI सहायक बाहरी टूल बुलाते हैं। इसे तब चुनें जब सहायक कमांड न चला सके (जैसे Claude Desktop) या आप चाहें कि वह GenOffice की विंडो को सीधे चलाए। नीचे दिए दो तरीकों में से कोई एक चुनें।',
+      'MCP वह साझा प्रोटोकॉल है जिससे AI सहायक बाहरी टूल बुलाते हैं। इसे तब चुनें जब सहायक कमांड न चला सके (जैसे Claude Desktop) या आप चाहें कि वह SelfOffice की विंडो को सीधे चलाए। नीचे दिए दो तरीकों में से कोई एक चुनें।',
     intgMcpStdioTitle: 'सहायक द्वारा शुरू (अनुशंसित)',
     intgMcpStdioDesc:
-      'सहायक खुद genoffice mcp चलाता है: यहाँ कुछ चालू करने की ज़रूरत नहीं, और GenOffice खुला होना भी ज़रूरी नहीं। सुविधाएँ CLI जैसी ही।',
+      'सहायक खुद selfoffice mcp चलाता है: यहाँ कुछ चालू करने की ज़रूरत नहीं, और SelfOffice खुला होना भी ज़रूरी नहीं। सुविधाएँ CLI जैसी ही।',
     intgMcpHttpTitle: 'स्थानीय HTTP सर्वर',
     intgMcpHttpDesc:
-      'GenOffice के अंदर चलता है; सहायक URL से जुड़ता है और आप Word संपादक में दस्तावेज़ को चरण-दर-चरण बनते देख सकते हैं। GenOffice खुला रहना चाहिए; अभी केवल Word दस्तावेज़।',
+      'SelfOffice के अंदर चलता है; सहायक URL से जुड़ता है और आप Word संपादक में दस्तावेज़ को चरण-दर-चरण बनते देख सकते हैं। SelfOffice खुला रहना चाहिए; अभी केवल Word दस्तावेज़।',
     intgMcpHttpAdvanced: 'उन्नत: अन्य पते और लॉग',
     intgMcpTryNote:
-      'सहायक MCP के ज़रिये GenOffice को बुलाता है; आपको कोई कमांड टाइप नहीं करना पड़ता।',
+      'सहायक MCP के ज़रिये SelfOffice को बुलाता है; आपको कोई कमांड टाइप नहीं करना पड़ता।',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'टर्मिनल में इसे एक बार चलाएँ:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop या कोई अन्य MCP-समर्थित असिस्टेंट',
@@ -10494,10 +10520,10 @@ export const strings = {
       'इसे उसकी MCP सर्वर सेटिंग्स में जोड़ें (एक JSON फ़ाइल, या सेटिंग्स में "MCP सर्वर जोड़ें"):',
     intgMcpNote:
       'स्किल और MCP एक साथ सेट किए जा सकते हैं; असिस्टेंट एक को चुन लेता है। दोनों बिल्कुल एक जैसे काम करते हैं।',
-    intgCliTitle: 'उन्नत: genoffice कमांड लाइन',
-    intgCliReady: 'genoffice {v} · टर्मिनल में तैयार ({path})',
+    intgCliTitle: 'उन्नत: selfoffice कमांड लाइन',
+    intgCliReady: 'selfoffice {v} · टर्मिनल में तैयार ({path})',
     intgCliNotOnPath:
-      'genoffice {v} · टर्मिनल के PATH में नहीं है। असिस्टेंट इसे ~/.genoffice/launcher से फिर भी ढूँढ लेते हैं, इसलिए skill काम करता है। खुद genoffice टाइप करने के लिए यह एक बार चलाएँ:',
+      'selfoffice {v} · टर्मिनल के PATH में नहीं है। असिस्टेंट इसे ~/.selfoffice/launcher से फिर भी ढूँढ लेते हैं, इसलिए skill काम करता है। खुद selfoffice टाइप करने के लिए यह एक बार चलाएँ:',
     intgCliLauncher: 'लॉन्चर फ़ोल्डर',
     intgStateOutdated: 'इंस्टॉल {v}, {next} पर अपडेट उपलब्ध',
     intgStateModified: 'इंस्टॉल {v} (बदला गया)',
@@ -10521,9 +10547,9 @@ export const strings = {
     intgSaveZipTitle: 'skill सहेजें',
     intgSavedTo: '{path} में सहेजा गया',
     intgCopied: 'कॉपी हो गया',
-    intgCliEphemeral: 'पहले GenOffice को Applications में खींचें, फिर कमांड लाइन का उपयोग करें।',
+    intgCliEphemeral: 'पहले SelfOffice को Applications में खींचें, फिर कमांड लाइन का उपयोग करें।',
     intgCopyPath: 'पथ कॉपी करें',
-    intgCliNeedsUpdate: 'इस skill को कमांड लाइन {v} या नया चाहिए; GenOffice अपडेट करें।',
+    intgCliNeedsUpdate: 'इस skill को कमांड लाइन {v} या नया चाहिए; SelfOffice अपडेट करें।',
     intgLoading: 'जाँच हो रही है…',
     intgUpdateDue: 'skill अपडेट उपलब्ध',
     setSecAiModel: 'AI मॉडल',
@@ -10544,7 +10570,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: 'स्वतः पहचान (अनुशंसित)',
     setAiCodexHint:
       'स्थानीय रूप से साइन-इन किए गए Codex CLI का उपयोग करता है; API कुंजी की आवश्यकता नहीं।',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'सहेजें',
     setAiSaved: 'सहेजा गया',
     setAiTest: 'कनेक्शन परखें',
@@ -10572,14 +10599,14 @@ export const strings = {
       'एक प्रदाता की कुंजी और Base URL सभी क्षमताओं में साझा होते हैं; एक बार ही दर्ज करें।',
     setGithub: 'ओपन सोर्स',
     starOnGitHub: 'GitHub पर स्टार दें',
-    starPromptTitle: 'GenOffice पसंद आ रहा है?',
-    starPromptTitleN: 'आपने GenOffice में {n} दस्तावेज़ खोले हैं',
+    starPromptTitle: 'SelfOffice पसंद आ रहा है?',
+    starPromptTitleN: 'आपने SelfOffice में {n} दस्तावेज़ खोले हैं',
     starPromptBody:
-      'GenOffice मुफ़्त और ओपन सोर्स है। GitHub पर एक स्टार टीम का सबसे अच्छा समर्थन है।',
+      'SelfOffice मुफ़्त और ओपन सोर्स है। GitHub पर एक स्टार टीम का सबसे अच्छा समर्थन है।',
     starPromptGo: 'स्टार दें',
     starPromptDone: 'पहले ही दे दिया',
     starPromptLater: 'बाद में',
-    onbStarHint: 'अगर आपको GenOffice पसंद है, तो हमें GitHub पर स्टार दें।',
+    onbStarHint: 'अगर आपको SelfOffice पसंद है, तो हमें GitHub पर स्टार दें।',
     setEmail: 'ईमेल',
     setNotLoggedIn: 'साइन इन नहीं किया गया',
     setViewUsage: 'उपयोग देखें',
@@ -10592,7 +10619,7 @@ export const strings = {
     appMenu: 'मेनू',
     newTab: 'नया टैब',
     // First-run onboarding
-    onbTitle1: 'GenOffice में आपका स्वागत है',
+    onbTitle1: 'SelfOffice में आपका स्वागत है',
     onbSubtitle1: 'पहला ओपन-सोर्स, AI-नेटिव ऑफ़िस सुइट',
     onbBody1:
       'दस्तावेज़ बनाएँ, स्प्रेडशीट तैयार करें, प्रस्तुतियाँ बनाएँ और PDF की समीक्षा करें। AI हर चरण में शामिल है।',
@@ -10604,7 +10631,7 @@ export const strings = {
     onbBody3: 'कोई लाइसेंस शुल्क नहीं। कोई विज्ञापन नहीं। कोई वॉटरमार्क नहीं।',
     onbBack: 'वापस',
     intgSkillsDesc:
-      'GenOffice केवल अपने कौशल फ़ोल्डर के कौशल उपयोग करता है। फ़ोल्डर या zip से आयात पूरा कौशल कॉपी करता है; आयात पर कुछ नहीं चलता।',
+      'SelfOffice केवल अपने कौशल फ़ोल्डर के कौशल उपयोग करता है। फ़ोल्डर या zip से आयात पूरा कौशल कॉपी करता है; आयात पर कुछ नहीं चलता।',
     intgSkillsEmpty: 'अभी कोई कौशल इंस्टॉल नहीं है।',
     intgSkillsImportFolder: 'फ़ोल्डर आयात करें…',
     intgSkillsImportZip: 'कौशल पैकेज आयात करें (zip / .md)…',
@@ -10613,7 +10640,7 @@ export const strings = {
     intgSkillsImportDone: '{name} आयात हुआ',
     intgSkillsImportFailed: 'आयात विफल: {reason}',
     intgSkillsRemove: 'हटाएँ',
-    intgSkillsRemoveConfirm: 'कौशल "{name}" हटाएँ? इसका फ़ोल्डर GenOffice से हटा दिया जाएगा।',
+    intgSkillsRemoveConfirm: 'कौशल "{name}" हटाएँ? इसका फ़ोल्डर SelfOffice से हटा दिया जाएगा।',
     intgSkillsRemoved: '{name} हटाया गया',
     intgSkillsRead: 'विवरण',
     intgSkillsMine: 'मेरे कौशल',
@@ -10861,7 +10888,7 @@ export const strings = {
     docThemeFollowApp: '跟隨應用程式主題',
     saveLocation: '預設儲存位置',
     setRestoreSession: '啟動時重新開啟上次的文件',
-    setRestoreSessionDesc: '關閉 GenOffice 時開啟的文件會在下次啟動時自動重新開啟。',
+    setRestoreSessionDesc: '關閉 SelfOffice 時開啟的文件會在下次啟動時自動重新開啟。',
     setTabSleep: '休眠閒置的標籤頁',
     setTabSleepDesc:
       '開啟的標籤頁多到一定數量後，長時間未查看的會釋放記憶體；回到它時會重新開啟檔案。有未儲存變更或已釘選的標籤頁不會休眠。',
@@ -10890,8 +10917,8 @@ export const strings = {
     aiFontSizeCustom: '自訂',
     setAiSpellcheck: 'AI 對話拼字檢查',
     setDefaultApp: '設為 Office 文件預設程式',
-    setDefaultAppDesc: '雙擊 .docx、.xlsx、.pptx 檔案時用 GenOffice 開啟。',
-    setDefaultAppIs: 'GenOffice 已是預設程式。',
+    setDefaultAppDesc: '雙擊 .docx、.xlsx、.pptx 檔案時用 SelfOffice 開啟。',
+    setDefaultAppIs: 'SelfOffice 已是預設程式。',
     setDefaultAppOther: '目前預設程式：{app}',
     setDefaultAppSet: '設為預設',
     setDefaultAppOpenSettings: '開啟系統設定',
@@ -10934,7 +10961,7 @@ export const strings = {
     setSecAbout: '關於',
     setSecIntegrations: '整合',
     setSecSkills: '技能',
-    intgHeroTitle: '在 AI 助理中使用 GenOffice',
+    intgHeroTitle: '在 AI 助理中使用 SelfOffice',
     intgHeroDesc:
       '接好後，Claude Code、Codex、Cursor、Claude Desktop 等助理就能替你建立、轉換、讀取和編輯 Word、Excel、PowerPoint、PDF 和 Markdown 檔案。全部在本機完成，不會上傳任何內容。',
     intgHeroStep1: '選接法：助理能執行終端機指令就用 CLI，不能就用 MCP',
@@ -10942,14 +10969,14 @@ export const strings = {
     intgHeroStep3: '開一個新對話，直接提需求',
     intgStep1Title: '將 skill 安裝到你的助理',
     intgStep1Desc: '這裡只列出本機偵測到的助理。安裝到你實際使用的那一個即可，不必全部安裝。',
-    intgStep1Update: 'GenOffice 升級帶來新版 skill 時，對應助理旁會出現「更新」按鈕。',
+    intgStep1Update: 'SelfOffice 升級帶來新版 skill 時，對應助理旁會出現「更新」按鈕。',
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'skill 未安裝',
     intgStateInstalled: '已安裝 skill {v} · 下次對話即可使用',
     intgOtherToggle: '沒有列出我的助理',
     intgOtherDesc: '以下三種方式任選一種即可。安裝的是同一份 skill，不需要重複操作。',
     intgOtherFolderTitle: '任何能讀取 SKILL.md 資料夾的助理',
-    intgOtherFolderDesc: '選擇它的 skills 資料夾，GenOffice 會把檔案寫進去。',
+    intgOtherFolderDesc: '選擇它的 skills 資料夾，SelfOffice 會把檔案寫進去。',
     intgOtherZipTitle: '把檔案交給助理',
     intgOtherZipDesc: '把 skill 儲存為 zip，然後讓助理自行安裝。',
     intgOtherNpxTitle: '用 skills 指令安裝（需要 Node.js）',
@@ -10960,32 +10987,32 @@ export const strings = {
     intgStep2DescBefore: '安裝好後，在助理中開一個新對話，用平常說話的方式提出需求，例如：',
     intgExample1: '把 ~/Downloads/report.md 轉成 Word 文件',
     intgExample2: '做一份 6 頁的簡報，介紹我們第三季的業績',
-    intgExample3: '把 budget.xlsx 轉成 PDF，並在 GenOffice 中開啟',
-    intgStep2Note: '助理會自行呼叫 genoffice 命令列，你不需要輸入任何指令。',
+    intgExample3: '把 budget.xlsx 轉成 PDF，並在 SelfOffice 中開啟',
+    intgStep2Note: '助理會自行呼叫 selfoffice 命令列，你不需要輸入任何指令。',
     intgCliPartTitle: 'CLI · 命令列 + skill',
     intgCliPartDesc:
-      '適合能執行終端機指令的助理（Claude Code、Codex、Cursor 等）。安裝 skill 後，助理會自己呼叫 genoffice 命令列建立、轉換、讀取和編輯檔案，你不需要輸入任何指令。',
+      '適合能執行終端機指令的助理（Claude Code、Codex、Cursor 等）。安裝 skill 後，助理會自己呼叫 selfoffice 命令列建立、轉換、讀取和編輯檔案，你不需要輸入任何指令。',
     intgMcpPartTitle: 'MCP',
     intgMcpPartDesc:
-      'MCP 是 AI 助理呼叫外部工具的通用協定。助理不能執行指令（如 Claude Desktop），或你想讓它直接操作 GenOffice 視窗時用這條路。下面兩種接法任選一種。',
+      'MCP 是 AI 助理呼叫外部工具的通用協定。助理不能執行指令（如 Claude Desktop），或你想讓它直接操作 SelfOffice 視窗時用這條路。下面兩種接法任選一種。',
     intgMcpStdioTitle: '由助理啟動（建議）',
     intgMcpStdioDesc:
-      '助理自己啟動 genoffice mcp，不需要在這裡開任何開關，GenOffice 也不用開著。功能與 CLI 完全相同。',
+      '助理自己啟動 selfoffice mcp，不需要在這裡開任何開關，SelfOffice 也不用開著。功能與 CLI 完全相同。',
     intgMcpHttpTitle: '本機 HTTP 服務',
     intgMcpHttpDesc:
-      '在 GenOffice 內執行，助理透過網址連線，可以看著它在 Word 編輯器裡逐步產生。需要 GenOffice 保持開啟；目前只支援 Word。',
+      '在 SelfOffice 內執行，助理透過網址連線，可以看著它在 Word 編輯器裡逐步產生。需要 SelfOffice 保持開啟；目前只支援 Word。',
     intgMcpHttpAdvanced: '進階：其他位址與記錄',
-    intgMcpTryNote: '助理會透過 MCP 呼叫 GenOffice，你不需要輸入任何指令。',
+    intgMcpTryNote: '助理會透過 MCP 呼叫 SelfOffice，你不需要輸入任何指令。',
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: '在終端機執行一次：',
     intgMcpOtherTitle: 'Cursor、Claude Desktop 或其他支援 MCP 的助理',
     intgMcpOtherDesc:
       '把這段加進它的 MCP 伺服器設定（一個 JSON 檔，或設定裡的「新增 MCP 伺服器」）：',
     intgMcpNote: 'skill 和 MCP 可以同時存在，助理會自行選用；兩者做的事完全相同。',
-    intgCliTitle: '進階：命令列 genoffice',
-    intgCliReady: 'genoffice {v} · 已可在終端機直接使用（{path}）',
+    intgCliTitle: '進階：命令列 selfoffice',
+    intgCliReady: 'selfoffice {v} · 已可在終端機直接使用（{path}）',
     intgCliNotOnPath:
-      'genoffice {v} · 尚未加入終端機 PATH。助理仍能透過 ~/.genoffice/launcher 找到它，skill 不受影響。若想自己在終端機輸入 genoffice，執行一次：',
+      'selfoffice {v} · 尚未加入終端機 PATH。助理仍能透過 ~/.selfoffice/launcher 找到它，skill 不受影響。若想自己在終端機輸入 selfoffice，執行一次：',
     intgCliLauncher: '啟動器資料夾',
     intgStateOutdated: '已安裝 {v}，可更新至 {next}',
     intgStateModified: '已安裝 {v}（已被修改）',
@@ -11009,9 +11036,9 @@ export const strings = {
     intgSaveZipTitle: '儲存 skill',
     intgSavedTo: '已儲存至 {path}',
     intgCopied: '已複製',
-    intgCliEphemeral: '請先把 GenOffice 拖到「應用程式」，再使用命令列。',
+    intgCliEphemeral: '請先把 SelfOffice 拖到「應用程式」，再使用命令列。',
     intgCopyPath: '複製路徑',
-    intgCliNeedsUpdate: '此 skill 需要命令列 {v} 或更新版本，請更新 GenOffice。',
+    intgCliNeedsUpdate: '此 skill 需要命令列 {v} 或更新版本，請更新 SelfOffice。',
     intgLoading: '正在檢查…',
     intgUpdateDue: 'skill 有新版本可更新',
     setSecAiModel: 'AI 模型',
@@ -11032,7 +11059,8 @@ export const strings = {
     setAiCodexAutoPlaceholder: '留空自動偵測（建議）',
     setAiCodexHint:
       '自動尋找目前的 Codex CLI，更新後無需重新選擇；也可填寫自訂路徑。無需 API Key。',
-    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
+    setAiByokNote:
+      'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '儲存',
     setAiSaved: '已儲存',
     setAiTest: '測試連線',
@@ -11058,13 +11086,13 @@ export const strings = {
     setAiSharedKeyHint: '同一服務商的 key 與 Base URL 在各項能力間共用，只需填一次。',
     setGithub: '開源專案',
     starOnGitHub: '到 GitHub 給我們一顆星',
-    starPromptTitle: '喜歡 GenOffice 嗎？',
-    starPromptTitleN: '你已經用 GenOffice 開啟了 {n} 個文件',
-    starPromptBody: 'GenOffice 是免費的開源軟體。到 GitHub 給我們一顆星，是對團隊最好的支持。',
+    starPromptTitle: '喜歡 SelfOffice 嗎？',
+    starPromptTitleN: '你已經用 SelfOffice 開啟了 {n} 個文件',
+    starPromptBody: 'SelfOffice 是免費的開源軟體。到 GitHub 給我們一顆星，是對團隊最好的支持。',
     starPromptGo: '去給星星',
     starPromptDone: '已經給過了',
     starPromptLater: '以後再說',
-    onbStarHint: '如果你喜歡 GenOffice，歡迎到 GitHub 給我們一顆星。',
+    onbStarHint: '如果你喜歡 SelfOffice，歡迎到 GitHub 給我們一顆星。',
     setEmail: '電子郵件',
     setNotLoggedIn: '未登入',
     setViewUsage: '查看用量',
@@ -11077,7 +11105,7 @@ export const strings = {
     appMenu: '選單',
     newTab: '新分頁',
     // First-run onboarding
-    onbTitle1: '歡迎使用 GenOffice',
+    onbTitle1: '歡迎使用 SelfOffice',
     onbSubtitle1: '第一個開源的 AI 原生 Office 套件',
     onbBody1: '建立文件、製作試算表、產生簡報、審閱 PDF。AI 深度融入每個環節。',
     onbSkip: '略過',
@@ -11088,7 +11116,7 @@ export const strings = {
     onbBody3: '無授權費用，無廣告，無浮水印。',
     onbBack: '上一步',
     intgSkillsDesc:
-      'GenOffice 只使用自己技能資料夾裡的技能。從資料夾或 zip 匯入會把整個技能複製進來；匯入不會自動執行任何東西。',
+      'SelfOffice 只使用自己技能資料夾裡的技能。從資料夾或 zip 匯入會把整個技能複製進來；匯入不會自動執行任何東西。',
     intgSkillsEmpty: '尚未安裝技能。',
     intgSkillsImportFolder: '匯入資料夾…',
     intgSkillsImportZip: '匯入技能包（zip / .md）…',
@@ -11097,7 +11125,7 @@ export const strings = {
     intgSkillsImportDone: '已匯入 {name}',
     intgSkillsImportFailed: '匯入失敗：{reason}',
     intgSkillsRemove: '移除',
-    intgSkillsRemoveConfirm: '移除技能「{name}」？其資料夾會從 GenOffice 中刪除。',
+    intgSkillsRemoveConfirm: '移除技能「{name}」？其資料夾會從 SelfOffice 中刪除。',
     intgSkillsRemoved: '已移除 {name}',
     intgSkillsRead: '詳情',
     intgSkillsMine: '我的技能',

@@ -76,10 +76,10 @@ import {
   writeJsonAtomic,
   recoveryCopyDiskNewer,
   configuredAuthorName,
-} from '@genoffice/electron-utils'
-import { createMainProcessProxyDispatcher } from '@genoffice/electron-utils/main-proxy'
-import { createI18n, getUiLang, type Lang, normalizeLang, setUiLang } from '@genoffice/i18n'
-import { ProjectStore } from '@genoffice/project-store'
+} from '@selfoffice/electron-utils'
+import { createMainProcessProxyDispatcher } from '@selfoffice/electron-utils/main-proxy'
+import { createI18n, getUiLang, type Lang, normalizeLang, setUiLang } from '@selfoffice/i18n'
+import { ProjectStore } from '@selfoffice/project-store'
 
 import {
   AiCreditsError,
@@ -100,27 +100,27 @@ import {
   type AiSettings,
   type AiStreamChunk,
   type LegacyAiSettings,
-} from '@genoffice/ai-provider'
-import { shutdownCodexAppServers } from '@genoffice/ai-provider/codex-app-server'
+} from '@selfoffice/ai-provider'
+import { shutdownCodexAppServers } from '@selfoffice/ai-provider/codex-app-server'
 import {
   csvToXlsxBufferForOpen,
   decodeCsvBuffer,
   sheetCsvToXlsxBuffer,
-} from '@genoffice/xlsx-gateway/gateway/csv-import'
+} from '@selfoffice/xlsx-gateway/gateway/csv-import'
 import {
   webSearchTool,
   imageSearchTool,
   generateImageTool,
   localMediaRoots,
-} from '@genoffice/ai-search'
-import { parseFileToText } from '@genoffice/file-parse'
-import type { CellEdit, SheetStructuralOps } from '@genoffice/xlsx-gateway/gateway/xlsx-gateway'
+} from '@selfoffice/ai-search'
+import { parseFileToText } from '@selfoffice/file-parse'
+import type { CellEdit, SheetStructuralOps } from '@selfoffice/xlsx-gateway/gateway/xlsx-gateway'
 import {
   readArchiveEntryText,
   saveWorkbookViaSidecar,
-} from '@genoffice/xlsx-gateway/gateway/xlsx-package-io'
-import { parsePivotDefinition } from '@genoffice/xlsx-gateway/gateway/xlsx-pivot'
-import type { SheetEditPlan } from '@genoffice/xlsx-gateway/gateway/xlsx-sheets'
+} from '@selfoffice/xlsx-gateway/gateway/xlsx-package-io'
+import { parsePivotDefinition } from '@selfoffice/xlsx-gateway/gateway/xlsx-pivot'
+import type { SheetEditPlan } from '@selfoffice/xlsx-gateway/gateway/xlsx-sheets'
 import { readWorkbookRedactionPart } from './workbook-redactions'
 import type {
   AttachmentAddResult,
@@ -176,7 +176,7 @@ import { allowsAutomaticWorkbookRecovery } from './recovery-policy'
 import {
   setSystemShortDate,
   shortDatePatternForSystemLocale,
-} from '@genoffice/xlsx-gateway/shared/short-date'
+} from '@selfoffice/xlsx-gateway/shared/short-date'
 import {
   cleanupExpiredPastedFiles,
   cleanupImportTempDirectory,
@@ -200,7 +200,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel 启用宏的工作簿',
     odsImportMsg: '转换 .{ext} 工作簿？',
     odsImportDetail:
-      'GenOffice 只编辑 .xlsx，不编辑 ODF。数值、公式和日期会被转换过来（公式改写为 Excel 语法，无法安全改写的只保留它的当前结果）；样式、列宽和图表不会保留。原文件不会被修改，转换出的副本首次保存时另存为 .xlsx。', // public-hygiene: allow
+      'SelfOffice 只编辑 .xlsx，不编辑 ODF。数值、公式和日期会被转换过来（公式改写为 Excel 语法，无法安全改写的只保留它的当前结果）；样式、列宽和图表不会保留。原文件不会被修改，转换出的副本首次保存时另存为 .xlsx。', // public-hygiene: allow
     odsImportConvertBtn: '转换并打开',
     dlgAddAttachment: '添加附件',
     filterSupported: '支持的文件',
@@ -262,7 +262,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel Macro-Enabled Workbooks',
     odsImportMsg: 'Convert this .{ext} workbook?',
     odsImportDetail:
-      'GenOffice edits .xlsx, not ODF. Values, formulas and dates carry over (formulas are rewritten into Excel syntax, and any that cannot be rewritten safely keeps its current result). Styles, column widths and charts are not carried over. The original file is never changed; the converted copy saves as .xlsx the first time you save.',
+      'SelfOffice edits .xlsx, not ODF. Values, formulas and dates carry over (formulas are rewritten into Excel syntax, and any that cannot be rewritten safely keeps its current result). Styles, column widths and charts are not carried over. The original file is never changed; the converted copy saves as .xlsx the first time you save.',
     odsImportConvertBtn: 'Convert and open',
     dlgAddAttachment: 'Add Attachments',
     filterSupported: 'Supported Files',
@@ -328,7 +328,7 @@ const tMain = createI18n({
     filterXlsm: 'Sổ làm việc Excel hỗ trợ Macro',
     odsImportMsg: 'Chuyển đổi sổ làm việc .{ext} này?',
     odsImportDetail:
-      'GenOffice chỉnh sửa .xlsx chứ không chỉnh sửa ODF. Giá trị, công thức và ngày tháng sẽ được chuyển đổi (công thức viết lại theo cú pháp Excel, công thức không viết lại an toàn được sẽ giữ kết quả hiện tại). Kiểu dáng, độ rộng cột và biểu đồ không được chuyển. Tệp gốc không bao giờ bị sửa; bản sau chuyển đổi sẽ lưu thành .xlsx khi lưu lần đầu.',
+      'SelfOffice chỉnh sửa .xlsx chứ không chỉnh sửa ODF. Giá trị, công thức và ngày tháng sẽ được chuyển đổi (công thức viết lại theo cú pháp Excel, công thức không viết lại an toàn được sẽ giữ kết quả hiện tại). Kiểu dáng, độ rộng cột và biểu đồ không được chuyển. Tệp gốc không bao giờ bị sửa; bản sau chuyển đổi sẽ lưu thành .xlsx khi lưu lần đầu.',
     odsImportConvertBtn: 'Chuyển đổi và mở',
     dlgAddAttachment: 'Thêm tệp đính kèm',
     filterSupported: 'Các tệp được hỗ trợ',
@@ -396,7 +396,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel Makro İçerebilen Çalışma Kitapları',
     odsImportMsg: 'Bu .{ext} çalışma kitabı dönüştürülsün mü?',
     odsImportDetail:
-      'GenOffice ODF değil, .xlsx düzenler. Değerler, formüller ve tarihler aktarılır (formüller Excel söz dizimine yeniden yazılır; güvenle yeniden yazılamayanlar mevcut sonucunu korur). Stiller, sütun genişlikleri ve grafikler aktarılmaz. Özgün dosya asla değiştirilmez; dönüştürülen kopya ilk kaydettiğinizde .xlsx olarak kaydedilir.',
+      'SelfOffice ODF değil, .xlsx düzenler. Değerler, formüller ve tarihler aktarılır (formüller Excel söz dizimine yeniden yazılır; güvenle yeniden yazılamayanlar mevcut sonucunu korur). Stiller, sütun genişlikleri ve grafikler aktarılmaz. Özgün dosya asla değiştirilmez; dönüştürülen kopya ilk kaydettiğinizde .xlsx olarak kaydedilir.',
     odsImportConvertBtn: 'Dönüştür ve aç',
     dlgAddAttachment: 'Ek Ekle',
     filterSupported: 'Desteklenen Dosyalar',
@@ -464,7 +464,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel マクロ有効ブック',
     odsImportMsg: 'この .{ext} ワークブックを変換しますか？',
     odsImportDetail:
-      'GenOffice は ODF ではなく .xlsx を編集します。値・数式・日付は変換されます（数式は Excel の構文に書き換えられ、安全に書き換えられないものは現在の値だけが残ります）。スタイル、列の幅、グラフは引き継がれません。元のファイルは変更されず、変換後のコピーは最初に保存する際 .xlsx として保存されます。',
+      'SelfOffice は ODF ではなく .xlsx を編集します。値・数式・日付は変換されます（数式は Excel の構文に書き換えられ、安全に書き換えられないものは現在の値だけが残ります）。スタイル、列の幅、グラフは引き継がれません。元のファイルは変更されず、変換後のコピーは最初に保存する際 .xlsx として保存されます。',
     odsImportConvertBtn: '変換して開く',
     dlgAddAttachment: '添付ファイルを追加',
     filterSupported: 'サポートされているファイル',
@@ -533,7 +533,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel 매크로 사용 통합 문서',
     odsImportMsg: '이 .{ext} 워크북을 변환할까요?',
     odsImportDetail:
-      'GenOffice은 ODF가 아니라 .xlsx를 편집합니다. 값, 수식, 날짜는 변환됩니다(수식은 Excel 구문으로 다시 쓰이며, 안전하게 다시 쓸 수 없는 수식은 현재 값만 남습니다). 스타일, 열 너비, 차트는 옮겨지지 않습니다. 원본 파일은 변경되지 않으며, 변환된 사본은 처음 저장할 때 .xlsx로 저장됩니다.',
+      'SelfOffice은 ODF가 아니라 .xlsx를 편집합니다. 값, 수식, 날짜는 변환됩니다(수식은 Excel 구문으로 다시 쓰이며, 안전하게 다시 쓸 수 없는 수식은 현재 값만 남습니다). 스타일, 열 너비, 차트는 옮겨지지 않습니다. 원본 파일은 변경되지 않으며, 변환된 사본은 처음 저장할 때 .xlsx로 저장됩니다.',
     odsImportConvertBtn: '변환 후 열기',
     dlgAddAttachment: '첨부 파일 추가',
     filterSupported: '지원되는 파일',
@@ -602,7 +602,7 @@ const tMain = createI18n({
     filterXlsm: 'Classeurs Excel prenant en charge les macros',
     odsImportMsg: 'Convertir ce classeur .{ext} ?',
     odsImportDetail:
-      'GenOffice modifie des .xlsx, pas de l’ODF. Les valeurs, les formules et les dates sont converties (les formules sont réécrites en syntaxe Excel ; celles qui ne peuvent pas l’être en sécurité gardent leur résultat actuel). Les styles, les largeurs de colonne et les graphiques ne sont pas repris. Le fichier d’origine n’est jamais modifié ; la copie convertie s’enregistre en .xlsx lors du premier enregistrement.',
+      'SelfOffice modifie des .xlsx, pas de l’ODF. Les valeurs, les formules et les dates sont converties (les formules sont réécrites en syntaxe Excel ; celles qui ne peuvent pas l’être en sécurité gardent leur résultat actuel). Les styles, les largeurs de colonne et les graphiques ne sont pas repris. Le fichier d’origine n’est jamais modifié ; la copie convertie s’enregistre en .xlsx lors du premier enregistrement.',
     odsImportConvertBtn: 'Convertir et ouvrir',
     dlgAddAttachment: 'Ajouter des pièces jointes',
     filterSupported: 'Fichiers pris en charge',
@@ -672,7 +672,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel-Arbeitsmappen mit Makros',
     odsImportMsg: 'Diese .{ext}-Arbeitsmappe konvertieren?',
     odsImportDetail:
-      'GenOffice bearbeitet .xlsx, nicht ODF. Werte, Formeln und Datumsangaben werden konvertiert (Formeln werden in Excel-Syntax umgeschrieben; was sich nicht sicher umschreiben lässt, behält seinen aktuellen Wert). Formatierungen, Spaltenbreiten und Diagramme entfallen. Die Originaldatei bleibt unverändert; die konvertierte Kopie wird beim ersten Speichern als .xlsx angelegt.',
+      'SelfOffice bearbeitet .xlsx, nicht ODF. Werte, Formeln und Datumsangaben werden konvertiert (Formeln werden in Excel-Syntax umgeschrieben; was sich nicht sicher umschreiben lässt, behält seinen aktuellen Wert). Formatierungen, Spaltenbreiten und Diagramme entfallen. Die Originaldatei bleibt unverändert; die konvertierte Kopie wird beim ersten Speichern als .xlsx angelegt.',
     odsImportConvertBtn: 'Konvertieren und öffnen',
     dlgAddAttachment: 'Anlagen hinzufügen',
     filterSupported: 'Unterstützte Dateien',
@@ -741,7 +741,7 @@ const tMain = createI18n({
     filterXlsm: 'Libros de Excel habilitados para macros',
     odsImportMsg: '¿Convertir este libro .{ext}?',
     odsImportDetail:
-      'GenOffice edita .xlsx, no ODF. Los valores, las fórmulas y las fechas se convierten (las fórmulas se reescriben con sintaxis de Excel; las que no se pueden reescribir con seguridad conservan su resultado actual). Los estilos, el ancho de columna y los gráficos no se conservan. El archivo original nunca se modifica; la copia convertida se guarda como .xlsx la primera vez que se guarda.',
+      'SelfOffice edita .xlsx, no ODF. Los valores, las fórmulas y las fechas se convierten (las fórmulas se reescriben con sintaxis de Excel; las que no se pueden reescribir con seguridad conservan su resultado actual). Los estilos, el ancho de columna y los gráficos no se conservan. El archivo original nunca se modifica; la copia convertida se guarda como .xlsx la primera vez que se guarda.',
     odsImportConvertBtn: 'Convertir y abrir',
     dlgAddAttachment: 'Agregar datos adjuntos',
     filterSupported: 'Archivos compatibles',
@@ -810,7 +810,7 @@ const tMain = createI18n({
     filterXlsm: 'เวิร์กบุ๊ก Excel ที่เปิดใช้งานแมโคร',
     odsImportMsg: 'แปลงเวิร์กบุ๊ก .{ext} นี้ไหม?',
     odsImportDetail:
-      'GenOffice แก้ไข .xlsx ไม่ใช่ ODF ค่า สูตร และวันที่จะถูกแปลง (สูตรเขียนใหม่เป็นไวยากรณ์ Excel และสูตรที่เขียนใหม่อย่างปลอดภัยไม่ได้จะคงค่าปัจจุบันไว้) สไตล์ ความกว้างคอลัมน์ และแผนภูมิจะไม่ถูกโอนมา ไฟล์ต้นทางจะไม่ถูกแก้ไข และสำเนาที่แปลงแล้วจะบันทึกเป็น .xlsx ในการบันทึกครั้งแรก',
+      'SelfOffice แก้ไข .xlsx ไม่ใช่ ODF ค่า สูตร และวันที่จะถูกแปลง (สูตรเขียนใหม่เป็นไวยากรณ์ Excel และสูตรที่เขียนใหม่อย่างปลอดภัยไม่ได้จะคงค่าปัจจุบันไว้) สไตล์ ความกว้างคอลัมน์ และแผนภูมิจะไม่ถูกโอนมา ไฟล์ต้นทางจะไม่ถูกแก้ไข และสำเนาที่แปลงแล้วจะบันทึกเป็น .xlsx ในการบันทึกครั้งแรก',
     odsImportConvertBtn: 'แปลงแล้วเปิด',
     dlgAddAttachment: 'เพิ่มสิ่งที่แนบ',
     filterSupported: 'ไฟล์ที่รองรับ',
@@ -878,7 +878,7 @@ const tMain = createI18n({
     filterXlsm: 'Buku kerja Excel dengan makro aktif',
     odsImportMsg: 'Konversi buku kerja .{ext} ini?',
     odsImportDetail:
-      'GenOffice mengedit .xlsx, bukan ODF. Nilai, rumus, dan tanggal ikut terkonversi (rumus ditulis ulang ke sintaks Excel; rumus yang tidak bisa ditulis ulang dengan aman mempertahankan hasilnya). Gaya, lebar kolom, dan grafik tidak ikut dibawa. File asli tidak pernah diubah; hasil konversi disimpan sebagai .xlsx saat penyimpanan pertama.',
+      'SelfOffice mengedit .xlsx, bukan ODF. Nilai, rumus, dan tanggal ikut terkonversi (rumus ditulis ulang ke sintaks Excel; rumus yang tidak bisa ditulis ulang dengan aman mempertahankan hasilnya). Gaya, lebar kolom, dan grafik tidak ikut dibawa. File asli tidak pernah diubah; hasil konversi disimpan sebagai .xlsx saat penyimpanan pertama.',
     odsImportConvertBtn: 'Konversi dan buka',
     dlgAddAttachment: 'Tambahkan lampiran',
     filterSupported: 'File yang didukung',
@@ -945,7 +945,7 @@ const tMain = createI18n({
     filterXlsm: 'Книги Excel с поддержкой макросов',
     odsImportMsg: 'Преобразовать эту книгу .{ext}?',
     odsImportDetail:
-      'GenOffice редактирует .xlsx, а не ODF. Значения, формулы и даты переносятся (формулы переписываются в синтаксис Excel; те, что нельзя переписать безопасно, сохраняют текущий результат). Стили, ширина столбцов и диаграммы не переносятся. Исходный файл никогда не изменяется; преобразованная копия при первом сохранении записывается как .xlsx.',
+      'SelfOffice редактирует .xlsx, а не ODF. Значения, формулы и даты переносятся (формулы переписываются в синтаксис Excel; те, что нельзя переписать безопасно, сохраняют текущий результат). Стили, ширина столбцов и диаграммы не переносятся. Исходный файл никогда не изменяется; преобразованная копия при первом сохранении записывается как .xlsx.',
     odsImportConvertBtn: 'Преобразовать и открыть',
     dlgAddAttachment: 'Добавить вложения',
     filterSupported: 'Поддерживаемые файлы',
@@ -1013,7 +1013,7 @@ const tMain = createI18n({
     filterXlsm: 'مصنفات Excel ممكّنة بوحدات الماكرو',
     odsImportMsg: 'تحويل دفتر عمل .{ext} هذا؟',
     odsImportDetail:
-      'يحرّر GenOffice ملفات ‎.xlsx ولا يحرّر ODF. تُحوَّل القيم والصيغ والتواريخ (تُعاد كتابة الصيغ بصيغة Excel، والصيغ التي لا يمكن إعادة كتابتها بأمان تحتفظ بنتيجتها الحالية). لا تُنقل الأنماط وعرض الأعمدة والرسوم البيانية. لا يتغيّر الملف الأصلي أبدًا؛ والنسخة المحوّلة تُحفظ بصيغة ‎.xlsx عند أول حفظ.',
+      'يحرّر SelfOffice ملفات ‎.xlsx ولا يحرّر ODF. تُحوَّل القيم والصيغ والتواريخ (تُعاد كتابة الصيغ بصيغة Excel، والصيغ التي لا يمكن إعادة كتابتها بأمان تحتفظ بنتيجتها الحالية). لا تُنقل الأنماط وعرض الأعمدة والرسوم البيانية. لا يتغيّر الملف الأصلي أبدًا؛ والنسخة المحوّلة تُحفظ بصيغة ‎.xlsx عند أول حفظ.',
     odsImportConvertBtn: 'تحويل وفتح',
     dlgAddAttachment: 'إضافة مرفقات',
     filterSupported: 'الملفات المدعومة',
@@ -1078,7 +1078,7 @@ const tMain = createI18n({
     filterXlsm: 'Pastas de Trabalho Habilitadas para Macro do Excel',
     odsImportMsg: 'Converter este livro .{ext}?',
     odsImportDetail:
-      'O GenOffice edita .xlsx, não ODF. Valores, fórmulas e datas são convertidos (as fórmulas são reescritas na sintaxe do Excel; as que não podem ser reescritas com segurança mantêm o resultado atual). Estilos, largura de coluna e gráficos não são mantidos. O arquivo original nunca é alterado; a cópia convertida é salva como .xlsx no primeiro salvamento.',
+      'O SelfOffice edita .xlsx, não ODF. Valores, fórmulas e datas são convertidos (as fórmulas são reescritas na sintaxe do Excel; as que não podem ser reescritas com segurança mantêm o resultado atual). Estilos, largura de coluna e gráficos não são mantidos. O arquivo original nunca é alterado; a cópia convertida é salva como .xlsx no primeiro salvamento.',
     odsImportConvertBtn: 'Converter e abrir',
     dlgAddAttachment: 'Adicionar Anexos',
     filterSupported: 'Arquivos Compatíveis',
@@ -1146,7 +1146,7 @@ const tMain = createI18n({
     filterXlsm: 'Cartelle di lavoro di Excel con attivazione macro',
     odsImportMsg: 'Convertire questa cartella di lavoro .{ext}?',
     odsImportDetail:
-      'GenOffice modifica .xlsx, non ODF. Valori, formule e date vengono convertiti (le formule sono riscritte nella sintassi di Excel; quelle che non possono essere riscritte in sicurezza mantengono il risultato attuale). Stili, larghezza colonne e grafici non vengono riportati. Il file originale non viene mai modificato; la copia convertita si salva come .xlsx al primo salvataggio.',
+      'SelfOffice modifica .xlsx, non ODF. Valori, formule e date vengono convertiti (le formule sono riscritte nella sintassi di Excel; quelle che non possono essere riscritte in sicurezza mantengono il risultato attuale). Stili, larghezza colonne e grafici non vengono riportati. Il file originale non viene mai modificato; la copia convertita si salva come .xlsx al primo salvataggio.',
     odsImportConvertBtn: 'Converti e apri',
     dlgAddAttachment: 'Aggiungi allegati',
     filterSupported: 'File supportati',
@@ -1215,7 +1215,7 @@ const tMain = createI18n({
     filterXlsm: 'Skoroszyty programu Excel z obsługą makr',
     odsImportMsg: 'Skonwertować ten skoroszyt .{ext}?',
     odsImportDetail:
-      'GenOffice edytuje .xlsx, a nie ODF. Wartości, formuły i daty są konwertowane (formuły są przepisywane na składnię Excela; te, których nie można przepisać bezpiecznie, zachowują bieżący wynik). Style, szerokości kolumn i wykresy nie są przenoszone. Plik oryginalny nigdy nie jest zmieniany; skonwertowana kopia zapisuje się jako .xlsx przy pierwszym zapisaniu.',
+      'SelfOffice edytuje .xlsx, a nie ODF. Wartości, formuły i daty są konwertowane (formuły są przepisywane na składnię Excela; te, których nie można przepisać bezpiecznie, zachowują bieżący wynik). Style, szerokości kolumn i wykresy nie są przenoszone. Plik oryginalny nigdy nie jest zmieniany; skonwertowana kopia zapisuje się jako .xlsx przy pierwszym zapisaniu.',
     odsImportConvertBtn: 'Konwertuj i otwórz',
     dlgAddAttachment: 'Dodaj załączniki',
     filterSupported: 'Obsługiwane pliki',
@@ -1283,7 +1283,7 @@ const tMain = createI18n({
     filterXlsm: 'Sešity Excelu s podporou maker',
     odsImportMsg: 'Převést tento sešit .{ext}?',
     odsImportDetail:
-      'GenOffice upravuje .xlsx, nikoli ODF. Hodnoty, vzorce a data se převedou (vzorce se přepíší do syntaxe Excelu; ty, které nelze přepsat bezpečně, ponechají si aktuální výsledek). Styly, šířky sloupců a grafy se nepřenesou. Původní soubor se nikdy nemění; převedená kopie se při prvním uložení uloží jako .xlsx.',
+      'SelfOffice upravuje .xlsx, nikoli ODF. Hodnoty, vzorce a data se převedou (vzorce se přepíší do syntaxe Excelu; ty, které nelze přepsat bezpečně, ponechají si aktuální výsledek). Styly, šířky sloupců a grafy se nepřenesou. Původní soubor se nikdy nemění; převedená kopie se při prvním uložení uloží jako .xlsx.',
     odsImportConvertBtn: 'Převést a otevřít',
     dlgAddAttachment: 'Přidat přílohy',
     filterSupported: 'Podporované soubory',
@@ -1351,7 +1351,7 @@ const tMain = createI18n({
     filterXlsm: "Excel-werkmappen met macro's",
     odsImportMsg: 'Deze .{ext}-werkmap converteren?',
     odsImportDetail:
-      'GenOffice bewerkt .xlsx, niet ODF. Waarden, formules en datums worden geconverteerd (formules worden herschreven in Excel-syntaxis; formules die niet veilig herschreven kunnen worden houden hun huidige resultaat). Stijlen, kolombreedtes en diagrammen worden niet overgenomen. Het oorspronkelijke bestand wordt nooit gewijzigd; de geconverteerde kop slaat bij het eerste opslaan op als .xlsx.',
+      'SelfOffice bewerkt .xlsx, niet ODF. Waarden, formules en datums worden geconverteerd (formules worden herschreven in Excel-syntaxis; formules die niet veilig herschreven kunnen worden houden hun huidige resultaat). Stijlen, kolombreedtes en diagrammen worden niet overgenomen. Het oorspronkelijke bestand wordt nooit gewijzigd; de geconverteerde kop slaat bij het eerste opslaan op als .xlsx.',
     odsImportConvertBtn: 'Converteren en openen',
     dlgAddAttachment: 'Bijlagen toevoegen',
     filterSupported: 'Ondersteunde bestanden',
@@ -1420,7 +1420,7 @@ const tMain = createI18n({
     filterXlsm: 'Buku Kerja Excel Didayakan Makro',
     odsImportMsg: 'Tukar buku kerja .{ext} ini?',
     odsImportDetail:
-      'GenOffice menyunting .xlsx, bukan ODF. Nilai, formula dan tarikh ditukar (formula ditulis semula dalam sintaks Excel; yang tidak dapat ditulis semula dengan selamat mengekalkan hasil semasanya). Gaya, lebar lajur dan carta tidak dibawa. Fail asal tidak pernah diubah; salinan yang ditukar disimpan sebagai .xlsx pada simpanan pertama.',
+      'SelfOffice menyunting .xlsx, bukan ODF. Nilai, formula dan tarikh ditukar (formula ditulis semula dalam sintaks Excel; yang tidak dapat ditulis semula dengan selamat mengekalkan hasil semasanya). Gaya, lebar lajur dan carta tidak dibawa. Fail asal tidak pernah diubah; salinan yang ditukar disimpan sebagai .xlsx pada simpanan pertama.',
     odsImportConvertBtn: 'Tukar dan buka',
     dlgAddAttachment: 'Tambah Lampiran',
     filterSupported: 'Fail yang Disokong',
@@ -1488,7 +1488,7 @@ const tMain = createI18n({
     filterXlsm: 'חוברות עבודה של Excel מותאמות מאקרו',
     odsImportMsg: 'להמיר חוברת עבודה .{ext} זו?',
     odsImportDetail:
-      'GenOffice עורך קבצי .xlsx ולא ODF. ערכים, נוסחאות ותאריכים מומרים (נוסחאות נכתבות מחדש בתחביר Excel; כאלה שאי אפשר לכתוב מחדש בבטחה שומרות על התוצאה הנוכחית). עיצוב, רוחב עמודות ותרשימים לא עוברים. קובץ המקור לעולם אינו משתנה; העותק שהומר נשמר כקובץ .xlsx בשמירה הראשונה.',
+      'SelfOffice עורך קבצי .xlsx ולא ODF. ערכים, נוסחאות ותאריכים מומרים (נוסחאות נכתבות מחדש בתחביר Excel; כאלה שאי אפשר לכתוב מחדש בבטחה שומרות על התוצאה הנוכחית). עיצוב, רוחב עמודות ותרשימים לא עוברים. קובץ המקור לעולם אינו משתנה; העותק שהומר נשמר כקובץ .xlsx בשמירה הראשונה.',
     odsImportConvertBtn: 'המר ופתח',
     dlgAddAttachment: 'הוספת קבצים מצורפים',
     filterSupported: 'קבצים נתמכים',
@@ -1552,7 +1552,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel मैक्रो-सक्षम कार्यपुस्तिकाएँ',
     odsImportMsg: 'इस .{ext} वर्कबुक को बदलें?',
     odsImportDetail:
-      'GenOffice .xlsx संपादित करता है, ODF नहीं। मान, सूत्र और तारीखें बदल दी जाती हैं (सूत्र Excel सिंटैक्स में फिर से लिखे जाते हैं; जिन्हें सुरक्षित रूप से नहीं लिखा जा सका वे अपना वर्तमान मान रखते हैं)। स्टाइल, कॉलम चौड़ाई और चार्ट नहीं आते। मूल फ़ाइल कभी नहीं बदलती; बदली हुई प्रति पहली बार सहेजते समय .xlsx के रूप में सहेजी जाती है।',
+      'SelfOffice .xlsx संपादित करता है, ODF नहीं। मान, सूत्र और तारीखें बदल दी जाती हैं (सूत्र Excel सिंटैक्स में फिर से लिखे जाते हैं; जिन्हें सुरक्षित रूप से नहीं लिखा जा सका वे अपना वर्तमान मान रखते हैं)। स्टाइल, कॉलम चौड़ाई और चार्ट नहीं आते। मूल फ़ाइल कभी नहीं बदलती; बदली हुई प्रति पहली बार सहेजते समय .xlsx के रूप में सहेजी जाती है।',
     odsImportConvertBtn: 'बदलकर खोलें',
     dlgAddAttachment: 'अनुलग्नक जोड़ें',
     filterSupported: 'समर्थित फ़ाइलें',
@@ -1620,7 +1620,7 @@ const tMain = createI18n({
     filterXlsm: 'Excel 啟用巨集的活頁簿',
     odsImportMsg: '轉換這個 .{ext} 工作簿？',
     odsImportDetail:
-      'GenOffice 只編輯 .xlsx，不編輯 ODF。數值、公式與日期會被轉換（公式改寫為 Excel 語法，無法安全改寫的僅保留其目前結果）；樣式、欄寬與圖表不會帶入。原始檔案不會被修改，轉換後的複本第一次儲存時會另存為 .xlsx。', // public-hygiene: allow
+      'SelfOffice 只編輯 .xlsx，不編輯 ODF。數值、公式與日期會被轉換（公式改寫為 Excel 語法，無法安全改寫的僅保留其目前結果）；樣式、欄寬與圖表不會帶入。原始檔案不會被修改，轉換後的複本第一次儲存時會另存為 .xlsx。', // public-hygiene: allow
     odsImportConvertBtn: '轉換並開啟',
     dlgAddAttachment: '新增附件',
     filterSupported: '支援的檔案',
@@ -1747,7 +1747,7 @@ interface SheetsRuntimeConfig {
   rendererFile: string
   /** absolute path to the Rust xlsx-sidecar binary */
   sidecarPath?: string | undefined
-  /** Shell router used to open exported/AI-generated files in a new GenOffice tab. */
+  /** Shell router used to open exported/AI-generated files in a new SelfOffice tab. */
   openGeneratedPath?: (path: string) => boolean
   /** Host-owned cross-app document creator (the shell routes docx/pdf/md into Docs). */
   createDocument?: (request: SheetsAiHostDocumentRequest) => Promise<WorkbookCreateDocumentResult>
@@ -1769,7 +1769,7 @@ export function configureSheetsRuntime(config: SheetsRuntimeConfig): void {
  * not report the write itself as failed — the file is already persisted. */
 function openGeneratedFile(path: string): void {
   // Headless export must stay silent: no tab, no file-manager window
-  // (same guard as markdown-main's openExportedPdf, genoffice#1815).
+  // (same guard as markdown-main's openExportedPdf, selfoffice#1815).
   if (isHeadlessMode()) return
   try {
     if (runtime.openGeneratedPath?.(path)) return
@@ -1807,7 +1807,7 @@ async function createStandaloneSheetsDocument(
   request: SheetsAiHostDocumentRequest,
 ): Promise<WorkbookCreateDocumentResult> {
   if (request.type === 'docx') {
-    return { ok: false, error: 'Creating DOCX files requires the GenOffice shell or Docs app.' }
+    return { ok: false, error: 'Creating DOCX files requires the SelfOffice shell or Docs app.' }
   }
   const title = sanitizeGeneratedFileBase(request.title)
   try {
@@ -1898,7 +1898,7 @@ function sessionFor(event: IpcMainInvokeEvent): SheetsTabSession {
 function sheetsMediaRoots(wcId: number): string[] {
   const tab = sheetsTabs.get(wcId)
   const workbookDirs = tab ? [...tab.sessions.values()].map((s) => dirname(s.path)) : []
-  return localMediaRoots(...workbookDirs, join(app.getPath('temp'), 'genoffice-pasted'))
+  return localMediaRoots(...workbookDirs, join(app.getPath('temp'), 'selfoffice-pasted'))
 }
 
 /// A save request referencing a chunked edit transfer gets the accumulated
@@ -2409,7 +2409,7 @@ export async function createSheetsWindow(
     minWidth: 720,
     minHeight: 550,
     show: false,
-    title: 'GenOffice Sheets',
+    title: 'SelfOffice Sheets',
     // Traffic lights sit inside the toolbar row.
     ...(process.platform === 'darwin' ? { titleBarStyle: 'hiddenInset' as const } : {}),
     webPreferences: {
@@ -2597,7 +2597,7 @@ const ATTACHMENT_TEXT_EXTS = new Set([
   'sql',
   'css',
 ])
-/** office/pdf formats extract text via @genoffice/file-parse; images skip text
+/** office/pdf formats extract text via @selfoffice/file-parse; images skip text
  * extraction and go multimodal (sheets:files-read-image) */
 const ATTACHMENT_EXTS = new Set([
   ...ATTACHMENT_TEXT_EXTS,
@@ -2670,7 +2670,7 @@ function savePastedImage(data: unknown, ext: unknown): string | null {
         ? Buffer.from(data.buffer, data.byteOffset, data.byteLength)
         : null
   if (!bytes || bytes.byteLength === 0) return null
-  const dir = join(app.getPath('temp'), 'genoffice-pasted')
+  const dir = join(app.getPath('temp'), 'selfoffice-pasted')
   mkdirSync(dir, { recursive: true })
   const stamp = new Date().toISOString().slice(0, 19).replace(/[-:]/g, '').replace('T', '-')
   const filePath = join(dir, `pasted-${stamp}-${++pastedImageSeq}.${cleanExt}`)
@@ -2678,7 +2678,7 @@ function savePastedImage(data: unknown, ext: unknown): string | null {
   return filePath
 }
 
-/** Attachment text extraction via @genoffice/file-parse (docx/pdf/pptx/xlsx/plain text) */
+/** Attachment text extraction via @selfoffice/file-parse (docx/pdf/pptx/xlsx/plain text) */
 async function extractAttachmentText(filePath: string): Promise<string> {
   const stat = statSync(filePath)
   const stamp = `${stat.mtimeMs}:${stat.size}`
@@ -3934,7 +3934,7 @@ export function registerSheetsAiIpc(): void {
 
   // Node fetch (undici) direct connections get reset under VPN/tun setups; retry over Chromium's stack
   setRescueFetch((url, init) => net.fetch(url, init))
-  setAiUserAgent(`GenOffice/${app.getVersion()}`)
+  setAiUserAgent(`SelfOffice/${app.getVersion()}`)
 
   ipcMain.handle(IPC_CHANNELS.aiGetSettings, (event): AiSettings => {
     sessionFor(event)
@@ -4530,7 +4530,7 @@ async function writeWorkbookTo(
       })),
     })) ?? null
   const encryptedSaveTempDir = session.password
-    ? await mkdtemp(join(app.getPath('temp'), 'genoffice-encrypted-save-'))
+    ? await mkdtemp(join(app.getPath('temp'), 'selfoffice-encrypted-save-'))
     : undefined
   const plainTargetPath = encryptedSaveTempDir
     ? join(encryptedSaveTempDir, 'workbook.xlsx')
@@ -4604,7 +4604,7 @@ let sessionSnapshotDirectoryPromise: Promise<string> | undefined
 
 /** Create a private per-process snapshot directory and sweep abandoned sessions. */
 async function createSessionSnapshotDirectory(): Promise<string> {
-  const root = join(app.getPath('temp'), 'genoffice-sheets-sessions')
+  const root = join(app.getPath('temp'), 'selfoffice-sheets-sessions')
   await mkdir(root, { recursive: true, mode: 0o700 })
   const directory = join(root, `${process.pid}-${randomUUID()}`)
   await mkdir(directory, { mode: 0o700 })
@@ -4795,7 +4795,7 @@ async function openEmptyXlsx(path: string): Promise<{
   restoreTarget: string
   emptySource: true
 }> {
-  const directory = join(app.getPath('temp'), 'genoffice-imports', randomUUID())
+  const directory = join(app.getPath('temp'), 'selfoffice-imports', randomUUID())
   await mkdir(directory, { recursive: true })
   const openPath = join(directory, basename(path))
   try {
@@ -4925,7 +4925,7 @@ async function prepareWorkbookForOpen(
     return { openPath: path }
   }
   const stem = basename(path).replace(/\.[^.]+$/, '')
-  const directory = join(app.getPath('temp'), 'genoffice-imports', randomUUID())
+  const directory = join(app.getPath('temp'), 'selfoffice-imports', randomUUID())
   await mkdir(directory, { recursive: true })
   const openPath = join(directory, `${stem}.xlsx`)
   let emptyCsv = false
@@ -5100,7 +5100,7 @@ async function applyMainProcessProxy(): Promise<void> {
     try {
       const { setGlobalDispatcher } = await import('undici')
       // loopback stays direct: a Custom provider on 127.0.0.1 must not ride
-      // the proxy as an absolute-form request (genoffice#2084)
+      // the proxy as an absolute-form request (selfoffice#2084)
       setGlobalDispatcher(await createMainProcessProxyDispatcher(proxyUrl))
       // strip user:pass credentials before logging
       console.log('[proxy] main-process fetch via', proxyUrl.replace(/\/\/[^@/]*@/, '//***@'))
@@ -5138,17 +5138,17 @@ export function startSheetsStandalone(): void {
   registerRendererScheme()
   installNavigationGuard(app)
   installContextMenu(app, () => contextMenuLabels(getUiLang()))
-  // GENOFFICE_USER_DATA: test drivers point this at a scratch dir so automated
+  // SELFOFFICE_USER_DATA: test drivers point this at a scratch dir so automated
   // instances get their own userData AND single-instance lock (the lock is scoped
   // to userData), allowing parallel instances alongside a normal dev run.
   // Same dev-only hook as apps/slides/src/main/slides-main.ts.
-  if (!app.isPackaged && process.env.GENOFFICE_USER_DATA) {
-    app.setPath('userData', process.env.GENOFFICE_USER_DATA)
+  if (!app.isPackaged && process.env.SELFOFFICE_USER_DATA) {
+    app.setPath('userData', process.env.SELFOFFICE_USER_DATA)
   }
   void applyMainProcessProxy()
   app.whenReady().then(() => {
     installRendererProtocol({ sheets: join(__dirname, '../renderer') })
-    setUiLang(normalizeLang(process.env.GENOFFICE_LANG ?? app.getLocale()))
+    setUiLang(normalizeLang(process.env.SELFOFFICE_LANG ?? app.getLocale()))
     app.setAccessibilitySupportEnabled(true)
     installApplicationMenu()
     startCaptureServer()

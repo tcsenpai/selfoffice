@@ -1,6 +1,6 @@
 # Skrin Laman Utama: di mana fail anda berada
 
-Laman Utama ialah halaman permulaan GenOffice: bar navigasi di kiri, senarai fail dan kad penciptaan pantas di kanan.
+Laman Utama ialah halaman permulaan SelfOffice: bar navigasi di kiri, senarai fail dan kad penciptaan pantas di kanan.
 
 ![Skrin Laman Utama](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Tandakan kotak pada satu baris, atau ⌘/ctrl-klik, untuk membina satu pilihan; 
 Kotak carian di atas menapis dua perkara serentak:
 
 - **Nama fail**: penapisan pantas mengikut nama.
-- **Kandungan fail**: GenOffice mengindeks fail anda di latar belakang, iaitu teks di dalam docx/xlsx/pptx/pdf/md/html. Oleh itu, mencari dalam teks badan turut menemui fail. Skop dan suis ditetapkan dalam tetapan carian.
+- **Kandungan fail**: SelfOffice mengindeks fail anda di latar belakang, iaitu teks di dalam docx/xlsx/pptx/pdf/md/html. Oleh itu, mencari dalam teks badan turut menemui fail. Skop dan suis ditetapkan dalam tetapan carian.
 
 ## Kad mula pantas
 

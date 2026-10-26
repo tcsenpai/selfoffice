@@ -1,4 +1,4 @@
-# Cài đặt GenOffice
+# Cài đặt SelfOffice
 
 Mọi bản dựng đều được công bố trên [trang phát hành](https://github.com/tcsenpai/selfoffice/releases/latest). Tất cả đều đến từ `main`; và trình cài đặt cho macOS và Windows đã được ký.
 
@@ -18,32 +18,32 @@ Các bản cũ hơn vẫn nằm trên trang phát hành.
 
 ## Trên macOS
 
-Mở tệp `.dmg` rồi kéo **GenOffice** vào Applications. Với bản dựng Intel, lần chạy đầu tiên sẽ yêu cầu bạn xác nhận việc mở: nhấp phải vào ứng dụng trong Applications ▸ Mở. Đó là Gatekeeper gặp một đĩa ảnh trông như không có chữ ký, chứ không phải tệp tải về bị hỏng.
+Mở tệp `.dmg` rồi kéo **SelfOffice** vào Applications. Với bản dựng Intel, lần chạy đầu tiên sẽ yêu cầu bạn xác nhận việc mở: nhấp phải vào ứng dụng trong Applications ▸ Mở. Đó là Gatekeeper gặp một đĩa ảnh trông như không có chữ ký, chứ không phải tệp tải về bị hỏng.
 
 ## Trên Windows
 
-Chạy trình cài đặt `.exe`. Nó đưa GenOffice vào menu Start và đăng ký `.docx`, `.xlsx`, `.pptx`, `.pdf` cùng các định dạng tương tự, để nhấp đúp vào một tệp là mở được tệp đó.
+Chạy trình cài đặt `.exe`. Nó đưa SelfOffice vào menu Start và đăng ký `.docx`, `.xlsx`, `.pptx`, `.pdf` cùng các định dạng tương tự, để nhấp đúp vào một tệp là mở được tệp đó.
 
 ## Trên Linux
 
 **Debian / Ubuntu**
 
 ```sh
-sudo apt install ./genoffice_<version>_amd64.deb
+sudo apt install ./selfoffice_<version>_amd64.deb
 ```
 
 **Fedora / RHEL / openSUSE**
 
 ```sh
-sudo dnf install ./genoffice-<version>.x86_64.rpm     # Fedora / RHEL family
-sudo zypper install ./genoffice-<version>.x86_64.rpm  # openSUSE
+sudo dnf install ./selfoffice-<version>.x86_64.rpm     # Fedora / RHEL family
+sudo zypper install ./selfoffice-<version>.x86_64.rpm  # openSUSE
 ```
 
 **AppImage** — chạy ngay tại chỗ, không cần bước cài đặt:
 
 ```sh
-chmod +x GenOffice-<version>.AppImage
-./GenOffice-<version>.AppImage
+chmod +x SelfOffice-<version>.AppImage
+./SelfOffice-<version>.AppImage
 ```
 
 Nó cần môi trường chạy FUSE 2. Nếu bạn không muốn cài đặt, hãy chạy với `--appimage-extract-and-run`, và hộp cát sẽ hoạt động từ thư mục đã giải nén.
@@ -64,4 +64,4 @@ Cả ba đều bọc các tệp đã phát hành thay vì dựng lại ứng d�
 
 ## Dòng lệnh đi kèm luôn
 
-Mọi bản cài đặt đều kèm lệnh `genoffice` nói chuyện với đúng những engine mà cửa sổ dùng, nên cả hai không bao giờ bất đồng về một tệp. Trên macOS và Windows nó nằm trong gói ứng dụng; và `genoffice install-cli` đưa nó vào `PATH` của bạn. Xem **Dòng lệnh và tác nhân** để biết nó làm được gì.
+Mọi bản cài đặt đều kèm lệnh `selfoffice` nói chuyện với đúng những engine mà cửa sổ dùng, nên cả hai không bao giờ bất đồng về một tệp. Trên macOS và Windows nó nằm trong gói ứng dụng; và `selfoffice install-cli` đưa nó vào `PATH` của bạn. Xem **Dòng lệnh và tác nhân** để biết nó làm được gì.

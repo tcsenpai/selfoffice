@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { defaultAiSettings } from '@genoffice/ai-provider'
+import { defaultAiSettings } from '@selfoffice/ai-provider'
 import { imageSearch, webSearch } from '../src/index'
 import { searchOptionsFromSettings, testSearchProvider } from '../src/search-tools'
 
@@ -9,12 +9,12 @@ const webResponse = () =>
   Response.json({
     results: [
       {
-        title: 'GenOffice',
-        link: 'https://genoffice.ai/',
+        title: 'SelfOffice',
+        link: 'https://selfoffice.ai/',
         description: 'A free, open-source office suite.',
       },
       { title: 'Not a page', link: 'javascript:void(0)', description: 'dropped' },
-      { title: 'Docs', link: 'https://genoffice.ai/docs', description: 'Documentation.' },
+      { title: 'Docs', link: 'https://selfoffice.ai/docs', description: 'Documentation.' },
     ],
     answers: [],
   })
@@ -40,7 +40,7 @@ describe('Serply web search', () => {
   it('sends a GET with the key header and maps results[].description', async () => {
     const fetch = vi.fn<typeof globalThis.fetch>(async () => webResponse())
     vi.stubGlobal('fetch', fetch)
-    const r = await webSearch('genoffice', 5, {
+    const r = await webSearch('selfoffice', 5, {
       serplyKey: 'user-key',
       serperKey: 'serper-key',
       prefer: 'serply',
@@ -48,11 +48,11 @@ describe('Serply web search', () => {
     expect(r).toEqual({
       results: [
         {
-          title: 'GenOffice',
-          url: 'https://genoffice.ai/',
+          title: 'SelfOffice',
+          url: 'https://selfoffice.ai/',
           snippet: 'A free, open-source office suite.',
         },
-        { title: 'Docs', url: 'https://genoffice.ai/docs', snippet: 'Documentation.' },
+        { title: 'Docs', url: 'https://selfoffice.ai/docs', snippet: 'Documentation.' },
       ],
       method: 'serply',
     })
@@ -60,10 +60,10 @@ describe('Serply web search', () => {
     const [url, init] = fetch.mock.calls[0]!
     const parsed = new URL(String(url))
     expect(`${parsed.origin}${parsed.pathname}`).toBe(webEndpoint)
-    expect(parsed.searchParams.get('q')).toBe('genoffice')
+    expect(parsed.searchParams.get('q')).toBe('selfoffice')
     expect(parsed.searchParams.get('num')).toBe('5')
     expect(init?.method).toBeUndefined()
-    expect(init?.headers).toEqual({ 'X-Api-Key': 'user-key', 'User-Agent': 'genoffice' })
+    expect(init?.headers).toEqual({ 'X-Api-Key': 'user-key', 'User-Agent': 'selfoffice' })
   })
 
   it('reads SERPLY_API_KEY and caps the mapped results at maxResults', async () => {
@@ -72,9 +72,9 @@ describe('Serply web search', () => {
       'fetch',
       vi.fn<typeof globalThis.fetch>(async () => webResponse()),
     )
-    const r = await webSearch('genoffice', 1)
+    const r = await webSearch('selfoffice', 1)
     expect(r.method).toBe('serply')
-    expect(r.results.map((x) => x.url)).toEqual(['https://genoffice.ai/'])
+    expect(r.results.map((x) => x.url)).toEqual(['https://selfoffice.ai/'])
   })
 
   it('falls through to the next backend when Serply rejects the key', async () => {
@@ -90,7 +90,7 @@ describe('Serply web search', () => {
         return fallback()
       }),
     )
-    const r = await webSearch('genoffice', 3, {
+    const r = await webSearch('selfoffice', 3, {
       serplyKey: 'bad-key',
       prefer: 'serply',
     })

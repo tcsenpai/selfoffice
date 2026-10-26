@@ -94,7 +94,7 @@ describe('documentToMarkdown', () => {
       content: '<p></p>',
     })
     const png = 'data:image/png;base64,iVBORw0KGgo='
-    const lazy = 'genoffice-docx-media://abc/word/media/photo%201.jpeg'
+    const lazy = 'selfoffice-docx-media://abc/word/media/photo%201.jpeg'
     try {
       editor.commands.setContent({
         type: 'doc',

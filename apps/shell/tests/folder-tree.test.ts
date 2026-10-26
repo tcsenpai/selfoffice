@@ -44,7 +44,7 @@ function touch(rel: string, content = 'x'): string {
 }
 
 beforeEach(() => {
-  root = realpathSync(mkdtempSync(join(tmpdir(), 'genoffice-folders-')))
+  root = realpathSync(mkdtempSync(join(tmpdir(), 'selfoffice-folders-')))
 })
 
 afterEach(() => {
@@ -146,7 +146,7 @@ describe('isInsideRoot', () => {
   })
 
   it('rejects a symlink inside the root that points outside it', () => {
-    const outside = mkdtempSync(join(tmpdir(), 'genoffice-outside-'))
+    const outside = mkdtempSync(join(tmpdir(), 'selfoffice-outside-'))
     try {
       symlinkSync(outside, join(root, 'escape'))
       expect(isInsideRoot(root, join(root, 'escape'))).toBe(false)
@@ -366,10 +366,10 @@ describe('helpers', () => {
   })
 
   it('describeRoot creates a missing root and reports it usable', () => {
-    const fresh = join(root, 'GenOffice')
+    const fresh = join(root, 'SelfOffice')
     expect(describeRoot(fresh)).toEqual({
       path: fresh,
-      name: 'GenOffice',
+      name: 'SelfOffice',
       usable: true,
       readable: true,
       removable: false,

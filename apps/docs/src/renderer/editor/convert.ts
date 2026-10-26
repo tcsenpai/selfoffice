@@ -55,7 +55,7 @@ import {
   type AutoSpace,
   type EffectivePPr,
   type EffectiveRPr,
-} from '@genoffice/docx-engine'
+} from '@selfoffice/docx-engine'
 import { t } from '../i18n/locale'
 import { symbolFontCovers } from '../font-check'
 import {

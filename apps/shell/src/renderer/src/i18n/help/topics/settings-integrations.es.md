@@ -23,7 +23,7 @@ Claro / Oscuro / Seguir el sistema. «Seguir el sistema» sigue la apariencia de
 - **Posición de la barra lateral de IA** (izquierda o derecha), **Tamaño del texto del panel de IA** y **Corrección ortográfica en el chat de IA**.
 - **Abrir el panel de IA en documentos nuevos** — desactivado, un documento nuevo empieza con el panel plegado, a un clic de distancia.
 - **Guardar automáticamente todos los documentos** activa el guardado automático de forma predeterminada en todos los editores; todavía puedes desactivarlo para una ventana.
-- **Ubicación de guardado** con un botón **Cambiar** y **App predeterminada para documentos de Office** para reclamar .docx / .xlsx / .pptx para GenOffice.
+- **Ubicación de guardado** con un botón **Cambiar** y **App predeterminada para documentos de Office** para reclamar .docx / .xlsx / .pptx para SelfOffice.
 
 ## Medios de IA y búsqueda
 
@@ -39,7 +39,7 @@ No son conmutadores: cada capacidad elige el proveedor que la sirve, y la clave 
 
 ## Aplicaciones predeterminadas
 
-La configuración puede registrar GenOffice como programa predeterminado para .docx / .xlsx / .pptx / .pdf y formatos similares (registro de aplicación predeterminada a nivel de plataforma; confirme cuando se le pida).
+La configuración puede registrar SelfOffice como programa predeterminado para .docx / .xlsx / .pptx / .pdf y formatos similares (registro de aplicación predeterminada a nivel de plataforma; confirme cuando se le pida).
 
 ## Avisos de software de terceros y actualizaciones
 
@@ -48,7 +48,7 @@ La configuración puede registrar GenOffice como programa predeterminado para .d
 
 ## Integración MCP (para usuarios avanzados / clientes de IA)
 
-**Integraciones** es el panel que conecta GenOffice con un agente de programación, y tiene su propio artículo: Conectar un agente de programación. La versión corta: elija una vía (la línea de comandos o MCP), siga esa sección y después abra una conversación nueva y pregunte.
+**Integraciones** es el panel que conecta SelfOffice con un agente de programación, y tiene su propio artículo: Conectar un agente de programación. La versión corta: elija una vía (la línea de comandos o MCP), siga esa sección y después abra una conversación nueva y pregunte.
 
 ![Configuración ▸ Integraciones: los tres pasos, luego las filas de habilidades y las opciones de MCP](img/settings-integrations.png)
 
@@ -58,6 +58,6 @@ En **Servidor HTTP local**, la aplicación también puede ejecutar el servidor p
 
 | Comando            | Qué hace                      |
 | ------------------ | ----------------------------- |
-| `genoffice <file>` | abrir un archivo              |
-| `genoffice mcp`    | iniciar el servidor MCP local |
-| `genoffice --help` | todos los comandos y opciones |
+| `selfoffice <file>` | abrir un archivo              |
+| `selfoffice mcp`    | iniciar el servidor MCP local |
+| `selfoffice --help` | todos los comandos y opciones |

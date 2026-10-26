@@ -15,7 +15,7 @@ import {
   type GradientFillPatch,
   type StrokePatch,
   type TextElement,
-} from '@genoffice/pptx-engine'
+} from '@selfoffice/pptx-engine'
 import {
   GuidedError,
   register,

@@ -53,7 +53,7 @@ import menuHtmlIcon1x from './assets/menu-html.png?asset'
 import menuHtmlIcon2x from './assets/menu-html@2x.png?asset'
 import menuHomeIcon1x from './assets/menu-home.png?asset'
 import menuHomeIcon2x from './assets/menu-home@2x.png?asset'
-import { createI18n, isLang, normalizeLang, setUiLang, type Lang } from '@genoffice/i18n'
+import { createI18n, isLang, normalizeLang, setUiLang, type Lang } from '@selfoffice/i18n'
 import {
   DEFAULT_SAVE_DIR_KEY,
   DROP_OPEN_CHANNEL,
@@ -84,8 +84,8 @@ import {
   readAuthorNameSetting,
   sanitizeAuthorName,
   systemAuthorName,
-} from '@genoffice/electron-utils'
-import { createMainProcessProxyDispatcher } from '@genoffice/electron-utils/main-proxy'
+} from '@selfoffice/electron-utils'
+import { createMainProcessProxyDispatcher } from '@selfoffice/electron-utils/main-proxy'
 import {
   readAppSettings,
   writeAppSetting,
@@ -162,7 +162,7 @@ import {
   uniquePathIn,
   authorizeMcpDocWrite,
 } from '../../../docs/src/main/docs-main'
-import { blankXlsxBuffer } from '@genoffice/xlsx-gateway/gateway/csv-import'
+import { blankXlsxBuffer } from '@selfoffice/xlsx-gateway/gateway/csv-import'
 import { blankPdfBuffer } from '../../../pdf/src/main/blank-pdf'
 import {
   applyMcpSettings,
@@ -291,7 +291,7 @@ import {
   normalizeAiPanelPrefs,
   sameAiPanelPrefs,
   type AiPanelPrefs,
-} from '@genoffice/ui/ai-panel-prefs'
+} from '@selfoffice/ui/ai-panel-prefs'
 import type { TabKind } from '../shared/tabs-api'
 import { TABS_CHANNELS } from '../shared/tabs-api'
 import { showErrorDialog } from './error-dialog'
@@ -393,7 +393,7 @@ import { applyUpdateChannel, checkForUpdatesNow, initAutoUpdater } from './updat
 import { isUpdateChannel, type UpdateChannel } from '../shared/update-api'
 
 /**
- * GenOffice unified shell: ONE Electron app, ONE BrowserWindow, hosting the
+ * SelfOffice unified shell: ONE Electron app, ONE BrowserWindow, hosting the
  * docs and sheets modules as WebContentsView tabs behind a WPS-style tab
  * strip. The shell owns the lifecycle — single-instance lock, file-
  * association routing by extension, and per-active-tab menu switching.
@@ -414,22 +414,22 @@ for (const stream of [process.stdout, process.stderr]) {
 
 // ANY unpacked run (`npm run shell`, `npm run dev`, `npx electron .`) must not
 // share the installed app's userData or single-instance lock — otherwise a dev
-// run silently quits and forwards its argv to the running installed GenOffice.
-// GENOFFICE_USER_DATA: test drivers point this at a scratch dir so an
+// run silently quits and forwards its argv to the running installed SelfOffice.
+// SELFOFFICE_USER_DATA: test drivers point this at a scratch dir so an
 // automated instance can run alongside the dev instance (separate lock).
 if (!app.isPackaged) {
-  if (process.env.GENOFFICE_USER_DATA) {
-    app.setPath('userData', process.env.GENOFFICE_USER_DATA)
+  if (process.env.SELFOFFICE_USER_DATA) {
+    app.setPath('userData', process.env.SELFOFFICE_USER_DATA)
   } else {
-    // The dev profile used to live in "GenOffice Dev"; the space breaks
+    // The dev profile used to live in "SelfOffice Dev"; the space breaks
     // unquoted shell expansions, rsync targets and .desktop Exec= lines, and
-    // XDG config entries are single tokens (genoffice#1817). "GenOffice-Dev" keeps the
-    // family naming of the packaged profile ("GenOffice"). The old directory
+    // XDG config entries are single tokens (selfoffice#1817). "SelfOffice-Dev" keeps the
+    // family naming of the packaged profile ("SelfOffice"). The old directory
     // moves once — it sits on the same volume as appData, so the rename is
     // atomic, and a concurrent dev instance keeps its open file handles.
     const appData = app.getPath('appData')
-    const devDir = join(appData, 'GenOffice-Dev')
-    const oldDevDir = join(appData, 'GenOffice Dev')
+    const devDir = join(appData, 'SelfOffice-Dev')
+    const oldDevDir = join(appData, 'SelfOffice Dev')
     let userData = devDir
     if (existsSync(oldDevDir) && !existsSync(devDir)) {
       try {
@@ -456,12 +456,15 @@ if (headlessArgv.kind !== 'none') {
   app.dock?.hide()
 }
 
-// The product rename from "AI Office" to GenOffice changed the userData path; migrate old user data once
+// Product renames ("AI Office" -> GenOffice -> SelfOffice) changed the userData path; carry the
+// newest old profile (settings, recents, keys) over once, on first launch only
 if (app.isPackaged) {
-  const oldDir = join(app.getPath('appData'), 'AI Office')
   const newDir = app.getPath('userData')
   const newEmpty = !existsSync(newDir) || readdirSync(newDir).length === 0
-  if (newEmpty && existsSync(oldDir)) cpSync(oldDir, newDir, { recursive: true })
+  const oldDir = ['GenOffice', 'AI Office']
+    .map((name) => join(app.getPath('appData'), name))
+    .find((dir) => existsSync(dir))
+  if (newEmpty && oldDir) cpSync(oldDir, newDir, { recursive: true })
 }
 
 // module build outputs: packaged builds carry them as extraResources
@@ -482,13 +485,13 @@ const PDF_OUT = app.isPackaged
   ? join(process.resourcesPath, 'modules', 'pdf')
   : join(APPS_ROOT, 'pdf', 'out')
 let cliRunner: ReturnType<typeof createCliRunner> | null = null
-/** the bundled genoffice CLI on the app's own Node runtime (MCP headless tools, Ask AI create_document) */
+/** the bundled selfoffice CLI on the app's own Node runtime (MCP headless tools, Ask AI create_document) */
 function bundledCliRunner(): ReturnType<typeof createCliRunner> {
   cliRunner ??= createCliRunner({
     executable: process.execPath,
     entry: app.isPackaged
-      ? join(process.resourcesPath, 'cli', 'genoffice.cjs')
-      : join(APPS_ROOT, '..', 'packages', 'cli', 'dist', 'genoffice.cjs'),
+      ? join(process.resourcesPath, 'cli', 'selfoffice.cjs')
+      : join(APPS_ROOT, '..', 'packages', 'cli', 'dist', 'selfoffice.cjs'),
     // the sheets engine the app itself runs; the CLI's own lookup only knows the packaged layout and a checkout
     env: existsSync(SIDECAR_BIN) ? { XLSX_SIDECAR_PATH: SIDECAR_BIN } : {},
   })
@@ -550,7 +553,7 @@ registerPrivilegedSchemes()
 
 // ---- UI language ----
 // Persisted in userData/app-settings.json so the editor modules can read the
-// same file when they pick up i18n later. GENOFFICE_LANG overrides for tests.
+// same file when they pick up i18n later. SELFOFFICE_LANG overrides for tests.
 
 const APP_SETTINGS_PATH = () => join(app.getPath('userData'), 'app-settings.json')
 const OPEN_DOCUMENTS_PATH = () => join(app.getPath('userData'), OPEN_DOCUMENTS_FILE)
@@ -570,8 +573,8 @@ let uiLang: Lang | null = null
 
 function currentLang(): Lang {
   if (uiLang) return uiLang
-  if (process.env.GENOFFICE_LANG) {
-    uiLang = normalizeLang(process.env.GENOFFICE_LANG)
+  if (process.env.SELFOFFICE_LANG) {
+    uiLang = normalizeLang(process.env.SELFOFFICE_LANG)
     setUiLang(uiLang)
     return uiLang
   }
@@ -4015,7 +4018,7 @@ function withViewMenu(): void {
   else menu.insert(helpIdx, viewItem)
 }
 
-/// Interface scale (genoffice#1913). Read once at boot, then replaced by the View menu.
+/// Interface scale (selfoffice#1913). Read once at boot, then replaced by the View menu.
 let currentUiScale = 1
 
 /**
@@ -4063,7 +4066,7 @@ function createShellWindow(): void {
     ...(restored ? { x: restored.x, y: restored.y } : {}),
     minWidth: SHELL_WINDOW_MIN_WIDTH,
     minHeight: SHELL_WINDOW_MIN_HEIGHT,
-    title: 'GenOffice',
+    title: 'SelfOffice',
     // Paint the theme's surface before the renderer's first frame so the window
     // does not flash white in dark mode. nativeTheme.themeSource is already set
     // from the saved theme in app.whenReady, before this window is created.
@@ -4501,7 +4504,7 @@ async function newSheetTab(recoverAs?: string): Promise<void> {
     suggestedPath = uniquePathIn(dir, `${tm('untitledSheet')} ${i}.xlsx`)
   try {
     // under the import root so the session-close cleanup removes it like an import copy
-    const tempDir = join(app.getPath('temp'), 'genoffice-imports', randomUUID())
+    const tempDir = join(app.getPath('temp'), 'selfoffice-imports', randomUUID())
     mkdirSync(tempDir, { recursive: true })
     const backingPath = join(tempDir, basename(suggestedPath))
     // reserve the name before the first await so a second new tab picks another;
@@ -4567,7 +4570,7 @@ function newDocTab(): void {
 
 /** MCP: open a blank docs tab and return its webContents id, for the visible-editor bridge */
 function openBlankDocsTabForMcp(): number {
-  if (!tabManager) throw new Error('GenOffice is not ready')
+  if (!tabManager) throw new Error('SelfOffice is not ready')
   const tabId = tabManager.openDocsTab(undefined, { newBlank: true })
   const view = tabManager.docsTabs().find((t) => t.id === tabId)
   if (!view) throw new Error('the new document tab could not be opened')
@@ -4584,7 +4587,7 @@ function openBlankDocsTabForMcp(): number {
  * marking is skipped, the file name is the agent's business.
  */
 async function openBlankSheetsTabForMcp(): Promise<number> {
-  if (!tabManager) throw new Error('GenOffice is not ready')
+  if (!tabManager) throw new Error('SelfOffice is not ready')
   const filePath = uniquePathIn(defaultSaveDir(), `${tm('untitledSheet')}.xlsx`)
   await atomicWriteFile(filePath, await blankXlsxBuffer())
   const tabId = tabManager.openSheetsTab(filePath)
@@ -4655,7 +4658,7 @@ function abandonBlankTabForMcp(
 
 /** MCP: open a blank slides tab and return its webContents id, for the visible-deck bridge */
 function openBlankSlidesTabForMcp(): number {
-  if (!tabManager) throw new Error('GenOffice is not ready')
+  if (!tabManager) throw new Error('SelfOffice is not ready')
   const tabId = tabManager.openSlidesTab()
   const view = tabManager.slidesTabs().find((t) => t.id === tabId)
   if (!view) throw new Error('the new presentation tab could not be opened')
@@ -5430,7 +5433,7 @@ function registerHomeIpc(): void {
       const displaced: string[] = []
       const result = movePathsInto(sources, targetDir, conflictPolicy, folderErrors(), {
         replaceExisting: (path) => {
-          const parked = join(dirname(path), `.genoffice-replaced-${Date.now()}-${basename(path)}`)
+          const parked = join(dirname(path), `.selfoffice-replaced-${Date.now()}-${basename(path)}`)
           const files = isDir(path) ? trackedFilesUnder(path) : [path]
           renameSync(path, parked)
           return {
@@ -5517,8 +5520,8 @@ function registerHomeIpc(): void {
     const state = readStarPrompt()
     const docOpens = state.docOpens ?? 0
     // dev preview of the card without waiting out the value thresholds
-    // (same pattern as GENOFFICE_FAKE_UPDATE); nothing is recorded
-    if (!app.isPackaged && process.env.GENOFFICE_FORCE_STAR_PROMPT) return { show: true, docOpens }
+    // (same pattern as SELFOFFICE_FAKE_UPDATE); nothing is recorded
+    if (!app.isPackaged && process.env.SELFOFFICE_FORCE_STAR_PROMPT) return { show: true, docOpens }
     const grant = (): StarPromptShow => {
       writeStarPrompt(withShown(state, now))
       starPromptSessionGrant = { show: true, docOpens }
@@ -6486,7 +6489,7 @@ async function exportDocxBytesHeadless(
   format: 'md' | 'html',
   sourceName: string,
 ): Promise<void> {
-  const dir = await mkdtemp(join(tmpdir(), 'genoffice-pdf-convert-'))
+  const dir = await mkdtemp(join(tmpdir(), 'selfoffice-pdf-convert-'))
   try {
     const docxPath = join(dir, sourceName.replace(/\.pdf$/i, '') + '.docx')
     await atomicWriteFile(docxPath, docx)
@@ -6812,7 +6815,7 @@ async function installMainProcessProxy(): Promise<void> {
   try {
     const { setGlobalDispatcher } = await import('undici')
     // loopback stays direct: a Custom provider on 127.0.0.1 must not ride
-    // the proxy as an absolute-form request (genoffice#2084)
+    // the proxy as an absolute-form request (selfoffice#2084)
     setGlobalDispatcher(await createMainProcessProxyDispatcher(proxyUrl))
     // strip user:pass credentials before logging
     console.log('[proxy] main-process fetch via', proxyUrl.replace(/\/\/[^@/]*@/, '//***@'))
@@ -6886,8 +6889,8 @@ registerIntegrationsIpc({
     ? join(process.resourcesPath, 'cli')
     : join(APPS_ROOT, '..', 'packages', 'cli', 'bin'),
   skillPath: app.isPackaged
-    ? join(process.resourcesPath, 'cli', 'skills', 'genoffice', 'SKILL.md')
-    : join(APPS_ROOT, '..', 'skills', 'genoffice', 'SKILL.md'),
+    ? join(process.resourcesPath, 'cli', 'skills', 'selfoffice', 'SKILL.md')
+    : join(APPS_ROOT, '..', 'skills', 'selfoffice', 'SKILL.md'),
   cliPackageJson: app.isPackaged
     ? join(process.resourcesPath, 'cli', 'package.json')
     : join(APPS_ROOT, '..', 'packages', 'cli', 'package.json'),
@@ -6922,7 +6925,7 @@ const headlessExporters: HeadlessExporters = {
 /**
  * The whole `--headless-export` run: no shell window, no menus, no updater,
  * no single-instance lock (a GUI instance may well be running). Prints
- * exactly one line and exits with the genoffice convention (0/1/2/3).
+ * exactly one line and exits with the selfoffice convention (0/1/2/3).
  */
 async function runHeadlessExportEntry(
   parsed: Exclude<HeadlessArgvParse, { kind: 'none' }>,
@@ -6944,7 +6947,7 @@ async function runHeadlessExportEntry(
       resolve()
     })
   })
-  // app.quit() always exits 0; the genoffice envelope needs the real code, and
+  // app.quit() always exits 0; the selfoffice envelope needs the real code, and
   // every teardown this run owns has already happened.
   app.exit(headlessExitCode(outcome))
 }
@@ -6998,7 +7001,7 @@ app.whenReady().then(async () => {
     app.quit()
     return
   }
-  // a registry left by a crashed instance must not block genoffice writes
+  // a registry left by a crashed instance must not block selfoffice writes
   ownsOpenDocumentsRegistry = true
   publishOpenDocuments(OPEN_DOCUMENTS_PATH(), [])
   if (!app.isPackaged) {
@@ -7106,7 +7109,7 @@ app.whenReady().then(async () => {
         discard: htmlDiscardPendingAssets,
       },
     }),
-    // the headless create_*/read_* tools delegate to the bundled genoffice CLI
+    // the headless create_*/read_* tools delegate to the bundled selfoffice CLI
     // (the same engines, no second implementation); it runs on the app's own
     // Node runtime via ELECTRON_RUN_AS_NODE
     cliRunner: bundledCliRunner(),

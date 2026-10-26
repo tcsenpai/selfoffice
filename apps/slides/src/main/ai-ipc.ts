@@ -34,33 +34,33 @@ import {
   type AiStreamChunk,
   type AiStreamRequest,
   type LegacyAiSettings,
-} from '@genoffice/ai-provider'
-import { shutdownCodexAppServers } from '@genoffice/ai-provider/codex-app-server'
-import { startAiTrace } from '@genoffice/ai-provider/trace'
+} from '@selfoffice/ai-provider'
+import { shutdownCodexAppServers } from '@selfoffice/ai-provider/codex-app-server'
+import { startAiTrace } from '@selfoffice/ai-provider/trace'
 import {
   abortOnDestroyed,
   MAX_REMOTE_IMAGE_BYTES,
   fetchRemoteImage,
   readBodyCapped,
   writeJsonAtomic,
-} from '@genoffice/electron-utils'
+} from '@selfoffice/electron-utils'
 import {
   webSearchTool,
   imageSearchTool,
   generateImageTool,
   analyzeMediaTool,
   documentMediaRoots,
-} from '@genoffice/ai-search'
-import { addPicture, editPictureSrcRect, replacePictureBytes } from '@genoffice/pptx-engine'
+} from '@selfoffice/ai-search'
+import { addPicture, editPictureSrcRect, replacePictureBytes } from '@selfoffice/pptx-engine'
 import { rasterImageExt } from './media-mime'
-import { matchesElementRef } from '@genoffice/pptx-engine/identity'
-import { coverCropFractions } from '@genoffice/pipelines/slides'
+import { matchesElementRef } from '@selfoffice/pptx-engine/identity'
+import { coverCropFractions } from '@selfoffice/pipelines/slides'
 import type { AiRunFailure } from '../shared/ipc'
-import { EMU_PER_PX_96 } from '@genoffice/pptx-render'
+import { EMU_PER_PX_96 } from '@selfoffice/pptx-render'
 import { tm } from './i18n-main'
 import { pushHistory, rebuildSlide, scheduleHistoryNotify, sessions } from './session-state'
 
-// ---- AI settings + streaming proxy (the main process does the networking to avoid renderer CORS; implementation shared via @genoffice/ai-provider) ----
+// ---- AI settings + streaming proxy (the main process does the networking to avoid renderer CORS; implementation shared via @selfoffice/ai-provider) ----
 
 const AI_SETTINGS_PATH = () => join(app.getPath('userData'), 'ai-settings.json')
 
@@ -72,7 +72,10 @@ const AI_SETTINGS_PATH = () => join(app.getPath('userData'), 'ai-settings.json')
  * user put next to the deck they are editing, and nothing else.
  */
 function slidesMediaRoots(wcId: number): string[] {
-  return documentMediaRoots(sessions.get(wcId)?.path, join(app.getPath('temp'), 'genoffice-pasted'))
+  return documentMediaRoots(
+    sessions.get(wcId)?.path,
+    join(app.getPath('temp'), 'selfoffice-pasted'),
+  )
 }
 
 function readJson<T>(path: string, fallback: T): T {
@@ -117,7 +120,7 @@ export function registerAiIpc(): void {
   app.once('before-quit', shutdownCodexAppServers)
   // Node fetch (undici) direct connections get reset under VPN/tun setups; retry over Chromium's stack
   setRescueFetch((url, init) => net.fetch(url, init))
-  setAiUserAgent(`GenOffice/${app.getVersion()}`)
+  setAiUserAgent(`SelfOffice/${app.getVersion()}`)
 
   ipcMain.handle('ai:get-settings', (): AiSettings => {
     const stored = readJson<Partial<AiSettings> & LegacyAiSettings>(AI_SETTINGS_PATH(), {})

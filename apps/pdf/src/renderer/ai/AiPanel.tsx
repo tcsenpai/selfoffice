@@ -3,11 +3,11 @@ import {
   AiPanelSideButton,
   AiModelPicker,
   type AiModelPickerBridge,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { useEffect, useRef, useState } from 'react'
 import type { PointerEvent as ReactPointerEvent, ReactElement } from 'react'
-import { AgentLoop, withAttachedSkills } from '@genoffice/agent-core'
-import { imageGenerationAvailable, type AiSettings } from '@genoffice/ai-provider/browser'
+import { AgentLoop, withAttachedSkills } from '@selfoffice/agent-core'
+import { imageGenerationAvailable, type AiSettings } from '@selfoffice/ai-provider/browser'
 import {
   AiComposer,
   AiQueueStrip,
@@ -21,9 +21,9 @@ import {
   useChatRunQueue,
   type AiScopeQuoteData,
   type AiTokenUsageView,
-} from '@genoffice/ui'
+} from '@selfoffice/ui'
 import { aiLangDirective, t as tGlobal, useI18n } from '../i18n/locale'
-import { createFileNav, Markdown } from '@genoffice/ui'
+import { createFileNav, Markdown } from '@selfoffice/ui'
 import sendEnterOn from '../assets/send-enter-on.png'
 import sendEnterOff from '../assets/send-enter-off.png'
 import sendStop from '../assets/send-stop.png'

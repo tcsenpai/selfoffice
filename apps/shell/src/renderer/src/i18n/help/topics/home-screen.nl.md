@@ -1,6 +1,6 @@
 # Het startscherm: waar je bestanden staan
 
-Start is de beginpagina van GenOffice: een navigatiebalk links, bestandslijsten en snelmakenkaarten rechts.
+Start is de beginpagina van SelfOffice: een navigatiebalk links, bestandslijsten en snelmakenkaarten rechts.
 
 ![Het startscherm](img/home-screen.png)
 
@@ -35,7 +35,7 @@ Vink het vakje bij een rij aan, of ⌘/ctrl-klik, om een selectie op te bouwen; 
 Het zoekvak bovenaan filtert op twee dingen tegelijk:
 
 - **Bestandsnamen**: snel filteren op naam.
-- **Bestandsinhoud**: GenOffice indexeert je bestanden op de achtergrond (de tekst in docx/xlsx/pptx/pdf/md/html), dus zoeken naar hoofdtekst vindt ook bestanden. Het bereik en de schakelaars staan in de zoekinstellingen.
+- **Bestandsinhoud**: SelfOffice indexeert je bestanden op de achtergrond (de tekst in docx/xlsx/pptx/pdf/md/html), dus zoeken naar hoofdtekst vindt ook bestanden. Het bereik en de schakelaars staan in de zoekinstellingen.
 
 ## Snelstartkaarten
 
