@@ -9,3 +9,6 @@
 export { convertOdtToDocx, OdfConvertError, type OdtToDocxResult } from './odt-docx'
 export { convertOdpToPptx, type OdpToPptxResult } from './odp-pptx'
 export { MAX_ODF_PART_BYTES } from './odf'
+export { convertDocxToOdt, type DocxToOdtResult } from './docx-odt'
+export { convertXlsxToOds, type XlsxToOdsResult } from './xlsx-ods'
+export { convertPptxToOdp, type PptxToOdpResult } from './pptx-odp'
