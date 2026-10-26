@@ -83,6 +83,15 @@ export const AI_PROVIDERS: AiProviderMeta[] = [
     needsCliPath: true,
   },
   {
+    id: 'claude-cli',
+    label: 'Claude (subscription)',
+    // `claude -p` aliases; the CLI resolves them to the latest model
+    models: ['sonnet', 'opus', 'haiku'],
+    defaultModel: 'sonnet',
+    keyPlaceholder: '',
+    needsCliPath: true,
+  },
+  {
     id: 'anthropic',
     label: 'Claude',
     // current-generation ids per platform.claude.com models overview (2026-10-09).
