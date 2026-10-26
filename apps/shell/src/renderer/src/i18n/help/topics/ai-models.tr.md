@@ -6,7 +6,8 @@ Modeller ve anahtarlar Ayarlar'da yapılandırılır (Giriş ekranının sol alt
 
 ![Ayarlar penceresi](img/settings-general.png)
 
-- **Genspark barındırmalı**: oturum açın (cihaz kodu akışı) ve kullanın — sıfır yapılandırma.
+- **Claude (abonelik)** (varsayılan): yerel `claude` CLI oturumunuzu kullanır — bir kez `claude login` çalıştırın; modeller sonnet, opus, haiku; yalnızca metin, görsel yok. **Codex CLI** de desteklenir; Ollama veya LM Studio gibi yerel sunucular OpenAI uyumlu özel uç noktalar olarak çalışır.
+- **Web araması ve medya**: web araması anahtarsız çalışır (ücretsiz zincir; anahtarlı sağlayıcılar isteğe bağlıdır). Görsel üretimi ve medya analizi, bir AI Media sağlayıcısı yapılandırılana kadar kapalı kalır.
 - **Özel uç noktalar (BYOK)**: Ayarlar ▸ AI, her protokol için bir temel URL ve API anahtarı alır — OpenAI uyumlu, Anthropic, Gemini, DeepSeek, DashScope (qwen) ve daha fazlası. Anahtarlar bu makinedeki uygulama ayar dosyasında saklanır ve yalnızca istek başlıklarında gönderilir. Atlas Cloud yerleşik protokoller arasındadır.
 - Her yetenek için farklı bir model seçilebilir: sohbet/üretim, görsel oluşturma, görsel analizi.
 - **Bağlantı testi**: kaydetmeden önce uç noktanın erişilebilirliğini ve modellerin görünürlüğünü doğrulayın.

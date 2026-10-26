@@ -28,7 +28,6 @@ import { basename, dirname, join, resolve } from 'node:path'
 import { cleanupExpiredGeneratedPages } from './generated-page-temp'
 import { exportSlidesPdf } from './pdf-export'
 import { printSlidesHtml } from './print-window'
-import { setGskProxyUrl } from '@genoffice/ai-search'
 import {
   appMenuLabels,
   appMenuTemplate,
@@ -5179,9 +5178,6 @@ export function installSlidesMenu(): void {
  */
 async function applyMainProcessProxy(): Promise<void> {
   const setDispatcher = async (proxyUrl: string) => {
-    // spawned gsk CLI children do their own fetch and never see the
-    // dispatcher below — forward the proxy to them via env
-    setGskProxyUrl(proxyUrl)
     try {
       const { setGlobalDispatcher } = await import('undici')
       // loopback stays direct: a Custom provider on 127.0.0.1 must not ride
@@ -5209,7 +5205,7 @@ async function applyMainProcessProxy(): Promise<void> {
     await app.whenReady()
     // PAC/rule proxies answer per-host: probe the host the login flow, the
     // Genspark LLM proxy and the gsk CLI actually target
-    const resolved = await electronSession.defaultSession.resolveProxy('https://www.genspark.ai/')
+    const resolved = await electronSession.defaultSession.resolveProxy('https://api.anthropic.com/')
     // resolveProxy returns strings like "PROXY 127.0.0.1:1087" or "DIRECT"
     const m = /PROXY\s+([^;]+)/i.exec(resolved || '')
     if (m) {

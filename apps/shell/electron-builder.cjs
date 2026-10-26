@@ -93,9 +93,6 @@ const WIN_SIDECAR =
 
 function assertExtraResourceSources() {
   for (const rel of [
-    '../../node_modules/@genspark/cli',
-    '../../node_modules/@genspark/cli/node_modules/commander',
-    '../../node_modules/ws',
     '../../node_modules/electron/dist/LICENSES.chromium.html',
     '../../node_modules/@embedpdf/pdfium/dist/pdfium.wasm',
     '../pdf/node_modules/harfbuzzjs/hb-subset.wasm',
@@ -468,7 +465,7 @@ const FILE_ASSOCIATIONS = [
 
 const config = {
   appId: 'com.genoffice.app',
-  productName: 'GenOffice',
+  productName: 'SelfOffice',
   // Resolved from the installed electron package so dependency bumps can
   // never leave a stale hard-coded pin behind (packaging would silently ship
   // the old runtime).
@@ -531,12 +528,7 @@ const config = {
       from: '../../packages/pdf2docx/ocr-helper/win-ocr.exe',
       to: 'ocr/win-ocr.exe',
     },
-    {
-      from: '../../node_modules/@genspark/cli',
-      to: 'gsk/node_modules/@genspark/cli',
-    },
-    // genoffice command line: runs on the app binary with ELECTRON_RUN_AS_NODE (as
-    // the gsk CLI above already does), so the RunAsNode fuse must stay enabled.
+    // genoffice command line: runs on the app binary with ELECTRON_RUN_AS_NODE so the RunAsNode fuse must stay enabled.
     // Layout (Resources/cli next to wasm/, native/, ocr/) is what
     // packages/cli/src/resources.ts expects.
     {
@@ -570,14 +562,6 @@ const config = {
     {
       from: '../../packages/cli/dist/node_modules',
       to: 'cli/node_modules',
-    },
-    {
-      from: '../../node_modules/@genspark/cli/node_modules/commander',
-      to: 'gsk/node_modules/commander',
-    },
-    {
-      from: '../../node_modules/ws',
-      to: 'gsk/node_modules/ws',
     },
   ],
   // `mimeType` is read only by the Linux target, where it becomes the
@@ -616,7 +600,8 @@ const config = {
       NSMicrophoneUsageDescription:
         'GenOffice records your narration when you record a slide show.',
     },
-    notarize: true,
+    // unsigned community builds (no Apple credentials) skip notarization
+    notarize: !!process.env.APPLE_ID,
     extraResources: [
       {
         from: '../sheets/native/xlsx-engine/target/release/xlsx-sidecar',
@@ -666,14 +651,14 @@ const config = {
     // so apt sees the new packages as the same lineage. Homepage comes from
     // package.json "homepage"; the Package field is pinned in the deb block
     // below (packageName is a per-target option, rejected here by the schema).
-    maintainer: 'Mainfunc, Inc. <team@genspark.ai>',
-    vendor: 'Mainfunc, Inc. <team@genspark.ai>',
+    maintainer: 'SelfOffice',
+    vendor: 'SelfOffice',
     category: 'Office',
     // Icon SET directory, not the single 1024px png: electron-builder does
     // not resize a lone png, so deb/rpm would install only
     // hicolor/1024x1024/apps/genoffice.png — a size absent from the hicolor
     // theme index, leaving GNOME/KDE launchers on the generic fallback icon
-    // (genspark-ai/genoffice#90). The set ships every standard raster size.
+    // (tcsenpai/selfoffice#90). The set ships every standard raster size.
     icon: 'build/icons',
     // mac and win name the binary from productName; linux instead derives it
     // from package.json "name", and "@genoffice/shell" sanitizes to the
@@ -760,7 +745,7 @@ const config = {
   dmg: {
     sign: true,
   },
-  afterAllArtifactBuild: 'build/notarize-dmg.js',
+  ...(process.env.APPLE_ID ? { afterAllArtifactBuild: 'build/notarize-dmg.js' } : {}),
 }
 
 // Windows in-package code signing. Security features that judge every PE

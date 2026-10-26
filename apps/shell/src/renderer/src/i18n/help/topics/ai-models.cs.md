@@ -6,7 +6,8 @@ Modely a klíče se nastavují v Nastavení (řádek účtu vlevo dole na domovs
 
 ![Okno Nastavení](img/settings-general.png)
 
-- **Genspark v cloudu**: přihlaste se (postup s kódem zařízení) a používejte — bez žádného nastavení.
+- **Claude (předplatné)** (výchozí): používá vaše místní přihlášení `claude` CLI — jednou spusťte `claude login`; modely sonnet, opus, haiku; pouze text, bez obrázků. Podporováno je i **Codex CLI** a místní servery jako Ollama nebo LM Studio fungují jako vlastní koncové body kompatibilní s OpenAI.
+- **Webové vyhledávání a média**: webové vyhledávání funguje bez klíče (bezplatný řetězec; poskytovatelé s klíčem jsou volitelní). Generování obrázků a analýza médií zůstávají vypnuté, dokud nenastavíte poskytovatele AI Media.
 - **Vlastní koncové body (BYOK)**: Nastavení ▸ Model AI přijímá základní URL a klíč API pro každý protokol — kompatibilní s OpenAI, Anthropic, Gemini, DeepSeek, DashScope (qwen) a další. Klíče se ukládají do souboru nastavení aplikace na tomto počítači a odesílají pouze v hlavičkách požadavků. Atlas Cloud patří mezi zabudované protokoly.
 - Pro každou schopnost lze zvolit jiný model: chat/generování, generování obrázků, analýza obrázků.
 - **Otestovat připojení**: ověří dosažitelnost koncového bodu a viditelnost modelu před uložením.

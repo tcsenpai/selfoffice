@@ -405,8 +405,6 @@ const api: SlidesApi = {
   skillText: (name: string) => ipcRenderer.invoke('ai:skill-text', name),
   aiStream: (request: AiStreamRequest) => ipcRenderer.invoke('ai:stream', request),
   aiStreamCancel: (requestId: string) => ipcRenderer.invoke('ai:stream-cancel', requestId),
-  aiGskStatus: (withEmail?: boolean) => ipcRenderer.invoke('ai:gsk-status', withEmail),
-  aiGskLogin: () => ipcRenderer.invoke('ai:gsk-login'),
   aiLogRunFailure: (entry: AiRunFailure) => ipcRenderer.invoke('ai:log-run-failure', entry),
   webSearch: (query: string, maxResults?: number) =>
     ipcRenderer.invoke('ai:web-search', query, maxResults),
@@ -435,15 +433,12 @@ const api: SlidesApi = {
   }) => ipcRenderer.invoke('ai:replace-picture-url', op),
   generateImage: (op: {
     prompt: string
-    model?: string
     referenceImageUrls?: string[]
     aspectRatio?: string
-    imageSize?: string
     transparentBackground?: boolean
   }) => ipcRenderer.invoke('ai:generate-image', op),
   analyzeMedia: (op: { mediaUrls: string[]; requirements: string }) =>
     ipcRenderer.invoke('ai:analyze-media', op),
-  gskStatus: () => ipcRenderer.invoke('ai:gsk-status'),
   onAiStream: (handler: (chunk: AiStreamChunk) => void) => {
     const listener = (_e: IpcRendererEvent, chunk: AiStreamChunk) => handler(chunk)
     ipcRenderer.on('ai:stream-chunk', listener)

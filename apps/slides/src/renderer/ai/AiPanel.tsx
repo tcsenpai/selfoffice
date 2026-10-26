@@ -61,7 +61,7 @@ import {
   type AiScopeQuoteData,
   type AiTokenUsageView,
 } from '@genoffice/ui'
-import { GensparkMark } from '../components/icons'
+import { AiMark } from '../components/icons'
 import sendEnterOn from '../assets/send-enter-on.png'
 import sendEnterOff from '../assets/send-enter-off.png'
 import sendStop from '../assets/send-stop.png'
@@ -238,8 +238,6 @@ interface ChatEntry {
   text: string
   error?: string
   streaming?: boolean
-  /** the run failed because Genspark is signed out — render an inline sign-in button */
-  loginRequired?: boolean
   tools?: ToolActivity[]
   /** Generation progress card (only one per turn, replaced in real time) */
   deckProgress?: DeckProgressSnapshot
@@ -376,7 +374,6 @@ const MODEL_BRIDGE: AiModelPickerBridge = {
   getSettings: () => window.slidesApi.getAiSettings(),
   setSettings: (settings) => window.slidesApi.setAiSettings(settings),
   onSettingsChanged: (handler) => window.slidesApi.onAiSettingsChanged(handler),
-  gskLoggedIn: () => window.slidesApi.aiGskStatus().then((s) => !!s?.loggedIn),
   openModelSettings: () => window.slidesApi.openAiModelSettings().catch(() => {}),
 }
 
@@ -549,25 +546,6 @@ export function AiPanel({
   const settingsRef = useRef(settings)
   settingsRef.current = settings
 
-  /** gsk login state for the cloud-tools gate (refreshed on mount and window focus) */
-  const gskLoggedInRef = useRef(false)
-  useEffect(() => {
-    let alive = true
-    const refresh = () => {
-      void window.slidesApi
-        ?.aiGskStatus()
-        .then((s) => {
-          if (alive) gskLoggedInRef.current = !!s?.loggedIn
-        })
-        .catch(() => {})
-    }
-    refresh()
-    window.addEventListener('focus', refresh)
-    return () => {
-      alive = false
-      window.removeEventListener('focus', refresh)
-    }
-  }, [])
   const imagesRef = useRef(images)
   imagesRef.current = images
   const attachedSkillsRef = useRef(attachedSkills)
@@ -1326,10 +1304,8 @@ export function AiPanel({
           return { ok: false, error: String('') }
         }
       },
-      imageGenAvailable: () =>
-        imageGenerationAvailable(settingsRef.current, gskLoggedInRef.current),
-      mediaAnalysisAvailable: () =>
-        mediaAnalysisAvailable(settingsRef.current, gskLoggedInRef.current),
+      imageGenAvailable: () => imageGenerationAvailable(settingsRef.current),
+      mediaAnalysisAvailable: () => mediaAnalysisAvailable(settingsRef.current),
       unreadTextAttachments: () =>
         availableAttachments()
           .filter(
@@ -1486,25 +1462,6 @@ export function AiPanel({
             }
             return next
           })
-          // Signed-out failures get an inline sign-in button; detected via
-          // gsk status rather than matching the localized error text — but only
-          // when Genspark is the provider: a BYOK user's error (e.g. their own
-          // provider's rate limit) must not advertise a Genspark sign-in (genoffice#1948)
-          void window.slidesApi
-            .aiGskStatus()
-            .then((status) => {
-              if (status.loggedIn) return
-              if ((settingsRef.current?.provider ?? 'genspark') !== 'genspark') return
-              setChat((prev) => {
-                const next = [...prev]
-                const last = next.at(-1)
-                if (last?.role === 'assistant' && last.error) {
-                  next[next.length - 1] = { ...last, loginRequired: true }
-                }
-                return next
-              })
-            })
-            .catch(() => {})
           void finishHistoryBatch().finally(() => {
             setBusy(false)
             const resolveQueueRun = queueRunResolverRef.current
@@ -2130,7 +2087,7 @@ export function AiPanel({
         aria-label={t('appAiRailExpand')}
         onClick={onExpand}
       >
-        <GensparkMark size={22} />
+        <AiMark size={22} />
       </button>
     )
   }
@@ -2162,7 +2119,7 @@ export function AiPanel({
       />
       <div className="ai-panel-header">
         <span className="ai-panel-title">
-          <GensparkMark size={22} />
+          <AiMark size={22} />
           {t('aiPanelTitle')}
         </span>
         <div className="ai-panel-header-actions">
@@ -2297,11 +2254,6 @@ export function AiPanel({
               )}
               {entry.error && (
                 <div className="ai-msg-error">{t('aiMsgError', { error: entry.error })}</div>
-              )}
-              {entry.loginRequired && (
-                <button className="ai-login-btn" onClick={() => void window.slidesApi.aiGskLogin()}>
-                  {t('aiGskLoginBtn')}
-                </button>
               )}
               {entry.deckProgress && <DeckProgressCard progress={entry.deckProgress} />}
               {showToolbar && (

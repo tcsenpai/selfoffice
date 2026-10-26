@@ -33,7 +33,6 @@ import {
   type AiSettings,
   type AiStreamChunk,
   type AiStreamRequest,
-  type GenSparkAccountStatus,
   type LegacyAiSettings,
 } from '@genoffice/ai-provider'
 import { shutdownCodexAppServers } from '@genoffice/ai-provider/codex-app-server'
@@ -48,15 +47,9 @@ import {
 import {
   webSearchTool,
   imageSearchTool,
-  ensureGenofficeLogin,
-  noteGskCallFailure,
-  setGenofficeLoginOpener,
-  gskApiKey,
   generateImageTool,
   analyzeMediaTool,
   documentMediaRoots,
-  gskLoginInfo,
-  hasGskAuth,
 } from '@genoffice/ai-search'
 import { addPicture, editPictureSrcRect, replacePictureBytes } from '@genoffice/pptx-engine'
 import { rasterImageExt } from './media-mime'
@@ -129,32 +122,14 @@ export function registerAiIpc(): void {
   ipcMain.handle('ai:get-settings', (): AiSettings => {
     const stored = readJson<Partial<AiSettings> & LegacyAiSettings>(AI_SETTINGS_PATH(), {})
     const settings = resolveAiSettings(stored, defaultAiSettings())
-    // a stored BYOK provider is honored when usable; half-filled configs fall back to genspark
+    // a stored BYOK provider is honored when usable; half-filled configs fall back to claude-cli
     settings.provider = activeProvider(settings)
     return settings
   })
 
-  // Genspark account (gsk login state): the auth source for AI features; when logged out the frontend uses this to guide login
-  ipcMain.handle(
-    'ai:gsk-status',
-    async (_event, withEmail?: boolean): Promise<GenSparkAccountStatus> => {
-      if (!hasGskAuth()) return { loggedIn: false }
-      if (!withEmail) return { loggedIn: true }
-      const info = await gskLoginInfo()
-      return info?.email ? { loggedIn: true, email: info.email } : { loggedIn: true }
-    },
-  )
-
-  // a 401 on the gsk key opens the device-code login once (genoffice-auth recovery)
-  setGenofficeLoginOpener((url) => void shell.openExternal(url))
-
-  ipcMain.handle('ai:gsk-login', () => {
-    ensureGenofficeLogin((url) => void shell.openExternal(url))
-  })
-
   ipcMain.handle('ai:set-settings', (_event, settings: AiSettings) => {
     // SECURITY.md: payloads are schema-checked in the main process. The settings
-    // file feeds cliPath into spawn() and baseUrl receives the gsk bearer token,
+    // file feeds cliPath into spawn() and baseUrl receives the API key,
     // so the renderer's copy is sanitized before it touches disk.
     const sanitized = sanitizeAiSettings(settings)
     if (!sanitized) {
@@ -188,27 +163,17 @@ export function registerAiIpc(): void {
     const maxTokens = request.maxTokens ?? maxOutputTokensOf(settings)
     const provider = settings.provider
     let config = settings.providers?.[provider]
-    // The genspark key never enters the settings file; it is fetched from the gsk login state per request
-    // set only when the gsk key was injected: a 401 then means that key expired
-    let gskKey = ''
-    if (provider === 'genspark' && config && !config.apiKey) {
-      gskKey = gskApiKey()
-      config = { ...config, apiKey: gskKey }
-    }
+    const keyless = provider === 'codex' || provider === 'claude-cli' // CLI-backed: no API key
     // a custom endpoint may name an environment variable instead of storing a key
     config = config ? resolveProfileCredential(config) : config
     const send = (chunk: AiStreamChunk) => {
       if (!event.sender.isDestroyed()) event.sender.send('ai:stream-chunk', chunk)
     }
-    if (!config || (provider !== 'codex' && !config.apiKey)) {
-      send({
-        requestId,
-        type: 'error',
-        error: provider === 'genspark' ? tm('errGskNotLoggedIn') : tm('errNoApiKey', { provider }),
-      })
+    if (!config || (!keyless && !config.apiKey)) {
+      send({ requestId, type: 'error', error: tm('errNoApiKey', { provider }) })
       return
     }
-    if (provider !== 'codex' && !config.model) {
+    if (!keyless && !config.model) {
       send({ requestId, type: 'error', error: tm('errNoModel') })
       return
     }
@@ -274,8 +239,6 @@ export function registerAiIpc(): void {
       if (controller.signal.aborted) {
         send({ requestId, type: 'done' })
       } else {
-        // an expired/revoked key drops to signed-out so the inline sign-in button shows
-        noteGskCallFailure(gskKey, err)
         const msg = err instanceof Error ? err.message : String(err)
         console.error(`[ai-stream] ${requestId} (${provider}/${config.model}) failed:`, msg)
         send({
@@ -337,17 +300,15 @@ export function registerAiIpc(): void {
 // never called; docs does not have these channels, so putting them in the wrong place raises
 // "No handler registered".
 export function registerSlidesOnlyAiIpc(): void {
-  // gsk (Genspark CLI) capabilities: AI image generation / media analysis. Returns an error prompt when not logged in.
+  // BYOK media capabilities: AI image generation / media analysis. Returns an error when no media provider is configured.
   ipcMain.handle(
     'ai:generate-image',
     async (
       event,
       op: {
         prompt: string
-        model?: string
         referenceImageUrls?: string[]
         aspectRatio?: string
-        imageSize?: string
         transparentBackground?: boolean
       },
     ) => {
@@ -355,16 +316,13 @@ export function registerSlidesOnlyAiIpc(): void {
         AI_SETTINGS_PATH(),
         {
           prompt: String(op.prompt),
-          model: op.model ? String(op.model) : undefined,
           referenceImageUrls: Array.isArray(op.referenceImageUrls)
             ? op.referenceImageUrls.map(String)
             : undefined,
           aspectRatio: op.aspectRatio ? String(op.aspectRatio) : undefined,
-          imageSize: op.imageSize ? String(op.imageSize) : undefined,
           transparentBackground: op.transparentBackground === true,
         },
         {
-          notLoggedInError: tm('errGskCli'),
           mediaRoots: slidesMediaRoots(event.sender.id),
         },
       )
@@ -381,7 +339,6 @@ export function registerSlidesOnlyAiIpc(): void {
           requirements: String(op.requirements ?? ''),
         },
         {
-          notLoggedInError: tm('errGskCli'),
           mediaRoots: slidesMediaRoots(event.sender.id),
         },
       )

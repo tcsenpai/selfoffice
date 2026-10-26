@@ -5,7 +5,6 @@ export const tr = {
   aiEmptyBuildTitle: 'Bu çalışma kitabını AI sizin için oluştursun',
   aiEmptyBuildBody:
     'İhtiyacınız olan tabloyu, verileri veya grafiği açıklayın — AI bunu yerinde oluşturur.',
-  aiGskLoginBtn: 'Genspark’ta oturum aç',
   aiUndelivered: 'Gönderilmedi',
   aiRetry: 'Yeniden dene',
   aiOpenAssistant: 'AI asistanını aç',
@@ -50,13 +49,11 @@ export const tr = {
   aiFileTooltip:
     'SHA-256 {sha}\nKaydetme yalnızca düzenlenen girdileri yeniden yazar; diğer her şey korunur.',
   aiFileMeta: '{sheets} sayfa · {entries} girdi',
-  aiGensparkAccount: 'Genspark hesabı',
+  aiGensparkAccount: 'AI',
   aiAccountChecking: 'Denetleniyor…',
   aiLoggedIn: 'Oturum açıldı',
   aiLoggedInAs: 'Oturum açıldı: {email}',
-  aiNotLoggedIn: 'Oturum açılmadı (AI özellikleri bir Genspark hesabı gerektirir)',
   aiWaitingBrowserLogin: 'Tarayıcıda oturum açılması bekleniyor…',
-  aiLoginGenspark: 'Genspark’ta oturum aç',
   aiModel: 'Model',
   aiCancel: 'İptal',
   aiSave: 'Kaydet',
@@ -67,8 +64,7 @@ export const tr = {
     'Bu modelin sağlayıcısı bulunduğunuz bölgeye hizmet vermiyor — başka bir model seçin veya ağınızı değiştirin',
   aiOverloadedError: 'AI hizmeti şu anda meşgul — lütfen birazdan yeniden deneyin',
   aiNetworkError: 'Ağ sorunu: AI hizmetine ulaşılamadı. Bağlantınızı kontrol edip yeniden deneyin',
-  aiCreditsExhausted:
-    'Genspark krediniz tükendi. Yüklemek için genspark.ai/pricing adresini ziyaret edin, sonra yeniden deneyin',
+  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiToolWorkbookContext: 'Çalışma kitabı bilgisini oku',
   aiToolReadRange: 'Aralığı oku',
   aiToolReadRangeOf: '{range} aralığını oku',

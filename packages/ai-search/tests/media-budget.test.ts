@@ -1,26 +1,17 @@
 import { mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { describe, expect, it, vi, beforeEach } from 'vitest'
-
-vi.mock('../src/gsk', () => ({
-  gskGenerateImage: vi.fn(),
-  gskAnalyzeMedia: vi.fn(),
-  hasGskAuth: vi.fn(() => true),
-}))
+import { describe, expect, it } from 'vitest'
 
 import {
   MEDIA_BUDGET,
+  MEDIA_NOT_CONFIGURED_ERROR,
   MediaBudgetExceededError,
   MediaTooLargeError,
   analyzeMediaTool,
   generateImageTool,
   loadMediaReferences,
 } from '../src/media-tools'
-import { gskAnalyzeMedia, gskGenerateImage } from '../src/gsk'
-
-const gskGen = vi.mocked(gskGenerateImage)
-const gskAnalyze = vi.mocked(gskAnalyzeMedia)
 
 /** A data URL whose decoded payload is `bytes` long. */
 function dataUrl(bytes: number, mime = 'image/png'): string {
@@ -52,11 +43,6 @@ function writeSettings(mediaProvider: string): string {
   )
   return path
 }
-
-beforeEach(() => {
-  gskGen.mockReset()
-  gskAnalyze.mockReset()
-})
 
 describe('loadMediaReferences budget', () => {
   it('pins the production ceilings', () => {
@@ -121,20 +107,16 @@ describe('media tool aggregate budget', () => {
       requirements: 'describe these',
     })
     expect(result.error).toMatch(/Too many media items/)
-    expect(gskAnalyze).not.toHaveBeenCalled()
   })
 
-  it('analyze_media still hands a budget failure to Genspark when only one provider is configured', async () => {
-    gskAnalyze.mockResolvedValue('from genspark' as never)
-    // openai reads images but not video, so a budget failure still has a
-    // Genspark route to fall back to (the pre-existing size-cap behavior)
-    const result = await analyzeMediaTool(writeSettings('openai'), {
-      mediaUrls: Array.from({ length: 13 }, () => dataUrl(8)),
-      requirements: 'describe these',
+  it('reports not-configured when no media provider is selected', async () => {
+    const missing = '/nonexistent/ai-settings.json'
+    expect(
+      await analyzeMediaTool(missing, { mediaUrls: [dataUrl(8)], requirements: 'describe' }),
+    ).toEqual({ error: MEDIA_NOT_CONFIGURED_ERROR })
+    expect(await generateImageTool(missing, { prompt: 'a logo' })).toEqual({
+      error: MEDIA_NOT_CONFIGURED_ERROR,
     })
-    // the fallback enforces the same item ceiling: the CLI argv stays bounded
-    expect(result.error).toMatch(/Too many media items/)
-    expect(gskAnalyze).not.toHaveBeenCalled()
   })
 
   it('generate_image refuses too many references', async () => {

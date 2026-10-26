@@ -7,7 +7,7 @@ import {
   modelLacksVision,
 } from '../src/registry'
 import { endpointUrl } from '../src/protocols/shared'
-import { AI_PROVIDERS, GENSPARK_LLM_BASE_URLS } from '../src/providers'
+import { AI_PROVIDERS } from '../src/providers'
 import type { AiProviderConfig, AiProviderId } from '../src/types'
 
 function config(model: string, baseUrl?: string): AiProviderConfig {
@@ -20,20 +20,6 @@ describe('provider registry', () => {
       expect(AI_PROVIDER_ADAPTERS[meta.id].meta).toBe(meta)
     }
     expect(Object.keys(AI_PROVIDER_ADAPTERS).sort()).toEqual(AI_PROVIDERS.map((m) => m.id).sort())
-  })
-
-  it('routes genspark by model id prefix onto the two proxy endpoints', () => {
-    const resolve = (model: string) => AI_PROVIDER_ADAPTERS.genspark.resolveEndpoint(config(model))
-    expect(resolve('claude-opus-4-7')).toEqual({
-      protocol: 'anthropic',
-      baseUrl: GENSPARK_LLM_BASE_URLS.anthropic,
-    })
-    // gpt-5.x fixes sampling, so the proxy's OpenAI route also drops temperature
-    expect(resolve('gpt-5.2')).toEqual({
-      protocol: 'openai-compatible',
-      baseUrl: GENSPARK_LLM_BASE_URLS.openai,
-      omitTemperature: true,
-    })
   })
 
   it('resolves direct providers to their official endpoints', () => {
@@ -59,7 +45,7 @@ describe('provider registry', () => {
       protocol: 'openai-compatible',
       baseUrl: 'https://api.deepseek.com/v1',
     })
-    // a config still carrying the Genspark pool spelling goes out as the vendor id
+    // a config still carrying the pool spelling goes out as the vendor id
     expect(AI_PROVIDER_ADAPTERS.deepseek.resolveEndpoint(config('deep-seek-v4.1-flash'))).toEqual({
       protocol: 'openai-compatible',
       baseUrl: 'https://api.deepseek.com/v1',
@@ -319,16 +305,10 @@ describe('provider registry', () => {
     ).toBe('https://mirror/v1')
   })
 
-  it('only genspark authenticates through the gsk login', () => {
+  it('only codex and claude-cli authenticate without an API key', () => {
     for (const [id, adapter] of Object.entries(AI_PROVIDER_ADAPTERS)) {
       expect(adapter.capabilities.auth).toBe(
-        id === 'genspark'
-          ? 'gsk-login'
-          : id === 'codex'
-            ? 'codex-chatgpt'
-            : id === 'claude-cli'
-              ? 'claude-subscription'
-              : 'api-key',
+        id === 'codex' ? 'codex-chatgpt' : id === 'claude-cli' ? 'claude-subscription' : 'api-key',
       )
     }
   })

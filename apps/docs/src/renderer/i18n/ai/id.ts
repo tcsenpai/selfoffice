@@ -8,8 +8,7 @@ export const id = {
   aiStarterPolishAll: 'Perhalus seluruh dokumen agar nadanya lebih profesional',
   aiStarterContinue: 'Lanjutkan menulis dari bagian akhir dokumen',
   aiStarterFillTemplate: 'Temukan dan isi placeholder di dokumen ini',
-  aiGskLoginBtn: 'Masuk ke Genspark',
-  aiPanelTitle: 'Genspark',
+  aiPanelTitle: 'AI',
   aiOpenAssistant: 'Buka asisten AI',
   aiSummarizeBtn: 'Ringkasan AI',
   aiSummarizePrompt: 'Ringkas isi utama dan poin-poin penting dokumen ini',
@@ -116,8 +115,7 @@ export const id = {
   aiOverloadedError: 'Layanan AI sedang sibuk — silakan coba lagi sebentar lagi',
   aiNetworkError:
     'Masalah jaringan: tidak dapat terhubung ke layanan AI. Periksa koneksi Anda lalu coba lagi',
-  aiCreditsExhausted:
-    'Kredit Genspark Anda telah habis. Isi ulang di genspark.ai/pricing lalu coba lagi',
+  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiSumReadAttachment: 'Baca lampiran',
   aiSumImageAttachment: 'Lampiran gambar {name}',
   aiSumRead: 'Baca {name}',

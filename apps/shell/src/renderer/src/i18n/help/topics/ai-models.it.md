@@ -6,7 +6,8 @@ Modelli e chiavi si configurano nelle impostazioni (la riga dell'account in bass
 
 ![La finestra Impostazioni](img/settings-general.png)
 
-- **Genspark ospitato**: effettua l'accesso (flusso con codice dispositivo) e usalo — nessuna configurazione richiesta.
+- **Claude (abbonamento)** (predefinito): usa il tuo login locale della CLI `claude` — esegui `claude login` una volta; modelli sonnet, opus, haiku; solo testo, niente immagini. È supportata anche **Codex CLI**, e server locali come Ollama o LM Studio funzionano come endpoint personalizzati compatibili con OpenAI.
+- **Ricerca web e media**: la ricerca web funziona senza chiave (catena gratuita; i provider con chiave sono facoltativi). Generazione di immagini e analisi dei media restano disattivate finché non configuri un provider AI Media.
 - **Endpoint personalizzati (BYOK)**: Impostazioni ▸ IA accetta un URL di base e una chiave API per ogni protocollo — compatibile con OpenAI, Anthropic, Gemini, DeepSeek, DashScope (qwen) e altro. Le chiavi sono memorizzate nel file delle impostazioni dell'app su questa macchina e inviate solo nelle intestazioni delle richieste. Atlas Cloud figura tra i protocolli integrati.
 - Puoi scegliere un modello diverso per ciascuna capacità: chat/generazione, generazione di immagini, analisi delle immagini.
 - **Prova connessione**: verifica che l'endpoint sia raggiungibile e che il modello sia visibile prima di salvare.

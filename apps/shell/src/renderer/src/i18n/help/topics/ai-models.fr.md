@@ -6,7 +6,8 @@ Les modèles et les clés se configurent dans les Paramètres (la ligne de compt
 
 ![La fenêtre des paramètres](img/settings-general.png)
 
-- **Genspark hébergé** : connectez-vous (flux par code d’appareil) et utilisez-le — aucune configuration.
+- **Claude (abonnement)** (par défaut) : utilise votre connexion locale à la CLI `claude` — lancez `claude login` une fois ; modèles sonnet, opus, haiku ; texte uniquement, pas d’images. **Codex CLI** est aussi pris en charge, et les serveurs locaux comme Ollama ou LM Studio fonctionnent en points de terminaison personnalisés compatibles OpenAI.
+- **Recherche web et médias** : la recherche web fonctionne sans clé (chaîne gratuite ; les fournisseurs avec clé sont facultatifs). La génération d’images et l’analyse de médias restent désactivées tant qu’un fournisseur AI Media n’est pas configuré.
 - **Points de terminaison personnalisés (BYOK)** : Paramètres ▸ IA prend une URL de base et une clé API par protocole — compatible OpenAI, Anthropic, Gemini, DeepSeek, DashScope (qwen) et plus. Les clés sont stockées dans le fichier de paramètres de l'application sur cet ordinateur et envoyées uniquement dans les en-têtes de requête. Atlas Cloud figure parmi les protocoles intégrés.
 - Un modèle différent peut être choisi par capacité : chat/génération, génération d’images, analyse d’images.
 - **Tester la connexion** : vérifie que le point de terminaison est joignable et que le modèle est visible avant d’enregistrer.

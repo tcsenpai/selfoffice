@@ -1,6 +1,6 @@
 # GenOffice'i yükleme
 
-Her derleme [Sürümler sayfasında](https://github.com/genspark-ai/genoffice/releases/latest) yayımlanır. Hepsi `main` dalından gelir; macOS ve Windows yükleyicileri imzalıdır.
+Her derleme [Sürümler sayfasında](https://github.com/tcsenpai/selfoffice/releases/latest) yayımlanır. Hepsi `main` dalından gelir; macOS ve Windows yükleyicileri imzalıdır.
 
 ## Makineniz için doğru dosyayı seçin
 

@@ -55,7 +55,7 @@ const SYSTEM_PROMPT = [
 
 export function createDocumentSkill(
   access: HtmlDocAccess,
-  /** live predicate (gsk login && cloud-tools toggle, or a BYOK media key); false hides generate_image */
+  /** live predicate (a configured media provider); false hides generate_image */
   imageGenAvailable?: () => boolean,
 ): AgentSkill {
   // live like the tool list: rebuilt per request from the page as it is now, so

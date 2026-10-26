@@ -2,12 +2,12 @@ name: CI
 
 # Test gate for every PR and push: changed-file formatting, lint, typecheck across
 # all workspaces, and the full unit-test suite (engine packages and app tests; the
-# sheets suite also runs the Rust xlsx-sidecar tests). Packaging/signing is handled
-# by separate release automation — this workflow never builds installers.
+# sheets suite also runs the Rust xlsx-sidecar tests). Installers are built by
+# release.yml — this workflow never builds them.
 
 on:
   push:
-    branches: [main, 'dev_*', 'release_*']
+    branches: [main, 'dev_*', 'release_*', 'selfoffice/**']
   pull_request:
     branches: [main]
   workflow_dispatch:

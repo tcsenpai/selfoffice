@@ -118,7 +118,6 @@ const api: PdfApi = {
   openSkillsSettings: () => ipcRenderer.invoke(AI_CHANNELS.openSkillsSettings),
   skillsList: () => ipcRenderer.invoke(AI_CHANNELS.skillsList),
   skillText: (name: string) => ipcRenderer.invoke(AI_CHANNELS.skillText, name),
-  gskStatus: () => ipcRenderer.invoke(AI_CHANNELS.gskStatus),
   aiStream: (request) => ipcRenderer.invoke(AI_CHANNELS.stream, request),
   aiStreamCancel: (requestId) => ipcRenderer.invoke(AI_CHANNELS.streamCancel, requestId),
   onAiStream: (handler) => {

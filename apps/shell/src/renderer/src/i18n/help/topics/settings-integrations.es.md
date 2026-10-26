@@ -46,12 +46,6 @@ La configuración puede registrar GenOffice como programa predeterminado para .d
 - Ayuda ▸ Avisos de software de terceros: el inventario completo de licencias de código abierto que se distribuye con la aplicación.
 - Ayuda ▸ Buscar actualizaciones: lanza una comprobación manual; si hay una versión más reciente, ofrece instalarla.
 
-## Iniciar sesión en Genspark
-
-- El acceso a la sesión (en la configuración o en la lista de proyectos de la nube) usa un flujo de **código de dispositivo**: GenOffice muestra un código y abre el inicio de sesión en el navegador; continúa solo cuando ha terminado.
-- El inicio de sesión solo se usa para: la lista de proyectos de la nube y los modelos alojados de Genspark. Sin él, todas las funciones locales y los modelos personalizados siguen funcionando.
-- Cerrar la sesión es un clic en la configuración.
-
 ## Integración MCP (para usuarios avanzados / clientes de IA)
 
 **Integraciones** es el panel que conecta GenOffice con un agente de programación, y tiene su propio artículo: Conectar un agente de programación. La versión corta: elija una vía (la línea de comandos o MCP), siga esa sección y después abra una conversación nueva y pregunte.

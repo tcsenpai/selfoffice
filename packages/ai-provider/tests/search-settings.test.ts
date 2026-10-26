@@ -8,9 +8,9 @@ import {
 } from '../src/search-settings'
 
 describe('search settings', () => {
-  it('defaults to genspark with empty keys and rides along in defaultAiSettings', () => {
+  it('defaults to free with empty keys and rides along in defaultAiSettings', () => {
     expect(defaultAiSearchSettings()).toEqual({
-      provider: 'genspark',
+      provider: 'free',
       providers: {
         serper: { apiKey: '' },
         serply: { apiKey: '' },
@@ -21,9 +21,9 @@ describe('search settings', () => {
         keenable: { apiKey: '' },
       },
     })
-    expect(defaultAiSettings().search?.provider).toBe('genspark')
+    expect(defaultAiSettings().search?.provider).toBe('free')
     const resolved = resolveAiSettings(
-      { provider: 'genspark', providers: {} as never },
+      { provider: 'free', providers: {} as never },
       defaultAiSettings(),
     )
     expect(resolved.search).toEqual(defaultAiSearchSettings())
@@ -40,7 +40,7 @@ describe('search settings', () => {
   })
 
   it('activates a BYOK search provider only with a key', () => {
-    expect(activeSearchProvider({ search: undefined })).toBe('genspark')
+    expect(activeSearchProvider({ search: undefined })).toBe('free')
     expect(
       activeSearchProvider({
         search: {
@@ -56,7 +56,7 @@ describe('search settings', () => {
           },
         },
       }),
-    ).toBe('genspark')
+    ).toBe('free')
     expect(
       activeSearchProvider({
         search: {
@@ -88,9 +88,9 @@ describe('search settings', () => {
           },
         },
       }),
-    ).toBe('genspark')
+    ).toBe('free')
     expect(activeSearchProvider({ search: { provider: 'bing', providers: {} } as never })).toBe(
-      'genspark',
+      'free',
     )
   })
 })
@@ -108,7 +108,7 @@ describe('Serply search settings', () => {
       activeSearchProvider({
         search: { ...settings, providers: { ...settings.providers, serply: { apiKey: '  ' } } },
       }),
-    ).toBe('genspark')
+    ).toBe('free')
   })
 })
 
@@ -179,9 +179,9 @@ describe('exa and firecrawl providers', () => {
         },
       },
     })
-    expect(activeSearchProvider(mk('exa', ''))).toBe('genspark')
+    expect(activeSearchProvider(mk('exa', ''))).toBe('free')
     expect(activeSearchProvider(mk('exa', 'exa-1'))).toBe('exa')
-    expect(activeSearchProvider(mk('firecrawl', ' '))).toBe('genspark')
+    expect(activeSearchProvider(mk('firecrawl', ' '))).toBe('free')
     expect(activeSearchProvider(mk('firecrawl', 'fc-1'))).toBe('firecrawl')
   })
 
@@ -227,8 +227,8 @@ describe('Keenable search settings', () => {
     expect(activeSearchProvider({ search: settings })).toBe('keenable')
   })
 
-  it('leaves the default provider on Genspark', () => {
-    expect(defaultAiSearchSettings().provider).toBe('genspark')
-    expect(activeSearchProvider({ search: defaultAiSearchSettings() })).toBe('genspark')
+  it('leaves the default provider on the free chain', () => {
+    expect(defaultAiSearchSettings().provider).toBe('free')
+    expect(activeSearchProvider({ search: defaultAiSearchSettings() })).toBe('free')
   })
 })

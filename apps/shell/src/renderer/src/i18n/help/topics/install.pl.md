@@ -1,6 +1,6 @@
 # Instalacja GenOffice
 
-Każda kompilacja jest publikowana na [stronie Releases](https://github.com/genspark-ai/genoffice/releases/latest). Wszystkie pochodzą z `main`; instalatory dla macOS i Windows są podpisane.
+Każda kompilacja jest publikowana na [stronie Releases](https://github.com/tcsenpai/selfoffice/releases/latest). Wszystkie pochodzą z `main`; instalatory dla macOS i Windows są podpisane.
 
 ## Wybierz plik dla swojego komputera
 

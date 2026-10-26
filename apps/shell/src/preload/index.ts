@@ -11,9 +11,6 @@ import { installDropOpenBridge } from '@genoffice/electron-utils/drop-open'
 import type { UpdateUiState } from '../shared/update-api'
 import { normalizeAiPanelPrefs } from '@genoffice/ui/ai-panel-prefs'
 import type {
-  AccountLoginEvent,
-  AccountStatus,
-  CloudProjectsSnapshot,
   DefaultAppStatus,
   FolderListing,
   FolderRoot,
@@ -225,9 +222,6 @@ const homeApi: HomeApi = {
     ipcRenderer.on('ai:stream-chunk', listener)
     return () => ipcRenderer.removeListener('ai:stream-chunk', listener)
   },
-  async aiGskStatus() {
-    return ipcRenderer.invoke('ai:gsk-status')
-  },
   async openPath(path) {
     if (typeof path !== 'string' || !path) throw new Error('Invalid path.')
     await ipcRenderer.invoke(HOME_CHANNELS.openPath, path)
@@ -348,30 +342,11 @@ const homeApi: HomeApi = {
     if (typeof on !== 'boolean') throw new Error('Invalid update check setting.')
     await ipcRenderer.invoke(HOME_CHANNELS.setAutoUpdateCheck, on)
   },
-  async accountStatus() {
-    const result: unknown = await ipcRenderer.invoke(HOME_CHANNELS.accountStatus)
-    return (result ?? { loggedIn: false }) as AccountStatus
-  },
-  async accountLogin() {
-    const result: unknown = await ipcRenderer.invoke(HOME_CHANNELS.accountLogin)
-    return result === true
-  },
   onOpenSettings(handler) {
     const listener = (_event: IpcRendererEvent, target: { section: string }) => handler(target)
     ipcRenderer.on(HOME_CHANNELS.openSettings, listener)
     for (const target of pendingOpenSettings.splice(0)) handler(target)
     return () => ipcRenderer.removeListener(HOME_CHANNELS.openSettings, listener)
-  },
-  onAccountLogin(handler) {
-    const listener = (_event: IpcRendererEvent, ev: AccountLoginEvent) => handler(ev)
-    ipcRenderer.on(HOME_CHANNELS.accountLoginEvent, listener)
-    return () => ipcRenderer.removeListener(HOME_CHANNELS.accountLoginEvent, listener)
-  },
-  async openLoginUrl() {
-    await ipcRenderer.invoke(HOME_CHANNELS.accountLoginOpenUrl)
-  },
-  async accountLogout() {
-    await ipcRenderer.invoke(HOME_CHANNELS.accountLogout)
   },
   async getAppVersion() {
     const result: unknown = await ipcRenderer.invoke(HOME_CHANNELS.getAppVersion)
@@ -558,12 +533,6 @@ const homeApi: HomeApi = {
     ipcRenderer.on('app:document-theme-changed', listener)
     return () => ipcRenderer.removeListener('app:document-theme-changed', listener)
   },
-  async openGenTeam() {
-    await ipcRenderer.invoke(HOME_CHANNELS.openGenTeam)
-  },
-  async openCreditUsage() {
-    await ipcRenderer.invoke(HOME_CHANNELS.openCreditUsage)
-  },
   async openGitHubRepo() {
     await ipcRenderer.invoke(HOME_CHANNELS.openGitHubRepo)
   },
@@ -584,23 +553,6 @@ const homeApi: HomeApi = {
     if (action !== 'starred' && action !== 'later') throw new Error('Invalid star prompt action.')
     await ipcRenderer.invoke(HOME_CHANNELS.starPromptAction, action)
   },
-  async cloudProjectsCached() {
-    const result: unknown = await ipcRenderer.invoke(HOME_CHANNELS.cloudProjectsCached)
-    return asCloudProjectsSnapshot(result)
-  },
-  async cloudProjectsSync() {
-    // failures (network / CLI) resolve to null so the renderer keeps whatever it has
-    try {
-      const result: unknown = await ipcRenderer.invoke(HOME_CHANNELS.cloudProjects)
-      return asCloudProjectsSnapshot(result)
-    } catch {
-      return null
-    }
-  },
-  async openCloudProject(projectUrl) {
-    if (typeof projectUrl !== 'string' || !projectUrl) throw new Error('Invalid project URL.')
-    await ipcRenderer.invoke(HOME_CHANNELS.openCloudProject, projectUrl)
-  },
   // AI settings channels are registered once by the shell's aggregated docs handlers
   onAiSettingsChanged(handler) {
     const listener = () => handler()
@@ -616,8 +568,8 @@ const homeApi: HomeApi = {
   getAiProviders() {
     return AI_PROVIDERS.map((meta) => {
       let defaultBaseUrl = ''
-      // genspark routes by model and custom has no default — both stay ''
-      if (meta.id !== 'genspark' && !meta.needsBaseUrl && !meta.needsCliPath) {
+      // custom has no default endpoint — it stays ''
+      if (!meta.needsBaseUrl && !meta.needsCliPath) {
         defaultBaseUrl = getProviderAdapter(meta.id).resolveEndpoint({
           apiKey: '',
           model: meta.defaultModel,
@@ -671,17 +623,6 @@ const homeApi: HomeApi = {
       ? { ok: true }
       : { ok: false, error: typeof raw.error === 'string' ? raw.error : 'Connection failed' }
   },
-}
-
-function asCloudProjectsSnapshot(result: unknown): CloudProjectsSnapshot | null {
-  if (
-    result &&
-    typeof result === 'object' &&
-    Array.isArray((result as CloudProjectsSnapshot).projects)
-  ) {
-    return result as CloudProjectsSnapshot
-  }
-  return null
 }
 
 contextBridge.exposeInMainWorld('aiOffice', homeApi)

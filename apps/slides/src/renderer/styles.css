@@ -5853,7 +5853,7 @@ body.vib .slide-list {
 }
 
 /* the brand mark uses currentColor and keeps the button's ink, not the blue */
-.stage-ai-btn svg.genspark-mark {
+.stage-ai-btn svg.ai-mark {
   color: var(--slides-stagebar-ink);
 }
 

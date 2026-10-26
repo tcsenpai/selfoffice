@@ -46,12 +46,6 @@ Die Einstellungen können GenOffice als Programm für .docx / .xlsx / .pptx / .p
 - Hilfe ▸ Hinweise zu Drittanbietersoftware: das vollständige Verzeichnis der mitgelieferten Open-Source-Lizenzen.
 - Hilfe ▸ Nach Updates suchen: löst eine manuelle Prüfung aus; bei einer neueren Version werden Sie zur Installation aufgefordert.
 
-## Bei Genspark anmelden
-
-- Der Anmeldeeinstieg (Einstellungen oder Liste der Cloud-Projekte) nutzt ein **Gerätecode**-Verfahren: GenOffice zeigt einen Code und öffnet die Anmeldung im Browser; danach geht es automatisch weiter.
-- Die Anmeldung wird nur genutzt für: die Liste der Cloud-Projekte und die gehosteten Modelle von Genspark. Ohne sie funktionieren alle lokalen Funktionen und benutzerdefinierten Modelle weiter.
-- Das Abmelden ist in den Einstellungen ein Klick.
-
 ## MCP-Integration (für erfahrene Anwender / KI-Clients)
 
 **Integrationen** ist der Bereich, der GenOffice mit einem Coding-Agenten verbindet, und er hat einen eigenen Artikel: Einen Coding-Agenten anbinden. Die Kurzfassung — wählen Sie einen Weg (die Kommandozeile oder MCP), folgen Sie dem jeweiligen Abschnitt und starten Sie dann einen neuen Chat.

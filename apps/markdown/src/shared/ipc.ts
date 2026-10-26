@@ -1,11 +1,6 @@
 import type { AiPanelPrefs } from '@genoffice/ui'
 import type { Lang } from '@genoffice/i18n'
-import type {
-  AiSettings,
-  AiStreamChunk,
-  AiStreamRequest,
-  GenSparkAccountStatus,
-} from '@genoffice/ai-provider'
+import type { AiSettings, AiStreamChunk, AiStreamRequest } from '@genoffice/ai-provider'
 import type { ExportImageMime } from './export-image-mime'
 
 export const MAX_PASTED_IMAGE_BYTES = 50 * 1024 * 1024
@@ -249,7 +244,6 @@ export const AI_CHANNELS = {
   setSettings: 'ai:set-settings',
   settingsChanged: 'ai:settings-changed',
   openModelSettings: 'ai:open-model-settings',
-  gskStatus: 'ai:gsk-status',
   stream: 'ai:stream',
   streamChunk: 'ai:stream-chunk',
   streamCancel: 'ai:stream-cancel',
@@ -461,8 +455,6 @@ export interface MarkdownApi {
   skillsList(): Promise<UserSkillEntry[]>
   /** the body of one installed skill, by name — the main process resolves the path */
   skillText(name: string): Promise<string>
-  /** Genspark login state (shell-registered ai:gsk-status) — gates generate_image with the cloud-tools toggle */
-  aiGskStatus(): Promise<GenSparkAccountStatus>
   aiStream(request: AiStreamRequest): Promise<void>
   aiStreamCancel(requestId: string): Promise<void>
   onAiStream(handler: (chunk: AiStreamChunk) => void): () => void
@@ -472,7 +464,7 @@ export interface MarkdownApi {
   imageSearch(query: string, maxResults?: number): Promise<ImageSearchResult>
   /** Download an image URL in the main process (CORS-free, scheme/target validated) */
   fetchImage(url: string): Promise<{ base64: string; mime: string } | null>
-  /** Genspark cloud image generation (markdown-owned channel, gsk login required) */
+  /** Image generation via the configured media provider (markdown-owned channel) */
   aiGenerateImage(op: { prompt: string; aspectRatio?: string }): Promise<{
     url?: string
     error?: string

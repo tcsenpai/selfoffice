@@ -17,8 +17,7 @@ export const tr = {
   aiQcPageSkipped: 'Sayfa {n}: otomatik düzen denetimi atlandı',
   aiQcStopped: 'Düzen denetimi durduruldu',
   aiQcCapped: '{count} sayfa daha denetlenmedi (çalıştırma başına sınır)',
-  aiGskLoginBtn: 'Genspark’a giriş yap',
-  aiPanelTitle: 'Genspark',
+  aiPanelTitle: 'AI',
   aiOpenAssistant: 'AI asistanı aç',
   aiFactCheckBtn: 'AI Doğruluk Denetimi',
   aiFactCheckPrompt:
@@ -114,8 +113,7 @@ export const tr = {
     'Bu modelin sağlayıcısı bulunduğunuz bölgeye hizmet vermiyor — başka bir model seçin veya ağınızı değiştirin',
   aiErrOverloaded: 'AI hizmeti şu anda yoğun — lütfen birazdan yeniden deneyin',
   aiErrNetwork: 'Ağ sorunu: AI hizmetine ulaşılamadı. Bağlantınızı denetleyip yeniden deneyin',
-  aiCreditsExhausted:
-    'Genspark krediniz tükendi. Yüklemek için genspark.ai/pricing adresini ziyaret edin, sonra yeniden deneyin',
+  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiErrRequestFailed: 'İstek gönderilemedi: {msg}',
   aiErrGenerateFailed: 'Oluşturma başarısız',
   aiErrRegenFailed: 'Slayt yeniden oluşturulamadı',

@@ -46,12 +46,6 @@ Pengaturan dapat mendaftarkan GenOffice sebagai aplikasi penangan .docx / .xlsx 
 - Bantuan ▸ Pemberitahuan Perangkat Lunak Pihak Ketiga: inventaris lengkap lisensi OSS yang disertakan dengan aplikasi.
 - Bantuan ▸ Periksa Pembaruan…: memicu pemeriksaan manual; versi yang lebih baru menawarkan dipasang.
 
-## Masuk dengan Genspark
-
-- Jalur masuk (di pengaturan atau di daftar proyek cloud) memakai alur **device-code**: GenOffice menampilkan kode dan membuka login di browser; prosesnya dilanjutkan otomatis setelah selesai.
-- Login hanya dipakai untuk: daftar proyek cloud dan model terkelola Genspark. Tanpa login, semua fitur lokal dan model kustom tetap berfungsi.
-- Keluar cukup satu klik di pengaturan.
-
 ## Integrasi MCP (untuk pengguna lanjutan / klien AI)
 
 **Integrasi** adalah panel yang menghubungkan GenOffice dengan agen pemrograman, dan ia punya artikel tersendiri: Menghubungkan agen pemrograman. Versi singkat — pilih jalurnya (baris perintah, atau MCP), ikuti bagian itu, lalu mulai obrolan baru dan bertanya.

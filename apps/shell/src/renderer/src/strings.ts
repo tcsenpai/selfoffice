@@ -28,7 +28,6 @@ export const strings = {
     askSavedAs: '已保存:{name}',
     askSaveFailed: '保存失败:{error}',
     askEmptyCorpus: '知识库还是空的:先收藏一些文件,再回来提问。',
-    askNeedsLogin: '登录 Genspark 后即可使用 AI 问答。',
     askPlaceholder: '问一个关于收藏文件的问题…',
     askHintIdle: 'Enter 发送',
     askHintBusy: 'AI 正在回答…',
@@ -47,14 +46,11 @@ export const strings = {
     askCtaRecents: '去最近文件收藏',
     askNoSave: '对话不会保存,重启应用后清空。',
     askUnknownError: 'AI 请求失败,请重试。',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle: '在网页端用 Genspark AI 创建的项目。编辑在浏览器中继续——点击任意项目即可打开。',
     cloudSearchPlaceholder: '搜索 {n} 个项目…',
     cloudNoResults: '没有匹配的项目。',
     cloudSortRecent: '最近',
     cloudSortOldest: '最早',
     cloudRefresh: '刷新',
-    cloudLoginHint: '登录 Genspark 账号，查看你在网页端创建的项目。',
     cloudEmpty: '还没有网页端项目。',
     cloudError: '加载失败，请稍后重试。',
     cloudRetry: '重试',
@@ -166,9 +162,7 @@ export const strings = {
     // Account
     account: '账号',
     login: '登录',
-    loginGenspark: '登录 Genspark 账号',
     loggedIn: '已登录',
-    loggedInGenspark: '已登录 Genspark',
     waitingLogin: '等待浏览器登录…点击可重新拉起登录页',
     waitingShort: '等待登录…',
     loginTimeout: '登录超时,点击重试',
@@ -177,7 +171,6 @@ export const strings = {
     loginOpenShort: '手动打开登录页',
     loginCopyUrl: '复制登录链接',
     loginCopied: '已复制',
-    loginNetworkError: '无法连接 Genspark,请检查网络或代理设置',
     loginExpired: '登录已过期,点击重试',
     loginFailed: '登录失败,点击重试',
     loggingOut: '正在退出…',
@@ -369,14 +362,12 @@ export const strings = {
     setAiEndpointAdd: '添加端点',
     setAiEndpointRemove: '删除',
     setAiEndpointName: '名称',
-    setAiGensparkHint: '使用 Genspark 账号登录，无需 API key。',
     setAiCodexPath: 'Codex 可执行文件',
     setAiCodexPathHint: '仅自定义安装时填写；留空会自动检测。',
     setAiCodexAutoPlaceholder: '留空自动检测（推荐）',
     setAiCodexHint:
       '自动查找并使用当前 Codex CLI，更新后无需重新选择；也可填写自定义路径。无需 API Key。',
-    setAiByokNote:
-      '对话使用你自己的 key；生图与媒体解析按「生图与媒体」设置；网页搜索仍走 Genspark 登录或免费来源。',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '保存',
     setAiSaved: '已保存',
     setAiTest: '测试连接',
@@ -387,9 +378,6 @@ export const strings = {
     setAiMaxTokensDesc:
       '一次回合的输出预算。推理模型会先消耗预算用于思考，预算用完时回复可能变成空白，遇到这种情况请调大此项。',
     setSecAiMedia: '生图、媒体与搜索',
-    setAiMediaGensparkHint: '生图与图片/视频解析使用 Genspark 账号登录。',
-    setAiSearchGensparkHint:
-      '网页与图片搜索使用 Genspark 账号登录；未登录或关闭云工具时改用免费来源。',
     setAiSearchSerperHint: 'Serper 用你的 key 同时提供网页与图片搜索。',
     setAiSearchSerplyHint: 'Serply 用你的 key 同时提供网页与图片搜索。',
     setAiSearchTavilyHint: 'Tavily 用你的 key 提供网页搜索；图片搜索改用免费来源。',
@@ -403,9 +391,6 @@ export const strings = {
     setAiCapSearch: '网络搜索',
     setAiCapFileSearch: '本机文件搜索',
     setAiSharedKeyHint: '同一服务商的 key 与 Base URL 在各项能力间共用，只需填一次。',
-    setAiGskTools: 'Genspark 云工具',
-    setAiGskToolsDesc:
-      '服务商选择 Genspark 时，网页搜索、生图与媒体解析经 Genspark 云端并消耗积分；关闭后搜索改用免费来源，Genspark 生图工具不可用。',
     setGithub: '开源项目',
     starOnGitHub: '去 GitHub 点 Star',
     starPromptTitle: '喜欢 GenOffice 吗？',
@@ -432,17 +417,12 @@ export const strings = {
     onbTitle1: '欢迎使用 GenOffice',
     onbSubtitle1: '第一个开源的 AI 原生 Office 套件',
     onbBody1: '创建文档、制作表格、生成演示、审阅 PDF。AI 深度融入每个环节。',
-    onbTitle2: '这只是一个开始',
-    onbBody2: 'GenOffice 目前处于 alpha 阶段。欢迎加入 GenTeam 群聊，分享反馈，一起塑造它的未来。',
-    onbCredits: '活跃贡献者可获得 **1,000+ Genspark 积分**',
-    onbJoinGenTeam: '加入 GenTeam',
     onbSkip: '跳过',
     onbNext: '下一步',
     onbStart: '开始使用',
     onbStepAria: '第 {n} 页，共 {total} 页',
     onbTitle3: '人人免费',
     onbBody3: '无授权费用，无广告，无水印。',
-    onbNote3: 'AI 功能可能消耗 Genspark 积分。',
     onbBack: '上一步',
     intgSkillsDesc:
       'GenOffice 只使用自己技能文件夹里的技能。从文件夹或 zip 导入会把整个技能复制进来；导入不会自动运行任何东西。',
@@ -536,7 +516,6 @@ export const strings = {
     askSavedAs: 'Saved: {name}',
     askSaveFailed: 'Could not save: {error}',
     askEmptyCorpus: 'The knowledge base is empty: star some files first, then ask.',
-    askNeedsLogin: 'Sign in to Genspark to use AI chat.',
     askPlaceholder: 'Ask about your starred files…',
     askHintIdle: 'Enter to send',
     askHintBusy: 'The AI is answering…',
@@ -556,15 +535,11 @@ export const strings = {
     askCtaRecents: 'Star files from Recents',
     askNoSave: 'The conversation is not saved; it clears when the app restarts.',
     askUnknownError: 'The AI request failed. Try again.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Projects created on the web with Genspark AI. Editing continues in your browser — click any project to open it.',
     cloudSearchPlaceholder: 'Search {n} projects…',
     cloudNoResults: 'No matching projects.',
     cloudSortRecent: 'Recent',
     cloudSortOldest: 'Oldest',
     cloudRefresh: 'Refresh',
-    cloudLoginHint: 'Sign in to your Genspark account to see projects you created on the web.',
     cloudEmpty: 'No web projects yet.',
     cloudError: 'Failed to load. Try again later.',
     cloudRetry: 'Retry',
@@ -672,9 +647,7 @@ export const strings = {
     untitled: 'Untitled',
     account: 'Account',
     login: 'Sign in',
-    loginGenspark: 'Sign in with Genspark',
     loggedIn: 'Signed in',
-    loggedInGenspark: 'Signed in to Genspark',
     waitingLogin: 'Waiting for browser sign-in… Click to relaunch the sign-in page',
     loginTimeout: 'Sign-in timed out — click to retry',
     loginLaunchFailed: 'Could not start sign-in — click to retry',
@@ -682,7 +655,6 @@ export const strings = {
     loginOpenShort: 'Open sign-in page manually',
     loginCopyUrl: 'Copy sign-in link',
     loginCopied: 'Copied',
-    loginNetworkError: 'Cannot reach Genspark — check your network or proxy settings',
     loginExpired: 'Sign-in expired — click to retry',
     loginFailed: 'Sign-in failed — click to retry',
     waitingShort: 'Waiting…',
@@ -887,14 +859,12 @@ export const strings = {
     setAiEndpointAdd: 'Add endpoint',
     setAiEndpointRemove: 'Remove',
     setAiEndpointName: 'Name',
-    setAiGensparkHint: 'Uses your Genspark sign-in; no API key needed.',
     setAiCodexPath: 'Codex executable',
     setAiCodexPathHint: 'Only set this for a custom install; leave blank to auto-detect.',
     setAiCodexAutoPlaceholder: 'Auto-detect (recommended)',
     setAiCodexHint:
       'Automatically finds the current signed-in Codex CLI after updates; a custom path is optional. No API key is needed.',
-    setAiByokNote:
-      'Chats use your own key. Image generation and media analysis follow the AI Media section; web search still uses the Genspark sign-in or free sources.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Save',
     setAiSaved: 'Saved',
     setAiTest: 'Test connection',
@@ -905,9 +875,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Output budget for one turn. Reasoning models spend part of it thinking, so an answer can come back empty once the budget runs out; raise this value if that happens.',
     setSecAiMedia: 'AI Media & Search',
-    setAiMediaGensparkHint: 'Image generation and image/video analysis use your Genspark sign-in.',
-    setAiSearchGensparkHint:
-      'Web and image search use your Genspark sign-in; signed out or with cloud tools off they fall back to free sources.',
     setAiSearchSerperHint: 'Serper serves both web and image search with your key.',
     setAiSearchSerplyHint: 'Serply serves both web and image search with your key.',
     setAiSearchTavilyHint:
@@ -923,9 +890,6 @@ export const strings = {
     setAiCapFileSearch: 'Local file search',
     setAiSharedKeyHint:
       "A vendor's key and base URL are shared across capabilities; enter them once.",
-    setAiGskTools: 'Genspark cloud tools',
-    setAiGskToolsDesc:
-      'Web search, image generation and media analysis run through Genspark and use credits while their provider is set to Genspark; when off, search uses free sources and the Genspark image tools are unavailable.',
     setGithub: 'Open Source',
     starOnGitHub: 'Star on GitHub',
     starPromptTitle: 'Enjoying GenOffice?',
@@ -952,18 +916,12 @@ export const strings = {
     onbSubtitle1: 'The first open-source, AI-native office suite',
     onbBody1:
       'Create docs, build sheets, make slides, and review PDFs. AI is built into every step.',
-    onbTitle2: 'This is just the beginning',
-    onbBody2:
-      'GenOffice is still in alpha. Join the group chat on GenTeam to share feedback and help shape what comes next.',
-    onbCredits: 'Active contributors get **1,000+ Genspark credits**',
-    onbJoinGenTeam: 'Join GenTeam',
     onbSkip: 'Skip',
     onbNext: 'Next',
     onbStart: 'Get started',
     onbStepAria: 'Page {n} of {total}',
     onbTitle3: 'Free for everyone',
     onbBody3: 'No license fees. No ads. No watermarks.',
-    onbNote3: 'AI features may consume Genspark credits.',
     onbBack: 'Back',
     intgSkillsDesc:
       'GenOffice only uses skills in its own skills folder. Importing a folder or a zip copies the whole skill in; nothing runs on import.',
@@ -1061,7 +1019,6 @@ export const strings = {
     askSavedAs: 'Đã lưu: {name}',
     askSaveFailed: 'Không thể lưu: {error}',
     askEmptyCorpus: 'Cơ sở tri thức trống: hãy đánh dấu tệp trước rồi hỏi.',
-    askNeedsLogin: 'Đăng nhập Genspark để dùng trò chuyện AI.',
     askPlaceholder: 'Hỏi về các tệp đã đánh dấu…',
     askHintIdle: 'Enter để gửi',
     askHintBusy: 'AI đang trả lời…',
@@ -1081,15 +1038,11 @@ export const strings = {
     askCtaRecents: 'Gắn sao từ Gần đây',
     askNoSave: 'Cuộc trò chuyện không được lưu; sẽ bị xóa khi khởi động lại ứng dụng.',
     askUnknownError: 'Yêu cầu AI thất bại. Thử lại.',
-    navCloud: 'Dự án Genspark',
-    cloudSubtitle:
-      'Các dự án được tạo trên web với Genspark AI. Tiếp tục chỉnh sửa trên trình duyệt của bạn — nhấp vào bất kỳ dự án nào để mở.',
     cloudSearchPlaceholder: 'Tìm kiếm {n} dự án…',
     cloudNoResults: 'Không có dự án phù hợp.',
     cloudSortRecent: 'Gần đây',
     cloudSortOldest: 'Cũ nhất',
     cloudRefresh: 'Làm mới',
-    cloudLoginHint: 'Đăng nhập vào tài khoản Genspark để xem các dự án bạn đã tạo trên web.',
     cloudEmpty: 'Chưa có dự án web nào.',
     cloudError: 'Tải thất bại. Vui lòng thử lại sau.',
     cloudRetry: 'Thử lại',
@@ -1196,9 +1149,7 @@ export const strings = {
     untitled: 'Chưa có tiêu đề',
     account: 'Tài khoản',
     login: 'Đăng nhập',
-    loginGenspark: 'Đăng nhập bằng Genspark',
     loggedIn: 'Đã đăng nhập',
-    loggedInGenspark: 'Đã đăng nhập vào Genspark',
     waitingLogin: 'Đang đợi đăng nhập trên trình duyệt… Nhấp để mở lại trang đăng nhập',
     loginTimeout: 'Hết thời gian chờ đăng nhập — nhấp để thử lại',
     loginLaunchFailed: 'Không thể mở trang đăng nhập — nhấp để thử lại',
@@ -1206,7 +1157,6 @@ export const strings = {
     loginOpenShort: 'Mở trang đăng nhập thủ công',
     loginCopyUrl: 'Sao chép liên kết đăng nhập',
     loginCopied: 'Đã sao chép',
-    loginNetworkError: 'Không thể kết nối tới Genspark — hãy kiểm tra cài đặt mạng hoặc proxy',
     loginExpired: 'Phiên đăng nhập đã hết hạn — nhấp để thử lại',
     loginFailed: 'Đăng nhập thất bại — nhấp để thử lại',
     waitingShort: 'Đang đợi…',
@@ -1413,14 +1363,12 @@ export const strings = {
     setAiEndpointAdd: 'Thêm điểm cuối',
     setAiEndpointRemove: 'Xóa',
     setAiEndpointName: 'Tên',
-    setAiGensparkHint: 'Sử dụng thông tin đăng nhập Genspark của bạn; không cần khóa API.',
     setAiCodexPath: 'Tệp thực thi Codex',
     setAiCodexPathHint: 'Chỉ đặt mục này nếu cài đặt tùy chỉnh; để trống để tự động phát hiện.',
     setAiCodexAutoPlaceholder: 'Tự động phát hiện (khuyến nghị)',
     setAiCodexHint:
       'Tự động tìm CLI Codex đã đăng nhập hiện tại sau các bản cập nhật; đường dẫn tùy chỉnh là không bắt buộc. Không cần khóa API.',
-    setAiByokNote:
-      'Các cuộc trò chuyện sử dụng khóa của riêng bạn. Việc tạo hình ảnh và phân tích phương tiện tuân theo phần Phương tiện AI; tìm kiếm web vẫn sử dụng đăng nhập Genspark hoặc các nguồn miễn phí.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Lưu',
     setAiSaved: 'Đã lưu',
     setAiTest: 'Kiểm tra kết nối',
@@ -1431,10 +1379,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Ngân sách đầu ra cho một lượt trao đổi. Các mô hình suy luận dành một phần trong đó để suy nghĩ, do đó câu trả lời có thể trống nếu hết ngân sách; hãy tăng giá trị này nếu gặp tình trạng trên.',
     setSecAiMedia: 'Phương tiện AI & Tìm kiếm',
-    setAiMediaGensparkHint:
-      'Tạo hình ảnh và phân tích hình ảnh/video sử dụng thông tin đăng nhập Genspark của bạn.',
-    setAiSearchGensparkHint:
-      'Tìm kiếm web và hình ảnh sử dụng thông tin đăng nhập Genspark của bạn; khi đăng xuất hoặc tắt công cụ đám mây, hệ thống sẽ chuyển sang dùng các nguồn miễn phí.',
     setAiSearchSerperHint: 'Serper cung cấp cả tìm kiếm web và hình ảnh bằng khóa của bạn.',
     setAiSearchSerplyHint: 'Serply cung cấp cả tìm kiếm web và hình ảnh bằng key của bạn.',
     setAiSearchTavilyHint:
@@ -1450,9 +1394,6 @@ export const strings = {
     setAiCapFileSearch: 'Tìm kiếm tệp cục bộ',
     setAiSharedKeyHint:
       'Khóa và URL cơ sở của nhà cung cấp được dùng chung cho các chức năng; chỉ cần nhập một lần.',
-    setAiGskTools: 'Công cụ đám mây Genspark',
-    setAiGskToolsDesc:
-      'Tìm kiếm web, tạo hình ảnh và phân tích phương tiện được xử lý qua Genspark và tiêu tốn credit khi nhà cung cấp được đặt là Genspark; khi tắt, tìm kiếm sẽ dùng các nguồn miễn phí và công cụ hình ảnh Genspark sẽ không khả dụng.',
     setGithub: 'Mã nguồn mở',
     starOnGitHub: 'Gắn sao trên GitHub',
     starPromptTitle: 'Bạn thích GenOffice chứ?',
@@ -1479,18 +1420,12 @@ export const strings = {
     onbSubtitle1: 'Bộ ứng dụng văn phòng AI nguồn mở đầu tiên',
     onbBody1:
       'Tạo tài liệu, xây dựng bảng tính, tạo bản trình bày và xem lại PDF. AI được tích hợp trong từng bước.',
-    onbTitle2: 'Đây mới chỉ là khởi đầu',
-    onbBody2:
-      'GenOffice vẫn đang trong giai đoạn alpha. Hãy tham gia nhóm trò chuyện trên GenTeam để chia sẻ phản hồi và định hình những bước phát triển tiếp theo.',
-    onbCredits: 'Thành viên đóng góp tích cực nhận được **1.000+ credit Genspark**',
-    onbJoinGenTeam: 'Tham gia GenTeam',
     onbSkip: 'Bỏ qua',
     onbNext: 'Tiếp theo',
     onbStart: 'Bắt đầu',
     onbStepAria: 'Trang {n} / {total}',
     onbTitle3: 'Miễn phí cho mọi người',
     onbBody3: 'Không phí bản quyền. Không quảng cáo. Không hình mờ.',
-    onbNote3: 'Các tính năng AI có thể tiêu tốn credit Genspark.',
     onbBack: 'Quay lại',
     intgSkillsDesc:
       'GenOffice chỉ dùng kỹ năng trong thư mục kỹ năng của chính nó. Nhập từ thư mục hoặc zip sẽ sao chép toàn bộ kỹ năng vào; không có gì chạy khi nhập.',
@@ -1589,7 +1524,6 @@ export const strings = {
     askSavedAs: 'Kaydedildi: {name}',
     askSaveFailed: 'Kaydedilemedi: {error}',
     askEmptyCorpus: 'Bilgi tabanı boş: önce bazı dosyaları yıldızlayın, sonra sorun.',
-    askNeedsLogin: 'AI sohbetini kullanmak için Genspark’a giriş yapın.',
     askPlaceholder: 'Yıldızlı dosyalarınız hakkında sorun…',
     askHintIdle: 'Göndermek için Enter',
     askHintBusy: 'AI yanıtlıyor…',
@@ -1609,15 +1543,11 @@ export const strings = {
     askCtaRecents: 'Son kullanılanlardan dosya yıldızlayın',
     askNoSave: 'Konuşma kaydedilmez; uygulama yeniden başlatıldığında silinir.',
     askUnknownError: 'AI isteği başarısız oldu. Yeniden deneyin.',
-    navCloud: 'Genspark Projeleri',
-    cloudSubtitle:
-      'Genspark AI ile web’de oluşturulan projeler. Düzenleme tarayıcınızda devam eder — açmak için bir projeye tıklayın.',
     cloudSearchPlaceholder: '{n} projede ara…',
     cloudNoResults: 'Eşleşen proje yok.',
     cloudSortRecent: 'En yeni',
     cloudSortOldest: 'En eski',
     cloudRefresh: 'Yenile',
-    cloudLoginHint: 'Web’de oluşturduğunuz projeleri görmek için Genspark hesabınıza giriş yapın.',
     cloudEmpty: 'Henüz web projesi yok.',
     cloudError: 'Yüklenemedi. Daha sonra yeniden deneyin.',
     cloudRetry: 'Yeniden dene',
@@ -1724,9 +1654,7 @@ export const strings = {
     untitled: 'Adsız',
     account: 'Hesap',
     login: 'Giriş yap',
-    loginGenspark: 'Genspark ile giriş yap',
     loggedIn: 'Giriş yapıldı',
-    loggedInGenspark: 'Genspark’a giriş yapıldı',
     waitingLogin: 'Tarayıcıda giriş bekleniyor… Giriş sayfasını yeniden açmak için tıklayın',
     loginTimeout: 'Giriş zaman aşımına uğradı — yeniden denemek için tıklayın',
     loginLaunchFailed: 'Giriş başlatılamadı — yeniden denemek için tıklayın',
@@ -1734,7 +1662,6 @@ export const strings = {
     loginOpenShort: 'Giriş sayfasını elle aç',
     loginCopyUrl: 'Giriş bağlantısını kopyala',
     loginCopied: 'Kopyalandı',
-    loginNetworkError: 'Genspark’a ulaşılamıyor — ağ veya proxy ayarlarınızı kontrol edin',
     loginExpired: 'Girişin süresi doldu — yeniden denemek için tıklayın',
     loginFailed: 'Giriş başarısız oldu — yeniden denemek için tıklayın',
     waitingShort: 'Bekleniyor…',
@@ -1942,15 +1869,13 @@ export const strings = {
     setAiEndpointAdd: 'Uç nokta ekle',
     setAiEndpointRemove: 'Kaldır',
     setAiEndpointName: 'Ad',
-    setAiGensparkHint: 'Genspark girişinizi kullanır; API anahtarı gerekmez.',
     setAiCodexPath: 'Codex yürütülebilir dosyası',
     setAiCodexPathHint:
       'Yalnızca özel bir kurulum için ayarlayın; otomatik algılama için boş bırakın.',
     setAiCodexAutoPlaceholder: 'Otomatik algıla (önerilen)',
     setAiCodexHint:
       'Güncellemelerden sonra oturum açılmış geçerli Codex CLI’yi otomatik bulur; özel yol isteğe bağlıdır. API anahtarı gerekmez.',
-    setAiByokNote:
-      'Sohbetler kendi anahtarınızı kullanır. Görüntü oluşturma ve medya analizi AI Medya bölümünü izler; web araması yine Genspark girişini veya ücretsiz kaynakları kullanır.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Kaydet',
     setAiSaved: 'Kaydedildi',
     setAiTest: 'Bağlantıyı sına',
@@ -1961,10 +1886,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Tek bir tur için çıktı bütçesi. Akıl yürüten modeller bunun bir kısmını düşünmeye harcar, bu yüzden bütçe bittiğinde yanıt boş dönebilir; böyle olursa bu değeri artırın.',
     setSecAiMedia: 'AI Medya ve Arama',
-    setAiMediaGensparkHint:
-      'Görüntü oluşturma ve görüntü/video analizi Genspark girişinizi kullanır.',
-    setAiSearchGensparkHint:
-      'Web ve görüntü araması Genspark girişinizi kullanır; çıkış yapılmışsa veya bulut araçları kapalıysa ücretsiz kaynaklara döner.',
     setAiSearchSerperHint: 'Serper, anahtarınızla hem web hem görüntü aramasını sağlar.',
     setAiSearchSerplyHint: 'Serply, anahtarınızla hem web hem görüntü aramasını sağlar.',
     setAiSearchTavilyHint:
@@ -1980,9 +1901,6 @@ export const strings = {
     setAiCapFileSearch: 'Yerel dosya araması',
     setAiSharedKeyHint:
       'Bir sağlayıcının anahtarı ve temel URL’si yetenekler arasında paylaşılır; bir kez girin.',
-    setAiGskTools: 'Genspark bulut araçları',
-    setAiGskToolsDesc:
-      'Sağlayıcıları Genspark olarak ayarlıyken web araması, görüntü oluşturma ve medya analizi Genspark üzerinden çalışır ve kredi kullanır; kapalıyken arama ücretsiz kaynakları kullanır ve Genspark görüntü araçları kullanılamaz.',
     setGithub: 'Açık Kaynak',
     starOnGitHub: 'GitHub’da yıldızla',
     starPromptTitle: 'GenOffice’i beğeniyor musunuz?',
@@ -2009,18 +1927,12 @@ export const strings = {
     onbSubtitle1: 'İlk açık kaynaklı, AI yerlisi ofis paketi',
     onbBody1:
       'Belgeler oluşturun, tablolar hazırlayın, sunular yapın ve PDF’leri inceleyin. AI her adıma yerleşiktir.',
-    onbTitle2: 'Bu daha başlangıç',
-    onbBody2:
-      'GenOffice hâlâ alfa aşamasında. Geri bildirim paylaşmak ve sıradakileri şekillendirmeye yardım etmek için GenTeam’deki grup sohbetine katılın.',
-    onbCredits: 'Etkin katkıda bulunanlar **1.000+ Genspark kredisi** kazanır',
-    onbJoinGenTeam: 'GenTeam’e katıl',
     onbSkip: 'Atla',
     onbNext: 'İleri',
     onbStart: 'Başlayın',
     onbStepAria: 'Sayfa {n} / {total}',
     onbTitle3: 'Herkes için ücretsiz',
     onbBody3: 'Lisans ücreti yok. Reklam yok. Filigran yok.',
-    onbNote3: 'AI özellikleri Genspark kredisi tüketebilir.',
     onbBack: 'Geri',
     intgSkillsDesc:
       'GenOffice yalnızca kendi beceri klasöründeki becerileri kullanır. Bir klasör veya zip içe aktarıldığında becerinin tamamı kopyalanır; içe aktarma sırasında hiçbir şey çalıştırılmaz.',
@@ -2120,7 +2032,6 @@ export const strings = {
     askSavedAs: '保存済み: {name}',
     askSaveFailed: '保存できませんでした: {error}',
     askEmptyCorpus: 'ナレッジベースは空です:先にファイルをスターしてから質問してください。',
-    askNeedsLogin: 'AI チャットには Genspark へのログインが必要です。',
     askPlaceholder: 'スター付きファイルについて質問…',
     askHintIdle: 'Enter で送信',
     askHintBusy: 'AI が回答中…',
@@ -2140,16 +2051,11 @@ export const strings = {
     askCtaRecents: '「最近」からスターを付ける',
     askNoSave: '会話は保存されません。アプリを再起動すると消えます。',
     askUnknownError: 'AI リクエストに失敗しました。もう一度お試しください。',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Web で Genspark AI を使って作成したプロジェクト。編集はブラウザで続行します。クリックで開きます。',
     cloudSearchPlaceholder: '{n} 件のプロジェクトを検索…',
     cloudNoResults: '一致するプロジェクトはありません。',
     cloudSortRecent: '新しい順',
     cloudSortOldest: '古い順',
     cloudRefresh: '更新',
-    cloudLoginHint:
-      'Genspark アカウントにサインインすると、Web で作成したプロジェクトを表示できます。',
     cloudEmpty: 'Web のプロジェクトはまだありません。',
     cloudError: '読み込みに失敗しました。後でもう一度お試しください。',
     cloudRetry: '再試行',
@@ -2263,9 +2169,7 @@ export const strings = {
     // Account
     account: 'アカウント',
     login: 'サインイン',
-    loginGenspark: 'Genspark アカウントでサインイン',
     loggedIn: 'サインイン済み',
-    loggedInGenspark: 'Genspark にサインイン済み',
     waitingLogin:
       'ブラウザーでのサインインを待っています… クリックするとサインインページを再表示します',
     waitingShort: 'サインイン待ち…',
@@ -2275,8 +2179,6 @@ export const strings = {
     loginOpenShort: 'ログインページを手動で開く',
     loginCopyUrl: 'ログインリンクをコピー',
     loginCopied: 'コピーしました',
-    loginNetworkError:
-      'Genspark に接続できません。ネットワークまたはプロキシ設定を確認してください',
     loginExpired: 'サインインの有効期限が切れました。クリックして再試行',
     loginFailed: 'サインインに失敗しました。クリックして再試行',
     loggingOut: 'サインアウトしています…',
@@ -2484,13 +2386,11 @@ export const strings = {
     setAiEndpointAdd: 'エンドポイントを追加',
     setAiEndpointRemove: '削除',
     setAiEndpointName: '名前',
-    setAiGensparkHint: 'Genspark アカウントでサインインするため、API キーは不要です。',
     setAiCodexPath: 'Codex 実行ファイル',
     setAiCodexPathHint: 'カスタムインストール時のみ指定します。空欄なら自動検出します。',
     setAiCodexAutoPlaceholder: '自動検出（推奨）',
     setAiCodexHint: 'ローカルでサインイン済みの Codex CLI を使用します。API キーは不要です。',
-    setAiByokNote:
-      'チャットは自分のキーを使用します。画像生成とメディア解析は「AI メディア」の設定に従い、Web 検索は引き続き Genspark のサインインまたは無料ソースを使用します。',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '保存',
     setAiSaved: '保存しました',
     setAiTest: '接続テスト',
@@ -2501,9 +2401,6 @@ export const strings = {
     setAiMaxTokensDesc:
       '1 ターンの出力予算です。推論モデルは思考にも消費するため、使い切ると返信が空になることがあります。その場合は値を大きくしてください。',
     setSecAiMedia: 'AI メディアと検索',
-    setAiMediaGensparkHint: '画像生成と画像/動画解析は Genspark のサインインを使用します。',
-    setAiSearchGensparkHint:
-      'Web 検索と画像検索は Genspark のサインインを使用します。サインアウト時やクラウドツールがオフのときは無料ソースにフォールバックします。',
     setAiSearchSerperHint: 'Serper はあなたのキーで Web 検索と画像検索の両方を提供します。',
     setAiSearchSerplyHint: 'Serply はあなたのキーで Web 検索と画像検索の両方を提供します。',
     setAiSearchTavilyHint:
@@ -2519,9 +2416,6 @@ export const strings = {
     setAiCapFileSearch: 'ローカルファイル検索',
     setAiSharedKeyHint:
       '同じプロバイダーのキーと Base URL は各機能で共有されます。一度入力すれば済みます。',
-    setAiGskTools: 'Genspark クラウドツール',
-    setAiGskToolsDesc:
-      'プロバイダーが Genspark のとき、Web 検索・画像生成・メディア解析は Genspark 経由でクレジットを消費します。オフにすると検索は無料ソースを使い、Genspark の画像ツールは利用できません。',
     setGithub: 'オープンソース',
     starOnGitHub: 'GitHub でスターを付ける',
     starPromptTitle: 'GenOffice はいかがですか？',
@@ -2550,18 +2444,12 @@ export const strings = {
     onbSubtitle1: '初のオープンソース AI ネイティブ Office スイート',
     onbBody1:
       '文書の作成、表計算、プレゼン作成、PDF のレビュー。あらゆるステップに AI が組み込まれています。',
-    onbTitle2: 'これはまだ始まりにすぎません',
-    onbBody2:
-      'GenOffice はまだアルファ版です。GenTeam のグループチャットに参加して、フィードバックを共有し、今後の開発を一緒に形作りましょう。',
-    onbCredits: 'アクティブな貢献者への特典 **1,000+ Genspark クレジット**',
-    onbJoinGenTeam: 'GenTeam に参加',
     onbSkip: 'スキップ',
     onbNext: '次へ',
     onbStart: 'はじめる',
     onbStepAria: '{total} ページ中 {n} ページ目',
     onbTitle3: 'すべての人に無料',
     onbBody3: 'ライセンス料なし、広告なし、透かしなし。',
-    onbNote3: 'AI 機能は Genspark クレジットを消費する場合があります。',
     onbBack: '戻る',
     intgSkillsDesc:
       'GenOffice は自身のスキルフォルダ内のスキルのみ使用します。フォルダまたは zip からの読み込みはスキル全体をコピーします。読み込み時に何も実行されません。',
@@ -2660,7 +2548,6 @@ export const strings = {
     askSavedAs: '저장됨: {name}',
     askSaveFailed: '저장하지 못했습니다: {error}',
     askEmptyCorpus: '지식 베이스가 비어 있습니다. 먼저 파일을 즐겨찾기한 후 질문해 주세요.',
-    askNeedsLogin: 'AI 채팅을 사용하려면 Genspark에 로그인하세요.',
     askPlaceholder: '즐겨찾기한 파일에 대해 질문…',
     askHintIdle: 'Enter로 보내기',
     askHintBusy: 'AI가 답변 중…',
@@ -2680,15 +2567,11 @@ export const strings = {
     askCtaRecents: '최근 파일에 별표하기',
     askNoSave: '대화는 저장되지 않으며, 앱을 다시 시작하면 지워집니다.',
     askUnknownError: 'AI 요청에 실패했습니다. 다시 시도해 주세요.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Genspark AI로 웹에서 만든 프로젝트입니다. 편집은 브라우저에서 계속됩니다. 프로젝트를 클릭하면 열립니다.',
     cloudSearchPlaceholder: '프로젝트 {n}개 검색…',
     cloudNoResults: '일치하는 프로젝트가 없습니다.',
     cloudSortRecent: '최신순',
     cloudSortOldest: '오래된순',
     cloudRefresh: '새로고침',
-    cloudLoginHint: 'Genspark 계정에 로그인하면 웹에서 만든 프로젝트를 볼 수 있습니다.',
     cloudEmpty: '아직 웹 프로젝트가 없습니다.',
     cloudError: '불러오지 못했습니다. 나중에 다시 시도해 주세요.',
     cloudRetry: '다시 시도',
@@ -2801,9 +2684,7 @@ export const strings = {
     // Account
     account: '계정',
     login: '로그인',
-    loginGenspark: 'Genspark 계정으로 로그인',
     loggedIn: '로그인됨',
-    loggedInGenspark: 'Genspark에 로그인됨',
     waitingLogin: '브라우저 로그인을 기다리는 중… 클릭하면 로그인 페이지를 다시 엽니다',
     waitingShort: '로그인 대기 중…',
     loginTimeout: '로그인 시간이 초과되었습니다. 클릭하여 다시 시도',
@@ -2812,7 +2693,6 @@ export const strings = {
     loginOpenShort: '로그인 페이지 직접 열기',
     loginCopyUrl: '로그인 링크 복사',
     loginCopied: '복사됨',
-    loginNetworkError: 'Genspark에 연결할 수 없습니다. 네트워크 또는 프록시 설정을 확인하세요',
     loginExpired: '로그인이 만료되었습니다. 클릭하여 다시 시도',
     loginFailed: '로그인에 실패했습니다. 클릭하여 다시 시도',
     loggingOut: '로그아웃 중…',
@@ -3014,13 +2894,11 @@ export const strings = {
     setAiEndpointAdd: '엔드포인트 추가',
     setAiEndpointRemove: '삭제',
     setAiEndpointName: '이름',
-    setAiGensparkHint: 'Genspark 로그인으로 사용하며 API 키가 필요 없습니다.',
     setAiCodexPath: 'Codex 실행 파일',
     setAiCodexPathHint: '사용자 지정 설치에만 입력하세요. 비워 두면 자동 감지합니다.',
     setAiCodexAutoPlaceholder: '자동 감지(권장)',
     setAiCodexHint: '로컬에서 로그인된 Codex CLI를 사용하므로 API 키가 필요 없습니다.',
-    setAiByokNote:
-      '채팅은 내 키를 사용합니다. 이미지 생성과 미디어 분석은 「AI 미디어」 설정을 따르며, 웹 검색은 여전히 Genspark 로그인 또는 무료 소스를 사용합니다.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '저장',
     setAiSaved: '저장됨',
     setAiTest: '연결 테스트',
@@ -3031,9 +2909,6 @@ export const strings = {
     setAiMaxTokensDesc:
       '한 턴의 출력 예산입니다. 추론 모델은 생각하는 데 소모하므로 예산이 떨어지면 응답이 비어 올 수 있습니다. 그럴 때 값을 키우세요.',
     setSecAiMedia: 'AI 미디어 및 검색',
-    setAiMediaGensparkHint: '이미지 생성과 이미지/동영상 분석은 Genspark 로그인을 사용합니다.',
-    setAiSearchGensparkHint:
-      '웹 검색과 이미지 검색은 Genspark 로그인을 사용합니다. 로그아웃 상태거나 클라우드 도구가 꺼져 있으면 무료 소스로 대체됩니다.',
     setAiSearchSerperHint: 'Serper는 내 키로 웹 검색과 이미지 검색을 모두 제공합니다.',
     setAiSearchSerplyHint: 'Serply는 내 키로 웹 검색과 이미지 검색을 모두 제공합니다.',
     setAiSearchTavilyHint:
@@ -3049,9 +2924,6 @@ export const strings = {
     setAiCapFileSearch: '로컬 파일 검색',
     setAiSharedKeyHint:
       '같은 제공자의 키와 Base URL은 모든 기능에서 공유되므로 한 번만 입력하면 됩니다.',
-    setAiGskTools: 'Genspark 클라우드 도구',
-    setAiGskToolsDesc:
-      '제공자가 Genspark일 때 웹 검색, 이미지 생성, 미디어 분석은 Genspark를 거쳐 크레딧을 사용합니다. 끄면 검색은 무료 소스를 사용하고 Genspark 이미지 도구는 사용할 수 없습니다.',
     setGithub: '오픈 소스',
     starOnGitHub: 'GitHub에서 스타 누르기',
     starPromptTitle: 'GenOffice가 마음에 드시나요?',
@@ -3080,18 +2952,12 @@ export const strings = {
     onbSubtitle1: '최초의 오픈소스 AI 네이티브 오피스 제품군',
     onbBody1:
       '문서 작성, 스프레드시트 제작, 프레젠테이션 생성, PDF 검토. 모든 단계에 AI가 녹아 있습니다.',
-    onbTitle2: '이제 시작일 뿐입니다',
-    onbBody2:
-      'GenOffice는 아직 알파 단계입니다. GenTeam 그룹 채팅에 참여해 피드백을 공유하고 앞으로의 방향을 함께 만들어 가세요.',
-    onbCredits: '활발한 기여자를 위한 혜택 **1,000+ Genspark 크레딧**',
-    onbJoinGenTeam: 'GenTeam 참여하기',
     onbSkip: '건너뛰기',
     onbNext: '다음',
     onbStart: '시작하기',
     onbStepAria: '총 {total}페이지 중 {n}페이지',
     onbTitle3: '모두에게 무료',
     onbBody3: '라이선스 비용 없음, 광고 없음, 워터마크 없음.',
-    onbNote3: 'AI 기능은 Genspark 크레딧을 소모할 수 있습니다.',
     onbBack: '이전',
     intgSkillsDesc:
       'GenOffice는 자체 스킬 폴더의 스킬만 사용합니다. 폴더나 zip에서 가져오면 스킬 전체가 복사되며, 가져오기 시 아무것도 실행되지 않습니다.',
@@ -3192,7 +3058,6 @@ export const strings = {
     askSavedAs: 'Enregistré : {name}',
     askSaveFailed: 'Enregistrement impossible : {error}',
     askEmptyCorpus: 'La base de connaissances est vide : ajoutez d’abord des fichiers favoris.',
-    askNeedsLogin: 'Connectez-vous à Genspark pour utiliser le chat IA.',
     askPlaceholder: 'Posez une question sur vos fichiers…',
     askHintIdle: 'Entrée pour envoyer',
     askHintBusy: 'L’IA répond…',
@@ -3212,16 +3077,11 @@ export const strings = {
     askCtaRecents: 'Ajouter depuis Récents',
     askNoSave: 'La conversation n’est pas enregistrée ; elle s’efface au redémarrage de l’app.',
     askUnknownError: 'La requête IA a échoué. Réessayez.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      "Projets créés sur le web avec Genspark AI. L'édition continue dans votre navigateur — cliquez sur un projet pour l'ouvrir.",
     cloudSearchPlaceholder: 'Rechercher parmi {n} projets…',
     cloudNoResults: 'Aucun projet correspondant.',
     cloudSortRecent: 'Récents',
     cloudSortOldest: 'Plus anciens',
     cloudRefresh: 'Actualiser',
-    cloudLoginHint:
-      'Connectez-vous à votre compte Genspark pour voir les projets créés sur le web.',
     cloudEmpty: 'Aucun projet web pour le moment.',
     cloudError: 'Échec du chargement. Réessayez plus tard.',
     cloudRetry: 'Réessayer',
@@ -3336,9 +3196,7 @@ export const strings = {
     // Account
     account: 'Compte',
     login: 'Se connecter',
-    loginGenspark: 'Se connecter avec Genspark',
     loggedIn: 'Connecté',
-    loggedInGenspark: 'Connecté à Genspark',
     waitingLogin:
       'En attente de la connexion dans le navigateur… Cliquez pour rouvrir la page de connexion',
     waitingShort: 'En attente…',
@@ -3348,8 +3206,6 @@ export const strings = {
     loginOpenShort: 'Ouvrir la page de connexion',
     loginCopyUrl: 'Copier le lien de connexion',
     loginCopied: 'Copié',
-    loginNetworkError:
-      'Impossible de joindre Genspark — vérifiez votre réseau ou vos paramètres de proxy',
     loginExpired: 'L’autorisation a expiré — cliquez pour réessayer',
     loginFailed: 'Échec de la connexion — cliquez pour réessayer',
     loggingOut: 'Déconnexion…',
@@ -3557,14 +3413,12 @@ export const strings = {
     setAiEndpointAdd: 'Ajouter un point de terminaison',
     setAiEndpointRemove: 'Supprimer',
     setAiEndpointName: 'Nom',
-    setAiGensparkHint: 'Utilise votre connexion Genspark ; aucune clé API requise.',
     setAiCodexPath: 'Exécutable Codex',
     setAiCodexPathHint:
       'À renseigner uniquement pour une installation personnalisée ; sinon, détection automatique.',
     setAiCodexAutoPlaceholder: 'Détection auto (recommandé)',
     setAiCodexHint: 'Utilise le CLI Codex connecté localement ; aucune clé API requise.',
-    setAiByokNote:
-      "Les conversations utilisent votre propre clé. La génération d'images et l'analyse de médias suivent la section « Médias IA » ; la recherche web utilise toujours la connexion Genspark ou des sources gratuites.",
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Enregistrer',
     setAiSaved: 'Enregistré',
     setAiTest: 'Tester la connexion',
@@ -3575,10 +3429,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Budget de sortie pour un tour. Les modèles à raisonnement le dépensent en réflexion ; quand il est épuisé, la réponse arrive vide : augmentez cette valeur.',
     setSecAiMedia: 'Médias IA et recherche',
-    setAiMediaGensparkHint:
-      "La génération d'images et l'analyse d'images/vidéos utilisent votre connexion Genspark.",
-    setAiSearchGensparkHint:
-      "La recherche web et d'images utilise votre connexion Genspark ; déconnecté ou avec les outils cloud désactivés, elle se rabat sur des sources gratuites.",
     setAiSearchSerperHint:
       "Serper assure la recherche web et la recherche d'images avec votre clé.",
     setAiSearchSerplyHint:
@@ -3596,9 +3446,6 @@ export const strings = {
     setAiCapFileSearch: 'Recherche de fichiers locaux',
     setAiSharedKeyHint:
       "La clé et l'URL de base d'un fournisseur sont partagées entre les capacités ; saisissez-les une seule fois.",
-    setAiGskTools: 'Outils cloud Genspark',
-    setAiGskToolsDesc:
-      "Lorsque leur fournisseur est Genspark, la recherche web, la génération d'images et l'analyse de médias passent par Genspark et consomment des crédits ; désactivé, la recherche utilise des sources gratuites et les outils d'image Genspark sont indisponibles.",
     setGithub: 'Open source',
     starOnGitHub: 'Mettre une étoile sur GitHub',
     starPromptTitle: 'GenOffice vous plaît ?',
@@ -3627,18 +3474,12 @@ export const strings = {
     onbSubtitle1: 'La première suite bureautique open source et native IA',
     onbBody1:
       'Créez des documents, des feuilles de calcul et des présentations, et relisez des PDF. L’IA est intégrée à chaque étape.',
-    onbTitle2: 'Ce n’est qu’un début',
-    onbBody2:
-      'GenOffice est encore en alpha. Rejoignez la discussion de groupe sur GenTeam pour partager vos retours et façonner la suite.',
-    onbCredits: 'Les contributeurs actifs reçoivent **1 000+ crédits Genspark**',
-    onbJoinGenTeam: 'Rejoindre GenTeam',
     onbSkip: 'Passer',
     onbNext: 'Suivant',
     onbStart: 'Commencer',
     onbStepAria: 'Page {n} sur {total}',
     onbTitle3: 'Gratuit pour tous',
     onbBody3: 'Pas de licence. Pas de publicité. Pas de filigrane.',
-    onbNote3: 'Les fonctions IA peuvent consommer des crédits Genspark.',
     onbBack: 'Retour',
     intgSkillsDesc:
       'GenOffice n’utilise que les compétences de son propre dossier. Importer un dossier ou un zip copie toute la compétence ; rien ne s’exécute à l’import.',
@@ -3740,7 +3581,6 @@ export const strings = {
     askSavedAs: 'Gespeichert: {name}',
     askSaveFailed: 'Speichern fehlgeschlagen: {error}',
     askEmptyCorpus: 'Die Wissensbasis ist leer: markieren Sie zuerst Dateien, dann fragen Sie.',
-    askNeedsLogin: 'Melden Sie sich bei Genspark an, um den KI-Chat zu nutzen.',
     askPlaceholder: 'Fragen Sie zu Ihren Favoriten…',
     askHintIdle: 'Enter zum Senden',
     askHintBusy: 'Die KI antwortet…',
@@ -3760,16 +3600,11 @@ export const strings = {
     askCtaRecents: 'Aus Zuletzt verwendet markieren',
     askNoSave: 'Die Unterhaltung wird nicht gespeichert; sie wird beim Neustart der App gelöscht.',
     askUnknownError: 'Die KI-Anfrage ist fehlgeschlagen. Bitte erneut versuchen.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Mit Genspark AI im Web erstellte Projekte. Die Bearbeitung läuft im Browser weiter – klicken Sie auf ein Projekt, um es zu öffnen.',
     cloudSearchPlaceholder: '{n} Projekte durchsuchen…',
     cloudNoResults: 'Keine passenden Projekte.',
     cloudSortRecent: 'Neueste',
     cloudSortOldest: 'Älteste',
     cloudRefresh: 'Aktualisieren',
-    cloudLoginHint:
-      'Melden Sie sich bei Ihrem Genspark-Konto an, um Ihre im Web erstellten Projekte zu sehen.',
     cloudEmpty: 'Noch keine Web-Projekte.',
     cloudError: 'Laden fehlgeschlagen. Bitte später erneut versuchen.',
     cloudRetry: 'Erneut versuchen',
@@ -3887,9 +3722,7 @@ export const strings = {
     // Account
     account: 'Konto',
     login: 'Anmelden',
-    loginGenspark: 'Mit Genspark anmelden',
     loggedIn: 'Angemeldet',
-    loggedInGenspark: 'Bei Genspark angemeldet',
     waitingLogin:
       'Warten auf Anmeldung im Browser… Klicken Sie, um die Anmeldeseite erneut zu öffnen',
     waitingShort: 'Warten…',
@@ -3899,8 +3732,6 @@ export const strings = {
     loginOpenShort: 'Anmeldeseite manuell öffnen',
     loginCopyUrl: 'Anmeldelink kopieren',
     loginCopied: 'Kopiert',
-    loginNetworkError:
-      'Genspark ist nicht erreichbar — prüfen Sie Netzwerk- oder Proxy-Einstellungen',
     loginExpired: 'Die Autorisierung ist abgelaufen — klicken Sie zum Wiederholen',
     loginFailed: 'Anmeldung fehlgeschlagen — klicken Sie zum Wiederholen',
     loggingOut: 'Abmelden…',
@@ -4109,14 +3940,12 @@ export const strings = {
     setAiEndpointAdd: 'Endpunkt hinzufügen',
     setAiEndpointRemove: 'Entfernen',
     setAiEndpointName: 'Name',
-    setAiGensparkHint: 'Nutzt Ihre Genspark-Anmeldung; kein API-Schlüssel nötig.',
     setAiCodexPath: 'Codex-Programmdatei',
     setAiCodexPathHint:
       'Nur bei einer benutzerdefinierten Installation angeben; leer lassen für automatische Erkennung.',
     setAiCodexAutoPlaceholder: 'Automatisch erkennen (empfohlen)',
     setAiCodexHint: 'Verwendet die lokal angemeldete Codex CLI; kein API-Schlüssel nötig.',
-    setAiByokNote:
-      'Chats nutzen deinen eigenen Schlüssel. Bildgenerierung und Medienanalyse folgen dem Abschnitt „KI-Medien“; die Websuche nutzt weiterhin die Genspark-Anmeldung oder kostenlose Quellen.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Speichern',
     setAiSaved: 'Gespeichert',
     setAiTest: 'Verbindung testen',
@@ -4127,10 +3956,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Ausgabe-Budget pro Durchlauf. Denk-Modelle verbrauchen es beim Reasoning; ist es erschöpft, kommt eine leere Antwort zurück — dann diesen Wert erhöhen.',
     setSecAiMedia: 'KI-Medien & Suche',
-    setAiMediaGensparkHint:
-      'Bildgenerierung und Bild-/Videoanalyse nutzen deine Genspark-Anmeldung.',
-    setAiSearchGensparkHint:
-      'Web- und Bildsuche nutzen deine Genspark-Anmeldung; abgemeldet oder mit ausgeschalteten Cloud-Tools greifen sie auf kostenlose Quellen zurück.',
     setAiSearchSerperHint: 'Serper liefert mit deinem Schlüssel Web- und Bildsuche.',
     setAiSearchSerplyHint: 'Serply liefert mit deinem Schlüssel Web- und Bildsuche.',
     setAiSearchTavilyHint:
@@ -4146,9 +3971,6 @@ export const strings = {
     setAiCapFileSearch: 'Lokale Dateisuche',
     setAiSharedKeyHint:
       'Schlüssel und Base URL eines Anbieters gelten für alle Fähigkeiten; einmal eintragen genügt.',
-    setAiGskTools: 'Genspark-Cloud-Tools',
-    setAiGskToolsDesc:
-      'Steht ihr Anbieter auf Genspark, laufen Websuche, Bildgenerierung und Medienanalyse über Genspark und verbrauchen Credits; ausgeschaltet nutzt die Suche kostenlose Quellen und die Genspark-Bildwerkzeuge sind nicht verfügbar.',
     setGithub: 'Open Source',
     starOnGitHub: 'Auf GitHub Stern geben',
     starPromptTitle: 'Gefällt Ihnen GenOffice?',
@@ -4177,18 +3999,12 @@ export const strings = {
     onbSubtitle1: 'Die erste quelloffene, KI-native Office-Suite',
     onbBody1:
       'Dokumente erstellen, Tabellen bauen, Präsentationen gestalten und PDFs prüfen. KI ist in jedem Schritt integriert.',
-    onbTitle2: 'Das ist erst der Anfang',
-    onbBody2:
-      'GenOffice ist noch in der Alpha-Phase. Treten Sie dem Gruppenchat auf GenTeam bei, um Feedback zu teilen und die Zukunft mitzugestalten.',
-    onbCredits: 'Aktive Mitwirkende erhalten **1.000+ Genspark-Guthaben**',
-    onbJoinGenTeam: 'GenTeam beitreten',
     onbSkip: 'Überspringen',
     onbNext: 'Weiter',
     onbStart: 'Loslegen',
     onbStepAria: 'Seite {n} von {total}',
     onbTitle3: 'Kostenlos für alle',
     onbBody3: 'Keine Lizenzgebühren. Keine Werbung. Keine Wasserzeichen.',
-    onbNote3: 'KI-Funktionen können Genspark-Credits verbrauchen.',
     onbBack: 'Zurück',
     intgSkillsDesc:
       'GenOffice verwendet nur Skills aus seinem eigenen Skills-Ordner. Der Import eines Ordners oder einer ZIP kopiert den ganzen Skill; beim Import wird nichts ausgeführt.',
@@ -4288,7 +4104,6 @@ export const strings = {
     askSavedAs: 'Guardado: {name}',
     askSaveFailed: 'No se pudo guardar: {error}',
     askEmptyCorpus: 'La base de conocimientos está vacía: marca archivos primero y luego pregunta.',
-    askNeedsLogin: 'Inicia sesión en Genspark para usar el chat de IA.',
     askPlaceholder: 'Pregunta sobre tus archivos favoritos…',
     askHintIdle: 'Enter para enviar',
     askHintBusy: 'La IA está respondiendo…',
@@ -4308,16 +4123,11 @@ export const strings = {
     askCtaRecents: 'Marcar desde Recientes',
     askNoSave: 'La conversación no se guarda; se borra al reiniciar la aplicación.',
     askUnknownError: 'La solicitud de IA falló. Inténtalo de nuevo.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Proyectos creados en la web con Genspark AI. La edición continúa en tu navegador: haz clic en un proyecto para abrirlo.',
     cloudSearchPlaceholder: 'Buscar entre {n} proyectos…',
     cloudNoResults: 'No hay proyectos coincidentes.',
     cloudSortRecent: 'Recientes',
     cloudSortOldest: 'Más antiguos',
     cloudRefresh: 'Actualizar',
-    cloudLoginHint:
-      'Inicia sesión en tu cuenta de Genspark para ver los proyectos creados en la web.',
     cloudEmpty: 'Aún no hay proyectos en la web.',
     cloudError: 'Error al cargar. Inténtalo más tarde.',
     cloudRetry: 'Reintentar',
@@ -4433,9 +4243,7 @@ export const strings = {
     // Account
     account: 'Cuenta',
     login: 'Iniciar sesión',
-    loginGenspark: 'Iniciar sesión con Genspark',
     loggedIn: 'Sesión iniciada',
-    loggedInGenspark: 'Sesión iniciada en Genspark',
     waitingLogin:
       'Esperando el inicio de sesión en el navegador… Haga clic para volver a abrir la página de inicio de sesión',
     waitingShort: 'Esperando…',
@@ -4445,8 +4253,6 @@ export const strings = {
     loginOpenShort: 'Abrir página de inicio de sesión',
     loginCopyUrl: 'Copiar enlace de inicio de sesión',
     loginCopied: 'Copiado',
-    loginNetworkError:
-      'No se puede conectar con Genspark — compruebe su red o la configuración del proxy',
     loginExpired: 'La autorización ha caducado — haga clic para reintentar',
     loginFailed: 'Error al iniciar sesión — haga clic para reintentar',
     loggingOut: 'Cerrando sesión…',
@@ -4653,14 +4459,12 @@ export const strings = {
     setAiEndpointAdd: 'Añadir endpoint',
     setAiEndpointRemove: 'Eliminar',
     setAiEndpointName: 'Nombre',
-    setAiGensparkHint: 'Usa tu inicio de sesión de Genspark; no se necesita clave de API.',
     setAiCodexPath: 'Ejecutable de Codex',
     setAiCodexPathHint:
       'Indícalo solo para una instalación personalizada; déjalo vacío para detectarlo automáticamente.',
     setAiCodexAutoPlaceholder: 'Detección automática (recomendado)',
     setAiCodexHint: 'Usa la CLI de Codex con sesión local; no se necesita clave de API.',
-    setAiByokNote:
-      'Los chats usan tu propia clave. La generación de imágenes y el análisis de medios siguen la sección «Medios de IA»; la búsqueda web sigue usando el inicio de sesión de Genspark o fuentes gratuitas.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Guardar',
     setAiSaved: 'Guardado',
     setAiTest: 'Probar conexión',
@@ -4671,10 +4475,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Presupuesto de salida por turno. Los modelos de razonamiento lo gastan en pensar; si se agota, la respuesta llega vacía: suba este valor.',
     setSecAiMedia: 'Medios de IA y búsqueda',
-    setAiMediaGensparkHint:
-      'La generación de imágenes y el análisis de imágenes/vídeos usan tu inicio de sesión de Genspark.',
-    setAiSearchGensparkHint:
-      'La búsqueda web y de imágenes usa tu inicio de sesión de Genspark; sin sesión o con las herramientas en la nube desactivadas recurre a fuentes gratuitas.',
     setAiSearchSerperHint: 'Serper ofrece búsqueda web y de imágenes con tu clave.',
     setAiSearchSerplyHint: 'Serply ofrece búsqueda web y de imágenes con tu clave.',
     setAiSearchTavilyHint:
@@ -4690,9 +4490,6 @@ export const strings = {
     setAiCapFileSearch: 'Búsqueda de archivos locales',
     setAiSharedKeyHint:
       'La clave y la URL base de un proveedor se comparten entre capacidades; introdúcelas una sola vez.',
-    setAiGskTools: 'Herramientas en la nube de Genspark',
-    setAiGskToolsDesc:
-      'Cuando su proveedor es Genspark, la búsqueda web, la generación de imágenes y el análisis de medios pasan por Genspark y consumen créditos; desactivado, la búsqueda usa fuentes gratuitas y las herramientas de imagen de Genspark no están disponibles.',
     setGithub: 'Código abierto',
     starOnGitHub: 'Dar una estrella en GitHub',
     starPromptTitle: '¿Te gusta GenOffice?',
@@ -4721,18 +4518,12 @@ export const strings = {
     onbSubtitle1: 'La primera suite ofimática de código abierto y nativa de IA',
     onbBody1:
       'Crea documentos, hojas de cálculo y presentaciones, y revisa PDF. La IA está integrada en cada paso.',
-    onbTitle2: 'Esto es solo el comienzo',
-    onbBody2:
-      'GenOffice aún está en alfa. Únete al chat grupal en GenTeam para compartir comentarios y ayudar a dar forma a lo que viene.',
-    onbCredits: 'Los colaboradores activos reciben **1.000+ créditos de Genspark**',
-    onbJoinGenTeam: 'Unirse a GenTeam',
     onbSkip: 'Omitir',
     onbNext: 'Siguiente',
     onbStart: 'Empezar',
     onbStepAria: 'Página {n} de {total}',
     onbTitle3: 'Gratis para todos',
     onbBody3: 'Sin licencias. Sin anuncios. Sin marcas de agua.',
-    onbNote3: 'Las funciones de IA pueden consumir créditos de Genspark.',
     onbBack: 'Atrás',
     intgSkillsDesc:
       'GenOffice solo usa habilidades de su propia carpeta. Importar una carpeta o un zip copia la habilidad completa; nada se ejecuta al importar.',
@@ -4832,7 +4623,6 @@ export const strings = {
     askSavedAs: 'บันทึกแล้ว: {name}',
     askSaveFailed: 'บันทึกไม่สำเร็จ: {error}',
     askEmptyCorpus: 'คลังความรู้ว่างเปล่า: ติดดาวไฟล์ก่อนแล้วค่อยถาม',
-    askNeedsLogin: 'เข้าสู่ระบบ Genspark เพื่อใช้แชท AI',
     askPlaceholder: 'ถามเกี่ยวกับไฟล์ที่ติดดาว…',
     askHintIdle: 'Enter เพื่อส่ง',
     askHintBusy: 'AI กำลังตอบ…',
@@ -4852,15 +4642,11 @@ export const strings = {
     askCtaRecents: 'ให้ดาวจากเมนูล่าสุด',
     askNoSave: 'บทสนทนาจะไม่ถูกบันทึก และจะล้างเมื่อรีสตาร์ทแอป',
     askUnknownError: 'คำขอ AI ล้มเหลว โปรดลองอีกครั้ง',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'โปรเจกต์ที่สร้างบนเว็บด้วย Genspark AI แก้ไขต่อได้ในเบราว์เซอร์ — คลิกโปรเจกต์เพื่อเปิด',
     cloudSearchPlaceholder: 'ค้นหา {n} โปรเจกต์…',
     cloudNoResults: 'ไม่มีโปรเจกต์ที่ตรงกัน',
     cloudSortRecent: 'ล่าสุด',
     cloudSortOldest: 'เก่าสุด',
     cloudRefresh: 'รีเฟรช',
-    cloudLoginHint: 'ลงชื่อเข้าใช้บัญชี Genspark เพื่อดูโปรเจกต์ที่คุณสร้างบนเว็บ',
     cloudEmpty: 'ยังไม่มีโปรเจกต์บนเว็บ',
     cloudError: 'โหลดไม่สำเร็จ โปรดลองอีกครั้งภายหลัง',
     cloudRetry: 'ลองอีกครั้ง',
@@ -4973,9 +4759,7 @@ export const strings = {
     // Account
     account: 'บัญชี',
     login: 'ลงชื่อเข้าใช้',
-    loginGenspark: 'ลงชื่อเข้าใช้ด้วย Genspark',
     loggedIn: 'ลงชื่อเข้าใช้แล้ว',
-    loggedInGenspark: 'ลงชื่อเข้าใช้ Genspark แล้ว',
     waitingLogin: 'กำลังรอการลงชื่อเข้าใช้ในเบราว์เซอร์… คลิกเพื่อเปิดหน้าลงชื่อเข้าใช้อีกครั้ง',
     waitingShort: 'กำลังรอ…',
     loginTimeout: 'การลงชื่อเข้าใช้หมดเวลา — คลิกเพื่อลองอีกครั้ง',
@@ -4984,7 +4768,6 @@ export const strings = {
     loginOpenShort: 'เปิดหน้าเข้าสู่ระบบด้วยตนเอง',
     loginCopyUrl: 'คัดลอกลิงก์เข้าสู่ระบบ',
     loginCopied: 'คัดลอกแล้ว',
-    loginNetworkError: 'ไม่สามารถเชื่อมต่อ Genspark ได้ โปรดตรวจสอบเครือข่ายหรือการตั้งค่าพร็อกซี',
     loginExpired: 'การอนุญาตหมดอายุ — คลิกเพื่อลองอีกครั้ง',
     loginFailed: 'การลงชื่อเข้าใช้ล้มเหลว — คลิกเพื่อลองอีกครั้ง',
     loggingOut: 'กำลังออกจากระบบ…',
@@ -5183,13 +4966,11 @@ export const strings = {
     setAiEndpointAdd: 'เพิ่มปลายทาง',
     setAiEndpointRemove: 'ลบ',
     setAiEndpointName: 'ชื่อ',
-    setAiGensparkHint: 'ใช้การลงชื่อเข้าใช้ Genspark ไม่ต้องใช้คีย์ API',
     setAiCodexPath: 'ไฟล์ปฏิบัติการ Codex',
     setAiCodexPathHint: 'กรอกเฉพาะเมื่อติดตั้งแบบกำหนดเอง เว้นว่างไว้เพื่อค้นหาอัตโนมัติ',
     setAiCodexAutoPlaceholder: 'ค้นหาอัตโนมัติ (แนะนำ)',
     setAiCodexHint: 'ใช้ Codex CLI ที่เข้าสู่ระบบไว้ในเครื่อง โดยไม่ต้องใช้คีย์ API',
-    setAiByokNote:
-      'การแชทใช้คีย์ของคุณเอง การสร้างภาพและการวิเคราะห์สื่อเป็นไปตามส่วน "สื่อ AI" ส่วนการค้นหาเว็บยังใช้การลงชื่อเข้าใช้ Genspark หรือแหล่งข้อมูลฟรี',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'บันทึก',
     setAiSaved: 'บันทึกแล้ว',
     setAiTest: 'ทดสอบการเชื่อมต่อ',
@@ -5200,10 +4981,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'งบผลลัพธ์ต่อหนึ่งรอบ โมเดลแบบใช้เหตุผลจะใช้ส่วนหนึ่งไปกับการคิด หากงบหมด คำตอบอาจกลับมาว่างเปล่า ให้เพิ่มค่านี้',
     setSecAiMedia: 'สื่อ AI และการค้นหา',
-    setAiMediaGensparkHint:
-      'การสร้างภาพและการวิเคราะห์ภาพ/วิดีโอใช้การลงชื่อเข้าใช้ Genspark ของคุณ',
-    setAiSearchGensparkHint:
-      'การค้นหาเว็บและภาพใช้การลงชื่อเข้าใช้ Genspark หากไม่ได้ลงชื่อเข้าใช้หรือปิดเครื่องมือคลาวด์ จะใช้แหล่งข้อมูลฟรีแทน',
     setAiSearchSerperHint: 'Serper ให้บริการค้นหาเว็บและภาพด้วยคีย์ของคุณ',
     setAiSearchSerplyHint: 'Serply ให้บริการค้นหาเว็บและภาพด้วยคีย์ของคุณ',
     setAiSearchTavilyHint:
@@ -5219,9 +4996,6 @@ export const strings = {
     setAiCapFileSearch: 'ค้นหาไฟล์ในเครื่อง',
     setAiSharedKeyHint:
       'คีย์และ Base URL ของผู้ให้บริการเดียวกันใช้ร่วมกันทุกความสามารถ กรอกครั้งเดียวพอ',
-    setAiGskTools: 'เครื่องมือคลาวด์ Genspark',
-    setAiGskToolsDesc:
-      'เมื่อผู้ให้บริการตั้งเป็น Genspark การค้นหาเว็บ การสร้างภาพ และการวิเคราะห์สื่อจะผ่าน Genspark และใช้เครดิต เมื่อปิด การค้นหาจะใช้แหล่งข้อมูลฟรีและเครื่องมือภาพของ Genspark จะใช้ไม่ได้',
     setGithub: 'โอเพนซอร์ส',
     starOnGitHub: 'กดดาวบน GitHub',
     starPromptTitle: 'ชอบ GenOffice ไหม?',
@@ -5249,18 +5023,12 @@ export const strings = {
     onbTitle1: 'ยินดีต้อนรับสู่ GenOffice',
     onbSubtitle1: 'ชุดโปรแกรมออฟฟิศ AI-native โอเพนซอร์สตัวแรก',
     onbBody1: 'สร้างเอกสาร ทำสเปรดชีต สร้างงานนำเสนอ และตรวจทาน PDF ทุกขั้นตอนมี AI ในตัว',
-    onbTitle2: 'นี่เป็นเพียงจุดเริ่มต้น',
-    onbBody2:
-      'GenOffice ยังอยู่ในช่วงอัลฟ่า เข้าร่วมแชทกลุ่มบน GenTeam เพื่อแบ่งปันความคิดเห็นและร่วมกำหนดทิศทางต่อไป',
-    onbCredits: 'ผู้มีส่วนร่วมอย่างต่อเนื่องจะได้รับ **เครดิต Genspark กว่า 1,000**',
-    onbJoinGenTeam: 'เข้าร่วม GenTeam',
     onbSkip: 'ข้าม',
     onbNext: 'ถัดไป',
     onbStart: 'เริ่มใช้งาน',
     onbStepAria: 'หน้า {n} จาก {total}',
     onbTitle3: 'ฟรีสำหรับทุกคน',
     onbBody3: 'ไม่มีค่าลิขสิทธิ์ ไม่มีโฆษณา ไม่มีลายน้ำ',
-    onbNote3: 'ฟีเจอร์ AI อาจใช้เครดิต Genspark',
     onbBack: 'ย้อนกลับ',
     intgSkillsDesc:
       'GenOffice ใช้เฉพาะทักษะในโฟลเดอร์ทักษะของตัวเอง การนำเข้าจากโฟลเดอร์หรือ zip จะคัดลอกทักษะทั้งชุด และไม่มีสิ่งใดทำงานเมื่อนำเข้า',
@@ -5358,7 +5126,6 @@ export const strings = {
     askSavedAs: 'Tersimpan: {name}',
     askSaveFailed: 'Gagal menyimpan: {error}',
     askEmptyCorpus: 'Basis pengetahuan kosong: tandai beberapa file dahulu, lalu bertanya.',
-    askNeedsLogin: 'Masuk ke Genspark untuk memakai obrolan AI.',
     askPlaceholder: 'Tanya tentang file berbintang anda…',
     askHintIdle: 'Enter untuk mengirim',
     askHintBusy: 'AI sedang menjawab…',
@@ -5378,15 +5145,11 @@ export const strings = {
     askCtaRecents: 'Tandai dari Terbaru',
     askNoSave: 'Percakapan tidak disimpan; akan hilang saat aplikasi dimulai ulang.',
     askUnknownError: 'Permintaan AI gagal. Coba lagi.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Proyek yang dibuat di web dengan Genspark AI. Pengeditan berlanjut di browser — klik proyek untuk membukanya.',
     cloudSearchPlaceholder: 'Cari {n} proyek…',
     cloudNoResults: 'Tidak ada proyek yang cocok.',
     cloudSortRecent: 'Terbaru',
     cloudSortOldest: 'Terlama',
     cloudRefresh: 'Segarkan',
-    cloudLoginHint: 'Masuk ke akun Genspark untuk melihat proyek yang Anda buat di web.',
     cloudEmpty: 'Belum ada proyek web.',
     cloudError: 'Gagal memuat. Coba lagi nanti.',
     cloudRetry: 'Coba lagi',
@@ -5501,9 +5264,7 @@ export const strings = {
     // Account
     account: 'Akun',
     login: 'Masuk',
-    loginGenspark: 'Masuk dengan Genspark',
     loggedIn: 'Sudah masuk',
-    loggedInGenspark: 'Sudah masuk ke Genspark',
     waitingLogin: 'Menunggu login di browser… Klik untuk membuka kembali halaman login',
     waitingShort: 'Menunggu…',
     loginTimeout: 'Waktu login habis — klik untuk mencoba lagi',
@@ -5512,8 +5273,6 @@ export const strings = {
     loginOpenShort: 'Buka halaman login secara manual',
     loginCopyUrl: 'Salin tautan login',
     loginCopied: 'Disalin',
-    loginNetworkError:
-      'Tidak dapat terhubung ke Genspark — periksa jaringan atau pengaturan proxy Anda',
     loginExpired: 'Otorisasi kedaluwarsa — klik untuk mencoba lagi',
     loginFailed: 'Login gagal — klik untuk mencoba lagi',
     loggingOut: 'Keluar…',
@@ -5718,13 +5477,11 @@ export const strings = {
     setAiEndpointAdd: 'Tambah endpoint',
     setAiEndpointRemove: 'Hapus',
     setAiEndpointName: 'Nama',
-    setAiGensparkHint: 'Menggunakan login Genspark; tanpa kunci API.',
     setAiCodexPath: 'Berkas eksekusi Codex',
     setAiCodexPathHint: 'Isi hanya untuk instalasi khusus; kosongkan agar terdeteksi otomatis.',
     setAiCodexAutoPlaceholder: 'Deteksi otomatis (disarankan)',
     setAiCodexHint: 'Menggunakan Codex CLI yang sudah login secara lokal; tanpa kunci API.',
-    setAiByokNote:
-      'Chat memakai kunci Anda sendiri. Pembuatan gambar dan analisis media mengikuti bagian "Media AI"; pencarian web tetap memakai login Genspark atau sumber gratis.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Simpan',
     setAiSaved: 'Tersimpan',
     setAiTest: 'Uji koneksi',
@@ -5735,10 +5492,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Anggaran keluaran untuk satu giliran. Model penalaran memakainya untuk berpikir; jika habis, balasan datang kosong — naikkan nilai ini.',
     setSecAiMedia: 'Media & Pencarian AI',
-    setAiMediaGensparkHint:
-      'Pembuatan gambar dan analisis gambar/video menggunakan login Genspark Anda.',
-    setAiSearchGensparkHint:
-      'Pencarian web dan gambar memakai login Genspark Anda; saat keluar atau alat cloud dimatikan, keduanya memakai sumber gratis.',
     setAiSearchSerperHint: 'Serper menyediakan pencarian web dan gambar dengan kunci Anda.',
     setAiSearchSerplyHint: 'Serply menyediakan pencarian web dan gambar dengan kunci Anda.',
     setAiSearchTavilyHint:
@@ -5754,9 +5507,6 @@ export const strings = {
     setAiCapFileSearch: 'Pencarian file lokal',
     setAiSharedKeyHint:
       'Kunci dan Base URL satu penyedia dipakai bersama oleh semua kemampuan; cukup isi sekali.',
-    setAiGskTools: 'Alat cloud Genspark',
-    setAiGskToolsDesc:
-      'Saat penyedianya disetel ke Genspark, pencarian web, pembuatan gambar, dan analisis media berjalan lewat Genspark dan memakai kredit; jika dimatikan, pencarian memakai sumber gratis dan alat gambar Genspark tidak tersedia.',
     setGithub: 'Sumber Terbuka',
     starOnGitHub: 'Beri Bintang di GitHub',
     starPromptTitle: 'Suka GenOffice?',
@@ -5785,18 +5535,12 @@ export const strings = {
     onbSubtitle1: 'Suite office open source AI-native pertama',
     onbBody1:
       'Buat dokumen, susun spreadsheet, rancang presentasi, dan tinjau PDF. AI hadir di setiap langkah.',
-    onbTitle2: 'Ini baru permulaan',
-    onbBody2:
-      'GenOffice masih dalam tahap alpha. Gabung obrolan grup di GenTeam untuk berbagi masukan dan ikut menentukan arah ke depan.',
-    onbCredits: 'Kontributor aktif mendapat **1.000+ kredit Genspark**',
-    onbJoinGenTeam: 'Gabung GenTeam',
     onbSkip: 'Lewati',
     onbNext: 'Berikutnya',
     onbStart: 'Mulai',
     onbStepAria: 'Halaman {n} dari {total}',
     onbTitle3: 'Gratis untuk semua',
     onbBody3: 'Tanpa biaya lisensi. Tanpa iklan. Tanpa watermark.',
-    onbNote3: 'Fitur AI dapat menggunakan kredit Genspark.',
     onbBack: 'Kembali',
     intgSkillsDesc:
       'GenOffice hanya memakai keterampilan di folder keterampilannya sendiri. Mengimpor folder atau zip menyalin seluruh keterampilan; tidak ada yang dijalankan saat impor.',
@@ -5896,7 +5640,6 @@ export const strings = {
     askSavedAs: 'Сохранено: {name}',
     askSaveFailed: 'Не удалось сохранить: {error}',
     askEmptyCorpus: 'База знаний пуста: сначала отметьте файлы, затем спрашивайте.',
-    askNeedsLogin: 'Войдите в Genspark, чтобы пользоваться чатом с ИИ.',
     askPlaceholder: 'Спросите о своих файлах…',
     askHintIdle: 'Enter — отправить',
     askHintBusy: 'ИИ отвечает…',
@@ -5916,15 +5659,11 @@ export const strings = {
     askCtaRecents: 'Добавить из «Недавних»',
     askNoSave: 'Диалог не сохраняется и очищается при перезапуске приложения.',
     askUnknownError: 'Запрос к ИИ не удался. Попробуйте снова.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Проекты, созданные в вебе с Genspark AI. Редактирование продолжается в браузере — нажмите на проект, чтобы открыть его.',
     cloudSearchPlaceholder: 'Поиск среди {n} проектов…',
     cloudNoResults: 'Нет подходящих проектов.',
     cloudSortRecent: 'Сначала новые',
     cloudSortOldest: 'Сначала старые',
     cloudRefresh: 'Обновить',
-    cloudLoginHint: 'Войдите в аккаунт Genspark, чтобы увидеть проекты, созданные в вебе.',
     cloudEmpty: 'Пока нет веб-проектов.',
     cloudError: 'Не удалось загрузить. Повторите попытку позже.',
     cloudRetry: 'Повторить',
@@ -6038,9 +5777,7 @@ export const strings = {
     // Account
     account: 'Учётная запись',
     login: 'Войти',
-    loginGenspark: 'Войти через Genspark',
     loggedIn: 'Вход выполнен',
-    loggedInGenspark: 'Выполнен вход в Genspark',
     waitingLogin: 'Ожидание входа в браузере… Нажмите, чтобы снова открыть страницу входа',
     waitingShort: 'Ожидание…',
     loginTimeout: 'Время входа истекло — нажмите, чтобы повторить',
@@ -6049,7 +5786,6 @@ export const strings = {
     loginOpenShort: 'Открыть страницу входа вручную',
     loginCopyUrl: 'Скопировать ссылку для входа',
     loginCopied: 'Скопировано',
-    loginNetworkError: 'Не удаётся подключиться к Genspark — проверьте сеть или настройки прокси',
     loginExpired: 'Срок авторизации истёк — нажмите, чтобы повторить',
     loginFailed: 'Не удалось войти — нажмите, чтобы повторить',
     loggingOut: 'Выход…',
@@ -6254,14 +5990,12 @@ export const strings = {
     setAiEndpointAdd: 'Добавить эндпоинт',
     setAiEndpointRemove: 'Удалить',
     setAiEndpointName: 'Название',
-    setAiGensparkHint: 'Использует вход в Genspark; ключ API не нужен.',
     setAiCodexPath: 'Исполняемый файл Codex',
     setAiCodexPathHint:
       'Указывайте только для нестандартной установки; оставьте пустым для автоопределения.',
     setAiCodexAutoPlaceholder: 'Автоопределение (рекомендуется)',
     setAiCodexHint: 'Использует локально авторизованный Codex CLI; ключ API не нужен.',
-    setAiByokNote:
-      'Чаты используют ваш собственный ключ. Генерация изображений и анализ медиа настраиваются в разделе «Медиа ИИ»; веб-поиск по-прежнему использует вход в Genspark или бесплатные источники.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Сохранить',
     setAiSaved: 'Сохранено',
     setAiTest: 'Проверить подключение',
@@ -6272,10 +6006,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Бюджет вывода за один ход. Модели рассуждений тратят его на размышления: если бюджет иссякнет, ответ придёт пустым — увеличьте значение.',
     setSecAiMedia: 'Медиа и поиск ИИ',
-    setAiMediaGensparkHint:
-      'Генерация изображений и анализ изображений/видео используют ваш вход в Genspark.',
-    setAiSearchGensparkHint:
-      'Веб-поиск и поиск изображений используют ваш вход в Genspark; без входа или при выключенных облачных инструментах используются бесплатные источники.',
     setAiSearchSerperHint: 'Serper обеспечивает веб-поиск и поиск изображений с вашим ключом.',
     setAiSearchSerplyHint: 'Serply обеспечивает веб-поиск и поиск изображений с вашим ключом.',
     setAiSearchTavilyHint:
@@ -6291,9 +6021,6 @@ export const strings = {
     setAiCapFileSearch: 'Поиск локальных файлов',
     setAiSharedKeyHint:
       'Ключ и базовый URL провайдера общие для всех функций; введите их один раз.',
-    setAiGskTools: 'Облачные инструменты Genspark',
-    setAiGskToolsDesc:
-      'Когда провайдером выбран Genspark, веб-поиск, генерация изображений и анализ медиа идут через Genspark и расходуют кредиты; при выключении поиск использует бесплатные источники, а инструменты изображений Genspark недоступны.',
     setGithub: 'Открытый код',
     starOnGitHub: 'Поставить звезду на GitHub',
     starPromptTitle: 'Нравится GenOffice?',
@@ -6322,18 +6049,12 @@ export const strings = {
     onbSubtitle1: 'Первый открытый ИИ-нативный офисный пакет',
     onbBody1:
       'Создавайте документы, таблицы и презентации, работайте с PDF. ИИ встроен в каждый шаг.',
-    onbTitle2: 'Это только начало',
-    onbBody2:
-      'GenOffice пока в альфа-версии. Присоединяйтесь к групповому чату в GenTeam, чтобы делиться отзывами и влиять на дальнейшее развитие.',
-    onbCredits: 'Активные участники получают **1000+ кредитов Genspark**',
-    onbJoinGenTeam: 'Присоединиться к GenTeam',
     onbSkip: 'Пропустить',
     onbNext: 'Далее',
     onbStart: 'Начать',
     onbStepAria: 'Страница {n} из {total}',
     onbTitle3: 'Бесплатно для всех',
     onbBody3: 'Без лицензий. Без рекламы. Без водяных знаков.',
-    onbNote3: 'Функции ИИ могут расходовать кредиты Genspark.',
     onbBack: 'Назад',
     intgSkillsDesc:
       'GenOffice использует только навыки из своей папки навыков. Импорт папки или zip копирует навык целиком; при импорте ничего не запускается.',
@@ -6433,7 +6154,6 @@ export const strings = {
     askSavedAs: 'تم الحفظ: {name}',
     askSaveFailed: 'تعذر الحفظ: {error}',
     askEmptyCorpus: 'قاعدة المعارف فارغة: ضع نجمة على بعض الملفات أولاً ثم اسأل.',
-    askNeedsLogin: 'سجّل الدخول إلى Genspark لاستخدام محادثة الذكاء الاصطناعي.',
     askPlaceholder: 'اسأل عن ملفاتك المفضلة…',
     askHintIdle: 'Enter للإرسال',
     askHintBusy: 'الذكاء الاصطناعي يجيب…',
@@ -6453,15 +6173,11 @@ export const strings = {
     askCtaRecents: 'أضف نجمة من الملفات الأخيرة',
     askNoSave: 'لا يتم حفظ المحادثة؛ تُمسح عند إعادة تشغيل التطبيق.',
     askUnknownError: 'فشل طلب الذكاء الاصطناعي. حاول مجدداً.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'مشاريع أُنشئت على الويب باستخدام Genspark AI. يستمر التحرير في المتصفح — انقر على أي مشروع لفتحه.',
     cloudSearchPlaceholder: 'ابحث في {n} مشروعًا…',
     cloudNoResults: 'لا توجد مشاريع مطابقة.',
     cloudSortRecent: 'الأحدث',
     cloudSortOldest: 'الأقدم',
     cloudRefresh: 'تحديث',
-    cloudLoginHint: 'سجّل الدخول إلى حساب Genspark لعرض المشاريع التي أنشأتها على الويب.',
     cloudEmpty: 'لا توجد مشاريع على الويب بعد.',
     cloudError: 'فشل التحميل. حاول مرة أخرى لاحقًا.',
     cloudRetry: 'إعادة المحاولة',
@@ -6574,9 +6290,7 @@ export const strings = {
     // Account
     account: 'الحساب',
     login: 'تسجيل الدخول',
-    loginGenspark: 'تسجيل الدخول باستخدام Genspark',
     loggedIn: 'تم تسجيل الدخول',
-    loggedInGenspark: 'تم تسجيل الدخول إلى Genspark',
     waitingLogin: 'في انتظار تسجيل الدخول في المتصفح… انقر لإعادة فتح صفحة تسجيل الدخول',
     waitingShort: 'في الانتظار…',
     loginTimeout: 'انتهت مهلة تسجيل الدخول — انقر لإعادة المحاولة',
@@ -6585,7 +6299,6 @@ export const strings = {
     loginOpenShort: 'فتح صفحة تسجيل الدخول يدويًا',
     loginCopyUrl: 'نسخ رابط تسجيل الدخول',
     loginCopied: 'تم النسخ',
-    loginNetworkError: 'تعذّر الاتصال بـ Genspark — تحقق من الشبكة أو إعدادات الوكيل',
     loginExpired: 'انتهت صلاحية التفويض — انقر لإعادة المحاولة',
     loginFailed: 'فشل تسجيل الدخول — انقر لإعادة المحاولة',
     loggingOut: 'جارٍ تسجيل الخروج…',
@@ -6786,13 +6499,11 @@ export const strings = {
     setAiEndpointAdd: 'إضافة نقطة نهاية',
     setAiEndpointRemove: 'إزالة',
     setAiEndpointName: 'الاسم',
-    setAiGensparkHint: 'يستخدم تسجيل الدخول إلى Genspark؛ لا حاجة لمفتاح API.',
     setAiCodexPath: 'ملف Codex التنفيذي',
     setAiCodexPathHint: 'حدده فقط للتثبيت المخصص؛ اتركه فارغًا للاكتشاف التلقائي.',
     setAiCodexAutoPlaceholder: 'اكتشاف تلقائي (موصى به)',
     setAiCodexHint: 'يستخدم Codex CLI المسجل محليًا؛ لا حاجة إلى مفتاح API.',
-    setAiByokNote:
-      'تستخدم المحادثات مفتاحك الخاص. يتبع توليد الصور وتحليل الوسائط قسم «وسائط الذكاء الاصطناعي»؛ ولا يزال البحث في الويب يستخدم تسجيل دخول Genspark أو مصادر مجانية.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'حفظ',
     setAiSaved: 'تم الحفظ',
     setAiTest: 'اختبار الاتصال',
@@ -6803,9 +6514,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'ميزانية الإخراج في الدورة الواحدة. نماذج الاستدلال تصرفها على التفكير، فإذا نفدت جاء الرد فارغًا؛ ارفع هذه القيمة عندئذ.',
     setSecAiMedia: 'وسائط الذكاء الاصطناعي والبحث',
-    setAiMediaGensparkHint: 'يستخدم توليد الصور وتحليل الصور/الفيديو تسجيل دخولك إلى Genspark.',
-    setAiSearchGensparkHint:
-      'يستخدم البحث في الويب والصور تسجيل دخولك إلى Genspark؛ وعند الخروج أو إيقاف الأدوات السحابية يعود إلى مصادر مجانية.',
     setAiSearchSerperHint: 'يوفّر Serper البحث في الويب والصور بمفتاحك.',
     setAiSearchSerplyHint: 'يوفّر Serply البحث في الويب والصور بمفتاحك.',
     setAiSearchTavilyHint:
@@ -6821,9 +6529,6 @@ export const strings = {
     setAiCapFileSearch: 'البحث في الملفات المحلية',
     setAiSharedKeyHint:
       'مفتاح المزوّد وعنوان Base URL مشتركان بين جميع القدرات؛ أدخلهما مرة واحدة فقط.',
-    setAiGskTools: 'أدوات Genspark السحابية',
-    setAiGskToolsDesc:
-      'عندما يكون المزوّد Genspark، يمر البحث في الويب وتوليد الصور وتحليل الوسائط عبر Genspark ويستهلك الرصيد؛ عند الإيقاف يستخدم البحث مصادر مجانية وتصبح أدوات صور Genspark غير متاحة.',
     setGithub: 'مفتوح المصدر',
     starOnGitHub: 'ضع نجمة على GitHub',
     starPromptTitle: 'هل أعجبك GenOffice؟',
@@ -6851,18 +6556,12 @@ export const strings = {
     onbSubtitle1: 'أول حزمة مكتبية مفتوحة المصدر وأصيلة في الذكاء الاصطناعي',
     onbBody1:
       'أنشئ المستندات وجداول البيانات والعروض التقديمية وراجع ملفات PDF. الذكاء الاصطناعي مدمج في كل خطوة.',
-    onbTitle2: 'هذه مجرد البداية',
-    onbBody2:
-      'لا يزال GenOffice في مرحلة ألفا. انضم إلى الدردشة الجماعية على GenTeam لمشاركة ملاحظاتك والمساهمة في تشكيل المستقبل.',
-    onbCredits: 'يحصل المساهمون النشطون على **+1,000 من أرصدة Genspark**',
-    onbJoinGenTeam: 'الانضمام إلى GenTeam',
     onbSkip: 'تخطي',
     onbNext: 'التالي',
     onbStart: 'ابدأ الآن',
     onbStepAria: 'الصفحة {n} من {total}',
     onbTitle3: 'مجاني للجميع',
     onbBody3: 'بلا رسوم ترخيص، بلا إعلانات، بلا علامات مائية.',
-    onbNote3: 'قد تستهلك ميزات الذكاء الاصطناعي أرصدة Genspark.',
     onbBack: 'رجوع',
     intgSkillsDesc:
       'يستخدم GenOffice المهارات الموجودة في مجلد مهاراته فقط. استيراد مجلد أو ملف zip ينسخ المهارة كاملة؛ ولا يُشغَّل شيء عند الاستيراد.',
@@ -6961,7 +6660,6 @@ export const strings = {
     askSaveFailed: 'Não foi possível salvar: {error}',
     askEmptyCorpus:
       'A base de conhecimento está vazia: marque arquivos primeiro e depois pergunte.',
-    askNeedsLogin: 'Entre no Genspark para usar o chat de IA.',
     askPlaceholder: 'Pergunte sobre seus arquivos favoritos…',
     askHintIdle: 'Enter para enviar',
     askHintBusy: 'A IA está respondendo…',
@@ -6981,15 +6679,11 @@ export const strings = {
     askCtaRecents: 'Marcar de Recentes',
     askNoSave: 'A conversa não é salva; ela é apagada quando o app reinicia.',
     askUnknownError: 'A solicitação de IA falhou. Tente novamente.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Projetos criados na web com o Genspark AI. A edição continua no navegador — clique em um projeto para abri-lo.',
     cloudSearchPlaceholder: 'Pesquisar {n} projetos…',
     cloudNoResults: 'Nenhum projeto correspondente.',
     cloudSortRecent: 'Recentes',
     cloudSortOldest: 'Mais antigos',
     cloudRefresh: 'Atualizar',
-    cloudLoginHint: 'Entre na sua conta Genspark para ver os projetos criados na web.',
     cloudEmpty: 'Ainda não há projetos na web.',
     cloudError: 'Falha ao carregar. Tente novamente mais tarde.',
     cloudRetry: 'Tentar novamente',
@@ -7098,9 +6792,7 @@ export const strings = {
     untitled: 'Sem título',
     account: 'Conta',
     login: 'Entrar',
-    loginGenspark: 'Entrar com a Genspark',
     loggedIn: 'Conectado',
-    loggedInGenspark: 'Conectado à Genspark',
     waitingLogin: 'Aguardando o login no navegador… Clique para reabrir a página de login',
     waitingShort: 'Aguardando…',
     loginTimeout: 'O login expirou — clique para tentar novamente',
@@ -7109,8 +6801,6 @@ export const strings = {
     loginOpenShort: 'Abrir página de login manualmente',
     loginCopyUrl: 'Copiar link de login',
     loginCopied: 'Copiado',
-    loginNetworkError:
-      'Não foi possível conectar ao Genspark — verifique sua rede ou as configurações de proxy',
     loginExpired: 'A autorização expirou — clique para tentar novamente',
     loginFailed: 'Falha no login — clique para tentar novamente',
     loggingOut: 'Saindo…',
@@ -7318,14 +7008,12 @@ export const strings = {
     setAiEndpointAdd: 'Adicionar endpoint',
     setAiEndpointRemove: 'Remover',
     setAiEndpointName: 'Nome',
-    setAiGensparkHint: 'Usa seu login Genspark; nenhuma chave de API necessária.',
     setAiCodexPath: 'Executável do Codex',
     setAiCodexPathHint:
       'Preencha apenas para uma instalação personalizada; deixe em branco para detectar automaticamente.',
     setAiCodexAutoPlaceholder: 'Detectar automaticamente (recomendado)',
     setAiCodexHint: 'Usa o Codex CLI conectado localmente; nenhuma chave de API é necessária.',
-    setAiByokNote:
-      'Os chats usam a sua própria chave. A geração de imagens e a análise de mídia seguem a seção «Mídia de IA»; a busca na web continua usando o login do Genspark ou fontes gratuitas.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Salvar',
     setAiSaved: 'Salvo',
     setAiTest: 'Testar conexão',
@@ -7336,10 +7024,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Orçamento de saída por turno. Modelos de raciocínio gastam-no pensando; se esgotar, a resposta vem vazia — aumente este valor.',
     setSecAiMedia: 'Mídia e busca de IA',
-    setAiMediaGensparkHint:
-      'A geração de imagens e a análise de imagens/vídeos usam o seu login do Genspark.',
-    setAiSearchGensparkHint:
-      'A busca na web e de imagens usa o seu login do Genspark; desconectado ou com as ferramentas na nuvem desativadas, recorre a fontes gratuitas.',
     setAiSearchSerperHint: 'O Serper oferece busca na web e de imagens com a sua chave.',
     setAiSearchSerplyHint: 'O Serply oferece busca na web e de imagens com a sua chave.',
     setAiSearchTavilyHint:
@@ -7355,9 +7039,6 @@ export const strings = {
     setAiCapFileSearch: 'Pesquisa de arquivos locais',
     setAiSharedKeyHint:
       'A chave e a URL base de um provedor são compartilhadas entre as capacidades; insira-as uma só vez.',
-    setAiGskTools: 'Ferramentas na nuvem Genspark',
-    setAiGskToolsDesc:
-      'Quando o provedor é o Genspark, a busca na web, a geração de imagens e a análise de mídia passam pelo Genspark e consomem créditos; desativado, a busca usa fontes gratuitas e as ferramentas de imagem do Genspark ficam indisponíveis.',
     setGithub: 'Código aberto',
     starOnGitHub: 'Dar uma estrela no GitHub',
     starPromptTitle: 'Gostando do GenOffice?',
@@ -7384,18 +7065,12 @@ export const strings = {
     onbSubtitle1: 'A primeira suíte de escritório open source e nativa de IA',
     onbBody1:
       'Crie documentos, planilhas e apresentações e revise PDFs. A IA está integrada em cada etapa.',
-    onbTitle2: 'Isto é só o começo',
-    onbBody2:
-      'O GenOffice ainda está em alfa. Entre no chat em grupo no GenTeam para compartilhar feedback e ajudar a moldar o que vem a seguir.',
-    onbCredits: 'Contribuidores ativos recebem **1.000+ créditos Genspark**',
-    onbJoinGenTeam: 'Entrar no GenTeam',
     onbSkip: 'Pular',
     onbNext: 'Avançar',
     onbStart: 'Começar',
     onbStepAria: 'Página {n} de {total}',
     onbTitle3: 'Gratuito para todos',
     onbBody3: "Sem licenças. Sem anúncios. Sem marcas d'água.",
-    onbNote3: 'Os recursos de IA podem consumir créditos Genspark.',
     onbBack: 'Voltar',
     intgSkillsDesc:
       'O GenOffice só usa habilidades da sua própria pasta. Importar uma pasta ou um zip copia a habilidade inteira; nada é executado na importação.',
@@ -7496,7 +7171,6 @@ export const strings = {
     askSavedAs: 'Salvato: {name}',
     askSaveFailed: 'Salvataggio non riuscito: {error}',
     askEmptyCorpus: 'La base di conoscenza è vuota: contrassegna prima alcuni file, poi chiedi.',
-    askNeedsLogin: 'Accedi a Genspark per usare la chat IA.',
     askPlaceholder: 'Chiedi qualcosa sui tuoi file preferiti…',
     askHintIdle: 'Invio per inviare',
     askHintBusy: 'L’IA sta rispondendo…',
@@ -7516,15 +7190,11 @@ export const strings = {
     askCtaRecents: 'Stella da Recenti',
     askNoSave: 'La conversazione non viene salvata; si cancella al riavvio dell’app.',
     askUnknownError: 'La richiesta IA non è riuscita. Riprova.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Progetti creati sul web con Genspark AI. La modifica continua nel browser: fai clic su un progetto per aprirlo.',
     cloudSearchPlaceholder: 'Cerca tra {n} progetti…',
     cloudNoResults: 'Nessun progetto corrispondente.',
     cloudSortRecent: 'Recenti',
     cloudSortOldest: 'Meno recenti',
     cloudRefresh: 'Aggiorna',
-    cloudLoginHint: 'Accedi al tuo account Genspark per vedere i progetti creati sul web.',
     cloudEmpty: 'Ancora nessun progetto web.',
     cloudError: 'Caricamento non riuscito. Riprova più tardi.',
     cloudRetry: 'Riprova',
@@ -7633,9 +7303,7 @@ export const strings = {
     untitled: 'Senza titolo',
     account: 'Account',
     login: 'Accedi',
-    loginGenspark: 'Accedi con Genspark',
     loggedIn: 'Accesso effettuato',
-    loggedInGenspark: 'Accesso effettuato a Genspark',
     waitingLogin: "In attesa dell'accesso nel browser… Fai clic per riaprire la pagina di accesso",
     waitingShort: 'In attesa…',
     loginTimeout: 'Accesso scaduto — fai clic per riprovare',
@@ -7644,8 +7312,6 @@ export const strings = {
     loginOpenShort: 'Apri la pagina di accesso',
     loginCopyUrl: 'Copia il link di accesso',
     loginCopied: 'Copiato',
-    loginNetworkError:
-      'Impossibile raggiungere Genspark — controlla la rete o le impostazioni del proxy',
     loginExpired: 'Autorizzazione scaduta — fai clic per riprovare',
     loginFailed: 'Accesso non riuscito — fai clic per riprovare',
     loggingOut: 'Disconnessione…',
@@ -7852,14 +7518,12 @@ export const strings = {
     setAiEndpointAdd: 'Aggiungi endpoint',
     setAiEndpointRemove: 'Rimuovi',
     setAiEndpointName: 'Nome',
-    setAiGensparkHint: 'Usa il tuo accesso Genspark; nessuna chiave API richiesta.',
     setAiCodexPath: 'Eseguibile Codex',
     setAiCodexPathHint:
       'Compila solo per un’installazione personalizzata; lascia vuoto per il rilevamento automatico.',
     setAiCodexAutoPlaceholder: 'Rilevamento automatico (consigliato)',
     setAiCodexHint: 'Usa Codex CLI con accesso locale; non è richiesta alcuna chiave API.',
-    setAiByokNote:
-      "Le chat usano la tua chiave. La generazione di immagini e l'analisi dei media seguono la sezione «Media IA»; la ricerca web usa ancora l'accesso Genspark o fonti gratuite.",
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Salva',
     setAiSaved: 'Salvato',
     setAiTest: 'Prova connessione',
@@ -7870,10 +7534,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Budget di uscita per singolo turno. I modelli di ragionamento lo consumano pensando: se si esaurisce, la risposta arriva vuota; aumentalo.',
     setSecAiMedia: 'Media e ricerca IA',
-    setAiMediaGensparkHint:
-      "La generazione di immagini e l'analisi di immagini/video usano il tuo accesso Genspark.",
-    setAiSearchGensparkHint:
-      'La ricerca web e di immagini usa il tuo accesso Genspark; disconnesso o con gli strumenti cloud disattivati ricorre a fonti gratuite.',
     setAiSearchSerperHint: 'Serper offre ricerca web e di immagini con la tua chiave.',
     setAiSearchSerplyHint: 'Serply offre ricerca web e di immagini con la tua chiave.',
     setAiSearchTavilyHint:
@@ -7889,9 +7549,6 @@ export const strings = {
     setAiCapFileSearch: 'Ricerca file locali',
     setAiSharedKeyHint:
       "La chiave e l'URL base di un provider sono condivisi tra le capacità; inseriscili una volta sola.",
-    setAiGskTools: 'Strumenti cloud Genspark',
-    setAiGskToolsDesc:
-      "Quando il provider è Genspark, la ricerca web, la generazione di immagini e l'analisi dei media passano da Genspark e consumano crediti; se disattivato, la ricerca usa fonti gratuite e gli strumenti immagine di Genspark non sono disponibili.",
     setGithub: 'Open source',
     starOnGitHub: 'Metti una stella su GitHub',
     starPromptTitle: 'Ti piace GenOffice?',
@@ -7918,18 +7575,12 @@ export const strings = {
     onbSubtitle1: 'La prima suite per ufficio open source e nativa per l’IA',
     onbBody1:
       'Crea documenti, fogli di calcolo e presentazioni e rivedi i PDF. L’IA è integrata in ogni passaggio.',
-    onbTitle2: 'Questo è solo l’inizio',
-    onbBody2:
-      'GenOffice è ancora in alpha. Unisciti alla chat di gruppo su GenTeam per condividere feedback e contribuire a plasmare il futuro.',
-    onbCredits: 'I collaboratori attivi ricevono **1.000+ crediti Genspark**',
-    onbJoinGenTeam: 'Unisciti a GenTeam',
     onbSkip: 'Salta',
     onbNext: 'Avanti',
     onbStart: 'Inizia',
     onbStepAria: 'Pagina {n} di {total}',
     onbTitle3: 'Gratuito per tutti',
     onbBody3: 'Nessuna licenza. Nessuna pubblicità. Nessuna filigrana.',
-    onbNote3: 'Le funzioni IA possono consumare crediti Genspark.',
     onbBack: 'Indietro',
     intgSkillsDesc:
       'GenOffice usa solo le competenze nella propria cartella. Importare una cartella o uno zip copia l’intera competenza; nulla viene eseguito all’importazione.',
@@ -8029,7 +7680,6 @@ export const strings = {
     askSavedAs: 'Zapisano: {name}',
     askSaveFailed: 'Nie udało się zapisać: {error}',
     askEmptyCorpus: 'Baza wiedzy jest pusta: najpierw oznacz pliki, potem pytaj.',
-    askNeedsLogin: 'Zaloguj się do Genspark, aby korzystać z czatu AI.',
     askPlaceholder: 'Zapytaj o swoje pliki…',
     askHintIdle: 'Enter wysyła',
     askHintBusy: 'AI odpowiada…',
@@ -8049,15 +7699,11 @@ export const strings = {
     askCtaRecents: 'Oznacz z Ostatnich',
     askNoSave: 'Rozmowa nie jest zapisywana; znika po ponownym uruchomieniu aplikacji.',
     askUnknownError: 'Żądanie AI nie powiodło się. Spróbuj ponownie.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Projekty utworzone w sieci za pomocą Genspark AI. Edycja jest kontynuowana w przeglądarce — kliknij projekt, aby go otworzyć.',
     cloudSearchPlaceholder: 'Szukaj wśród {n} projektów…',
     cloudNoResults: 'Brak pasujących projektów.',
     cloudSortRecent: 'Najnowsze',
     cloudSortOldest: 'Najstarsze',
     cloudRefresh: 'Odśwież',
-    cloudLoginHint: 'Zaloguj się na konto Genspark, aby zobaczyć projekty utworzone w sieci.',
     cloudEmpty: 'Brak projektów w sieci.',
     cloudError: 'Nie udało się wczytać. Spróbuj ponownie później.',
     cloudRetry: 'Spróbuj ponownie',
@@ -8166,9 +7812,7 @@ export const strings = {
     untitled: 'Bez tytułu',
     account: 'Konto',
     login: 'Zaloguj się',
-    loginGenspark: 'Zaloguj się przez Genspark',
     loggedIn: 'Zalogowano',
-    loggedInGenspark: 'Zalogowano do Genspark',
     waitingLogin:
       'Oczekiwanie na logowanie w przeglądarce… Kliknij, aby ponownie otworzyć stronę logowania',
     waitingShort: 'Oczekiwanie…',
@@ -8178,7 +7822,6 @@ export const strings = {
     loginOpenShort: 'Otwórz stronę logowania ręcznie',
     loginCopyUrl: 'Kopiuj link logowania',
     loginCopied: 'Skopiowano',
-    loginNetworkError: 'Nie można połączyć się z Genspark — sprawdź sieć lub ustawienia proxy',
     loginExpired: 'Autoryzacja wygasła — kliknij, aby spróbować ponownie',
     loginFailed: 'Logowanie nie powiodło się — kliknij, aby spróbować ponownie',
     loggingOut: 'Wylogowywanie…',
@@ -8382,14 +8025,12 @@ export const strings = {
     setAiEndpointAdd: 'Dodaj punkt końcowy',
     setAiEndpointRemove: 'Usuń',
     setAiEndpointName: 'Nazwa',
-    setAiGensparkHint: 'Korzysta z logowania Genspark; klucz API nie jest potrzebny.',
     setAiCodexPath: 'Plik wykonywalny Codex',
     setAiCodexPathHint:
       'Ustaw tylko dla instalacji niestandardowej; pozostaw puste, aby wykryć automatycznie.',
     setAiCodexAutoPlaceholder: 'Wykryj automatycznie (zalecane)',
     setAiCodexHint: 'Używa lokalnie zalogowanego Codex CLI; klucz API nie jest potrzebny.',
-    setAiByokNote:
-      'Czaty używają Twojego klucza. Generowanie obrazów i analiza mediów zależą od sekcji „Media AI”; wyszukiwanie w sieci nadal korzysta z logowania Genspark lub darmowych źródeł.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Zapisz',
     setAiSaved: 'Zapisano',
     setAiTest: 'Testuj połączenie',
@@ -8400,10 +8041,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Budżet wyjścia na jedną turę. Modele rozumowania zużywają go na myślenie; gdy się wyczerpie, odpowiedź przychodzi pusta — zwiększ tę wartość.',
     setSecAiMedia: 'Media i wyszukiwanie AI',
-    setAiMediaGensparkHint:
-      'Generowanie obrazów i analiza obrazów/wideo korzystają z logowania Genspark.',
-    setAiSearchGensparkHint:
-      'Wyszukiwanie w sieci i obrazów korzysta z logowania Genspark; po wylogowaniu lub przy wyłączonych narzędziach chmurowych używa darmowych źródeł.',
     setAiSearchSerperHint: 'Serper zapewnia wyszukiwanie w sieci i obrazów z Twoim kluczem.',
     setAiSearchSerplyHint: 'Serply zapewnia wyszukiwanie w sieci i obrazów z Twoim kluczem.',
     setAiSearchTavilyHint:
@@ -8419,9 +8056,6 @@ export const strings = {
     setAiCapFileSearch: 'Wyszukiwanie plików lokalnych',
     setAiSharedKeyHint:
       'Klucz i bazowy URL dostawcy są wspólne dla wszystkich funkcji; wpisz je raz.',
-    setAiGskTools: 'Narzędzia chmurowe Genspark',
-    setAiGskToolsDesc:
-      'Gdy dostawcą jest Genspark, wyszukiwanie w sieci, generowanie obrazów i analiza mediów przechodzą przez Genspark i zużywają kredyty; po wyłączeniu wyszukiwanie używa darmowych źródeł, a narzędzia obrazów Genspark są niedostępne.',
     setGithub: 'Open source',
     starOnGitHub: 'Gwiazdka na GitHubie',
     starPromptTitle: 'Podoba Ci się GenOffice?',
@@ -8448,18 +8082,12 @@ export const strings = {
     onbSubtitle1: 'Pierwszy otwartoźródłowy, natywnie oparty na AI pakiet biurowy',
     onbBody1:
       'Twórz dokumenty, arkusze i prezentacje oraz przeglądaj pliki PDF. AI jest wbudowana w każdy etap.',
-    onbTitle2: 'To dopiero początek',
-    onbBody2:
-      'GenOffice jest wciąż w fazie alfa. Dołącz do czatu grupowego na GenTeam, aby dzielić się opiniami i współtworzyć jego przyszłość.',
-    onbCredits: 'Aktywni współtwórcy otrzymują **1000+ kredytów Genspark**',
-    onbJoinGenTeam: 'Dołącz do GenTeam',
     onbSkip: 'Pomiń',
     onbNext: 'Dalej',
     onbStart: 'Rozpocznij',
     onbStepAria: 'Strona {n} z {total}',
     onbTitle3: 'Za darmo dla każdego',
     onbBody3: 'Bez opłat licencyjnych. Bez reklam. Bez znaków wodnych.',
-    onbNote3: 'Funkcje AI mogą zużywać kredyty Genspark.',
     onbBack: 'Wstecz',
     intgSkillsDesc:
       'GenOffice używa tylko umiejętności z własnego folderu. Import folderu lub pliku zip kopiuje całą umiejętność; podczas importu nic nie jest uruchamiane.',
@@ -8558,7 +8186,6 @@ export const strings = {
     askSavedAs: 'Uloženo: {name}',
     askSaveFailed: 'Uložení se nezdařilo: {error}',
     askEmptyCorpus: 'Znalostní databáze je prázdná: nejprve označte soubory a pak se ptejte.',
-    askNeedsLogin: 'Pro používí AI chatu se přihlaste do Genspark.',
     askPlaceholder: 'Zeptejte se na své soubory…',
     askHintIdle: 'Enter odesílá',
     askHintBusy: 'AI odpovídá…',
@@ -8578,16 +8205,11 @@ export const strings = {
     askCtaRecents: 'Označit z Nedávných',
     askNoSave: 'Konverzace se neukládá; po restartu aplikace se vymaže.',
     askUnknownError: 'Požadavek na AI selhal. Zkuste to znovu.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Projekty vytvořené na webu pomocí Genspark AI. Úpravy pokračují v prohlížeči — klikněte na projekt a otevřete ho.',
     cloudSearchPlaceholder: 'Hledat mezi {n} projekty…',
     cloudNoResults: 'Žádné odpovídající projekty.',
     cloudSortRecent: 'Nejnovější',
     cloudSortOldest: 'Nejstarší',
     cloudRefresh: 'Obnovit',
-    cloudLoginHint:
-      'Přihlaste se ke svému účtu Genspark a zobrazte projekty, které jste vytvořili na webu.',
     cloudEmpty: 'Zatím žádné webové projekty.',
     cloudError: 'Načtení se nezdařilo. Zkuste to později.',
     cloudRetry: 'Zkusit znovu',
@@ -8694,9 +8316,7 @@ export const strings = {
     untitled: 'Bez názvu',
     account: 'Účet',
     login: 'Přihlásit se',
-    loginGenspark: 'Přihlásit se přes Genspark',
     loggedIn: 'Přihlášeno',
-    loggedInGenspark: 'Přihlášeno ke Genspark',
     waitingLogin:
       'Čeká se na přihlášení v prohlížeči… Kliknutím znovu otevřete přihlašovací stránku',
     loginTimeout: 'Vypršel čas přihlášení — kliknutím to zkusíte znovu',
@@ -8705,7 +8325,6 @@ export const strings = {
     loginOpenShort: 'Otevřít přihlašovací stránku ručně',
     loginCopyUrl: 'Kopírovat přihlašovací odkaz',
     loginCopied: 'Zkopírováno',
-    loginNetworkError: 'Genspark není dostupný — zkontrolujte síť nebo nastavení proxy',
     loginExpired: 'Přihlášení vypršelo — kliknutím to zkusíte znovu',
     loginFailed: 'Přihlášení se nezdařilo — kliknutím to zkusíte znovu',
     waitingShort: 'Čekejte…',
@@ -8864,15 +8483,13 @@ export const strings = {
     setAiEndpointAdd: 'Přidat koncový bod',
     setAiEndpointRemove: 'Odebrat',
     setAiEndpointName: 'Název',
-    setAiGensparkHint: 'Používá vaše přihlášení ke Genspark; klíč API není potřeba.',
     setAiCodexPath: 'Spustitelný soubor Codex',
     setAiCodexPathHint:
       'Vyplňte jen u vlastní instalace; prázdné pole znamená automatickou detekci.',
     setAiCodexAutoPlaceholder: 'Nechte prázdné pro automatickou detekci (doporučeno)',
     setAiCodexHint:
       'Automaticky najde a použije aktuální Codex CLI, po aktualizaci není třeba nic měnit; lze zadat i vlastní cestu. API klíč není potřeba.',
-    setAiByokNote:
-      'Chaty používají váš vlastní klíč. Generování obrázků a analýza médií se řídí sekcí AI média; webové vyhledávání dál používá přihlášení ke Genspark nebo bezplatné zdroje.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Uložit',
     setAiSaved: 'Uloženo',
     setAiTest: 'Otestovat připojení',
@@ -8883,10 +8500,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Rozpočet výstupu na jeden tah. Modely s uvažováním jeho část spotřebují na přemýšlení, takže po vyčerpání rozpočtu může být odpověď prázdná; v takovém případě hodnotu zvyšte.',
     setSecAiMedia: 'AI média a vyhledávání',
-    setAiMediaGensparkHint:
-      'Generování obrázků a analýza obrázků/videí používají vaše přihlášení ke Genspark.',
-    setAiSearchGensparkHint:
-      'Webové a obrázkové vyhledávání používá vaše přihlášení ke Genspark; při odhlášení nebo vypnutých cloudových nástrojích se použijí bezplatné zdroje.',
     setAiSearchSerperHint: 'Serper zajišťuje webové i obrázkové vyhledávání s vaším klíčem.',
     setAiSearchSerplyHint: 'Serply zajišťuje webové i obrázkové vyhledávání s vaším klíčem.',
     setAiSearchTavilyHint:
@@ -8902,9 +8515,6 @@ export const strings = {
     setAiCapFileSearch: 'Hledání místních souborů',
     setAiSharedKeyHint:
       'Klíč a základní URL jednoho poskytovatele se sdílejí mezi funkcemi; zadejte je jen jednou.',
-    setAiGskTools: 'Cloudové nástroje Genspark',
-    setAiGskToolsDesc:
-      'Webové vyhledávání, generování obrázků a analýza médií běží přes Genspark a čerpají kredity, pokud je jejich poskytovatel nastaven na Genspark; při vypnutí vyhledávání používá bezplatné zdroje a obrázkové nástroje Genspark nejsou dostupné.',
     setGithub: 'Open source',
     starOnGitHub: 'Dát hvězdičku na GitHubu',
     starPromptTitle: 'Líbí se vám GenOffice?',
@@ -8931,18 +8541,12 @@ export const strings = {
     onbSubtitle1: 'První open-source kancelářský balík s nativní AI',
     onbBody1:
       'Vytvářejte dokumenty, tabulky a prezentace a kontrolujte PDF. AI je součástí každého kroku.',
-    onbTitle2: 'Toto je jen začátek',
-    onbBody2:
-      'GenOffice je stále ve fázi alfa. Připojte se ke skupinovému chatu na GenTeam, sdílejte zpětnou vazbu a pomozte utvářet, co přijde dál.',
-    onbCredits: 'Aktivní přispěvatelé získají **1 000+ kreditů Genspark**',
-    onbJoinGenTeam: 'Připojit se ke GenTeam',
     onbSkip: 'Přeskočit',
     onbNext: 'Další',
     onbStart: 'Začít',
     onbStepAria: 'Stránka {n} z {total}',
     onbTitle3: 'Zdarma pro všechny',
     onbBody3: 'Žádné licenční poplatky. Žádné reklamy. Žádné vodoznaky.',
-    onbNote3: 'Funkce AI mohou čerpat kredity Genspark.',
     onbBack: 'Zpět',
     setRestoreSession: 'Znovu otevřít dokumenty z minula',
     setRestoreSessionDesc:
@@ -9084,7 +8688,6 @@ export const strings = {
     askSavedAs: 'Opgeslagen: {name}',
     askSaveFailed: 'Opslaan mislukt: {error}',
     askEmptyCorpus: 'De kennisbank is leeg: markeer eerst bestanden en stel dan je vraag.',
-    askNeedsLogin: 'Log in bij Genspark om AI-chat te gebruiken.',
     askPlaceholder: 'Vraag naar je favoriete bestanden…',
     askHintIdle: 'Enter om te verzenden',
     askHintBusy: 'De AI beantwoordt…',
@@ -9104,16 +8707,11 @@ export const strings = {
     askCtaRecents: 'Sterren vanuit Onlangs',
     askNoSave: 'Het gesprek wordt niet opgeslagen; het wordt gewist bij herstart van de app.',
     askUnknownError: 'De AI-aanvraag is mislukt. Probeer het opnieuw.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Projecten gemaakt op het web met Genspark AI. Bewerken gaat verder in je browser — klik op een project om het te openen.',
     cloudSearchPlaceholder: 'Zoek in {n} projecten…',
     cloudNoResults: 'Geen overeenkomende projecten.',
     cloudSortRecent: 'Recent',
     cloudSortOldest: 'Oudste',
     cloudRefresh: 'Vernieuwen',
-    cloudLoginHint:
-      'Log in op je Genspark-account om projecten te zien die je op het web hebt gemaakt.',
     cloudEmpty: 'Nog geen webprojecten.',
     cloudError: 'Laden mislukt. Probeer het later opnieuw.',
     cloudRetry: 'Opnieuw proberen',
@@ -9221,9 +8819,7 @@ export const strings = {
     untitled: 'Naamloos',
     account: 'Account',
     login: 'Inloggen',
-    loginGenspark: 'Inloggen met Genspark',
     loggedIn: 'Ingelogd',
-    loggedInGenspark: 'Ingelogd bij Genspark',
     waitingLogin: 'Wachten op inloggen in de browser… Klik om de inlogpagina opnieuw te openen',
     waitingShort: 'Wachten…',
     loginTimeout: 'Inloggen verlopen — klik om het opnieuw te proberen',
@@ -9232,7 +8828,6 @@ export const strings = {
     loginOpenShort: 'Inlogpagina handmatig openen',
     loginCopyUrl: 'Inloglink kopiëren',
     loginCopied: 'Gekopieerd',
-    loginNetworkError: 'Kan Genspark niet bereiken — controleer uw netwerk of proxyinstellingen',
     loginExpired: 'Autorisatie verlopen — klik om het opnieuw te proberen',
     loginFailed: 'Inloggen mislukt — klik om het opnieuw te proberen',
     loggingOut: 'Uitloggen…',
@@ -9438,14 +9033,12 @@ export const strings = {
     setAiEndpointAdd: 'Eindpunt toevoegen',
     setAiEndpointRemove: 'Verwijderen',
     setAiEndpointName: 'Naam',
-    setAiGensparkHint: 'Gebruikt je Genspark-login; geen API-sleutel nodig.',
     setAiCodexPath: 'Codex-uitvoerbaar bestand',
     setAiCodexPathHint:
       'Alleen invullen voor een aangepaste installatie; laat leeg voor automatische detectie.',
     setAiCodexAutoPlaceholder: 'Automatisch detecteren (aanbevolen)',
     setAiCodexHint: 'Gebruikt de lokaal aangemelde Codex CLI; geen API-sleutel nodig.',
-    setAiByokNote:
-      'Chats gebruiken je eigen sleutel. Afbeeldingen genereren en media-analyse volgen de sectie "AI-media"; zoeken op het web gebruikt nog steeds de Genspark-aanmelding of gratis bronnen.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Opslaan',
     setAiSaved: 'Opgeslagen',
     setAiTest: 'Verbinding testen',
@@ -9456,10 +9049,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Uitvoerbudget voor één beurt. Redeneermodellen geven dit uit aan denken; is het op, dan komt een leeg antwoord terug — verhoog deze waarde.',
     setSecAiMedia: 'AI-media en zoeken',
-    setAiMediaGensparkHint:
-      'Afbeeldingen genereren en afbeelding-/video-analyse gebruiken je Genspark-aanmelding.',
-    setAiSearchGensparkHint:
-      'Web- en afbeeldingszoeken gebruiken je Genspark-aanmelding; afgemeld of met cloudtools uit vallen ze terug op gratis bronnen.',
     setAiSearchSerperHint: 'Serper levert web- en afbeeldingszoeken met je sleutel.',
     setAiSearchSerplyHint: 'Serply levert web- en afbeeldingszoeken met je sleutel.',
     setAiSearchTavilyHint:
@@ -9475,9 +9064,6 @@ export const strings = {
     setAiCapFileSearch: 'Lokale bestanden zoeken',
     setAiSharedKeyHint:
       'De sleutel en basis-URL van een provider gelden voor alle functies; één keer invoeren volstaat.',
-    setAiGskTools: 'Genspark-cloudtools',
-    setAiGskToolsDesc:
-      'Staat de provider op Genspark, dan lopen zoeken op het web, afbeeldingen genereren en media-analyse via Genspark en kosten ze credits; uitgeschakeld gebruikt zoeken gratis bronnen en zijn de Genspark-afbeeldingstools niet beschikbaar.',
     setGithub: 'Open source',
     starOnGitHub: 'Geef een ster op GitHub',
     starPromptTitle: 'Bevalt GenOffice?',
@@ -9504,18 +9090,12 @@ export const strings = {
     onbSubtitle1: 'De eerste open source, AI-native officesuite',
     onbBody1:
       'Maak documenten, bouw spreadsheets, maak presentaties en beoordeel PDF-bestanden. AI zit in elke stap ingebouwd.',
-    onbTitle2: 'Dit is nog maar het begin',
-    onbBody2:
-      'GenOffice is nog in alfa. Doe mee aan de groepschat op GenTeam om feedback te delen en mee te bepalen wat er komt.',
-    onbCredits: 'Actieve bijdragers krijgen **1.000+ Genspark-credits**',
-    onbJoinGenTeam: 'Word lid van GenTeam',
     onbSkip: 'Overslaan',
     onbNext: 'Volgende',
     onbStart: 'Aan de slag',
     onbStepAria: 'Pagina {n} van {total}',
     onbTitle3: 'Gratis voor iedereen',
     onbBody3: 'Geen licentiekosten. Geen advertenties. Geen watermerken.',
-    onbNote3: 'AI-functies kunnen Genspark-credits verbruiken.',
     onbBack: 'Terug',
     intgSkillsDesc:
       'GenOffice gebruikt alleen vaardigheden uit zijn eigen map. Een map of zip importeren kopieert de hele vaardigheid; bij het importeren wordt niets uitgevoerd.',
@@ -9615,7 +9195,6 @@ export const strings = {
     askSavedAs: 'Disimpan: {name}',
     askSaveFailed: 'Gagal menyimpan: {error}',
     askEmptyCorpus: 'Pangkalan pengetahuan kosong: tanda beberapa fail dahulu, kemudian tanya.',
-    askNeedsLogin: 'Log masuk ke Genspark untuk menggunakan sembang AI.',
     askPlaceholder: 'Tanya tentang fail kegemaran anda…',
     askHintIdle: 'Enter untuk menghantar',
     askHintBusy: 'AI sedan menjawab…',
@@ -9635,15 +9214,11 @@ export const strings = {
     askCtaRecents: 'Tandakan dari Terkini',
     askNoSave: 'Perbualan tidak disimpan; ia dikosongkan apabila aplikasi dimulakan semula.',
     askUnknownError: 'Permintaan AI gagal. Cuba lagi.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Projek yang dicipta di web dengan Genspark AI. Penyuntingan diteruskan dalam pelayar — klik projek untuk membukanya.',
     cloudSearchPlaceholder: 'Cari {n} projek…',
     cloudNoResults: 'Tiada projek sepadan.',
     cloudSortRecent: 'Terbaru',
     cloudSortOldest: 'Terlama',
     cloudRefresh: 'Muat semula',
-    cloudLoginHint: 'Log masuk ke akaun Genspark untuk melihat projek yang anda cipta di web.',
     cloudEmpty: 'Belum ada projek web.',
     cloudError: 'Gagal memuatkan. Cuba lagi kemudian.',
     cloudRetry: 'Cuba lagi',
@@ -9751,9 +9326,7 @@ export const strings = {
     untitled: 'Tanpa tajuk',
     account: 'Akaun',
     login: 'Log masuk',
-    loginGenspark: 'Log masuk dengan Genspark',
     loggedIn: 'Telah log masuk',
-    loggedInGenspark: 'Telah log masuk ke Genspark',
     waitingLogin: 'Menunggu log masuk dalam pelayar… Klik untuk membuka semula halaman log masuk',
     waitingShort: 'Menunggu…',
     loginTimeout: 'Log masuk tamat masa — klik untuk cuba lagi',
@@ -9762,8 +9335,6 @@ export const strings = {
     loginOpenShort: 'Buka halaman log masuk secara manual',
     loginCopyUrl: 'Salin pautan log masuk',
     loginCopied: 'Disalin',
-    loginNetworkError:
-      'Tidak dapat menyambung ke Genspark — semak rangkaian atau tetapan proksi anda',
     loginExpired: 'Kebenaran telah tamat tempoh — klik untuk cuba lagi',
     loginFailed: 'Log masuk gagal — klik untuk cuba lagi',
     loggingOut: 'Sedang log keluar…',
@@ -9971,15 +9542,13 @@ export const strings = {
     setAiEndpointAdd: 'Tambah titik akhir',
     setAiEndpointRemove: 'Buang',
     setAiEndpointName: 'Nama',
-    setAiGensparkHint: 'Menggunakan log masuk Genspark; tiada kunci API diperlukan.',
     setAiCodexPath: 'Fail boleh laku Codex',
     setAiCodexPathHint:
       'Isi hanya untuk pemasangan tersuai; biarkan kosong untuk pengesanan automatik.',
     setAiCodexAutoPlaceholder: 'Kesan automatik (disyorkan)',
     setAiCodexHint:
       'Menggunakan Codex CLI yang telah log masuk secara setempat; tiada kunci API diperlukan.',
-    setAiByokNote:
-      'Sembang menggunakan kunci anda sendiri. Penjanaan imej dan analisis media mengikut bahagian "Media AI"; carian web masih menggunakan log masuk Genspark atau sumber percuma.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'Simpan',
     setAiSaved: 'Disimpan',
     setAiTest: 'Uji sambungan',
@@ -9990,10 +9559,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'Belanjawan output untuk satu pusingan. Model penaakulan menghabiskannya untuk berfikir; jika habis, balasan datang kosong — tingkatkan nilai ini.',
     setSecAiMedia: 'Media & Carian AI',
-    setAiMediaGensparkHint:
-      'Penjanaan imej dan analisis imej/video menggunakan log masuk Genspark anda.',
-    setAiSearchGensparkHint:
-      'Carian web dan imej menggunakan log masuk Genspark anda; apabila log keluar atau alat awan dimatikan, ia menggunakan sumber percuma.',
     setAiSearchSerperHint: 'Serper menyediakan carian web dan imej dengan kunci anda.',
     setAiSearchSerplyHint: 'Serply menyediakan carian web dan imej dengan kunci anda.',
     setAiSearchTavilyHint:
@@ -10009,9 +9574,6 @@ export const strings = {
     setAiCapFileSearch: 'Carian fail tempatan',
     setAiSharedKeyHint:
       'Kunci dan Base URL pembekal dikongsi oleh semua keupayaan; isi sekali sahaja.',
-    setAiGskTools: 'Alat awan Genspark',
-    setAiGskToolsDesc:
-      'Apabila pembekalnya ditetapkan kepada Genspark, carian web, penjanaan imej dan analisis media melalui Genspark dan menggunakan kredit; apabila dimatikan, carian menggunakan sumber percuma dan alat imej Genspark tidak tersedia.',
     setGithub: 'Sumber Terbuka',
     starOnGitHub: 'Beri Bintang di GitHub',
     starPromptTitle: 'Suka GenOffice?',
@@ -10038,18 +9600,12 @@ export const strings = {
     onbSubtitle1: 'Suite pejabat sumber terbuka natif AI yang pertama',
     onbBody1:
       'Cipta dokumen, bina hamparan, hasilkan persembahan dan semak PDF. AI tersedia pada setiap langkah.',
-    onbTitle2: 'Ini baru permulaan',
-    onbBody2:
-      'GenOffice masih dalam peringkat alfa. Sertai sembang kumpulan di GenTeam untuk berkongsi maklum balas dan membentuk masa depannya.',
-    onbCredits: 'Penyumbang aktif menerima **1,000+ kredit Genspark**',
-    onbJoinGenTeam: 'Sertai GenTeam',
     onbSkip: 'Langkau',
     onbNext: 'Seterusnya',
     onbStart: 'Mula',
     onbStepAria: 'Halaman {n} daripada {total}',
     onbTitle3: 'Percuma untuk semua',
     onbBody3: 'Tiada yuran lesen. Tiada iklan. Tiada tera air.',
-    onbNote3: 'Ciri AI mungkin menggunakan kredit Genspark.',
     onbBack: 'Kembali',
     intgSkillsDesc:
       'GenOffice hanya menggunakan kemahiran dalam folder kemahirannya sendiri. Mengimport folder atau zip menyalin keseluruhan kemahiran; tiada apa yang dijalankan semasa import.',
@@ -10147,7 +9703,6 @@ export const strings = {
     askSavedAs: 'נשמר: {name}',
     askSaveFailed: 'השמירה נכשלה: {error}',
     askEmptyCorpus: 'בסיס הידע ריק: סמן קבצים תחילה ואז שאל.',
-    askNeedsLogin: 'התחבר ל-Genspark כדי להשתמש בצ׳אט AI.',
     askPlaceholder: 'שאל על הקבצים המסומנים שלך…',
     askHintIdle: 'Enter לשליחה',
     askHintBusy: 'ה-AI עונה…',
@@ -10167,15 +9722,11 @@ export const strings = {
     askCtaRecents: 'סימון מ״אחרונים״',
     askNoSave: 'השיחה אינה נשמרת; היא מתנקה כשהאפליקציה מופעלת מחדש.',
     askUnknownError: 'בקשת ה-AI נכשלה. נסה שוב.',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'פרויקטים שנוצרו באינטרנט עם Genspark AI. העריכה נמשכת בדפדפן — לחצו על פרויקט כדי לפתוח אותו.',
     cloudSearchPlaceholder: 'חיפוש בין {n} פרויקטים…',
     cloudNoResults: 'אין פרויקטים תואמים.',
     cloudSortRecent: 'החדשים ביותר',
     cloudSortOldest: 'הישנים ביותר',
     cloudRefresh: 'רענון',
-    cloudLoginHint: 'התחברו לחשבון Genspark כדי לראות פרויקטים שיצרתם באתר.',
     cloudEmpty: 'אין עדיין פרויקטים מהאתר.',
     cloudError: 'הטעינה נכשלה. נסו שוב מאוחר יותר.',
     cloudRetry: 'נסו שוב',
@@ -10282,9 +9833,7 @@ export const strings = {
     untitled: 'ללא שם',
     account: 'חשבון',
     login: 'התחברות',
-    loginGenspark: 'התחברות עם Genspark',
     loggedIn: 'מחובר',
-    loggedInGenspark: 'מחובר ל-Genspark',
     waitingLogin: 'ממתין להתחברות בדפדפן… לחצו כדי לפתוח שוב את דף ההתחברות',
     waitingShort: 'ממתין…',
     loginTimeout: 'פג תוקף ההתחברות — לחצו כדי לנסות שוב',
@@ -10293,7 +9842,6 @@ export const strings = {
     loginOpenShort: 'פתיחת דף ההתחברות ידנית',
     loginCopyUrl: 'העתקת קישור ההתחברות',
     loginCopied: 'הועתק',
-    loginNetworkError: 'לא ניתן להתחבר ל-Genspark — בדקו את הרשת או את הגדרות ה-proxy',
     loginExpired: 'תוקף ההרשאה פג — לחצו כדי לנסות שוב',
     loginFailed: 'ההתחברות נכשלה — לחצו כדי לנסות שוב',
     loggingOut: 'מתנתק…',
@@ -10491,13 +10039,11 @@ export const strings = {
     setAiEndpointAdd: 'הוספת נקודת קצה',
     setAiEndpointRemove: 'הסרה',
     setAiEndpointName: 'שם',
-    setAiGensparkHint: 'משתמש בכניסת Genspark שלך; אין צורך במפתח API.',
     setAiCodexPath: 'קובץ ההפעלה של Codex',
     setAiCodexPathHint: 'יש למלא רק בהתקנה מותאמת; השאר ריק לזיהוי אוטומטי.',
     setAiCodexAutoPlaceholder: 'זיהוי אוטומטי (מומלץ)',
     setAiCodexHint: 'משתמש ב-Codex CLI המחובר מקומית; אין צורך במפתח API.',
-    setAiByokNote:
-      'הצ׳אטים משתמשים במפתח שלך. יצירת תמונות וניתוח מדיה נקבעים בקטע "מדיה AI"; חיפוש באינטרנט עדיין משתמש בהתחברות Genspark או במקורות חינמיים.',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'שמירה',
     setAiSaved: 'נשמר',
     setAiTest: 'בדיקת חיבור',
@@ -10508,9 +10054,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'תקציב פלט לסיבוב אחד. מודלי היסק מנצלים חלק ממנו לחשיבה, ואם הוא נגמר התשובה עלולה לחזור ריקה — במקרה כזה העלו את הערך.',
     setSecAiMedia: 'מדיה וחיפוש AI',
-    setAiMediaGensparkHint: 'יצירת תמונות וניתוח תמונות/וידאו משתמשים בהתחברות Genspark שלך.',
-    setAiSearchGensparkHint:
-      'חיפוש באינטרנט ובתמונות משתמש בהתחברות Genspark שלך; כשלא מחוברים או כשכלי הענן כבויים הוא חוזר למקורות חינמיים.',
     setAiSearchSerperHint: 'Serper מספק חיפוש באינטרנט ובתמונות עם המפתח שלך.',
     setAiSearchSerplyHint: 'Serply מספק חיפוש באינטרנט ובתמונות עם המפתח שלך.',
     setAiSearchTavilyHint:
@@ -10526,9 +10069,6 @@ export const strings = {
     setAiCapFileSearch: 'חיפוש קבצים מקומיים',
     setAiSharedKeyHint:
       'המפתח וכתובת ה-Base URL של ספק משותפים לכל היכולות; יש להזין אותם פעם אחת בלבד.',
-    setAiGskTools: 'כלי הענן של Genspark',
-    setAiGskToolsDesc:
-      'כשהספק מוגדר ל-Genspark, חיפוש באינטרנט, יצירת תמונות וניתוח מדיה עוברים דרך Genspark וצורכים קרדיטים; כשהוא כבוי החיפוש משתמש במקורות חינמיים וכלי התמונות של Genspark אינם זמינים.',
     setGithub: 'קוד פתוח',
     starOnGitHub: 'תנו כוכב ב-GitHub',
     starPromptTitle: 'נהנים מ-GenOffice?',
@@ -10553,18 +10093,12 @@ export const strings = {
     onbTitle1: 'ברוכים הבאים ל-GenOffice',
     onbSubtitle1: 'חבילת המשרד הראשונה בקוד פתוח שהיא AI-נייטיב',
     onbBody1: 'צרו מסמכים, בנו גיליונות, הכינו מצגות ובדקו קובצי PDF. ה-AI מובנה בכל שלב.',
-    onbTitle2: 'זו רק ההתחלה',
-    onbBody2:
-      'GenOffice עדיין בגרסת אלפא. הצטרפו לצ׳אט הקבוצתי ב-GenTeam כדי לשתף משוב ולעזור לעצב את ההמשך.',
-    onbCredits: 'תורמים פעילים מקבלים **1,000+ נקודות Genspark**',
-    onbJoinGenTeam: 'הצטרפו ל-GenTeam',
     onbSkip: 'דילוג',
     onbNext: 'הבא',
     onbStart: 'להתחיל',
     onbStepAria: 'עמוד {n} מתוך {total}',
     onbTitle3: 'חינם לכולם',
     onbBody3: 'ללא דמי רישיון, ללא פרסומות, ללא סימני מים.',
-    onbNote3: 'תכונות AI עשויות לצרוך קרדיטים של Genspark.',
     onbBack: 'חזרה',
     intgSkillsDesc:
       'GenOffice משתמש רק במיומנויות שבתיקיית המיומנויות שלו. ייבוא תיקייה או zip מעתיק את המיומנות כולה; שום דבר לא מופעל בייבוא.',
@@ -10661,7 +10195,6 @@ export const strings = {
     askSavedAs: 'सहेजा गया: {name}',
     askSaveFailed: 'सहेज नहीं सका: {error}',
     askEmptyCorpus: 'नॉलेज बेस खाली है: पहले फ़ाइलें स्टार करें, फिर पूछें।',
-    askNeedsLogin: 'AI चैट के लिए Genspark में साइन इन करें।',
     askPlaceholder: 'अपनी फ़ाइलों के बारे में पूछें…',
     askHintIdle: 'भेजने के लिए Enter',
     askHintBusy: 'AI उत्तर दे रहा है…',
@@ -10681,15 +10214,11 @@ export const strings = {
     askCtaRecents: 'हाल की फ़ाइलों को तारांकित करें',
     askNoSave: 'बातचीत सहेजी नहीं जाती; ऐप पुनः आरंभ होने पर साफ़ हो जाती है।',
     askUnknownError: 'AI अनुरोध विफल रहा। फिर से प्रयास करें।',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle:
-      'Genspark AI के साथ वेब पर बनाए गए प्रोजेक्ट। संपादन ब्राउज़र में जारी रहता है — खोलने के लिए किसी प्रोजेक्ट पर क्लिक करें।',
     cloudSearchPlaceholder: '{n} प्रोजेक्ट खोजें…',
     cloudNoResults: 'कोई मिलान वाला प्रोजेक्ट नहीं।',
     cloudSortRecent: 'हाल के',
     cloudSortOldest: 'सबसे पुराने',
     cloudRefresh: 'रीफ़्रेश',
-    cloudLoginHint: 'वेब पर बनाए गए प्रोजेक्ट देखने के लिए अपने Genspark खाते में साइन इन करें।',
     cloudEmpty: 'अभी तक कोई वेब प्रोजेक्ट नहीं है।',
     cloudError: 'लोड नहीं हो सका। बाद में फिर से कोशिश करें।',
     cloudRetry: 'फिर से कोशिश करें',
@@ -10798,9 +10327,7 @@ export const strings = {
     untitled: 'बिना शीर्षक',
     account: 'खाता',
     login: 'साइन इन करें',
-    loginGenspark: 'Genspark से साइन इन करें',
     loggedIn: 'साइन इन हो गया',
-    loggedInGenspark: 'Genspark में साइन इन है',
     waitingLogin:
       'ब्राउज़र में साइन इन की प्रतीक्षा है… साइन इन पेज दोबारा खोलने के लिए क्लिक करें',
     waitingShort: 'प्रतीक्षा में…',
@@ -10810,7 +10337,6 @@ export const strings = {
     loginOpenShort: 'साइन इन पेज मैन्युअल रूप से खोलें',
     loginCopyUrl: 'साइन इन लिंक कॉपी करें',
     loginCopied: 'कॉपी हो गया',
-    loginNetworkError: 'Genspark से कनेक्ट नहीं हो सका — नेटवर्क या प्रॉक्सी सेटिंग जांचें',
     loginExpired: 'प्राधिकरण की समय सीमा समाप्त — पुनः प्रयास के लिए क्लिक करें',
     loginFailed: 'साइन इन विफल — पुनः प्रयास के लिए क्लिक करें',
     loggingOut: 'साइन आउट हो रहा है…',
@@ -11013,14 +10539,12 @@ export const strings = {
     setAiEndpointAdd: 'एंडपॉइंट जोड़ें',
     setAiEndpointRemove: 'हटाएँ',
     setAiEndpointName: 'नाम',
-    setAiGensparkHint: 'आपके Genspark साइन-इन का उपयोग करता है; API कुंजी की आवश्यकता नहीं।',
     setAiCodexPath: 'Codex निष्पादन फ़ाइल',
     setAiCodexPathHint: 'केवल कस्टम इंस्टॉलेशन के लिए भरें; स्वतः पहचान के लिए खाली छोड़ें।',
     setAiCodexAutoPlaceholder: 'स्वतः पहचान (अनुशंसित)',
     setAiCodexHint:
       'स्थानीय रूप से साइन-इन किए गए Codex CLI का उपयोग करता है; API कुंजी की आवश्यकता नहीं।',
-    setAiByokNote:
-      'चैट आपकी अपनी कुंजी का उपयोग करती हैं। इमेज जनरेशन और मीडिया विश्लेषण "AI मीडिया" अनुभाग के अनुसार होते हैं; वेब खोज अभी भी Genspark साइन-इन या मुफ़्त स्रोतों का उपयोग करती है।',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: 'सहेजें',
     setAiSaved: 'सहेजा गया',
     setAiTest: 'कनेक्शन परखें',
@@ -11031,10 +10555,6 @@ export const strings = {
     setAiMaxTokensDesc:
       'एक टर्न का आउटपुट बजट। रीज़निंग मॉडल इसका कुछ हिस्सा सोचने में खर्च करते हैं; बजट खत्म होने पर उत्तर खाली आ सकता है — ऐसा हो तो इसे बढ़ाएँ।',
     setSecAiMedia: 'AI मीडिया और खोज',
-    setAiMediaGensparkHint:
-      'इमेज जनरेशन और इमेज/वीडियो विश्लेषण आपके Genspark साइन-इन का उपयोग करते हैं।',
-    setAiSearchGensparkHint:
-      'वेब और इमेज खोज आपके Genspark साइन-इन का उपयोग करती हैं; साइन-आउट होने पर या क्लाउड टूल बंद होने पर वे मुफ़्त स्रोतों पर लौट जाती हैं।',
     setAiSearchSerperHint: 'Serper आपकी कुंजी से वेब और इमेज खोज दोनों देता है।',
     setAiSearchSerplyHint: 'Serply आपकी कुंजी से वेब और इमेज खोज दोनों देता है।',
     setAiSearchTavilyHint:
@@ -11050,9 +10570,6 @@ export const strings = {
     setAiCapFileSearch: 'स्थानीय फ़ाइल खोज',
     setAiSharedKeyHint:
       'एक प्रदाता की कुंजी और Base URL सभी क्षमताओं में साझा होते हैं; एक बार ही दर्ज करें।',
-    setAiGskTools: 'Genspark क्लाउड टूल',
-    setAiGskToolsDesc:
-      'जब प्रदाता Genspark हो, वेब खोज, इमेज जनरेशन और मीडिया विश्लेषण Genspark से होकर चलते हैं और क्रेडिट खर्च करते हैं; बंद होने पर खोज मुफ़्त स्रोत उपयोग करती है और Genspark इमेज टूल उपलब्ध नहीं रहते।',
     setGithub: 'ओपन सोर्स',
     starOnGitHub: 'GitHub पर स्टार दें',
     starPromptTitle: 'GenOffice पसंद आ रहा है?',
@@ -11079,18 +10596,12 @@ export const strings = {
     onbSubtitle1: 'पहला ओपन-सोर्स, AI-नेटिव ऑफ़िस सुइट',
     onbBody1:
       'दस्तावेज़ बनाएँ, स्प्रेडशीट तैयार करें, प्रस्तुतियाँ बनाएँ और PDF की समीक्षा करें। AI हर चरण में शामिल है।',
-    onbTitle2: 'यह तो बस शुरुआत है',
-    onbBody2:
-      'GenOffice अभी अल्फ़ा में है। GenTeam पर ग्रुप चैट से जुड़ें, फ़ीडबैक साझा करें और आगे की दिशा तय करने में मदद करें।',
-    onbCredits: 'सक्रिय योगदानकर्ताओं के लिए **1,000+ Genspark क्रेडिट**',
-    onbJoinGenTeam: 'GenTeam से जुड़ें',
     onbSkip: 'छोड़ें',
     onbNext: 'आगे',
     onbStart: 'शुरू करें',
     onbStepAria: 'कुल {total} में से पृष्ठ {n}',
     onbTitle3: 'सभी के लिए मुफ़्त',
     onbBody3: 'कोई लाइसेंस शुल्क नहीं। कोई विज्ञापन नहीं। कोई वॉटरमार्क नहीं।',
-    onbNote3: 'AI सुविधाएँ Genspark क्रेडिट खर्च कर सकती हैं।',
     onbBack: 'वापस',
     intgSkillsDesc:
       'GenOffice केवल अपने कौशल फ़ोल्डर के कौशल उपयोग करता है। फ़ोल्डर या zip से आयात पूरा कौशल कॉपी करता है; आयात पर कुछ नहीं चलता।',
@@ -11186,7 +10697,6 @@ export const strings = {
     askSavedAs: '已儲存:{name}',
     askSaveFailed: '儲存失敗:{error}',
     askEmptyCorpus: '知識庫還是空的:先收藏一些檔案,再回來提問。',
-    askNeedsLogin: '登入 Genspark 後即可使用 AI 問答。',
     askPlaceholder: '問一個關於收藏檔案的問題…',
     askHintIdle: 'Enter 傳送',
     askHintBusy: 'AI 正在回答…',
@@ -11205,14 +10715,11 @@ export const strings = {
     askCtaRecents: '去最近檔案收藏',
     askNoSave: '對話不會保存,重啟應用程式後清空。',
     askUnknownError: 'AI 請求失敗,請重試。',
-    navCloud: 'Genspark Projects',
-    cloudSubtitle: '在網頁端用 Genspark AI 建立的專案。編輯在瀏覽器中繼續——點擊任意專案即可開啟。',
     cloudSearchPlaceholder: '搜尋 {n} 個專案…',
     cloudNoResults: '沒有符合的專案。',
     cloudSortRecent: '最近',
     cloudSortOldest: '最早',
     cloudRefresh: '重新整理',
-    cloudLoginHint: '登入 Genspark 帳號，查看你在網頁端建立的專案。',
     cloudEmpty: '還沒有網頁端專案。',
     cloudError: '載入失敗，請稍後再試。',
     cloudRetry: '重試',
@@ -11319,9 +10826,7 @@ export const strings = {
     untitled: '未命名',
     account: '帳號',
     login: '登入',
-    loginGenspark: '登入 Genspark 帳號',
     loggedIn: '已登入',
-    loggedInGenspark: '已登入 Genspark',
     waitingLogin: '正在等待瀏覽器登入…點按可重新開啟登入頁面',
     waitingShort: '等待登入…',
     loginTimeout: '登入逾時，點按重試',
@@ -11330,7 +10835,6 @@ export const strings = {
     loginOpenShort: '手動開啟登入頁',
     loginCopyUrl: '複製登入連結',
     loginCopied: '已複製',
-    loginNetworkError: '無法連線至 Genspark，請檢查網路或代理設定',
     loginExpired: '登入已過期，點按重試',
     loginFailed: '登入失敗，點按重試',
     loggingOut: '正在登出…',
@@ -11523,14 +11027,12 @@ export const strings = {
     setAiEndpointAdd: '新增端點',
     setAiEndpointRemove: '刪除',
     setAiEndpointName: '名稱',
-    setAiGensparkHint: '使用 Genspark 帳號登入，無需 API key。',
     setAiCodexPath: 'Codex 可執行檔',
     setAiCodexPathHint: '僅自訂安裝時填寫；留空會自動偵測。',
     setAiCodexAutoPlaceholder: '留空自動偵測（建議）',
     setAiCodexHint:
       '自動尋找目前的 Codex CLI，更新後無需重新選擇；也可填寫自訂路徑。無需 API Key。',
-    setAiByokNote:
-      '對話使用你自己的 key；生圖與媒體解析依「生圖與媒體」設定；網頁搜尋仍走 Genspark 登入或免費來源。',
+    setAiByokNote: 'Chat uses your own key or CLI login; image generation and media analysis follow the AI Media settings; web search uses the free chain unless you pick a provider.',
     setAiSave: '儲存',
     setAiSaved: '已儲存',
     setAiTest: '測試連線',
@@ -11541,9 +11043,6 @@ export const strings = {
     setAiMaxTokensDesc:
       '一次回合的輸出預算。推理模型會先消耗預算用於思考，預算用畢時回覆可能變成空白，遇到此情況請調高本項。',
     setSecAiMedia: '生圖、媒體與搜尋',
-    setAiMediaGensparkHint: '生圖與圖片/影片解析使用 Genspark 帳號登入。',
-    setAiSearchGensparkHint:
-      '網頁與圖片搜尋使用 Genspark 帳號登入；未登入或關閉雲端工具時改用免費來源。',
     setAiSearchSerperHint: 'Serper 用你的 key 同時提供網頁與圖片搜尋。',
     setAiSearchSerplyHint: 'Serply 用你的 key 同時提供網頁與圖片搜尋。',
     setAiSearchTavilyHint: 'Tavily 用你的 key 提供網頁搜尋；圖片搜尋改用免費來源。',
@@ -11557,9 +11056,6 @@ export const strings = {
     setAiCapSearch: '網路搜尋',
     setAiCapFileSearch: '本機檔案搜尋',
     setAiSharedKeyHint: '同一服務商的 key 與 Base URL 在各項能力間共用，只需填一次。',
-    setAiGskTools: 'Genspark 雲端工具',
-    setAiGskToolsDesc:
-      '服務商選擇 Genspark 時，網頁搜尋、生圖與媒體解析經 Genspark 雲端並消耗點數；關閉後搜尋改用免費來源，Genspark 生圖工具不可用。',
     setGithub: '開源專案',
     starOnGitHub: '到 GitHub 給我們一顆星',
     starPromptTitle: '喜歡 GenOffice 嗎？',
@@ -11584,17 +11080,12 @@ export const strings = {
     onbTitle1: '歡迎使用 GenOffice',
     onbSubtitle1: '第一個開源的 AI 原生 Office 套件',
     onbBody1: '建立文件、製作試算表、產生簡報、審閱 PDF。AI 深度融入每個環節。',
-    onbTitle2: '這只是一個開始',
-    onbBody2: 'GenOffice 目前仍在 alpha 階段。歡迎加入 GenTeam 群聊，分享回饋，一起打造它的未來。',
-    onbCredits: '活躍貢獻者可獲得 **1,000+ Genspark 點數**',
-    onbJoinGenTeam: '加入 GenTeam',
     onbSkip: '略過',
     onbNext: '下一步',
     onbStart: '開始使用',
     onbStepAria: '第 {n} 頁，共 {total} 頁',
     onbTitle3: '人人免費',
     onbBody3: '無授權費用，無廣告，無浮水印。',
-    onbNote3: 'AI 功能可能消耗 Genspark 點數。',
     onbBack: '上一步',
     intgSkillsDesc:
       'GenOffice 只使用自己技能資料夾裡的技能。從資料夾或 zip 匯入會把整個技能複製進來；匯入不會自動執行任何東西。',

@@ -16,7 +16,7 @@ import {
   type AiTokenUsageView,
   useChatRunQueue,
 } from '@genoffice/ui'
-import { GensparkMark } from '../ribbon-icons'
+import { AiMark } from '../ribbon-icons'
 import type { ChangePlan } from '@genoffice/xlsx-gateway/domain/workbook.types'
 import { ATTACHMENT_IMAGE_EXTS, type AttachmentMeta } from '../../shared/desktop-api'
 import { useI18n, type TFunc } from '../i18n/locale'
@@ -213,8 +213,6 @@ export interface AiChatMessage {
   readonly undelivered?: boolean | undefined
   /** this user message was written to the project-store chat log (Retry re-persists when it wasn't) */
   readonly persisted?: boolean | undefined
-  /** the run failed because Genspark is signed out — render an inline sign-in button */
-  readonly loginRequired?: boolean | undefined
   /** Set when this message reflects an auto-applied plan; renders an inline [Undo] button. */
   readonly autoApplied?: { readonly opCount: number; readonly undoSteps: number } | undefined
   /** attachments consumed from the composer by this user message (read-only echo chips) */
@@ -231,7 +229,6 @@ const MODEL_BRIDGE: AiModelPickerBridge = {
   getSettings: () => window.desktopApi.getAiSettings(),
   setSettings: (settings) => window.desktopApi.setAiSettings(settings),
   onSettingsChanged: (handler) => window.desktopApi.onAiSettingsChanged(handler),
-  gskLoggedIn: () => window.desktopApi.aiGskStatus().then((s) => !!s?.loggedIn),
   openModelSettings: () => window.desktopApi.openAiModelSettings().catch(() => {}),
 }
 
@@ -492,7 +489,7 @@ export function AiChatPanel({
           data-tip={t('aiOpenAssistant')}
           aria-label={t('aiOpenAssistant')}
         >
-          <GensparkMark size={22} />
+          <AiMark size={22} />
         </button>
       </aside>
     )
@@ -579,8 +576,8 @@ export function AiChatPanel({
       />
       <header className="ai-panel-header">
         <span className="ai-panel-title">
-          <GensparkMark size={22} />
-          Genspark
+          <AiMark size={22} />
+          AI
         </span>
         <div className="ai-panel-header-actions">
           <AiPanelSideButton
@@ -711,14 +708,6 @@ export function AiChatPanel({
                       </button>
                     )}
                   </div>
-                )}
-                {entry.loginRequired && (
-                  <button
-                    className="ai-login-btn"
-                    onClick={() => void window.desktopApi.aiGskLogin()}
-                  >
-                    {t('aiGskLoginBtn')}
-                  </button>
                 )}
               </>
             )}

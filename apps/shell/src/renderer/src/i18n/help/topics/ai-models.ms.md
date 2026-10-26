@@ -6,7 +6,8 @@ Model dan kunci dikonfigurasikan dalam Tetapan, melalui baris akaun di penjuru k
 
 ![Tetingkap Tetapan](img/settings-general.png)
 
-- **Genspark dihoskan**: log masuk dan gunakannya terus. Tiada konfigurasi diperlukan.
+- **Claude (langganan)** (lalai): menggunakan log masuk CLI `claude` tempatan anda. Jalankan `claude login` sekali; model sonnet, opus, haiku; teks sahaja, tiada imej. **Codex CLI** juga disokong, dan pelayan tempatan seperti Ollama atau LM Studio berfungsi sebagai titik akhir tersuai yang serasi dengan OpenAI.
+- **Carian web dan media**: carian web berfungsi tanpa kunci (rantaian percuma; penyedia berkunci adalah pilihan). Penjanaan imej dan analisis media kekal mati sehingga penyedia AI Media dikonfigurasikan.
 - **Titik akhir tersuai (BYOK)**: Tetapan ▸ Model AI menerima URL asas dan kunci API bagi setiap protokol, termasuk yang serasi dengan OpenAI, Anthropic, Gemini, DeepSeek, DashScope (qwen), dan lain-lain. Kunci disimpan dalam fail tetapan aplikasi pada mesin ini dan dihantar hanya dalam pengepala permintaan. Atlas Cloud antara protokol terbina dalam.
 - Anda boleh memilih model yang berbeza bagi setiap keupayaan, iaitu sembang dan penjanaan, penjanaan imej, dan analisis imej.
 - **Uji sambungan** menyemak ketercapaian titik akhir dan keterlihatan model sebelum disimpan.

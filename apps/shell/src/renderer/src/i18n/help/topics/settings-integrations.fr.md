@@ -46,12 +46,6 @@ Les paramètres peuvent enregistrer GenOffice comme gestionnaire de .docx / .xls
 - Aide ▸ Mentions relatives aux logiciels tiers : l’inventaire complet des licences open source livré avec l’application.
 - Aide ▸ Vérifier les mises à jour : déclenche une vérification manuelle ; une version plus récente propose l’installation.
 
-## Connexion à Genspark
-
-- Le point de connexion (paramètres ou liste des projets cloud) utilise un flux par **code d’appareil** : GenOffice affiche un code et ouvre la connexion dans le navigateur ; la suite est automatique une fois terminée.
-- La connexion sert uniquement à : la liste des projets cloud et aux modèles hébergés de Genspark. Sans elle, toutes les fonctions locales et les modèles personnalisés continuent de fonctionner.
-- La déconnexion se fait en un clic dans les paramètres.
-
 ## Intégration MCP (pour les utilisateurs avancés / clients IA)
 
 **Intégrations** est le panneau qui relie GenOffice à un agent de codage, et il a son propre article : Connecter un agent de codage. La version courte — choisissez une voie (la ligne de commande, ou MCP), suivez la section correspondante, puis ouvrez une nouvelle conversation et posez votre question.

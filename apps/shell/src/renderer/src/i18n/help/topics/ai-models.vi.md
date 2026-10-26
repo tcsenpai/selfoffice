@@ -6,7 +6,8 @@ Mô hình và khóa được cấu hình trong Cài đặt (hàng tài khoản �
 
 ![Cửa sổ Cài đặt](img/settings-general.png)
 
-- **Genspark đám mây**: đăng nhập (luồng mã thiết bị) rồi dùng — không phải cấu hình gì.
+- **Claude (gói đăng ký)** (mặc định): dùng đăng nhập CLI `claude` cục bộ của bạn — chạy `claude login` một lần; mô hình sonnet, opus, haiku; chỉ văn bản, không hình ảnh. **Codex CLI** cũng được hỗ trợ, và máy chủ cục bộ như Ollama hoặc LM Studio dùng được như điểm cuối tùy chỉnh tương thích OpenAI.
+- **Tìm kiếm web và phương tiện**: tìm kiếm web hoạt động không cần khóa (chuỗi miễn phí; nhà cung cấp dùng khóa là tùy chọn). Tạo ảnh và phân tích phương tiện vẫn tắt cho đến khi cấu hình nhà cung cấp AI Media.
 - **Điểm cuối tùy chỉnh (BYOK)**: Cài đặt ▸ AI nhận một URL cơ sở và một khóa API cho từng giao thức — tương thích OpenAI, Anthropic, Gemini, DeepSeek, DashScope (qwen) và hơn thế. Khóa được lưu trong tệp cài đặt của ứng dụng trên máy này và chỉ được gửi trong phần đầu yêu cầu. Atlas Cloud nằm trong các giao thức dựng sẵn.
 - Có thể chọn mô hình khác nhau cho từng năng lực: trò chuyện/tạo sinh, tạo hình ảnh, phân tích hình ảnh.
 - **Kiểm tra kết nối**: xác minh điểm cuối truy cập được và mô hình hiển thị trước khi lưu.

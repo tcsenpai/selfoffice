@@ -6,7 +6,8 @@ Modele i klucze konfiguruje się w ustawieniach (wiersz konta w lewym dolnym rog
 
 ![Okno Ustawień](img/settings-general.png)
 
-- **Genspark w chmurze**: zaloguj się (przepływ z kodem urządzenia) i korzystaj — bez żadnej konfiguracji.
+- **Claude (subskrypcja)** (domyślnie): używa lokalnego logowania CLI `claude` — uruchom raz `claude login`; modele sonnet, opus, haiku; tylko tekst, bez obrazów. Obsługiwany jest też **Codex CLI**, a lokalne serwery, takie jak Ollama czy LM Studio, działają jako własne punkty końcowe zgodne z OpenAI.
+- **Wyszukiwanie w sieci i media**: wyszukiwanie w sieci działa bez klucza (darmowy łańcuch; dostawcy z kluczem są opcjonalni). Generowanie obrazów i analiza multimediów pozostają wyłączone, dopóki nie skonfigurujesz dostawcy AI Media.
 - **Własne punkty końcowe (BYOK)**: Ustawienia ▸ Model AI przyjmuje adres bazowy i klucz API dla każdego protokołu — zgodny z OpenAI, Anthropic, Gemini, DeepSeek, DashScope (qwen) i inne. Klucze są przechowywane w pliku ustawień aplikacji na tym komputerze i wysyłane wyłącznie w nagłówkach żądań. Atlas Cloud należy do wbudowanych protokołów.
 - Dla każdej funkcji można wybrać inny model: czat/generowanie, generowanie obrazów, analiza obrazów.
 - **Testuj połączenie**: sprawdza osiągalność punktu końcowego i widoczność modelu przed zapisaniem.

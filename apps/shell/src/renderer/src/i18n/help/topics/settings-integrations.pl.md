@@ -46,12 +46,6 @@ Ustawienia mogą zarejestrować GenOffice jako obsługę plików .docx / .xlsx /
 - Pomoc ▸ Informacje o oprogramowaniu innych firm: pełny wykaz licencji open source dołączony do aplikacji.
 - Pomoc ▸ Sprawdź aktualizacje…: uruchamia ręczne sprawdzenie; nowsza wersja wyświetla monit o instalacji.
 
-## Logowanie do Genspark
-
-- Punkt logowania (w ustawieniach lub na liście projektów w chmurze) korzysta z przepływu z **kodem urządzenia**: GenOffice pokazuje kod i otwiera stronę logowania w przeglądarce; po zakończeniu proces przebiega dalej automatycznie.
-- Logowanie służy wyłącznie do: listy projektów w chmurze i modeli hostowanych przez Genspark. Bez niego wszystkie funkcje lokalne i modele niestandardowe działają dalej.
-- Wylogowanie to jedno kliknięcie w ustawieniach.
-
 ## Integracja MCP (dla zaawansowanych użytkowników i klientów AI)
 
 Do **Integracji** łączy GenOffice z agentem programistycznym i ma własny artykuł: Podłączenie z agentem programistycznym. Wersja skrócona — wybierz drogę (wiersz poleceń albo MCP), przejdź tę część, a potem rozpocznij nową rozmowę i zapytaj.

@@ -127,7 +127,7 @@ export interface DeckAccess {
    * On search failure returns an empty array (fail-open; doesn't block the main generation path).
    */
   searchImages?(query: string, maxResults: number): Promise<string[]>
-  /** live predicate (gsk login && cloud-tools toggle, or a BYOK media key); false hides generate_image */
+  /** live predicate (a configured media provider); false hides generate_image */
   imageGenAvailable?(): boolean
   /** same for analyze_media */
   mediaAnalysisAvailable?(): boolean
@@ -351,11 +351,6 @@ const TOOLS: AgentToolDef[] = [
           description:
             'Image description, English works better (keep any text to render in the image verbatim)',
         },
-        model: {
-          type: 'string',
-          description:
-            'Optional, defaults to the configured model. Genspark only — specify for special purposes: fal-bria-rmbg=background removal, fal-ai/recraft-clarity-upscale=upscale, flux-pro/outpaint=outpaint, fal-ai/image-editing/text-removal=remove text watermark',
-        },
         referenceImageUrls: {
           type: 'array',
           items: { type: 'string' },
@@ -377,7 +372,7 @@ const TOOLS: AgentToolDef[] = [
   {
     name: 'analyze_media',
     description:
-      'Analyze media content: understand images/audio/video (video and audio need Genspark or Gemini as the media provider). Pass media URLs (or local file paths) and analysis requirements; returns analysis text. Video supports extracting key points, structure, and time ranges — good for turning user material into usable deck content.',
+      'Analyze media content: understand images/audio/video (video and audio need Gemini or another video-capable media provider). Pass media URLs (or local file paths) and analysis requirements; returns analysis text. Video supports extracting key points, structure, and time ranges — good for turning user material into usable deck content.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1034,7 +1029,7 @@ export function formatSlideDump(slide: RenderSlide): string {
   return `Canvas ${slide.widthPx}×${slide.heightPx}px (1 px = ${pxToEmu} EMU)\n${parts.join('\n---\n') || '(no elements on this page)'}${colorNote}`
 }
 
-/** tools that need a media provider: Genspark login + cloud tools, or a BYOK media key in Settings */
+/** tools that need a media provider: a BYOK media key in Settings */
 function hiddenMediaTools(access: DeckAccess): Set<string> {
   const hidden = new Set<string>()
   if (access.imageGenAvailable?.() === false) hidden.add('generate_image')
@@ -1045,7 +1040,7 @@ function hiddenMediaTools(access: DeckAccess): Set<string> {
 function mediaToolsOffNote(hidden: Set<string>): string {
   if (hidden.size === 0) return ''
   const plural = hidden.size > 1
-  return `\n\nNote: ${[...hidden].join(' and ')} ${plural ? 'are' : 'is'} currently unavailable (no image/media provider: signed out of Genspark or cloud tools off, and no media API key in Settings). Do not call or promise ${plural ? 'them' : 'it'}; for imagery use image_search + insert_web_image instead.`
+  return `\n\nNote: ${[...hidden].join(' and ')} ${plural ? 'are' : 'is'} currently unavailable (no image/media provider: no media API key in Settings). Do not call or promise ${plural ? 'them' : 'it'}; for imagery use image_search + insert_web_image instead.`
 }
 
 export function createSlidesSkill(access: DeckAccess): AgentSkill {
@@ -1522,7 +1517,6 @@ async function executeTool(
         : undefined
       const r = await window.slidesApi.generateImage({
         prompt,
-        model: call.input.model ? String(call.input.model) : undefined,
         referenceImageUrls: refs,
         aspectRatio: call.input.aspectRatio ? String(call.input.aspectRatio) : undefined,
         transparentBackground: call.input.transparentBackground === true,

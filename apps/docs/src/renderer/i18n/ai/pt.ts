@@ -8,8 +8,7 @@ export const pt = {
   aiStarterPolishAll: 'Aprimore o documento inteiro com um tom mais profissional',
   aiStarterContinue: 'Continue escrevendo de onde o documento parou',
   aiStarterFillTemplate: 'Encontre e preencha os espaços reservados do documento',
-  aiGskLoginBtn: 'Entrar no Genspark',
-  aiPanelTitle: 'Genspark',
+  aiPanelTitle: 'AI',
   aiOpenAssistant: 'Abrir assistente de IA',
   aiSummarizeBtn: 'Resumo IA',
   aiSummarizePrompt: 'Resuma o conteúdo principal e os pontos-chave deste documento',
@@ -119,8 +118,7 @@ export const pt = {
     'O serviço de IA está sobrecarregado no momento — tente novamente em instantes',
   aiNetworkError:
     'Problema de rede: não foi possível conectar ao serviço de IA. Verifique sua conexão e tente novamente',
-  aiCreditsExhausted:
-    'Seus créditos Genspark acabaram. Recarregue em genspark.ai/pricing e tente novamente',
+  aiCreditsExhausted: 'Your AI provider reports that credits or quota are exhausted. Top up with your provider or switch model in Settings.',
   aiSumReadAttachment: 'Ler anexo',
   aiSumImageAttachment: 'Imagem anexada {name}',
   aiSumRead: 'Ler {name}',

@@ -11,3 +11,14 @@ DuckDuckGo) unless you select a keyed provider. Image generation and media
 analysis are off until you configure a provider.
 
 API keys are stored only on this device.
+
+## Analytics events (inactive)
+
+The code still contains the upstream tracker hooks, but no measurement
+credentials ship with this fork, so nothing is sent. For reference, the
+events the hooks would emit are:
+
+- `install_first_launch` — marks the first use of a newly assigned anonymous `client_id`
+- `app_launch` — no event-specific parameter
+- `file_open` — `ext`, the file extension such as `docx` or `xlsx`
+- `file_new` — `kind`, one of `docx`, `xlsx`, `pptx`, `md`, or `pdf`

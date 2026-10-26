@@ -1,6 +1,6 @@
 # Pemasangan GenOffice
 
-Setiap keluaran diterbitkan pada [halaman Keluaran](https://github.com/genspark-ai/genoffice/releases/latest). Semuanya datang daripada `main`; pemasang untuk macOS dan Windows adalah bertanda tangan.
+Setiap keluaran diterbitkan pada [halaman Keluaran](https://github.com/tcsenpai/selfoffice/releases/latest). Semuanya datang daripada `main`; pemasang untuk macOS dan Windows adalah bertanda tangan.
 
 ## Memilih fail untuk mesin anda
 

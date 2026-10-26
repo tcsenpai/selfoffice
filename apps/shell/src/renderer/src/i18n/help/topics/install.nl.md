@@ -1,6 +1,6 @@
 # GenOffice installeren
 
-Elke build staat op de [Releases-pagina](https://github.com/genspark-ai/genoffice/releases/latest). Ze komen allemaal uit `main`; de installateurs voor macOS en Windows zijn ondertekend.
+Elke build staat op de [Releases-pagina](https://github.com/tcsenpai/selfoffice/releases/latest). Ze komen allemaal uit `main`; de installateurs voor macOS en Windows zijn ondertekend.
 
 ## Kies het bestand voor je computer
 

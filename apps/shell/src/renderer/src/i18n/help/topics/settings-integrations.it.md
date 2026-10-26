@@ -46,12 +46,6 @@ Le impostazioni possono registrare GenOffice come gestore dei file .docx / .xlsx
 - Aiuto ▸ Note sul software di terze parti: l'elenco completo delle licenze open source incluso nell'app.
 - Aiuto ▸ Controlla aggiornamenti…: avvia un controllo manuale; se c'è una versione più recente ti propone di installarla.
 
-## Accesso a Genspark
-
-- Il punto d'ingresso per l'accesso (nelle impostazioni o nell'elenco dei progetti cloud) usa un flusso con **codice dispositivo**: GenOffice mostra un codice e apre la pagina di accesso nel browser; una volta completato, l'operazione prosegue automaticamente.
-- L'accesso serve soltanto per: l'elenco dei progetti cloud e i modelli ospitati da Genspark. Senza di esso ogni funzione locale e i modelli personalizzati continuano a funzionare.
-- La disconnessione si fa con un clic nelle impostazioni.
-
 ## Integrazione MCP (per utenti avanzati / client IA)
 
 **Integrazioni** è il riquadro che collega GenOffice a un agente di programmazione, e ha un articolo tutto suo: Collegare un agente di programmazione. In breve — scegli una strada (la riga di comando, oppure MCP), segui quella sezione, poi apri una nuova conversazione e fai la domanda.

@@ -46,12 +46,6 @@ Met de instellingen kun je GenOffice registreren als verwerker van .docx / .xlsx
 - Help ▸ Kennisgevingen over software van derden: het volledige overzicht van opensourcelicenties dat met de app is meegeleverd.
 - Help ▸ Controleren op updates…: start een handmatige controle; bij een nieuwere versie wordt je gevraagd die te installeren.
 
-## Aanmelden bij Genspark
-
-- Het aanmeldpunt (in de instellingen of in de lijst met cloudprojecten) gebruikt een flow met **apparaatcode**: GenOffice toont een code en opent de aanmeldpagina in de browser; daarna gaat het automatisch verder.
-- Aanmelden wordt alleen gebruikt voor: de lijst met cloudprojecten en de modellen die Genspark host. Zonder aanmelden blijven alle lokale functies en eigen modellen werken.
-- Uitloggen is in de instellingen met één klik te doen.
-
 ## MCP-integratie (voor gevorderde gebruikers / AI-clients)
 
 **Integraties** is het paneel dat GenOffice met een coding agent verbindt, en daarvoor is er een eigen artikel: Verbinden met een coding agent. De korte versie — kies een route (de opdrachtregel, of MCP), volg dat onderdeel en start daarna een nieuw gesprek en stel je vraag.

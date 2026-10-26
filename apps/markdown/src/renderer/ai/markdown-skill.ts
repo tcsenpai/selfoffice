@@ -79,7 +79,7 @@ const IMAGE_GEN_OFF_NOTE =
 export function createMarkdownSkill(
   getEditor: () => Editor | null,
   fm?: FrontmatterAccess,
-  /** live predicate (gsk login && cloud-tools toggle, or a BYOK media key); false hides generate_image */
+  /** live predicate (a configured media provider); false hides generate_image */
   imageGenAvailable?: () => boolean,
   /** streaming long-form writer behind write_document (panel-owned: progress chip, partial keep/discard) */
   getWriter?: () => AiDocWriter | undefined,

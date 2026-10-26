@@ -1,6 +1,6 @@
 # Installing GenOffice
 
-Every build is published on the [Releases page](https://github.com/genspark-ai/genoffice/releases/latest). All of them come from `main`; the macOS and Windows installers are signed.
+Every build is published on the [Releases page](https://github.com/tcsenpai/selfoffice/releases/latest). All of them come from `main`; the macOS and Windows installers are signed.
 
 ## Pick the file for your machine
 

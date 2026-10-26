@@ -14,12 +14,7 @@ import type { FontSizeStep } from '@genoffice/pptx-ops/font-size'
 // the font catalog's shape is the store's to declare, not a copy kept in step by hand
 import type { CatalogEntry as FontCatalogEntry } from '@genoffice/electron-utils/font-store'
 import type { LayoutSkeleton } from '../renderer/ai/layout-skeleton'
-import type {
-  AiSettings,
-  AiStreamChunk,
-  AiStreamRequest,
-  GenSparkAccountStatus,
-} from '@genoffice/ai-provider'
+import type { AiSettings, AiStreamChunk, AiStreamRequest } from '@genoffice/ai-provider'
 
 import type {
   EditRun,
@@ -52,7 +47,6 @@ export type {
   AiSettings,
   AiStreamChunk,
   AiStreamRequest,
-  GenSparkAccountStatus,
 } from '@genoffice/ai-provider'
 export { AI_PROVIDERS } from '@genoffice/ai-provider/browser'
 export type { AgentToolCall, AgentToolDef } from '@genoffice/agent-core'
@@ -1764,10 +1758,6 @@ export interface SlidesApi {
   skillText: (name: string) => Promise<string>
   aiStream: (request: AiStreamRequest) => Promise<void>
   aiStreamCancel: (requestId: string) => Promise<void>
-  /** Genspark account status (gsk login state); with withEmail also fetches the email (needs a network request, slower) */
-  aiGskStatus: (withEmail?: boolean) => Promise<GenSparkAccountStatus>
-  /** Open the browser to log into Genspark (fire-and-forget; aiGskStatus turns logged-in once done) */
-  aiGskLogin: () => Promise<void>
   /** Record a run that ended without a usable reply, for post-mortem (fire-and-forget, never throws) */
   aiLogRunFailure: (entry: AiRunFailure) => Promise<void>
   webSearch: (
@@ -1818,22 +1808,18 @@ export interface SlidesApi {
     ext?: string
     keepSrcRect?: boolean
   }) => Promise<RenderSlide | null>
-  /** gsk (Genspark) AI image generation/editing, returns the image URL (error prompts login when logged out) */
+  /** AI image generation/editing via the configured media provider, returns the image URL */
   generateImage: (op: {
     prompt: string
-    model?: string
     referenceImageUrls?: string[]
     aspectRatio?: string
-    imageSize?: string
     transparentBackground?: boolean
   }) => Promise<{ url?: string; error?: string }>
-  /** gsk (Genspark) media analysis: image/audio/video content understanding, returns analysis text */
+  /** media analysis via the configured media provider: image/audio/video content understanding, returns analysis text */
   analyzeMedia: (op: {
     mediaUrls: string[]
     requirements: string
   }) => Promise<{ text?: string; error?: string }>
-  /** gsk availability: installed and logged in (for UI/tools to prompt login) */
-  gskStatus: () => Promise<{ available: boolean; email?: string }>
   onAiStream: (handler: (chunk: AiStreamChunk) => void) => () => void
   /** Style Skill sidecar: write styleSkill to a same-named .styleskill.json next to the draft */
   saveStyleSidecar: (data: {

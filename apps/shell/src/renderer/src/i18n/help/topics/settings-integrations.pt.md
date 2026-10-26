@@ -46,12 +46,6 @@ As Configurações podem registar o GenOffice como a aplicação que abre fichei
 - Ajuda ▸ Avisos de software de terceiros: o inventário completo das licenças de código aberto que acompanha a aplicação.
 - Ajuda ▸ Procurar atualizações…: inicia uma verificação manual; e se houver uma versão mais recente, o GenOffice propõe a instalação.
 
-## Entrar na Genspark
-
-- O acesso (nas Configurações ou na lista de projetos na nuvem) usa um fluxo de **código de dispositivo**: o GenOffice mostra um código e abre o início de sessão no navegador; e a partir daí o processo prossegue sozinho.
-- O início de sessão serve apenas para: a lista de projetos na nuvem e os modelos alojados da Genspark. Sem ele, todas as funcionalidades locais e os modelos personalizados continuam a funcionar.
-- Terminar sessão é um clique nas Configurações.
-
 ## Integração MCP (para utilizadores avançados / clientes de IA)
 
 **Integrações** é o painel que liga o GenOffice a um agente de programação, e tem o seu próprio artigo: Ligar um agente de programação. A versão curta — escolha um caminho (a linha de comandos, ou MCP), siga essa secção e depois inicie uma conversa nova e pergunte.

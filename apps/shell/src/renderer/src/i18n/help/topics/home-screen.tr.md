@@ -9,7 +9,6 @@ Giriş, GenOffice'in başlangıç sayfasıdır: solda bir gezinti kenar çubuğu
 - **Son Kullanılanlar**: yakın zamanda açtığınız dosyalar. Her satır ne zaman açıldığıyla damgalanır — bugün, dün veya tarih.
 - **Yıldızlı**: yıldızladığınız dosyalar. Bir dosya satırının üzerine gelip yıldıza tıklayarak ekleyin veya kaldırın. ⋯ menüsündeki **Gruba taşı**, yıldızlı dosyaları adlandırılmış gruplara ayırır; Yıldızlı görünümü bunlara göre süzer.
 - **AI'ya Sor**: bilgi tabanı paneli — sorular sorun ve yıldızlı dosyalarınızdan atıflı yanıtlar alın (aşağıya bakın).
-- **Genspark Projeleri**: Genspark hesabınızda oturum açtıktan sonra, web'de Genspark AI ile oluşturduğunuz projeleri gösterir; düzenlemeye tarayıcıda devam etmek için birine tıklayın. Arama, zamana göre sıralama, yenileme ve daha fazlasını yükleme desteklenir.
 - **Klasörler**: **Klasör ekle…** ile kenar çubuğuna eklediğiniz veya dosya yöneticisinden sürüklediğiniz dizinler. Her biri açabileceğiniz, içinde alt klasör oluşturabileceğiniz, yeniden adlandırıp kaldırabileceğiniz bir kök olur; çevrimdışı kalan biri kullanılamaz olarak görünür ve listeden çıkarılabilir. **Yeni klasör** bir tane daha oluşturur.
 
 Burada Çöp Kutusu girdisi yoktur. Silinen dosyalar sistem çöp kutusuna gider ve birini geri yüklemek işletim sisteminin işidir.
@@ -60,12 +59,6 @@ Her kartın yaptığı:
 
 - Önce dosyaları yıldızlayın (uygulamanın okuduğu herhangi bir tür); panel başlığı derlemi sayar ve boş bir bilgi tabanı size gidip bir şey yıldızlamanızı söyler.
 - Yanıtlar geldikleri dosyalara atıfta bulunur; dosyayı düzenleyicisinde açmak için bir atıfa tıklayın.
-- Genspark'ta oturum açmayı gerektirir. Konuşma yalnızca bellekte yaşar — uygulamayı kapatmak onu sonlandırır.
+- Yapılandırdığınız yapay zekâ sağlayıcısını kullanır. Konuşma yalnızca bellekte yaşar — uygulamayı kapatmak onu sonlandırır.
 - Arama, Giriş araması gibi yerel dosya dizininde çalışır; kaybolan dosyalar sessizce derlemden düşer.
 - Gruplar yalnızca Yıldızlı listesini düzenler — bilgi tabanı her zaman tüm yıldızlı dosyaları kapsar.
-
-## Bulut projeleri (Genspark Projeleri)
-
-- İlk kullanım Genspark hesabınızda oturum açmayı gerektirir (cihaz kodu akışı: GenOffice bir kod gösterir, oturum açmayı tarayıcıda tamamlarsınız).
-- Proje listesi web ile eşitlenir; Tarayıcıda aç, devam etmek için oraya atlar.
-- Oturum açmamak yerel özelliklerin hiçbirini etkilemez.

@@ -134,7 +134,10 @@ export async function streamClaudeCli(
     if (turn.text) cb.onDelta(turn.text)
     for (const call of turn.toolCalls) cb.onToolCall({ ...call, id: `claude-${randomUUID()}` })
     if (res.usage) {
-      cb.onUsage?.({ inputTokens: res.usage.input_tokens, outputTokens: res.usage.output_tokens })
+      cb.onUsage?.({
+        ...(res.usage.input_tokens !== undefined ? { inputTokens: res.usage.input_tokens } : {}),
+        ...(res.usage.output_tokens !== undefined ? { outputTokens: res.usage.output_tokens } : {}),
+      })
     }
   })
 }

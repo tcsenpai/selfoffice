@@ -99,7 +99,6 @@ import {
   type AiProviderId,
   type AiSettings,
   type AiStreamChunk,
-  type GenSparkAccountStatus,
   type LegacyAiSettings,
 } from '@genoffice/ai-provider'
 import { shutdownCodexAppServers } from '@genoffice/ai-provider/codex-app-server'
@@ -109,13 +108,6 @@ import {
   sheetCsvToXlsxBuffer,
 } from '@genoffice/xlsx-gateway/gateway/csv-import'
 import {
-  ensureGenofficeLogin,
-  noteGskCallFailure,
-  setGenofficeLoginOpener,
-  gskApiKey,
-  gskLoginInfo,
-  hasGskAuth,
-  setGskProxyUrl,
   webSearchTool,
   imageSearchTool,
   generateImageTool,
@@ -222,7 +214,6 @@ const tMain = createI18n({
     errParseFailed: '文件解析失败',
     errImageNoText: '图片附件不提供文本,已作为图像随用户消息发送,直接看图即可',
     errNotImage: '不是支持的图片类型',
-    errGskNotLoggedIn: '未登录 Genspark:请点击下方「登录 Genspark」完成登录后重试',
     errNoApiKey: '未配置 {provider} 的 API Key',
     errAiRegion: '该模型的厂商不向当前地区提供服务，请换一个模型或切换网络',
     errAiBusy: 'AI 服务当前繁忙，请稍后重试',
@@ -285,8 +276,6 @@ const tMain = createI18n({
     errParseFailed: 'Failed to parse file',
     errImageNoText: 'Image attachments have no text; the image is sent along with the user message',
     errNotImage: 'not a supported image type',
-    errGskNotLoggedIn:
-      'Not signed in to Genspark: click “Sign in to Genspark” below, sign in, then retry',
     errNoApiKey: 'No API key configured for {provider}',
     errAiRegion:
       "This model's provider does not serve your current region — pick another model or change your network",
@@ -354,8 +343,6 @@ const tMain = createI18n({
     errImageNoText:
       'Tệp đính kèm hình ảnh không có văn bản; hình ảnh được gửi cùng với tin nhắn của người dùng',
     errNotImage: 'loại hình ảnh không được hỗ trợ',
-    errGskNotLoggedIn:
-      'Chưa đăng nhập vào Genspark: nhấp vào “Đăng nhập vào Genspark” bên dưới, đăng nhập, sau đó thử lại',
     errNoApiKey: 'Chưa cấu hình khóa API cho {provider}',
     errAiRegion:
       'Nhà cung cấp của mô hình này không phục vụ khu vực hiện tại của bạn — hãy chọn mô hình khác hoặc đổi mạng',
@@ -423,8 +410,6 @@ const tMain = createI18n({
     errParseFailed: 'Dosya ayrıştırılamadı',
     errImageNoText: 'Görsel eklerin metni yoktur; görsel kullanıcı mesajıyla birlikte gönderilir',
     errNotImage: 'desteklenen bir görsel türü değil',
-    errGskNotLoggedIn:
-      'Genspark oturumu açılmamış: aşağıdaki “Genspark’ta oturum aç” düğmesine tıklayın, oturum açın ve yeniden deneyin',
     errNoApiKey: '{provider} için API anahtarı yapılandırılmamış',
     errAiRegion:
       'Bu modelin sağlayıcısı bulunduğunuz bölgeye hizmet vermiyor — başka bir model seçin veya ağınızı değiştirin',
@@ -494,8 +479,6 @@ const tMain = createI18n({
     errImageNoText:
       '画像添付にはテキストがありません。画像はユーザー メッセージと一緒に送信されるため、そのまま画像をご確認ください',
     errNotImage: 'サポートされていない画像形式です',
-    errGskNotLoggedIn:
-      'Genspark にサインインしていません。下の「Genspark にサインイン」からサインインして再試行してください',
     errNoApiKey: '{provider} の API キーが設定されていません',
     errAiRegion:
       'このモデルの提供元は現在の地域ではサービスを提供していません。別のモデルを選ぶか、ネットワークを切り替えてください',
@@ -565,8 +548,6 @@ const tMain = createI18n({
     errImageNoText:
       '이미지 첨부에는 텍스트가 없습니다. 이미지는 사용자 메시지와 함께 전송되므로 이미지를 직접 확인하세요',
     errNotImage: '지원되는 이미지 형식이 아닙니다',
-    errGskNotLoggedIn:
-      'Genspark에 로그인되어 있지 않습니다. 아래 "Genspark 로그인"을 눌러 로그인한 뒤 다시 시도하세요',
     errNoApiKey: '{provider}의 API 키가 설정되지 않았습니다',
     errAiRegion:
       '이 모델의 제공업체는 현재 지역에서 서비스를 제공하지 않습니다. 다른 모델을 선택하거나 네트워크를 변경하세요',
@@ -636,8 +617,6 @@ const tMain = createI18n({
     errImageNoText:
       "Les images jointes n'ont pas de texte ; l'image est envoyée avec le message de l'utilisateur",
     errNotImage: "type d'image non pris en charge",
-    errGskNotLoggedIn:
-      'Non connecté à Genspark : cliquez sur « Se connecter à Genspark » ci-dessous, connectez-vous puis réessayez',
     errNoApiKey: 'Aucune clé API configurée pour {provider}',
     errAiRegion:
       'Le fournisseur de ce modèle ne dessert pas votre région actuelle — choisissez un autre modèle ou changez de réseau',
@@ -708,8 +687,6 @@ const tMain = createI18n({
     errImageNoText:
       'Bildanlagen enthalten keinen Text; das Bild wird zusammen mit der Benutzernachricht gesendet',
     errNotImage: 'kein unterstützter Bildtyp',
-    errGskNotLoggedIn:
-      'Nicht bei Genspark angemeldet: Klicken Sie unten auf „Bei Genspark anmelden“, melden Sie sich an und versuchen Sie es erneut',
     errNoApiKey: 'Kein API-Schlüssel für {provider} konfiguriert',
     errAiRegion:
       'Der Anbieter dieses Modells bedient Ihre aktuelle Region nicht — wählen Sie ein anderes Modell oder wechseln Sie das Netzwerk',
@@ -779,8 +756,6 @@ const tMain = createI18n({
     errImageNoText:
       'Las imágenes adjuntas no tienen texto; la imagen se envía junto con el mensaje del usuario',
     errNotImage: 'no es un tipo de imagen compatible',
-    errGskNotLoggedIn:
-      'No has iniciado sesión en Genspark: pulsa «Iniciar sesión en Genspark» abajo, inicia sesión y vuelve a intentarlo',
     errNoApiKey: 'No hay clave de API configurada para {provider}',
     errAiRegion:
       'El proveedor de este modelo no da servicio en tu región actual — elige otro modelo o cambia de red',
@@ -850,8 +825,6 @@ const tMain = createI18n({
     errImageNoText:
       'รูปภาพแนบไม่มีข้อความ รูปภาพจะถูกส่งไปพร้อมข้อความของผู้ใช้ ให้ดูที่รูปภาพโดยตรง',
     errNotImage: 'ไม่ใช่ชนิดรูปภาพที่รองรับ',
-    errGskNotLoggedIn:
-      'ยังไม่ได้ลงชื่อเข้าใช้ Genspark: แตะ “ลงชื่อเข้าใช้ Genspark” ด้านล่าง แล้วลองอีกครั้ง',
     errNoApiKey: 'ยังไม่ได้ตั้งค่า API Key ของ {provider}',
     errAiRegion:
       'ผู้ให้บริการของโมเดลนี้ไม่ให้บริการในภูมิภาคปัจจุบันของคุณ — โปรดเลือกโมเดลอื่นหรือเปลี่ยนเครือข่าย',
@@ -919,7 +892,6 @@ const tMain = createI18n({
     errParseFailed: 'Gagal mengurai file',
     errImageNoText: 'Lampiran gambar tidak memiliki teks; gambar dikirim bersama pesan pengguna',
     errNotImage: 'bukan jenis gambar yang didukung',
-    errGskNotLoggedIn: 'Belum masuk ke Genspark: klik “Masuk ke Genspark” di bawah, lalu coba lagi',
     errNoApiKey: 'API Key untuk {provider} belum dikonfigurasi',
     errAiRegion:
       'Penyedia model ini tidak melayani wilayah Anda saat ini — pilih model lain atau ganti jaringan',
@@ -988,8 +960,6 @@ const tMain = createI18n({
     errImageNoText:
       'Вложенные изображения не содержат текста; изображение отправляется вместе с сообщением пользователя',
     errNotImage: 'неподдерживаемый тип изображения',
-    errGskNotLoggedIn:
-      'Вы не вошли в Genspark: нажмите «Войти в Genspark» ниже, войдите и повторите попытку',
     errNoApiKey: 'API-ключ для {provider} не настроен',
     errAiRegion:
       'Поставщик этой модели не обслуживает ваш текущий регион — выберите другую модель или смените сеть',
@@ -1057,8 +1027,6 @@ const tMain = createI18n({
     errParseFailed: 'فشل تحليل الملف',
     errImageNoText: 'مرفقات الصور لا تحتوي على نص؛ تُرسل الصورة مع رسالة المستخدم',
     errNotImage: 'نوع صورة غير مدعوم',
-    errGskNotLoggedIn:
-      'لم تسجّل الدخول إلى Genspark: انقر على «تسجيل الدخول إلى Genspark» أدناه ثم أعد المحاولة',
     errNoApiKey: 'لم يتم تكوين مفتاح API لـ {provider}',
     errAiRegion:
       'مزوّد هذا النموذج لا يقدم الخدمة في منطقتك الحالية — اختر نموذجًا آخر أو غيّر الشبكة',
@@ -1125,8 +1093,6 @@ const tMain = createI18n({
     errImageNoText:
       'Anexos de imagem não têm texto; a imagem é enviada junto com a mensagem do usuário',
     errNotImage: 'não é um tipo de imagem suportado',
-    errGskNotLoggedIn:
-      'Não conectado ao Genspark: clique em “Entrar no Genspark” abaixo, entre e tente novamente',
     errNoApiKey: 'Nenhuma chave de API configurada para {provider}',
     errAiRegion:
       'O fornecedor deste modelo não atende à sua região atual — escolha outro modelo ou mude de rede',
@@ -1195,8 +1161,6 @@ const tMain = createI18n({
     errImageNoText:
       "Gli allegati immagine non hanno testo; l'immagine viene inviata insieme al messaggio dell'utente",
     errNotImage: 'tipo di immagine non supportato',
-    errGskNotLoggedIn:
-      'Accesso a Genspark non effettuato: fai clic su “Accedi a Genspark” qui sotto, accedi e riprova',
     errNoApiKey: 'Nessuna chiave API configurata per {provider}',
     errAiRegion:
       'Il fornitore di questo modello non serve la tua regione attuale — scegli un altro modello o cambia rete',
@@ -1266,8 +1230,6 @@ const tMain = createI18n({
     errImageNoText:
       'Załączniki graficzne nie zawierają tekstu; obraz jest wysyłany razem z wiadomością użytkownika',
     errNotImage: 'nieobsługiwany typ obrazu',
-    errGskNotLoggedIn:
-      'Nie zalogowano do Genspark: kliknij „Zaloguj się do Genspark” poniżej, zaloguj się i spróbuj ponownie',
     errNoApiKey: 'Nie skonfigurowano klucza API dla {provider}',
     errAiRegion:
       'Dostawca tego modelu nie obsługuje Twojego obecnego regionu — wybierz inny model lub zmień sieć',
@@ -1336,8 +1298,6 @@ const tMain = createI18n({
     errImageNoText:
       'Obrázkové přílohy neobsahují text; obrázek se odesílá spolu se zprávou uživatele',
     errNotImage: 'nepodporovaný typ obrázku',
-    errGskNotLoggedIn:
-      'Nejste přihlášeni ke Genspark: klikněte níže na „Přihlásit se ke Genspark“, přihlaste se a zkuste to znovu',
     errNoApiKey: 'Pro {provider} není nakonfigurován žádný klíč API',
     errAiRegion:
       'Poskytovatel tohoto modelu neposkytuje služby ve vaší aktuální oblasti — vyberte jiný model nebo změňte síť',
@@ -1406,8 +1366,6 @@ const tMain = createI18n({
     errImageNoText:
       'Afbeeldingsbijlagen bevatten geen tekst; de afbeelding wordt samen met het gebruikersbericht verzonden',
     errNotImage: 'geen ondersteund afbeeldingstype',
-    errGskNotLoggedIn:
-      'Niet aangemeld bij Genspark: klik hieronder op “Aanmelden bij Genspark”, meld u aan en probeer het opnieuw',
     errNoApiKey: 'Geen API-sleutel geconfigureerd voor {provider}',
     errAiRegion:
       'De aanbieder van dit model bedient uw huidige regio niet — kies een ander model of wissel van netwerk',
@@ -1476,8 +1434,6 @@ const tMain = createI18n({
     errParseFailed: 'Gagal menghurai fail',
     errImageNoText: 'Lampiran imej tiada teks; imej dihantar bersama mesej pengguna',
     errNotImage: 'bukan jenis imej yang disokong',
-    errGskNotLoggedIn:
-      'Belum log masuk ke Genspark: klik “Log masuk ke Genspark” di bawah, kemudian cuba lagi',
     errNoApiKey: 'Kunci API untuk {provider} belum dikonfigurasikan',
     errAiRegion:
       'Penyedia model ini tidak memberi perkhidmatan di rantau semasa anda — pilih model lain atau tukar rangkaian',
@@ -1546,7 +1502,6 @@ const tMain = createI18n({
     errParseFailed: 'ניתוח הקובץ נכשל',
     errImageNoText: 'קבצים מצורפים מסוג תמונה אינם מכילים טקסט; התמונה נשלחת יחד עם הודעת המשתמש',
     errNotImage: 'סוג תמונה שאינו נתמך',
-    errGskNotLoggedIn: 'לא מחובר ל-Genspark: לחץ על "התחבר ל-Genspark" למטה, התחבר ונסה שוב',
     errNoApiKey: 'לא הוגדר מפתח API עבור {provider}',
     errAiRegion: 'ספק המודל הזה אינו פועל באזור הנוכחי שלך — בחרו מודל אחר או החליפו רשת',
     errAiBusy: 'שירות ה-AI עמוס כרגע — נסו שוב בעוד רגע',
@@ -1611,8 +1566,6 @@ const tMain = createI18n({
     errParseFailed: 'फ़ाइल पार्स करने में विफल',
     errImageNoText: 'छवि अनुलग्नक में टेक्स्ट नहीं होता; छवि उपयोगकर्ता संदेश के साथ भेजी जाती है',
     errNotImage: 'समर्थित छवि प्रकार नहीं है',
-    errGskNotLoggedIn:
-      'Genspark में साइन इन नहीं है: नीचे “Genspark में साइन इन करें” पर क्लिक करें, साइन इन करें और फिर से कोशिश करें',
     errNoApiKey: '{provider} के लिए कोई API कुंजी कॉन्फ़िगर नहीं है',
     errAiRegion:
       'इस मॉडल का प्रदाता आपके वर्तमान क्षेत्र में सेवा नहीं देता — कोई दूसरा मॉडल चुनें या नेटवर्क बदलें',
@@ -1681,7 +1634,6 @@ const tMain = createI18n({
     errParseFailed: '檔案解析失敗',
     errImageNoText: '圖片附件不提供文字,已作為影像隨使用者訊息傳送,直接看圖即可',
     errNotImage: '不是支援的圖片類型',
-    errGskNotLoggedIn: '未登入 Genspark:請點擊下方「登入 Genspark」完成登入後重試',
     errNoApiKey: '未設定 {provider} 的 API Key',
     errAiRegion: '該模型的廠商不向目前地區提供服務，請換一個模型或切換網路',
     errAiBusy: 'AI 服務目前繁忙，請稍後重試',
@@ -3988,28 +3940,9 @@ export function registerSheetsAiIpc(): void {
     sessionFor(event)
     const stored = readJson<Partial<AiSettings> & LegacyAiSettings>(SETTINGS_PATH(), {})
     const settings = resolveAiSettings(stored, defaultAiSettings())
-    // a stored BYOK provider is honored when usable; half-filled configs fall back to genspark
+    // a stored BYOK provider is honored when usable; half-filled configs fall back to claude-cli
     settings.provider = activeProvider(settings)
     return settings
-  })
-
-  // Genspark account (gsk login state): the auth source for AI features; the
-  // frontend uses it to guide sign-in when logged out
-  ipcMain.handle(
-    IPC_CHANNELS.aiGskStatus,
-    async (_event, withEmail?: unknown): Promise<GenSparkAccountStatus> => {
-      if (!hasGskAuth()) return { loggedIn: false }
-      if (!withEmail) return { loggedIn: true }
-      const info = await gskLoginInfo()
-      return info?.email ? { loggedIn: true, email: info.email } : { loggedIn: true }
-    },
-  )
-
-  // a 401 on the gsk key opens the device-code login once (genoffice-auth recovery)
-  setGenofficeLoginOpener((url) => void shell.openExternal(url))
-
-  ipcMain.handle(IPC_CHANNELS.aiGskLogin, () => {
-    ensureGenofficeLogin((url) => void shell.openExternal(url))
   })
 
   ipcMain.handle(IPC_CHANNELS.aiSetSettings, async (event, input: unknown) => {
@@ -4025,21 +3958,13 @@ export function registerSheetsAiIpc(): void {
     const request = aiChatRequestSchema.parse(input)
     const provider = request.settings.provider as AiProviderId
     let config = request.settings.providers[provider]
-    // set only when the gsk key was injected: a 401 then means that key expired
-    let gskKey = ''
-    if (provider === 'genspark' && config && !config.apiKey) {
-      gskKey = gskApiKey()
-      config = { ...config, apiKey: gskKey }
-    }
+    const keyless = provider === 'codex' || provider === 'claude-cli' // CLI-backed: no API key
     // a custom endpoint may name an environment variable instead of storing a key
     config = config ? resolveProfileCredential(config) : config
-    if (!config || (provider !== 'codex' && !config.apiKey)) {
-      return {
-        ok: false,
-        error: provider === 'genspark' ? tm('errGskNotLoggedIn') : tm('errNoApiKey', { provider }),
-      }
+    if (!config || (!keyless && !config.apiKey)) {
+      return { ok: false, error: tm('errNoApiKey', { provider }) }
     }
-    if (provider !== 'codex' && !config.model) return { ok: false, error: tm('errNoModel') }
+    if (!keyless && !config.model) return { ok: false, error: tm('errNoModel') }
     try {
       const result = await chatForProvider(provider, config, request.system, request.user)
       // the one-shot path reports HTTP failures as ok:false with the raw body —
@@ -4050,10 +3975,8 @@ export function registerSheetsAiIpc(): void {
       if (!result.ok && isAiRegionBlockedError(result.error)) {
         return { ok: false, error: tm('errAiRegion') }
       }
-      if (!result.ok) noteGskCallFailure(gskKey, result.error)
       return result
     } catch (err) {
-      noteGskCallFailure(gskKey, err)
       return {
         ok: false,
         error: isAiOverloadedError(err)
@@ -4073,28 +3996,17 @@ export function registerSheetsAiIpc(): void {
     const maxTokens = request.maxTokens ?? maxOutputTokensOf(request.settings)
     const provider = request.settings.provider as AiProviderId
     let config = request.settings.providers[provider]
-    // Genspark's key never enters the settings file; it is read from the gsk
-    // login state per request
-    // set only when the gsk key was injected: a 401 then means that key expired
-    let gskKey = ''
-    if (provider === 'genspark' && config && !config.apiKey) {
-      gskKey = gskApiKey()
-      config = { ...config, apiKey: gskKey }
-    }
+    const keyless = provider === 'codex' || provider === 'claude-cli' // CLI-backed: no API key
     // a custom endpoint may name an environment variable instead of storing a key
     config = config ? resolveProfileCredential(config) : config
     const send = (chunk: AiStreamChunk) => {
       if (!event.sender.isDestroyed()) event.sender.send(IPC_CHANNELS.aiStreamChunk, chunk)
     }
-    if (!config || (provider !== 'codex' && !config.apiKey)) {
-      send({
-        requestId,
-        type: 'error',
-        error: provider === 'genspark' ? tm('errGskNotLoggedIn') : tm('errNoApiKey', { provider }),
-      })
+    if (!config || (!keyless && !config.apiKey)) {
+      send({ requestId, type: 'error', error: tm('errNoApiKey', { provider }) })
       return
     }
-    if (provider !== 'codex' && !config.model) {
+    if (!keyless && !config.model) {
       send({ requestId, type: 'error', error: tm('errNoModel') })
       return
     }
@@ -4136,7 +4048,6 @@ export function registerSheetsAiIpc(): void {
         send({ requestId, type: 'done' })
       } else {
         // an expired/revoked key drops to signed-out so the inline sign-in button shows
-        noteGskCallFailure(gskKey, err)
         send({
           requestId,
           type: 'error',
@@ -5186,9 +5097,6 @@ export {
  */
 async function applyMainProcessProxy(): Promise<void> {
   const setDispatcher = async (proxyUrl: string) => {
-    // spawned gsk CLI children do their own fetch and never see the
-    // dispatcher below — forward the proxy to them via env
-    setGskProxyUrl(proxyUrl)
     try {
       const { setGlobalDispatcher } = await import('undici')
       // loopback stays direct: a Custom provider on 127.0.0.1 must not ride
@@ -5213,9 +5121,8 @@ async function applyMainProcessProxy(): Promise<void> {
   }
   try {
     await app.whenReady()
-    // PAC/rule proxies answer per-host: probe the host the login flow, the
-    // Genspark LLM proxy and the gsk CLI actually target
-    const resolved = await electronSession.defaultSession.resolveProxy('https://www.genspark.ai/')
+    // PAC/rule proxies answer per-host: probe a representative LLM endpoint
+    const resolved = await electronSession.defaultSession.resolveProxy('https://api.anthropic.com/')
     const m = /PROXY\s+([^;]+)/i.exec(resolved || '')
     if (m?.[1]) {
       await setDispatcher(`http://${m[1].trim()}`)

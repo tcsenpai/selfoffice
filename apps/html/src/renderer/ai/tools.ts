@@ -1144,7 +1144,7 @@ export function createHtmlSkillCore(access: HtmlDocAccess): {
 export function createHtmlSkill(
   access: HtmlDocAccess,
   systemPrompt: string | { readonly systemPrompt: string },
-  /** live predicate (gsk login && cloud-tools toggle, or a BYOK media key); false hides generate_image */
+  /** live predicate (a configured media provider); false hides generate_image */
   imageGenAvailable?: () => boolean,
 ): AgentSkill {
   const core = createHtmlSkillCore(access)
