@@ -786,6 +786,7 @@ class StyleBook {
 
 // ───────────────────────── value / text emission ─────────────────────────
 
+// eslint-disable-next-line no-control-regex
 const XML_BAD = /[\u0000-\u0008\u000B\u000C\u000E-\u001F￾￿]/g
 
 function paragraphs(text: string, href?: string): string {
@@ -844,11 +845,6 @@ interface RowData {
   ht?: number
   hidden: boolean
   cells: RawCell[]
-}
-
-interface SheetOut {
-  xml: string
-  cells: number
 }
 
 // ───────────────────────── main ─────────────────────────
@@ -1052,7 +1048,7 @@ export async function convertXlsxToOds(xlsx: Uint8Array): Promise<XlsxToOdsResul
         const col = pos ? pos.col : colCursor + 1
         colCursor = col
         const t = c['@_t'] ?? 'n'
-        let v = ''
+        let v: string
         let rich = false
         if (t === 's') {
           const s = shared[Number(txt(c.v))]

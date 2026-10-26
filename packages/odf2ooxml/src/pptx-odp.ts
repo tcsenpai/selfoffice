@@ -702,11 +702,6 @@ function findPh(root: XNode | null, ph: XNode): XNode | null {
   )
 }
 
-interface Paint {
-  fill: string
-  stroke: string
-}
-
 function fillAttrs(spPr: XNode | null, style: XNode | null, env: Env): string {
   const own = kids(spPr).find((c) =>
     ['a:noFill', 'a:solidFill', 'a:gradFill', 'a:blipFill', 'a:pattFill', 'a:grpFill'].includes(

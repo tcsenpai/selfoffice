@@ -86,6 +86,7 @@ import { parseFileToText } from '@selfoffice/file-parse'
 import { convertHtmlToDocx } from '../../../../packages/html2docx/src'
 import { ElectronBrowserDriver } from '../../../../packages/html2docx/src/drivers/electron'
 import { convertOdtToDocx } from '../../../../packages/odf2ooxml/src'
+import { aliasPath, getOdfPreparer } from '@selfoffice/electron-utils/odf-hook'
 import {
   AiCreditsError,
   AiTimeoutError,
@@ -3918,6 +3919,9 @@ async function prepareDocumentForOpen(
 ): Promise<string | null> {
   const extension = filePath.toLowerCase().match(/\.([a-z0-9]+)$/)?.[1] ?? ''
   if (extension !== 'odt' && extension !== 'ott') return filePath
+  // inside the shell an .odt opens for real: edited as a working .docx, saved back into the .odt
+  const odfPreparer = getOdfPreparer()
+  if (odfPreparer) return odfPreparer(filePath)
   const options = {
     type: 'warning' as const,
     message: tm('odtImportMsg', { ext: extension }),
@@ -4013,7 +4017,7 @@ async function loadDocx(
   await rememberDiskState(wcId, filePath, hash)
   return {
     path: filePath,
-    name: basename(filePath),
+    name: basename(aliasPath(filePath)),
     dataUrl: handOffBytes(bytes),
     hash,
     encrypted,

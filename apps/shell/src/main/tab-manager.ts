@@ -1,3 +1,4 @@
+import { aliasPath } from '@selfoffice/electron-utils/odf-hook'
 import { basename, join } from 'node:path'
 import { realpathSync } from 'node:fs'
 import { app, BrowserWindow, shell, WebContentsView } from 'electron'
@@ -273,10 +274,13 @@ export class TabManager {
     return this.tabs.map((t) => ({
       id: t.id,
       kind: t.kind,
-      title: t.title,
+      title:
+        t.filePath && aliasPath(t.filePath) !== t.filePath
+          ? basename(aliasPath(t.filePath))
+          : t.title,
       closable: t.id !== HOME_ID,
       active: t.id === this.activeId,
-      ...(t.filePath ? { filePath: t.filePath } : {}),
+      ...(t.filePath ? { filePath: aliasPath(t.filePath) } : {}),
       ...(t.dormant ? { dormant: true } : {}),
       ...(t.pinned ? { pinned: true } : {}),
     }))

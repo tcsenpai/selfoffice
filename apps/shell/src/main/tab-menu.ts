@@ -140,6 +140,8 @@ export function tabMenuTemplate(input: TabMenuInput): MenuItemConstructorOptions
   const index = tabs.findIndex((other) => other.id === tab.id)
   const file = tab.filePath
   const onDisk = !!file && input.fileExists
+  // an OpenDocument tab edits a working copy: renaming or duplicating the .odt would orphan it
+  const odfBacked = !!file && /\.(odt|ott|ods|ots|odp|otp)$/i.test(file)
   const closable = (other: TabSummary): boolean => other.id !== 'home' && other.closable
   const others = tabs.filter((other) => other.id !== tab.id && closable(other))
   const right = tabs.slice(index + 1).filter(closable)
@@ -172,13 +174,13 @@ export function tabMenuTemplate(input: TabMenuInput): MenuItemConstructorOptions
     {
       id: 'rename',
       label: tm('menuTabRename'),
-      enabled: !!file,
+      enabled: !!file && !odfBacked,
       click: () => actions.rename(tab.id),
     },
     {
       id: 'duplicate',
       label: tm('menuTabDuplicate'),
-      enabled: onDisk,
+      enabled: onDisk && !odfBacked,
       click: () => actions.duplicate(file!),
     },
     { type: 'separator' },

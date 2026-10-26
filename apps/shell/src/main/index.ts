@@ -31,6 +31,9 @@ import {
 import type { MenuItemConstructorOptions, NativeImage, WebContents } from 'electron'
 import { convertDocxToOdt, convertPptxToOdp, convertXlsxToOds } from '@selfoffice/odf2ooxml'
 import { atomicCopyFile, atomicWriteFile } from './atomic-write'
+import { OdfSync, odfKindOf } from './odf-sync'
+import { aliasPath, setOdfPreparer, setPathAliaser } from '@selfoffice/electron-utils/odf-hook'
+import { XlsxSidecarClient } from '../../../sheets/src/main/xlsx-sidecar-client'
 import { tabStripOverlay } from './title-bar-overlay'
 import { shellWindowBackground } from './window-background'
 import {
@@ -4449,20 +4452,75 @@ function openGeneratedDocument(filePath: string): boolean {
   return openDocumentPath(filePath)
 }
 
+// ---- OpenDocument: edited as OOXML working copies, saved back into the ODF ----
+
+let odfSync: OdfSync | null = null
+let odfSidecar: XlsxSidecarClient | null = null
+
+function ensureOdfSync(): OdfSync {
+  if (odfSync) return odfSync
+  odfSync = new OdfSync({
+    workRoot: join(app.getPath('userData'), 'odf-work'),
+    importOds: async (odsPath, xlsxPath) => {
+      odfSidecar ??= new XlsxSidecarClient(SIDECAR_BIN)
+      await odfSidecar.convertWorkbook({ path: odsPath, targetPath: xlsxPath })
+    },
+    onFallback: ({ odfPath, backup }) => {
+      void dialog.showMessageBox({
+        type: 'warning',
+        message: `${basename(odfPath)}: saved with reduced fidelity`,
+        detail: `Some content could not be merged into the original file, so it was rewritten from the editor's copy. The previous version is kept at ${backup}.`,
+      })
+    },
+    onConflict: ({ odfPath }) => {
+      void dialog.showMessageBox({
+        type: 'warning',
+        message: `${basename(odfPath)} changed on disk`,
+        detail:
+          'Another program modified this file, so SelfOffice did not overwrite it. Use Save As to keep your edits.',
+      })
+    },
+    log: (message) => console.warn('[odf-sync]', message),
+  })
+  odfSync.start()
+  return odfSync
+}
+
+setOdfPreparer((odfPath) => ensureOdfSync().prepare(odfPath))
+setPathAliaser((path) => odfSync?.displayPath(path) ?? path)
+
+async function openOdfDocument(odfPath: string): Promise<void> {
+  try {
+    const work = await ensureOdfSync().prepare(odfPath)
+    routeDocumentPath(work)
+  } catch (error) {
+    await dialog.showMessageBox({
+      type: 'error',
+      message: `${basename(odfPath)}: cannot open`,
+      detail: error instanceof Error ? error.message : String(error),
+    })
+  }
+}
+
 function routeDocumentPath(filePath: string): boolean {
   if (!existsSync(filePath)) return false
+  // an OpenDocument file opens as its OOXML working copy; the tab keeps the ODF identity
+  if (odfKindOf(filePath)) {
+    void openOdfDocument(filePath)
+    return true
+  }
   // a detached editor window already shows this file — focus it, never a second copy
   if (focusDetachedByPath(filePath)) return true
   if (!tabManager) return false
   if (DOCX_RE.test(filePath)) {
-    recordRecentFile(filePath)
+    recordRecentFile(aliasPath(filePath))
     const existing = tabManager.findDocsTabByPath(filePath)
     if (existing) tabManager.activateTab(existing)
     else tabManager.openDocsTab(filePath)
     return true
   }
   if (XLSX_RE.test(filePath)) {
-    recordRecentFile(filePath)
+    recordRecentFile(aliasPath(filePath))
     const existing = tabManager.findSheetsTabByPath(filePath)
     if (existing) {
       tabManager.activateTab(existing)
@@ -4473,7 +4531,7 @@ function routeDocumentPath(filePath: string): boolean {
     return true
   }
   if (PPTX_RE.test(filePath)) {
-    recordRecentFile(filePath)
+    recordRecentFile(aliasPath(filePath))
     const existing = tabManager.findSlidesTabByPath(filePath)
     if (existing) {
       tabManager.activateTab(existing)
@@ -4484,21 +4542,21 @@ function routeDocumentPath(filePath: string): boolean {
     return true
   }
   if (PDF_RE.test(filePath)) {
-    recordRecentFile(filePath)
+    recordRecentFile(aliasPath(filePath))
     const existing = tabManager.findPdfTabByPath(filePath)
     if (existing) tabManager.activateTab(existing)
     else tabManager.openPdfTab(filePath)
     return true
   }
   if (TEXT_RE.test(filePath)) {
-    recordRecentFile(filePath)
+    recordRecentFile(aliasPath(filePath))
     const existing = tabManager.findMarkdownTabByPath(filePath)
     if (existing) tabManager.activateTab(existing)
     else tabManager.openMarkdownTab(filePath)
     return true
   }
   if (HTML_RE.test(filePath)) {
-    recordRecentFile(filePath)
+    recordRecentFile(aliasPath(filePath))
     const existing = tabManager.findHtmlTabByPath(filePath)
     if (existing) tabManager.activateTab(existing)
     else tabManager.openHtmlTab(filePath)
@@ -6850,9 +6908,6 @@ function installDockMenu(): void {
 // Prefer proxy env vars (terminal launch); a packaged app launched from Finder inherits no shell
 // env vars, so fall back to the system HTTP proxy. The renderer uses Chromium's system proxy and
 // is unaffected. Same bootstrap as slides-main startSlidesStandalone.
-// awaited by login IPC so the first status probe / login click cannot race the proxy resolution
-let proxyBootstrap: Promise<void> = Promise.resolve()
-
 async function installMainProcessProxy(): Promise<void> {
   let proxyUrl = [
     process.env.HTTPS_PROXY,
@@ -7073,7 +7128,7 @@ app.whenReady().then(async () => {
     }
   }
 
-  proxyBootstrap = installMainProcessProxy()
+  void installMainProcessProxy()
   app.setAccessibilitySupportEnabled(true)
   // Settle the shared uiLang from saved settings BEFORE any tab renderer can
   // ask 'app:get-language': the editor handlers return the i18n module's
@@ -7266,7 +7321,18 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
 })
 
-app.on('before-quit', () => {
+let odfFlushedOnQuit = false
+app.on('before-quit', (event) => {
+  // write pending ODF saves before the process goes away
+  if (odfSync && !odfFlushedOnQuit) {
+    odfFlushedOnQuit = true
+    event.preventDefault()
+    void odfSync.flush().finally(() => {
+      odfSidecar?.stop()
+      app.quit()
+    })
+    return
+  }
   // No close prompt may fall through to "Save" during shutdown
   markSheetsShuttingDown()
   stopSheetsSidecar()

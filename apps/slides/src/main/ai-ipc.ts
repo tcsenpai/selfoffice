@@ -4,7 +4,7 @@
  * to avoid renderer CORS), search tools, and the slides-only ai:* channels
  * (image generation, media analysis, style templates).
  */
-import { app, ipcMain, nativeImage, net, shell, webContents } from 'electron'
+import { app, ipcMain, nativeImage, net, webContents } from 'electron'
 import {
   appendFileSync,
   existsSync,

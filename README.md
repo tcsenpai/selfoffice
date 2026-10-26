@@ -67,10 +67,12 @@ colors.
 
 ## OpenDocument (ODF)
 
-LibreOffice / OpenOffice files work in both directions, locally, with no office suite installed:
+`.odt`, `.ods`, `.odp` (and the `.ott`, `.ots`, `.otp` templates) open and save **in place**, locally, with no office suite installed:
 
-- **Open:** `.odt`, `.ott`, `.ods`, `.ots`, `.odp`, `.otp` are converted on open into an independent Word / Excel / PowerPoint copy.
-- **Export:** right-click a document tab → **Export as OpenDocument…**, or `selfoffice convert report.docx --to odt` (also `xlsx → ods`, `pptx → odp`). Export reads the saved file; features with no ODF form (comments, charts, animations, ...) are listed in the command's `dropped` report instead of being approximated.
+- **Open:** the file is imported once into an OOXML working copy (kept in the app's data folder) that the Docs, Sheets and Slides editors edit; the tab keeps the ODF name.
+- **Save:** every save is _patched_ into the original ODF file. Only the paragraphs, cells or slides you touched are rewritten; everything else, including comments, tracked changes, charts, animations, styles and settings, stays byte-identical. If a patch is ever impossible the previous file is backed up and a full export is written instead, and you are told.
+- **Convert:** `selfoffice convert report.docx --to odt` (also `xlsx → ods`, `pptx → odp`, and back). Right-click a tab → **Export as OpenDocument…** writes a copy of a saved OOXML file.
+- Known limits: content inside a rewritten block loses what the editor does not model (reported per block); sheets with inserted rows or changed column widths are re-serialized as a whole sheet; if another program changes the `.odt` while it is open, SelfOffice refuses to overwrite it.
 
 ## Skills
 

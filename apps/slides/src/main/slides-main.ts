@@ -65,6 +65,7 @@ import {
 import { matchesElementRef } from '@selfoffice/pptx-engine/identity'
 import { buildPagePptx, parsePageSpec } from '@selfoffice/pipelines/slides'
 import { convertOdpToPptx } from '../../../../packages/odf2ooxml/src'
+import { getOdfPreparer } from '@selfoffice/electron-utils/odf-hook'
 import { sniffImageMime } from './media-mime'
 import {
   newPasteCascade,
@@ -794,6 +795,9 @@ async function maybeRecoverBytes(
 async function preparePresentationForOpen(filePath: string): Promise<string | null> {
   const extension = deckExtension(filePath)
   if (extension !== 'odp' && extension !== 'otp') return filePath
+  // inside the shell an .odp opens for real: edited as a working .pptx, saved back into the .odp
+  const odfPreparer = getOdfPreparer()
+  if (odfPreparer) return odfPreparer(filePath)
   const parent = dialogParent()
   const options = {
     type: 'warning' as const,

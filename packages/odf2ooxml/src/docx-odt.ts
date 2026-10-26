@@ -38,8 +38,8 @@ const MIMETYPE = 'application/vnd.oasis.opendocument.text'
 // -- small helpers ----------------------------------------------------------
 
 const esc = (s: string): string =>
-  // eslint-disable-next-line no-control-regex
   s
+    // eslint-disable-next-line no-control-regex
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '')
     .replace(/[&<>"]/g, (c) =>
       c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : '&quot;',

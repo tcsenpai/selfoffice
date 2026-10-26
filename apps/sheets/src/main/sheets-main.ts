@@ -78,6 +78,7 @@ import {
   configuredAuthorName,
 } from '@selfoffice/electron-utils'
 import { createMainProcessProxyDispatcher } from '@selfoffice/electron-utils/main-proxy'
+import { getOdfPreparer } from '@selfoffice/electron-utils/odf-hook'
 import { createI18n, getUiLang, type Lang, normalizeLang, setUiLang } from '@selfoffice/i18n'
 import { ProjectStore } from '@selfoffice/project-store'
 
@@ -4902,6 +4903,12 @@ async function prepareWorkbookForOpen(
   // with a -template mimetype): the user confirms the lossy .xlsx copy first,
   // and declining leaves the file unopened and unwritten.
   const odfImport = extension === 'ods' || extension === 'ots'
+  // inside the shell an .ods opens for real: edited as a working .xlsx, saved back into the .ods
+  const odfPreparer = odfImport ? getOdfPreparer() : null
+  if (odfPreparer) {
+    const work = await odfPreparer(path)
+    return work ? { openPath: work } : null
+  }
   if (odfImport && !options?.skipRecoveryPrompt && !(await promptOdsImport(parent, extension))) {
     return null
   }

@@ -197,7 +197,7 @@ export function KbAskPanel({
   const [dragOver, setDragOver] = useState(false)
   const [busy, setBusy] = useState(false)
   const [corpusCount, setCorpusCount] = useState<number | null>(null)
-  const [provider, setProvider] = useState<string | null>(null)
+  const [, setProvider] = useState<string | null>(null)
   const corpusRef = useRef<KbFileInfo[]>([])
   const settingsRef = useRef<AiSettings | null>(null)
   const loopRef = useRef<AgentLoop<unknown> | null>(null)
