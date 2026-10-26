@@ -1,8 +1,8 @@
 /**
  * generate_image / analyze_media for the five editors' main processes: one
  * place that reads ai-settings.json live, routes to the BYOK media provider
- * when one is configured, and otherwise to the Genspark CLI behind the usual
- * login + cloud-tools gate. BYOK providers answer with bytes; those land in
+ * when one is configured (otherwise the tool reports it is not set up).
+ * BYOK providers answer with bytes; those land in
  * the local generated-image store and come back as a file:// URL that the
  * insert pipelines' fetchRemoteImage accepts.
  */
@@ -12,7 +12,6 @@ import { basename, dirname, extname, sep } from 'node:path'
 import {
   activeMediaConfig,
   analyzeMediaWithProvider,
-  cloudToolsEnabled,
   defaultAiSettings,
   generateImageWithProvider,
   resolveAiSettings,
@@ -28,12 +27,9 @@ import {
   readBodyCapped,
 } from '@genoffice/electron-utils/remote-image'
 import { fetchWithSsrfGuard } from '@genoffice/electron-utils/safe-remote-url'
-import { gskAnalyzeMedia, gskGenerateImage, hasGskAuth, type GskGenerateImageOptions } from './gsk'
 
-export const GSK_NOT_LOGGED_IN_ERROR =
-  'Genspark account is not logged in on this machine; ask the user to log in first'
-export const GSK_TOOLS_OFF_ERROR =
-  'Genspark cloud tools are turned off in Settings (AI Model); enable them or configure an image provider under Settings (AI Media) to use this tool'
+export const MEDIA_NOT_CONFIGURED_ERROR =
+  'No media provider is configured; set one under Settings (AI Media) to use this tool'
 
 /** 200 MB: enough for a long clip through the Gemini Files API, small enough to hold in memory */
 const MAX_MEDIA_BYTES = 200 * 1024 * 1024
@@ -57,13 +53,13 @@ export const MEDIA_BUDGET = {
   concurrency: MEDIA_LOAD_CONCURRENCY,
 } as const
 
-/** the only load failure that may hand the request back to Genspark; validation failures never do */
+/** a load failure caused by the size cap; validation failures are a different class */
 export class MediaTooLargeError extends Error {}
 
-/** Subclasses MediaTooLargeError so the existing "too big, try Genspark" fallback applies. */
+/** Subclasses MediaTooLargeError: the request as a whole is over budget. */
 export class MediaBudgetExceededError extends MediaTooLargeError {}
 
-/** The item ceiling in one place, so the Genspark route rejects like the BYOK one. */
+/** The item ceiling in one place. */
 function assertMediaItemCount(count: number, maxItems: number): void {
   if (count > maxItems) {
     throw new MediaBudgetExceededError(
@@ -114,8 +110,6 @@ export function readAiSettingsFile(path: string): AiSettings {
   }
   return resolveAiSettings(stored, defaultAiSettings())
 }
-
-type Gate = { error: string } | null
 
 /** no allowlist configured: the extension check alone decides */
 const NO_MEDIA_ROOTS: readonly string[] = []
@@ -169,13 +163,6 @@ export function isLocalMediaPathAllowed(
   roots: readonly string[] = NO_MEDIA_ROOTS,
 ): boolean {
   return verifiedLocalPath(ref, roots) !== null
-}
-
-/** the Genspark route's preconditions; null when it may proceed */
-function gskGate(settings: AiSettings, notLoggedInError: string): Gate {
-  if (!hasGskAuth()) return { error: notLoggedInError }
-  if (!cloudToolsEnabled(settings)) return { error: GSK_TOOLS_OFF_ERROR }
-  return null
 }
 
 function errorText(err: unknown): string {
@@ -249,8 +236,8 @@ export async function loadMediaReference(
 }
 
 export interface MediaToolOptions {
-  /** localized replacement for the default signed-out message */
-  notLoggedInError?: string
+  /** localized replacement for the default not-configured message */
+  notConfiguredError?: string
   /** directories a bare local path may be read from; omitted = extension check only */
   mediaRoots?: readonly string[]
 }
@@ -310,10 +297,11 @@ export async function loadMediaReferences(
   return blobs
 }
 
-/** Genspark background-removal model — chained after generation for transparentBackground */
-export const GSK_RMBG_MODEL = 'fal-bria-rmbg'
-
-export type GenerateImageToolOp = GskGenerateImageOptions & {
+export type GenerateImageToolOp = {
+  prompt: string
+  referenceImageUrls?: string[]
+  /** 1:1 | 4:3 | 16:9 | 9:16 | 3:4 | 2:3 | 3:2 | auto */
+  aspectRatio?: string
   /** The result must have real PNG alpha (icons/logos/cutouts). Generation models cannot
    * produce transparency from the prompt alone — they paint a fake gray checkerboard into
    * the pixels — so the tool strips the background in a second pass instead. */
@@ -331,26 +319,7 @@ export async function generateImageTool(
   const settings = readAiSettingsFile(settingsPath)
   const byok = activeMediaConfig(settings, 'image')
   try {
-    if (!byok) {
-      const gate = gskGate(settings, options.notLoggedInError ?? GSK_NOT_LOGGED_IN_ERROR)
-      if (gate) return gate
-      // gskGenerateImage hands the references straight to the CLI argv, so this route
-      // enforces the same item ceiling as the BYOK one instead of passing them on
-      assertMediaItemCount(op.referenceImageUrls?.length ?? 0, MEDIA_BUDGET.maxItems)
-      const gen = await gskGenerateImage({ ...op, prompt })
-      if (!op.transparentBackground || op.model === GSK_RMBG_MODEL) return { url: gen.url }
-      try {
-        const cut = await gskGenerateImage({
-          prompt: 'remove the background completely, keep only the subject',
-          model: GSK_RMBG_MODEL,
-          referenceImageUrls: [gen.url],
-        })
-        return { url: cut.url }
-      } catch {
-        return { url: gen.url } // strip failed: the opaque image is still usable
-      }
-    }
-    // `model` names Genspark-only special models (fal-*); BYOK uses the configured image model
+    if (!byok) return { error: options.notConfiguredError ?? MEDIA_NOT_CONFIGURED_ERROR }
     const references = await loadMediaReferences(
       op.referenceImageUrls ?? [],
       MEDIA_BUDGET,
@@ -382,29 +351,19 @@ export async function analyzeMediaTool(
   const imageByok = activeMediaConfig(settings, 'analysis')
   const videoByok = activeMediaConfig(settings, 'video')
   try {
-    const viaGsk = async () => {
-      const gate = gskGate(settings, options.notLoggedInError ?? GSK_NOT_LOGGED_IN_ERROR)
-      if (gate) return gate
-      // gskAnalyzeMedia spreads the URLs straight into the CLI argv, so this route
-      // enforces the same item ceiling as the BYOK one instead of passing them on
-      assertMediaItemCount(mediaUrls.length, MEDIA_BUDGET.maxItems)
-      return { text: await gskAnalyzeMedia({ mediaUrls, requirements }) }
-    }
-    if (!imageByok && !videoByok) return await viaGsk()
+    if (!imageByok && !videoByok)
+      return { error: options.notConfiguredError ?? MEDIA_NOT_CONFIGURED_ERROR }
     // route on the loaded bytes' real MIME, not the URL spelling: images go to the
     // image-analysis provider, anything with video/audio to the video one
     let media: MediaBlob[]
     try {
       media = await loadMediaReferences(mediaUrls, MEDIA_BUDGET, mediaRoots)
     } catch (err) {
-      // only the size cap hands the request back to Genspark (the CLI streams large
-      // files itself); scheme / path / SSRF rejections stay rejections
-      if (err instanceof MediaTooLargeError && (!imageByok || !videoByok)) return await viaGsk()
       return { error: errorText(err) }
     }
     const hasVideo = media.some((m) => !m.mime.startsWith('image/'))
     const byok = hasVideo ? videoByok : imageByok
-    if (!byok) return await viaGsk()
+    if (!byok) return { error: options.notConfiguredError ?? MEDIA_NOT_CONFIGURED_ERROR }
     return {
       text: await analyzeMediaWithProvider(byok.provider, byok.config, { media, requirements }),
     }

@@ -1,7 +1,6 @@
 import type { AgentMessage, AgentToolCall, AgentToolDef } from '@genoffice/agent-core'
 
 export type AiProviderId =
-  | 'genspark'
   | 'codex'
   | 'claude-cli'
   | 'anthropic'
@@ -29,11 +28,6 @@ export type AiProviderId =
   | 'opencode-go'
   | 'custom'
 
-/** Genspark account status (gsk login state; the sole auth source for AI features) */
-export interface GenSparkAccountStatus {
-  loggedIn: boolean
-  email?: string
-}
 
 export interface AiProviderConfig {
   apiKey: string
@@ -167,7 +161,6 @@ export interface AiProviderMeta {
 
 /** Image generation / media analysis backends (separate from the chat provider) */
 export type AiMediaProviderId =
-  | 'genspark'
   | 'openai'
   | 'gemini'
   | 'doubao'
@@ -200,7 +193,7 @@ export interface AiMediaProviderMeta {
   description: string
   keyPlaceholder: string
   needsBaseUrl?: boolean
-  /** '' for genspark (gsk login) and custom (user-supplied) */
+  /** '' for custom (user-supplied) */
   defaultBaseUrl: string
   /** absent = the provider does not generate images */
   imageProtocol?: AiImageProtocol
@@ -215,20 +208,20 @@ export interface AiMediaProviderMeta {
 }
 
 export interface AiMediaSettings {
-  /** provider behind generate_image */
-  imageProvider: AiMediaProviderId
+  /** provider behind generate_image ('' = off) */
+  imageProvider: AiMediaProviderId | ''
   /** provider behind analyze_media for images */
-  analysisProvider: AiMediaProviderId
+  analysisProvider: AiMediaProviderId | ''
   /** provider behind analyze_media when the input has video/audio (only video-capable vendors qualify) */
-  videoAnalysisProvider: AiMediaProviderId
+  videoAnalysisProvider: AiMediaProviderId | ''
   providers: Record<AiMediaProviderId, AiMediaProviderConfig>
   /** pre-catalog shape (one provider for both); migrated by resolveAiMediaSettings */
   provider?: AiMediaProviderId | undefined
 }
 
-/** web/image search backends; Parallel and Keenable take a user key or run free and keyless */
+/** web/image search backends; 'free' is the keyless built-in chain, Parallel and Keenable take a user key or run keyless */
 export type AiSearchProviderId =
-  'genspark' | 'serper' | 'serply' | 'tavily' | 'parallel' | 'exa' | 'firecrawl' | 'keenable'
+  'free' | 'serper' | 'serply' | 'tavily' | 'parallel' | 'exa' | 'firecrawl' | 'keenable'
 
 export interface AiSearchProviderMeta {
   id: AiSearchProviderId
@@ -240,7 +233,7 @@ export interface AiSearchProviderMeta {
 
 export interface AiSearchSettings {
   provider: AiSearchProviderId
-  providers: Record<Exclude<AiSearchProviderId, 'genspark'>, { apiKey: string }>
+  providers: Record<Exclude<AiSearchProviderId, 'free'>, { apiKey: string }>
 }
 
 export interface AiSettings {
@@ -252,19 +245,11 @@ export interface AiSettings {
   customEndpoint?: string | undefined
   /**
    * Provider for generate_image / analyze_media. Absent (pre-media settings
-   * files) means Genspark, i.e. the gsk login + gskToolsEnabled gate.
+   * files) means both tools are off until a provider is configured.
    */
   media?: AiMediaSettings | undefined
-  /** web/image search backend; absent means Genspark (gsk when signed in, then the free chain) */
+  /** web/image search backend; absent means the free keyless chain */
   search?: AiSearchSettings | undefined
-  /**
-   * Genspark cloud tools (web/image search via gsk, image generation, media
-   * analysis). Default true; false makes tools skip the gsk backend entirely
-   * (search falls back to free sources, gsk-only tools are unavailable).
-   * Only meaningful while signed in — signed out, the gsk backend is
-   * unavailable regardless.
-   */
-  gskToolsEnabled?: boolean
   /**
    * Output-token cap for ONE model turn of agent runs (default
    * DEFAULT_MAX_OUTPUT_TOKENS). Reasoning models bill their thinking against
