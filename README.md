@@ -65,6 +65,13 @@ The whole suite ships light, dark and system themes. Themes only change what
 is on screen: exports, prints and saved files always keep the document's own
 colors.
 
+## OpenDocument (ODF)
+
+LibreOffice / OpenOffice files work in both directions, locally, with no office suite installed:
+
+- **Open:** `.odt`, `.ott`, `.ods`, `.ots`, `.odp`, `.otp` are converted on open into an independent Word / Excel / PowerPoint copy.
+- **Export:** right-click a document tab → **Export as OpenDocument…**, or `selfoffice convert report.docx --to odt` (also `xlsx → ods`, `pptx → odp`). Export reads the saved file; features with no ODF form (comments, charts, animations, ...) are listed in the command's `dropped` report instead of being approximated.
+
 ## Skills
 
 A skill is a `SKILL.md` that tells the AI how to do one job well: a weekly
@@ -94,11 +101,11 @@ through the [MCP server](#mcp-server), Claude Desktop and every MCP client.
 
 ### Install the skill
 
-| How                                    | What happens                                                                                                                                                             |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| How                                    | What happens                                                                                                                                                              |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Settings → Integrations** in the app | Lists the agents found on this computer; one click writes the skill into each one you choose. An **Update** button appears when a SelfOffice release ships a newer skill. |
-| **Download as zip** on the same page   | The layout claude.ai, the Claude desktop apps and other assistants accept as an uploaded skill.                                                                          |
-| `npx skills add tcsenpai/selfoffice` | Installs from this repository into any skills-compatible agent.                                                                                                          |
+| **Download as zip** on the same page   | The layout claude.ai, the Claude desktop apps and other assistants accept as an uploaded skill.                                                                           |
+| `npx skills add tcsenpai/selfoffice`   | Installs from this repository into any skills-compatible agent.                                                                                                           |
 
 Then start a new chat and ask for a document. The skill teaches the agent when
 to reach for `selfoffice`, how to read a file before editing it, and how to
@@ -109,7 +116,7 @@ check its own work.
 ```bash
 selfoffice --version
 selfoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
-selfoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx, …
+selfoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx and docx/xlsx/pptx → odt/ods/odp, …
 selfoffice create --type docx --from notes.md --out notes.docx
 selfoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
 selfoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
@@ -154,11 +161,11 @@ tools, for assistants that cannot run a terminal or that you would rather not
 give one. There are two ways in, both shown with copy-ready snippets in
 **Settings → Integrations → MCP**:
 
-| Way                                   | What it is                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Way                                    | What it is                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **A · `selfoffice mcp`** (recommended) | A stdio server the assistant starts itself; SelfOffice does not need to be open. One tool per command (`info`, `convert`, `create_docx`, `create_xlsx`, `create_pptx`, `create_pdf`, `docs_read` / `docs_apply` / `docs_check`, `sheet_*`, `slides_*`, `render`, `guide`, `search`, `image`, `media`, `open`) plus the staged deck flow `deck_start` → `deck_page` → `deck_build` → `deck_replace`. Ops, specs and Markdown are passed inline, so a client without a file system still works. |
-| **B · Local HTTP server**             | Runs inside the SelfOffice app on `http://127.0.0.1:3093/mcp` (Streamable HTTP, with legacy SSE). Its tools drive a visible Word editor tab: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, and you watch the document take shape. Off by default; switch it on in the same settings pane.                                                                                                                                               |
-| **C · `selfoffice mcp --http`**        | The stdio tool set as a Streamable HTTP server for clients on other machines: a container, a sandbox, a shared box on your network. Files travel with the calls: `PUT /files/<name>` uploads one and returns a URL, every `file` parameter takes an http(s) URL, and a tool that writes a file hands it back as a download URL plus, when small, the bytes as an MCP resource. `--host 0.0.0.0` opens it to the network, `--token` protects it.                                              |
+| **B · Local HTTP server**              | Runs inside the SelfOffice app on `http://127.0.0.1:3093/mcp` (Streamable HTTP, with legacy SSE). Its tools drive a visible Word editor tab: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, and you watch the document take shape. Off by default; switch it on in the same settings pane.                                                                                                                                               |
+| **C · `selfoffice mcp --http`**        | The stdio tool set as a Streamable HTTP server for clients on other machines: a container, a sandbox, a shared box on your network. Files travel with the calls: `PUT /files/<name>` uploads one and returns a URL, every `file` parameter takes an http(s) URL, and a tool that writes a file hands it back as a download URL plus, when small, the bytes as an MCP resource. `--host 0.0.0.0` opens it to the network, `--token` protects it.                                               |
 
 ```bash
 # Claude Code
@@ -310,6 +317,7 @@ SelfOffice would not be possible without these open-source projects:
 MIT/Apache-2.0/BSD-3-Clause/OFL.
 
 ## License
+
 ## License
 
 SelfOffice is licensed under the [Apache License 2.0](LICENSE), as is upstream

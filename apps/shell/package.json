@@ -26,6 +26,7 @@
     "@selfoffice/docs": "*",
     "@selfoffice/docx-engine": "*",
     "@selfoffice/electron-utils": "*",
+    "@selfoffice/odf2ooxml": "*",
     "@selfoffice/cli": "*",
     "@selfoffice/i18n": "*",
     "@selfoffice/pipelines": "*",

@@ -12,7 +12,7 @@ import {
 } from 'node:fs'
 import { randomUUID } from 'node:crypto'
 import { basename, dirname, extname, join, resolve } from 'node:path'
-import { mkdtemp, rm } from 'node:fs/promises'
+import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import {
   BrowserWindow,
@@ -29,6 +29,7 @@ import {
   webContents,
 } from 'electron'
 import type { MenuItemConstructorOptions, NativeImage, WebContents } from 'electron'
+import { convertDocxToOdt, convertPptxToOdp, convertXlsxToOds } from '@selfoffice/odf2ooxml'
 import { atomicCopyFile, atomicWriteFile } from './atomic-write'
 import { tabStripOverlay } from './title-bar-overlay'
 import { shellWindowBackground } from './window-background'
@@ -801,6 +802,7 @@ const tMain = createI18n({
     menuTabSave: '保存',
     menuTabSaveAs: '另存为…',
     menuTabPrint: '打印…',
+    menuTabExportOdf: '导出为 OpenDocument…',
     menuTabRename: '重命名',
     menuTabDuplicate: '创建副本（复制已保存的文件）',
     menuTabSplitBeside: '左右分屏',
@@ -922,6 +924,7 @@ const tMain = createI18n({
     menuTabSave: 'Save',
     menuTabSaveAs: 'Save As…',
     menuTabPrint: 'Print…',
+    menuTabExportOdf: 'Export as OpenDocument…',
     menuTabRename: 'Rename',
     menuTabDuplicate: 'Duplicate (copy the saved file)',
     menuTabSplitBeside: 'Split side by side',
@@ -1053,6 +1056,7 @@ const tMain = createI18n({
     menuTabSave: 'Lưu',
     menuTabSaveAs: 'Lưu thành…',
     menuTabPrint: 'In…',
+    menuTabExportOdf: 'Xuất sang OpenDocument…',
     menuTabRename: 'Đổi tên',
     menuTabDuplicate: 'Nhân bản (sao chép file đã lưu)',
     menuTabSplitBeside: 'Chia đôi màn hình',
@@ -1184,6 +1188,7 @@ const tMain = createI18n({
     menuTabSave: 'Kaydet',
     menuTabSaveAs: 'Farklı Kaydet…',
     menuTabPrint: 'Yazdır…',
+    menuTabExportOdf: 'OpenDocument olarak dışa aktar…',
     menuTabRename: 'Yeniden Adlandır',
     menuTabDuplicate: 'Çoğalt (kayıtlı dosyayı kopyala)',
     menuTabSplitBeside: 'Yan yana böl',
@@ -1314,6 +1319,7 @@ const tMain = createI18n({
     menuTabSave: '保存',
     menuTabSaveAs: '名前を付けて保存…',
     menuTabPrint: '印刷…',
+    menuTabExportOdf: 'OpenDocument として書き出す…',
     menuTabRename: '名前を変更',
     menuTabDuplicate: '複製（保存済みファイルのコピー）',
     menuTabSplitBeside: '左右に分割',
@@ -1445,6 +1451,7 @@ const tMain = createI18n({
     menuTabSave: '저장',
     menuTabSaveAs: '다른 이름으로 저장…',
     menuTabPrint: '인쇄…',
+    menuTabExportOdf: 'OpenDocument로 내보내기…',
     menuTabRename: '이름 바꾸기',
     menuTabDuplicate: '복제(저장된 파일 복사)',
     menuTabSplitBeside: '나란히 분할',
@@ -1575,6 +1582,7 @@ const tMain = createI18n({
     menuTabSave: 'Enregistrer',
     menuTabSaveAs: 'Enregistrer sous…',
     menuTabPrint: 'Imprimer…',
+    menuTabExportOdf: 'Exporter en OpenDocument…',
     menuTabRename: 'Renommer',
     menuTabDuplicate: 'Dupliquer (copier le fichier enregistré)',
     menuTabSplitBeside: 'Afficher côte à côte',
@@ -1707,6 +1715,7 @@ const tMain = createI18n({
     menuTabSave: 'Speichern',
     menuTabSaveAs: 'Speichern unter…',
     menuTabPrint: 'Drucken…',
+    menuTabExportOdf: 'Als OpenDocument exportieren…',
     menuTabRename: 'Umbenennen',
     menuTabDuplicate: 'Duplizieren (gespeicherte Datei kopieren)',
     menuTabSplitBeside: 'Nebeneinander teilen',
@@ -1840,6 +1849,7 @@ const tMain = createI18n({
     menuTabSave: 'Guardar',
     menuTabSaveAs: 'Guardar como…',
     menuTabPrint: 'Imprimir…',
+    menuTabExportOdf: 'Exportar como OpenDocument…',
     menuTabRename: 'Cambiar nombre',
     menuTabDuplicate: 'Duplicar (copiar archivo guardado)',
     menuTabSplitBeside: 'Dividir en paralelo',
@@ -1972,6 +1982,7 @@ const tMain = createI18n({
     menuTabSave: 'บันทึก',
     menuTabSaveAs: 'บันทึกเป็น…',
     menuTabPrint: 'พิมพ์…',
+    menuTabExportOdf: 'ส่งออกเป็น OpenDocument…',
     menuTabRename: 'เปลี่ยนชื่อ',
     menuTabDuplicate: 'ทำสำเนา (คัดลอกไฟล์ที่บันทึกไว้)',
     menuTabSplitBeside: 'แบ่งหน้าต่างเคียงข้างกัน',
@@ -2100,6 +2111,7 @@ const tMain = createI18n({
     menuTabSave: 'Simpan',
     menuTabSaveAs: 'Simpan sebagai…',
     menuTabPrint: 'Cetak…',
+    menuTabExportOdf: 'Ekspor sebagai OpenDocument…',
     menuTabRename: 'Ganti nama',
     menuTabDuplicate: 'Duplikat (salin berkas tersimpan)',
     menuTabSplitBeside: 'Bagi berdampingan',
@@ -2232,6 +2244,7 @@ const tMain = createI18n({
     menuTabSave: 'Сохранить',
     menuTabSaveAs: 'Сохранить как…',
     menuTabPrint: 'Печать…',
+    menuTabExportOdf: 'Экспорт в OpenDocument…',
     menuTabRename: 'Переименовать',
     menuTabDuplicate: 'Создать копию (сохранённый файл)',
     menuTabSplitBeside: 'Разделить экран',
@@ -2364,6 +2377,7 @@ const tMain = createI18n({
     menuTabSave: 'حفظ',
     menuTabSaveAs: 'حفظ باسم…',
     menuTabPrint: 'طباعة…',
+    menuTabExportOdf: 'تصدير بصيغة OpenDocument…',
     menuTabRename: 'تغيير الاسم',
     menuTabDuplicate: 'تكرار (نسخ الملف المحفوظ)',
     menuTabSplitBeside: 'تقسيم جنبًا إلى جنب',
@@ -2492,6 +2506,7 @@ const tMain = createI18n({
     menuTabSave: 'Salvar',
     menuTabSaveAs: 'Salvar como…',
     menuTabPrint: 'Imprimir…',
+    menuTabExportOdf: 'Exportar como OpenDocument…',
     menuTabRename: 'Renomear',
     menuTabDuplicate: 'Duplicar (copiar arquivo salvo)',
     menuTabSplitBeside: 'Dividir lado a lado',
@@ -2624,6 +2639,7 @@ const tMain = createI18n({
     menuTabSave: 'Salva',
     menuTabSaveAs: 'Salva con nome…',
     menuTabPrint: 'Stampa…',
+    menuTabExportOdf: 'Esporta come OpenDocument…',
     menuTabRename: 'Rinomina',
     menuTabDuplicate: 'Duplica (copia il file salvato)',
     menuTabSplitBeside: 'Affianca',
@@ -2756,6 +2772,7 @@ const tMain = createI18n({
     menuTabSave: 'Zapisz',
     menuTabSaveAs: 'Zapisz jako…',
     menuTabPrint: 'Drukuj…',
+    menuTabExportOdf: 'Eksportuj jako OpenDocument…',
     menuTabRename: 'Zmień nazwę',
     menuTabDuplicate: 'Powiel (skopiuj zapisany plik)',
     menuTabSplitBeside: 'Podziel obok siebie',
@@ -2888,6 +2905,7 @@ const tMain = createI18n({
     menuTabSave: 'Uložit',
     menuTabSaveAs: 'Uložit jako…',
     menuTabPrint: 'Tisk…',
+    menuTabExportOdf: 'Exportovat jako OpenDocument…',
     menuTabRename: 'Přejmenovat',
     menuTabDuplicate: 'Duplikovat (zkopírovat uložený soubor)',
     menuTabSplitBeside: 'Rozdělit vedle sebe',
@@ -3018,6 +3036,7 @@ const tMain = createI18n({
     menuTabSave: 'Opslaan',
     menuTabSaveAs: 'Opslaan als…',
     menuTabPrint: 'Afdrukken…',
+    menuTabExportOdf: 'Exporteren als OpenDocument…',
     menuTabRename: 'Naam wijzigen',
     menuTabDuplicate: 'Dupliceren (opgeslagen bestand kopiëren)',
     menuTabSplitBeside: 'Naast elkaar splitsen',
@@ -3150,6 +3169,7 @@ const tMain = createI18n({
     menuTabSave: 'Simpan',
     menuTabSaveAs: 'Simpan sebagai…',
     menuTabPrint: 'Cetak…',
+    menuTabExportOdf: 'Eksport sebagai OpenDocument…',
     menuTabRename: 'Namakan semula',
     menuTabDuplicate: 'Duplikasi (salin fail yang disimpan)',
     menuTabSplitBeside: 'Pisahkan bersebelahan',
@@ -3281,6 +3301,7 @@ const tMain = createI18n({
     menuTabSave: 'שמירה',
     menuTabSaveAs: 'שמירה בשם…',
     menuTabPrint: 'הדפסה…',
+    menuTabExportOdf: 'ייצוא כ-OpenDocument…',
     menuTabRename: 'שינוי שם',
     menuTabDuplicate: 'שכפול (העתקת הקובץ השמור)',
     menuTabSplitBeside: 'פיצול זה לצד זה',
@@ -3409,6 +3430,7 @@ const tMain = createI18n({
     menuTabSave: 'सहेजें',
     menuTabSaveAs: 'इस रूप में सहेजें…',
     menuTabPrint: 'प्रिंट करें…',
+    menuTabExportOdf: 'OpenDocument के रूप में निर्यात करें…',
     menuTabRename: 'नाम बदलें',
     menuTabDuplicate: 'प्रतिलिपि बनाएँ (सहेजी गई फ़ाइल की कॉपी)',
     menuTabSplitBeside: 'अगल-बगल विभाजित करें',
@@ -3541,6 +3563,7 @@ const tMain = createI18n({
     menuTabSave: '儲存',
     menuTabSaveAs: '另存新檔…',
     menuTabPrint: '列印…',
+    menuTabExportOdf: '匯出為 OpenDocument…',
     menuTabRename: '重新命名',
     menuTabDuplicate: '建立複本（複製已儲存的檔案）',
     menuTabSplitBeside: '並排顯示',
@@ -5686,6 +5709,43 @@ function duplicateFile(path: string): Promise<string | undefined> {
 }
 
 /** The shell's side of every entry of the tab menu (see tab-menu.ts for what is offered). */
+/** the OpenDocument twin of each OOXML extension the export filters accept */
+const ODF_EXPORTS: Record<string, { ext: string; kind: 'docx' | 'xlsx' | 'pptx' }> = {
+  '.docx': { ext: 'odt', kind: 'docx' },
+  '.xlsx': { ext: 'ods', kind: 'xlsx' },
+  '.pptx': { ext: 'odp', kind: 'pptx' },
+}
+
+/** Tab menu "Export as OpenDocument…": converts the saved file, never the editor's unsaved state. */
+async function exportTabAsOdf(id: string): Promise<void> {
+  const tab = tabManager?.list().find((item) => item.id === id)
+  const source = tab?.filePath
+  const route = source ? ODF_EXPORTS[extname(source).toLowerCase()] : undefined
+  const host = shellWindow ?? BrowserWindow.getFocusedWindow()
+  if (!source || !route || !host) return
+  const picked = await showSaveDialogWithMemory(dialog, host, {
+    defaultPath: join(dirname(source), `${basename(source, extname(source))}.${route.ext}`),
+    filters: [{ name: 'OpenDocument', extensions: [route.ext] }],
+  })
+  if (picked.canceled || !picked.filePath) return
+  try {
+    const bytes = new Uint8Array(await readFile(source))
+    const out =
+      route.kind === 'docx'
+        ? (await convertDocxToOdt(bytes)).odt
+        : route.kind === 'xlsx'
+          ? (await convertXlsxToOds(bytes)).ods
+          : (await convertPptxToOdp(bytes)).odp
+    await atomicWriteFile(picked.filePath, Buffer.from(out))
+    shell.showItemInFolder(picked.filePath)
+  } catch (err) {
+    await dialog.showMessageBox(host, {
+      type: 'error',
+      message: err instanceof Error ? err.message : String(err),
+    })
+  }
+}
+
 function tabMenuActions(): TabMenuActions {
   const documentAction = (id: string, action: TabDocumentAction) => {
     if (!tabManager) return
@@ -5716,6 +5776,7 @@ function tabMenuActions(): TabMenuActions {
     save: (id) => documentAction(id, 'save'),
     saveAs: (id) => documentAction(id, 'saveAs'),
     print: (id) => documentAction(id, 'print'),
+    exportOdf: (id) => void exportTabAsOdf(id),
     openInNewWindow: (id) => detachTabToWindow(id),
     pin: (id, pinned) => tabManager?.setPinned(id, pinned),
     // two windows side by side, each on its own half of the screen the tab is on

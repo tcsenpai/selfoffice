@@ -4,7 +4,13 @@ import { basename, dirname, extname, join } from 'node:path'
 import { PdfLoadError } from '@selfoffice/pdf2docx'
 import { flagBool, flagString, type ParsedArgs } from '../args'
 import { csvToXlsx, sheetNameFromStem } from '../formats/csv'
-import { convertOdp, convertOdt } from '../formats/odf'
+import {
+  convertDocxToOdf,
+  convertOdp,
+  convertOdt,
+  convertPptxToOdf,
+  convertXlsxToOdf,
+} from '../formats/odf'
 import { convertPdf, type PdfTarget } from '../formats/pdf'
 import { convertLegacyWorkbook, sheetToCsv } from '../formats/xlsx'
 import { exportViaApp, type AppExportTarget } from '../formats/app-export'
@@ -28,9 +34,10 @@ const NODE_ROUTES: Record<string, readonly string[]> = {
   otp: ['pptx'],
   md: ['docx', 'html'],
   markdown: ['docx', 'html'],
-  docx: ['md'],
-  xlsx: ['csv'],
+  docx: ['md', 'odt'],
+  xlsx: ['csv', 'ods'],
   xlsm: ['csv'],
+  pptx: ['odp'],
 }
 
 /**
@@ -178,6 +185,9 @@ async function run(
     return { bytes: Buffer.from('\ufeff' + csv, 'utf-8'), detail }
   }
   if (to === 'md') return docxToMarkdown(readInput(input), ctx)
+  if (from === 'docx' && to === 'odt') return convertDocxToOdf(readInput(input))
+  if (from === 'xlsx' && to === 'ods') return convertXlsxToOdf(readInput(input))
+  if (from === 'pptx' && to === 'odp') return convertPptxToOdf(readInput(input))
   if (from === 'odt' || from === 'ott') {
     const r = await convertOdt(readInput(input))
     return { bytes: r.bytes, detail: r.detail }

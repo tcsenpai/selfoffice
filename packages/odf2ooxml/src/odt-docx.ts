@@ -410,6 +410,8 @@ interface GridCell {
   /** built paragraph XML (links stripped: relationships live with generated blocks only) */
   contentXml: string
   fill: string | null
+  /** table:covered-table-cell placeholder: its slot is already claimed by the spanning cell */
+  covered?: boolean
 }
 
 const CELL_GEN_CTX = {
@@ -488,6 +490,7 @@ function placeCells(
             rowSpan: 1,
             contentXml: '<w:p/>',
             fill: null,
+            covered: true,
           })
         }
       }
@@ -500,6 +503,8 @@ function placeCells(
     const slotRow = occupancy[rowIndex]
     let column = 0
     for (const cell of cellsOfRow(row)) {
+      // horizontal covers were counted by the span, vertical ones are skipped as occupied slots
+      if (cell.covered) continue
       while (column < columnCount && slotRow[column]) column++
       if (column >= columnCount) break
       const colSpan = Math.max(1, Math.min(cell.colSpan, columnCount - column))

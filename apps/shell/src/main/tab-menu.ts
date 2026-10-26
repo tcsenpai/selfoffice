@@ -6,6 +6,7 @@ export type TabMenuStringKey =
   | 'menuTabSave'
   | 'menuTabSaveAs'
   | 'menuTabPrint'
+  | 'menuTabExportOdf'
   | 'menuTabRename'
   | 'menuTabDuplicate'
   | 'menuTabSplitBeside'
@@ -29,6 +30,8 @@ export interface TabMenuActions {
   save(id: string): void
   saveAs(id: string): void
   print(id: string): void
+  /** write a copy of the saved file as OpenDocument (.odt/.ods/.odp) */
+  exportOdf(id: string): void
   openInNewWindow(id: string): void
   splitBeside(id: string): void
   rename(id: string): void
@@ -158,6 +161,12 @@ export function tabMenuTemplate(input: TabMenuInput): MenuItemConstructorOptions
       label: tm('menuTabPrint'),
       enabled: document,
       click: () => actions.print(tab.id),
+    },
+    {
+      id: 'exportOdf',
+      label: tm('menuTabExportOdf'),
+      enabled: onDisk && (tab.kind === 'docs' || tab.kind === 'sheets' || tab.kind === 'slides'),
+      click: () => actions.exportOdf(tab.id),
     },
     { type: 'separator' },
     {

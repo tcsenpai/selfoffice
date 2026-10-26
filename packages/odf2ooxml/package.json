@@ -4,7 +4,7 @@
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
-  "description": "ODF import filters: .odt → .docx and .odp → .pptx, parsed locally and rebuilt through docx-engine / pptx-engine",
+  "description": "ODF filters: .odt/.ods/.odp import (to .docx/.pptx via docx-engine / pptx-engine) and .docx/.xlsx/.pptx export to .odt/.ods/.odp, all local",
   "exports": {
     ".": "./src/index.ts"
   },
