@@ -53,6 +53,8 @@ export interface OdfSyncDeps {
   onFallback?(info: { odfPath: string; reason: string; backup: string }): void
   /** the ODF changed on disk behind our back; the save was NOT written */
   onConflict?(info: { odfPath: string; workPath: string }): void
+  /** an already open ODF was opened again after it changed on disk: the open copy is out of date */
+  onStaleOpen?(info: { odfPath: string; workPath: string }): void
   log?(message: string): void
 }
 
@@ -101,7 +103,11 @@ export class OdfSync {
     const original = new Uint8Array(await readFile(odfPath))
     const odfSha = sha(original)
     const existing = this.bindings.get(workPath)
-    if (existing) return workPath
+    if (existing) {
+      // the open editor may hold unsaved edits: never swap its file, tell the user instead
+      if (odfSha !== existing.odfSha) this.deps.onStaleOpen?.({ odfPath, workPath })
+      return workPath
+    }
 
     let reuse: boolean
     try {

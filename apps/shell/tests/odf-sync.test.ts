@@ -161,4 +161,22 @@ describe('OdfSync', () => {
     await expect(stat(old)).rejects.toThrow()
     await expect(stat(fresh)).resolves.toBeTruthy()
   })
+
+  it('warns when an open odt is opened again after it changed on disk', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'selfoffice-odf-sync-'))
+    const odf = join(dir, 'note.odt')
+    await makeOdt(odf)
+    const stale: string[] = []
+    const sync = new OdfSync({
+      workRoot: join(dir, 'work'),
+      importOds: async () => undefined,
+      onStaleOpen: ({ odfPath }) => stale.push(odfPath),
+    })
+    const work = await sync.prepare(odf)
+    expect(await sync.prepare(odf)).toBe(work)
+    expect(stale).toEqual([])
+    await writeFile(odf, Buffer.concat([await readFile(odf), Buffer.from(' ')]))
+    expect(await sync.prepare(odf)).toBe(work)
+    expect(stale).toEqual([odf])
+  })
 })

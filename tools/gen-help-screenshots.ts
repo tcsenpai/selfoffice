@@ -279,7 +279,7 @@ async function main(): Promise<void> {
       //    its aria-label is localized, so match the class rather than the text.
       //    Two panes, each saved under the name of the pane it actually shows:
       //    General is where the manual's own subjects live — language and theme,
-      //    plus the analytics and AutoSave switches — and Account is where the
+      //    plus the AutoSave switch — and Account is where the
       //    e-mail used to leak from. Integrations is the pane the MCP topic is
       //    about, so it gets its own figure rather than a stand-in.
       await page.locator('.account-btn').click()

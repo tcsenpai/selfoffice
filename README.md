@@ -44,8 +44,9 @@ own server.
 Settings → AI lets you pick one of:
 
 - **Claude (subscription)**: runs `claude -p` with your logged-in Claude Code
-  subscription (`claude login` once). No API key, no tools, no project context
-  are handed to the CLI; it is only used as a text model. Models: `sonnet`
+  subscription (`claude login` once). The CLI is found through your login shell's PATH,
+  so installs behind mise, nvm or volta work. No API key, no tools, no project
+  context are handed to the CLI; it is only used as a text model. Models: `sonnet`
   (default), `opus`, `haiku`. Note: `--bare` is not used because bare mode
   ignores the OAuth login.
 - **Codex CLI**: your ChatGPT/Codex login through the Codex app-server.
@@ -74,7 +75,7 @@ colors.
 - **Open:** the file is imported once into an OOXML working copy (kept in the app's data folder) that the Docs, Sheets and Slides editors edit; the tab keeps the ODF name.
 - **Save:** every save is _patched_ into the original ODF file. Only the paragraphs, cells or slides you touched are rewritten; everything else, including comments, tracked changes, charts, animations, styles and settings, stays byte-identical. If a patch is ever impossible the previous file is backed up and a full export is written instead, and you are told.
 - **Convert:** `selfoffice convert report.docx --to odt` (also `xlsx → ods`, `pptx → odp`, and back). Right-click a tab → **Export as OpenDocument…** writes a copy of a saved OOXML file.
-- Known limits: content inside a rewritten block loses what the editor does not model (reported per block); sheets with inserted rows or changed column widths are re-serialized as a whole sheet; if another program changes the `.odt` while it is open, SelfOffice refuses to overwrite it.
+- Known limits: content inside a rewritten block loses what the editor does not model (reported per block); sheets with inserted rows or changed column widths are re-serialized as a whole sheet; if another program changes the `.odt` while it is open, SelfOffice refuses to overwrite it and tells you when you open it again (close the tab and reopen to load the new version).
 
 ## Skills
 

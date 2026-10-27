@@ -215,7 +215,7 @@
   word-break: break-all;
 }
 
-/* stacked label + secondary description (analytics toggle row) */
+/* stacked label + secondary description */
 .set-field-stack {
   display: flex;
   flex-direction: column;
@@ -314,7 +314,7 @@
   color: var(--text-tertiary);
 }
 
-/* on/off switch (analytics toggle) */
+/* on/off switch */
 .set-switch {
   position: relative;
   flex-shrink: 0;

@@ -76,8 +76,6 @@ function installApi(settings: AiSettings): void {
   window.aiOffice = {
     getTheme: async () => 'system',
     getDefaultSaveDir: async () => '',
-    getAnalyticsEnabled: async () => true,
-    setAnalyticsEnabled: async () => true,
     getAiPanelPrefs: async () => ({ fontSize: 'medium', customFontSize: 14, spellcheck: true }),
     setAiPanelPrefs: async (patch: unknown) => patch,
     getUpdateChannel: async () => 'stable',
