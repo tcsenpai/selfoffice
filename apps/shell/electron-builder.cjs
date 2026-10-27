@@ -84,6 +84,8 @@ const WIN_SIDECAR =
 
 function assertExtraResourceSources() {
   for (const rel of [
+    '../../LICENSE',
+    '../../NOTICE',
     '../../node_modules/electron/dist/LICENSES.chromium.html',
     '../../node_modules/@embedpdf/pdfium/dist/pdfium.wasm',
     '../pdf/node_modules/harfbuzzjs/hb-subset.wasm',
@@ -466,6 +468,9 @@ const config = {
   },
   files: ['out/**'],
   extraResources: [
+    // Apache-2.0 section 4: every redistribution carries the License and the NOTICE
+    { from: '../../LICENSE', to: 'LICENSE' },
+    { from: '../../NOTICE', to: 'NOTICE' },
     {
       from: 'build/THIRD-PARTY-NOTICES.txt',
       to: 'THIRD-PARTY-NOTICES.txt',

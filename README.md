@@ -323,9 +323,16 @@ MIT/Apache-2.0/BSD-3-Clause/OFL.
 
 ## License
 
-## License
-
 SelfOffice is licensed under the [Apache License 2.0](LICENSE), as is upstream
-SelfOffice. The `ee/` directory is covered by the upstream
-[SelfOffice Enterprise License](ee/LICENSE) and is not part of this fork's
-distribution.
+[GenOffice](https://github.com/genspark-ai/genoffice) (© Mainfunc, Inc.). The
+upstream copyright and license notices are kept, and this fork's modifications
+are listed in [NOTICE](NOTICE). The License and NOTICE ship inside every
+installer.
+
+The `ee/` directory is not Apache-2.0: it carries upstream's separate
+[GenOffice Enterprise License](ee/LICENSE) (development and testing use only;
+production use or redistribution needs an agreement with Mainfunc, Inc.). Today
+it holds only that license text and a README, so this repository contains no
+Enterprise Software, and none is built into or distributed with SelfOffice.
+Anything upstream later adds under `ee/` is deliberately not merged into this
+fork.

@@ -204,7 +204,7 @@ the [Apache License 2.0](LICENSE) that covers this project — inbound =
 outbound, per Apache-2.0 §5. Because community contributions keep their
 Apache-2.0 terms, the open-source core cannot be retroactively relicensed.
 
-The `ee/` directory is reserved for future enterprise modules under a
-[separate license](ee/LICENSE) and does not accept external contributions —
+The `ee/` directory holds upstream's separate [Enterprise License](ee/LICENSE)
+(no Enterprise Software is included in this fork) and does not accept contributions —
 pull requests from outside the maintainer team must not modify files under
 `ee/` (enforced via [CODEOWNERS](.github/CODEOWNERS)).
