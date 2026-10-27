@@ -1,0 +1,102 @@
+name: Auto release
+
+# Cuts a release of what main already contains, without a human. Two triggers:
+#  - upstream (genspark-ai/genoffice) published a release after our last one, and we
+#    have merged upstream work since: ship it now;
+#  - otherwise at most one release a day, when upstream merges are waiting.
+# Runs after the sync workflow. Needs a green CI run on a commit that is part of main.
+
+on:
+  schedule:
+    - cron: '30 7,19 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Release even if nothing from upstream is waiting'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: auto-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.repository == 'tcsenpai/selfoffice' && vars.AUTO_RELEASE != 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_TOKEN || github.token }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Decide
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          set -euo pipefail
+          # our own latest release, never a tag that came along from upstream
+          read -r LAST_TAG LAST_AT < <(gh release list --exclude-drafts --limit 1 --json tagName,publishedAt -q '.[0]|"\(.tagName) \(.publishedAt)"')
+          read -r UP_TAG UP_AT < <(gh release list -R genspark-ai/genoffice --exclude-drafts --limit 1 --json tagName,publishedAt -q '.[0]|"\(.tagName) \(.publishedAt)"')
+          git fetch origin tag "$LAST_TAG" --no-tags
+          MERGES=$(git log "$LAST_TAG"..HEAD --grep='^build: merge upstream/main' --oneline | wc -l | tr -d ' ')
+          COMMITS=$(git rev-list --count "$LAST_TAG"..HEAD)
+          AGE_H=$(( ( $(date -u +%s) - $(date -u -d "$LAST_AT" +%s) ) / 3600 ))
+          echo "last=$LAST_TAG ($AGE_H h ago) upstream=$UP_TAG commits=$COMMITS upstream-merges=$MERGES"
+
+          release=no
+          if [ "$MERGES" -gt 0 ] && [[ "$UP_AT" > "$LAST_AT" ]]; then release=yes; why="upstream published $UP_TAG"
+          elif [ "$MERGES" -gt 0 ] && [ "$AGE_H" -ge 24 ]; then release=yes; why="daily release with merged upstream work"
+          elif [ "$FORCE" = "true" ] && [ "$COMMITS" -gt 0 ]; then release=yes; why="forced"
+          fi
+          [ "$release" = yes ] || { echo "nothing to release"; echo "release=no" >> "$GITHUB_OUTPUT"; exit 0; }
+
+          # the tree being released must have passed CI: some green CI run on a commit that main contains
+          ok=no
+          for sha in $(gh run list --workflow ci.yml --status success --limit 30 --json headSha -q '.[].headSha'); do
+            if git merge-base --is-ancestor "$sha" HEAD 2>/dev/null; then ok=$sha; break; fi
+          done
+          [ "$ok" != no ] || { echo "no green CI on main yet"; echo "release=no" >> "$GITHUB_OUTPUT"; exit 0; }
+          # ...and nothing newer failed
+          if [ "$(gh run list --workflow ci.yml --branch main --limit 1 --json conclusion -q '.[0].conclusion')" = failure ]; then
+            echo "latest CI on main failed"; echo "release=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+
+          IFS=. read -r MA MI PA <<< "${LAST_TAG#v}"
+          NEXT="$MA.$MI.$((PA + 1))"
+          {
+            echo "release=yes"
+            echo "version=$NEXT"
+            echo "why=$why"
+            echo "upstream=$UP_TAG"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Bump, tag, push and start the release build
+        if: steps.decide.outputs.release == 'yes'
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN || github.token }}
+          HAS_PAT: ${{ secrets.SYNC_TOKEN != '' }}
+          VERSION: ${{ steps.decide.outputs.version }}
+          WHY: ${{ steps.decide.outputs.why }}
+          UPSTREAM: ${{ steps.decide.outputs.upstream }}
+        run: |
+          set -euo pipefail
+          git config user.name "selfoffice-release[bot]"
+          git config user.email "selfoffice-release@users.noreply.github.com"
+          node tools/bump-shell-version.mjs "$VERSION"
+          git add apps/shell/package.json package-lock.json
+          git commit -m "build: shell version $VERSION"
+          git tag -a "v$VERSION" -m "SelfOffice $VERSION ($WHY; upstream at $UPSTREAM)"
+          git push origin HEAD:main "v$VERSION"
+          # a tag pushed with the workflow token does not start the release by itself
+          if [ "$HAS_PAT" != "true" ]; then gh workflow run release.yml --ref "v$VERSION"; fi

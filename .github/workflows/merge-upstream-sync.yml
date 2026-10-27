@@ -1,0 +1,38 @@
+name: Merge upstream sync
+
+# Merges the sync PR opened by sync-upstream.yml once CI is green, but only when the PR
+# lists no flagged lines (nothing Genspark, analytics, cloud or sign-in came in) and
+# ee/ did not change. Anything flagged stays open for a human. Turn it off with the
+# repository variable AUTO_MERGE_UPSTREAM=false.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      startsWith(github.event.workflow_run.head_branch, 'selfoffice/sync-upstream-') &&
+      vars.AUTO_MERGE_UPSTREAM != 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge when clean
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN || github.token }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          set -euo pipefail
+          json=$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$BRANCH" --label upstream-sync --state open --json number,body -q '.[0] // empty')
+          [ -n "$json" ] || { echo "no open sync PR for $BRANCH"; exit 0; }
+          number=$(jq -r .number <<< "$json")
+          if jq -r .body <<< "$json" | grep -q 'No flagged lines\.'; then
+            gh pr merge "$number" --repo "$GITHUB_REPOSITORY" --merge --delete-branch
+          else
+            gh pr comment "$number" --repo "$GITHUB_REPOSITORY" --body "CI is green, but the review list above is not empty: left open for a human."
+          fi
