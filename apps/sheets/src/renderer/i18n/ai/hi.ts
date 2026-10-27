@@ -48,7 +48,7 @@ export const hi = {
   aiFileTooltip:
     'SHA-256 {sha}\nसहेजते समय केवल संपादित प्रविष्टियां फिर से लिखी जाती हैं; बाकी सब जस का तस रहता है।',
   aiFileMeta: '{sheets} शीट · {entries} प्रविष्टियां',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'जांच हो रही है…',
   aiLoggedIn: 'साइन इन किया गया',
   aiLoggedInAs: 'साइन इन: {email}',

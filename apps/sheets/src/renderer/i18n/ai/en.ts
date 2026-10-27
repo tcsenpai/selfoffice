@@ -48,7 +48,7 @@ export const en = {
   aiFileTooltip:
     'SHA-256 {sha}\nSaving rewrites only the edited entries; everything else is preserved.',
   aiFileMeta: '{sheets} sheets · {entries} entries',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Checking…',
   aiLoggedIn: 'Signed in',
   aiLoggedInAs: 'Signed in: {email}',

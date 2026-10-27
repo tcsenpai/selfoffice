@@ -49,7 +49,7 @@ export const nl = {
   aiFileTooltip:
     'SHA-256 {sha}\nBij het opslaan worden alleen de bewerkte items herschreven; al het andere blijft behouden.',
   aiFileMeta: '{sheets} bladen · {entries} items',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Controleren…',
   aiLoggedIn: 'Aangemeld',
   aiLoggedInAs: 'Aangemeld: {email}',

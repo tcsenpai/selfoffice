@@ -468,7 +468,18 @@ if (app.isPackaged) {
   const oldDir = ['GenOffice', 'AI Office']
     .map((name) => join(app.getPath('appData'), name))
     .find((dir) => existsSync(dir))
-  if (newEmpty && oldDir) cpSync(oldDir, newDir, { recursive: true })
+  if (newEmpty && oldDir) {
+    try {
+      // caches are rebuilt on demand and Singleton* are another process's lock files
+      const skip = /^(Cache|Code Cache|GPUCache|DawnCache|Crashpad|Singleton.*)$/
+      cpSync(oldDir, newDir, {
+        recursive: true,
+        filter: (src) => !skip.test(basename(src)),
+      })
+    } catch (error) {
+      console.warn('[migrate] could not carry over the previous profile', error)
+    }
+  }
 }
 
 // module build outputs: packaged builds carry them as extraResources
@@ -7321,18 +7332,7 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
 })
 
-let odfFlushedOnQuit = false
-app.on('before-quit', (event) => {
-  // write pending ODF saves before the process goes away
-  if (odfSync && !odfFlushedOnQuit) {
-    odfFlushedOnQuit = true
-    event.preventDefault()
-    void odfSync.flush().finally(() => {
-      odfSidecar?.stop()
-      app.quit()
-    })
-    return
-  }
+app.on('before-quit', () => {
   // No close prompt may fall through to "Save" during shutdown
   markSheetsShuttingDown()
   stopSheetsSidecar()
@@ -7342,7 +7342,19 @@ app.on('before-quit', (event) => {
 })
 
 // after every window has closed, so the shell window's own 'closed' republish cannot revive the file
-app.on('will-quit', () => {
+let odfFlushedOnQuit = false
+app.on('will-quit', (event) => {
+  // every window is closed by now, so a "Save" answered in a close prompt has already reached the
+  // working copy: write it into the ODF files before the process goes away
+  if (odfSync && !odfFlushedOnQuit) {
+    odfFlushedOnQuit = true
+    event.preventDefault()
+    void odfSync.flush().finally(() => {
+      odfSidecar?.stop()
+      app.quit()
+    })
+    return
+  }
   fileIndexer?.stop()
   fileIndexStore?.close()
   for (const watcher of folderWatchers.values()) watcher.close()

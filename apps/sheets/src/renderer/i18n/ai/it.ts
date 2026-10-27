@@ -48,7 +48,7 @@ export const it = {
   aiFileTooltip:
     'SHA-256 {sha}\nIl salvataggio riscrive solo le voci modificate; tutto il resto viene conservato.',
   aiFileMeta: '{sheets} fogli · {entries} voci',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Verifica in corso…',
   aiLoggedIn: 'Accesso effettuato',
   aiLoggedInAs: 'Accesso effettuato: {email}',

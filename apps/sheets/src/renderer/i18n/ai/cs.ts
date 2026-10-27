@@ -48,7 +48,7 @@ export const cs = {
   aiFileTooltip:
     'SHA-256 {sha}\nPři uložení se přepíší jen upravené položky; všechno ostatní zůstane zachováno.',
   aiFileMeta: 'Listy: {sheets} · položky: {entries}',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Ověřuje se…',
   aiLoggedIn: 'Přihlášeno',
   aiLoggedInAs: 'Přihlášeno: {email}',

@@ -49,7 +49,7 @@ export const fr = {
   aiFileTooltip:
     "SHA-256 {sha}\nL'enregistrement ne réécrit que les entrées modifiées ; tout le reste est conservé.",
   aiFileMeta: '{sheets} feuilles · {entries} entrées',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Vérification…',
   aiLoggedIn: 'Connecté',
   aiLoggedInAs: 'Connecté : {email}',

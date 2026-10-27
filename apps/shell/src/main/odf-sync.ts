@@ -14,7 +14,7 @@
  */
 
 import { createHash } from 'node:crypto'
-import { copyFile, mkdir, readFile, rename, stat, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises'
 import { basename, dirname, extname, join } from 'node:path'
 import {
   convertDocxToOdt,
@@ -65,7 +65,8 @@ interface Binding {
   odfSha: string
   /** mtime+size of the working copy when it was last synced */
   sig: string
-  blocked: boolean
+  /** the re-import after the last write failed: baseline.* no longer matches the ODF */
+  stale: boolean
   chain: Promise<void>
 }
 
@@ -140,7 +141,7 @@ export class OdfSync {
       baselinePath,
       odfSha,
       sig: await signature(workPath),
-      blocked: false,
+      stale: false,
       chain: Promise.resolve(),
     })
     return workPath
@@ -157,6 +158,7 @@ export class OdfSync {
 
   start(intervalMs = 1500): void {
     if (this.timer) return
+    void this.prune().catch((error) => this.deps.log?.(`odf-sync prune: ${String(error)}`))
     this.timer = setInterval(() => void this.flush(), intervalMs)
     this.timer.unref?.()
   }
@@ -164,6 +166,18 @@ export class OdfSync {
   stop(): void {
     if (this.timer) clearInterval(this.timer)
     this.timer = null
+  }
+
+  /** Drop working dirs nobody has touched for a month (copies, backups, leftovers of closed documents). */
+  async prune(maxAgeMs = 30 * 24 * 3600 * 1000): Promise<void> {
+    const inUse = new Set([...this.bindings.values()].map((b) => b.dir))
+    for (const name of await readdir(this.deps.workRoot).catch(() => [] as string[])) {
+      const dir = join(this.deps.workRoot, name)
+      if (inUse.has(dir)) continue
+      const info = await stat(join(dir, 'meta.json')).catch(() => null)
+      if (info && Date.now() - info.mtimeMs > maxAgeMs)
+        await rm(dir, { recursive: true, force: true })
+    }
   }
 
   /** Sync one working copy now (tab close), or every changed one (quit, timer). */
@@ -195,14 +209,15 @@ export class OdfSync {
     const current = new Uint8Array(await readFile(b.workPath))
     const original = new Uint8Array(await readFile(b.odfPath))
     if (sha(original) !== b.odfSha) {
-      b.blocked = true
       this.deps.onConflict?.({ odfPath: b.odfPath, workPath: b.workPath })
       b.sig = sig
       return
     }
-    const baseline = new Uint8Array(await readFile(b.baselinePath))
     let written: Uint8Array
     try {
+      // a baseline that failed to refresh would make the patch re-apply old edits onto the new file
+      if (b.stale) throw new Error('baseline out of date after a failed re-import')
+      const baseline = new Uint8Array(await readFile(b.baselinePath))
       written = await this.patch(b.kind, original, baseline, current)
     } catch (error) {
       const backup = join(b.dir, `backup-${Date.now()}${extname(b.odfPath)}`)
@@ -212,7 +227,17 @@ export class OdfSync {
     }
     await atomicWriteFile(b.odfPath, written)
     b.odfSha = sha(written)
-    await this.importTo(b.kind, b.odfPath, written, b.baselinePath)
+    // the ODF is on disk now: whatever happens below, this save must not be processed again
+    b.sig = sig
+    try {
+      await this.importTo(b.kind, b.odfPath, written, b.baselinePath)
+      b.stale = false
+    } catch (error) {
+      b.stale = true
+      this.deps.log?.(
+        `odf-sync ${b.odfPath}: re-import failed, next save will rewrite from the editor copy: ${String(error)}`,
+      )
+    }
     await writeFile(
       join(b.dir, 'meta.json'),
       JSON.stringify({ odfPath: b.odfPath, odfSha: b.odfSha, kind: b.kind }),

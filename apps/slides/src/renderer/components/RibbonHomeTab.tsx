@@ -229,7 +229,7 @@ export function RibbonHomeTab({ rb }: { rb: RibbonTabCtx }) {
   }
   return (
     <>
-      <Group label="Genspark AI">
+      <Group label="AI">
         <button
           className={`rb-big ai-entry${aiOpen ? ' active' : ''}`}
           data-tip={t('aiOpenAssistant')}

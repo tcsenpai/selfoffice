@@ -642,7 +642,7 @@ export interface DesktopApi {
     requirements: string
   }): Promise<{ text?: string; error?: string }>
   fetchImage(url: string): Promise<{ base64: string; mime: string } | null>
-  /** AI image generation via the Genspark cloud channel (requires login + cloud tools) */
+  /** AI image generation through the media provider configured in Settings */
   aiGenerateImage(op: {
     prompt: string
     aspectRatio?: string

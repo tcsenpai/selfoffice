@@ -46,7 +46,7 @@ export const ko = {
   aiInstructionAria: 'AI 지시',
   aiFileTooltip: 'SHA-256 {sha}\n저장 시 편집된 항목만 다시 쓰고 나머지는 그대로 유지합니다.',
   aiFileMeta: '시트 {sheets}개 · 항목 {entries}개',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: '확인 중…',
   aiLoggedIn: '로그인됨',
   aiLoggedInAs: '로그인됨: {email}',

@@ -47,7 +47,7 @@ export const id = {
   aiFileTooltip:
     'SHA-256 {sha}\nPenyimpanan hanya menulis ulang entri yang diedit; sisanya tetap dipertahankan.',
   aiFileMeta: '{sheets} lembar · {entries} entri',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Memeriksa…',
   aiLoggedIn: 'Sudah masuk',
   aiLoggedInAs: 'Sudah masuk: {email}',

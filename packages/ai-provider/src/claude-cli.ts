@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { tmpdir } from 'node:os'
+import { delimiter } from 'node:path'
 import type { AgentMessage, AgentToolDef } from '@selfoffice/agent-core'
 import {
   buildCodexAppServerPrompt,
@@ -9,7 +10,8 @@ import {
 } from './codex-app-server'
 import type { StreamCallbacks } from './protocols/shared'
 import type { AiChatResponse, AiProviderConfig } from './types'
-import { createStreamWatchdog } from './watchdog'
+import { userShellPath } from './user-shell-path'
+import { AI_WATCHDOG_MAX_TIMEOUT_MS, createStreamWatchdog } from './watchdog'
 
 /**
  * Claude subscription via `claude -p`. Not `--bare`: bare mode never reads the
@@ -54,23 +56,34 @@ interface ClaudeCliResult {
   usage?: { input_tokens?: number; output_tokens?: number }
 }
 
-function runClaude(
+async function runClaude(
   config: AiProviderConfig,
   prompt: string,
   schema: Record<string, unknown>,
   signal: AbortSignal,
   onActivity?: () => void,
 ): Promise<ClaudeCliResult> {
+  // the login shell's PATH finds `claude` behind mise/nvm/volta shims, which a GUI launch cannot see
+  const shellPath = await userShellPath()
+  // cancelled while the shell was being asked: no process was started, no 'abort' event will come
+  if (signal.aborted) throw Object.assign(new Error('Claude CLI cancelled'), { name: 'AbortError' })
+  const pathKey = Object.keys(process.env).find((k) => k.toLowerCase() === 'path') ?? 'PATH'
+  const pathValue = [shellPath, process.env[pathKey]].filter(Boolean).join(delimiter)
   return new Promise((resolve, reject) => {
     const child = spawn(config.cliPath?.trim() || 'claude', claudeCliArgs(config.model, schema), {
       cwd: tmpdir(),
       stdio: ['pipe', 'pipe', 'pipe'],
+      windowsHide: true,
       // an API key in the env would silently bill the API instead of the subscription
-      env: { ...process.env, ANTHROPIC_API_KEY: '' },
+      env: { ...process.env, [pathKey]: pathValue, ANTHROPIC_API_KEY: '' },
     })
     let out = ''
     let err = ''
-    const abort = () => child.kill()
+    const abort = () => {
+      child.kill()
+      // a wrapper script can leave a grandchild holding the pipes, so 'close' may never come
+      reject(Object.assign(new Error('Claude CLI cancelled'), { name: 'AbortError' }))
+    }
     signal.addEventListener('abort', abort, { once: true })
     child.stdout.on('data', (d: Buffer) => {
       out += d.toString()
@@ -83,7 +96,7 @@ function runClaude(
       reject(
         e.code === 'ENOENT'
           ? new Error(
-              'Claude CLI not found. Install Claude Code and run `claude login`, or set its path.',
+              'Claude CLI not found. Install Claude Code and run `claude login`, or set its full path in Settings (on Windows the path of claude.exe).',
             )
           : e,
       ),
@@ -118,7 +131,8 @@ export async function streamClaudeCli(
   maxTokens: number,
   cb: StreamCallbacks,
 ): Promise<void> {
-  const wd = createStreamWatchdog(cb.signal)
+  // claude -p prints nothing until the whole answer is ready: the default 60s connect timeout would kill long turns
+  const wd = createStreamWatchdog(cb.signal, AI_WATCHDOG_MAX_TIMEOUT_MS, AI_WATCHDOG_MAX_TIMEOUT_MS)
   return wd.guard(async () => {
     const schema = codexAppServerOutputSchema(tools)
     const prompt = buildCodexAppServerPrompt(system, messages, tools, maxTokens)

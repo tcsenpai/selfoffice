@@ -1,3 +1,4 @@
+/* global document */
 // Download buttons: point each card at the real asset of the latest release.
 // Without the API (offline, rate limit) the links keep falling back to the releases page.
 const REPO = 'tcsenpai/selfoffice'

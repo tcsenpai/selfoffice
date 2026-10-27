@@ -47,7 +47,7 @@ export const th = {
   aiFileTooltip:
     'SHA-256 {sha}\nการบันทึกจะเขียนทับเฉพาะรายการที่แก้ไขเท่านั้น ส่วนที่เหลือคงไว้ตามเดิม',
   aiFileMeta: 'แผ่นงาน {sheets} แผ่น · รายการ {entries} รายการ',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'กำลังตรวจสอบ…',
   aiLoggedIn: 'ลงชื่อเข้าใช้แล้ว',
   aiLoggedInAs: 'ลงชื่อเข้าใช้แล้ว: {email}',

@@ -48,7 +48,7 @@ export const ru = {
   aiFileTooltip:
     'SHA-256 {sha}\nПри сохранении перезаписываются только изменённые элементы; всё остальное сохраняется без изменений.',
   aiFileMeta: 'Листов: {sheets} · элементов: {entries}',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Проверка…',
   aiLoggedIn: 'Вход выполнен',
   aiLoggedInAs: 'Вход выполнен: {email}',

@@ -1,8 +1,8 @@
-import { mkdtemp, readFile, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, stat, utimes, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import JSZip from 'jszip'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { OdfSync, odfKindOf } from '../src/main/odf-sync'
 
 const NS =
@@ -93,5 +93,72 @@ describe('OdfSync', () => {
     await sync.flush()
     expect(conflicts).toEqual([odf])
     expect(await readFile(odf, 'utf8')).toBe('changed by another program')
+  })
+
+  async function editWork(work: string, from: string, to: string): Promise<void> {
+    const docx = await JSZip.loadAsync(await readFile(work))
+    docx.file(
+      'word/document.xml',
+      (await docx.file('word/document.xml')!.async('string')).replace(from, to),
+    )
+    await writeFile(work, await docx.generateAsync({ type: 'uint8array' }))
+  }
+
+  it('after a failed re-import the next save is rewritten from the editor copy, never re-patched', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'selfoffice-odf-sync-'))
+    const odf = join(dir, 'note.odt')
+    await makeOdt(odf)
+    const fallbacks: string[] = []
+    const logs: string[] = []
+    const sync = new OdfSync({
+      workRoot: join(dir, 'work'),
+      importOds: async () => undefined,
+      onFallback: ({ reason }) => fallbacks.push(reason),
+      log: (m) => logs.push(m),
+    })
+    const work = await sync.prepare(odf)
+    const importTo = vi
+      .spyOn(sync as unknown as { importTo: () => Promise<void> }, 'importTo')
+      .mockRejectedValueOnce(new Error('sidecar down'))
+
+    await editWork(work, 'first paragraph', 'edited once')
+    await sync.flush()
+    expect(
+      await (await JSZip.loadAsync(await readFile(odf))).file('content.xml')!.async('string'),
+    ).toContain('edited once')
+    expect(logs.join()).toContain('re-import failed')
+    // the failed save is not processed again on the next tick
+    const calls = importTo.mock.calls.length
+    await sync.flush()
+    expect(importTo.mock.calls.length).toBe(calls)
+
+    importTo.mockRestore()
+    await editWork(work, 'edited once', 'edited twice')
+    await sync.flush()
+    const content = await (
+      await JSZip.loadAsync(await readFile(odf))
+    )
+      .file('content.xml')!
+      .async('string')
+    expect(content).toContain('edited twice')
+    expect(content.match(/edited/g)).toHaveLength(1)
+    expect(fallbacks.join()).toContain('out of date')
+  })
+
+  it('prune drops old unused work dirs and keeps recent ones', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'selfoffice-odf-sync-'))
+    const root = join(dir, 'work')
+    const old = join(root, 'old')
+    const fresh = join(root, 'fresh')
+    for (const d of [old, fresh]) {
+      await mkdir(d, { recursive: true })
+      await writeFile(join(d, 'meta.json'), '{}')
+    }
+    const longAgo = new Date(Date.now() - 40 * 24 * 3600 * 1000)
+    await utimes(join(old, 'meta.json'), longAgo, longAgo)
+    const sync = new OdfSync({ workRoot: root, importOds: async () => undefined })
+    await sync.prune()
+    await expect(stat(old)).rejects.toThrow()
+    await expect(stat(fresh)).resolves.toBeTruthy()
   })
 })

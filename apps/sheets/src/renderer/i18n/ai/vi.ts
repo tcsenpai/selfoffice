@@ -48,7 +48,7 @@ export const vi = {
   aiFileTooltip:
     'SHA-256 {sha}\nLưu chỉ ghi đè các mục đã chỉnh sửa; tất cả nội dung khác được giữ nguyên.',
   aiFileMeta: '{sheets} trang tính · {entries} mục',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Đang kiểm tra…',
   aiLoggedIn: 'Đã đăng nhập',
   aiLoggedInAs: 'Đã đăng nhập: {email}',

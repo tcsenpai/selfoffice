@@ -46,7 +46,7 @@ export const he = {
   aiInstructionAria: 'הוראה ל-AI',
   aiFileTooltip: 'SHA-256 {sha}\nבשמירה נכתבים מחדש רק הפריטים שנערכו; כל השאר נשמר כפי שהוא.',
   aiFileMeta: '{sheets} גיליונות · {entries} פריטים',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'בודק…',
   aiLoggedIn: 'מחובר',
   aiLoggedInAs: 'מחובר: {email}',

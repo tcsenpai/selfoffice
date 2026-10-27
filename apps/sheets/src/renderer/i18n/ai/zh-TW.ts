@@ -46,7 +46,7 @@ export const zhTW = {
   aiInstructionAria: 'AI 指令',
   aiFileTooltip: 'SHA-256 {sha}\n儲存只重寫被編輯的項目，其餘內容原樣保留。',
   aiFileMeta: '{sheets} 個工作表 · {entries} 個項目',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: '偵測中…',
   aiLoggedIn: '已登入',
   aiLoggedInAs: '已登入：{email}',

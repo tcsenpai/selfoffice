@@ -47,7 +47,7 @@ export const ja = {
   aiFileTooltip:
     'SHA-256 {sha}\n保存時は編集されたエントリのみを書き換え、その他はそのまま保持します。',
   aiFileMeta: 'シート {sheets} 件 · エントリ {entries} 件',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: '確認中…',
   aiLoggedIn: 'サインイン済み',
   aiLoggedInAs: 'サインイン済み: {email}',

@@ -47,7 +47,7 @@ export const pl = {
   aiFileTooltip:
     'SHA-256 {sha}\nZapis nadpisuje tylko edytowane wpisy; cała reszta pozostaje bez zmian.',
   aiFileMeta: 'Arkusze: {sheets} · wpisy: {entries}',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Sprawdzanie…',
   aiLoggedIn: 'Zalogowano',
   aiLoggedInAs: 'Zalogowano: {email}',

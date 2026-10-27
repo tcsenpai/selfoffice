@@ -49,7 +49,7 @@ export const tr = {
   aiFileTooltip:
     'SHA-256 {sha}\nKaydetme yalnızca düzenlenen girdileri yeniden yazar; diğer her şey korunur.',
   aiFileMeta: '{sheets} sayfa · {entries} girdi',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Denetleniyor…',
   aiLoggedIn: 'Oturum açıldı',
   aiLoggedInAs: 'Oturum açıldı: {email}',

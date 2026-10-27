@@ -47,7 +47,7 @@ export const ar = {
   aiFileTooltip:
     'SHA-256 {sha}\nعند الحفظ تتم إعادة كتابة الإدخالات المحرَّرة فقط؛ ويُحتفظ بكل ما عداها كما هو.',
   aiFileMeta: '{sheets} أوراق · {entries} إدخالات',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'جارٍ التحقق…',
   aiLoggedIn: 'تم تسجيل الدخول',
   aiLoggedInAs: 'تم تسجيل الدخول: {email}',

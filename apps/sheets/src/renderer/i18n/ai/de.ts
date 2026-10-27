@@ -49,7 +49,7 @@ export const de = {
   aiFileTooltip:
     'SHA-256 {sha}\nBeim Speichern werden nur die bearbeiteten Einträge neu geschrieben; alles andere bleibt erhalten.',
   aiFileMeta: '{sheets} Blätter · {entries} Einträge',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: 'Wird überprüft…',
   aiLoggedIn: 'Angemeldet',
   aiLoggedInAs: 'Angemeldet: {email}',

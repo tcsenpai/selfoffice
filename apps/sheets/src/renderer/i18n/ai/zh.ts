@@ -45,7 +45,7 @@ export const zh = {
   aiInstructionAria: 'AI 指令',
   aiFileTooltip: 'SHA-256 {sha}\n保存只重写被编辑的条目，其余内容原样保留。',
   aiFileMeta: '{sheets} 个工作表 · {entries} 个条目',
-  aiGensparkAccount: 'AI',
+  aiPanelResizer: 'AI',
   aiAccountChecking: '检测中…',
   aiLoggedIn: '已登录',
   aiLoggedInAs: '已登录：{email}',
