@@ -208,3 +208,24 @@ The `ee/` directory holds upstream's separate [Enterprise License](ee/LICENSE)
 (no Enterprise Software is included in this fork) and does not accept contributions —
 pull requests from outside the maintainer team must not modify files under
 `ee/` (enforced via [CODEOWNERS](.github/CODEOWNERS)).
+
+## Upstream sync and releases (maintainers)
+
+SelfOffice follows [genspark-ai/genoffice](https://github.com/genspark-ai/genoffice)
+automatically, and publishes without a manual step:
+
+1. `sync-upstream.yml` (07:00 and 19:00 UTC): merges upstream `main` into a
+   `selfoffice/sync-upstream-*` branch, re-applies the rebrand
+   (`tools/rebrand-upstream.mjs`), opens a PR labelled `upstream-sync` and starts CI.
+   A merge conflict opens an issue instead. It never takes `ee/` (separate Enterprise
+   License) or upstream's `.github/workflows`.
+2. `merge-upstream-sync.yml`: merges that PR when CI is green and the PR lists no flagged
+   lines (Genspark, analytics, cloud, sign-in). Anything flagged waits for a human.
+   Off switch: repository variable `AUTO_MERGE_UPSTREAM=false`.
+3. `auto-release.yml` (07:30 and 19:30 UTC): when upstream merges are waiting, tags the
+   next patch version and starts `release.yml`, either right after upstream published a
+   release or at most once a day. Off switch: repository variable `AUTO_RELEASE=false`.
+
+Optional secret `SYNC_TOKEN` (a PAT with `repo` and `workflow` scopes): lets the sync push
+when upstream changed a workflow file, and makes PRs and tags start CI and the release by
+themselves instead of through a dispatch.
