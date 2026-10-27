@@ -16,7 +16,7 @@ function edit(file, pattern) {
   writeFileSync(file, next)
 }
 
-edit('apps/shell/package.json', /^(  "version": )"[^"]+"/m)
+edit('apps/shell/package.json', /^( {2}"version": )"[^"]+"/m)
 edit(
   'package-lock.json',
   /("apps\/shell": \{\n\s+"name": "@selfoffice\/shell",\n\s+"version": )"[^"]+"/,

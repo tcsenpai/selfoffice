@@ -38,13 +38,13 @@ export function rebrand(text) {
   // placeholder pass, longest first so a prefix never shadows its longer form
   let out = text
   for (const keep of [...PROTECTED].sort((a, b) => b.length - a.length)) {
-    out = out.split(keep).join(`\u0000${slots.push(keep) - 1}\u0000`)
+    out = out.split(keep).join(`\uE000${slots.push(keep) - 1}\uE000`)
   }
   out = out
     .replaceAll('GenOffice', 'SelfOffice')
     .replaceAll('GENOFFICE', 'SELFOFFICE')
     .replaceAll('genoffice', 'selfoffice')
-  return out.replace(/\u0000(\d+)\u0000/g, (_, i) => slots[Number(i)])
+  return out.replace(/\uE000(\d+)\uE000/g, (_, i) => slots[Number(i)])
 }
 
 /** upstream lines that reintroduce what this fork removed */
