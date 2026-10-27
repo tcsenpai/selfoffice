@@ -117,8 +117,10 @@ export const tr = {
   appChartNoRepoint: 'Bu grafik veri aralıklarının yeniden yönlendirilmesini desteklemiyor.',
   appKeepOneSeries: 'En az bir seri tutun.',
   appNoCategoriesToSwitch: 'Değiştirilecek kategori yok.',
-  appComboNoSelectData: 'Birleşik grafiğin veri kaynağını değiştirmek henüz desteklenmiyor.',
+  appSelectDataUnsupported: 'Bu grafik türünde veri kaynağını değiştirmek desteklenmiyor.',
   appSeriesName: 'Seri Adı',
+  appSeriesType: 'Seri Türü',
+  appSecondaryAxis: 'İkincil Eksen',
   appValuesRange: 'Değer Aralığı',
   appCategoriesRange: 'Kategori Aralığı',
   appKeepUnchanged: 'Değiştirmeden bırak',
@@ -200,6 +202,13 @@ export const tr = {
   appInvalidGroupField: 'Geçersiz gruplama alanı.',
   appInvalidPageField: 'Geçersiz rapor filtresi alanı.',
   appPivotPageItemMissing: 'Rapor filtresi öğesi "{item}", "{label}" alanının üyesi değil.',
+  appInvalidPivotBaseField:
+    '"Değerleri göster" temel alanı Satırlar veya Sütunlar üzerinde olmalıdır.',
+  appPivotBaseFieldMissing:
+    'Bir değer alanının "değerleri göster" modu için bir temel alan gerekir.',
+  appPivotBaseFieldNotAxis:
+    'Temel alan "{label}" pivot satırları veya sütunları üzerinde olmalıdır.',
+  appPivotBaseItemMissing: 'Temel öğe "{item}", "{label}" alanının bir üyesi değil.',
   appInvalidLabelFilterField: 'Etiket filtresi alanı geçersiz.',
   appInvalidValueFieldIndex: 'Değer alanı dizini {index} geçersiz.',
   appInvalidValueField: 'Geçersiz değer alanı.',
@@ -1207,6 +1216,7 @@ export const tr = {
   appGroupForecast: 'Tahmin',
   appWhatIfAnalysis: 'Durum Çözümlemesi',
   appGoalSeek: 'Hedef Ara',
+  appDataTable: 'Veri Tablosu',
   appWhatIfTitle: 'Bir hedef değer için girdiyi çöz',
   appGoalSeekNeedsFormula: 'Ayarlanacak hücre bir formül içermelidir.',
   appGoalSeekByCellNotNumber: 'Değişecek hücre düz bir sayı içermeli veya boş olmalıdır.',

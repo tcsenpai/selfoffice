@@ -573,6 +573,10 @@ const visualObjectSchema = z
               marker: z.string().optional(),
               /// Parent plot group (barChart, lineChart, ...) of the series.
               plot: z.string().optional(),
+              /// Combo Select Data: the series rides the secondary axis
+              /// pair (edit-pipeline only; a reload infers it from the
+              /// group).
+              secondaryAxis: z.boolean().optional(),
               /// Label mode the series resolves to: its own `c:dLbls`, else
               /// the plot element's.
               dataLabels: z
@@ -661,6 +665,11 @@ const visualObjectSchema = z
         /// c:chartSpace/c:spPr and c:plotArea/c:spPr fills (flat colors).
         chartAreaFill: z.string().optional(),
         plotAreaFill: z.string().optional(),
+        /// Session-added charts only: part path of the PivotTable the chart
+        /// was created from (`xl/pivotTables/…`). The save resolves it into a
+        /// chartSpace <c:pivotSource> so Excel recognizes the PivotChart.
+        /// The sidecar never emits this field.
+        pivotTablePath: z.string().min(1).max(255).optional(),
       })
       .strict()
       .optional(),
@@ -1642,6 +1651,12 @@ export const workbookVisualAddSchema = z
                 valuesRef: z.string().max(512).optional(),
                 categoriesRef: z.string().max(512).optional(),
                 color: hexColorSchema.optional(),
+                /// Combo chart: plot group the series joins ('lineChart' =
+                /// line, anything else / absent = column). Untagged series
+                /// keep Insert Chart's combo shape.
+                plot: z.enum(['barChart', 'lineChart']).optional(),
+                /// Combo chart: the series rides the secondary axis pair.
+                secondaryAxis: z.boolean().optional(),
                 /// Per-point fills (`c:dPt`), keyed by 0-based point index.
                 pointColors: z.record(z.string().regex(/^[0-9]{1,3}$/), hexColorSchema).optional(),
                 explosionPct: z.number().int().min(0).max(400).optional(),
@@ -1675,6 +1690,9 @@ export const workbookVisualAddSchema = z
           .optional(),
         gapWidthPct: z.number().int().min(0).max(500).optional(),
         holeSizePct: z.number().int().min(10).max(90).optional(),
+        /// PivotChart marker: part path of the PivotTable the chart is bound
+        /// to; the save writes chartSpace <c:pivotSource> from it.
+        pivotTablePath: z.string().min(1).max(255).optional(),
         altText: visualAddPropertiesShape.altText,
         editAs: visualAddPropertiesShape.editAs,
       })
@@ -1966,6 +1984,12 @@ export const workbookPivotAddSchema = z
             numFmt: z.string().min(1).max(255).optional(),
             /// "Show values as" mode; absent = plain aggregate value.
             showDataAs: z.enum(PIVOT_SHOW_DATA_AS).optional(),
+            /// "Show values as" base field (index into fieldNames; must sit on
+            /// rows/columns); present for the base-field modes.
+            baseFieldIndex: z.number().int().nonnegative().max(199).optional(),
+            /// Base item index within the base field's member list; present for
+            /// difference / percentDiff / percentOf.
+            baseItemIndex: z.number().int().nonnegative().max(9_999).optional(),
             /// Custom data-field caption; absent = "Sum of <field>".
             name: z.string().min(1).max(255).optional(),
             /// Calculated field: formula (referencing source field names) plus the new
@@ -2506,6 +2530,10 @@ export const workbookPivotDefinitionSchema = z
             subtotal: z.string().max(32),
             /// "Show values as" mode; the parser only carries it over when supported.
             showDataAs: z.enum(PIVOT_SHOW_DATA_AS).optional(),
+            /// Base field (cache-field index) / base item (fieldItems index) of
+            /// the "show values as" calculation; present for the base modes.
+            baseField: z.number().int().nonnegative().max(1_000).optional(),
+            baseItem: z.number().int().nonnegative().max(100_000).optional(),
             /// Calculated-field formula (carried when fld points at a cacheField with a
             /// formula).
             formula: z.string().max(2_048).optional(),

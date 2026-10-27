@@ -387,6 +387,7 @@ import { installForceStringMarkGate, installLongTextRender } from './long-text-r
 import { installAutofitWrapBudget } from './autofit-wrap-budget'
 import { installAutofitLinePitch } from './autofit-line-pitch'
 import { installHeaderUnhideDebounce } from './load-perf-patches'
+import { installCopyAnimationIdle } from './copy-animation-idle'
 import { installNumberAsTextAlertSeverity } from './number-as-text-alert'
 import { installFormulaStreamHold } from './formula-stream-hold'
 import { installRichTextBidiFix } from './rich-text-bidi-fix'
@@ -526,6 +527,7 @@ import {
 } from './calc-options'
 import { applyFillSeries, fillSeriesContext } from './fill-series-apply'
 import { solveGoalSeek } from './goal-seek'
+import { applyDataTable } from './data-table'
 import {
   awaitFormulaValues,
   clearVerifiedFormulaValues,
@@ -2184,6 +2186,9 @@ export function App({
     // canvas line box (Calibri 10: 12.75 pt per line, not ~10 pt).
     installAutofitLinePitch()
     installHeaderUnhideDebounce()
+    // The dashed border on a copied range is a per-frame animation. It must
+    // not keep repainting the scene while nobody is looking at it.
+    installCopyAnimationIdle()
     installNumberAsTextAlertSeverity()
     installForceStringMarkGate(runtime.univer.__getInjector().get(SheetInterceptorService))
     // Hold the formula engine's per-chunk recalculation while file data streams
@@ -3360,14 +3365,6 @@ export function App({
             event.cancel = true
             setMessage(t('appPivotSheetNoMove'))
             return
-          }
-          if (
-            FILTER_COMMAND_PATTERN.test(event.id) &&
-            subUnitId !== undefined &&
-            state.filterOrigins.get(subUnitId)?.origin === 'table'
-          ) {
-            event.cancel = true
-            setMessage(t('appTableFilterNoEdit'))
           }
           return
         }
@@ -5594,6 +5591,17 @@ export function App({
           const runtime = univerRef.current
           if (!runtime) return Promise.reject(new Error(t('appWorkbookNotReady')))
           return solveGoalSeek(runtime, { setCell, toValue, byCell })
+        }}
+        onDataTable={(input) => {
+          const runtime = univerRef.current
+          if (!runtime) return Promise.reject(new Error(t('appWorkbookNotReady')))
+          return applyDataTable(runtime, input)
+        }}
+        onGetDataTableRange={() => {
+          // Excel's flow starts from the selected table region; a single-cell
+          // selection cannot be a data table, so the field starts empty.
+          const range = univerRef.current?.univerAPI.getActiveWorkbook()?.getActiveRange()
+          return range && range.getHeight() > 1 && range.getWidth() > 1 ? range.getA1Notation() : ''
         }}
         onFillSeries={(options) => {
           const runtime = univerRef.current

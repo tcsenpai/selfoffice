@@ -118,8 +118,10 @@ export const ja = {
   appChartNoRepoint: 'このグラフはデータ範囲の再指定に対応していません。',
   appKeepOneSeries: '少なくとも 1 つの系列を残してください。',
   appNoCategoriesToSwitch: '切り替えられる分類がありません。',
-  appComboNoSelectData: '組み合わせグラフのデータソース変更には未対応です。',
+  appSelectDataUnsupported: 'このグラフの種類はデータソースの変更に未対応です。',
   appSeriesName: '系列名',
+  appSeriesType: '系列の種類',
+  appSecondaryAxis: '第2軸',
   appValuesRange: '数値範囲',
   appCategoriesRange: '分類範囲',
   appKeepUnchanged: '変更しない',
@@ -206,6 +208,12 @@ export const ja = {
   appInvalidPageField: 'レポート フィルターのフィールドが無効です。',
   appPivotPageItemMissing:
     'レポート フィルターの項目「{item}」はフィールド「{label}」のメンバーではありません。',
+  appInvalidPivotBaseField: '「値の表示方法」の基準フィールドは行または列に配置してください。',
+  appPivotBaseFieldMissing: '値フィールドの「値の表示方法」には基準フィールドが必要です。',
+  appPivotBaseFieldNotAxis:
+    '基準フィールド「{label}」はピボットテーブルの行または列に配置してください。',
+  appPivotBaseItemMissing:
+    '基準アイテム「{item}」はフィールド「{label}」のメンバーではありません。',
   appInvalidLabelFilterField: 'ラベルフィルターのフィールドが無効です。',
   appInvalidValueFieldIndex: '値フィールドのインデックス {index} が無効です。',
   appInvalidValueField: '値フィールドが無効です。',
@@ -350,8 +358,6 @@ export const ja = {
     'このシートにはピボットテーブルが含まれています — 範囲の移動には未対応です。',
   appMergeOverTable:
     '選択範囲が Excel テーブルと重なっています — テーブル内のセル結合は現時点では対応していません。',
-  appTableFilterNoEdit:
-    'このシートのフィルターは Excel テーブルに属しています — 編集内容は現時点では保存できません。',
   appAutofillStreaming: 'ストリーミング読み込み中の範囲へのオートフィルはまだ許可されていません。',
   appDvNeedsIndexed:
     'データの入力規則を編集するには、このシートのインデックス作成が完了している必要があります — しばらくしてからお試しください。',
@@ -1250,6 +1256,7 @@ export const ja = {
   appGroupForecast: '予測',
   appWhatIfAnalysis: 'What-If 分析',
   appGoalSeek: 'ゴールシーク',
+  appDataTable: 'データテーブル',
   appWhatIfTitle: '目標値から入力を逆算',
   appGoalSeekNeedsFormula: '数式入力セルには数式が必要です。',
   appGoalSeekByCellNotNumber: '変化させるセルは数値または空白にしてください。',
