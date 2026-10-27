@@ -9,6 +9,8 @@ no Genspark sign-in, no Genspark LLM proxy, no cloud tools, no usage analytics.
 Models and tools are yours: your Claude subscription, your API keys, or your
 own server.
 
+<p align="center"><img src="docs/assets/selfoffice-home.png" alt="SelfOffice home: Docs, Sheets, Slides, Markdown, HTML and PDF in one window" width="900"></p>
+
 ## Why SelfOffice
 
 - **Open source**, Apache-2.0, built in the open on GitHub.
