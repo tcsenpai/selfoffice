@@ -4,6 +4,7 @@ import {
   readFileSync,
   readdirSync,
   renameSync,
+  statSync,
   rmSync,
   writeFileSync,
 } from 'node:fs'
@@ -311,6 +312,16 @@ describe('writeJsonAtomic', () => {
     expect(JSON.parse(readFileSync(target, 'utf8'))).toEqual(['b', 'a'])
     expect(readdirSync(join(dir, 'state'))).toEqual(['recent.json'])
   })
+
+  it.skipIf(process.platform === 'win32')(
+    'creates the file owner-only (it can hold API keys)',
+    () => {
+      dir = mkdtempSync(join(tmpdir(), 'eu-json-'))
+      const target = join(dir, 'ai-settings.json')
+      writeJsonAtomic(target, { apiKey: 'sk-test' })
+      expect(statSync(target).mode & 0o777).toBe(0o600)
+    },
+  )
 
   // Simulates a write interrupted after truncation: the previous state must survive
   it('keeps the previous state when the write dies half-way', () => {

@@ -1,7 +1,7 @@
 import { chmodSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { chatClaudeCli, claudeCliArgs } from '../src/claude-cli'
 import { resetUserShellPathCache, userShellPath } from '../src/user-shell-path'
 
@@ -108,6 +108,27 @@ describe('userShellPath', () => {
 
   posix('reads the PATH of a real shell', async () => {
     expect(await userShellPath('/bin/sh')).toMatch(/\/bin/)
+  })
+
+  posix(
+    'retries a failed lookup after a minute instead of keeping it for the session',
+    async () => {
+      vi.useFakeTimers({ toFake: ['Date'] })
+      try {
+        expect(await userShellPath(script('broken2', 'exit 1'))).toBeUndefined()
+        const good = script('good', `printf '__SELFOFFICE_PATH__/ok/bin__SELFOFFICE_PATH__'`)
+        expect(await userShellPath(good)).toBeUndefined() // still within the minute
+        vi.setSystemTime(Date.now() + 61_000)
+        expect(await userShellPath(good)).toBe('/ok/bin')
+      } finally {
+        vi.useRealTimers()
+      }
+    },
+  )
+
+  posix('does not hang on an rc file that reads stdin', async () => {
+    const shell = script('reader', `read line; printf '__SELFOFFICE_PATH__/r__SELFOFFICE_PATH__'`)
+    expect(await userShellPath(shell)).toBe('/r')
   })
 
   posix('gives undefined when the shell fails', async () => {

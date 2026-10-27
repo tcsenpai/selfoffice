@@ -1362,7 +1362,7 @@ describe('streamForProvider: openai-compatible', () => {
 
 describe('streamForProvider: 200 + non-stream JSON instead of SSE', () => {
   const creditsNotice =
-    'Your Genspark credits have been exhausted. Please visit https://www.genspark.ai/pricing to purchase more credits.'
+    'Your credits have been exhausted. Please visit https://example.com/pricing to purchase more credits.'
   const json = (value: unknown) =>
     new Response(JSON.stringify(value), {
       status: 200,
@@ -1389,7 +1389,7 @@ describe('streamForProvider: 200 + non-stream JSON instead of SSE', () => {
     expect(deltas).toEqual([])
   })
 
-  it('gemini route: zero usage + a pricing link counts as a credits notice', async () => {
+  it('gemini route: zero usage + a credits-exhausted notice counts as a credits error', async () => {
     vi.stubGlobal(
       'fetch',
       vi.fn().mockResolvedValue(
@@ -1397,7 +1397,7 @@ describe('streamForProvider: 200 + non-stream JSON instead of SSE', () => {
           candidates: [
             {
               content: {
-                parts: [{ text: 'Out of quota, visit https://www.genspark.ai/pricing to top up.' }],
+                parts: [{ text: 'Your credits are exhausted, please top up.' }],
               },
             },
           ],

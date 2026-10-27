@@ -176,7 +176,11 @@ export function writeJsonAtomic(filePath: string, value: unknown): void {
     }
   }
   try {
-    writeFileSync(tmp, json, { encoding: 'utf8', flag: 'wx' })
+    writeFileSync(
+      tmp,
+      json, // owner-only: these files hold API keys (ai-settings.json)
+      { encoding: 'utf8', flag: 'wx', mode: 0o600 },
+    )
     syncFileBestEffortSync(tmp)
     for (let attempt = 0; ; attempt += 1) {
       try {
