@@ -321,6 +321,18 @@ SelfOffice would not be possible without these open-source projects:
 (`tools/gen-third-party-notices.mjs`); all runtime dependencies are
 MIT/Apache-2.0/BSD-3-Clause/OFL.
 
+## How this fork is maintained
+
+This repository is automated and maintained mainly by an AI (Claude Code), with a
+human in control. Twice a day a workflow merges what
+[GenOffice](https://github.com/genspark-ai/genoffice) published upstream, re-applies
+the SelfOffice changes (no hosted services, your own models, OpenDocument support),
+runs the full test suite and, when everything is green, ships a new release. Changes
+that touch what this fork removed (Genspark services, analytics, sign-in, cloud) or
+that fail CI are never merged automatically: they wait for a person to review them.
+The human maintainer reviews flagged changes, owns the decisions, and can pause the
+automation at any time. Details for maintainers are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 SelfOffice is licensed under the [Apache License 2.0](LICENSE), as is upstream
