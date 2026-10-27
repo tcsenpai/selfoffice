@@ -3,39 +3,105 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SelfOffice, the AI office suite you run yourself</title>
+    <title>SelfOffice, the FOSS AI office suite</title>
     <meta
       name="description"
       content="Docs, Sheets, Slides, PDF, Markdown and HTML with an AI that edits the file itself. Your Claude subscription, your API keys or your own server. Open source, no account, no cloud."
     />
     <meta name="theme-color" content="#0b1020" />
-    <meta property="og:title" content="SelfOffice" />
+    <meta property="og:title" content="SelfOffice, the FOSS AI office suite" />
     <meta
       property="og:description"
-      content="The AI office suite you run yourself. Bring your own model."
+      content="Bring your own model. Real .docx, .xlsx, .pptx and OpenDocument files. No account, no cloud."
     />
     <meta property="og:image" content="https://tcsenpai.github.io/selfoffice/assets/docs.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      /* theme before first paint, no flash */
+      try {
+        var t = localStorage.getItem('so-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+      document.documentElement.classList.add('js')
+    </script>
   </head>
   <body>
-    <header class="nav">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" id="nav">
       <a class="brand" href="#top"
         ><img src="assets/icon.svg" alt="" width="28" height="28" /><span>SelfOffice</span></a
       >
-      <nav>
+      <nav id="menu" aria-label="Main">
         <a href="#features">Features</a>
+        <a href="#apps">Apps</a>
         <a href="#models">Models</a>
         <a href="#odf">OpenDocument</a>
-        <a href="#download">Download</a>
-        <a class="gh" href="https://github.com/tcsenpai/selfoffice">GitHub</a>
+        <a href="#automation">Open development</a>
+        <a href="#faq">FAQ</a>
       </nav>
+      <div class="nav-end">
+        <a
+          class="star"
+          id="star"
+          href="https://github.com/tcsenpai/selfoffice"
+          aria-label="Star SelfOffice on GitHub"
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.5 6.1 20.7l1.2-6.6L2.5 9.5l6.6-.9z"
+            />
+          </svg>
+          <span>Star</span><b id="star-count"></b>
+        </a>
+        <button class="icon-btn" id="theme" type="button" aria-label="Switch light and dark theme">
+          <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+            <path
+              d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path
+              d="M20 14.5A8.5 8.5 0 019.5 4 8.5 8.5 0 1020 14.5z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button
+          class="icon-btn burger"
+          id="burger"
+          type="button"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <p class="eyebrow">Open source, Apache-2.0</p>
-        <h1>The AI office suite<br /><span class="grad">you run yourself.</span></h1>
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="grid-bg" aria-hidden="true"></div>
+
+        <a class="pill" id="pill" href="#download"
+          ><span class="dot"></span><span id="pill-text">Open source, Apache-2.0</span></a
+        >
+        <h1>
+          The AI office suite<br />
+          <span class="rot"><span class="grad" id="rot">you run yourself.</span></span>
+        </h1>
         <p class="lead">
           Docs, Sheets, Slides, PDF, Markdown and HTML in one native app. The AI edits the real
           file, with tracked changes you can roll back. Use your Claude subscription, your own API
@@ -46,109 +112,286 @@
             class="btn primary"
             id="dl-main"
             href="https://github.com/tcsenpai/selfoffice/releases/latest"
-            >Download</a
           >
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path
+                d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span id="dl-main-text">Download</span>
+          </a>
           <a class="btn ghost" href="https://github.com/tcsenpai/selfoffice">View on GitHub</a>
         </div>
         <p class="small" id="dl-note">macOS, Windows and Linux. Free. No account.</p>
 
-        <figure class="shot hero-shot">
-          <img
-            src="assets/docs.png"
-            alt="SelfOffice Docs with the AI panel open next to a document"
-            width="1440"
-            height="900"
-          />
-        </figure>
+        <div class="stage" id="stage">
+          <div class="glow" aria-hidden="true"></div>
+          <figure class="window tilt" id="tilt">
+            <div class="chrome" aria-hidden="true">
+              <i></i><i></i><i></i><span>SelfOffice</span>
+            </div>
+            <img
+              src="assets/docs.png"
+              alt="SelfOffice Docs with the AI panel open next to a document"
+              width="1440"
+              height="900"
+              fetchpriority="high"
+            />
+          </figure>
+          <div class="float f1" aria-hidden="true"><b>.docx</b> saved byte for byte</div>
+          <div class="float f2" aria-hidden="true"><b>claude -p</b> no API key</div>
+          <div class="float f3" aria-hidden="true"><b>.odt</b> edited in place</div>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="Supported model providers">
+        <p class="small">Works with the models you already use</p>
+        <div class="track" id="track-a"></div>
+        <div class="track rev" id="track-b"></div>
       </section>
 
       <section class="strip" aria-label="Highlights">
-        <div><b>0</b><span>accounts, sign-ins or telemetry</span></div>
-        <div><b>6</b><span>apps in one window</span></div>
-        <div><b>15+</b><span>model providers, plus any custom endpoint</span></div>
-        <div><b>.docx .xlsx .pptx .odt .ods .odp</b><span>saved back in the real format</span></div>
+        <div><b data-count="0">0</b><span>accounts, sign-ins or telemetry</span></div>
+        <div><b data-count="6">6</b><span>apps in one window</span></div>
+        <div>
+          <b data-count="15" data-suffix="+">15+</b><span>model providers, plus any endpoint</span>
+        </div>
+        <div><b data-count="22">22</b><span>interface languages</span></div>
       </section>
 
       <section id="features" class="block">
+        <p class="eyebrow">Features</p>
         <h2>Everything an office suite does. With an AI that can touch the file.</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Your files stay yours</h3>
-            <p>
-              Every edit, save and conversion runs on your machine. Nothing is uploaded unless you
-              point a model at it, and then only what you ask it to read.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Real Office files</h3>
-            <p>
-              Native <code>.docx</code>, <code>.xlsx</code> and <code>.pptx</code>. Parts of a file
-              you did not touch are copied byte for byte, so a round trip does not break a
-              colleague's document.
-            </p>
-          </article>
-          <article class="card">
+        <div class="bento">
+          <article class="card wide spot">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M4 12l5 5L20 6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
             <h3>The AI edits, you review</h3>
             <p>
               Tracked changes in Docs, live formulas and charts in Sheets, slides drawn on the
               canvas. Every AI turn is a snapshot you can roll back.
             </p>
+            <div class="mini-diff" aria-hidden="true">
+              <span class="del">the old paragraph</span
+              ><span class="ins">the rewritten paragraph</span>
+            </div>
           </article>
-          <article class="card">
+          <article class="card spot">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <rect
+                x="5"
+                y="11"
+                width="14"
+                height="9"
+                rx="2"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              />
+              <path d="M8 11V8a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <h3>Your files stay yours</h3>
+            <p>
+              Every edit, save and conversion runs on your machine. Nothing is uploaded unless you
+              point a model at it.
+            </p>
+          </article>
+          <article class="card spot">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6 3h8l4 4v14H6z M14 3v4h4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h3>Real Office files</h3>
+            <p>
+              Native <code>.docx</code>, <code>.xlsx</code> and <code>.pptx</code>. What you did not
+              touch is copied byte for byte.
+            </p>
+          </article>
+          <article class="card spot">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7 3h7l4 4v14H7z M10 12h5 M10 16h5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              />
+            </svg>
             <h3>PDF done properly</h3>
             <p>
               Edit text inside the page. Convert PDF to Word, Excel or PowerPoint on the device,
               with system OCR for scans.
             </p>
           </article>
-          <article class="card">
+          <article class="card spot">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
             <h3>Ask across your files</h3>
             <p>
-              Full-text search over your folders, indexed locally. Star the files that matter and
-              ask in plain language: answers cite the file they came from.
+              Local full-text search over your folders. Star the files that matter and ask in plain
+              language: answers cite their source.
             </p>
           </article>
-          <article class="card">
-            <h3>Scriptable</h3>
-            <p>
-              A <code>selfoffice</code> command line, an agent skill and an MCP server hand every
-              engine to Claude Code, Codex, Cursor and other agents.
-            </p>
+          <article class="card full spot">
+            <div>
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M4 17l5-5-5-5 M12 19h8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3>Scriptable</h3>
+              <p>
+                A <code>selfoffice</code> command line, an agent skill and an MCP server hand every
+                engine to Claude Code, Codex, Cursor and other agents, still on-device.
+              </p>
+            </div>
+            <pre class="mini-term" aria-hidden="true"><code>$ selfoffice convert deck.pptx --to odp
+converted deck.pptx → deck.odp</code></pre>
           </article>
         </div>
       </section>
 
-      <section class="block split">
-        <div>
-          <h2>One window, six apps.</h2>
-          <p>
-            Open a spreadsheet next to a deck next to a PDF, all as tabs. The home screen lists
-            recent files, folders and the Ask AI chat.
-          </p>
-          <ul class="ticks">
-            <li>Docs, Sheets, Slides</li>
-            <li>PDF viewer and editor</li>
-            <li>Markdown and HTML with the same AI panel</li>
-            <li>Light and dark themes, 22 languages</li>
-          </ul>
+      <section id="apps" class="block apps">
+        <p class="eyebrow">One window, six apps</p>
+        <h2>Open a spreadsheet next to a deck next to a PDF.</h2>
+        <div class="tabs" role="tablist" aria-label="Apps">
+          <button role="tab" aria-selected="true" aria-controls="p-home" id="t-home" data-i="0">
+            Home
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="p-docs"
+            id="t-docs"
+            data-i="1"
+            tabindex="-1"
+          >
+            Docs
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="p-sheets"
+            id="t-sheets"
+            data-i="2"
+            tabindex="-1"
+          >
+            Sheets
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="p-slides"
+            id="t-slides"
+            data-i="3"
+            tabindex="-1"
+          >
+            Slides
+          </button>
         </div>
-        <figure class="shot">
-          <img
-            src="assets/home.png"
-            alt="SelfOffice home screen with Docs, Sheets, Slides, Markdown, HTML and PDF"
-            width="1440"
-            height="900"
-          />
-        </figure>
+        <div class="showcase">
+          <figure class="window panel on" role="tabpanel" id="p-home" aria-labelledby="t-home">
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>Home</span></div>
+            <img
+              src="assets/home.png"
+              alt="SelfOffice home with Docs, Sheets, Slides, Markdown, HTML and PDF"
+              width="1440"
+              height="900"
+              loading="lazy"
+            />
+            <figcaption>Recent files, folders and Ask AI across everything you starred.</figcaption>
+          </figure>
+          <figure class="window panel" role="tabpanel" id="p-docs" aria-labelledby="t-docs" hidden>
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>Docs</span></div>
+            <img
+              src="assets/docs.png"
+              alt="SelfOffice Docs"
+              width="1440"
+              height="900"
+              loading="lazy"
+            />
+            <figcaption>Word-style editing with an AI that proposes tracked changes.</figcaption>
+          </figure>
+          <figure
+            class="window panel"
+            role="tabpanel"
+            id="p-sheets"
+            aria-labelledby="t-sheets"
+            hidden
+          >
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>Sheets</span></div>
+            <img
+              src="assets/sheets.png"
+              alt="SelfOffice Sheets with a small revenue table"
+              width="1360"
+              height="860"
+              loading="lazy"
+            />
+            <figcaption>
+              Live formulas, charts and an AI that reads and updates the workbook.
+            </figcaption>
+          </figure>
+          <figure
+            class="window panel"
+            role="tabpanel"
+            id="p-slides"
+            aria-labelledby="t-slides"
+            hidden
+          >
+            <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>Slides</span></div>
+            <img
+              src="assets/slides.png"
+              alt="SelfOffice Slides ready to generate a deck"
+              width="1360"
+              height="860"
+              loading="lazy"
+            />
+            <figcaption>
+              Describe the deck, and it is drawn onto the canvas as editable shapes.
+            </figcaption>
+          </figure>
+        </div>
+        <ul class="ticks">
+          <li>PDF viewer and editor</li>
+          <li>Markdown and HTML with the same AI panel</li>
+          <li>Light and dark themes</li>
+        </ul>
       </section>
 
       <section id="models" class="block">
+        <p class="eyebrow">Models</p>
         <h2>Your model. Your key. Your call.</h2>
         <p class="sub">
           The fork removed every hosted dependency of the original. What is left is a picker.
         </p>
         <div class="models">
-          <div class="model hl">
+          <div class="model hl spot">
             <h3>Claude subscription</h3>
             <p>
               Runs <code>claude -p</code> with the login you already have, found through your shell
@@ -157,7 +400,7 @@
             </p>
             <span class="tag">sonnet, opus, haiku</span>
           </div>
-          <div class="model">
+          <div class="model spot">
             <h3>Bring your own key</h3>
             <p>
               Claude, OpenAI, Gemini, DeepSeek, Kimi, GLM, Qwen, Doubao, MiniMax, Grok, Mistral,
@@ -165,12 +408,12 @@
             </p>
             <span class="tag">15+ providers</span>
           </div>
-          <div class="model">
+          <div class="model spot">
             <h3>Codex CLI</h3>
             <p>Use your ChatGPT login through the Codex app-server.</p>
             <span class="tag">no key</span>
           </div>
-          <div class="model">
+          <div class="model spot">
             <h3>Custom endpoint</h3>
             <p>Any OpenAI-compatible URL: Ollama, LM Studio, vLLM or your own gateway.</p>
             <span class="tag">fully local</span>
@@ -196,18 +439,50 @@
             If a change cannot be patched safely, the original is backed up first and you are told.
             If the file changed on disk behind your back, SelfOffice refuses to overwrite it.
           </p>
+          <pre
+            class="code"
+            aria-label="Command line example"
+          ><code><span class="c"># convert from the terminal</span>
+<span id="typed">selfoffice convert report.docx --to odt</span><span class="caret"></span></code></pre>
         </div>
-        <pre
-          class="code"
-          aria-label="Command line example"
-        ><code><span class="c"># convert from the terminal</span>
-selfoffice convert report.docx --to odt
-selfoffice convert budget.xlsx --to ods
-selfoffice convert deck.pptx   --to odp</code></pre>
+        <div class="diffviz" id="diffviz" aria-label="Only the edited paragraph is rewritten">
+          <div class="file">
+            <span class="fn">report.odt</span><span class="st" id="dv-status">saved</span>
+          </div>
+          <div class="row keep">
+            <i></i><span>Heading, styles, page setup</span><em>byte-identical</em>
+          </div>
+          <div class="row keep">
+            <i></i><span>Paragraph with a margin comment</span><em>byte-identical</em>
+          </div>
+          <div class="row edit"><i></i><span>The paragraph you edited</span><em>rewritten</em></div>
+          <div class="row keep">
+            <i></i><span>Chart and embedded object</span><em>byte-identical</em>
+          </div>
+          <div class="row keep"><i></i><span>Tracked changes</span><em>byte-identical</em></div>
+        </div>
+      </section>
+
+      <section id="automation" class="block auto">
+        <p class="eyebrow">Open development</p>
+        <h2>Automated, AI-maintained, human-reviewed.</h2>
+        <p class="sub">
+          This fork follows
+          <a href="https://github.com/genspark-ai/genoffice">GenOffice</a> upstream by itself, so
+          new features reach you without waiting for a person.
+        </p>
+        <ol class="pipe" id="pipe">
+          <li><b>Upstream</b><span>A feature lands in GenOffice</span></li>
+          <li><b>Sync</b><span>Merged twice a day, rebranded, our changes kept</span></li>
+          <li><b>Checks</b><span>Lint, typecheck, unit and end-to-end tests</span></li>
+          <li><b>Review</b><span>Anything touching hosted services waits for a human</span></li>
+          <li><b>Release</b><span>macOS, Windows and Linux installers, automatically</span></li>
+        </ol>
       </section>
 
       <section id="download" class="block dl">
-        <h2>Download</h2>
+        <p class="eyebrow">Download</p>
+        <h2>Get SelfOffice.</h2>
         <p class="sub" id="dl-version">Latest release</p>
         <div class="dl-grid">
           <div class="dl-card" data-os="mac">
@@ -247,6 +522,50 @@ selfoffice convert deck.pptx   --to odp</code></pre>
             build:all</code
           >
         </p>
+      </section>
+
+      <section id="faq" class="block faq">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions people ask.</h2>
+        <details>
+          <summary>Is it really free?</summary>
+          <p>
+            Yes. The code is Apache-2.0 and there is no account or subscription. You only pay a
+            model provider if you choose a paid one, or nothing if you use a local model.
+          </p>
+        </details>
+        <details>
+          <summary>Does it send my documents anywhere?</summary>
+          <p>
+            No analytics, no telemetry, no hosted backend. A document leaves your machine only when
+            you ask the AI about it, and only to the provider you configured. With a local endpoint
+            nothing leaves at all.
+          </p>
+        </details>
+        <details>
+          <summary>Which AI do I need?</summary>
+          <p>
+            None to open and edit files. For the AI features pick one: your Claude subscription
+            through the <code>claude</code> CLI, an API key, the Codex CLI, or any OpenAI-compatible
+            server such as Ollama.
+          </p>
+        </details>
+        <details>
+          <summary>How is this different from GenOffice?</summary>
+          <p>
+            It is a fork. We removed the Genspark sign-in, proxy, cloud tools and analytics, added
+            the Claude subscription and bring-your-own-key providers and real OpenDocument support,
+            and keep merging upstream improvements.
+          </p>
+        </details>
+        <details>
+          <summary>Why are the installers unsigned?</summary>
+          <p>
+            Code signing costs money, and a signing path for Windows open source is still being set
+            up. The source and the release workflow are public, so you can verify or build it
+            yourself.
+          </p>
+        </details>
       </section>
     </main>
 
