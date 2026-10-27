@@ -35,11 +35,11 @@ function arch(name) {
   return ''
 }
 
-// one API call per ten minutes per browser: the anonymous limit is 60 an hour per IP
+// one API call per two minutes per browser: the anonymous limit is 60 an hour per IP
 async function latestRelease() {
   try {
     const hit = JSON.parse(sessionStorage.getItem('so-release') || 'null')
-    if (hit && Date.now() - hit.at < 600_000) return hit.rel
+    if (hit && Date.now() - hit.at < 120_000) return hit.rel
   } catch {
     /* storage unavailable */
   }
