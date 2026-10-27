@@ -1,6 +1,7 @@
 <h1 align="center">SelfOffice</h1>
 
 <p align="center"><b>A self-hosted, bring-your-own-model AI Office suite.</b><br>
+<p align="center"><a href="https://www.producthunt.com/products/selfoffice?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-selfoffice" target="_blank" rel="noopener noreferrer"><img alt="SelfOffice - Free AI integrated office suite, open source and complete | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1294397&amp;theme=dark&amp;t=1793096834950"></a></p>
 Word, Excel, PowerPoint and PDF files, edited by you and your AI, saved back in the real formats.</p>
 
 SelfOffice is a fork of [GenOffice](https://github.com/genspark-ai/genoffice)
