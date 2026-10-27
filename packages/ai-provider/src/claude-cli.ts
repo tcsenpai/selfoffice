@@ -107,7 +107,9 @@ async function runClaude(
         return reject(Object.assign(new Error('Claude CLI cancelled'), { name: 'AbortError' }))
       try {
         const parsed = JSON.parse(out) as ClaudeCliResult
-        if (parsed.is_error) throw new Error(parsed.result || 'Claude CLI reported an error')
+        // an error report arrives as JSON on stdout, usually with a non-zero exit code
+        if (parsed.is_error)
+          return reject(new Error(parsed.result || 'Claude CLI reported an error'))
         return resolve(parsed)
       } catch (e) {
         reject(
