@@ -327,7 +327,7 @@ export async function patchOdp(
 ): Promise<OdpPatchResult> {
   let zip: JSZip
   try {
-    zip = await JSZip.loadAsync(original)
+    zip = await JSZip.loadAsync(original, { createFolders: false })
     assertZipWithinLimits(zip)
   } catch {
     throw new OdfPatchError('unreadable-odp')
@@ -603,7 +603,7 @@ export async function patchOdp(
     zip.file('styles.xml', styles)
   }
   if (doc.pictureFiles.length > 0) {
-    for (const p of doc.pictureFiles) zip.file(p.name, p.bytes)
+    for (const p of doc.pictureFiles) zip.file(p.name, p.bytes, { createFolders: false })
     const manifest = await zip.file('META-INF/manifest.xml')?.async('string')
     if (manifest?.includes('</manifest:manifest>')) {
       const entries = doc.pictureFiles

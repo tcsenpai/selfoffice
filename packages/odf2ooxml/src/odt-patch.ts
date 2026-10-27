@@ -251,7 +251,7 @@ export async function patchOdt(
 ): Promise<OdtPatchResult> {
   let zip: JSZip
   try {
-    zip = await JSZip.loadAsync(original)
+    zip = await JSZip.loadAsync(original, { createFolders: false })
   } catch {
     throw new OdfPatchError('unreadable', 'odt')
   }
@@ -518,9 +518,12 @@ export async function patchOdt(
     }
     const swap = replaced.get(entry.name)
     replaced.delete(entry.name)
-    pkg.file(entry.name, swap ?? (await entry.async('uint8array')), { date: entry.date })
+    pkg.file(entry.name, swap ?? (await entry.async('uint8array')), {
+      date: entry.date,
+      createFolders: false,
+    })
   }
-  for (const [name, data] of replaced) pkg.file(name, data)
+  for (const [name, data] of replaced) pkg.file(name, data, { createFolders: false })
   const odt = await pkg.generateAsync({ type: 'uint8array', compression: 'DEFLATE' })
 
   const inserted = cToB.filter((b) => b < 0).length

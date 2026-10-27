@@ -222,6 +222,24 @@ describe('patchOdt', () => {
     expectPreserved(content, [EDIT_ME])
   })
 
+  it('keeps the original folder entries and adds none (strict ODF consumers dislike them)', async () => {
+    const { odt, baseline } = await setup()
+    const current = await edit(baseline, (blocks, body) => {
+      const index = indexOfText(body, 'Edit me please.')
+      blocks[index] = {
+        kind: 'generated',
+        block: { type: 'paragraph', runs: [{ text: 'Edited text.' }] },
+        docxIndex: index,
+      }
+      return blocks
+    })
+    const dirs = async (bytes: Uint8Array) =>
+      Object.keys((await JSZip.loadAsync(bytes, { createFolders: false })).files)
+        .filter((n) => n.endsWith('/'))
+        .sort()
+    expect(await dirs((await patchOdt(odt, baseline, current)).odt)).toEqual(await dirs(odt))
+  })
+
   it('inserts a new paragraph between kept children', async () => {
     const { odt, baseline } = await setup()
     const current = await edit(baseline, (blocks, body) => {
