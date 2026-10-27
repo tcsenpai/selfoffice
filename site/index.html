@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SelfOffice, the AI office suite you run yourself</title>
+    <meta
+      name="description"
+      content="Docs, Sheets, Slides, PDF, Markdown and HTML with an AI that edits the file itself. Your Claude subscription, your API keys or your own server. Open source, no account, no cloud."
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <meta property="og:title" content="SelfOffice" />
+    <meta
+      property="og:description"
+      content="The AI office suite you run yourself. Bring your own model."
+    />
+    <meta property="og:image" content="https://tcsenpai.github.io/selfoffice/assets/docs.png" />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#top"
+        ><img src="assets/icon.svg" alt="" width="28" height="28" /><span>SelfOffice</span></a
+      >
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#models">Models</a>
+        <a href="#odf">OpenDocument</a>
+        <a href="#download">Download</a>
+        <a class="gh" href="https://github.com/tcsenpai/selfoffice">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Open source, Apache-2.0</p>
+        <h1>The AI office suite<br /><span class="grad">you run yourself.</span></h1>
+        <p class="lead">
+          Docs, Sheets, Slides, PDF, Markdown and HTML in one native app. The AI edits the real
+          file, with tracked changes you can roll back. Use your Claude subscription, your own API
+          keys, or a model on your own machine.
+        </p>
+        <div class="cta">
+          <a
+            class="btn primary"
+            id="dl-main"
+            href="https://github.com/tcsenpai/selfoffice/releases/latest"
+            >Download</a
+          >
+          <a class="btn ghost" href="https://github.com/tcsenpai/selfoffice">View on GitHub</a>
+        </div>
+        <p class="small" id="dl-note">macOS, Windows and Linux. Free. No account.</p>
+
+        <figure class="shot hero-shot">
+          <img
+            src="assets/docs.png"
+            alt="SelfOffice Docs with the AI panel open next to a document"
+            width="1440"
+            height="900"
+          />
+        </figure>
+      </section>
+
+      <section class="strip" aria-label="Highlights">
+        <div><b>0</b><span>accounts, sign-ins or telemetry</span></div>
+        <div><b>6</b><span>apps in one window</span></div>
+        <div><b>15+</b><span>model providers, plus any custom endpoint</span></div>
+        <div><b>.docx .xlsx .pptx .odt .ods .odp</b><span>saved back in the real format</span></div>
+      </section>
+
+      <section id="features" class="block">
+        <h2>Everything an office suite does. With an AI that can touch the file.</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Your files stay yours</h3>
+            <p>
+              Every edit, save and conversion runs on your machine. Nothing is uploaded unless you
+              point a model at it, and then only what you ask it to read.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Real Office files</h3>
+            <p>
+              Native <code>.docx</code>, <code>.xlsx</code> and <code>.pptx</code>. Parts of a file
+              you did not touch are copied byte for byte, so a round trip does not break a
+              colleague's document.
+            </p>
+          </article>
+          <article class="card">
+            <h3>The AI edits, you review</h3>
+            <p>
+              Tracked changes in Docs, live formulas and charts in Sheets, slides drawn on the
+              canvas. Every AI turn is a snapshot you can roll back.
+            </p>
+          </article>
+          <article class="card">
+            <h3>PDF done properly</h3>
+            <p>
+              Edit text inside the page. Convert PDF to Word, Excel or PowerPoint on the device,
+              with system OCR for scans.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Ask across your files</h3>
+            <p>
+              Full-text search over your folders, indexed locally. Star the files that matter and
+              ask in plain language: answers cite the file they came from.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Scriptable</h3>
+            <p>
+              A <code>selfoffice</code> command line, an agent skill and an MCP server hand every
+              engine to Claude Code, Codex, Cursor and other agents.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="block split">
+        <div>
+          <h2>One window, six apps.</h2>
+          <p>
+            Open a spreadsheet next to a deck next to a PDF, all as tabs. The home screen lists
+            recent files, folders and the Ask AI chat.
+          </p>
+          <ul class="ticks">
+            <li>Docs, Sheets, Slides</li>
+            <li>PDF viewer and editor</li>
+            <li>Markdown and HTML with the same AI panel</li>
+            <li>Light and dark themes, 22 languages</li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <img
+            src="assets/home.png"
+            alt="SelfOffice home screen with Docs, Sheets, Slides, Markdown, HTML and PDF"
+            width="1440"
+            height="900"
+          />
+        </figure>
+      </section>
+
+      <section id="models" class="block">
+        <h2>Your model. Your key. Your call.</h2>
+        <p class="sub">
+          The fork removed every hosted dependency of the original. What is left is a picker.
+        </p>
+        <div class="models">
+          <div class="model hl">
+            <h3>Claude subscription</h3>
+            <p>
+              Runs <code>claude -p</code> with the login you already have. No API key. The CLI gets
+              no tools and no project context, it is only a text model.
+            </p>
+            <span class="tag">sonnet, opus, haiku</span>
+          </div>
+          <div class="model">
+            <h3>Bring your own key</h3>
+            <p>
+              Claude, OpenAI, Gemini, DeepSeek, Kimi, GLM, Qwen, Doubao, MiniMax, Grok, Mistral,
+              OpenRouter and more.
+            </p>
+            <span class="tag">15+ providers</span>
+          </div>
+          <div class="model">
+            <h3>Codex CLI</h3>
+            <p>Use your ChatGPT login through the Codex app-server.</p>
+            <span class="tag">no key</span>
+          </div>
+          <div class="model">
+            <h3>Custom endpoint</h3>
+            <p>Any OpenAI-compatible URL: Ollama, LM Studio, vLLM or your own gateway.</p>
+            <span class="tag">fully local</span>
+          </div>
+        </div>
+        <p class="small">
+          Web search works out of the box with a keyless chain, and you can add Serper, Tavily, Exa
+          and others per capability.
+        </p>
+      </section>
+
+      <section id="odf" class="block odf">
+        <div>
+          <p class="eyebrow">New in this fork</p>
+          <h2>Real OpenDocument support.</h2>
+          <p>
+            Open an <code>.odt</code>, <code>.ods</code> or <code>.odp</code>, edit it, save to the
+            same file. Not an export: only what you changed is rewritten, and the rest of the
+            package stays byte-identical. Comments, tracked changes, charts and animations the
+            editor does not handle survive the save.
+          </p>
+          <p>
+            If a change cannot be patched safely, the original is backed up first and you are told.
+            If the file changed on disk behind your back, SelfOffice refuses to overwrite it.
+          </p>
+        </div>
+        <pre
+          class="code"
+          aria-label="Command line example"
+        ><code><span class="c"># convert from the terminal</span>
+selfoffice convert report.docx --to odt
+selfoffice convert budget.xlsx --to ods
+selfoffice convert deck.pptx   --to odp</code></pre>
+      </section>
+
+      <section id="download" class="block dl">
+        <h2>Download</h2>
+        <p class="sub" id="dl-version">Latest release</p>
+        <div class="dl-grid">
+          <a
+            class="dl-card"
+            data-os="mac"
+            href="https://github.com/tcsenpai/selfoffice/releases/latest"
+          >
+            <h3>macOS</h3>
+            <p>Apple Silicon, <code>.dmg</code> or <code>.zip</code></p>
+            <span>Download</span>
+          </a>
+          <a
+            class="dl-card"
+            data-os="win"
+            href="https://github.com/tcsenpai/selfoffice/releases/latest"
+          >
+            <h3>Windows</h3>
+            <p>Installer <code>.exe</code></p>
+            <span>Download</span>
+          </a>
+          <a
+            class="dl-card"
+            data-os="linux"
+            href="https://github.com/tcsenpai/selfoffice/releases/latest"
+          >
+            <h3>Linux</h3>
+            <p><code>.AppImage</code>, <code>.deb</code>, <code>.rpm</code></p>
+            <span>Download</span>
+          </a>
+        </div>
+        <div class="note">
+          <b>Installers are not signed yet.</b> Windows SmartScreen and macOS Gatekeeper will warn
+          on first launch. On macOS, right-click the app and choose Open, or run
+          <code>xattr -dr com.apple.quarantine /Applications/SelfOffice.app</code>.
+        </div>
+        <p class="small">
+          Or build from source:
+          <code
+            >git clone https://github.com/tcsenpai/selfoffice &amp;&amp; npm ci &amp;&amp; npm run
+            build:all</code
+          >
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div>
+        <a class="brand" href="#top"
+          ><img src="assets/icon.svg" alt="" width="24" height="24" /><span>SelfOffice</span></a
+        >
+        <p>
+          A fork of <a href="https://github.com/genspark-ai/genoffice">GenOffice</a> (Apache-2.0, ©
+          Mainfunc, Inc.) with every hosted dependency removed.
+        </p>
+      </div>
+      <div class="links">
+        <a href="https://github.com/tcsenpai/selfoffice">Source</a>
+        <a href="https://github.com/tcsenpai/selfoffice/releases">Releases</a>
+        <a href="https://github.com/tcsenpai/selfoffice/issues">Issues</a>
+        <a href="https://github.com/tcsenpai/selfoffice/blob/main/PRIVACY.md">Privacy</a>
+        <a href="https://github.com/tcsenpai/selfoffice/blob/main/LICENSE">License</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
