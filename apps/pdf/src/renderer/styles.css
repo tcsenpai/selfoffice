@@ -1361,8 +1361,8 @@ button {
 
 /* ── Encrypted document password ── */
 
-/* ---- encrypted-PDF password dialog (Genspark DS form dialog, matching the
-   docs PasswordDialog and mockups/protect-dialogs-genspark.html §1/2) ---- */
+/* ---- encrypted-PDF password dialog (DS form dialog, matching the
+   docs PasswordDialog and the protect-dialog mockups) ---- */
 
 /* base .pdf-modal-mask (defined below) top-aligns dialogs; this one centers */
 .pdf-modal-mask.pdf-pwd-mask {
@@ -1661,7 +1661,7 @@ button {
   gap: 8px;
 }
 
-/* Genspark DS modal footer buttons: secondary = bg-subtle, primary = black (#232425) */
+/* DS modal footer buttons: secondary = bg-subtle, primary = black (#232425) */
 .pdf-modal-btn {
   display: inline-flex;
   align-items: center;

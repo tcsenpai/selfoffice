@@ -5,7 +5,7 @@
  * Standalone html has no shell or docs process, so startHtmlStandalone wires
  * the search tools here — same source as sheets/docs/slides (Serper and the
  * other keyed providers with the DuckDuckGo fallback, configured through
- * ai-settings.json; image search additionally rides the Genspark chain when
+ * ai-settings.json; image search additionally rides the media chain when
  * the user is signed in with cloud tools on).
  */
 import { app, ipcMain } from 'electron'

@@ -19,7 +19,7 @@ export function opencodeSessionHeaders(
 }
 
 /**
- * DeepSeek V4.1 Flash under the Genspark pool spelling. Only the proxy serves
+ * DeepSeek V4.1 Flash under the proxy pool spelling. Only the proxy serves
  * this id; api.deepseek.com knows the model as `deepseek-flash`, so the direct
  * provider lists the vendor spelling and keeps this one as an accepted alias.
  */
@@ -86,7 +86,7 @@ export const AI_PROVIDERS: AiProviderMeta[] = [
     // name `deepseek-flash` (served by DeepSeek-V4.1-Flash-1017, native vision)
     // and `deepseek-v4-pro` (list verified 2026-09-21, docs re-read 2026-10-18).
     // List the vendor's own ids: this picker is what a user carries into curl
-    // or another client, and `deep-seek-v4.1-flash` is the Genspark pool
+    // or another client, and `deep-seek-v4.1-flash` is the proxy pool
     // spelling, which the direct API does not know. Saved picks of that alias
     // are still rewritten on load (see RETIRED_MODELS).
     models: ['deepseek-v4-pro', 'deepseek-flash'],
@@ -483,7 +483,7 @@ export function activeProvider(settings: AiSettings): AiProviderId {
 const RETIRED_MODELS: Partial<Record<AiProviderId, Record<string, string>>> = {
   // chat/reasoner retired 2026-07-24 (thinking became a request parameter);
   // V4 Flash and V4 Flash Vision Exp retired 2026-09-10 in favour of V4.1
-  // Flash; every one of them, and the Genspark pool spelling that was the
+  // Flash; every one of them, and the proxy pool spelling that was the
   // listed id until 0.11, now resolves to the vendor's own `deepseek-flash`.
   deepseek: {
     'deepseek-chat': 'deepseek-flash',

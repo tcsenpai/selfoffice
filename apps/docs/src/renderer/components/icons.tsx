@@ -1882,7 +1882,7 @@ export function IconClose(props: IconProps) {
   )
 }
 
-/** Genspark brand mark (rounded-square sparkle badge), inline so it renders
+/** AI brand mark (rounded-square sparkle badge), inline so it renders
  * crisply at device resolution instead of going through <img> rasterization */
 export function AiMark({ size = 30 }: { size?: number }) {
   return (

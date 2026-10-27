@@ -5,8 +5,8 @@
  * Gemini native output / Imagen predict, DashScope multimodal-generation
  * (Qwen-Image) and MiniMax image_generation. Understanding speaks two: OpenAI
  * chat completions (video via a video_url part where the vendor accepts one)
- * and Gemini generateContent (inline or Files API). Genspark is not here — its
- * tools go through the gsk CLI in @selfoffice/ai-search.
+ * and Gemini generateContent (inline or Files API). Search and hosted-tool
+ * media live in @selfoffice/ai-search.
  */
 
 import { aiFetch } from './fetch'

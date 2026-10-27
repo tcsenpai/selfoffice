@@ -283,7 +283,7 @@ export interface AiStreamRequest {
 }
 
 /** Token usage a provider reported for one model turn. Both fields are best-effort:
- * some providers (and the Genspark proxy) never report usage, and consumers must
+ * some providers (and proxies) never report usage, and consumers must
  * treat an absent figure as "unknown", never as zero. */
 export interface AiTokenUsage {
   inputTokens?: number
