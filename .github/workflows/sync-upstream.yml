@@ -107,6 +107,14 @@ jobs:
             echo "Lines added upstream that touch what this fork removed or replaced (Genspark, analytics, cloud, sign-in):"
             echo
             node tools/rebrand-upstream.mjs --report "$PREV_UP" "$UP_SHA"
+            feats=$(git log --format='%s' "$PREV_UP".."$UP_SHA" | grep -E '^feat' | sed 's/ (#[0-9]*)$//' | head -60 | sed 's/^/- /' || true)
+            if [ -n "$feats" ]; then
+              echo
+              echo "### New upstream features"
+              echo "Reflect what users can now do in \`site/index.html\` and \`README.md\` (the site is part of the product):"
+              echo
+              echo "$feats"
+            fi
             if [ -s "$RUNNER_TEMP/kept.txt" ]; then
               echo
               echo "### Removed upstream, kept here"

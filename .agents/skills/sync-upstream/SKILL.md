@@ -91,6 +91,16 @@ Typical post-merge breakage to grep for:
 - upstream tests that now fail only because we default differently (search fallback `free`, models that
   route to the Responses API): fix the test to our behavior.
 
+## Site and README follow the features
+
+The site (`site/index.html`, one page) and `README.md` are part of the product: when the merge adds
+or changes features, update their copy in the same change. List them with
+`git log --format=%s "$prev_up".."$up" | grep '^feat'` (`prev_up` = `$(git rev-parse "$prev^2")`).
+Typical places: the "Real Office files" / "PDF done properly" cards, the Models section (providers,
+search, image generation), the app captions, and the counters (`data-count`: providers, apps,
+languages). Count from the code (`AI_PROVIDERS` in `packages/ai-provider/src/providers.ts`), do not
+guess. Only claim what the merged code does; never advertise Genspark-only features.
+
 ## Commit and push
 
 ```bash

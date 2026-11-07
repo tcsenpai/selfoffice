@@ -67,3 +67,6 @@ AI, never Genspark-locked. If `sync-upstream.yml` fails or reports conflicts, fo
 have when upstream removes it, unless it is a security fix; drop Genspark sign-in / cloud / gsk /
 analytics). Never `git merge upstream/main` directly: merge `upstream-rebranded`
 (`tools/mirror-upstream.sh`).
+
+When a sync (or any change) adds or modifies user-visible features, update the site
+(`site/index.html`) and `README.md` copy in the same change: the site is part of the product.
