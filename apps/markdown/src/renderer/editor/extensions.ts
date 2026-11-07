@@ -42,6 +42,9 @@ import type { SlashController, SlashItem } from './slashCommand'
 import { WikiSuggest } from './wikiSuggest'
 import type { WikiSuggestController } from './wikiSuggest'
 import { WikiEmbed } from './wikiEmbed'
+import { BlockLink } from './blockId'
+import type { BlockLinkOptions } from './blockId'
+import { WikiPasteLive } from './wikiPaste'
 import { FootnoteDefinition, FootnoteNav, FootnoteReference } from './footnote'
 import { t } from '../i18n/locale'
 
@@ -59,6 +62,11 @@ export interface BuildExtensionsOptions {
    * reaching for the filesystem.
    */
   wikiLink?: Partial<WikiLinkOptions>
+  /**
+   * Copy-link-to-block. Omitted in tests and headless paths: the command then
+   * reports to no one and writes to whatever clipboard the environment has.
+   */
+  blockLink?: Partial<BlockLinkOptions>
 }
 
 export function buildExtensions(options: BuildExtensionsOptions): AnyExtension[] {
@@ -153,7 +161,15 @@ export function buildExtensions(options: BuildExtensionsOptions): AnyExtension[]
     WikiLinkResolve.configure(options.wikiLink ?? {}),
     // an aliased link reads as its alias: the syntax is hidden in the view only
     WikiAliasDisplay,
-    WikiSuggest.configure({ controller: options.wikiSuggestController }),
+    // `^id` block markers: written on demand, dimmed in the view, plain text in the file
+    BlockLink.configure(options.blockLink ?? {}),
+    // pasted `[[links]]` and `![[embeds]]` take their live shape at once
+    WikiPasteLive,
+    WikiSuggest.configure({
+      controller: options.wikiSuggestController,
+      // keys the fragment cache: the same note asked from another document is another question
+      getDocumentPath: options.wikiLink?.getDocumentPath,
+    }),
     BlockDragHandle,
     BlockKeymap,
     AiHighlight,

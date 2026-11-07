@@ -30,6 +30,7 @@ import {
   IconEyeOff,
   IconSourceCode,
   IconBacklinks,
+  IconBlockLink,
   IconTag,
   IconGraph,
   IconSpellcheck,
@@ -45,6 +46,8 @@ interface Props {
   dirty: boolean
   onSave: () => void
   onSaveAs: () => void
+  /** Ask the model for a name, then open Save As with it prefilled */
+  onNameWithAi: () => void
   onFind: () => void
   autoSave: boolean
   onToggleAutoSave: (on: boolean) => void
@@ -65,6 +68,8 @@ interface Props {
   onToggleTags: () => void
   onToggleBacklinks: () => void
   onOpenGraph: () => void
+  /** put a `[[Note#^id]]` for the block at the caret on the clipboard */
+  onCopyBlockLink: () => void
   spellcheck: boolean
   onToggleSpellcheck: () => void
   mdTheme: MarkdownTheme
@@ -263,6 +268,7 @@ export function Ribbon({
   dirty,
   onSave,
   onSaveAs,
+  onNameWithAi,
   onFind,
   autoSave,
   onToggleAutoSave,
@@ -281,6 +287,7 @@ export function Ribbon({
   onToggleTags,
   onToggleBacklinks,
   onOpenGraph,
+  onCopyBlockLink,
   spellcheck,
   onToggleSpellcheck,
   mdTheme,
@@ -407,6 +414,17 @@ export function Ribbon({
         </button>
         <button
           type="button"
+          className="qa-btn qa-name-with-ai"
+          data-tip={t('aiNameFile')}
+          aria-label={t('aiNameFile')}
+          disabled={off}
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={onNameWithAi}
+        >
+          {t('aiNameFile')}
+        </button>
+        <button
+          type="button"
           className="qa-btn"
           data-tip={t('undo')}
           aria-label={t('undo')}
@@ -433,7 +451,7 @@ export function Ribbon({
         </button>
         <button
           type="button"
-          className="qa-btn"
+          className="qa-btn qa-find"
           data-tip={t('findTip')}
           aria-label={t('findTip')}
           disabled={findOff}
@@ -577,6 +595,9 @@ export function Ribbon({
                   </span>
                 )}
               </span>
+              <IconBtn title={t('blockLink')} disabled={off} onClick={onCopyBlockLink}>
+                <IconBlockLink size={ICON} />
+              </IconBtn>
             </div>
           </div>
         )}

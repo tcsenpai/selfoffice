@@ -24,4 +24,10 @@ if [ -L "$link" ]; then
     /opt/SelfOffice/*) rm -f "$link" ;;
   esac
 fi
+# Drop the KDE "Create New" templates the post-install step installed. Only
+# our exact file names are removed, so the directory and every other app's
+# templates stay (selfoffice#2384).
+for name in "SelfOffice Document.docx" "SelfOffice Spreadsheet.xlsx" "SelfOffice Presentation.pptx"; do
+  rm -f "/usr/share/templates/$name"
+done
 exit 0

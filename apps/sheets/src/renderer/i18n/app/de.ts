@@ -366,6 +366,8 @@ export const de = {
     'Dieses Blatt enthält eine PivotTable — das Verschieben von Bereichen wird noch nicht unterstützt.',
   appMergeOverTable:
     'Die Auswahl überschneidet sich mit einer Excel-Tabelle — das Verbinden von Zellen in einer Tabelle wird noch nicht unterstützt.',
+  appFilterToggleFailed:
+    'Der Filter wurde nicht angewendet — wählen Sie zuerst den Bereich mit den Daten aus.',
   appAutofillStreaming:
     'Automatisches Ausfüllen in einen noch per Streaming geladenen Bereich ist noch nicht erlaubt.',
   appDvNeedsIndexed:
@@ -423,6 +425,9 @@ export const de = {
     'Der Tabellenname "{name}" wird bereits von einer Tabelle in der Datei verwendet.',
   appTableOverlapsSession:
     'Der Bereich überschneidet sich mit der in dieser Sitzung erstellten Tabelle „{name}“.',
+  appTableOverlapsFile: 'Der Bereich überschneidet sich mit der Tabelle „{name}“ in der Datei.',
+  appTableAlreadyInTable:
+    'Die Auswahl liegt bereits in der Tabelle „{name}“ – ändern Sie den Stil unter Tabellenentwurf.',
   appTablesNeedFile:
     'Öffnen Sie zuerst eine XLSX-Datei — Tabellen werden in die Datei geschrieben.',
   appTableSelectRange:
@@ -511,6 +516,7 @@ export const de = {
   appGridlinesHidden: 'Gitternetzlinien ausgeblendet.',
   appGridlinesShown: 'Gitternetzlinien eingeblendet.',
   appShowingFormulas: 'Formeln werden angezeigt — erneut umschalten für Werte.',
+  appShowingFormulasActive: 'Formeln angezeigt',
   appShowingValues: 'Berechnete Werte werden angezeigt.',
   appTraceNoFormula: 'Spur zum Vorgänger: Die aktive Zelle hat keine Formel.',
   appTraceNoRefs: 'Spur zum Vorgänger: Diese Formel hat keine Zellbezüge.',
@@ -629,8 +635,6 @@ export const de = {
   appSaveFailed: 'Die Arbeitsmappe kann nicht gespeichert werden.',
   appCfRuleUnsaveable:
     'Diese Regel für bedingte Formatierung kann nicht in xlsx gespeichert werden — verwenden Sie einen anderen Regeltyp.',
-  appSaveErrX14Dv:
-    'Dieses Blatt enthält erweiterte (x14) Datenüberprüfung; das Bearbeiten ihrer Überprüfungsregeln wird noch nicht unterstützt.',
   appSaveErrMultiSelectList:
     'Mehrfachauswahl-Listenüberprüfung kann nicht in xlsx gespeichert werden — löschen Sie die Regel vor dem Speichern.',
   appSaveErrX14Cf:
@@ -763,6 +767,7 @@ export const de = {
   appExportPdfTitle: 'Als PDF exportieren',
   appSaveTitle: 'Speichern (⌘S)',
   appSaveAs: 'Speichern unter',
+  aiNameFile: 'Mit KI benennen…',
   appUndo: 'Rückgängig',
   appRedo: 'Wiederholen',
   appUnsavedEditOne: '● {count} ungespeicherte Bearbeitung',
@@ -1210,6 +1215,20 @@ export const de = {
   appWatchCell: 'Zelle',
   appWatchValue: 'Wert',
   appWatchFormula: 'Formel',
+  appLinksPanel: 'Externe Verknüpfungen',
+  appLinksPanelDetail: 'Verknüpfungen zu anderen Arbeitsmappen anzeigen, aktualisieren und trennen',
+  appLinksUpdate: 'Werte aktualisieren',
+  appLinksNone: 'Diese Arbeitsmappe hat keine Verknüpfungen zu anderen Arbeitsmappen.',
+  appLinksUnsaved: 'Speichern Sie diese Arbeitsmappe, bevor Sie ihre externen Links auflisten.',
+  appLinksSource: 'Quelle',
+  appLinksStatus: 'Status',
+  appLinksSheets: 'Blätter',
+  appLinksLocate: 'Quelldatei anzeigen',
+  appLinksReachable: 'Verfügbar',
+  appLinksBroken: 'Nicht verfügbar',
+  appLinksBreak: 'Link lösen',
+  appLinksBreakConfirm: 'Lösen bestätigen',
+  appLinksChangeSource: 'Quelle ändern',
   appGroupCalculation: 'Berechnung',
   appCalculationOptions: 'Berechnungsoptionen',
   appCalculationOptionsTitle: 'Automatische oder manuelle Neuberechnung',
@@ -1226,8 +1245,17 @@ export const de = {
   appGroupGetData: 'Daten abrufen',
   appFromTextCsv: 'Aus Text/CSV',
   appRefreshAll: 'Alle aktualisieren',
+  appRefreshQuery: 'Abfrage aktualisieren',
+  appQueryConnectionsTitle: 'Abfragen der Arbeitsmappe aktualisieren',
+  appQueryRefreshing: '{name} wird aktualisiert…',
+  appQueryRefreshed: '{name} aktualisiert ({rows} Zeilen)',
+  appQueryRefreshedClipped:
+    '{name} aktualisiert ({rows} Zeilen, {dropped} passten nicht in den Bereich)',
+  appQueryRefreshFailed: '{name} konnte nicht aktualisiert werden',
   appWorkbookNoPivot: 'Keine Pivot-Tabellen in dieser Arbeitsmappe.',
   appRefreshAllTitle: 'Alle Pivot-Tabellen aktualisieren',
+  appQueriesConnections: 'Abfragen und Verbindungen',
+  appQueriesConnectionsTitle: 'Abfragen und Datenverbindungen der Arbeitsmappe anzeigen',
   appErrorCheckingDetail: 'Blatt auf Fehlerwerte prüfen',
   appErrorsFound: '{count} Fehler — bei {cell}: {value}',
   appCheckingErrors: 'Das ganze Blatt wird auf Fehler gescannt…',
@@ -1626,4 +1654,31 @@ export const de = {
   appVisualFlipV: 'Vertikal spiegeln',
   appVisualFlipH: 'Horizontal spiegeln',
   appCtxPasteVisual: 'Bild oder Form einfügen',
+
+  // ── Spelling check (F7 / Review ▸ Proofing) ──
+  appSpellTitle: 'Rechtschreibung',
+  appSpellBtnDetail: 'Blatttext prüfen (F7)',
+  appSpellToggle: 'Rechtschreibung prüfen',
+  appSpellToggleTip:
+    'Aktiviert die Rechtschreibprüfung (F7 und die Review-Schaltfläche); ausgeschaltet zeigen Kommentarfelder keine Wellenlinien mehr',
+  appSpellOn: 'Rechtschreibprüfung eingeschaltet.',
+  appSpellOff:
+    'Die Rechtschreibprüfung ist aus. Aktivieren Sie sie unter Review ▸ Korrekturhilfen.',
+  appSpellRecheck: 'Erneut prüfen',
+  appSpellNone: 'Keine verdächtigen Rechtschreibfehler gefunden.',
+  appSpellFindings:
+    '{count} verdächtige Fehler. Klicken Sie auf eine Zeile, um dorthin zu springen.',
+  appSpellTruncated: 'Zu viele Textzellen; nur die ersten wurden geprüft.',
+  appSpellColWord: 'Verdächtig',
+  appSpellIgnore: 'Ignorieren',
+  appSpellIgnoreAll: 'Alle ignorieren',
+  appSpellLearn: 'Zum Wörterbuch hinzufügen',
+  appSpellNoSuggestions: 'Keine Vorschläge',
+  appSpellIgnoredAll: '„{word}“ wird in dieser Sitzung nicht mehr markiert.',
+  appSpellLearned: '„{word}“ wurde zum Wörterbuch hinzugefügt.',
+  appSpellChanged: '{address} korrigiert.',
+  appSpellChangeFailed: '{address} konnte nicht korrigiert werden.',
+  appSpellUnavailable: 'Die Rechtschreibprüfung ist in diesem Fenster nicht verfügbar.',
+  appSpellReplaceAll: 'Alle durch „{suggestion}“ ersetzen',
+  appSpellChangedAll: '{count} Zellen mit „{word}“ korrigiert.',
 } satisfies Record<keyof typeof zh, string>
