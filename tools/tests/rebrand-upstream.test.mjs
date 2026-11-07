@@ -11,6 +11,7 @@ test('renames the product, the package scope and issue refs', () => {
     rebrand('GenOffice opens GENOFFICE_HOME (genoffice#12)'),
     'SelfOffice opens SELFOFFICE_HOME (selfoffice#12)',
   )
+  assert.equal(rebrand('isGenofficeLauncher'), 'isSelfofficeLauncher')
 })
 
 test('keeps identifiers that live inside user documents and the attribution', () => {

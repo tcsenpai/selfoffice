@@ -1,9 +1,9 @@
 name: Sync upstream
 
-# Twice a day: merge genspark-ai/genoffice main into a branch, re-apply the
-# SelfOffice rebrand (tools/rebrand-upstream.mjs), open a PR and start CI on it.
-# Never pushes to main: a human (or the cloud routine) reviews the PR. A merge
-# conflict opens or refreshes one issue instead. One open sync PR at a time.
+# Twice a day: refresh `upstream-rebranded` (genspark-ai/genoffice main with the SelfOffice
+# rebrand applied, tools/mirror-upstream.sh), merge it into a branch, open a PR and start CI
+# on it. Never pushes to main: a human (or the auto-merge workflow) merges the PR. A merge
+# conflict fails the run and lists the files. One open sync PR at a time.
 
 on:
   schedule:
@@ -42,13 +42,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+          export LC_ALL=C
           git config user.name "selfoffice-sync[bot]"
           git config user.email "selfoffice-sync@users.noreply.github.com"
-          # our workflows stay ours: upstream's CI edits never conflict or overwrite
-          git config merge.ours.driver true
-          printf '%s\n' '.github/workflows/** merge=ours' 'ee/** merge=ours' >> .git/info/attributes
           git remote add upstream https://github.com/genspark-ai/genoffice.git
-          git fetch upstream main
+          git fetch --quiet upstream main
 
           if [ -z "$(git log --oneline HEAD..upstream/main)" ]; then
             echo "state=uptodate" >> "$GITHUB_OUTPUT"
@@ -59,46 +57,100 @@ jobs:
             exit 0
           fi
 
-          BASE=$(git merge-base HEAD upstream/main)
+          # `upstream-rebranded` = upstream main with the SelfOffice rebrand applied to the whole
+          # tree, each commit a child of the previous one (tools/mirror-upstream.sh). Merging it
+          # has a real, already-rebranded merge base, so the brand rename is never a conflict.
+          MIRROR=$(tools/mirror-upstream.sh upstream/main)
+          PREV=$(git rev-parse "$MIRROR^1")
+          PREV_UP=$(git rev-parse -q --verify "$PREV^2" || git rev-parse "$PREV^1")
+          UP_SHA=$(git rev-parse upstream/main)
+          git push --quiet origin upstream-rebranded
+
           BRANCH="selfoffice/sync-upstream-$(date -u +%Y%m%d-%H%M)"
-          git checkout -b "$BRANCH"
-
-          if ! git merge --no-commit --no-ff upstream/main; then
-            git diff --name-only --diff-filter=U > "$RUNNER_TEMP/conflicts.txt"
-            git merge --abort
-            echo "state=conflict" >> "$GITHUB_OUTPUT"
-            exit 0
+          git checkout -q -b "$BRANCH"
+          # a first run, or a sync PR that was squashed: make the previous mirror commit an
+          # ancestor without touching the tree
+          if ! git merge-base --is-ancestor "$PREV" HEAD; then
+            git merge --quiet -s ours -m "build: record rebranded upstream base" "$PREV"
           fi
-          # whatever upstream did to .github/workflows, the merge keeps ours; ee/ is under the
-          # separate Enterprise License and must never be pulled in (the PR lists what was left out)
-          git checkout HEAD -- .github/workflows ee
-          git diff --cached --name-only --diff-filter=A -- .github/workflows ee | xargs -r git rm -qf
-          git commit -m "build: merge upstream/main"
 
-          node tools/rebrand-upstream.mjs "$BASE" upstream/main > "$RUNNER_TEMP/rebrand.json"
-          git add -A
-          git diff --cached --quiet || git commit -m "build: rebrand upstream changes"
+          if ! git merge --no-commit --no-ff "$MIRROR" > "$RUNNER_TEMP/merge.log" 2>&1; then
+            # we deleted it, upstream changed it: it stays deleted
+            git status --porcelain | awk '$1=="DU"{print $2}' | xargs -r git rm -q --
+            # upstream deleted it, we changed it: ours stays
+            git status --porcelain | awk '$1=="UD"{print $2}' | xargs -r git add --
+            git diff --name-only --diff-filter=U > "$RUNNER_TEMP/conflicts.txt"
+            if [ -s "$RUNNER_TEMP/conflicts.txt" ]; then
+              git merge --abort
+              echo "state=conflict" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          # upstream removing something we have is not taken (a human takes it, e.g. for a
+          # security fix): put those files back and list them in the PR
+          : > "$RUNNER_TEMP/kept.txt"
+          while IFS= read -r f; do
+            if git cat-file -e "HEAD:$f" 2>/dev/null && ! git cat-file -e ":0:$f" 2>/dev/null; then
+              git checkout HEAD -- "$f"
+              echo "$f" >> "$RUNNER_TEMP/kept.txt"
+            fi
+          done < <(git diff --name-only --diff-filter=D "$PREV" "$MIRROR")
+          git commit -q -m "build: merge upstream/main ($(git rev-parse --short "$UP_SHA"))"
 
           {
-            echo "Merges \`genspark-ai/genoffice@main\` ($(git rev-list --count "$BASE"..upstream/main) commits)."
+            echo "Merges \`genspark-ai/genoffice@main\` ($(git rev-list --count "$PREV_UP".."$UP_SHA") commits), rebranded."
             echo
             echo "### Upstream commits"
-            git log --oneline "$BASE"..upstream/main | head -40 | sed 's/^/- /'
+            git log --oneline "$PREV_UP".."$UP_SHA" | head -40 | sed 's/^/- /'
             echo
             echo "### Needs a human look"
             echo "Lines added upstream that touch what this fork removed or replaced (Genspark, analytics, cloud, sign-in):"
             echo
-            node tools/rebrand-upstream.mjs --report "$BASE" upstream/main
+            node tools/rebrand-upstream.mjs --report "$PREV_UP" "$UP_SHA"
+            if [ -s "$RUNNER_TEMP/kept.txt" ]; then
+              echo
+              echo "### Removed upstream, kept here"
+              echo "Take the removal by hand only if it is a security fix:"
+              echo
+              sed 's/^/- /' "$RUNNER_TEMP/kept.txt"
+            fi
+            wf=$(git diff --name-only "$PREV_UP" "$UP_SHA" -- .github/workflows | sed 's/^/- /')
+            if [ -n "$wf" ]; then
+              echo
+              echo "### Upstream workflow changes (not merged: our CI is ours)"
+              echo
+              echo "$wf"
+            fi
             echo
             echo "CI is started on this branch; merge only when it is green."
           } > "$RUNNER_TEMP/body.md"
 
-          git push origin "$BRANCH"
+          git push --quiet origin "$BRANCH"
           {
             echo "state=ready"
             echo "branch=$BRANCH"
-            echo "count=$(git rev-list --count "$BASE"..upstream/main)"
+            echo "count=$(git rev-list --count "$PREV_UP".."$UP_SHA")"
           } >> "$GITHUB_OUTPUT"
+
+      # Files generated from the tree depend on the brand and on file names: the font manifest
+      # is read in file-name order (genoffice-* became selfoffice-*), and the layout goldens hash
+      # HTML that contains the font family names. Regenerated in their own commit so the PR
+      # shows exactly what moved.
+      - name: Regenerate derived files
+        if: steps.merge.outputs.state == 'ready'
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          node tools/build-font-aliases.mjs
+          node tools/truths-coverage.mjs
+          (cd apps/docs && PARA_LAYOUT_GOLDEN_UPDATE=1 npx vitest run tests/para-layout-spec-golden.test.ts)
+          (cd apps/docs && npx vitest run -u tests/font-metric-baseline.test.ts)
+          npx prettier --write apps/docs/tests/fixtures > /dev/null
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -q -m "build: regenerate derived files after the sync"
+            git push --quiet origin HEAD
+          fi
 
       - name: Open the PR and start CI
         if: steps.merge.outputs.state == 'ready'
@@ -109,7 +161,7 @@ jobs:
           COUNT: ${{ steps.merge.outputs.count }}
         run: |
           set -euo pipefail
-          gh label create upstream-sync --color 5319e7 --description "Merge of genspark-ai/genoffice" 2>/dev/null || true
+          gh label create upstream-sync --color 5319e7 --description "Merge of genspark-ai/genoffice" --force
           gh pr create --base main --head "$BRANCH" \
             --title "build: sync upstream/main ($COUNT commits)" \
             --label upstream-sync \
@@ -123,19 +175,31 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh label create upstream-sync --color 5319e7 --description "Merge of genspark-ai/genoffice" 2>/dev/null || true
           {
-            echo "\`git merge upstream/main\` conflicts in:"
+            echo "## Upstream sync needs a manual merge"
+            echo
+            echo "Merging \`upstream-rebranded\` (upstream main, already rebranded) into main conflicts in:"
             echo
             sed 's/^/- /' "$RUNNER_TEMP/conflicts.txt"
             echo
-            echo "Resolve locally with the \`sync-upstream\` skill (or the cloud routine), keeping our side for removed Genspark features and the \`@selfoffice/\` scope."
+            echo "Resolve locally, keeping our side for what this fork removed or replaced (Genspark, sign-in, cloud, analytics; BYOK / local AI stays) and taking upstream's features and fixes:"
+            echo
+            echo '```'
+            echo "git fetch origin upstream-rebranded && git checkout -b selfoffice/sync-upstream-manual main"
+            echo "git merge origin/upstream-rebranded"
+            echo '```'
             echo
             echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          } > "$RUNNER_TEMP/issue.md"
-          existing=$(gh issue list --label upstream-sync --state open --json number -q '.[0].number // empty')
-          if [ -n "$existing" ]; then
-            gh issue comment "$existing" --body-file "$RUNNER_TEMP/issue.md"
-          else
-            gh issue create --title "Upstream sync needs a manual merge" --label upstream-sync --body-file "$RUNNER_TEMP/issue.md"
+          } | tee "$RUNNER_TEMP/issue.md" >> "$GITHUB_STEP_SUMMARY"
+          # issues are optional on this repo: the step summary and the red run are the report
+          if [ "$(gh repo view --json hasIssuesEnabled -q .hasIssuesEnabled)" = "true" ]; then
+            gh label create upstream-sync --color 5319e7 --description "Merge of genspark-ai/genoffice" --force
+            existing=$(gh issue list --label upstream-sync --state open --json number -q '.[0].number // empty')
+            if [ -n "$existing" ]; then
+              gh issue comment "$existing" --body-file "$RUNNER_TEMP/issue.md"
+            else
+              gh issue create --title "Upstream sync needs a manual merge" --label upstream-sync --body-file "$RUNNER_TEMP/issue.md"
+            fi
           fi
+          echo "::error::upstream sync conflicts, see the run summary"
+          exit 1

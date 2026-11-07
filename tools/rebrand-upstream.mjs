@@ -11,7 +11,8 @@
  * documents written by upstream tools must keep opening.
  */
 import { execFileSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 export const PROTECTED = [
@@ -43,6 +44,7 @@ export function rebrand(text) {
   out = out
     .replaceAll('GenOffice', 'SelfOffice')
     .replaceAll('GENOFFICE', 'SELFOFFICE')
+    .replaceAll('Genoffice', 'Selfoffice')
     .replaceAll('genoffice', 'selfoffice')
   return out.replace(/\uE000(\d+)\uE000/g, (_, i) => slots[Number(i)])
 }
@@ -86,19 +88,10 @@ export function report(base, tip) {
   return rows.length ? rows.join('\n') : 'No flagged lines.'
 }
 
-function main(argv) {
-  const reportOnly = argv[0] === '--report'
-  const [base, tip = 'upstream/main'] = reportOnly ? argv.slice(1) : argv
-  if (!base) {
-    console.error('usage: rebrand-upstream.mjs [--report] <base> [<tip>]')
-    process.exit(2)
-  }
-  if (reportOnly) {
-    console.log(report(base, tip))
-    return
-  }
+/** rewrite the given files in place; returns the ones that changed */
+function rewrite(files) {
   const rewritten = []
-  for (const file of changedFiles(base, tip)) {
+  for (const file of files) {
     if (SKIP_PATH.test(file) || !existsSync(file)) continue
     const before = readFileSync(file, 'utf8')
     if (before.includes('\u0000')) continue // binary
@@ -108,21 +101,47 @@ function main(argv) {
       rewritten.push(file)
     }
   }
-  // paths upstream named with the old brand
+  return rewritten
+}
+
+/** paths upstream named with the old brand */
+function renamePaths() {
   const renamed = []
   for (const file of git('ls-files')
     .split('\n')
-    .filter((f) => /genoffice/i.test(f) && !SKIP_PATH.test(f))) {
+    .filter((f) => /genoffice/i.test(f) && !/^ee\//.test(f))) {
     const target = file
       .replace(/GenOffice/g, 'SelfOffice')
       .replace(/GENOFFICE/g, 'SELFOFFICE')
       .replace(/genoffice/g, 'selfoffice')
     if (target !== file && !existsSync(target)) {
+      mkdirSync(dirname(target), { recursive: true })
       execFileSync('git', ['mv', file, target])
       renamed.push(`${file} -> ${target}`)
     }
   }
-  console.log(JSON.stringify({ rewritten, renamed }, null, 2))
+  return renamed
+}
+
+function main(argv) {
+  if (argv[0] === '--tree') {
+    // whole checkout, used to build the rebranded mirror of upstream (sync-upstream.yml)
+    const rewritten = rewrite(git('ls-files').split('\n').filter(Boolean))
+    console.log(JSON.stringify({ rewritten: rewritten.length, renamed: renamePaths() }, null, 2))
+    return
+  }
+  const reportOnly = argv[0] === '--report'
+  const [base, tip = 'upstream/main'] = reportOnly ? argv.slice(1) : argv
+  if (!base) {
+    console.error('usage: rebrand-upstream.mjs [--tree | --report <base> [<tip>] | <base> [<tip>]]')
+    process.exit(2)
+  }
+  if (reportOnly) {
+    console.log(report(base, tip))
+    return
+  }
+  const rewritten = rewrite(changedFiles(base, tip))
+  console.log(JSON.stringify({ rewritten, renamed: renamePaths() }, null, 2))
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) main(process.argv.slice(2))

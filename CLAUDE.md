@@ -58,3 +58,12 @@ system mode).
   the `satisfies Record<keyof typeof zh, string>` on each shard turns a
   missing or extra key into a type error. Never grow the aggregator back into
   a single 19-locale object.
+
+## Upstream sync (manual fallback)
+
+This repo is a fork of genspark-ai/genoffice and must stay one: SelfOffice brand, BYOK / local
+AI, never Genspark-locked. If `sync-upstream.yml` fails or reports conflicts, follow
+`.agents/skills/sync-upstream/SKILL.md` (rule: take upstream features and fixes; keep what we
+have when upstream removes it, unless it is a security fix; drop Genspark sign-in / cloud / gsk /
+analytics). Never `git merge upstream/main` directly: merge `upstream-rebranded`
+(`tools/mirror-upstream.sh`).
