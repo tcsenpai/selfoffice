@@ -1,43 +1,43 @@
 # Bir kodlama aracısını bağlama
 
-GenOffice, Model Context Protocol'ü konuşur; böylece bir kodlama aracısı belgelerinizi uygulamanın kullandığı motorlarla okuyabilir, yazabilir ve işleyebilir. Aracı bir dosya biçimini tahmin etmez: yazılı işlem şemalarını, yürütücünün doğrulama yaptığı tanımların aynısından alır.
+SelfOffice, Model Context Protocol'ü konuşur; böylece bir kodlama aracısı belgelerinizi uygulamanın kullandığı motorlarla okuyabilir, yazabilir ve işleyebilir. Aracı bir dosya biçimini tahmin etmez: yazılı işlem şemalarını, yürütücünün doğrulama yaptığı tanımların aynısından alır.
 
 ## Uygulamadan kaydetme
 
 Bunu yapacağınız yer **Ayarlar ▸ Tümleştirmeler**'dir. Bölmenin iki yarısı vardır ve birini ya da ikisini birden kullanabilirsiniz.
 
-**Beceri.** Bu makinede bulunan her kodlama aracısı için bir satır — Claude Code, Codex, Cursor, Gemini CLI, Copilot CLI, OpenCode, Windsurf — her biri **Yükle**, **Güncelle** ve **Kaldır** ile, ayrıca **Başka bir klasöre yükle…**, **Beceriyi indir (zip)** ve **Yolu kopyala**. Yardımcınız listede yoksa GenOffice'i onun `SKILL.md` okuduğu bir klasöre yönlendirin ya da zip'i kaydedip yardımcının yüklemesine izin verin. Beceri ile MCP yan yana durabilir: yardımcı birini seçer ve ikisi de tamamen aynı şeyleri yapar.
+**Beceri.** Bu makinede bulunan her kodlama aracısı için bir satır — Claude Code, Codex, Cursor, Gemini CLI, Copilot CLI, OpenCode, Windsurf — her biri **Yükle**, **Güncelle** ve **Kaldır** ile, ayrıca **Başka bir klasöre yükle…**, **Beceriyi indir (zip)** ve **Yolu kopyala**. Yardımcınız listede yoksa SelfOffice'i onun `SKILL.md` okuduğu bir klasöre yönlendirin ya da zip'i kaydedip yardımcının yüklemesine izin verin. Beceri ile MCP yan yana durabilir: yardımcı birini seçer ve ikisi de tamamen aynı şeyleri yapar.
 
-**MCP.** İki yol sunulur: **Yardımcı tarafından başlatılan (önerilen)**, burada gösterilen yapılandırmayı istemcinize eklersiniz ve sunucuyu yardımcı kendisi başlatır; ve uygulamanın sizin için çalıştırdığı **Yerel HTTP sunucusu**. Her iki durumda da yardımcı sonunda GenOffice ile konuşur ve siz hiçbir zaman komut yazmazsınız.
+**MCP.** İki yol sunulur: **Yardımcı tarafından başlatılan (önerilen)**, burada gösterilen yapılandırmayı istemcinize eklersiniz ve sunucuyu yardımcı kendisi başlatır; ve uygulamanın sizin için çalıştırdığı **Yerel HTTP sunucusu**. Her iki durumda da yardımcı sonunda SelfOffice ile konuşur ve siz hiçbir zaman komut yazmazsınız.
 
 ## Komut satırından kaydetme
 
 Aynı şey bir terminalden — bu gelişmiş yoldur ve aracı, bölmenin bulamayacağı bir yerde yaşıyorsa başvurulacak yoldur:
 
 ```sh
-genoffice mcp install all
+selfoffice mcp install all
 ```
 
 Bu makinedeki kodlama aracılarını bulur ve stdio sunucu girdisini her birinin kendi yapılandırmasına yazar; dosyanın geri kalanını bulduğu gibi bırakır.
 
 ```sh
-genoffice mcp list             # where each agent stands
-genoffice mcp install cursor    # just one
-genoffice mcp uninstall cursor  # take it back out
+selfoffice mcp list             # where each agent stands
+selfoffice mcp install cursor    # just one
+selfoffice mcp uninstall cursor  # take it back out
 ```
 
 Alışılmadık bir yere yüklediğiniz bir aracı `--dir <path>` alır; `--force` zaten var olan bir girdiyi yeniden yazar.
 
 Sunucunun aldığı her şey tek ekrandadır — kaydetme, kaldırma ve listeleme biçimleri, HTTP üzerinden sunma ve iki şema bayrağı:
 
-![genoffice mcp --help komutunun gerçek çıktısı: install, uninstall ve list biçimleri ile --http, --host, --token, --compact-schemas, --dir ve --force seçenekleri](img/mcp.png)
+![selfoffice mcp --help komutunun gerçek çıktısı: install, uninstall ve list biçimleri ile --http, --host, --token, --compact-schemas, --dir ve --force seçenekleri](img/mcp.png)
 
 ## Yardımcı olmadan çalıştırma
 
 Başka bir makinedeki istemci için bunun yerine HTTP üzerinden sunun:
 
 ```sh
-genoffice mcp --http 8765 --token <secret>
+selfoffice mcp --http 8765 --token <secret>
 ```
 
 `--host <addr>` dinlediği adresi değiştirir. Aynı belirteci istemciye de verin.
@@ -57,22 +57,22 @@ Her komut bir araçtır. İlginç olanlar:
 
 ## Şemalar ve daha küçük bir bütçe
 
-`apply` ve `create`, `ops`, `cells` ve `data` parametrelerini `genoffice guide <domain> --json` komutundan üretilen, işlem başına yazılı şemayla duyurur. Bu kesindir ama küçük değildir. Bağlam penceresi dar olan bir istemci bunun yerine düz diziler isteyebilir:
+`apply` ve `create`, `ops`, `cells` ve `data` parametrelerini `selfoffice guide <domain> --json` komutundan üretilen, işlem başına yazılı şemayla duyurur. Bu kesindir ama küçük değildir. Bağlam penceresi dar olan bir istemci bunun yerine düz diziler isteyebilir:
 
 ```sh
-genoffice mcp --compact-schemas
-GENOFFICE_MCP_COMPACT_SCHEMAS=1 genoffice mcp
+selfoffice mcp --compact-schemas
+SELFOFFICE_MCP_COMPACT_SCHEMAS=1 selfoffice mcp
 ```
 
 ## Beceri neden var
 
-İşlem sözlüğünü bilmeyen bir aracı tahmin yürütür. Beceri, başvuru belgesini ve tasarım kılavuzlarını — `genoffice guide` komutunun yazdırdığı malzemenin aynısını — taşır; böylece yardımcı, spesifikasyonunu gerçekten okuduğu işlemler yazar. Üstteki bölmeden ya da bir terminalden `genoffice skill` ile yükleyin.
+İşlem sözlüğünü bilmeyen bir aracı tahmin yürütür. Beceri, başvuru belgesini ve tasarım kılavuzlarını — `selfoffice guide` komutunun yazdırdığı malzemenin aynısını — taşır; böylece yardımcı, spesifikasyonunu gerçekten okuduğu işlemler yazar. Üstteki bölmeden ya da bir terminalden `selfoffice skill` ile yükleyin.
 
 ## Uygulamada ulaşabildikleri
 
-Sunucu diskteki dosyalarla sınırlı değildir. GenOffice çalışırken aracı pencere üzerinden de çalışabilir:
+Sunucu diskteki dosyalarla sınırlı değildir. SelfOffice çalışırken aracı pencere üzerinden de çalışabilir:
 
-- **`open_in_genoffice`** bir dosyayı sekmede açar ve odaklar.
+- **`open_in_selfoffice`** bir dosyayı sekmede açar ve odaklar.
 - **`open_documents`** açık olan her belgeyi listeler — kimlik, tür, yol ve kaydedilmemiş değişiklik olup olmadığı — sonra birinin canlı içeriğini okur, yerinde kaydeder ya da siz atmasını istemedikçe önce kaydederek kapatır.
 - **İçerik araçları** bu kimliği (veya yolu) `document` bağımsız değişkeni olarak alır; böylece bir düzenleme zaten açık olan sekmeye iner ve pencere onu göstermek üzere geçiş yapar.
 

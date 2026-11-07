@@ -4,7 +4,7 @@ import type {
   AgentStreamCallbacks,
   AgentStreamRequest,
   AgentTransport,
-} from '@genoffice/agent-core'
+} from '@selfoffice/agent-core'
 import {
   buildBriefWriterRequest,
   extractBriefJson,

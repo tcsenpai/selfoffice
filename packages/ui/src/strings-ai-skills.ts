@@ -1,4 +1,4 @@
-import type { Lang } from '@genoffice/i18n'
+import type { Lang } from '@selfoffice/i18n'
 
 /** Labels for the composer "+" menu (add file / skills) and the attached-skill chips. */
 export interface AiSkillsLabels {

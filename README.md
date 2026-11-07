@@ -1,13 +1,13 @@
 <p align="center">
-  <a href="https://genoffice.ai/">
+  <a href="https://selfoffice.ai/">
     <picture>
       <source srcset="docs/assets/readme/hero-dark.webp" media="(prefers-color-scheme: dark)">
-      <img src="docs/assets/readme/hero.webp" alt="GenOffice — the open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML with a built-in AI panel" width="100%">
+      <img src="docs/assets/readme/hero.webp" alt="SelfOffice — the open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML with a built-in AI panel" width="100%">
     </picture>
   </a>
 </p>
 
-<h1 align="center">GenOffice</h1>
+<h1 align="center">SelfOffice</h1>
 
 <p align="center"><b>The world's first full-featured open-source AI Office suite.</b><br>
 Word, Excel, PowerPoint and PDF files, edited by you and your AI, saved back in the real formats.</p>
@@ -27,13 +27,13 @@ Word, Excel, PowerPoint and PDF files, edited by you and your AI, saved back in 
   <a href="#skills"><b>Skills</b></a> ·
   <a href="#command-line-and-agent-skill"><b>CLI</b></a> ·
   <a href="#mcp-server"><b>MCP</b></a> ·
-  <a href="https://genoffice.ai/"><b>Website</b></a> ·
-  <a href="https://genoffice.ai/join"><b>Community</b></a> ·
+  <a href="https://selfoffice.ai/"><b>Website</b></a> ·
+  <a href="https://selfoffice.ai/join"><b>Community</b></a> ·
   <a href="https://x.com/merrickbuilds"><b>X</b></a> ·
   <a href="PRIVACY.md"><b>Privacy</b></a>
 </p>
 
-GenOffice is a free, open-source alternative to Microsoft Office for macOS,
+SelfOffice is a free, open-source alternative to Microsoft Office for macOS,
 Windows and Linux. It opens and saves native `.docx`, `.xlsx` and `.pptx`
 files, edits PDF, Markdown and HTML, and puts an AI agent next to every
 document — not a chat box bolted on the side, but an editor that reads the
@@ -67,7 +67,7 @@ ODF.
   key for Claude, OpenAI, Gemini, DeepSeek, Kimi, GLM, Qwen, Doubao, MiniMax,
   Grok, Mistral, OpenRouter, Requesty, Opper, Cheaper Inference, Atlas Cloud, or any OpenAI-compatible endpoint, local
   servers included.
-- **Scriptable and agent-ready.** The app ships a `genoffice` command line and
+- **Scriptable and agent-ready.** The app ships a `selfoffice` command line and
   a skill for Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode
   and Windsurf, so a coding agent can create, convert, read and edit real
   Office files on your machine without opening a window.
@@ -89,8 +89,8 @@ can read in the panel.
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/docs-report.webp" alt="GenOffice Docs rendering a two-column annual-report page with a full-width cover image, shaded KPI table, header and footer, at 80% zoom with the AI panel collapsed"></td>
-<td width="50%"><img src="docs/assets/readme/docs-ai.webp" alt="GenOffice Docs: a company overview with a banner image; the AI tightened the Overview and inserted a new bulleted section, and the panel offers a one-click roll back"></td>
+<td width="50%"><img src="docs/assets/readme/docs-report.webp" alt="SelfOffice Docs rendering a two-column annual-report page with a full-width cover image, shaded KPI table, header and footer, at 80% zoom with the AI panel collapsed"></td>
+<td width="50%"><img src="docs/assets/readme/docs-ai.webp" alt="SelfOffice Docs: a company overview with a banner image; the AI tightened the Overview and inserted a new bulleted section, and the panel offers a one-click roll back"></td>
 </tr>
 <tr>
 <td><b>Opens the file as Word lays it out</b> — two-column sections, full-bleed images, shaded tables, headers and footers, pagination on Word's line metrics. Styles, comments, tracked changes, equations, ink and content controls round-trip untouched. A <b>Mailings</b> tab turns the document into a merge template: pick a <code>.xlsx</code> or <code>.csv</code> recipient list, insert real <code>MERGEFIELD</code>s, preview record by record, and merge to one document or one <code>.docx</code> per record.</td>
@@ -102,8 +102,8 @@ can read in the panel.
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/sheets-ai.webp" alt="GenOffice Sheets: the AI added a Summary sheet with revenue by region and category using SUMIF formulas, plus a column chart, and reports 43 applied changes with an Undo button"></td>
-<td width="50%"><img src="docs/assets/readme/sheets-qa.webp" alt="GenOffice Sheets: asked which region led Q2 revenue, the AI answers Europe with the category breakdown and cites the cells it used as links, next to the Orders sheet"></td>
+<td width="50%"><img src="docs/assets/readme/sheets-ai.webp" alt="SelfOffice Sheets: the AI added a Summary sheet with revenue by region and category using SUMIF formulas, plus a column chart, and reports 43 applied changes with an Undo button"></td>
+<td width="50%"><img src="docs/assets/readme/sheets-qa.webp" alt="SelfOffice Sheets: asked which region led Q2 revenue, the AI answers Europe with the category breakdown and cites the cells it used as links, next to the Orders sheet"></td>
 </tr>
 <tr>
 <td><b>Build it</b> — from one sentence the agent adds a Summary sheet with real <code>SUMIF</code>s by region and category, inserts a column chart, and applies the 43 changes as a single undoable batch.</td>
@@ -113,15 +113,15 @@ can read in the panel.
 
 ### 3 · Slides — from a prompt to a `.pptx` deck
 
-<img src="docs/assets/readme/slides-generate.webp" alt="Time-lapse of GenOffice Slides generating the Aurora Home investor deck: the AI plans the storyline in the panel, slides appear on the canvas one after another, and the finished deck ends on the closing ask" width="100%">
+<img src="docs/assets/readme/slides-generate.webp" alt="Time-lapse of SelfOffice Slides generating the Aurora Home investor deck: the AI plans the storyline in the panel, slides appear on the canvas one after another, and the finished deck ends on the closing ask" width="100%">
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/slides-cover.webp" alt="GenOffice Slides: the cover slide of an AI-generated Aurora Home investor deck on the canvas, with the original one-line prompt and the AI's summary of what it built in the panel"></td>
-<td width="50%"><img src="docs/assets/readme/slides-ai.webp" alt="GenOffice Slides: the designed closing slide of the same 11-slide deck, with the thumbnail strip on the left and the AI panel summarizing the storyline"></td>
+<td width="50%"><img src="docs/assets/readme/slides-cover.webp" alt="SelfOffice Slides: the cover slide of an AI-generated Aurora Home investor deck on the canvas, with the original one-line prompt and the AI's summary of what it built in the panel"></td>
+<td width="50%"><img src="docs/assets/readme/slides-ai.webp" alt="SelfOffice Slides: the designed closing slide of the same 11-slide deck, with the thumbnail strip on the left and the AI panel summarizing the storyline"></td>
 </tr>
 <tr>
-<td><b>One line in</b> — "Create a 10-slide investor pitch deck for Aurora Home…". GenOffice plans the storyline, researches the numbers, and drafts every slide onto the canvas as a real <code>.pptx</code>.</td>
+<td><b>One line in</b> — "Create a 10-slide investor pitch deck for Aurora Home…". SelfOffice plans the storyline, researches the numbers, and drafts every slide onto the canvas as a real <code>.pptx</code>.</td>
 <td><b>A finished deck out</b> — eleven designed slides with consistent typography, imagery and a closing call to action; keep editing with masters, layouts, smart guides and non-destructive cropping, or ask the panel to restyle, rewrite and reorder. Insert a <code>.glb</code> and it is a real 3D model: turn it by dragging in the editor, stored the way PowerPoint stores 3D, still 3D in PowerPoint.</td>
 </tr>
 </table>
@@ -134,8 +134,8 @@ the `.pptx`, and PowerPoint plays them back the same way.
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/pdf-edit.webp" alt="GenOffice PDF: Edit text mode outlines every text block on the page for in-place editing while the AI panel answers a question about the report with page citations"></td>
-<td width="50%"><img src="docs/assets/readme/pdf-convert.webp" alt="GenOffice Docs showing a Word document converted locally from the Helios quarterly review PDF, opened in a second tab beside the original PDF"></td>
+<td width="50%"><img src="docs/assets/readme/pdf-edit.webp" alt="SelfOffice PDF: Edit text mode outlines every text block on the page for in-place editing while the AI panel answers a question about the report with page citations"></td>
+<td width="50%"><img src="docs/assets/readme/pdf-convert.webp" alt="SelfOffice Docs showing a Word document converted locally from the Helios quarterly review PDF, opened in a second tab beside the original PDF"></td>
 </tr>
 <tr>
 <td><b>Edit inside the page</b> — Edit text mode outlines every text block for in-place retyping; the content stream is rewritten through PDFium with the original fonts, not a cover-up annotation. Ask the AI about a long report and get answers with page citations.</td>
@@ -149,11 +149,11 @@ Say what the page is for and who it is for. The AI proposes a **design brief**
 first — hook, palette, typography and style directions — then builds a single
 self-contained `.html` file against those tokens.
 
-<img src="docs/assets/readme/html-restyle-motion.webp" alt="Time-lapse of GenOffice HTML restyling the Lumen landing page: one Restyle request in the panel turns the dark Midnight Studio page into the warm Solar Daybreak version while every section and all copy stay in place" width="100%">
+<img src="docs/assets/readme/html-restyle-motion.webp" alt="Time-lapse of SelfOffice HTML restyling the Lumen landing page: one Restyle request in the panel turns the dark Midnight Studio page into the warm Solar Daybreak version while every section and all copy stay in place" width="100%">
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/html-ai.webp" alt="GenOffice HTML: a generated landing page for a solar desk lamp in the dark Midnight Studio direction, shown in the live preview with the AI panel summarizing the page it just built"></td>
+<td width="50%"><img src="docs/assets/readme/html-ai.webp" alt="SelfOffice HTML: a generated landing page for a solar desk lamp in the dark Midnight Studio direction, shown in the live preview with the AI panel summarizing the page it just built"></td>
 <td width="50%"><img src="docs/assets/readme/html-restyle.webp" alt="The same Lumen landing page restyled by the AI into the warm Solar Daybreak direction: paper background, serif headlines and an orange accent, with every section and all copy kept"></td>
 </tr>
 <tr>
@@ -163,8 +163,8 @@ self-contained `.html` file against those tokens.
 </table>
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/html-dashboard.webp" alt="GenOffice HTML: a generated personal dashboard UI for a freelance designer in a warm linen style, with a left rail, serif greeting and four metric cards"></td>
-<td width="50%"><img src="docs/assets/readme/html-report.webp" alt="GenOffice HTML: a generated EV-market data report in a broadsheet style, with a serif masthead, a 17.3 million headline figure and a stat row"></td>
+<td width="50%"><img src="docs/assets/readme/html-dashboard.webp" alt="SelfOffice HTML: a generated personal dashboard UI for a freelance designer in a warm linen style, with a left rail, serif greeting and four metric cards"></td>
+<td width="50%"><img src="docs/assets/readme/html-report.webp" alt="SelfOffice HTML: a generated EV-market data report in a broadsheet style, with a serif masthead, a 17.3 million headline figure and a stat row"></td>
 </tr>
 <tr>
 <td><b>UI mockups</b> — the "personal dashboard" starter turns a persona into a working layout: left rail, greeting, billable-hours sparkline, invoice and utilization cards, all real HTML you can hand to a developer.</td>
@@ -176,8 +176,8 @@ self-contained `.html` file against those tokens.
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/markdown-ai.webp" alt="GenOffice Markdown: a selected paragraph shows an Ask AI popover with a typed instruction and suggestion chips such as Polish, Make more concise, Expand and Fix grammar, plus Send now and Add to queue buttons"></td>
-<td width="50%"><img src="docs/assets/readme/markdown-render.webp" alt="GenOffice Markdown rendering a launch-notes document with a table, a Mermaid flowchart and a task list, with the AI panel's starter prompts on the left"></td>
+<td width="50%"><img src="docs/assets/readme/markdown-ai.webp" alt="SelfOffice Markdown: a selected paragraph shows an Ask AI popover with a typed instruction and suggestion chips such as Polish, Make more concise, Expand and Fix grammar, plus Send now and Add to queue buttons"></td>
+<td width="50%"><img src="docs/assets/readme/markdown-render.webp" alt="SelfOffice Markdown rendering a launch-notes document with a table, a Mermaid flowchart and a task list, with the AI panel's starter prompts on the left"></td>
 </tr>
 <tr>
 <td><b>Ask AI about a selection</b> — select any passage and an <b>Ask AI</b> chip appears: type an instruction or pick a suggestion, send it now, or queue several anchored edits and run them in one pass. The same entry exists in every app.</td>
@@ -202,12 +202,12 @@ the System One model that returns one calibrated relevance score per document
 in a single call instead of generating text. The list is reordered by
 that score; if the call fails or times out, the local order stays.
 
-<img src="docs/assets/readme/search-jev-motion.webp" alt="Screen recording of the GenOffice home screen: typing laptop refresh policy lists a browser-cache policy, a brand-refresh plan and a dashboard-refresh schedule first while the equipment standards document is last; the Settings page shows Jev search reranking switched on under AI Media & Search with the TypeSafe endpoint; the same search then shows the equipment standards document first with a Jev badge next to the result count" width="100%">
+<img src="docs/assets/readme/search-jev-motion.webp" alt="Screen recording of the SelfOffice home screen: typing laptop refresh policy lists a browser-cache policy, a brand-refresh plan and a dashboard-refresh schedule first while the equipment standards document is last; the Settings page shows Jev search reranking switched on under AI Media & Search with the TypeSafe endpoint; the same search then shows the equipment standards document first with a Jev badge next to the result count" width="100%">
 
 <table>
 <tr>
 <td width="50%"><img src="docs/assets/readme/search-jev-before-after.webp" alt="Two result lists for the query laptop refresh policy side by side: without Jev the dashboard refresh schedule, brand refresh plan and browser cache refresh policy lead and the company equipment standards document is fifth; with Jev the equipment standards document, which states the three-year laptop replacement cycle, is first"></td>
-<td width="50%"><img src="docs/assets/readme/search-jev-settings.webp" alt="GenOffice Settings, AI Media & Search page: the Local file search block with the Jev search reranking switch, the endpoint choice between OpenRouter and TypeSafe, and the API key field"></td>
+<td width="50%"><img src="docs/assets/readme/search-jev-settings.webp" alt="SelfOffice Settings, AI Media & Search page: the Local file search block with the Jev search reranking switch, the endpoint choice between OpenRouter and TypeSafe, and the API key field"></td>
 </tr>
 <tr>
 <td><b>Same words, different answers</b> — "laptop refresh policy" matches a browser-cache refresh policy, a brand-refresh plan and a dashboard-refresh schedule word for word, so full-text ranking puts them first. Jev reads the excerpts and moves the equipment standards document, the one that states the three-year replacement cycle, to the top. The <b>Jev</b> badge next to the result count shows when the order came from the model.</td>
@@ -226,49 +226,49 @@ to the model as visual input — and every question is kept as its own
 conversation: switch between them, start a new one, delete one, the list
 survives a restart.
 
-<img src="docs/assets/readme/home-ask-ai-motion.webp" alt="Screen recording of GenOffice Ask AI: the question quick summary, what drove our Q3 growth and how did Asia-Pacific perform, is typed on the home screen; the agent reads two starred files and answers with the Aurora X1 launch and the Asia-Pacific expansion, each claim followed by a citation chip naming the quarterly report or the regional sales workbook; a click on the workbook chip opens it in Sheets with the Asia-Pacific row highlighted" width="100%">
+<img src="docs/assets/readme/home-ask-ai-motion.webp" alt="Screen recording of SelfOffice Ask AI: the question quick summary, what drove our Q3 growth and how did Asia-Pacific perform, is typed on the home screen; the agent reads two starred files and answers with the Aurora X1 launch and the Asia-Pacific expansion, each claim followed by a citation chip naming the quarterly report or the regional sales workbook; a click on the workbook chip opens it in Sheets with the Asia-Pacific row highlighted" width="100%">
 
 Ask AI searches the same on-device full-text index as
 [Search](#7--search--find-the-file-that-answers-the-question-with-typesafe-jev)
 and reads files in pages, so the model only sees the hits and the passages it
 asked for, through the provider you chose. It can also call the built-in
-`genoffice` CLI to build files outright; each one appears as an artifact card
+`selfoffice` CLI to build files outright; each one appears as an artifact card
 under the answer, and a click opens it.
 
-### 9 · CLI — your coding agent drives GenOffice, on your machine
+### 9 · CLI — your coding agent drives SelfOffice, on your machine
 
-GenOffice ships a `genoffice` command line and an agent skill. Install the
+SelfOffice ships a `selfoffice` command line and an agent skill. Install the
 skill and Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode or
 Windsurf can create, convert, read and edit real Office files through the
 same engines as the apps, without opening a window.
 
-<img src="docs/assets/readme/cli-deck-in-app.webp" alt="GenOffice Slides showing an eight-slide Solar System deck that a coding agent built through the genoffice command line: the cover slide on the canvas, eight thumbnails on the left and the AI panel open" width="100%">
+<img src="docs/assets/readme/cli-deck-in-app.webp" alt="SelfOffice Slides showing an eight-slide Solar System deck that a coding agent built through the selfoffice command line: the cover slide on the canvas, eight thumbnails on the left and the AI panel open" width="100%">
 
 <table>
 <tr>
 <td width="50%"><img src="docs/assets/readme/cli-slides-grid.webp" alt="The eight rendered slides of the Solar System deck side by side: cover, exploration timeline, four key numbers, planet-diameter bar chart, rocky worlds versus giants, the Sun's 99.8% hero number, the four giants grid and takeaways"></td>
-<td width="50%"><img src="docs/assets/readme/cli-integrations.webp" alt="GenOffice Settings, Integrations page: the genoffice skill installed into Claude Code, with Install buttons next to Codex and Cursor"></td>
+<td width="50%"><img src="docs/assets/readme/cli-integrations.webp" alt="SelfOffice Settings, Integrations page: the selfoffice skill installed into Claude Code, with Install buttons next to Codex and Cursor"></td>
 </tr>
 <tr>
-<td><b>One prompt to your agent</b> — "Build an eight-slide deck about the Solar System." The agent reads the skill, writes a style sheet, an outline and one page spec per slide, generates the two photos with <code>genoffice image</code>, and lets <code>genoffice slides check</code> reject anything that overflows or overlaps before <code>genoffice create</code> assembles the <code>.pptx</code> and <code>slides render</code> hands back a PNG per slide to look at.</td>
-<td><b>Install once, from Settings → Integrations</b> — GenOffice lists the coding agents it finds on this computer and writes the skill into each one you pick. Or download the skill as a zip, or run <code>npx skills add genspark-ai/genoffice</code>. Commands and the full workflow are in <a href="#command-line-and-agent-skill">Command line and agent skill</a>.</td>
+<td><b>One prompt to your agent</b> — "Build an eight-slide deck about the Solar System." The agent reads the skill, writes a style sheet, an outline and one page spec per slide, generates the two photos with <code>selfoffice image</code>, and lets <code>selfoffice slides check</code> reject anything that overflows or overlaps before <code>selfoffice create</code> assembles the <code>.pptx</code> and <code>slides render</code> hands back a PNG per slide to look at.</td>
+<td><b>Install once, from Settings → Integrations</b> — SelfOffice lists the coding agents it finds on this computer and writes the skill into each one you pick. Or download the skill as a zip, or run <code>npx skills add genspark-ai/genoffice</code>. Commands and the full workflow are in <a href="#command-line-and-agent-skill">Command line and agent skill</a>.</td>
 </tr>
 </table>
 
 ### 10 · MCP — the same tools over the Model Context Protocol
 
-Every `genoffice` command is also an MCP tool. Claude Code, Claude Desktop,
-Cursor and any other MCP client can start `genoffice mcp` themselves, with no
+Every `selfoffice` command is also an MCP tool. Claude Code, Claude Desktop,
+Cursor and any other MCP client can start `selfoffice mcp` themselves, with no
 skill to install and no window open, and get 29 tools plus the op references
 as resources. A second, HTTP server inside the app lets an agent build a Word
 document in a visible editor tab while you watch.
 
-<img src="docs/assets/readme/mcp-deck-motion.webp" alt="Time-lapse of Claude Code building an eight-slide renewable-energy investor briefing through the genoffice MCP server: it searches for figures and photos, checks each candidate picture with media, deck_start writes the style sheet and outline, deck_page adds one checked page at a time, deck_build assembles the .pptx and slides_render returns a picture of every slide; the finished deck then opens in GenOffice Slides" width="100%">
+<img src="docs/assets/readme/mcp-deck-motion.webp" alt="Time-lapse of Claude Code building an eight-slide renewable-energy investor briefing through the selfoffice MCP server: it searches for figures and photos, checks each candidate picture with media, deck_start writes the style sheet and outline, deck_page adds one checked page at a time, deck_build assembles the .pptx and slides_render returns a picture of every slide; the finished deck then opens in SelfOffice Slides" width="100%">
 
 <table>
 <tr>
-<td width="50%"><img src="docs/assets/readme/mcp-deck-in-app.webp" alt="GenOffice Slides showing the eight-slide Renewable Energy 2026 deck that Claude Code built through the genoffice MCP server: the cover slide with a wind-farm photograph on the canvas and eight thumbnails on the left"></td>
-<td width="50%"><img src="docs/assets/readme/mcp-integrations.webp" alt="GenOffice Settings, Integrations page, MCP part: the one-line claude mcp add command for Claude Code, the JSON block for Cursor, Claude Desktop and other MCP clients, and the local HTTP server option below"></td>
+<td width="50%"><img src="docs/assets/readme/mcp-deck-in-app.webp" alt="SelfOffice Slides showing the eight-slide Renewable Energy 2026 deck that Claude Code built through the selfoffice MCP server: the cover slide with a wind-farm photograph on the canvas and eight thumbnails on the left"></td>
+<td width="50%"><img src="docs/assets/readme/mcp-integrations.webp" alt="SelfOffice Settings, Integrations page, MCP part: the one-line claude mcp add command for Claude Code, the JSON block for Cursor, Claude Desktop and other MCP clients, and the local HTTP server option below"></td>
 </tr>
 <tr>
 <td><b>One prompt, 38 tool calls, no shell</b> — "Build an eight-slide investor briefing about renewable energy in 2026, with a real photo on the cover and wherever a photo helps." The agent pulls the figures and the photos with <code>search</code>, asks <code>media</code> whether each candidate picture is a real photograph, calls <code>deck_start</code> with a style sheet and an outline, then <code>deck_page</code> once per slide; every page is checked against the outline and the palette before it is kept, <code>deck_build</code> assembles the <code>.pptx</code>, <code>slides_audit</code> looks for overflow, <code>slides_render</code> hands back a PNG per slide as image content the model can look at, and <code>deck_replace</code> fixes the three pages it did not like.</td>
@@ -276,7 +276,7 @@ document in a visible editor tab while you watch.
 </tr>
 </table>
 
-## Why GenOffice
+## Why SelfOffice
 
 - **Open source**, Apache-2.0, built in the open on GitHub.
 - **Yours to run.** Native apps for macOS, Windows and Linux; files stay on your
@@ -299,7 +299,7 @@ document in a visible editor tab while you watch.
   in plain language; every answer cites the file it came from, one click away.
 - **Skills.** Ready-made skills, or your own `SKILL.md`, attached from
   the **+** menu of any AI panel.
-- **Scriptable.** A `genoffice` command line, an agent skill and an MCP server
+- **Scriptable.** A `selfoffice` command line, an agent skill and an MCP server
   put every engine at the service of Claude Code, Claude Desktop, Codex, Cursor
   and other agents, still on-device.
 - **Free**, for individuals and teams alike.
@@ -339,7 +339,7 @@ colors.
 ## Skills
 
 A skill is a `SKILL.md` that tells the AI how to do one job well: a weekly
-report, an NDA, a lesson plan. GenOffice ships a set of them and takes your own,
+report, an NDA, a lesson plan. SelfOffice ships a set of them and takes your own,
 in the same format coding agents use.
 
 - **Settings → Skills.** **Install** a recommended skill, or **Import** a
@@ -351,10 +351,10 @@ in the same format coding agents use.
 
 ## Command line and agent skill
 
-Everything the apps can do to a file, the `genoffice` command line can do from
+Everything the apps can do to a file, the `selfoffice` command line can do from
 a terminal: inspect, convert, create, read and edit Word, Excel, PowerPoint,
 PDF, Markdown and HTML on the same engines, headless. It installs with
-GenOffice, needs no runtime of its own, and never sends a document anywhere.
+SelfOffice, needs no runtime of its own, and never sends a document anywhere.
 Paired with the bundled **agent skill**, it turns a coding agent into a
 document worker that produces real Office files instead of Markdown
 approximations.
@@ -367,31 +367,31 @@ through the [MCP server](#mcp-server), Claude Desktop and every MCP client.
 
 | How                                    | What happens                                                                                                                                                             |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Settings → Integrations** in the app | Lists the agents found on this computer; one click writes the skill into each one you choose. An **Update** button appears when a GenOffice release ships a newer skill. |
+| **Settings → Integrations** in the app | Lists the agents found on this computer; one click writes the skill into each one you choose. An **Update** button appears when a SelfOffice release ships a newer skill. |
 | **Download as zip** on the same page   | The layout claude.ai, the Claude desktop apps and other assistants accept as an uploaded skill.                                                                          |
 | `npx skills add genspark-ai/genoffice` | Installs from this repository into any skills-compatible agent.                                                                                                          |
 
 Then start a new chat and ask for a document. The skill teaches the agent when
-to reach for `genoffice`, how to read a file before editing it, and how to
+to reach for `selfoffice`, how to read a file before editing it, and how to
 check its own work.
 
 ### Quickstart from the terminal
 
 ```bash
-genoffice --version
-genoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
-genoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx, …
-genoffice create --type docx --from notes.md --out notes.docx
-genoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
-genoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
-genoffice docs compare original.docx revised.docx --out redline.docx   # the differences as tracked Word revisions
-genoffice render report.docx --out shots/          # one PNG per page, to look at what you made
-genoffice open sales.xlsx                          # hand the result to the editor
+selfoffice --version
+selfoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
+selfoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx, …
+selfoffice create --type docx --from notes.md --out notes.docx
+selfoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
+selfoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
+selfoffice docs compare original.docx revised.docx --out redline.docx   # the differences as tracked Word revisions
+selfoffice render report.docx --out shots/          # one PNG per page, to look at what you made
+selfoffice open sales.xlsx                          # hand the result to the editor
 ```
 
 Every command prints a one-line summary, or a single JSON object with
 `--json`. Edits are atomic: a rejected op leaves the file untouched and comes
-back with a guided error. `genoffice help` lists the current command surface;
+back with a guided error. `selfoffice help` lists the current command surface;
 the full reference is [packages/cli/README.md](packages/cli/README.md).
 
 ### What the agent actually runs
@@ -401,21 +401,21 @@ Behind it, the agent followed the skill's staged workflow and the CLI checked
 every stage before the next one started:
 
 ```bash
-genoffice capabilities --json                        # which cloud tools GenOffice has configured
-genoffice guide slides design                        # the deck workflow and layout library
-genoffice image "the eight planets in a row …" --aspect 16:9 --out deck/assets/cover.jpg
-genoffice slides check deck/outline.json --json      # 8 pages, no findings
-genoffice slides check deck/pages/01.json --json     # builds one slide, audits overflow and overlap
+selfoffice capabilities --json                        # which cloud tools SelfOffice has configured
+selfoffice guide slides design                        # the deck workflow and layout library
+selfoffice image "the eight planets in a row …" --aspect 16:9 --out deck/assets/cover.jpg
+selfoffice slides check deck/outline.json --json      # 8 pages, no findings
+selfoffice slides check deck/pages/01.json --json     # builds one slide, audits overflow and overlap
 …                                                    # one page file per slide, fixed until each check is clean
-genoffice create --type pptx --spec deck/pages --outline deck/outline.json --out deck/solar-system.pptx --json
-genoffice slides render deck/solar-system.pptx --out deck/shots --json
-genoffice slides audit deck/solar-system.pptx --json    # 8 slides, no layout issues
-genoffice slides replace deck/solar-system.pptx --slide 4 --spec deck/pages/05.json --json
-genoffice open deck/solar-system.pptx
+selfoffice create --type pptx --spec deck/pages --outline deck/outline.json --out deck/solar-system.pptx --json
+selfoffice slides render deck/solar-system.pptx --out deck/shots --json
+selfoffice slides audit deck/solar-system.pptx --json    # 8 slides, no layout issues
+selfoffice slides replace deck/solar-system.pptx --slide 4 --spec deck/pages/05.json --json
+selfoffice open deck/solar-system.pptx
 ```
 
-No model call happens inside `genoffice`: the agent does the thinking, the CLI
-does the building and the checking, and the result opens in GenOffice or
+No model call happens inside `selfoffice`: the agent does the thinking, the CLI
+does the building and the checking, and the result opens in SelfOffice or
 PowerPoint as an ordinary `.pptx`.
 
 ### MCP server
@@ -427,26 +427,26 @@ give one. There are two ways in, both shown with copy-ready snippets in
 
 | Way                                   | What it is                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **A · `genoffice mcp`** (recommended) | A stdio server the assistant starts itself; GenOffice does not need to be open. One tool per command (`info`, `convert`, `create_docx`, `create_xlsx`, `create_pptx`, `create_pdf`, `docs_read` / `docs_apply` / `docs_check`, `sheet_*`, `slides_*`, `render`, `guide`, `search`, `image`, `media`, `open`) plus the staged deck flow `deck_start` → `deck_page` → `deck_build` → `deck_replace`. Ops, specs and Markdown are passed inline, so a client without a file system still works. |
-| **B · Local HTTP server**             | Runs inside the GenOffice app on `http://127.0.0.1:3093/mcp` (Streamable HTTP, with legacy SSE). Its tools drive a visible Word editor tab: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, and you watch the document take shape. Off by default; switch it on in the same settings pane.                                                                                                                                               |
-| **C · `genoffice mcp --http`**        | The stdio tool set as a Streamable HTTP server for clients on other machines: a container, a sandbox, a shared box on your network. Files travel with the calls: `PUT /files/<name>` uploads one and returns a URL, every `file` parameter takes an http(s) URL, and a tool that writes a file hands it back as a download URL plus, when small, the bytes as an MCP resource. `--host 0.0.0.0` opens it to the network, `--token` protects it.                                              |
+| **A · `selfoffice mcp`** (recommended) | A stdio server the assistant starts itself; SelfOffice does not need to be open. One tool per command (`info`, `convert`, `create_docx`, `create_xlsx`, `create_pptx`, `create_pdf`, `docs_read` / `docs_apply` / `docs_check`, `sheet_*`, `slides_*`, `render`, `guide`, `search`, `image`, `media`, `open`) plus the staged deck flow `deck_start` → `deck_page` → `deck_build` → `deck_replace`. Ops, specs and Markdown are passed inline, so a client without a file system still works. |
+| **B · Local HTTP server**             | Runs inside the SelfOffice app on `http://127.0.0.1:3093/mcp` (Streamable HTTP, with legacy SSE). Its tools drive a visible Word editor tab: `create_session`, `insert_content`, `replace_blocks`, `apply_ops`, `read_document`, `save_session`, and you watch the document take shape. Off by default; switch it on in the same settings pane.                                                                                                                                               |
+| **C · `selfoffice mcp --http`**        | The stdio tool set as a Streamable HTTP server for clients on other machines: a container, a sandbox, a shared box on your network. Files travel with the calls: `PUT /files/<name>` uploads one and returns a URL, every `file` parameter takes an http(s) URL, and a tool that writes a file hands it back as a download URL plus, when small, the bytes as an MCP resource. `--host 0.0.0.0` opens it to the network, `--token` protects it.                                              |
 
 ```bash
 # Claude Code
-claude mcp add --transport stdio genoffice -- genoffice mcp
+claude mcp add --transport stdio selfoffice -- selfoffice mcp
 ```
 
 ```jsonc
 // Cursor, Claude Desktop or any other MCP client
-{ "mcpServers": { "genoffice": { "command": "genoffice", "args": ["mcp"] } } }
+{ "mcpServers": { "selfoffice": { "command": "selfoffice", "args": ["mcp"] } } }
 ```
 
 ```bash
-# On the machine that has GenOffice (private network; add --token for a shared box)
-genoffice mcp --http 3093 --host 0.0.0.0 --token "$GENOFFICE_MCP_TOKEN"
+# On the machine that has SelfOffice (private network; add --token for a shared box)
+selfoffice mcp --http 3093 --host 0.0.0.0 --token "$SELFOFFICE_MCP_TOKEN"
 
 # From the client: upload, then use the URL wherever a tool takes a file
-curl -T report.docx -H "Authorization: Bearer $GENOFFICE_MCP_TOKEN" http://server:3093/files/
+curl -T report.docx -H "Authorization: Bearer $SELFOFFICE_MCP_TOKEN" http://server:3093/files/
 #   → { "url": "http://server:3093/files/<id>/report.docx", ... }
 #   docs_read({ "file": "http://server:3093/files/<id>/report.docx" })
 #   docs_apply(...) → output_url, downloadable with curl -o
@@ -454,22 +454,22 @@ curl -T report.docx -H "Authorization: Bearer $GENOFFICE_MCP_TOKEN" http://serve
 
 Over HTTP every session gets a private scratch folder, relative paths and deck
 folders resolve inside it, `open` is not offered, and with
-`GENOFFICE_ALLOWED_ROOTS` unset the tools cannot leave the server's own file
+`SELFOFFICE_ALLOWED_ROOTS` unset the tools cannot leave the server's own file
 store. `render`, `convert` to PDF and `create_pdf` still start a hidden
-GenOffice process, so a headless host needs the app installed and a virtual
+SelfOffice process, so a headless host needs the app installed and a virtual
 display (`xvfb-run`).
 
-`genoffice` here is the CLI shipped inside the app (on macOS
-`/Applications/GenOffice.app/Contents/Resources/cli/genoffice`; the settings
+`selfoffice` here is the CLI shipped inside the app (on macOS
+`/Applications/SelfOffice.app/Contents/Resources/cli/selfoffice`; the settings
 pane prints the exact path for your install). The server carries its own
-workflow instructions and exposes the op references as `genoffice://guide/*`
+workflow instructions and exposes the op references as `selfoffice://guide/*`
 resources, so no skill is needed; the skill and the MCP server can coexist and
 the assistant picks one. Cloud features (`search`, `image`, `media`) still go
-through the provider configured in GenOffice; everything else runs locally, and
-`GENOFFICE_ALLOWED_ROOTS` confines every tool to the folders you list.
+through the provider configured in SelfOffice; everything else runs locally, and
+`SELFOFFICE_ALLOWED_ROOTS` confines every tool to the folders you list.
 
 The renewable-energy deck in the [demo](#demo) is what one prompt in Claude Code
-with only the `genoffice` MCP server attached looks like from the protocol
+with only the `selfoffice` MCP server attached looks like from the protocol
 side:
 
 ```text
@@ -490,7 +490,7 @@ deck_replace(dir, n, page) ×3 · slides_render(file, out)
 Thirty-eight calls, about thirteen minutes, and the assistant never touched a
 shell: the figures, the photos, the guides, the checks and the renders all
 travelled as MCP tool results. Only `search` and `media` left the machine, to
-the provider configured in GenOffice.
+the provider configured in SelfOffice.
 
 ## Download
 
@@ -510,18 +510,18 @@ Older versions are on the [Releases](https://github.com/genspark-ai/genoffice/re
 <details>
 <summary><b>Installing on Linux</b></summary>
 
-The deb installs with apt — it pulls in the dependencies and adds GenOffice
+The deb installs with apt — it pulls in the dependencies and adds SelfOffice
 to the applications menu:
 
 ```bash
-sudo apt install ./genoffice_<version>_amd64.deb
+sudo apt install ./selfoffice_<version>_amd64.deb
 ```
 
 On Fedora / RHEL-family / openSUSE, install the rpm instead:
 
 ```bash
-sudo dnf install ./genoffice-<version>.x86_64.rpm     # Fedora / RHEL family
-sudo zypper install ./genoffice-<version>.x86_64.rpm  # openSUSE
+sudo dnf install ./selfoffice-<version>.x86_64.rpm     # Fedora / RHEL family
+sudo zypper install ./selfoffice-<version>.x86_64.rpm  # openSUSE
 ```
 
 The AppImage runs in place: install the FUSE 2 runtime
@@ -529,8 +529,8 @@ The AppImage runs in place: install the FUSE 2 runtime
 make the file executable, then run it:
 
 ```bash
-chmod +x GenOffice-<version>.AppImage
-./GenOffice-<version>.AppImage
+chmod +x SelfOffice-<version>.AppImage
+./SelfOffice-<version>.AppImage
 ```
 
 </details>
@@ -570,44 +570,44 @@ npm run dist:linux   # package Linux AppImage + deb + rpm
 ```
 
 The sheets app additionally needs a Rust toolchain for its xlsx sidecar
-(`cargo` on PATH); `npm run build -w @genoffice/sheets` compiles it
+(`cargo` on PATH); `npm run build -w @selfoffice/sheets` compiles it
 automatically. See [CONTRIBUTING.md](CONTRIBUTING.md) for the checks every
 change must pass and how pull requests land.
 
 ## Community
 
-GenOffice is in active development and your feedback shapes it.
+SelfOffice is in active development and your feedback shapes it.
 
 - **Report a bug or request a feature** in
   [GitHub Issues](https://github.com/genspark-ai/genoffice/issues).
-- **Join the GenOffice group chat** on
-  [GenTeam](https://genoffice.ai/join) to talk to the team and other users.
+- **Join the SelfOffice group chat** on
+  [GenTeam](https://selfoffice.ai/join) to talk to the team and other users.
 - **Follow [@merrickbuilds](https://x.com/merrickbuilds) on X** for release
   notes, demos and what is being built next.
-- **Star the repo** if GenOffice is useful to you — it is the best way to
+- **Star the repo** if SelfOffice is useful to you — it is the best way to
   support the project.
 
 ## FAQ
 
 <details>
-<summary><b>Is GenOffice free?</b></summary>
+<summary><b>Is SelfOffice free?</b></summary>
 
-Yes. GenOffice is free and open-source under the Apache-2.0 license — no
+Yes. SelfOffice is free and open-source under the Apache-2.0 license — no
 trial, no paid tier for the apps themselves.
 
 </details>
 
 <details>
-<summary><b>Can GenOffice open Microsoft Word, Excel and PowerPoint files?</b></summary>
+<summary><b>Can SelfOffice open Microsoft Word, Excel and PowerPoint files?</b></summary>
 
-Yes. GenOffice opens and saves native `.docx`, `.xlsx` and `.pptx` files.
+Yes. SelfOffice opens and saves native `.docx`, `.xlsx` and `.pptx` files.
 Saving is byte-preserving: parts of the file you didn't touch are written
 back byte-for-byte, so documents keep working in Microsoft Office.
 
 </details>
 
 <details>
-<summary><b>Does GenOffice work offline?</b></summary>
+<summary><b>Does SelfOffice work offline?</b></summary>
 
 Document editing is fully local — files never leave your machine to be
 opened, edited, saved or converted. The AI features (agents, search, image
@@ -617,7 +617,7 @@ model API key.
 </details>
 
 <details>
-<summary><b>Can GenOffice edit PDF files?</b></summary>
+<summary><b>Can SelfOffice edit PDF files?</b></summary>
 
 Yes — real PDF text and image editing that rewrites the page content stream
 with the original fonts preserved, not cover-up annotations.
@@ -625,7 +625,7 @@ with the original fonts preserved, not cover-up annotations.
 </details>
 
 <details>
-<summary><b>Can GenOffice convert PDF to Word, Excel or PowerPoint?</b></summary>
+<summary><b>Can SelfOffice convert PDF to Word, Excel or PowerPoint?</b></summary>
 
 Yes — entirely on-device: PDFium character-level extraction plus
 geometry-based layout analysis, no cloud service, no upload. Scanned pages
@@ -637,7 +637,7 @@ convert to editable text rather than a page image.
 <details>
 <summary><b>Can I use my own AI model or API key?</b></summary>
 
-Yes. Besides the keyless Genspark sign-in, GenOffice supports bring your own
+Yes. Besides the keyless Genspark sign-in, SelfOffice supports bring your own
 key for Claude, OpenAI, Gemini, DeepSeek, Kimi, GLM, Qwen, Doubao, MiniMax,
 Grok, Mistral, OpenRouter, Requesty, Opper, Cheaper Inference, Atlas Cloud and OpenCode Zen/Go, plus any OpenAI-compatible
 endpoint — including local model servers. Search, image generation and
@@ -656,7 +656,7 @@ that document, and closing it returns to hidden.
 </details>
 
 <details>
-<summary><b>Can GenOffice convert HTML to Word?</b></summary>
+<summary><b>Can SelfOffice convert HTML to Word?</b></summary>
 
 Yes — Export as Word in the HTML app produces a native, editable `.docx`
 entirely on-device. The page is rendered in the built-in Chromium and reduced
@@ -667,9 +667,9 @@ form fields and page backgrounds; only visuals with no Word counterpart
 </details>
 
 <details>
-<summary><b>Can I drive GenOffice from Claude Code, Codex, Cursor or a script?</b></summary>
+<summary><b>Can I drive SelfOffice from Claude Code, Codex, Cursor or a script?</b></summary>
 
-Yes. GenOffice installs a `genoffice` command line that runs the same engines
+Yes. SelfOffice installs a `selfoffice` command line that runs the same engines
 headless: inspect, convert, create, read and edit documents from a terminal or
 a script, with `--json` output for programs. The bundled agent skill teaches
 Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode and Windsurf
@@ -679,12 +679,12 @@ to use it; install it from **Settings → Integrations**. See
 </details>
 
 <details>
-<summary><b>Does GenOffice collect any data?</b></summary>
+<summary><b>Does SelfOffice collect any data?</b></summary>
 
 Official packaged builds send limited usage analytics by default, and you can
 disable reporting at any time under Settings → General. Analytics never sends
 document content, file names, file paths, account identity or email
-addresses. See [GenOffice Privacy](PRIVACY.md) for the complete event and
+addresses. See [SelfOffice Privacy](PRIVACY.md) for the complete event and
 data disclosures.
 
 </details>
@@ -697,7 +697,7 @@ AI-generated content.
 
 ## Acknowledgements
 
-GenOffice would not be possible without these open-source projects:
+SelfOffice would not be possible without these open-source projects:
 
 - [Electron](https://www.electronjs.org/) — the desktop runtime for every app.
 - [Univer](https://github.com/dream-num/univer) (Apache-2.0) — the spreadsheet
@@ -740,10 +740,10 @@ MIT/Apache-2.0/BSD-3-Clause/OFL.
 
 ## License
 
-GenOffice is licensed under the [Apache License 2.0](LICENSE), with one
+SelfOffice is licensed under the [Apache License 2.0](LICENSE), with one
 exception: the `ee/` directory is reserved for future enterprise modules and
-is covered by the [GenOffice Enterprise License](ee/LICENSE).
+is covered by the [SelfOffice Enterprise License](ee/LICENSE).
 
-The GenOffice and Genspark names and logos are trademarks of Mainfunc, Inc.
+The SelfOffice and Genspark names and logos are trademarks of Mainfunc, Inc.
 The Apache-2.0 license does not grant permission to use them (see section 6);
 forks should use their own branding.

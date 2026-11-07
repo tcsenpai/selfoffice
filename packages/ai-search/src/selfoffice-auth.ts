@@ -1,8 +1,8 @@
 /**
- * GenOffice's own Genspark identity: device-code login (office_addin_auth,
- * app_type=genoffice) minting a gsk API key named "genoffice" — the key_name
+ * SelfOffice's own Genspark identity: device-code login (office_addin_auth,
+ * app_type=selfoffice) minting a gsk API key named "selfoffice" — the key_name
  * lands in billing as billing_tag, attributing all traffic (incl. gsk CLI
- * subprocesses) to GenOffice. Stored in ~/.genoffice/auth.json, deliberately
+ * subprocesses) to SelfOffice. Stored in ~/.selfoffice/auth.json, deliberately
  * NOT the shared config.json that Claw Desktop overwrites on every launch.
  *
  * Flow: POST /device_code → browser approve → poll /token for a 30-day Bearer
@@ -26,8 +26,8 @@ export interface GskLoginProgress {
   error?: string
 }
 
-const APP_TYPE = 'genoffice'
-const KEY_NAME = 'genoffice'
+const APP_TYPE = 'selfoffice'
+const KEY_NAME = 'selfoffice'
 const HTTP_TIMEOUT_MS = 30_000
 
 /** https on the endpoint's registrable domain only; IP literals and single-label
@@ -107,7 +107,7 @@ async function proxyFallbackFetch(): Promise<typeof fetch | null> {
         session?: { fromPartition: (partition: string) => ProxySession }
       }
       if (session) {
-        const ses = session.fromPartition('genoffice-login-proxy')
+        const ses = session.fromPartition('selfoffice-login-proxy')
         await ses.setProxy({ proxyRules: proxyUrl })
         impl = ses.fetch.bind(ses)
       }
@@ -127,22 +127,22 @@ async function loginFetchChannels(): Promise<(typeof fetch)[]> {
   return proxyFallbackPreferred ? [fallback, primary] : [primary, fallback]
 }
 
-/** Override dir via GENOFFICE_AUTH_DIR (test isolation). */
-export function genofficeAuthPath(): string {
-  return join(process.env.GENOFFICE_AUTH_DIR || join(homedir(), '.genoffice'), 'auth.json')
+/** Override dir via SELFOFFICE_AUTH_DIR (test isolation). */
+export function selfofficeAuthPath(): string {
+  return join(process.env.SELFOFFICE_AUTH_DIR || join(homedir(), '.selfoffice'), 'auth.json')
 }
 
-export interface GenofficeAuth {
+export interface SelfofficeAuth {
   apiKey: string
   keyId?: string
   accessToken?: string
 }
 
-let cachedAuth: GenofficeAuth | null | undefined
+let cachedAuth: SelfofficeAuth | null | undefined
 
-function readAuthFile(): GenofficeAuth | null {
+function readAuthFile(): SelfofficeAuth | null {
   try {
-    const raw = asRecord(JSON.parse(readFileSync(genofficeAuthPath(), 'utf-8')))
+    const raw = asRecord(JSON.parse(readFileSync(selfofficeAuthPath(), 'utf-8')))
     if (typeof raw.api_key !== 'string' || !raw.api_key) return null
     return {
       apiKey: raw.api_key,
@@ -156,24 +156,24 @@ function readAuthFile(): GenofficeAuth | null {
   }
 }
 
-export function loadGenofficeAuth(): GenofficeAuth | null {
+export function loadSelfofficeAuth(): SelfofficeAuth | null {
   if (cachedAuth === undefined) cachedAuth = readAuthFile()
   return cachedAuth
 }
 
 /** Drop the cache so the next read sees a key written by another process. */
-export function reloadGenofficeAuth(): void {
+export function reloadSelfofficeAuth(): void {
   // File watchers reread API keys during remint; only session teardown invalidates cookie admission.
   cachedAuth = undefined
 }
 
-/** The GenOffice-named api key; '' when not signed in. Cached (invalidated by login/logout). */
-export function genofficeApiKey(): string {
-  return loadGenofficeAuth()?.apiKey ?? ''
+/** The SelfOffice-named api key; '' when not signed in. Cached (invalidated by login/logout). */
+export function selfofficeApiKey(): string {
+  return loadSelfofficeAuth()?.apiKey ?? ''
 }
 
-function saveAuth(auth: GenofficeAuth): void {
-  const path = genofficeAuthPath()
+function saveAuth(auth: SelfofficeAuth): void {
+  const path = selfofficeAuthPath()
   mkdirSync(dirname(path), { recursive: true })
   writeFileSync(
     path,
@@ -190,7 +190,7 @@ function saveAuth(auth: GenofficeAuth): void {
 function clearAuth(): void {
   nativeWaf.clear()
   try {
-    if (existsSync(genofficeAuthPath())) unlinkSync(genofficeAuthPath())
+    if (existsSync(selfofficeAuthPath())) unlinkSync(selfofficeAuthPath())
   } catch {
     /* local sign-out must not throw */
   }
@@ -218,7 +218,7 @@ async function httpJson(
   for (const [i, impl] of channels.entries()) {
     try {
       const attempt =
-        process.env.GENOFFICE_NATIVE_WAF === '1' ? await nativeWaf.prepare(url, init, impl) : init
+        process.env.SELFOFFICE_NATIVE_WAF === '1' ? await nativeWaf.prepare(url, init, impl) : init
       // per-attempt timeout: a blackholed direct connection would otherwise
       // hang for the OS TCP timeout before the fallback ever runs
       resp = await impl(url, {
@@ -296,7 +296,7 @@ async function revokeKey(cookie: string, keyId: string, signal: AbortSignal): Pr
   const fetcher = resolveFetch()
   await fetcher(
     url,
-    process.env.GENOFFICE_NATIVE_WAF === '1' ? await nativeWaf.prepare(url, init, fetcher) : init,
+    process.env.SELFOFFICE_NATIVE_WAF === '1' ? await nativeWaf.prepare(url, init, fetcher) : init,
   )
 }
 
@@ -401,7 +401,7 @@ async function runDeviceLogin(
   const minted = await mintKey(cookie, signal)
   if (minted.kind === 'fresh_auth_required') throw new LoginFlowError('fresh_auth_required')
   if (minted.kind === 'error') throw new LoginFlowError(minted.reason)
-  const previousKeyId = loadGenofficeAuth()?.keyId ?? staleKeyId
+  const previousKeyId = loadSelfofficeAuth()?.keyId ?? staleKeyId
   saveAuth({
     apiKey: minted.apiKey,
     ...(minted.keyId ? { keyId: minted.keyId } : {}),
@@ -427,11 +427,11 @@ async function runDeviceLogin(
 let activeLogin: { cancel: () => void } | null = null
 
 /**
- * Starts the GenOffice device-code login, cancelling a previous in-flight one
+ * Starts the SelfOffice device-code login, cancelling a previous in-flight one
  * (its device code would otherwise be approved into a dead flow). The caller
  * opens `url` in the system browser. Returns whether the flow was started.
  */
-export function startGenofficeLogin(onEvent?: (progress: GskLoginProgress) => void): boolean {
+export function startSelfofficeLogin(onEvent?: (progress: GskLoginProgress) => void): boolean {
   activeLogin?.cancel()
   const emit = onEvent ?? (() => {})
   const controller = new AbortController()
@@ -491,20 +491,20 @@ export type GskRecoveryOutcome =
  * is Electron-free). Registered by the main process; without one, recovery
  * only signs out locally and the existing login button takes over.
  */
-export function setGenofficeLoginOpener(openUrl: ((url: string) => void) | null): void {
+export function setSelfofficeLoginOpener(openUrl: ((url: string) => void) | null): void {
   loginOpener = openUrl
 }
 
 /**
- * Drops GenOffice's own key from memory and disk when it equals `key` (the
+ * Drops SelfOffice's own key from memory and disk when it equals `key` (the
  * server answered 401: expired or revoked), so hasGskAuth() turns false and
  * the existing sign-in UI shows. Returns whether our key was dropped.
  */
-export function invalidateGenofficeKey(key: string): boolean {
+export function invalidateSelfofficeKey(key: string): boolean {
   // re-read disk: another process may already have replaced the rejected key
   // with a fresh one, which must survive
-  reloadGenofficeAuth()
-  const auth = loadGenofficeAuth()
+  reloadSelfofficeAuth()
+  const auth = loadSelfofficeAuth()
   if (!key || !auth || auth.apiKey !== key) return false
   staleKeyId = auth.keyId
   staleAccessToken = auth.accessToken
@@ -523,8 +523,8 @@ async function remintWithStoredSession(accessToken: string, generation: number):
     // the user signed out while this was in flight: the key must not land
     if (generation !== signOutGeneration) return false
     // another process may have logged in meanwhile; never overwrite its key
-    reloadGenofficeAuth()
-    if (loadGenofficeAuth()) return true
+    reloadSelfofficeAuth()
+    if (loadSelfofficeAuth()) return true
     saveAuth({
       apiKey: minted.apiKey,
       ...(minted.keyId ? { keyId: minted.keyId } : {}),
@@ -565,7 +565,7 @@ export function recoverFromRejectedGskKey(
   }
   const run = (async (): Promise<GskRecoveryOutcome> => {
     const wasReminted = !!key && key === lastRemintedKey
-    invalidateGenofficeKey(key)
+    invalidateSelfofficeKey(key)
     // the Bearer gets one silent attempt: a refused re-mint will be refused again
     const bearer = staleAccessToken
     staleAccessToken = undefined
@@ -575,7 +575,7 @@ export function recoverFromRejectedGskKey(
     if (
       !allowLogin ||
       generation !== signOutGeneration ||
-      genofficeLoginInFlight() ||
+      selfofficeLoginInFlight() ||
       autoLoginLaunched ||
       !loginOpener
     ) {
@@ -583,7 +583,7 @@ export function recoverFromRejectedGskKey(
     }
     autoLoginLaunched = true
     const open = loginOpener
-    startGenofficeLogin((progress) => {
+    startSelfofficeLogin((progress) => {
       if (progress.phase === 'url' && progress.url) open(progress.url)
     })
     return 'login_started'
@@ -594,8 +594,8 @@ export function recoverFromRejectedGskKey(
   return run
 }
 
-/** True while a login started via startGenofficeLogin is in flight. */
-export function genofficeLoginInFlight(): boolean {
+/** True while a login started via startSelfofficeLogin is in flight. */
+export function selfofficeLoginInFlight(): boolean {
   return activeLogin !== null
 }
 
@@ -604,22 +604,22 @@ export function genofficeLoginInFlight(): boolean {
  * in-flight flow (restarting would strand it on a dead device code); openUrl
  * is the caller's browser opener (this module is Electron-free).
  */
-export function ensureGenofficeLogin(openUrl: (url: string) => void): void {
-  if (genofficeLoginInFlight()) return
-  startGenofficeLogin((progress) => {
+export function ensureSelfofficeLogin(openUrl: (url: string) => void): void {
+  if (selfofficeLoginInFlight()) return
+  startSelfofficeLogin((progress) => {
     if (progress.url) openUrl(progress.url)
   })
 }
 
 /**
- * Signs out of GenOffice only: best-effort server-side revoke of the
- * genoffice key, then local removal. The shared gsk CLI login
+ * Signs out of SelfOffice only: best-effort server-side revoke of the
+ * selfoffice key, then local removal. The shared gsk CLI login
  * (~/.genspark-tool-cli) is untouched — terminal gsk and Claw keep working.
  */
-export async function genofficeLogout(): Promise<void> {
+export async function selfofficeLogout(): Promise<void> {
   // invalidate any in-flight recovery first: its re-mint or login must not undo this sign-out
   signOutGeneration++
-  const auth = loadGenofficeAuth()
+  const auth = loadSelfofficeAuth()
   if (auth?.accessToken && auth.keyId) {
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), HTTP_TIMEOUT_MS)
@@ -639,7 +639,7 @@ export async function genofficeLogout(): Promise<void> {
 }
 
 /** Test hook: drop the auth cache, fetch-channel and recovery state. */
-export function resetGenofficeAuthCache(): void {
+export function resetSelfofficeAuthCache(): void {
   cachedAuth = undefined
   staleKeyId = undefined
   staleAccessToken = undefined
@@ -653,6 +653,6 @@ export function resetGenofficeAuthCache(): void {
 }
 
 /** Test hook: whether the proxy fallback channel is currently preferred. */
-export function genofficeProxyFallbackPreferred(): boolean {
+export function selfofficeProxyFallbackPreferred(): boolean {
   return proxyFallbackPreferred
 }

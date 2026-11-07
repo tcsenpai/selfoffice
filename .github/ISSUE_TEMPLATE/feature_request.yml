@@ -7,11 +7,11 @@ body:
     attributes:
       label: App
       options:
-        - GenOffice Docs (docs)
-        - GenOffice Sheets (sheets)
-        - GenOffice Slides (slides)
-        - GenOffice PDF (pdf)
-        - GenOffice Markdown (markdown)
+        - SelfOffice Docs (docs)
+        - SelfOffice Sheets (sheets)
+        - SelfOffice Slides (slides)
+        - SelfOffice PDF (pdf)
+        - SelfOffice Markdown (markdown)
         - Shell / home screen
         - AI panel / providers
         - Whole suite

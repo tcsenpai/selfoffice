@@ -1,6 +1,6 @@
 {
-  "name": "@genoffice/slides",
-  "productName": "GenOffice Slides",
+  "name": "@selfoffice/slides",
+  "productName": "SelfOffice Slides",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "private": true,
@@ -18,16 +18,16 @@
     "dist:dir": "electron-vite build && electron-builder --dir"
   },
   "devDependencies": {
-    "@genoffice/agent-core": "*",
-    "@genoffice/ai-provider": "*",
-    "@genoffice/ai-search": "*",
-    "@genoffice/file-parse": "*",
-    "@genoffice/i18n": "*",
-    "@genoffice/pptx-engine": "*",
-    "@genoffice/pptx-ops": "*",
-    "@genoffice/pptx-render": "*",
-    "@genoffice/project-store": "*",
-    "@genoffice/ui": "*",
+    "@selfoffice/agent-core": "*",
+    "@selfoffice/ai-provider": "*",
+    "@selfoffice/ai-search": "*",
+    "@selfoffice/file-parse": "*",
+    "@selfoffice/i18n": "*",
+    "@selfoffice/pptx-engine": "*",
+    "@selfoffice/pptx-ops": "*",
+    "@selfoffice/pptx-render": "*",
+    "@selfoffice/project-store": "*",
+    "@selfoffice/ui": "*",
     "@types/opentype.js": "^1.3.8",
     "@types/pngjs": "^6.0.5",
     "@types/react": "^19.2.14",
@@ -48,10 +48,10 @@
     "vite": "^7.3.7",
     "vitest": "^4.1.12"
   },
-  "author": "GenOffice",
+  "author": "SelfOffice",
   "build": {
-    "appId": "com.genoffice.slides",
-    "productName": "GenOffice Slides",
+    "appId": "com.selfoffice.slides",
+    "productName": "SelfOffice Slides",
     "electronVersion": "43.3.0",
     "directories": {
       "output": "release"
@@ -90,11 +90,11 @@
     }
   },
   "dependencies": {
-    "@genoffice/electron-utils": "*",
+    "@selfoffice/electron-utils": "*",
     "acorn": "^8.18.0",
     "harfbuzzjs": "^1.4.0",
     "pngjs": "^7.0.0",
     "utif2": "^4.1.0",
-    "@genoffice/agent-core": "*"
+    "@selfoffice/agent-core": "*"
   }
 }

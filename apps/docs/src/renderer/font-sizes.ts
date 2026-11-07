@@ -1,4 +1,4 @@
-import type { Lang } from '@genoffice/i18n'
+import type { Lang } from '@selfoffice/i18n'
 
 export interface NamedFontSize {
   readonly name: string

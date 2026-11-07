@@ -55,7 +55,7 @@ beforeEach(() => {
     .mockResolvedValue({ ok: true, code: 0, json: undefined, stdout: 'o', stderr: '' })
   registerUserSkillsIpc({
     cliRunner: () => ({ run: runnerRun }) as never,
-    folderRoots: () => ['/home/u/GenOffice', '/home/u/GenOffice'],
+    folderRoots: () => ['/home/u/SelfOffice', '/home/u/SelfOffice'],
     senderFile: (id) => (id === 7 ? '/docs/open/report.docx' : undefined),
   })
 })
@@ -143,13 +143,13 @@ describe('the ai: channels', () => {
       ok: true,
       code: 0,
       cwd: '/docs/open',
-      allowedRoots: ['/home/u/GenOffice', '/docs/open'],
+      allowedRoots: ['/home/u/SelfOffice', '/docs/open'],
     })
     // relative paths in the argv resolve in the open document's folder
     expect(runnerRun).toHaveBeenCalledWith(['convert', 'a.docx', '--to', 'pdf'], {
       timeoutMs: 120_000,
       cwd: '/docs/open',
-      env: { GENOFFICE_ALLOWED_ROOTS: ['/home/u/GenOffice', '/docs/open'].join(delimiter) },
+      env: { SELFOFFICE_ALLOWED_ROOTS: ['/home/u/SelfOffice', '/docs/open'].join(delimiter) },
     })
     await expect(invoke('ai:run-cli', ['--version'])).rejects.toThrow('not available here')
   })

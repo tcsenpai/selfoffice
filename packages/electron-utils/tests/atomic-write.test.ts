@@ -206,7 +206,7 @@ describe('atomicCopyFile', () => {
 
 // A streamed deck save (JSZip → createWriteStream) cannot go through the
 // Buffer-taking atomicWriteFile; the writer fills the temp itself and the same
-// sync → rename → in-place fallback contract publishes it (genoffice#2123).
+// sync → rename → in-place fallback contract publishes it (selfoffice#2123).
 describe('atomicWriteVia', () => {
   it('hands the writer a sibling temp, then fsyncs it before the rename publishes it', async () => {
     dir = mkdtempSync(join(tmpdir(), 'eu-av-'))
@@ -269,7 +269,7 @@ describe('atomicWriteVia', () => {
     expect(readdirSync(dir)).toEqual(['a.pptx'])
   })
 
-  // Same fallback contract as atomicWriteFile (genoffice#1878): a mount that refuses
+  // Same fallback contract as atomicWriteFile (selfoffice#1878): a mount that refuses
   // rename-over-existing still receives the completed temp, copied in place.
   it('falls back to an in-place copy when the mount refuses the rename', async () => {
     dir = mkdtempSync(join(tmpdir(), 'eu-av-'))

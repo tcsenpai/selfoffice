@@ -1,18 +1,18 @@
 # Docker: headless batch conversion
 
 A self-contained image that converts a whole tree of Office/Markdown/HTML
-documents to PDF with GenOffice's own headless export pipeline
+documents to PDF with SelfOffice's own headless export pipeline
 (`<app binary> --headless-export`, see `docs/headless-pdf-export.md`). It wraps
-the official release deb — no GenOffice source is rebuilt — so every output is
+the official release deb — no SelfOffice source is rebuilt — so every output is
 what the desktop app's File ▸ Export would produce.
 
-This is the batch-conversion slice of the Docker ask (genoffice#1808); it is
+This is the batch-conversion slice of the Docker ask (selfoffice#1808); it is
 a CLI utility image, not the server-side/collaborative form discussed there.
 
 ## Build
 
 ```sh
-docker build -t genoffice-batch packaging/docker
+docker build -t selfoffice-batch packaging/docker
 ```
 
 On Apple silicon / other non-amd64 hosts the build runs the amd64 deb under
@@ -26,7 +26,7 @@ Mount the documents at `/data` (read-only is fine) and an empty directory at
 `/output`. The output tree mirrors the input tree with `.pdf` extensions:
 
 ```sh
-docker run --rm -v "$PWD/docs:/data:ro" -v "$PWD/pdf:/output" genoffice-batch
+docker run --rm -v "$PWD/docs:/data:ro" -v "$PWD/pdf:/output" selfoffice-batch
 ```
 
 ```
@@ -44,25 +44,25 @@ upstream error envelopes).
 
 | variable                                  | default   | meaning                                                                                                                                                                |
 | ----------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `GENOFFICE_INPUT_DIR`                     | `/data`   | input volume                                                                                                                                                           |
-| `GENOFFICE_OUTPUT_DIR`                    | `/output` | output volume                                                                                                                                                          |
-| `GENOFFICE_TO`                            | `pdf`     | export target — the image only wires up `pdf` (the app also exports docs to html and html to docx); anything else is rejected with exit 1 rather than silently ignored |
-| `GENOFFICE_PARALLEL`                      | `1`       | concurrent conversions (each is its own Electron process; 2-4 helps on large hosts)                                                                                    |
-| `GENOFFICE_INCLUDE` / `GENOFFICE_EXCLUDE` | —         | optional `grep -E` filters on `/data`-relative paths                                                                                                                   |
-| `GENOFFICE_FLAGS`                         | —         | extra flags passed through to `--headless-export`                                                                                                                      |
-| `GENOFFICE_XVFB`                          | `1`       | set `0` when you provide the display yourself (e.g. wrap with `xvfb-run`)                                                                                              |
+| `SELFOFFICE_INPUT_DIR`                     | `/data`   | input volume                                                                                                                                                           |
+| `SELFOFFICE_OUTPUT_DIR`                    | `/output` | output volume                                                                                                                                                          |
+| `SELFOFFICE_TO`                            | `pdf`     | export target — the image only wires up `pdf` (the app also exports docs to html and html to docx); anything else is rejected with exit 1 rather than silently ignored |
+| `SELFOFFICE_PARALLEL`                      | `1`       | concurrent conversions (each is its own Electron process; 2-4 helps on large hosts)                                                                                    |
+| `SELFOFFICE_INCLUDE` / `SELFOFFICE_EXCLUDE` | —         | optional `grep -E` filters on `/data`-relative paths                                                                                                                   |
+| `SELFOFFICE_FLAGS`                         | —         | extra flags passed through to `--headless-export`                                                                                                                      |
+| `SELFOFFICE_XVFB`                          | `1`       | set `0` when you provide the display yourself (e.g. wrap with `xvfb-run`)                                                                                              |
 
 Examples:
 
 ```sh
 # only the reports folder, four conversions at a time
 docker run --rm -v "$PWD/docs:/data:ro" -v "$PWD/pdf:/output" \
-  -e GENOFFICE_INCLUDE='^reports/' -e GENOFFICE_PARALLEL=4 \
-  genoffice-batch
+  -e SELFOFFICE_INCLUDE='^reports/' -e SELFOFFICE_PARALLEL=4 \
+  selfoffice-batch
 
 # skip draft documents
 docker run --rm -v "$PWD/docs:/data:ro" -v "$PWD/pdf:/output" \
-  -e GENOFFICE_EXCLUDE='draft' genoffice-batch
+  -e SELFOFFICE_EXCLUDE='draft' selfoffice-batch
 ```
 
 ## Behaviour worth knowing
@@ -81,7 +81,7 @@ docker run --rm -v "$PWD/docs:/data:ro" -v "$PWD/pdf:/output" \
 - **Updates are off by design**: the deb's `app-update.yml` is removed in the
   image (the same mechanism that disables the updater in fork/PR builds), so
   the image itself is the update channel — rebuild on a new release and bump
-  `GENOFFICE_VERSION` + `GENOFFICE_DEB_SHA256` in the Dockerfile.
+  `SELFOFFICE_VERSION` + `SELFOFFICE_DEB_SHA256` in the Dockerfile.
 - One Electron boot per file is the price of wrapping the released binary; an
   in-process multi-file batch (one boot, N exports) would be an upstream
   headless-export feature, not a packaging concern.
