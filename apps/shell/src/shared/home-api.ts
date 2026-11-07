@@ -378,6 +378,9 @@ export interface HomeApi {
   /** whether the launch and periodic background update checks run (default on) */
   getAutoUpdateCheck(): Promise<boolean>
   setAutoUpdateCheck(on: boolean): Promise<void>
+  /** background checks download quietly and install on quit instead of showing the card (default off) */
+  getSilentInstallUpdate(): Promise<boolean>
+  setSilentInstallUpdate(on: boolean): Promise<void>
   /** a tab asked for the settings modal (composer model chip → AI Model section) */
   onOpenSettings(handler: (target: { section: string }) => void): () => void
   /** app version (from package.json / electron app.getVersion) */
@@ -426,6 +429,8 @@ export interface HomeApi {
   openMcpLogFile(): Promise<void>
   /** name on comments and tracked changes; `value` is the stored override ('' = use `fallback`, the OS account) */
   getAuthorName(): Promise<AuthorNameSetting>
+  getLegacyImportPrompt(): Promise<boolean>
+  setLegacyImportPrompt(prompt: boolean): Promise<boolean>
   /** persist; broadcasts 'app:author-name-changed' (the effective name) to all web contents */
   setAuthorName(value: string): Promise<AuthorNameSetting>
   /** AI panel text size + chat-input spellcheck (persisted in userData/app-settings.json) */
@@ -616,6 +621,8 @@ export const HOME_CHANNELS = {
   setUpdateChannel: 'home:set-update-channel',
   getAutoUpdateCheck: 'home:get-auto-update-check',
   setAutoUpdateCheck: 'home:set-auto-update-check',
+  getSilentInstallUpdate: 'home:get-silent-install-update',
+  setSilentInstallUpdate: 'home:set-silent-install-update',
   openSettings: 'home:open-settings',
   getAppVersion: 'home:get-app-version',
   onboardingSeen: 'home:onboarding-seen',
@@ -636,6 +643,8 @@ export const HOME_CHANNELS = {
   clearMcpLogs: 'home:clear-mcp-logs',
   openMcpLogFile: 'home:open-mcp-log-file',
   getAuthorName: 'home:get-author-name',
+  getLegacyImportPrompt: 'home:get-legacy-import-prompt',
+  setLegacyImportPrompt: 'home:set-legacy-import-prompt',
   setAuthorName: 'home:set-author-name',
   getAiPanelPrefs: 'home:get-ai-panel-prefs',
   setAiPanelPrefs: 'home:set-ai-panel-prefs',

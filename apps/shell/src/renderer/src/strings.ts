@@ -186,6 +186,9 @@ export const strings = {
     setAutoUpdateCheck: '自动检查更新',
     setAutoUpdateCheckDesc:
       '关闭后，启动时和后台都不再检查新版本；仍可在“帮助 › 检查更新”中手动检查。',
+    setSilentInstall: '静默安装更新',
+    setSilentInstallDesc:
+      '开启后，后台检查到新版本会静默下载，并在你退出应用时安装，使用过程中不会打扰或重启。关闭则弹出更新提示，由你决定何时更新。',
     updateChannel: '更新通道',
     channelStable: '稳定版',
     channelBeta: 'Beta 版',
@@ -222,6 +225,9 @@ export const strings = {
     aiFontSizeXLarge: '特大',
     aiFontSizeCustom: '自定义',
     setAiSpellcheck: 'AI 对话拼写检查',
+    setLegacyImportPrompt: '打开旧格式前先提示',
+    setLegacyImportPromptDesc:
+      '打开 .doc、.odt、.hwp、.ods、.odp 等旧格式文件时，先说明哪些内容会转换过来。关闭后直接进入另存为。',
     setDefaultApp: '设为 Office 文档默认程序',
     setDefaultAppDesc: '双击 .docx、.xlsx、.pptx 文件时用 SelfOffice 打开。',
     setDefaultAppIs: 'SelfOffice 已是默认程序。',
@@ -236,7 +242,8 @@ export const strings = {
     setAiOpenInNewDocs: '新文档中打开 AI 面板',
     setAiOpenInNewDocsDesc: '关闭后，新打开的文档默认收起 AI 面板；需要时点一下即可展开。',
     setAuthorName: '用户名',
-    setAuthorNameDesc: '作为批注和修订的作者显示在 Docs、Sheets、Slides 中。留空则使用电脑账户名。',
+    setAuthorNameDesc:
+      '作为批注和修订的作者显示在 Docs、Sheets、Slides、PDF 中。留空则使用电脑账户名。',
     settings: '设置',
     setSecAccount: '账户',
     setSecGeneral: '通用',
@@ -278,6 +285,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'skill 未安装',
     intgStateInstalled: '已安装 skill {v} · 下次对话即可使用',
+    intgLegacyTitle: '旧版 skill 副本',
+    intgLegacyDesc:
+      'SelfOffice 以前会把副本写进每个工具自己的目录。现在还有 {n} 份留在那里:工具仍在读取它们,所以永远拿不到当前版本。',
+    intgLegacyClean: '删除旧副本',
+    intgLegacyCleaned: '已删除 {n} 份旧副本,{k} 份被手动改过的保留未动。',
+    intgLegacyFailed: '删除旧副本失败:{msg}',
     intgOtherToggle: '没有列出我的助手',
     intgOtherDesc: '以下三种方式任选一种即可。装的是同一份 skill，不需要重复操作。',
     intgOtherFolderTitle: '任何能读取 SKILL.md 目录的助手',
@@ -293,7 +306,7 @@ export const strings = {
     intgExample1: '把 ~/Downloads/report.md 转成 Word 文档',
     intgExample2: '做一份 6 页的幻灯片，介绍我们第三季度的业绩',
     intgExample3: '把 budget.xlsx 转成 PDF，并在 SelfOffice 里打开',
-    intgStep2Note: '助手会自己调用 selfoffice 命令行，你不需要输入任何命令。',
+    intgStep2Note: '助手会自己调用 SelfOffice（命令行或 MCP），你不需要输入任何命令。',
     intgCliPartTitle: 'CLI · 命令行 + skill',
     intgCliPartDesc:
       '适合能运行终端命令的助手（Claude Code、Codex、Cursor 等）。安装 skill 后，助手会自己调用 selfoffice 命令行创建、转换、读取和编辑文件，你不需要输入任何命令。',
@@ -350,6 +363,8 @@ export const strings = {
     setAiProvider: '模型服务商',
     setAiModelId: '模型',
     setAiModelSearch: '搜索模型…',
+    setAiThinking: '思考强度',
+    setAiThinkingDefault: '跟随模型默认',
     setAiApiKey: 'API Key',
     setAiKeyHint: '密钥仅保存在本机。',
     setAiBaseUrl: 'Base URL',
@@ -378,6 +393,7 @@ export const strings = {
     setSecAiMedia: '生图、媒体与搜索',
     setAiSearchSerperHint: 'Serper 用你的 key 同时提供网页与图片搜索。',
     setAiSearchSerplyHint: 'Serply 用你的 key 同时提供网页与图片搜索。',
+    setAiSearchSearchApiHint: 'SearchApi 用你的 key 同时提供网页与图片搜索。',
     setAiSearchTavilyHint: 'Tavily 用你的 key 提供网页搜索；图片搜索改用免费来源。',
     setAiSearchParallelHint:
       '留空 API key 即可免费使用 Parallel 搜索（用量有限）。填写 key 可使用你的 Parallel 账户。图片搜索使用其他来源。',
@@ -437,6 +453,7 @@ export const strings = {
     intgSkillsRead: '详情',
     intgSkillsMine: '我的技能',
     intgSkillsRecommended: '推荐',
+    intgSkillsCatAll: '全部',
     intgSkillsCatOffice: '办公',
     intgSkillsCatBusiness: '商务',
     intgSkillsCatData: '数据',
@@ -669,6 +686,9 @@ export const strings = {
     setAutoUpdateCheck: 'Check for updates automatically',
     setAutoUpdateCheckDesc:
       'When off, SelfOffice no longer checks for new versions at launch or in the background. You can still check from Help › Check for Updates.',
+    setSilentInstall: 'Install updates silently',
+    setSilentInstallDesc:
+      'When on, a new version found by the background check is downloaded quietly and installed when you quit SelfOffice; nothing interrupts you while you work. When off, an update prompt lets you decide when to update.',
     updateChannel: 'Update Channel',
     channelStable: 'Stable',
     channelBeta: 'Beta',
@@ -707,6 +727,9 @@ export const strings = {
     aiFontSizeXLarge: 'Extra large',
     aiFontSizeCustom: 'Custom',
     setAiSpellcheck: 'Spell check in AI chat',
+    setLegacyImportPrompt: 'Ask before converting legacy files',
+    setLegacyImportPromptDesc:
+      'Explain what carries over before opening .doc, .odt, .hwp, .ods or .odp files. When off, Save As opens right away.',
     setDefaultApp: 'Default app for Office documents',
     setDefaultAppDesc: 'Open .docx, .xlsx and .pptx files in SelfOffice when double-clicked.',
     setDefaultAppIs: 'SelfOffice is already the default.',
@@ -723,7 +746,7 @@ export const strings = {
       'When off, newly opened documents start with the AI panel collapsed; it is one click away when needed.',
     setAuthorName: 'User name',
     setAuthorNameDesc:
-      'Shown as the author of comments and tracked changes in Docs, Sheets and Slides. Leave blank to use your computer account name.',
+      'Shown as the author of comments and tracked changes in Docs, Sheets, Slides and PDF. Leave blank to use your computer account name.',
     settings: 'Settings',
     setSecAccount: 'Account',
     setSecGeneral: 'General',
@@ -769,6 +792,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill not installed',
     intgStateInstalled: 'Skill {v} installed · ready in your next chat',
+    intgLegacyTitle: 'Older skill copies',
+    intgLegacyDesc:
+      'SelfOffice used to write a copy into the folder of each tool. {n} of them are still there: the tool keeps reading them, so they never get the current skill.',
+    intgLegacyClean: 'Remove old copies',
+    intgLegacyCleaned: 'Removed {n} old copies, {k} edited by hand left in place.',
+    intgLegacyFailed: 'Could not remove the old copies: {msg}',
     intgOtherToggle: 'My assistant is not listed',
     intgOtherDesc:
       'Pick any one of these three ways. They all install the same skill, so there is no need to do more than one.',
@@ -787,7 +816,7 @@ export const strings = {
     intgExample2: 'Make a 6-slide deck about our Q3 results',
     intgExample3: 'Convert budget.xlsx to PDF and open it in SelfOffice',
     intgStep2Note:
-      'The assistant runs the selfoffice command line itself; you never have to type it.',
+      'The assistant calls SelfOffice itself, through the command line or MCP; you never have to type a command.',
     intgCliPartTitle: 'CLI · command line + skill',
     intgCliPartDesc:
       'For assistants that can run terminal commands (Claude Code, Codex, Cursor and others). Once the skill is installed, the assistant calls the selfoffice command line itself to create, convert, read and edit files; you never type a command.',
@@ -845,6 +874,8 @@ export const strings = {
     setAiProvider: 'Provider',
     setAiModelId: 'Model',
     setAiModelSearch: 'Search models…',
+    setAiThinking: 'Thinking effort',
+    setAiThinkingDefault: 'Model default',
     setAiApiKey: 'API Key',
     setAiKeyHint: 'Stored only on this device.',
     setAiBaseUrl: 'Base URL',
@@ -873,6 +904,7 @@ export const strings = {
     setSecAiMedia: 'AI Media & Search',
     setAiSearchSerperHint: 'Serper serves both web and image search with your key.',
     setAiSearchSerplyHint: 'Serply serves both web and image search with your key.',
+    setAiSearchSearchApiHint: 'SearchApi serves both web and image search with your key.',
     setAiSearchTavilyHint:
       'Tavily serves web search with your key; image search falls back to free sources.',
     setAiSearchParallelHint:
@@ -934,6 +966,7 @@ export const strings = {
     intgSkillsRead: 'Details',
     intgSkillsMine: 'My skills',
     intgSkillsRecommended: 'Recommended',
+    intgSkillsCatAll: 'All',
     intgSkillsCatOffice: 'Office',
     intgSkillsCatBusiness: 'Business',
     intgSkillsCatData: 'Data',
@@ -1169,6 +1202,9 @@ export const strings = {
     setAutoUpdateCheck: 'Tự động kiểm tra cập nhật',
     setAutoUpdateCheckDesc:
       'Khi tắt, SelfOffice không còn kiểm tra phiên bản mới khi khởi động hoặc chạy nền. Bạn vẫn có thể kiểm tra trong Trợ giúp › Kiểm tra bản cập nhật.',
+    setSilentInstall: 'Cài đặt cập nhật âm thầm',
+    setSilentInstallDesc:
+      'Khi bật, phiên bản mới được phát hiện ở chế độ nền sẽ tự tải âm thầm và cài khi bạn thoát SelfOffice; không làm gián đoạn khi bạn đang làm việc. Khi tắt, một lời nhắc cập nhật sẽ hiện để bạn tự quyết định.',
     updateChannel: 'Kênh cập nhật',
     channelStable: 'Ổn định',
     channelBeta: 'Beta',
@@ -1207,6 +1243,9 @@ export const strings = {
     aiFontSizeXLarge: 'Rất lớn',
     aiFontSizeCustom: 'Tùy chỉnh',
     setAiSpellcheck: 'Kiểm tra chính tả trong trò chuyện AI',
+    setLegacyImportPrompt: 'Hỏi trước khi chuyển đổi tệp cũ',
+    setLegacyImportPromptDesc:
+      'Giải thích nội dung được giữ lại trước khi mở tệp .doc, .odt, .hwp, .ods hoặc .odp. Khi tắt, hộp thoại Lưu dưới dạng mở ngay.',
     setDefaultApp: 'Ứng dụng mặc định cho tài liệu Office',
     setDefaultAppDesc: 'Mở các tệp .docx, .xlsx và .pptx bằng SelfOffice khi bấm đúp.',
     setDefaultAppIs: 'SelfOffice đã là ứng dụng mặc định.',
@@ -1223,7 +1262,7 @@ export const strings = {
       'Khi tắt, tài liệu mới mở sẽ thu gọn bảng AI; chỉ cần một lần bấm để mở lại khi cần.',
     setAuthorName: 'Tên người dùng',
     setAuthorNameDesc:
-      'Hiển thị là tác giả của nhận xét và thay đổi được theo dõi trong Docs, Sheets và Slides. Để trống để dùng tên tài khoản máy tính.',
+      'Hiển thị là tác giả của nhận xét và thay đổi được theo dõi trong Docs, Sheets, Slides và PDF. Để trống để dùng tên tài khoản máy tính.',
     settings: 'Cài đặt',
     setSecAccount: 'Tài khoản',
     setSecGeneral: 'Chung',
@@ -1269,6 +1308,12 @@ export const strings = {
     intgSkillVersion: 'kỹ năng {v}',
     intgStateMissing: 'Chưa cài đặt kỹ năng',
     intgStateInstalled: 'Đã cài đặt kỹ năng {v} · sẵn sàng cho cuộc trò chuyện tiếp theo của bạn',
+    intgLegacyTitle: 'Bản sao skill cũ',
+    intgLegacyDesc:
+      'Trước đây SelfOffice ghi một bản sao vào thư mục riêng của từng công cụ. Còn {n} bản vẫn nằm đó: công cụ vẫn đọc chúng, nên chúng không bao giờ có bản skill hiện hành.',
+    intgLegacyClean: 'Xóa bản sao cũ',
+    intgLegacyCleaned: 'Đã xóa {n} bản sao cũ, giữ lại {k} bản đã sửa tay.',
+    intgLegacyFailed: 'Không xóa được bản sao cũ: {msg}',
     intgOtherToggle: 'Trợ lý của tôi không có trong danh sách',
     intgOtherDesc:
       'Chọn bất kỳ cách nào trong ba cách này. Tất cả đều cài đặt cùng một kỹ năng, vì vậy không cần làm nhiều hơn một cách.',
@@ -1287,7 +1332,8 @@ export const strings = {
     intgExample1: 'Chuyển đổi ~/Downloads/report.md thành tài liệu Word',
     intgExample2: 'Tạo bài thuyết trình 6 trang trình bày về kết quả quý 3 của chúng tôi',
     intgExample3: 'Chuyển đổi budget.xlsx sang PDF và mở trong SelfOffice',
-    intgStep2Note: 'Trợ lý tự chạy dòng lệnh selfoffice; bạn không bao giờ phải nhập lệnh.',
+    intgStep2Note:
+      'Trợ lý tự gọi SelfOffice qua dòng lệnh hoặc MCP; bạn không bao giờ phải nhập lệnh.',
     intgCliPartTitle: 'CLI · dòng lệnh + kỹ năng',
     intgCliPartDesc:
       'Dành cho các trợ lý có thể chạy lệnh terminal (Claude Code, Codex, Cursor và các trợ lý khác). Khi kỹ năng đã được cài đặt, trợ lý sẽ tự gọi dòng lệnh selfoffice để tạo, chuyển đổi, đọc và chỉnh sửa tệp; bạn không cần nhập lệnh.',
@@ -1347,6 +1393,8 @@ export const strings = {
     setAiProvider: 'Nhà cung cấp',
     setAiModelId: 'Mô hình',
     setAiModelSearch: 'Tìm mô hình…',
+    setAiThinking: 'Mức suy luận',
+    setAiThinkingDefault: 'Mặc định của mô hình',
     setAiApiKey: 'Khóa API',
     setAiKeyHint: 'Chỉ được lưu trữ trên thiết bị này.',
     setAiBaseUrl: 'URL cơ sở',
@@ -1375,6 +1423,7 @@ export const strings = {
     setSecAiMedia: 'Phương tiện AI & Tìm kiếm',
     setAiSearchSerperHint: 'Serper cung cấp cả tìm kiếm web và hình ảnh bằng khóa của bạn.',
     setAiSearchSerplyHint: 'Serply cung cấp cả tìm kiếm web và hình ảnh bằng key của bạn.',
+    setAiSearchSearchApiHint: 'SearchApi cung cấp cả tìm kiếm web và hình ảnh bằng key của bạn.',
     setAiSearchTavilyHint:
       'Tavily cung cấp tìm kiếm web bằng khóa của bạn; tìm kiếm hình ảnh sẽ chuyển sang dùng các nguồn miễn phí.',
     setAiSearchParallelHint:
@@ -1436,6 +1485,7 @@ export const strings = {
     intgSkillsRead: 'Chi tiết',
     intgSkillsMine: 'Kỹ năng của tôi',
     intgSkillsRecommended: 'Đề xuất',
+    intgSkillsCatAll: 'Tất cả',
     intgSkillsCatOffice: 'Văn phòng',
     intgSkillsCatBusiness: 'Kinh doanh',
     intgSkillsCatData: 'Dữ liệu',
@@ -1672,6 +1722,9 @@ export const strings = {
     setAutoUpdateCheck: 'Güncellemeleri otomatik denetle',
     setAutoUpdateCheckDesc:
       'Kapalıyken SelfOffice açılışta veya arka planda yeni sürümleri denetlemez. Yardım › Güncellemeleri Denetle üzerinden yine de denetleyebilirsiniz.',
+    setSilentInstall: 'Güncellemeleri sessizce yükle',
+    setSilentInstallDesc:
+      'Açıkken arka plan denetiminin bulduğu yeni sürüm sessizce indirilir ve SelfOffice’ten çıkarken yüklenir; çalışırken hiçbir şey sizi kesmez. Kapalıyken bir güncelleme bildirimi ne zaman güncelleyeceğinize karar vermenizi sağlar.',
     updateChannel: 'Güncelleme Kanalı',
     channelStable: 'Kararlı',
     channelBeta: 'Beta',
@@ -1710,6 +1763,9 @@ export const strings = {
     aiFontSizeXLarge: 'Çok büyük',
     aiFontSizeCustom: 'Özel',
     setAiSpellcheck: 'AI sohbetinde yazım denetimi',
+    setLegacyImportPrompt: 'Eski dosyaları dönüştürmeden önce sor',
+    setLegacyImportPromptDesc:
+      '.doc, .odt, .hwp, .ods veya .odp dosyalarını açmadan önce nelerin aktarılacağını açıklar. Kapalıyken doğrudan Farklı Kaydet açılır.',
     setDefaultApp: 'Office belgeleri için varsayılan uygulama',
     setDefaultAppDesc: '.docx, .xlsx ve .pptx dosyalarını çift tıklandığında SelfOffice ile açar.',
     setDefaultAppIs: 'SelfOffice zaten varsayılan.',
@@ -1726,7 +1782,7 @@ export const strings = {
       'Kapalıyken yeni açılan belgeler AI paneli daraltılmış olarak başlar; gerektiğinde tek tıkla açılır.',
     setAuthorName: 'Kullanıcı adı',
     setAuthorNameDesc:
-      'Docs, Sheets ve Slides’ta açıklamaların ve izlenen değişikliklerin yazarı olarak gösterilir. Bilgisayar hesabınızın adını kullanmak için boş bırakın.',
+      'Docs, Sheets, Slides ve PDF’de açıklamaların ve izlenen değişikliklerin yazarı olarak gösterilir. Bilgisayar hesabınızın adını kullanmak için boş bırakın.',
     settings: 'Ayarlar',
     setSecAccount: 'Hesap',
     setSecGeneral: 'Genel',
@@ -1772,6 +1828,12 @@ export const strings = {
     intgSkillVersion: 'beceri {v}',
     intgStateMissing: 'Beceri yüklü değil',
     intgStateInstalled: 'Beceri {v} yüklü · bir sonraki sohbetinizde hazır',
+    intgLegacyTitle: 'Eski skill kopyaları',
+    intgLegacyDesc:
+      'SelfOffice eskiden her aracın kendi klasörüne bir kopya yazıyordu. Hâlâ orada {n} tane var: araç bunları okumaya devam ediyor, bu yüzden hiçbir zaman güncel skilli göremiyor.',
+    intgLegacyClean: 'Eski kopyaları kaldır',
+    intgLegacyCleaned: '{n} eski kopya kaldırıldı, elle düzenlenen {k} tanesi yerinde bırakıldı.',
+    intgLegacyFailed: 'Eski kopyalar kaldırılamadı: {msg}',
     intgOtherToggle: 'Asistanım listede yok',
     intgOtherDesc:
       'Bu üç yoldan herhangi birini seçin. Hepsi aynı beceriyi yükler, bu yüzden birden fazlasını yapmanıza gerek yok.',
@@ -1790,7 +1852,7 @@ export const strings = {
     intgExample2: '3. çeyrek sonuçlarımız hakkında 6 slaytlık bir sunu hazırla',
     intgExample3: 'budget.xlsx dosyasını PDF’e dönüştür ve SelfOffice’te aç',
     intgStep2Note:
-      'selfoffice komut satırını asistan kendisi çalıştırır; sizin yazmanız hiç gerekmez.',
+      'Asistan SelfOffice’i komut satırı veya MCP üzerinden kendisi çağırır; sizin yazmanız hiç gerekmez.',
     intgCliPartTitle: 'CLI · komut satırı + beceri',
     intgCliPartDesc:
       'Terminal komutları çalıştırabilen asistanlar için (Claude Code, Codex, Cursor ve diğerleri). Beceri yüklendikten sonra asistan, dosya oluşturmak, dönüştürmek, okumak ve düzenlemek için selfoffice komut satırını kendisi çağırır; siz hiç komut yazmazsınız.',
@@ -1850,6 +1912,8 @@ export const strings = {
     setAiProvider: 'Sağlayıcı',
     setAiModelId: 'Model',
     setAiModelSearch: 'Model ara…',
+    setAiThinking: 'Düşünma çabası',
+    setAiThinkingDefault: 'Model varsayılanı',
     setAiApiKey: 'API Anahtarı',
     setAiKeyHint: 'Yalnızca bu cihazda saklanır.',
     setAiBaseUrl: 'Temel URL',
@@ -1880,6 +1944,7 @@ export const strings = {
     setSecAiMedia: 'AI Medya ve Arama',
     setAiSearchSerperHint: 'Serper, anahtarınızla hem web hem görüntü aramasını sağlar.',
     setAiSearchSerplyHint: 'Serply, anahtarınızla hem web hem görüntü aramasını sağlar.',
+    setAiSearchSearchApiHint: 'SearchApi, anahtarınızla hem web hem görüntü aramasını sağlar.',
     setAiSearchTavilyHint:
       'Tavily, anahtarınızla web aramasını sağlar; görüntü araması ücretsiz kaynaklara döner.',
     setAiSearchParallelHint:
@@ -1941,6 +2006,7 @@ export const strings = {
     intgSkillsRead: 'Ayrıntılar',
     intgSkillsMine: 'Becerilerim',
     intgSkillsRecommended: 'Önerilen',
+    intgSkillsCatAll: 'Tümü',
     intgSkillsCatOffice: 'Ofis',
     intgSkillsCatBusiness: 'İş',
     intgSkillsCatData: 'Veri',
@@ -2186,6 +2252,9 @@ export const strings = {
     setAutoUpdateCheck: 'アップデートを自動で確認',
     setAutoUpdateCheckDesc:
       'オフにすると、起動時やバックグラウンドで新しいバージョンを確認しなくなります。「ヘルプ › 更新を確認」から手動で確認できます。',
+    setSilentInstall: 'アップデートをサイレントインストール',
+    setSilentInstallDesc:
+      'オンにすると、バックグラウンドで見つかった新バージョンをサイレントにダウンロードし、SelfOffice の終了時にインストールします。作業中に中断や再起動はありません。オフの場合は更新の案内が表示され、更新のタイミングを自分で決められます。',
     updateChannel: '更新チャネル',
     channelStable: '安定版',
     channelBeta: 'ベータ版',
@@ -2224,6 +2293,9 @@ export const strings = {
     aiFontSizeXLarge: '特大',
     aiFontSizeCustom: 'カスタム',
     setAiSpellcheck: 'AI チャットのスペルチェック',
+    setLegacyImportPrompt: '旧形式ファイルの変換前に確認する',
+    setLegacyImportPromptDesc:
+      '.doc、.odt、.hwp、.ods、.odp を開く前に、引き継がれる内容を説明します。オフにすると直接「名前を付けて保存」が開きます。',
     setDefaultApp: 'Office 文書の既定のアプリ',
     setDefaultAppDesc:
       '.docx、.xlsx、.pptx ファイルをダブルクリックしたとき SelfOffice で開きます。',
@@ -2241,7 +2313,7 @@ export const strings = {
       'オフにすると、新しく開いたドキュメントは AI パネルを折りたたんだ状態で始まります。必要なときはワンクリックで開けます。',
     setAuthorName: 'ユーザー名',
     setAuthorNameDesc:
-      'Docs、Sheets、Slides でコメントと変更履歴の作成者として表示されます。空欄の場合はパソコンのアカウント名を使います。',
+      'Docs、Sheets、Slides、PDF でコメントと変更履歴の作成者として表示されます。空欄の場合はパソコンのアカウント名を使います。',
     settings: '設定',
     setSecAccount: 'アカウント',
     setSecGeneral: '一般',
@@ -2287,6 +2359,13 @@ export const strings = {
     intgSkillVersion: 'スキル {v}',
     intgStateMissing: 'スキル未インストール',
     intgStateInstalled: 'スキル {v} をインストール済み · 次のチャットから使えます',
+    intgLegacyTitle: '古い skill のコピー',
+    intgLegacyDesc:
+      'SelfOffice はかつて各ツールのフォルダーごとにコピーを書き込んでいました。まだ {n} 個残っています:ツールはそれらを読み続けるため、現在の skill に更新されません。',
+    intgLegacyClean: '古いコピーを削除',
+    intgLegacyCleaned:
+      '古いコピーを {n} 個削除しました。手動で編集した {k} 個はそのまま残しました。',
+    intgLegacyFailed: '古いコピーを削除できませんでした: {msg}',
     intgOtherToggle: '使っているアシスタントが一覧にない',
     intgOtherDesc:
       '次の 3 つの方法からどれか 1 つを選んでください。どれも同じスキルをインストールするので、複数行う必要はありません。',
@@ -2305,7 +2384,7 @@ export const strings = {
     intgExample2: '第 3 四半期の業績について 6 枚のスライドを作って',
     intgExample3: 'budget.xlsx を PDF に変換して SelfOffice で開いて',
     intgStep2Note:
-      'selfoffice コマンドラインはアシスタントが自分で実行します。あなたが入力する必要はありません。',
+      'アシスタントがコマンドラインまたは MCP 経由で SelfOffice を自分で呼び出します。あなたが入力する必要はありません。',
     intgCliPartTitle: 'CLI · コマンドライン + skill',
     intgCliPartDesc:
       'ターミナルコマンドを実行できるアシスタント（Claude Code、Codex、Cursor など）向け。skill をインストールすると、アシスタントが自分で selfoffice コマンドラインを呼び出してファイルを作成・変換・読み取り・編集します。コマンドを入力する必要はありません。',
@@ -2366,6 +2445,8 @@ export const strings = {
     setAiProvider: 'プロバイダー',
     setAiModelId: 'モデル',
     setAiModelSearch: 'モデルを検索…',
+    setAiThinking: '思考の強さ',
+    setAiThinkingDefault: 'モデルのデフォルト',
     setAiApiKey: 'APIキー',
     setAiKeyHint: 'キーはこの端末にのみ保存されます。',
     setAiBaseUrl: 'Base URL',
@@ -2393,6 +2474,7 @@ export const strings = {
     setSecAiMedia: 'AI メディアと検索',
     setAiSearchSerperHint: 'Serper はあなたのキーで Web 検索と画像検索の両方を提供します。',
     setAiSearchSerplyHint: 'Serply はあなたのキーで Web 検索と画像検索の両方を提供します。',
+    setAiSearchSearchApiHint: 'SearchApi はあなたのキーで Web 検索と画像検索の両方を提供します。',
     setAiSearchTavilyHint:
       'Tavily はあなたのキーで Web 検索を提供します。画像検索は無料ソースにフォールバックします。',
     setAiSearchParallelHint:
@@ -2457,6 +2539,7 @@ export const strings = {
     intgSkillsRead: '詳細',
     intgSkillsMine: 'マイスキル',
     intgSkillsRecommended: 'おすすめ',
+    intgSkillsCatAll: 'すべて',
     intgSkillsCatOffice: 'オフィス',
     intgSkillsCatBusiness: 'ビジネス',
     intgSkillsCatData: 'データ',
@@ -2698,6 +2781,9 @@ export const strings = {
     setAutoUpdateCheck: '자동으로 업데이트 확인',
     setAutoUpdateCheckDesc:
       '끄면 실행 시나 백그라운드에서 새 버전을 확인하지 않습니다. 도움말 › 업데이트 확인에서 직접 확인할 수 있습니다.',
+    setSilentInstall: '업데이트 자동 설치',
+    setSilentInstallDesc:
+      '켜면 백그라운드 검사에서 발견된 새 버전을 조용히 다운로드하고 SelfOffice를 종료할 때 설치합니다. 작업 중에는 방해하거나 다시 시작하지 않습니다. 끄면 업데이트 알림이 표시되어 직접 시점을 정할 수 있습니다.',
     updateChannel: '업데이트 채널',
     channelStable: '안정 버전',
     channelBeta: '베타 버전',
@@ -2735,6 +2821,9 @@ export const strings = {
     aiFontSizeXLarge: '더 크게',
     aiFontSizeCustom: '사용자 지정',
     setAiSpellcheck: 'AI 채팅 맞춤법 검사',
+    setLegacyImportPrompt: '이전 형식 파일 변환 전 확인',
+    setLegacyImportPromptDesc:
+      '.doc, .odt, .hwp, .ods, .odp 파일을 열기 전에 어떤 내용이 유지되는지 안내합니다. 끄면 바로 다른 이름으로 저장이 열립니다.',
     setDefaultApp: 'Office 문서 기본 앱',
     setDefaultAppDesc: '.docx, .xlsx, .pptx 파일을 두 번 클릭하면 SelfOffice로 엽니다.',
     setDefaultAppIs: 'SelfOffice가 이미 기본 앱입니다.',
@@ -2751,7 +2840,7 @@ export const strings = {
       '끄면 새로 여는 문서는 AI 패널이 접힌 상태로 시작합니다. 필요할 때 한 번 클릭하면 열립니다.',
     setAuthorName: '사용자 이름',
     setAuthorNameDesc:
-      'Docs, Sheets, Slides에서 메모와 변경 내용 추적의 작성자로 표시됩니다. 비워 두면 컴퓨터 계정 이름을 사용합니다.',
+      'Docs, Sheets, Slides, PDF에서 메모와 변경 내용 추적의 작성자로 표시됩니다. 비워 두면 컴퓨터 계정 이름을 사용합니다.',
     settings: '설정',
     setSecAccount: '계정',
     setSecGeneral: '일반',
@@ -2796,6 +2885,12 @@ export const strings = {
     intgSkillVersion: '스킬 {v}',
     intgStateMissing: '스킬 미설치',
     intgStateInstalled: '스킬 {v} 설치됨 · 다음 대화부터 사용 가능',
+    intgLegacyTitle: '오래된 skill 사본',
+    intgLegacyDesc:
+      'SelfOffice는 예전에 각 도구 폴더마다 사본을 썼습니다. 아직 {n}개가 남아 있습니다: 도구가 계속 읽기 때문에 현재 skill로 갱신되지 않습니다.',
+    intgLegacyClean: '오래된 사본 삭제',
+    intgLegacyCleaned: '오래된 사본 {n}개를 삭제했고, 직접 수정한 {k}개는 그대로 두었습니다.',
+    intgLegacyFailed: '오래된 사본을 삭제하지 못했습니다: {msg}',
     intgOtherToggle: '내 어시스턴트가 목록에 없음',
     intgOtherDesc:
       '다음 세 가지 방법 중 하나만 선택하세요. 모두 같은 스킬을 설치하므로 여러 번 할 필요가 없습니다.',
@@ -2813,7 +2908,7 @@ export const strings = {
     intgExample2: '3분기 실적을 소개하는 6장짜리 슬라이드를 만들어 줘',
     intgExample3: 'budget.xlsx를 PDF로 변환해서 SelfOffice에서 열어 줘',
     intgStep2Note:
-      'selfoffice 명령줄은 어시스턴트가 직접 실행하므로 여러분이 입력할 필요가 없습니다.',
+      '어시스턴트가 명령줄 또는 MCP를 통해 SelfOffice를 직접 호출하므로 여러분이 입력할 필요가 없습니다.',
     intgCliPartTitle: 'CLI · 명령줄 + skill',
     intgCliPartDesc:
       '터미널 명령을 실행할 수 있는 어시스턴트(Claude Code, Codex, Cursor 등)용입니다. skill을 설치하면 어시스턴트가 스스로 selfoffice 명령줄을 호출해 파일을 만들고 변환하고 읽고 편집합니다. 명령을 직접 입력할 필요가 없습니다.',
@@ -2872,6 +2967,8 @@ export const strings = {
     setAiProvider: '제공업체',
     setAiModelId: '모델',
     setAiModelSearch: '모델 검색…',
+    setAiThinking: '사고 강도',
+    setAiThinkingDefault: '모델 기본값',
     setAiApiKey: 'API 키',
     setAiKeyHint: '키는 이 기기에만 저장됩니다.',
     setAiBaseUrl: 'Base URL',
@@ -2899,6 +2996,7 @@ export const strings = {
     setSecAiMedia: 'AI 미디어 및 검색',
     setAiSearchSerperHint: 'Serper는 내 키로 웹 검색과 이미지 검색을 모두 제공합니다.',
     setAiSearchSerplyHint: 'Serply는 내 키로 웹 검색과 이미지 검색을 모두 제공합니다.',
+    setAiSearchSearchApiHint: 'SearchApi는 내 키로 웹 검색과 이미지 검색을 모두 제공합니다.',
     setAiSearchTavilyHint:
       'Tavily는 내 키로 웹 검색을 제공합니다. 이미지 검색은 무료 소스로 대체됩니다.',
     setAiSearchParallelHint:
@@ -2963,6 +3061,7 @@ export const strings = {
     intgSkillsRead: '상세',
     intgSkillsMine: '내 스킬',
     intgSkillsRecommended: '추천',
+    intgSkillsCatAll: '전체',
     intgSkillsCatOffice: '사무',
     intgSkillsCatBusiness: '비즈니스',
     intgSkillsCatData: '데이터',
@@ -3209,6 +3308,9 @@ export const strings = {
     setAutoUpdateCheck: 'Rechercher automatiquement les mises à jour',
     setAutoUpdateCheckDesc:
       'Désactivé, SelfOffice ne recherche plus de nouvelle version au démarrage ni en arrière-plan. Vous pouvez toujours vérifier via Aide › Rechercher des mises à jour.',
+    setSilentInstall: 'Installer les mises à jour silencieusement',
+    setSilentInstallDesc:
+      'Si activé, une nouvelle version détectée en arrière-plan est téléchargée silencieusement et installée à la fermeture de SelfOffice ; rien ne vous interrompt pendant le travail. Sinon, une invite de mise à jour vous laisse choisir le moment.',
     updateChannel: 'Canal de mise à jour',
     channelStable: 'Stable',
     channelBeta: 'Bêta',
@@ -3247,6 +3349,9 @@ export const strings = {
     aiFontSizeXLarge: 'Très grande',
     aiFontSizeCustom: 'Personnalisé',
     setAiSpellcheck: 'Correction orthographique dans le chat IA',
+    setLegacyImportPrompt: 'Demander avant de convertir les anciens fichiers',
+    setLegacyImportPromptDesc:
+      'Explique ce qui est conservé avant d’ouvrir un fichier .doc, .odt, .hwp, .ods ou .odp. Désactivé, Enregistrer sous s’ouvre directement.',
     setDefaultApp: 'Application par défaut pour les documents Office',
     setDefaultAppDesc: 'Ouvrir les fichiers .docx, .xlsx et .pptx dans SelfOffice par double-clic.',
     setDefaultAppIs: 'SelfOffice est déjà l’application par défaut.',
@@ -3263,7 +3368,7 @@ export const strings = {
       "Désactivé : les documents nouvellement ouverts démarrent avec le panneau IA replié ; un clic suffit pour l'afficher.",
     setAuthorName: 'Nom d’utilisateur',
     setAuthorNameDesc:
-      'Affiché comme auteur des commentaires et des modifications suivies dans Docs, Sheets et Slides. Laissez vide pour utiliser le nom de votre compte.',
+      'Affiché comme auteur des commentaires et des modifications suivies dans Docs, Sheets, Slides et PDF. Laissez vide pour utiliser le nom de votre compte.',
     settings: 'Paramètres',
     setSecAccount: 'Compte',
     setSecGeneral: 'Général',
@@ -3310,6 +3415,13 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill non installé',
     intgStateInstalled: 'Skill {v} installé · prêt pour votre prochaine discussion',
+    intgLegacyTitle: 'Anciennes copies du skill',
+    intgLegacyDesc:
+      "SelfOffice écrivait autrefois une copie dans le dossier de chaque outil. Il en reste {n} : l'outil continue de les lire, donc elles ne reçoivent jamais le skill actuel.",
+    intgLegacyClean: 'Supprimer les anciennes copies',
+    intgLegacyCleaned:
+      '{n} anciennes copies supprimées, {k} modifiées à la main laissées en place.',
+    intgLegacyFailed: 'Impossible de supprimer les anciennes copies : {msg}',
     intgOtherToggle: "Mon assistant n'est pas dans la liste",
     intgOtherDesc:
       "Choisissez une seule de ces trois méthodes. Elles installent toutes le même skill : inutile d'en faire plusieurs.",
@@ -3329,7 +3441,7 @@ export const strings = {
     intgExample2: 'Prépare une présentation de 6 diapositives sur nos résultats du T3',
     intgExample3: 'Convertis budget.xlsx en PDF et ouvre-le dans SelfOffice',
     intgStep2Note:
-      "L'assistant lance lui-même la ligne de commande selfoffice ; vous n'avez jamais à la saisir.",
+      "L'assistant appelle lui-même SelfOffice, par la ligne de commande ou MCP ; vous n'avez jamais à saisir de commande.",
     intgCliPartTitle: 'CLI · ligne de commande + skill',
     intgCliPartDesc:
       'Pour les assistants capables de lancer des commandes dans le terminal (Claude Code, Codex, Cursor, etc.). Une fois le skill installé, l’assistant appelle lui-même la ligne de commande selfoffice pour créer, convertir, lire et modifier les fichiers ; vous ne tapez jamais de commande.',
@@ -3389,6 +3501,8 @@ export const strings = {
     setAiProvider: 'Fournisseur',
     setAiModelId: 'Modèle',
     setAiModelSearch: 'Rechercher un modèle…',
+    setAiThinking: 'Niveau de raisonnement',
+    setAiThinkingDefault: 'Défaut du modèle',
     setAiApiKey: 'Clé API',
     setAiKeyHint: 'Stockée uniquement sur cet appareil.',
     setAiBaseUrl: 'Base URL',
@@ -3419,6 +3533,8 @@ export const strings = {
       "Serper assure la recherche web et la recherche d'images avec votre clé.",
     setAiSearchSerplyHint:
       "Serply assure la recherche web et la recherche d'images avec votre clé.",
+    setAiSearchSearchApiHint:
+      "SearchApi assure la recherche web et la recherche d'images avec votre clé.",
     setAiSearchTavilyHint:
       "Tavily assure la recherche web avec votre clé ; la recherche d'images se rabat sur des sources gratuites.",
     setAiSearchParallelHint:
@@ -3483,6 +3599,7 @@ export const strings = {
     intgSkillsRead: 'Détails',
     intgSkillsMine: 'Mes compétences',
     intgSkillsRecommended: 'Recommandées',
+    intgSkillsCatAll: 'Tous',
     intgSkillsCatOffice: 'Bureau',
     intgSkillsCatBusiness: 'Entreprise',
     intgSkillsCatData: 'Données',
@@ -3733,6 +3850,9 @@ export const strings = {
     setAutoUpdateCheck: 'Automatisch nach Updates suchen',
     setAutoUpdateCheckDesc:
       'Wenn aus, sucht SelfOffice weder beim Start noch im Hintergrund nach neuen Versionen. Über Hilfe › Nach Updates suchen können Sie weiterhin selbst prüfen.',
+    setSilentInstall: 'Updates still installieren',
+    setSilentInstallDesc:
+      'Wenn aktiviert, wird eine im Hintergrund gefundene neue Version still heruntergeladen und beim Beenden von SelfOffice installiert; nichts unterbricht Sie bei der Arbeit. Sonst lässt Sie eine Update-Meldung den Zeitpunkt selbst wählen.',
     updateChannel: 'Update-Kanal',
     channelStable: 'Stabil',
     channelBeta: 'Beta',
@@ -3771,6 +3891,9 @@ export const strings = {
     aiFontSizeXLarge: 'Sehr groß',
     aiFontSizeCustom: 'Benutzerdefiniert',
     setAiSpellcheck: 'Rechtschreibprüfung im KI-Chat',
+    setLegacyImportPrompt: 'Vor dem Konvertieren alter Dateien nachfragen',
+    setLegacyImportPromptDesc:
+      'Erklärt vor dem Öffnen von .doc-, .odt-, .hwp-, .ods- oder .odp-Dateien, was übernommen wird. Ausgeschaltet öffnet sich direkt „Speichern unter“.',
     setDefaultApp: 'Standard-App für Office-Dokumente',
     setDefaultAppDesc: '.docx-, .xlsx- und .pptx-Dateien per Doppelklick in SelfOffice öffnen.',
     setDefaultAppIs: 'SelfOffice ist bereits die Standard-App.',
@@ -3788,7 +3911,7 @@ export const strings = {
       'Wenn aus, starten neu geöffnete Dokumente mit eingeklapptem KI-Panel; ein Klick genügt, um es zu öffnen.',
     setAuthorName: 'Benutzername',
     setAuthorNameDesc:
-      'Wird in Docs, Sheets und Slides als Autor von Kommentaren und nachverfolgten Änderungen angezeigt. Leer lassen, um den Kontonamen des Computers zu verwenden.',
+      'Wird in Docs, Sheets, Slides und PDF als Autor von Kommentaren und nachverfolgten Änderungen angezeigt. Leer lassen, um den Kontonamen des Computers zu verwenden.',
     settings: 'Einstellungen',
     setSecAccount: 'Konto',
     setSecGeneral: 'Allgemein',
@@ -3833,6 +3956,12 @@ export const strings = {
     intgSkillVersion: 'Skill {v}',
     intgStateMissing: 'Skill nicht installiert',
     intgStateInstalled: 'Skill {v} installiert · ab dem nächsten Chat bereit',
+    intgLegacyTitle: 'Alte Skill-Kopien',
+    intgLegacyDesc:
+      'SelfOffice schrieb früher eine Kopie in den Ordner jedes Werkzeugs. {n} davon liegen noch dort: Das Werkzeug liest sie weiter, sie bekommen also nie den aktuellen Skill.',
+    intgLegacyClean: 'Alte Kopien entfernen',
+    intgLegacyCleaned: '{n} alte Kopien entfernt, {k} von Hand bearbeitete stehen gelassen.',
+    intgLegacyFailed: 'Alte Kopien konnten nicht entfernt werden: {msg}',
     intgOtherToggle: 'Mein Assistent ist nicht aufgeführt',
     intgOtherDesc:
       'Wählen Sie genau einen dieser drei Wege. Alle installieren denselben Skill, mehr als einer ist nicht nötig.',
@@ -3854,7 +3983,7 @@ export const strings = {
     intgExample2: 'Erstelle eine Präsentation mit 6 Folien zu unseren Q3-Ergebnissen',
     intgExample3: 'Wandle budget.xlsx in PDF um und öffne es in SelfOffice',
     intgStep2Note:
-      'Der Assistent ruft die selfoffice-Befehlszeile selbst auf; Sie müssen sie nie eintippen.',
+      'Der Assistent ruft SelfOffice selbst auf – über die Befehlszeile oder MCP; Sie müssen nie einen Befehl eintippen.',
     intgCliPartTitle: 'CLI · Kommandozeile + Skill',
     intgCliPartDesc:
       'Für Assistenten, die Terminalbefehle ausführen können (Claude Code, Codex, Cursor u. a.). Nach der Installation des Skills ruft der Assistent die selfoffice-Kommandozeile selbst auf, um Dateien zu erstellen, zu konvertieren, zu lesen und zu bearbeiten; Sie tippen nie einen Befehl.',
@@ -3914,6 +4043,8 @@ export const strings = {
     setAiProvider: 'Anbieter',
     setAiModelId: 'Modell',
     setAiModelSearch: 'Modelle suchen…',
+    setAiThinking: 'Denkanstrengung',
+    setAiThinkingDefault: 'Modellstandard',
     setAiApiKey: 'API-Schlüssel',
     setAiKeyHint: 'Wird nur auf diesem Gerät gespeichert.',
     setAiBaseUrl: 'Base URL',
@@ -3942,6 +4073,7 @@ export const strings = {
     setSecAiMedia: 'KI-Medien & Suche',
     setAiSearchSerperHint: 'Serper liefert mit deinem Schlüssel Web- und Bildsuche.',
     setAiSearchSerplyHint: 'Serply liefert mit deinem Schlüssel Web- und Bildsuche.',
+    setAiSearchSearchApiHint: 'SearchApi liefert mit deinem Schlüssel Web- und Bildsuche.',
     setAiSearchTavilyHint:
       'Tavily liefert mit deinem Schlüssel die Websuche; die Bildsuche greift auf kostenlose Quellen zurück.',
     setAiSearchParallelHint:
@@ -4005,6 +4137,7 @@ export const strings = {
     intgSkillsRead: 'Details',
     intgSkillsMine: 'Meine Skills',
     intgSkillsRecommended: 'Empfohlen',
+    intgSkillsCatAll: 'Alle',
     intgSkillsCatOffice: 'Büro',
     intgSkillsCatBusiness: 'Business',
     intgSkillsCatData: 'Daten',
@@ -4252,6 +4385,9 @@ export const strings = {
     setAutoUpdateCheck: 'Buscar actualizaciones automáticamente',
     setAutoUpdateCheckDesc:
       'Si está desactivado, SelfOffice deja de buscar nuevas versiones al iniciar y en segundo plano. Puede seguir comprobándolo en Ayuda › Buscar actualizaciones.',
+    setSilentInstall: 'Instalar actualizaciones en silencio',
+    setSilentInstallDesc:
+      'Si está activado, una nueva versión detectada en segundo plano se descarga en silencio y se instala al salir de SelfOffice; nada te interrumpe mientras trabajas. Si está desactivado, un aviso de actualización te deja decidir cuándo actualizar.',
     updateChannel: 'Canal de actualización',
     channelStable: 'Estable',
     channelBeta: 'Beta',
@@ -4290,6 +4426,9 @@ export const strings = {
     aiFontSizeXLarge: 'Muy grande',
     aiFontSizeCustom: 'Personalizado',
     setAiSpellcheck: 'Corrección ortográfica en el chat de IA',
+    setLegacyImportPrompt: 'Preguntar antes de convertir archivos antiguos',
+    setLegacyImportPromptDesc:
+      'Explica qué se conserva antes de abrir archivos .doc, .odt, .hwp, .ods u .odp. Desactivado, se abre directamente Guardar como.',
     setDefaultApp: 'App predeterminada para documentos de Office',
     setDefaultAppDesc: 'Abrir archivos .docx, .xlsx y .pptx en SelfOffice al hacer doble clic.',
     setDefaultAppIs: 'SelfOffice ya es la app predeterminada.',
@@ -4307,7 +4446,7 @@ export const strings = {
       'Si está desactivado, los documentos recién abiertos empiezan con el panel de IA plegado; se abre con un clic cuando lo necesites.',
     setAuthorName: 'Nombre de usuario',
     setAuthorNameDesc:
-      'Se muestra como autor de los comentarios y los cambios con seguimiento en Docs, Sheets y Slides. Déjalo vacío para usar el nombre de tu cuenta.',
+      'Se muestra como autor de los comentarios y los cambios con seguimiento en Docs, Sheets, Slides y PDF. Déjalo vacío para usar el nombre de tu cuenta.',
     settings: 'Configuración',
     setSecAccount: 'Cuenta',
     setSecGeneral: 'General',
@@ -4354,6 +4493,13 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill no instalado',
     intgStateInstalled: 'Skill {v} instalado · listo en tu próximo chat',
+    intgLegacyTitle: 'Copias antiguas de la skill',
+    intgLegacyDesc:
+      'SelfOffice escribía antes una copia en la carpeta de cada herramienta. Quedan {n}: la herramienta sigue leyéndolas, así que nunca reciben la skill actual.',
+    intgLegacyClean: 'Quitar las copias antiguas',
+    intgLegacyCleaned:
+      'Se quitaron {n} copias antiguas; {k} editadas a mano se dejaron en su sitio.',
+    intgLegacyFailed: 'No se pudieron quitar las copias antiguas: {msg}',
     intgOtherToggle: 'Mi asistente no aparece',
     intgOtherDesc:
       'Elige solo una de estas tres formas. Todas instalan el mismo skill, así que no hace falta hacer más de una.',
@@ -4372,7 +4518,7 @@ export const strings = {
     intgExample2: 'Haz una presentación de 6 diapositivas sobre nuestros resultados del T3',
     intgExample3: 'Convierte budget.xlsx a PDF y ábrelo en SelfOffice',
     intgStep2Note:
-      'El asistente ejecuta la línea de comandos selfoffice por sí mismo; nunca tienes que escribirla.',
+      'El asistente llama a SelfOffice por sí mismo, mediante la línea de comandos o MCP; nunca tienes que escribir un comando.',
     intgCliPartTitle: 'CLI · línea de comandos + skill',
     intgCliPartDesc:
       'Para asistentes que pueden ejecutar comandos de terminal (Claude Code, Codex, Cursor y otros). Con el skill instalado, el asistente llama por sí mismo a la línea de comandos selfoffice para crear, convertir, leer y editar archivos; nunca escribes un comando.',
@@ -4432,6 +4578,8 @@ export const strings = {
     setAiProvider: 'Proveedor',
     setAiModelId: 'Modelo',
     setAiModelSearch: 'Buscar modelos…',
+    setAiThinking: 'Esfuerzo de razonamiento',
+    setAiThinkingDefault: 'Predeterminado del modelo',
     setAiApiKey: 'Clave de API',
     setAiKeyHint: 'Se guarda solo en este dispositivo.',
     setAiBaseUrl: 'Base URL',
@@ -4460,6 +4608,7 @@ export const strings = {
     setSecAiMedia: 'Medios de IA y búsqueda',
     setAiSearchSerperHint: 'Serper ofrece búsqueda web y de imágenes con tu clave.',
     setAiSearchSerplyHint: 'Serply ofrece búsqueda web y de imágenes con tu clave.',
+    setAiSearchSearchApiHint: 'SearchApi ofrece búsqueda web y de imágenes con tu clave.',
     setAiSearchTavilyHint:
       'Tavily ofrece búsqueda web con tu clave; la búsqueda de imágenes recurre a fuentes gratuitas.',
     setAiSearchParallelHint:
@@ -4524,6 +4673,7 @@ export const strings = {
     intgSkillsRead: 'Detalles',
     intgSkillsMine: 'Mis habilidades',
     intgSkillsRecommended: 'Recomendadas',
+    intgSkillsCatAll: 'Todos',
     intgSkillsCatOffice: 'Oficina',
     intgSkillsCatBusiness: 'Negocios',
     intgSkillsCatData: 'Datos',
@@ -4767,6 +4917,9 @@ export const strings = {
     setAutoUpdateCheck: 'ตรวจหาอัปเดตโดยอัตโนมัติ',
     setAutoUpdateCheckDesc:
       'เมื่อปิด SelfOffice จะไม่ตรวจหาเวอร์ชันใหม่ตอนเปิดโปรแกรมหรือในเบื้องหลัง คุณยังตรวจเองได้จาก วิธีใช้ › ตรวจหาการอัปเดต',
+    setSilentInstall: 'ติดตั้งอัปเดตแบบเงียบ',
+    setSilentInstallDesc:
+      'เมื่อเปิด เวอร์ชันใหม่ที่ตรวจพบเบื้องหลังจะถูกดาวน์โหลดแบบเงียบและติดตั้งเมื่อคุณออกจาก SelfOffice โดยไม่รบกวนระหว่างทำงาน เมื่อปิด จะมีข้อความแจ้งอัปเดตให้คุณตัดสินใจเอง',
     updateChannel: 'ช่องทางอัปเดต',
     channelStable: 'เสถียร',
     channelBeta: 'เบต้า',
@@ -4804,6 +4957,9 @@ export const strings = {
     aiFontSizeXLarge: 'ใหญ่มาก',
     aiFontSizeCustom: 'กำหนดเอง',
     setAiSpellcheck: 'ตรวจการสะกดในแชท AI',
+    setLegacyImportPrompt: 'ถามก่อนแปลงไฟล์รูปแบบเก่า',
+    setLegacyImportPromptDesc:
+      'อธิบายว่าเนื้อหาใดจะถูกแปลงมาก่อนเปิดไฟล์ .doc, .odt, .hwp, .ods หรือ .odp เมื่อปิด จะเปิดบันทึกเป็นทันที',
     setDefaultApp: 'แอปเริ่มต้นสำหรับเอกสาร Office',
     setDefaultAppDesc: 'เปิดไฟล์ .docx, .xlsx และ .pptx ด้วย SelfOffice เมื่อดับเบิลคลิก',
     setDefaultAppIs: 'SelfOffice เป็นแอปเริ่มต้นอยู่แล้ว',
@@ -4820,7 +4976,7 @@ export const strings = {
       'เมื่อปิด เอกสารที่เปิดใหม่จะเริ่มโดยพับแผง AI ไว้ คลิกครั้งเดียวเพื่อเปิดเมื่อต้องการ',
     setAuthorName: 'ชื่อผู้ใช้',
     setAuthorNameDesc:
-      'แสดงเป็นผู้เขียนความคิดเห็นและการติดตามการเปลี่ยนแปลงใน Docs, Sheets และ Slides เว้นว่างไว้เพื่อใช้ชื่อบัญชีคอมพิวเตอร์',
+      'แสดงเป็นผู้เขียนความคิดเห็นและการติดตามการเปลี่ยนแปลงใน Docs, Sheets, Slides และ PDF เว้นว่างไว้เพื่อใช้ชื่อบัญชีคอมพิวเตอร์',
     settings: 'การตั้งค่า',
     setSecAccount: 'บัญชี',
     setSecGeneral: 'ทั่วไป',
@@ -4864,6 +5020,12 @@ export const strings = {
     intgSkillVersion: 'สกิล {v}',
     intgStateMissing: 'ยังไม่ติดตั้งสกิล',
     intgStateInstalled: 'ติดตั้งสกิล {v} แล้ว · พร้อมใช้ในแชตถัดไป',
+    intgLegacyTitle: 'สำเนา skill เก่า',
+    intgLegacyDesc:
+      'เมื่อก่อน SelfOffice เขียนสำเนาไว้ในโฟลเดอร์ของแต่ละเครื่องมือ ตอนนี้ยังเหลือ {n} ชุด: เครื่องมือยังอ่านไฟล์เหล่านั้น จึงไม่เคยได้ skill ปัจจุบัน',
+    intgLegacyClean: 'ลบสำเนาเก่า',
+    intgLegacyCleaned: 'ลบสำเนาเก่าแล้ว {n} ชุด เก็บไว้ {k} ชุดที่แก้ไขด้วยมือ',
+    intgLegacyFailed: 'ลบสำเนาเก่าไม่สำเร็จ: {msg}',
     intgOtherToggle: 'ไม่พบผู้ช่วยของฉันในรายการ',
     intgOtherDesc:
       'เลือกเพียงวิธีใดวิธีหนึ่งจากสามวิธีนี้ ทุกวิธีติดตั้งสกิลเดียวกัน จึงไม่ต้องทำมากกว่าหนึ่งวิธี',
@@ -4880,7 +5042,8 @@ export const strings = {
     intgExample1: 'แปลง ~/Downloads/report.md เป็นเอกสาร Word',
     intgExample2: 'ทำสไลด์ 6 หน้าเกี่ยวกับผลประกอบการไตรมาส 3 ของเรา',
     intgExample3: 'แปลง budget.xlsx เป็น PDF แล้วเปิดใน SelfOffice',
-    intgStep2Note: 'ผู้ช่วยจะเรียกใช้บรรทัดคำสั่ง selfoffice เอง คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
+    intgStep2Note:
+      'ผู้ช่วยจะเรียก SelfOffice เองผ่านบรรทัดคำสั่งหรือ MCP คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
     intgCliPartTitle: 'CLI · บรรทัดคำสั่ง + skill',
     intgCliPartDesc:
       'สำหรับผู้ช่วยที่รันคำสั่งเทอร์มินัลได้ (Claude Code, Codex, Cursor และอื่น ๆ) เมื่อติดตั้ง skill แล้ว ผู้ช่วยจะเรียกบรรทัดคำสั่ง selfoffice เองเพื่อสร้าง แปลง อ่าน และแก้ไขไฟล์ คุณไม่ต้องพิมพ์คำสั่งใด ๆ',
@@ -4938,6 +5101,8 @@ export const strings = {
     setAiProvider: 'ผู้ให้บริการ',
     setAiModelId: 'โมเดล',
     setAiModelSearch: 'ค้นหาโมเดล…',
+    setAiThinking: 'ระดับการคิด',
+    setAiThinkingDefault: 'ค่าเริ่มต้นของโมเดล',
     setAiApiKey: 'คีย์ API',
     setAiKeyHint: 'จัดเก็บไว้ในเครื่องนี้เท่านั้น',
     setAiBaseUrl: 'Base URL',
@@ -4965,6 +5130,7 @@ export const strings = {
     setSecAiMedia: 'สื่อ AI และการค้นหา',
     setAiSearchSerperHint: 'Serper ให้บริการค้นหาเว็บและภาพด้วยคีย์ของคุณ',
     setAiSearchSerplyHint: 'Serply ให้บริการค้นหาเว็บและภาพด้วยคีย์ของคุณ',
+    setAiSearchSearchApiHint: 'SearchApi ให้บริการค้นหาเว็บและภาพด้วยคีย์ของคุณ',
     setAiSearchTavilyHint:
       'Tavily ให้บริการค้นหาเว็บด้วยคีย์ของคุณ ส่วนการค้นหาภาพจะใช้แหล่งข้อมูลฟรีแทน',
     setAiSearchParallelHint:
@@ -5027,6 +5193,7 @@ export const strings = {
     intgSkillsRead: 'รายละเอียด',
     intgSkillsMine: 'สกิลของฉัน',
     intgSkillsRecommended: 'แนะนำ',
+    intgSkillsCatAll: 'ทั้งหมด',
     intgSkillsCatOffice: 'สำนักงาน',
     intgSkillsCatBusiness: 'ธุรกิจ',
     intgSkillsCatData: 'ข้อมูล',
@@ -5270,6 +5437,9 @@ export const strings = {
     setAutoUpdateCheck: 'Periksa pembaruan secara otomatis',
     setAutoUpdateCheckDesc:
       'Jika dimatikan, SelfOffice tidak lagi memeriksa versi baru saat dijalankan atau di latar belakang. Anda tetap bisa memeriksa dari Bantuan › Periksa Pembaruan.',
+    setSilentInstall: 'Pasang pembaruan secara senyap',
+    setSilentInstallDesc:
+      'Jika aktif, versi baru yang ditemukan di latar belakang diunduh secara senyap dan dipasang saat Anda keluar dari SelfOffice; tidak ada yang mengganggu saat bekerja. Jika nonaktif, sebuah pemberitahuan pembaruan membiarkan Anda menentukan waktunya.',
     updateChannel: 'Saluran Pembaruan',
     channelStable: 'Stabil',
     channelBeta: 'Beta',
@@ -5308,6 +5478,9 @@ export const strings = {
     aiFontSizeXLarge: 'Sangat besar',
     aiFontSizeCustom: 'Kustom',
     setAiSpellcheck: 'Pemeriksaan ejaan di obrolan AI',
+    setLegacyImportPrompt: 'Tanya sebelum mengonversi file lama',
+    setLegacyImportPromptDesc:
+      'Jelaskan apa yang ikut terbawa sebelum membuka file .doc, .odt, .hwp, .ods, atau .odp. Jika nonaktif, Simpan Sebagai langsung terbuka.',
     setDefaultApp: 'Aplikasi default untuk dokumen Office',
     setDefaultAppDesc: 'Buka file .docx, .xlsx, dan .pptx di SelfOffice saat diklik dua kali.',
     setDefaultAppIs: 'SelfOffice sudah menjadi aplikasi default.',
@@ -5324,7 +5497,7 @@ export const strings = {
       'Jika nonaktif, dokumen yang baru dibuka dimulai dengan panel AI terlipat; cukup satu klik saat dibutuhkan.',
     setAuthorName: 'Nama pengguna',
     setAuthorNameDesc:
-      'Ditampilkan sebagai penulis komentar dan perubahan terlacak di Docs, Sheets, dan Slides. Kosongkan untuk memakai nama akun komputer.',
+      'Ditampilkan sebagai penulis komentar dan perubahan terlacak di Docs, Sheets, Slides, dan PDF. Kosongkan untuk memakai nama akun komputer.',
     settings: 'Pengaturan',
     setSecAccount: 'Akun',
     setSecGeneral: 'Umum',
@@ -5370,6 +5543,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill belum terpasang',
     intgStateInstalled: 'Skill {v} terpasang · siap di obrolan berikutnya',
+    intgLegacyTitle: 'Salinan skill lama',
+    intgLegacyDesc:
+      'Dulu SelfOffice menulis satu salinan ke folder tiap alat. Masih ada {n} yang tertinggal: alat itu tetap membacanya, jadi tidak pernah dapat skill yang sekarang.',
+    intgLegacyClean: 'Hapus salinan lama',
+    intgLegacyCleaned: '{n} salinan lama dihapus, {k} yang diedit manual tetap dibiarkan.',
+    intgLegacyFailed: 'Gagal menghapus salinan lama: {msg}',
     intgOtherToggle: 'Asisten saya tidak ada di daftar',
     intgOtherDesc:
       'Pilih salah satu saja dari tiga cara ini. Semuanya memasang skill yang sama, jadi tidak perlu lebih dari satu.',
@@ -5388,7 +5567,7 @@ export const strings = {
     intgExample2: 'Buat presentasi 6 slide tentang hasil Q3 kami',
     intgExample3: 'Konversi budget.xlsx ke PDF dan buka di SelfOffice',
     intgStep2Note:
-      'Asisten menjalankan baris perintah selfoffice sendiri; Anda tidak perlu mengetiknya.',
+      'Asisten memanggil SelfOffice sendiri, melalui baris perintah atau MCP; Anda tidak perlu mengetik perintah apa pun.',
     intgCliPartTitle: 'CLI · baris perintah + skill',
     intgCliPartDesc:
       'Untuk asisten yang bisa menjalankan perintah terminal (Claude Code, Codex, Cursor, dan lainnya). Setelah skill terpasang, asisten memanggil baris perintah selfoffice sendiri untuk membuat, mengonversi, membaca, dan mengedit file; Anda tidak pernah mengetik perintah.',
@@ -5404,6 +5583,7 @@ export const strings = {
     intgMcpHttpAdvanced: 'Lanjutan: alamat lain dan log',
     intgMcpTryNote:
       'Asisten memanggil SelfOffice melalui MCP; Anda tidak pernah mengetik perintah.',
+
     intgMcpClaudeTitle: 'Claude Code',
     intgMcpClaudeDesc: 'Jalankan ini sekali di terminal:',
     intgMcpOtherTitle: 'Cursor, Claude Desktop, atau asisten lain yang mendukung MCP',
@@ -5448,6 +5628,8 @@ export const strings = {
     setAiProvider: 'Penyedia',
     setAiModelId: 'Model',
     setAiModelSearch: 'Cari model…',
+    setAiThinking: 'Tingkat penalaran',
+    setAiThinkingDefault: 'Default model',
     setAiApiKey: 'Kunci API',
     setAiKeyHint: 'Hanya disimpan di perangkat ini.',
     setAiBaseUrl: 'Base URL',
@@ -5475,6 +5657,7 @@ export const strings = {
     setSecAiMedia: 'Media & Pencarian AI',
     setAiSearchSerperHint: 'Serper menyediakan pencarian web dan gambar dengan kunci Anda.',
     setAiSearchSerplyHint: 'Serply menyediakan pencarian web dan gambar dengan kunci Anda.',
+    setAiSearchSearchApiHint: 'SearchApi menyediakan pencarian web dan gambar dengan kunci Anda.',
     setAiSearchTavilyHint:
       'Tavily menyediakan pencarian web dengan kunci Anda; pencarian gambar memakai sumber gratis.',
     setAiSearchParallelHint:
@@ -5538,6 +5721,7 @@ export const strings = {
     intgSkillsRead: 'Detail',
     intgSkillsMine: 'Skill saya',
     intgSkillsRecommended: 'Disarankan',
+    intgSkillsCatAll: 'Semua',
     intgSkillsCatOffice: 'Perkantoran',
     intgSkillsCatBusiness: 'Bisnis',
     intgSkillsCatData: 'Data',
@@ -5782,6 +5966,9 @@ export const strings = {
     setAutoUpdateCheck: 'Автоматически проверять обновления',
     setAutoUpdateCheckDesc:
       'Если выключено, SelfOffice не проверяет новые версии при запуске и в фоне. Проверить вручную можно через Справка › Проверить обновления.',
+    setSilentInstall: 'Устанавливать обновления автоматически',
+    setSilentInstallDesc:
+      'Если включено, новая версия, найденная фоновой проверкой, скачивается незаметно и устанавливается при выходе из SelfOffice; во время работы ничто вас не прерывает. Если выключено, появляется предложение обновиться, и вы решаете сами.',
     updateChannel: 'Канал обновлений',
     channelStable: 'Стабильный',
     channelBeta: 'Бета',
@@ -5820,6 +6007,9 @@ export const strings = {
     aiFontSizeXLarge: 'Очень крупный',
     aiFontSizeCustom: 'Другой',
     setAiSpellcheck: 'Проверка орфографии в чате ИИ',
+    setLegacyImportPrompt: 'Спрашивать перед конвертацией старых файлов',
+    setLegacyImportPromptDesc:
+      'Перед открытием файлов .doc, .odt, .hwp, .ods или .odp поясняет, что будет перенесено. Если выключено, сразу открывается «Сохранить как».',
     setDefaultApp: 'Приложение по умолчанию для документов Office',
     setDefaultAppDesc: 'Открывать файлы .docx, .xlsx и .pptx в SelfOffice по двойному щелчку.',
     setDefaultAppIs: 'SelfOffice уже является приложением по умолчанию.',
@@ -5836,7 +6026,7 @@ export const strings = {
       'Если выключено, новые документы открываются со свёрнутой панелью ИИ; она доступна в один клик.',
     setAuthorName: 'Имя пользователя',
     setAuthorNameDesc:
-      'Отображается как автор примечаний и исправлений в Docs, Sheets и Slides. Оставьте пустым, чтобы использовать имя учётной записи компьютера.',
+      'Отображается как автор примечаний и исправлений в Docs, Sheets, Slides и PDF. Оставьте пустым, чтобы использовать имя учётной записи компьютера.',
     settings: 'Настройки',
     setSecAccount: 'Аккаунт',
     setSecGeneral: 'Общие',
@@ -5882,6 +6072,12 @@ export const strings = {
     intgSkillVersion: 'скилл {v}',
     intgStateMissing: 'Скилл не установлен',
     intgStateInstalled: 'Скилл {v} установлен · готов к следующему чату',
+    intgLegacyTitle: 'Старые копии skill',
+    intgLegacyDesc:
+      'Раньше SelfOffice записывал копию в папку каждого инструмента. Их ещё осталось {n}: инструмент продолжает их читать, поэтому они никогда не получают текущий skill.',
+    intgLegacyClean: 'Удалить старые копии',
+    intgLegacyCleaned: 'Удалено старых копий: {n}; отредактированных вручную оставлено: {k}.',
+    intgLegacyFailed: 'Не удалось удалить старые копии: {msg}',
     intgOtherToggle: 'Моего ассистента нет в списке',
     intgOtherDesc:
       'Выберите только один из трёх способов. Все они устанавливают один и тот же скилл, повторять не нужно.',
@@ -5900,7 +6096,7 @@ export const strings = {
     intgExample2: 'Сделай презентацию из 6 слайдов о наших результатах за 3-й квартал',
     intgExample3: 'Конвертируй budget.xlsx в PDF и открой в SelfOffice',
     intgStep2Note:
-      'Ассистент сам запускает командную строку selfoffice; вводить её вам не придётся.',
+      'Ассистент сам вызывает SelfOffice — через командную строку или MCP; вам не нужно вводить команды.',
     intgCliPartTitle: 'CLI · командная строка + skill',
     intgCliPartDesc:
       'Для ассистентов, умеющих выполнять команды терминала (Claude Code, Codex, Cursor и другие). После установки skill ассистент сам вызывает командную строку selfoffice, чтобы создавать, конвертировать, читать и редактировать файлы; вам не нужно вводить команды.',
@@ -5959,6 +6155,8 @@ export const strings = {
     setAiProvider: 'Провайдер',
     setAiModelId: 'Модель',
     setAiModelSearch: 'Поиск моделей…',
+    setAiThinking: 'Уровень рассуждений',
+    setAiThinkingDefault: 'По умолчанию модели',
     setAiApiKey: 'API-ключ',
     setAiKeyHint: 'Хранится только на этом устройстве.',
     setAiBaseUrl: 'Базовый URL',
@@ -5987,6 +6185,8 @@ export const strings = {
     setSecAiMedia: 'Медиа и поиск ИИ',
     setAiSearchSerperHint: 'Serper обеспечивает веб-поиск и поиск изображений с вашим ключом.',
     setAiSearchSerplyHint: 'Serply обеспечивает веб-поиск и поиск изображений с вашим ключом.',
+    setAiSearchSearchApiHint:
+      'SearchApi обеспечивает веб-поиск и поиск изображений с вашим ключом.',
     setAiSearchTavilyHint:
       'Tavily обеспечивает веб-поиск с вашим ключом; поиск изображений использует бесплатные источники.',
     setAiSearchParallelHint:
@@ -6050,6 +6250,7 @@ export const strings = {
     intgSkillsRead: 'Подробнее',
     intgSkillsMine: 'Мои навыки',
     intgSkillsRecommended: 'Рекомендуемые',
+    intgSkillsCatAll: 'Все',
     intgSkillsCatOffice: 'Офис',
     intgSkillsCatBusiness: 'Бизнес',
     intgSkillsCatData: 'Данные',
@@ -6293,6 +6494,9 @@ export const strings = {
     setAutoUpdateCheck: 'التحقق من التحديثات تلقائيًا',
     setAutoUpdateCheckDesc:
       'عند الإيقاف، لن يتحقق SelfOffice من الإصدارات الجديدة عند التشغيل أو في الخلفية. يمكنك التحقق يدويًا من تعليمات › التحقق من التحديثات.',
+    setSilentInstall: 'تثبيت التحديثات بصمت',
+    setSilentInstallDesc:
+      'عند التفعيل، يُحمَّل الإصدار الجديد الذي يكتشفه الفحص في الخلفية بصمت ويُثبَّت عند الخروج من SelfOffice، دون أي مقاطعة أثناء العمل. عند الإيقاف، يظهر تنبيه تحديث لتقرر أنت موعد التحديث.',
     updateChannel: 'قناة التحديث',
     channelStable: 'مستقر',
     channelBeta: 'تجريبي',
@@ -6331,6 +6535,9 @@ export const strings = {
     aiFontSizeXLarge: 'كبير جدًا',
     aiFontSizeCustom: 'مخصص',
     setAiSpellcheck: 'التدقيق الإملائي في محادثة الذكاء الاصطناعي',
+    setLegacyImportPrompt: 'السؤال قبل تحويل الملفات القديمة',
+    setLegacyImportPromptDesc:
+      'يوضح ما سيتم نقله قبل فتح ملفات .doc أو .odt أو .hwp أو .ods أو .odp. عند الإيقاف يُفتح «حفظ باسم» مباشرة.',
     setDefaultApp: 'التطبيق الافتراضي لمستندات Office',
     setDefaultAppDesc: 'فتح ملفات .docx و.xlsx و.pptx في SelfOffice عند النقر المزدوج.',
     setDefaultAppIs: 'SelfOffice هو التطبيق الافتراضي بالفعل.',
@@ -6348,7 +6555,7 @@ export const strings = {
       'عند الإيقاف، تبدأ المستندات المفتوحة حديثًا بلوحة الذكاء الاصطناعي مطوية؛ تكفي نقرة واحدة لفتحها عند الحاجة.',
     setAuthorName: 'اسم المستخدم',
     setAuthorNameDesc:
-      'يظهر كمؤلف التعليقات والتغييرات المتعقبة في Docs وSheets وSlides. اتركه فارغًا لاستخدام اسم حساب الكمبيوتر.',
+      'يظهر كمؤلف التعليقات والتغييرات المتعقبة في Docs وSheets وSlides وPDF. اتركه فارغًا لاستخدام اسم حساب الكمبيوتر.',
     settings: 'الإعدادات',
     setSecAccount: 'الحساب',
     setSecGeneral: 'عام',
@@ -6392,6 +6599,12 @@ export const strings = {
     intgSkillVersion: 'المهارة {v}',
     intgStateMissing: 'المهارة غير مثبّتة',
     intgStateInstalled: 'المهارة {v} مثبّتة · جاهزة في محادثتك التالية',
+    intgLegacyTitle: 'نسخ skill القديمة',
+    intgLegacyDesc:
+      'كان SelfOffice يكتب نسخة في مجلد كل أداة. ما زالت هناك {n}: الأداة ما زالت تقرأها، فلا تصل إليها نسخة skill الحالية أبدًا.',
+    intgLegacyClean: 'إزالة النسخ القديمة',
+    intgLegacyCleaned: 'أُزيلت {n} نسخة قديمة، وأُبقيت {k} نسخة عدّلها المستخدم يدويًا.',
+    intgLegacyFailed: 'تعذّرت إزالة النسخ القديمة: {msg}',
     intgOtherToggle: 'مساعدي غير موجود في القائمة',
     intgOtherDesc:
       'اختر طريقة واحدة فقط من هذه الطرق الثلاث. جميعها تثبّت المهارة نفسها، فلا حاجة لأكثر من واحدة.',
@@ -6408,7 +6621,8 @@ export const strings = {
     intgExample1: 'حوّل ~/Downloads/report.md إلى مستند Word',
     intgExample2: 'أنشئ عرضاً من 6 شرائح عن نتائج الربع الثالث',
     intgExample3: 'حوّل budget.xlsx إلى PDF وافتحه في SelfOffice',
-    intgStep2Note: 'المساعد يشغّل سطر أوامر selfoffice بنفسه؛ لن تحتاج إلى كتابته أبداً.',
+    intgStep2Note:
+      'المساعد يستدعي SelfOffice بنفسه، عبر سطر الأوامر أو MCP؛ لن تحتاج إلى كتابة أي أمر.',
     intgCliPartTitle: 'CLI · سطر الأوامر + skill',
     intgCliPartDesc:
       'للمساعدين الذين يستطيعون تنفيذ أوامر الطرفية (Claude Code وCodex وCursor وغيرها). بعد تثبيت skill، يستدعي المساعد سطر أوامر selfoffice بنفسه لإنشاء الملفات وتحويلها وقراءتها وتحريرها؛ لن تكتب أي أمر.',
@@ -6466,6 +6680,8 @@ export const strings = {
     setAiProvider: 'المزوّد',
     setAiModelId: 'النموذج',
     setAiModelSearch: 'البحث عن نموذج…',
+    setAiThinking: 'مستوى التفكير',
+    setAiThinkingDefault: 'افتراضي النموذج',
     setAiApiKey: 'مفتاح API',
     setAiKeyHint: 'يُحفظ على هذا الجهاز فقط.',
     setAiBaseUrl: 'Base URL',
@@ -6493,6 +6709,7 @@ export const strings = {
     setSecAiMedia: 'وسائط الذكاء الاصطناعي والبحث',
     setAiSearchSerperHint: 'يوفّر Serper البحث في الويب والصور بمفتاحك.',
     setAiSearchSerplyHint: 'يوفّر Serply البحث في الويب والصور بمفتاحك.',
+    setAiSearchSearchApiHint: 'يوفّر SearchApi البحث في الويب والصور بمفتاحك.',
     setAiSearchTavilyHint:
       'يوفّر Tavily البحث في الويب بمفتاحك؛ ويعود البحث في الصور إلى مصادر مجانية.',
     setAiSearchParallelHint:
@@ -6555,6 +6772,7 @@ export const strings = {
     intgSkillsRead: 'التفاصيل',
     intgSkillsMine: 'مهاراتي',
     intgSkillsRecommended: 'موصى بها',
+    intgSkillsCatAll: 'الكل',
     intgSkillsCatOffice: 'مكتب',
     intgSkillsCatBusiness: 'أعمال',
     intgSkillsCatData: 'بيانات',
@@ -6646,11 +6864,11 @@ export const strings = {
     askSend: 'Enviar',
     askStop: 'Parar',
     askHeroTagline:
-      'Marque com estrela os arquivos que você lê com frequência e a IA poderá pesquisá-los e citar a fonte — clique numa citação para abrir.',
+      'Marque com estrela os arquivos que você lê com frequência e a IA poderá pesquisá-los e citar a fonte — clique em uma citação para abrir.',
     askStep1Title: 'Marcar arquivos',
     askStep1Desc: 'Em Recentes ou Pastas, clique na estrela da linha do arquivo',
     askStep2Title: 'Faça perguntas',
-    askStep2Desc: 'Pergunte como num chat, sem abrir nenhum documento antes',
+    askStep2Desc: 'Pergunte como em um chat, sem abrir nenhum documento antes',
     askStep3Title: 'Abrir citações',
     askStep3Desc: 'As respostas citam o arquivo de origem; clique para ir até ele',
     askCtaRecents: 'Marcar de Recentes',
@@ -6793,6 +7011,9 @@ export const strings = {
     setAutoUpdateCheck: 'Verificar atualizações automaticamente',
     setAutoUpdateCheckDesc:
       'Desligado, o SelfOffice deixa de procurar novas versões ao iniciar e em segundo plano. Você ainda pode verificar em Ajuda › Procurar atualizações.',
+    setSilentInstall: 'Instalar atualizações silenciosamente',
+    setSilentInstallDesc:
+      'Quando ativado, uma nova versão encontrada em segundo plano é baixada silenciosamente e instalada ao sair do SelfOffice; nada interrompe seu trabalho. Quando desativado, um aviso de atualização deixa você decidir quando atualizar.',
     updateChannel: 'Canal de atualização',
     channelStable: 'Estável',
     channelBeta: 'Beta',
@@ -6806,9 +7027,9 @@ export const strings = {
     setRestoreSession: 'Reabrir os documentos da última vez',
     setRestoreSessionDesc:
       'Os documentos abertos ao fechar o SelfOffice são reabertos automaticamente na próxima vez que ele for iniciado.',
-    setTabSleep: 'Suspender separadores inativos',
+    setTabSleep: 'Suspender guias inativas',
     setTabSleepDesc:
-      'Com muitos separadores abertos, os que não vê há algum tempo libertam a memória e reabrem o ficheiro quando regressa. Separadores com alterações por guardar ou fixados nunca são suspensos.',
+      'As guias que você não acessa há algum tempo liberam memória e reabrem o arquivo quando você volta. Guias fixadas ou com alterações não salvas nunca são suspensas.',
     tabSleeping: 'Suspenso',
     setAutoSave: 'Salvar automaticamente todos os documentos',
     setAutoSaveDesc:
@@ -6831,6 +7052,9 @@ export const strings = {
     aiFontSizeXLarge: 'Muito grande',
     aiFontSizeCustom: 'Personalizado',
     setAiSpellcheck: 'Verificação ortográfica no chat de IA',
+    setLegacyImportPrompt: 'Perguntar antes de converter arquivos antigos',
+    setLegacyImportPromptDesc:
+      'Explica o que é preservado antes de abrir arquivos .doc, .odt, .hwp, .ods ou .odp. Desativado, Salvar como abre diretamente.',
     setDefaultApp: 'App padrão para documentos do Office',
     setDefaultAppDesc: 'Abrir arquivos .docx, .xlsx e .pptx no SelfOffice ao clicar duas vezes.',
     setDefaultAppIs: 'O SelfOffice já é o app padrão.',
@@ -6848,7 +7072,7 @@ export const strings = {
       'Quando desativado, os documentos recém-abertos começam com o painel de IA recolhido; basta um clique quando precisar.',
     setAuthorName: 'Nome de usuário',
     setAuthorNameDesc:
-      'Exibido como autor dos comentários e das alterações controladas no Docs, Sheets e Slides. Deixe em branco para usar o nome da conta do computador.',
+      'Exibido como autor dos comentários e das alterações controladas no Docs, Sheets, Slides e PDF. Deixe em branco para usar o nome da conta do computador.',
     settings: 'Configurações',
     setSecAccount: 'Conta',
     setSecGeneral: 'Geral',
@@ -6895,6 +7119,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill não instalado',
     intgStateInstalled: 'Skill {v} instalado · pronto no seu próximo chat',
+    intgLegacyTitle: 'Cópias antigas do skill',
+    intgLegacyDesc:
+      'O SelfOffice antes gravava uma cópia na pasta de cada ferramenta. Ainda há {n} lá: a ferramenta continua a lê-las, por isso nunca recebem o skill atual.',
+    intgLegacyClean: 'Remover cópias antigas',
+    intgLegacyCleaned: '{n} cópias antigas removidas, {k} editadas à mão foram mantidas.',
+    intgLegacyFailed: 'Não foi possível remover as cópias antigas: {msg}',
     intgOtherToggle: 'Meu assistente não está na lista',
     intgOtherDesc:
       'Escolha apenas uma destas três formas. Todas instalam o mesmo skill, então não é preciso fazer mais de uma.',
@@ -6913,7 +7143,7 @@ export const strings = {
     intgExample2: 'Monte uma apresentação de 6 slides sobre nossos resultados do 3º trimestre',
     intgExample3: 'Converta budget.xlsx para PDF e abra no SelfOffice',
     intgStep2Note:
-      'O assistente executa a linha de comando selfoffice sozinho; você nunca precisa digitá-la.',
+      'O assistente chama o SelfOffice sozinho, pela linha de comando ou MCP; você nunca precisa digitar um comando.',
     intgCliPartTitle: 'CLI · linha de comando + skill',
     intgCliPartDesc:
       'Para assistentes que executam comandos de terminal (Claude Code, Codex, Cursor e outros). Com o skill instalado, o assistente chama a linha de comando selfoffice sozinho para criar, converter, ler e editar arquivos; você nunca digita um comando.',
@@ -6973,6 +7203,8 @@ export const strings = {
     setAiProvider: 'Provedor',
     setAiModelId: 'Modelo',
     setAiModelSearch: 'Pesquisar modelos…',
+    setAiThinking: 'Esforço de raciocínio',
+    setAiThinkingDefault: 'Padrão do modelo',
     setAiApiKey: 'Chave de API',
     setAiKeyHint: 'Armazenada apenas neste dispositivo.',
     setAiBaseUrl: 'Base URL',
@@ -7001,6 +7233,7 @@ export const strings = {
     setSecAiMedia: 'Mídia e busca de IA',
     setAiSearchSerperHint: 'O Serper oferece busca na web e de imagens com a sua chave.',
     setAiSearchSerplyHint: 'O Serply oferece busca na web e de imagens com a sua chave.',
+    setAiSearchSearchApiHint: 'A SearchApi oferece busca na web e de imagens com a sua chave.',
     setAiSearchTavilyHint:
       'O Tavily oferece busca na web com a sua chave; a busca de imagens recorre a fontes gratuitas.',
     setAiSearchParallelHint:
@@ -7063,6 +7296,7 @@ export const strings = {
     intgSkillsRead: 'Detalhes',
     intgSkillsMine: 'As minhas competências',
     intgSkillsRecommended: 'Recomendadas',
+    intgSkillsCatAll: 'Todos',
     intgSkillsCatOffice: 'Escritório',
     intgSkillsCatBusiness: 'Negócios',
     intgSkillsCatData: 'Dados',
@@ -7109,9 +7343,9 @@ export const strings = {
       'Cada entrada é { id, name, vision, maxTokens, alias }; o que não está listado mantém os interruptores acima e as heurísticas embarcadas.',
     setAiEndpointKeyEnv: 'Variável de ambiente da chave',
     setAiEndpointModelsProbed:
-      'As capacidades observadas por esta sonda (vision, maxTokens, contextWindow) são guardadas em cache ao lado do endpoint e valem para os modelos não declarados; a sonda seguinte substitui-as por completo e nada do que está escrito aqui muda.',
+      'As capacidades observadas por esta sonda (vision, maxTokens, contextWindow) são salvas em cache ao lado do endpoint e valem para os modelos não declarados; a sonda seguinte substitui-as por completo e nada do que está escrito aqui muda.',
     setAiEndpointKeyEnvHint:
-      'Se definido, nenhuma chave é guardada aqui; ela é lida dessa variável de ambiente.',
+      'Se definido, nenhuma chave é salva aqui; ela é lida dessa variável de ambiente.',
     setAiEndpointHeadersBad: 'Formato de cabeçalho inválido: cada linha deve ser "Nome: Valor".',
     setAiEndpointModelsBad:
       'Declarações de modelo inválidas: deve ser um array JSON, ex. [{ "id": "m" }].',
@@ -7302,6 +7536,9 @@ export const strings = {
     setAutoUpdateCheck: 'Controlla automaticamente gli aggiornamenti',
     setAutoUpdateCheckDesc:
       "Se disattivato, SelfOffice non cerca più nuove versioni all'avvio o in background. Puoi comunque controllare da Aiuto › Controlla aggiornamenti.",
+    setSilentInstall: 'Installa gli aggiornamenti in silenzio',
+    setSilentInstallDesc:
+      'Se attivo, una nuova versione trovata in background viene scaricata in silenzio e installata alla chiusura di SelfOffice; nulla ti interrompe mentre lavori. Se disattivato, un avviso di aggiornamento ti lascia decidere quando aggiornare.',
     updateChannel: 'Canale di aggiornamento',
     channelStable: 'Stabile',
     channelBeta: 'Beta',
@@ -7340,6 +7577,9 @@ export const strings = {
     aiFontSizeXLarge: 'Molto grande',
     aiFontSizeCustom: 'Personalizzato',
     setAiSpellcheck: 'Controllo ortografico nella chat IA',
+    setLegacyImportPrompt: 'Chiedi prima di convertire i file legacy',
+    setLegacyImportPromptDesc:
+      'Spiega cosa viene mantenuto prima di aprire file .doc, .odt, .hwp, .ods o .odp. Se disattivato, Salva con nome si apre subito.',
     setDefaultApp: 'App predefinita per i documenti Office',
     setDefaultAppDesc: 'Apri i file .docx, .xlsx e .pptx in SelfOffice con un doppio clic.',
     setDefaultAppIs: 'SelfOffice è già l’app predefinita.',
@@ -7356,7 +7596,7 @@ export const strings = {
       'Se disattivato, i documenti appena aperti iniziano con il pannello IA ridotto; basta un clic quando serve.',
     setAuthorName: 'Nome utente',
     setAuthorNameDesc:
-      'Mostrato come autore di commenti e revisioni in Docs, Sheets e Slides. Lascia vuoto per usare il nome dell’account del computer.',
+      'Mostrato come autore di commenti e revisioni in Docs, Sheets, Slides e PDF. Lascia vuoto per usare il nome dell’account del computer.',
     settings: 'Impostazioni',
     setSecAccount: 'Account',
     setSecGeneral: 'Generale',
@@ -7403,6 +7643,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill non installato',
     intgStateInstalled: 'Skill {v} installato · pronto nella prossima chat',
+    intgLegacyTitle: 'Copie obsolete dello skill',
+    intgLegacyDesc:
+      'Prima SelfOffice scriveva una copia nella cartella di ogni strumento. Ne restano {n}: lo strumento continua a leggerle, quindi non ricevono mai lo skill attuale.',
+    intgLegacyClean: 'Rimuovi le copie obsolete',
+    intgLegacyCleaned: '{n} copie obsolete rimosse, {k} modificate a mano lasciate al loro posto.',
+    intgLegacyFailed: 'Impossibile rimuovere le copie obsolete: {msg}',
     intgOtherToggle: 'Il mio assistente non è in elenco',
     intgOtherDesc:
       'Scegli una sola di queste tre strade. Installano tutte lo stesso skill, quindi non serve farne più di una.',
@@ -7422,7 +7668,7 @@ export const strings = {
     intgExample2: 'Prepara una presentazione di 6 slide sui nostri risultati del terzo trimestre',
     intgExample3: 'Converti budget.xlsx in PDF e aprilo in SelfOffice',
     intgStep2Note:
-      "L'assistente esegue da solo la riga di comando selfoffice; non dovrai mai digitarla.",
+      "L'assistente richiama SelfOffice da solo, tramite la riga di comando o MCP; non dovrai mai digitare un comando.",
     intgCliPartTitle: 'CLI · riga di comando + skill',
     intgCliPartDesc:
       'Per assistenti che possono eseguire comandi da terminale (Claude Code, Codex, Cursor e altri). Installato lo skill, l’assistente richiama da sé la riga di comando selfoffice per creare, convertire, leggere e modificare file; non digiti mai un comando.',
@@ -7481,6 +7727,8 @@ export const strings = {
     setAiProvider: 'Provider',
     setAiModelId: 'Modello',
     setAiModelSearch: 'Cerca modelli…',
+    setAiThinking: 'Sforzo di ragionamento',
+    setAiThinkingDefault: 'Predefinito del modello',
     setAiApiKey: 'Chiave API',
     setAiKeyHint: 'Salvata solo su questo dispositivo.',
     setAiBaseUrl: 'Base URL',
@@ -7509,6 +7757,7 @@ export const strings = {
     setSecAiMedia: 'Media e ricerca IA',
     setAiSearchSerperHint: 'Serper offre ricerca web e di immagini con la tua chiave.',
     setAiSearchSerplyHint: 'Serply offre ricerca web e di immagini con la tua chiave.',
+    setAiSearchSearchApiHint: 'SearchApi offre ricerca web e di immagini con la tua chiave.',
     setAiSearchTavilyHint:
       'Tavily offre la ricerca web con la tua chiave; la ricerca di immagini ricorre a fonti gratuite.',
     setAiSearchParallelHint:
@@ -7571,6 +7820,7 @@ export const strings = {
     intgSkillsRead: 'Dettagli',
     intgSkillsMine: 'Le mie competenze',
     intgSkillsRecommended: 'Consigliate',
+    intgSkillsCatAll: 'Tutti',
     intgSkillsCatOffice: 'Ufficio',
     intgSkillsCatBusiness: 'Business',
     intgSkillsCatData: 'Dati',
@@ -7810,6 +8060,9 @@ export const strings = {
     setAutoUpdateCheck: 'Automatycznie sprawdzaj aktualizacje',
     setAutoUpdateCheckDesc:
       'Po wyłączeniu SelfOffice nie sprawdza nowych wersji przy uruchomieniu ani w tle. Nadal możesz sprawdzić ręcznie w Pomoc › Sprawdź aktualizacje.',
+    setSilentInstall: 'Instaluj aktualizacje po cichu',
+    setSilentInstallDesc:
+      'Gdy włączone, nowa wersja znaleziona w tle jest pobierana po cichu i instalowana przy wyjściu z SelfOffice; nic nie przerywa pracy. Gdy wyłączone, monit o aktualizacji pozwala samodzielnie wybrać moment.',
     updateChannel: 'Kanał aktualizacji',
     channelStable: 'Stabilny',
     channelBeta: 'Beta',
@@ -7848,6 +8101,9 @@ export const strings = {
     aiFontSizeXLarge: 'Bardzo duży',
     aiFontSizeCustom: 'Niestandardowy',
     setAiSpellcheck: 'Sprawdzanie pisowni w czacie AI',
+    setLegacyImportPrompt: 'Pytaj przed konwersją starych plików',
+    setLegacyImportPromptDesc:
+      'Wyjaśnia, co zostanie przeniesione przed otwarciem plików .doc, .odt, .hwp, .ods lub .odp. Po wyłączeniu od razu otwiera się Zapisz jako.',
     setDefaultApp: 'Domyślna aplikacja dla dokumentów Office',
     setDefaultAppDesc: 'Otwieraj pliki .docx, .xlsx i .pptx w SelfOffice po dwukrotnym kliknięciu.',
     setDefaultAppIs: 'SelfOffice jest już aplikacją domyślną.',
@@ -7864,7 +8120,7 @@ export const strings = {
       'Gdy wyłączone, nowo otwarte dokumenty zaczynają ze zwiniętym panelem AI; wystarczy jedno kliknięcie, gdy jest potrzebny.',
     setAuthorName: 'Nazwa użytkownika',
     setAuthorNameDesc:
-      'Wyświetlana jako autor komentarzy i śledzonych zmian w Docs, Sheets i Slides. Pozostaw puste, aby użyć nazwy konta komputera.',
+      'Wyświetlana jako autor komentarzy i śledzonych zmian w Docs, Sheets, Slides i PDF. Pozostaw puste, aby użyć nazwy konta komputera.',
     settings: 'Ustawienia',
     setSecAccount: 'Konto',
     setSecGeneral: 'Ogólne',
@@ -7910,6 +8166,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill niezainstalowany',
     intgStateInstalled: 'Skill {v} zainstalowany · gotowy w następnym czacie',
+    intgLegacyTitle: 'Stare kopie wtyczki',
+    intgLegacyDesc:
+      'SelfOffice wcześniej zapisywał kopię w folderze każdego narzędzia. Wciąż jest tam {n}: narzędzie czyta je dalej, więc nigdy nie dostają aktualnej wtyczki.',
+    intgLegacyClean: 'Usuń stare kopie',
+    intgLegacyCleaned: 'Usunięto {n} starych kopii, {k} edytowanych ręcznie zostawiono.',
+    intgLegacyFailed: 'Nie udało się usunąć starych kopii: {msg}',
     intgOtherToggle: 'Mojego asystenta nie ma na liście',
     intgOtherDesc:
       'Wybierz tylko jeden z tych trzech sposobów. Wszystkie instalują ten sam skill, więc nie trzeba robić więcej niż jednego.',
@@ -7928,7 +8190,7 @@ export const strings = {
     intgExample2: 'Zrób prezentację z 6 slajdów o naszych wynikach za III kwartał',
     intgExample3: 'Przekonwertuj budget.xlsx do PDF i otwórz w SelfOffice',
     intgStep2Note:
-      'Asystent sam uruchamia wiersz poleceń selfoffice; nigdy nie musisz go wpisywać.',
+      'Asystent sam wywołuje SelfOffice — przez wiersz poleceń lub MCP; nigdy nie musisz wpisywać polecenia.',
     intgCliPartTitle: 'CLI · wiersz poleceń + skill',
     intgCliPartDesc:
       'Dla asystentów, które potrafią uruchamiać polecenia terminala (Claude Code, Codex, Cursor i inne). Po zainstalowaniu skilla asystent sam wywołuje wiersz poleceń selfoffice, aby tworzyć, konwertować, czytać i edytować pliki; nigdy nie wpisujesz polecenia.',
@@ -7987,6 +8249,8 @@ export const strings = {
     setAiProvider: 'Dostawca',
     setAiModelId: 'Model',
     setAiModelSearch: 'Szukaj modeli…',
+    setAiThinking: 'Poziom rozumowania',
+    setAiThinkingDefault: 'Domyślny modelu',
     setAiApiKey: 'Klucz API',
     setAiKeyHint: 'Przechowywany tylko na tym urządzeniu.',
     setAiBaseUrl: 'Base URL',
@@ -8016,6 +8280,7 @@ export const strings = {
     setSecAiMedia: 'Media i wyszukiwanie AI',
     setAiSearchSerperHint: 'Serper zapewnia wyszukiwanie w sieci i obrazów z Twoim kluczem.',
     setAiSearchSerplyHint: 'Serply zapewnia wyszukiwanie w sieci i obrazów z Twoim kluczem.',
+    setAiSearchSearchApiHint: 'SearchApi zapewnia wyszukiwanie w sieci i obrazów z Twoim kluczem.',
     setAiSearchTavilyHint:
       'Tavily zapewnia wyszukiwanie w sieci z Twoim kluczem; wyszukiwanie obrazów używa darmowych źródeł.',
     setAiSearchParallelHint:
@@ -8078,6 +8343,7 @@ export const strings = {
     intgSkillsRead: 'Szczegóły',
     intgSkillsMine: 'Moje umiejętności',
     intgSkillsRecommended: 'Polecane',
+    intgSkillsCatAll: 'Wszystkie',
     intgSkillsCatOffice: 'Biuro',
     intgSkillsCatBusiness: 'Biznes',
     intgSkillsCatData: 'Dane',
@@ -8314,6 +8580,9 @@ export const strings = {
     setAutoUpdateCheck: 'Automaticky kontrolovat aktualizace',
     setAutoUpdateCheckDesc:
       'Po vypnutí SelfOffice nekontroluje nové verze při spuštění ani na pozadí. Ručně můžete zkontrolovat v Nápověda › Zkontrolovat aktualizace.',
+    setSilentInstall: 'Instalovat aktualizace tiše',
+    setSilentInstallDesc:
+      'Je-li zapnuto, nová verze nalezená na pozadí se tiše stáhne a nainstaluje při ukončení SelfOffice; při práci vás nic nepřeruší. Je-li vypnuto, výzva k aktualizaci vám nechá rozhodnout kdy.',
     updateChannel: 'Kanál aktualizací',
     channelStable: 'Stabilní',
     channelBeta: 'Beta',
@@ -8368,6 +8637,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill není nainstalován',
     intgStateInstalled: 'Skill {v} nainstalován · připraven v příštím chatu',
+    intgLegacyTitle: 'Staré kopie skillu',
+    intgLegacyDesc:
+      'SelfOffice dříve zapisoval kopii do složky každého nástroje. Pořád jich tam je {n}: nástroj je stále čte, takže se k nim nikdy nedostane aktuální skill.',
+    intgLegacyClean: 'Odebrat staré kopie',
+    intgLegacyCleaned: 'Odebráno {n} starých kopií, {k} ručně upravených ponecháno.',
+    intgLegacyFailed: 'Staré kopie se nepodařilo odebrat: {msg}',
     intgOtherToggle: 'Můj asistent v seznamu není',
     intgOtherDesc:
       'Zvolte pouze jeden z těchto tří způsobů. Všechny instalují stejný skill, takže není třeba dělat více než jeden.',
@@ -8385,7 +8660,8 @@ export const strings = {
     intgExample1: 'Převeď ~/Downloads/report.md na dokument Word',
     intgExample2: 'Udělej prezentaci o 6 snímcích o našich výsledcích za 3. čtvrtletí',
     intgExample3: 'Převeď budget.xlsx do PDF a otevři ho v SelfOffice',
-    intgStep2Note: 'Asistent spouští příkazový řádek selfoffice sám; nikdy ho nemusíte psát.',
+    intgStep2Note:
+      'Asistent volá SelfOffice sám – přes příkazový řádek nebo MCP; nikdy nemusíte psát žádný příkaz.',
     intgCliPartTitle: 'CLI · příkazový řádek + skill',
     intgCliPartDesc:
       'Pro asistenty, kteří umí spouštět příkazy terminálu (Claude Code, Codex, Cursor a další). Po instalaci skillu asistent sám volá příkazový řádek selfoffice k vytváření, převodu, čtení a úpravám souborů; žádný příkaz nepíšete.',
@@ -8444,6 +8720,8 @@ export const strings = {
     setAiProvider: 'Poskytovatel',
     setAiModelId: 'Model',
     setAiModelSearch: 'Hledat modely…',
+    setAiThinking: 'Úroveň uvažování',
+    setAiThinkingDefault: 'Výchozí pro model',
     setAiApiKey: 'Klíč API',
     setAiKeyHint: 'Ukládá se pouze na tomto zařízení.',
     setAiBaseUrl: 'Základní URL',
@@ -8473,6 +8751,7 @@ export const strings = {
     setSecAiMedia: 'AI média a vyhledávání',
     setAiSearchSerperHint: 'Serper zajišťuje webové i obrázkové vyhledávání s vaším klíčem.',
     setAiSearchSerplyHint: 'Serply zajišťuje webové i obrázkové vyhledávání s vaším klíčem.',
+    setAiSearchSearchApiHint: 'SearchApi zajišťuje webové i obrázkové vyhledávání s vaším klíčem.',
     setAiSearchTavilyHint:
       'Tavily zajišťuje webové vyhledávání s vaším klíčem; obrázkové vyhledávání použije bezplatné zdroje.',
     setAiSearchParallelHint:
@@ -8547,6 +8826,9 @@ export const strings = {
     aiFontSizeXLarge: 'Extra velké',
     aiFontSizeCustom: 'Vlastní',
     setAiSpellcheck: 'Kontrola pravopisu v chatu AI',
+    setLegacyImportPrompt: 'Ptát se před převodem starších souborů',
+    setLegacyImportPromptDesc:
+      'Před otevřením souborů .doc, .odt, .hwp, .ods nebo .odp vysvětlí, co se převede. Při vypnutí se rovnou otevře Uložit jako.',
     setDefaultApp: 'Výchozí aplikace pro dokumenty Office',
     setDefaultAppDesc: 'Otevírat soubory .docx, .xlsx a .pptx v SelfOffice poklepáním.',
     setDefaultAppIs: 'SelfOffice už je výchozí aplikací.',
@@ -8576,6 +8858,7 @@ export const strings = {
     intgSkillsRead: 'Podrobnosti',
     intgSkillsMine: 'Moje dovednosti',
     intgSkillsRecommended: 'Doporučené',
+    intgSkillsCatAll: 'Všechny',
     intgSkillsCatOffice: 'Kancelář',
     intgSkillsCatBusiness: 'Byznys',
     intgSkillsCatData: 'Data',
@@ -8590,7 +8873,7 @@ export const strings = {
     intgSkillsInstalledTag: 'Nainstalováno',
     setAuthorName: 'Uživatelské jméno',
     setAuthorNameDesc:
-      'Zobrazuje se jako autor komentářů a sledovaných změn v Docs, Sheets a Slides. Ponechte prázdné pro použití názvu účtu počítače.',
+      'Zobrazuje se jako autor komentářů a sledovaných změn v Docs, Sheets, Slides a PDF. Ponechte prázdné pro použití názvu účtu počítače.',
     helpSearchPlaceholder: 'Hledat v příručce… (stiskněte /)',
     helpSearchLabel: 'Hledat v příručce',
     helpContentsLabel: 'Obsah příručky',
@@ -8814,6 +9097,9 @@ export const strings = {
     setAutoUpdateCheck: 'Automatisch controleren op updates',
     setAutoUpdateCheckDesc:
       'Uitgeschakeld controleert SelfOffice niet meer op nieuwe versies bij het starten of op de achtergrond. Je kunt nog steeds controleren via Help › Controleren op updates.',
+    setSilentInstall: 'Updates stil installeren',
+    setSilentInstallDesc:
+      'Indien aan, wordt een nieuwe versie die op de achtergrond is gevonden stil gedownload en geïnstalleerd wanneer u SelfOffice afsluit; niets onderbreekt u tijdens het werk. Indien uit, laat een updatemelding u zelf kiezen wanneer.',
     updateChannel: 'Updatekanaal',
     channelStable: 'Stabiel',
     channelBeta: 'Bèta',
@@ -8852,6 +9138,9 @@ export const strings = {
     aiFontSizeXLarge: 'Extra groot',
     aiFontSizeCustom: 'Aangepast',
     setAiSpellcheck: 'Spellingcontrole in AI-chat',
+    setLegacyImportPrompt: 'Vragen voor het converteren van oude bestanden',
+    setLegacyImportPromptDesc:
+      'Legt uit wat behouden blijft voordat een .doc-, .odt-, .hwp-, .ods- of .odp-bestand wordt geopend. Uitgeschakeld opent direct Opslaan als.',
     setDefaultApp: 'Standaardapp voor Office-documenten',
     setDefaultAppDesc: '.docx-, .xlsx- en .pptx-bestanden in SelfOffice openen bij dubbelklikken.',
     setDefaultAppIs: 'SelfOffice is al de standaardapp.',
@@ -8869,7 +9158,7 @@ export const strings = {
       'Indien uit, starten nieuw geopende documenten met een ingeklapt AI-paneel; één klik volstaat wanneer je het nodig hebt.',
     setAuthorName: 'Gebruikersnaam',
     setAuthorNameDesc:
-      'Wordt weergegeven als auteur van opmerkingen en bijgehouden wijzigingen in Docs, Sheets en Slides. Laat leeg om de accountnaam van je computer te gebruiken.',
+      'Wordt weergegeven als auteur van opmerkingen en bijgehouden wijzigingen in Docs, Sheets, Slides en PDF. Laat leeg om de accountnaam van je computer te gebruiken.',
     settings: 'Instellingen',
     setSecAccount: 'Account',
     setSecGeneral: 'Algemeen',
@@ -8915,6 +9204,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill niet geïnstalleerd',
     intgStateInstalled: 'Skill {v} geïnstalleerd · klaar in uw volgende chat',
+    intgLegacyTitle: 'Oude skillkopieën',
+    intgLegacyDesc:
+      'SelfOffice schreef vroeger een kopie in de map van elke tool. Er staan er nog {n}: de tool leest ze nog, dus ze krijgen nooit de huidige skill.',
+    intgLegacyClean: 'Oude kopieën verwijderen',
+    intgLegacyCleaned: '{n} oude kopieën verwijderd, {k} met de hand bewerkte laten we staan.',
+    intgLegacyFailed: 'Kon de oude kopieën niet verwijderen: {msg}',
     intgOtherToggle: 'Mijn assistent staat er niet bij',
     intgOtherDesc:
       'Kies één van deze drie manieren. Ze installeren allemaal dezelfde skill, dus meer dan één is niet nodig.',
@@ -8934,7 +9229,7 @@ export const strings = {
     intgExample2: 'Maak een presentatie van 6 dia’s over onze Q3-resultaten',
     intgExample3: 'Zet budget.xlsx om naar PDF en open het in SelfOffice',
     intgStep2Note:
-      'De assistent voert de selfoffice-opdrachtregel zelf uit; u hoeft die nooit te typen.',
+      'De assistent roept SelfOffice zelf aan, via de opdrachtregel of MCP; u hoeft nooit een opdracht te typen.',
     intgCliPartTitle: 'CLI · opdrachtregel + skill',
     intgCliPartDesc:
       'Voor assistenten die terminalopdrachten kunnen uitvoeren (Claude Code, Codex, Cursor en andere). Na installatie van de skill roept de assistent zelf de selfoffice-opdrachtregel aan om bestanden te maken, converteren, lezen en bewerken; je typt nooit een opdracht.',
@@ -8992,6 +9287,8 @@ export const strings = {
     setAiProvider: 'Provider',
     setAiModelId: 'Model',
     setAiModelSearch: 'Modellen zoeken…',
+    setAiThinking: 'Denkinspanning',
+    setAiThinkingDefault: 'Modelstandaard',
     setAiApiKey: 'API-sleutel',
     setAiKeyHint: 'Alleen op dit apparaat opgeslagen.',
     setAiBaseUrl: 'Base URL',
@@ -9020,6 +9317,7 @@ export const strings = {
     setSecAiMedia: 'AI-media en zoeken',
     setAiSearchSerperHint: 'Serper levert web- en afbeeldingszoeken met je sleutel.',
     setAiSearchSerplyHint: 'Serply levert web- en afbeeldingszoeken met je sleutel.',
+    setAiSearchSearchApiHint: 'SearchApi levert web- en afbeeldingszoeken met je sleutel.',
     setAiSearchTavilyHint:
       'Tavily levert webzoeken met je sleutel; afbeeldingszoeken valt terug op gratis bronnen.',
     setAiSearchParallelHint:
@@ -9082,6 +9380,7 @@ export const strings = {
     intgSkillsRead: 'Details',
     intgSkillsMine: 'Mijn vaardigheden',
     intgSkillsRecommended: 'Aanbevolen',
+    intgSkillsCatAll: 'Alles',
     intgSkillsCatOffice: 'Kantoor',
     intgSkillsCatBusiness: 'Zakelijk',
     intgSkillsCatData: 'Data',
@@ -9319,6 +9618,9 @@ export const strings = {
     setAutoUpdateCheck: 'Semak kemas kini secara automatik',
     setAutoUpdateCheckDesc:
       'Apabila dimatikan, SelfOffice tidak lagi menyemak versi baharu semasa dimulakan atau di latar belakang. Anda masih boleh menyemak melalui Bantuan › Semak Kemas Kini.',
+    setSilentInstall: 'Pasang kemas kini secara senyap',
+    setSilentInstallDesc:
+      'Apabila dihidupkan, versi baharu yang ditemui di latar belakang dimuat turun secara senyap dan dipasang apabila anda keluar dari SelfOffice; tiada gangguan semasa bekerja. Apabila dimatikan, gesaan kemas kini membiarkan anda memutuskan bila.',
     updateChannel: 'Saluran Kemas Kini',
     channelStable: 'Stabil',
     channelBeta: 'Beta',
@@ -9357,6 +9659,9 @@ export const strings = {
     aiFontSizeXLarge: 'Sangat besar',
     aiFontSizeCustom: 'Tersuai',
     setAiSpellcheck: 'Semakan ejaan dalam sembang AI',
+    setLegacyImportPrompt: 'Tanya sebelum menukar fail lama',
+    setLegacyImportPromptDesc:
+      'Terangkan apa yang dikekalkan sebelum membuka fail .doc, .odt, .hwp, .ods atau .odp. Jika dimatikan, Simpan Sebagai terus dibuka.',
     setDefaultApp: 'Apl lalai untuk dokumen Office',
     setDefaultAppDesc: 'Buka fail .docx, .xlsx dan .pptx dalam SelfOffice apabila diklik dua kali.',
     setDefaultAppIs: 'SelfOffice sudah menjadi apl lalai.',
@@ -9374,7 +9679,7 @@ export const strings = {
       'Jika dimatikan, dokumen yang baru dibuka bermula dengan panel AI dilipat; cukup satu klik apabila diperlukan.',
     setAuthorName: 'Nama pengguna',
     setAuthorNameDesc:
-      'Dipaparkan sebagai pengarang komen dan perubahan dijejak dalam Docs, Sheets dan Slides. Biarkan kosong untuk menggunakan nama akaun komputer.',
+      'Dipaparkan sebagai pengarang komen dan perubahan dijejak dalam Docs, Sheets, Slides dan PDF. Biarkan kosong untuk menggunakan nama akaun komputer.',
     settings: 'Tetapan',
     setSecAccount: 'Akaun',
     setSecGeneral: 'Umum',
@@ -9420,6 +9725,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'Skill belum dipasang',
     intgStateInstalled: 'Skill {v} dipasang · sedia dalam sembang seterusnya',
+    intgLegacyTitle: 'Salinan skill lama',
+    intgLegacyDesc:
+      'SelfOffice dahulu menulis salinan ke dalam folder setiap alatan. Masih ada {n} di sana: alatan itu masih membacanya, jadi ia tidak pernah menerima skill semasa.',
+    intgLegacyClean: 'Buang salinan lama',
+    intgLegacyCleaned: '{n} salinan lama dibuang, {k} yang disunting secara manual dikekalkan.',
+    intgLegacyFailed: 'Gagal membuang salinan lama: {msg}',
     intgOtherToggle: 'Pembantu saya tiada dalam senarai',
     intgOtherDesc:
       'Pilih satu sahaja daripada tiga cara ini. Semuanya memasang skill yang sama, jadi tidak perlu lebih daripada satu.',
@@ -9439,7 +9750,7 @@ export const strings = {
     intgExample2: 'Buat pembentangan 6 slaid tentang hasil S3 kami',
     intgExample3: 'Tukar budget.xlsx kepada PDF dan buka dalam SelfOffice',
     intgStep2Note:
-      'Pembantu menjalankan baris arahan selfoffice sendiri; anda tidak perlu menaipnya.',
+      'Pembantu memanggil SelfOffice sendiri, melalui baris arahan atau MCP; anda tidak perlu menaip sebarang arahan.',
     intgCliPartTitle: 'CLI · baris arahan + skill',
     intgCliPartDesc:
       'Untuk pembantu yang boleh menjalankan arahan terminal (Claude Code, Codex, Cursor dan lain-lain). Setelah skill dipasang, pembantu memanggil baris arahan selfoffice sendiri untuk mencipta, menukar, membaca dan mengedit fail; anda tidak perlu menaip sebarang arahan.',
@@ -9499,6 +9810,8 @@ export const strings = {
     setAiProvider: 'Penyedia',
     setAiModelId: 'Model',
     setAiModelSearch: 'Cari model…',
+    setAiThinking: 'Tahap penaakulan',
+    setAiThinkingDefault: 'Lalai model',
     setAiApiKey: 'Kunci API',
     setAiKeyHint: 'Disimpan pada peranti ini sahaja.',
     setAiBaseUrl: 'Base URL',
@@ -9528,6 +9841,7 @@ export const strings = {
     setSecAiMedia: 'Media & Carian AI',
     setAiSearchSerperHint: 'Serper menyediakan carian web dan imej dengan kunci anda.',
     setAiSearchSerplyHint: 'Serply menyediakan carian web dan imej dengan kunci anda.',
+    setAiSearchSearchApiHint: 'SearchApi menyediakan carian web dan imej dengan kunci anda.',
     setAiSearchTavilyHint:
       'Tavily menyediakan carian web dengan kunci anda; carian imej menggunakan sumber percuma.',
     setAiSearchParallelHint:
@@ -9590,6 +9904,7 @@ export const strings = {
     intgSkillsRead: 'Detail',
     intgSkillsMine: 'Kemahiran saya',
     intgSkillsRecommended: 'Disyorkan',
+    intgSkillsCatAll: 'Semua',
     intgSkillsCatOffice: 'Pejabat',
     intgSkillsCatBusiness: 'Perniagaan',
     intgSkillsCatData: 'Data',
@@ -9825,6 +10140,9 @@ export const strings = {
     setAutoUpdateCheck: 'בדיקת עדכונים אוטומטית',
     setAutoUpdateCheckDesc:
       'כשהאפשרות כבויה, SelfOffice לא בודקת גרסאות חדשות בהפעלה או ברקע. עדיין אפשר לבדוק ידנית דרך עזרה › בדוק עדכונים.',
+    setSilentInstall: 'התקנת עדכונים בשקט',
+    setSilentInstallDesc:
+      'כשמופעל, גרסה חדשה שנמצאה ברקע מורדת בשקט ומותקנת ביציאה מ‑SelfOffice; שום דבר לא מפריע בזמן העבודה. כשכבוי, הודעת עדכון מאפשרת לכם להחליט מתי לעדכן.',
     updateChannel: 'ערוץ עדכונים',
     channelStable: 'יציב',
     channelBeta: 'בטא',
@@ -9862,6 +10180,9 @@ export const strings = {
     aiFontSizeXLarge: 'גדול מאוד',
     aiFontSizeCustom: 'מותאם אישית',
     setAiSpellcheck: 'בדיקת איות בצ׳אט ה-AI',
+    setLegacyImportPrompt: 'לשאול לפני המרת קבצים ישנים',
+    setLegacyImportPromptDesc:
+      'מסביר מה יישמר לפני פתיחת קובצי ‎.doc, ‎.odt, ‎.hwp, ‎.ods או ‎.odp. כשכבוי, „שמירה בשם” נפתח מיד.',
     setDefaultApp: 'אפליקציית ברירת המחדל למסמכי Office',
     setDefaultAppDesc: 'פתיחת קובצי .docx‏, .xlsx ו‑.pptx ב‑SelfOffice בלחיצה כפולה.',
     setDefaultAppIs: 'SelfOffice היא כבר ברירת המחדל.',
@@ -9878,7 +10199,7 @@ export const strings = {
       'כאשר כבוי, מסמכים שנפתחו זה עתה מתחילים עם לוח ה-AI מקופל; לחיצה אחת מספיקה כשצריך.',
     setAuthorName: 'שם משתמש',
     setAuthorNameDesc:
-      'מוצג כמחבר ההערות והשינויים במעקב ב‑Docs, Sheets ו‑Slides. השאירו ריק כדי להשתמש בשם חשבון המחשב.',
+      'מוצג כמחבר ההערות והשינויים במעקב ב‑Docs, Sheets, Slides ו‑PDF. השאירו ריק כדי להשתמש בשם חשבון המחשב.',
     settings: 'הגדרות',
     setSecAccount: 'חשבון',
     setSecGeneral: 'כללי',
@@ -9922,6 +10243,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'ה-skill לא מותקן',
     intgStateInstalled: 'skill {v} מותקן · מוכן בשיחה הבאה',
+    intgLegacyTitle: 'עותקי skill ישנים',
+    intgLegacyDesc:
+      'SelfOffice כתב בעבר עותק בתיקייה של כל כלי. עדיין נשארו שם {n}: הכלי ממשיך לקרוא אותם, ולכן הם לעולם לא מקבלים את ה-skill הנוכחי.',
+    intgLegacyClean: 'הסר עותקים ישנים',
+    intgLegacyCleaned: 'הוסרו {n} עותקים ישנים, {k} שעורכו ידנית נותרו במקומם.',
+    intgLegacyFailed: 'לא ניתן להסיר את העותקים הישנים: {msg}',
     intgOtherToggle: 'העוזר שלי לא מופיע ברשימה',
     intgOtherDesc:
       'בחרו רק דרך אחת מבין השלוש. כולן מתקינות את אותו skill, ולכן אין צורך ביותר מאחת.',
@@ -9938,7 +10265,8 @@ export const strings = {
     intgExample1: 'הפוך את ~/Downloads/report.md למסמך Word',
     intgExample2: 'הכן מצגת של 6 שקופיות על תוצאות הרבעון השלישי שלנו',
     intgExample3: 'המר את budget.xlsx ל-PDF ופתח אותו ב-SelfOffice',
-    intgStep2Note: 'העוזר מריץ בעצמו את שורת הפקודה selfoffice; לעולם לא תצטרכו להקליד אותה.',
+    intgStep2Note:
+      'העוזר קורא ל-SelfOffice בעצמו, דרך שורת הפקודה או MCP; לעולם לא תצטרכו להקליד פקודה.',
     intgCliPartTitle: 'CLI · שורת פקודה + skill',
     intgCliPartDesc:
       'לעוזרים שיכולים להריץ פקודות טרמינל (Claude Code‏, Codex‏, Cursor ואחרים). לאחר התקנת ה‑skill העוזר קורא בעצמו לשורת הפקודה selfoffice כדי ליצור, להמיר, לקרוא ולערוך קבצים; אתם לא מקלידים שום פקודה.',
@@ -9995,6 +10323,8 @@ export const strings = {
     setAiProvider: 'ספק',
     setAiModelId: 'מודל',
     setAiModelSearch: 'חיפוש מודלים…',
+    setAiThinking: 'עצימות חשיבה',
+    setAiThinkingDefault: 'ברירת מחדל של המודל',
     setAiApiKey: 'מפתח API',
     setAiKeyHint: 'נשמר רק במכשיר זה.',
     setAiBaseUrl: 'Base URL',
@@ -10022,6 +10352,7 @@ export const strings = {
     setSecAiMedia: 'מדיה וחיפוש AI',
     setAiSearchSerperHint: 'Serper מספק חיפוש באינטרנט ובתמונות עם המפתח שלך.',
     setAiSearchSerplyHint: 'Serply מספק חיפוש באינטרנט ובתמונות עם המפתח שלך.',
+    setAiSearchSearchApiHint: 'SearchApi מספק חיפוש באינטרנט ובתמונות עם המפתח שלך.',
     setAiSearchTavilyHint:
       'Tavily מספק חיפוש באינטרנט עם המפתח שלך; חיפוש תמונות חוזר למקורות חינמיים.',
     setAiSearchParallelHint:
@@ -10081,6 +10412,7 @@ export const strings = {
     intgSkillsRead: 'פרטים',
     intgSkillsMine: 'הכישורים שלי',
     intgSkillsRecommended: 'מומלצות',
+    intgSkillsCatAll: 'הכול',
     intgSkillsCatOffice: 'משרד',
     intgSkillsCatBusiness: 'עסקים',
     intgSkillsCatData: 'נתונים',
@@ -10318,6 +10650,9 @@ export const strings = {
     setAutoUpdateCheck: 'अपडेट अपने-आप जाँचें',
     setAutoUpdateCheckDesc:
       'बंद होने पर SelfOffice शुरू होते समय या बैकग्राउंड में नए संस्करण नहीं जाँचता। आप फिर भी सहायता › अपडेट जांचें से जाँच सकते हैं।',
+    setSilentInstall: 'अपडेट चुपचाप इंस्टॉल करें',
+    setSilentInstallDesc:
+      'चालू होने पर, पृष्ठभूमि जाँच में मिला नया संस्करण चुपचाप डाउनलोड होता है और SelfOffice से बाहर निकलते समय इंस्टॉल होता है; काम के दौरान कोई रुकावट नहीं। बंद होने पर, अपडेट सूचना से आप तय करते हैं कि कब अपडेट करना है।',
     updateChannel: 'अपडेट चैनल',
     channelStable: 'स्थिर',
     channelBeta: 'बीटा',
@@ -10356,6 +10691,9 @@ export const strings = {
     aiFontSizeXLarge: 'बहुत बड़ा',
     aiFontSizeCustom: 'कस्टम',
     setAiSpellcheck: 'AI चैट में वर्तनी जाँच',
+    setLegacyImportPrompt: 'पुरानी फ़ाइलें बदलने से पहले पूछें',
+    setLegacyImportPromptDesc:
+      '.doc, .odt, .hwp, .ods या .odp फ़ाइलें खोलने से पहले बताता है कि क्या-क्या बदला जाएगा। बंद होने पर सीधे “इस रूप में सहेजें” खुलता है।',
     setDefaultApp: 'Office दस्तावेज़ों के लिए डिफ़ॉल्ट ऐप',
     setDefaultAppDesc: '.docx, .xlsx और .pptx फ़ाइलें डबल-क्लिक करने पर SelfOffice में खोलें।',
     setDefaultAppIs: 'SelfOffice पहले से डिफ़ॉल्ट ऐप है।',
@@ -10372,7 +10710,7 @@ export const strings = {
       'बंद होने पर, नए खोले गए दस्तावेज़ AI पैनल संक्षिप्त अवस्था में शुरू होते हैं; ज़रूरत पड़ने पर एक क्लिक में खुल जाता है।',
     setAuthorName: 'उपयोगकर्ता नाम',
     setAuthorNameDesc:
-      'Docs, Sheets और Slides में टिप्पणियों और ट्रैक किए गए परिवर्तनों के लेखक के रूप में दिखाया जाता है। कंप्यूटर खाता नाम उपयोग करने के लिए खाली छोड़ें।',
+      'Docs, Sheets, Slides और PDF में टिप्पणियों और ट्रैक किए गए परिवर्तनों के लेखक के रूप में दिखाया जाता है। कंप्यूटर खाता नाम उपयोग करने के लिए खाली छोड़ें।',
     settings: 'सेटिंग्स',
     setSecAccount: 'खाता',
     setSecGeneral: 'सामान्य',
@@ -10417,6 +10755,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'skill इंस्टॉल नहीं है',
     intgStateInstalled: 'skill {v} इंस्टॉल हो गया · अगली चैट में तैयार',
+    intgLegacyTitle: 'पुरानी skill प्रतियाँ',
+    intgLegacyDesc:
+      'SelfOffice पहले हर टूल के अपने फ़ोल्डर में एक प्रति लिखता था। अभी भी {n} वहाँ हैं: टूल उन्हें पढ़ता रहता है, इसलिए उन्हें कभी मौजूदा skill नहीं मिलती।',
+    intgLegacyClean: 'पुरानी प्रतियाँ हटाएँ',
+    intgLegacyCleaned: '{n} पुरानी प्रतियाँ हटा दी गईं, {k} हाथ से बदली गई प्रतियाँ बनी रखी गईं।',
+    intgLegacyFailed: 'पुरानी प्रतियाँ नहीं हटाई जा सकीं: {msg}',
     intgOtherToggle: 'मेरा असिस्टेंट सूची में नहीं है',
     intgOtherDesc:
       'इन तीन तरीकों में से कोई एक ही चुनें। सभी एक ही skill इंस्टॉल करते हैं, इसलिए एक से ज़्यादा की ज़रूरत नहीं।',
@@ -10434,7 +10778,8 @@ export const strings = {
     intgExample1: '~/Downloads/report.md को Word दस्तावेज़ बना दो',
     intgExample2: 'हमारे Q3 नतीजों पर 6 स्लाइड का प्रेज़ेंटेशन बनाओ',
     intgExample3: 'budget.xlsx को PDF में बदलो और SelfOffice में खोलो',
-    intgStep2Note: 'selfoffice कमांड लाइन असिस्टेंट खुद चलाता है; आपको कभी टाइप नहीं करना पड़ता।',
+    intgStep2Note:
+      'असिस्टेंट SelfOffice को कमांड लाइन या MCP के ज़रिए खुद कॉल करता है; आपको कभी कोई कमांड टाइप नहीं करनी पड़ती।',
     intgCliPartTitle: 'CLI · कमांड लाइन + skill',
     intgCliPartDesc:
       'उन सहायकों के लिए जो टर्मिनल कमांड चला सकते हैं (Claude Code, Codex, Cursor आदि)। skill इंस्टॉल होने के बाद सहायक फ़ाइलें बनाने, बदलने, पढ़ने और संपादित करने के लिए खुद selfoffice कमांड लाइन चलाता है; आपको कोई कमांड टाइप नहीं करना पड़ता।',
@@ -10493,6 +10838,8 @@ export const strings = {
     setAiProvider: 'प्रदाता',
     setAiModelId: 'मॉडल',
     setAiModelSearch: 'मॉडल खोजें…',
+    setAiThinking: 'चिंतन प्रयास',
+    setAiThinkingDefault: 'मॉडल डिफ़ॉल्ट',
     setAiApiKey: 'API कुंजी',
     setAiKeyHint: 'केवल इसी डिवाइस पर संग्रहीत।',
     setAiBaseUrl: 'Base URL',
@@ -10521,6 +10868,7 @@ export const strings = {
     setSecAiMedia: 'AI मीडिया और खोज',
     setAiSearchSerperHint: 'Serper आपकी कुंजी से वेब और इमेज खोज दोनों देता है।',
     setAiSearchSerplyHint: 'Serply आपकी कुंजी से वेब और इमेज खोज दोनों देता है।',
+    setAiSearchSearchApiHint: 'SearchApi आपकी कुंजी से वेब और इमेज खोज दोनों देता है।',
     setAiSearchTavilyHint:
       'Tavily आपकी कुंजी से वेब खोज देता है; इमेज खोज मुफ़्त स्रोतों पर लौट जाती है।',
     setAiSearchParallelHint:
@@ -10582,6 +10930,7 @@ export const strings = {
     intgSkillsRead: 'विवरण',
     intgSkillsMine: 'मेरे कौशल',
     intgSkillsRecommended: 'अनुशंसित',
+    intgSkillsCatAll: 'सभी',
     intgSkillsCatOffice: 'ऑफ़िस',
     intgSkillsCatBusiness: 'व्यवसाय',
     intgSkillsCatData: 'डेटा',
@@ -10814,6 +11163,9 @@ export const strings = {
     setAutoUpdateCheck: '自動檢查更新',
     setAutoUpdateCheckDesc:
       '關閉後，啟動時與背景都不再檢查新版本；仍可在「說明 › 檢查更新」中手動檢查。',
+    setSilentInstall: '靜默安裝更新',
+    setSilentInstallDesc:
+      '開啟後，背景檢查到新版本會靜默下載，並在你結束應用程式時安裝，使用過程中不會打擾或重新啟動。關閉則彈出更新提示，由你決定何時更新。',
     updateChannel: '更新通道',
     channelStable: '穩定版',
     channelBeta: 'Beta 版',
@@ -10850,6 +11202,9 @@ export const strings = {
     aiFontSizeXLarge: '特大',
     aiFontSizeCustom: '自訂',
     setAiSpellcheck: 'AI 對話拼字檢查',
+    setLegacyImportPrompt: '開啟舊格式前先提示',
+    setLegacyImportPromptDesc:
+      '開啟 .doc、.odt、.hwp、.ods、.odp 等舊格式檔案時，先說明哪些內容會轉換過來。關閉後直接進入另存新檔。',
     setDefaultApp: '設為 Office 文件預設程式',
     setDefaultAppDesc: '雙擊 .docx、.xlsx、.pptx 檔案時用 SelfOffice 開啟。',
     setDefaultAppIs: 'SelfOffice 已是預設程式。',
@@ -10865,7 +11220,7 @@ export const strings = {
     setAiOpenInNewDocsDesc: '關閉後，新開啟的文件預設收合 AI 面板；需要時點一下即可展開。',
     setAuthorName: '使用者名稱',
     setAuthorNameDesc:
-      '作為註解和追蹤修訂的作者顯示在 Docs、Sheets、Slides 中。留空則使用電腦帳戶名稱。',
+      '作為註解和追蹤修訂的作者顯示在 Docs、Sheets、Slides、PDF 中。留空則使用電腦帳戶名稱。',
     settings: '設定',
     setSecAccount: '帳戶',
     setSecGeneral: '一般',
@@ -10907,6 +11262,12 @@ export const strings = {
     intgSkillVersion: 'skill {v}',
     intgStateMissing: 'skill 未安裝',
     intgStateInstalled: '已安裝 skill {v} · 下次對話即可使用',
+    intgLegacyTitle: '舊版 skill 副本',
+    intgLegacyDesc:
+      'SelfOffice 以前會把副本寫進每個工具自己的目錄。現在還有 {n} 份留在那裡:工具仍在讀取它們,所以永遠拿不到目前版本。',
+    intgLegacyClean: '刪除舊副本',
+    intgLegacyCleaned: '已刪除 {n} 份舊副本,{k} 份被手動改過的保留不動。',
+    intgLegacyFailed: '刪除舊副本失敗:{msg}',
     intgOtherToggle: '沒有列出我的助理',
     intgOtherDesc: '以下三種方式任選一種即可。安裝的是同一份 skill，不需要重複操作。',
     intgOtherFolderTitle: '任何能讀取 SKILL.md 資料夾的助理',
@@ -10922,7 +11283,7 @@ export const strings = {
     intgExample1: '把 ~/Downloads/report.md 轉成 Word 文件',
     intgExample2: '做一份 6 頁的簡報，介紹我們第三季的業績',
     intgExample3: '把 budget.xlsx 轉成 PDF，並在 SelfOffice 中開啟',
-    intgStep2Note: '助理會自行呼叫 selfoffice 命令列，你不需要輸入任何指令。',
+    intgStep2Note: '助理會透過命令列或 MCP 自行呼叫 SelfOffice，你不需要輸入任何指令。',
     intgCliPartTitle: 'CLI · 命令列 + skill',
     intgCliPartDesc:
       '適合能執行終端機指令的助理（Claude Code、Codex、Cursor 等）。安裝 skill 後，助理會自己呼叫 selfoffice 命令列建立、轉換、讀取和編輯檔案，你不需要輸入任何指令。',
@@ -10979,6 +11340,8 @@ export const strings = {
     setAiProvider: '模型服務商',
     setAiModelId: '模型',
     setAiModelSearch: '搜尋模型…',
+    setAiThinking: '思考強度',
+    setAiThinkingDefault: '跟隨模型預設',
     setAiApiKey: 'API Key',
     setAiKeyHint: '金鑰僅儲存在本機。',
     setAiBaseUrl: 'Base URL',
@@ -11007,6 +11370,7 @@ export const strings = {
     setSecAiMedia: '生圖、媒體與搜尋',
     setAiSearchSerperHint: 'Serper 用你的 key 同時提供網頁與圖片搜尋。',
     setAiSearchSerplyHint: 'Serply 用你的 key 同時提供網頁與圖片搜尋。',
+    setAiSearchSearchApiHint: 'SearchApi 用你的 key 同時提供網頁與圖片搜尋。',
     setAiSearchTavilyHint: 'Tavily 用你的 key 提供網頁搜尋；圖片搜尋改用免費來源。',
     setAiSearchParallelHint:
       '留空 API key 即可免費使用 Parallel 搜尋（用量有限）。填寫 key 可使用你的 Parallel 帳戶。圖片搜尋使用其他來源。',
@@ -11064,6 +11428,7 @@ export const strings = {
     intgSkillsRead: '詳情',
     intgSkillsMine: '我的技能',
     intgSkillsRecommended: '推薦',
+    intgSkillsCatAll: '全部',
     intgSkillsCatOffice: '辦公',
     intgSkillsCatBusiness: '商務',
     intgSkillsCatData: '資料',

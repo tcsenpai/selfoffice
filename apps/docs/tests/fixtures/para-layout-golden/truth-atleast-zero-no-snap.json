@@ -1,0 +1,22 @@
+{
+  "source": "packages/docx-engine/tests/fixtures/truths/atleast-zero-no-snap/probe.docx",
+  "paragraphs": 8,
+  "hashes": [
+    "1ed176a42e22532e",
+    "540f97f505b02694",
+    "112affce397c505a",
+    "777af7e6afe92ae0",
+    "78aab1c9293e0ff6",
+    "0815d27ea36a85a6",
+    "b77cc1eb27e97777",
+    "935676647bbe57ca"
+  ],
+  "cellParagraphs": 0,
+  "cellHashes": [],
+  "boxParagraphs": 0,
+  "boxHashes": [],
+  "hfParagraphs": 0,
+  "hfHashes": [],
+  "noteParagraphs": 0,
+  "noteHashes": []
+}

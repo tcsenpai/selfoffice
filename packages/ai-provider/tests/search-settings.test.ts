@@ -14,6 +14,7 @@ describe('search settings', () => {
       providers: {
         serper: { apiKey: '' },
         serply: { apiKey: '' },
+        searchapi: { apiKey: '' },
         tavily: { apiKey: '' },
         parallel: { apiKey: '' },
         exa: { apiKey: '' },
@@ -48,6 +49,7 @@ describe('search settings', () => {
           providers: {
             serper: { apiKey: '' },
             serply: { apiKey: '' },
+            searchapi: { apiKey: '' },
             tavily: { apiKey: '' },
             parallel: { apiKey: '' },
             exa: { apiKey: '' },
@@ -64,6 +66,7 @@ describe('search settings', () => {
           providers: {
             serper: { apiKey: 'k' },
             serply: { apiKey: '' },
+            searchapi: { apiKey: '' },
             tavily: { apiKey: '' },
             parallel: { apiKey: '' },
             exa: { apiKey: '' },
@@ -80,6 +83,7 @@ describe('search settings', () => {
           providers: {
             serper: { apiKey: '   ' },
             serply: { apiKey: '' },
+            searchapi: { apiKey: '' },
             tavily: { apiKey: '' },
             parallel: { apiKey: '' },
             exa: { apiKey: '' },
@@ -107,6 +111,26 @@ describe('Serply search settings', () => {
     expect(
       activeSearchProvider({
         search: { ...settings, providers: { ...settings.providers, serply: { apiKey: '  ' } } },
+      }),
+    ).toBe('free')
+  })
+})
+
+describe('SearchApi search settings', () => {
+  it('restores and trims a saved SearchApi key and activates it only with a key', () => {
+    const settings = resolveAiSearchSettings({
+      provider: 'searchapi',
+      providers: { searchapi: { apiKey: ' searchapi-key ' } } as never,
+    })
+    expect(settings.provider).toBe('searchapi')
+    expect(settings.providers.searchapi.apiKey).toBe('searchapi-key')
+    expect(activeSearchProvider({ search: settings })).toBe('searchapi')
+    expect(
+      activeSearchProvider({
+        search: {
+          ...settings,
+          providers: { ...settings.providers, searchapi: { apiKey: '  ' } },
+        },
       }),
     ).toBe('free')
   })
@@ -164,13 +188,14 @@ describe('exa and firecrawl providers', () => {
     expect(s.providers.firecrawl.apiKey).toBe('')
   })
 
-  it('activate with a key and fall back to genspark without one', () => {
+  it('activate with a key and fall back to free without one', () => {
     const mk = (id: 'exa' | 'firecrawl', apiKey: string) => ({
       search: {
         provider: id,
         providers: {
           serper: { apiKey: '' },
           serply: { apiKey: '' },
+          searchapi: { apiKey: '' },
           tavily: { apiKey: '' },
           parallel: { apiKey: '' },
           exa: { apiKey: id === 'exa' ? apiKey : '' },

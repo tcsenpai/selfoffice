@@ -45,6 +45,12 @@ All pure TypeScript, no Electron dependency, unit-tested (except the UI kit):
   the app's own Chromium, reduced in-browser to a document intent tree, and
   written as native OOXML with the `docx` library; only visuals with no Word
   counterpart are screenshotted. Drives the HTML app's Export as Word.
+- `packages/hwp2docx` — local HWP/HWPX → DOCX conversion: HWPX (OWPML)
+  parsed directly, binary `.hwp` read through rhwp (MIT, WebAssembly) into
+  HWPX first; character and paragraph shapes, tables, pictures, sections,
+  headers and footers rebuilt through `docx-engine`, anything else counted
+  in `dropped`. Docs opens `.hwp`/`.hwpx` through it as converted `.docx`
+  copies, like `.odt`.
 - `packages/file-parse` — text extraction for AI attachments (office formats,
   text formats).
 - `packages/agent-core` — the AI agent loop and skill composition shared by
@@ -145,15 +151,15 @@ still needs a cross build for `aarch64-pc-windows-msvc`).
 None are required — the apps run with all of these unset. They exist for
 testing and local overrides:
 
-| Variable                                                                 | Effect                                                                        |
-| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| `BUILD_DIR`                                                              | Override the electron-builder output directory (default `apps/shell/release`) |
-| `SELFOFFICE_USER_DATA`                                                   | Override the Electron userData directory (test isolation)                     |
-| `SELFOFFICE_LANG`                                                        | Force the UI language instead of following the OS locale                      |
-| `SELFOFFICE_FAKE_UPDATE`                                                 | Exercise the updater UI without a real release feed                           |
-| `SERPER_API_KEY`, `SERPLY_API_KEY`, `TAVILY_API_KEY`, `PARALLEL_API_KEY` | Keys for the keyed web-search backends (all optional)                         |
-| `XLSX_SIDECAR_PATH`, `XLSX_OPEN_PATH`, `XLSX_DEBUG_PORT`                 | Point at a locally built xlsx sidecar and its debug port                      |
-| `*_DEV_PORT`, `*_RENDERER_URL`                                           | Per-app Vite dev server ports and renderer URLs (set by `npm run dev`)        |
+| Variable                                                                                      | Effect                                                                        |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `BUILD_DIR`                                                                                   | Override the electron-builder output directory (default `apps/shell/release`) |
+| `SELFOFFICE_USER_DATA`                                                                        | Override the Electron userData directory (test isolation)                     |
+| `SELFOFFICE_LANG`                                                                             | Force the UI language instead of following the OS locale                      |
+| `SELFOFFICE_FAKE_UPDATE`                                                                      | Exercise the updater UI without a real release feed                           |
+| `SERPER_API_KEY`, `SERPLY_API_KEY`, `SEARCHAPI_API_KEY`, `TAVILY_API_KEY`, `PARALLEL_API_KEY` | Keys for the keyed web-search backends (all optional)                         |
+| `XLSX_SIDECAR_PATH`, `XLSX_OPEN_PATH`, `XLSX_DEBUG_PORT`                                      | Point at a locally built xlsx sidecar and its debug port                      |
+| `*_DEV_PORT`, `*_RENDERER_URL`                                                                | Per-app Vite dev server ports and renderer URLs (set by `npm run dev`)        |
 
 AI features degrade rather than break without credentials: requests surface an
 inline sign-in prompt, and web search falls back to keyless backends (Parallel's
@@ -214,11 +220,19 @@ pull requests from outside the maintainer team must not modify files under
 SelfOffice follows [genspark-ai/genoffice](https://github.com/genspark-ai/genoffice)
 automatically, and publishes without a manual step:
 
-1. `sync-upstream.yml` (07:00 and 19:00 UTC): merges upstream `main` into a
-   `selfoffice/sync-upstream-*` branch, re-applies the rebrand
-   (`tools/rebrand-upstream.mjs`), opens a PR labelled `upstream-sync` and starts CI.
-   A merge conflict opens an issue instead. It never takes `ee/` (separate Enterprise
-   License) or upstream's `.github/workflows`.
+1. `sync-upstream.yml` (07:00 and 19:00 UTC): refreshes the `upstream-rebranded` branch
+   (upstream `main` with the rebrand applied to the whole tree, one commit per sync, each a
+   child of the previous one: `tools/mirror-upstream.sh`, `tools/rebrand-upstream.mjs --tree`),
+   merges it into a `selfoffice/sync-upstream-*` branch, opens a PR labelled `upstream-sync`
+   and starts CI. Because the merge base is already rebranded, only real divergence
+   conflicts. Upstream features and fixes come in; what this fork removed stays removed
+   (files we deleted stay deleted) and what upstream removed but we still have is put back
+   and listed in the PR (take a removal by hand only for a security fix). The mirror never
+   carries `ee/` (separate Enterprise License) or `.github/workflows`; upstream workflow
+   changes are listed in the PR for a manual port. A conflict fails the run and lists the
+   files in the run summary (and in an issue, if issues are enabled); resolve it with
+   `git fetch origin upstream-rebranded && git merge origin/upstream-rebranded`, keeping our
+   side for Genspark / sign-in / cloud / analytics and for BYOK and local AI.
 2. `merge-upstream-sync.yml`: merges that PR when CI is green and the PR lists no flagged
    lines (Genspark, analytics, cloud, sign-in). Anything flagged waits for a human.
    Off switch: repository variable `AUTO_MERGE_UPSTREAM=false`.

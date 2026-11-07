@@ -376,6 +376,8 @@ export const fr = {
     "Cette feuille contient un tableau croisé dynamique — le déplacement de plages n'est pas encore pris en charge.",
   appMergeOverTable:
     'La sélection chevauche un tableau Excel — la fusion de cellules dans un tableau n’est pas encore prise en charge.',
+  appFilterToggleFailed:
+    'Le filtre n’a pas été appliqué — sélectionnez d’abord la plage qui contient vos données.',
   appAutofillStreaming:
     "La recopie automatique vers une zone encore en cours de chargement en flux n'est pas encore autorisée.",
   appDvNeedsIndexed:
@@ -429,6 +431,9 @@ export const fr = {
   appTableNameUsed: 'Le nom de tableau « {name} » a déjà été utilisé pendant cette session.',
   appTableNameInFile: 'Le nom de tableau "{name}" est déjà utilisé par un tableau du fichier.',
   appTableOverlapsSession: 'La plage chevauche le tableau « {name} » créé pendant cette session.',
+  appTableOverlapsFile: 'La plage chevauche le tableau « {name} » du fichier.',
+  appTableAlreadyInTable:
+    'La sélection se trouve déjà dans le tableau « {name} » — modifiez le style depuis Création de tableau.',
   appTablesNeedFile: "Ouvrez d'abord un fichier XLSX — les tableaux sont écrits dans le fichier.",
   appTableSelectRange:
     "Sélectionnez d'abord la plage de données — les en-têtes dans sa première ligne.",
@@ -523,6 +528,7 @@ export const fr = {
   appGridlinesHidden: 'Quadrillage masqué.',
   appGridlinesShown: 'Quadrillage affiché.',
   appShowingFormulas: 'Affichage des formules — basculez à nouveau pour les valeurs.',
+  appShowingFormulasActive: 'Formules affichées',
   appShowingValues: 'Affichage des valeurs calculées.',
   appTraceNoFormula: "Repérer les antécédents : la cellule active n'a pas de formule.",
   appTraceNoRefs: "Repérer les antécédents : cette formule n'a aucune référence de cellule.",
@@ -640,8 +646,6 @@ export const fr = {
   appSaveFailed: "Impossible d'enregistrer le classeur.",
   appCfRuleUnsaveable:
     'Cette règle de mise en forme conditionnelle ne peut pas être enregistrée en xlsx — utilisez un autre type de règle.',
-  appSaveErrX14Dv:
-    "Cette feuille comporte une validation des données étendue (x14) ; la modification de ses règles de validation n'est pas encore prise en charge.",
   appSaveErrMultiSelectList:
     "La validation par liste à sélection multiple ne peut pas être enregistrée en xlsx — supprimez la règle avant d'enregistrer.",
   appSaveErrX14Cf:
@@ -775,6 +779,7 @@ export const fr = {
   appExportPdfTitle: 'Exporter en PDF',
   appSaveTitle: 'Enregistrer (⌘S)',
   appSaveAs: 'Enregistrer sous',
+  aiNameFile: "Nommer avec l'IA…",
   appUndo: 'Annuler',
   appRedo: 'Rétablir',
   appUnsavedEditOne: '● {count} modification non enregistrée',
@@ -1222,6 +1227,20 @@ export const fr = {
   appWatchCell: 'Cellule',
   appWatchValue: 'Valeur',
   appWatchFormula: 'Formule',
+  appLinksPanel: 'Liaisons externes',
+  appLinksPanelDetail: 'Lister, mettre à jour et rompre les liaisons vers d’autres classeurs',
+  appLinksUpdate: 'Mettre à jour les valeurs',
+  appLinksNone: 'Ce classeur ne contient aucune liaison vers un autre classeur.',
+  appLinksUnsaved: 'Enregistrez ce classeur avant de lister ses liens externes.',
+  appLinksSource: 'Source',
+  appLinksStatus: 'État',
+  appLinksSheets: 'Feuilles',
+  appLinksLocate: 'Localiser le fichier source',
+  appLinksReachable: 'Disponible',
+  appLinksBroken: 'Indisponible',
+  appLinksBreak: 'Rompre le lien',
+  appLinksBreakConfirm: 'Confirmer la rupture',
+  appLinksChangeSource: 'Modifier la source',
   appGroupCalculation: 'Calcul',
   appCalculationOptions: 'Options de calcul',
   appCalculationOptionsTitle: 'Recalcul automatique ou manuel',
@@ -1238,8 +1257,16 @@ export const fr = {
   appGroupGetData: 'Obtenir des données',
   appFromTextCsv: 'À partir de texte/CSV',
   appRefreshAll: 'Actualiser tout',
+  appRefreshQuery: 'Actualiser la requête',
+  appQueryConnectionsTitle: 'Actualiser les requêtes du classeur',
+  appQueryRefreshing: 'Actualisation de {name}…',
+  appQueryRefreshed: '{name} actualisé ({rows} lignes)',
+  appQueryRefreshedClipped: '{name} actualisé ({rows} lignes, {dropped} hors de la plage fixe)',
+  appQueryRefreshFailed: 'Impossible d’actualiser {name}',
   appWorkbookNoPivot: 'Aucun tableau croisé dans ce classeur.',
   appRefreshAllTitle: 'Actualiser tous les tableaux croisés',
+  appQueriesConnections: 'Requêtes et connexions',
+  appQueriesConnectionsTitle: 'Lister les requêtes et connexions de données du classeur',
   appErrorCheckingDetail: 'Rechercher les valeurs d’erreur de la feuille',
   appErrorsFound: '{count} erreurs — à {cell} : {value}',
   appCheckingErrors: 'Recherche d’erreurs dans toute la feuille…',
@@ -1637,4 +1664,30 @@ export const fr = {
   appVisualFlipV: 'Retourner verticalement',
   appVisualFlipH: 'Retourner horizontalement',
   appCtxPasteVisual: "Coller l'image ou la forme",
+
+  // ── Spelling check (F7 / Review ▸ Proofing) ──
+  appSpellTitle: 'Orthographe',
+  appSpellBtnDetail: 'Vérifier le texte de la feuille (F7)',
+  appSpellToggle: "Vérifier l'orthographe",
+  appSpellToggleTip:
+    "Active la vérification orthographique (F7 et le bouton Révision) ; désactivée, les zones de commentaire n'affichent plus les soulignements",
+  appSpellOn: 'Vérification orthographique activée.',
+  appSpellOff:
+    'La vérification orthographique est désactivée. Réactivez-la dans Révision ▸ Vérification.',
+  appSpellRecheck: 'Revérifier',
+  appSpellNone: "Aucune faute d'orthographe suspectée.",
+  appSpellFindings: '{count} fautes suspectées. Cliquez une ligne pour la localiser.',
+  appSpellTruncated: 'Trop de cellules de texte ; seules les premières ont été vérifiées.',
+  appSpellColWord: 'Mot suspect',
+  appSpellIgnore: 'Ignorer',
+  appSpellIgnoreAll: 'Ignorer tout',
+  appSpellLearn: 'Ajouter au dictionnaire',
+  appSpellNoSuggestions: 'Aucune suggestion',
+  appSpellIgnoredAll: '« {word} » ne sera plus signalé pendant cette session.',
+  appSpellLearned: '« {word} » a été ajouté au dictionnaire.',
+  appSpellChanged: '{address} corrigé.',
+  appSpellChangeFailed: 'Impossible de corriger {address}.',
+  appSpellUnavailable: "La correction orthographique n'est pas disponible dans cette fenêtre.",
+  appSpellReplaceAll: 'Tout remplacer par « {suggestion} »',
+  appSpellChangedAll: '{count} cellules de « {word} » corrigées.',
 } satisfies Record<keyof typeof zh, string>

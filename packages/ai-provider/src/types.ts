@@ -25,8 +25,12 @@ export type AiProviderId =
   | 'cheaperinference'
   | 'atlascloud'
   | 'runcrate'
+  | 'cloudgpu'
+  | 'siliconflow'
+  | 'ppio'
   | 'opencode-zen'
   | 'opencode-go'
+  | 'commandcode'
   | 'custom'
 
 export interface AiProviderConfig {
@@ -38,6 +42,9 @@ export interface AiProviderConfig {
   cliPath?: string | undefined
   /** the declarative profile of the active user-hosted endpoint (custom only) */
   profile?: AiCustomProfile | undefined
+  /** per-model thinking-effort picks (model id → level, see thinking-effort.ts);
+   *  absent or a level the model's family does not list = the vendor default */
+  thinking?: Record<string, string> | undefined
 }
 
 /**
@@ -132,6 +139,13 @@ export interface AiCustomEndpoint extends AiCustomProfile {
   model: string
   /** ids the server advertised on the last `/models` probe, so the composer chip can list them offline */
   models?: string[] | undefined
+  /**
+   * per-model thinking-effort picks (model id → level, see thinking-effort.ts).
+   * The endpoint record carries its own copy so the settings pane's pick
+   * survives normalization and reaches `providers.custom` through the slot
+   * mirror; absent = the vendor default.
+   */
+  thinking?: Record<string, string> | undefined
 }
 
 /** Live picker data returned by Codex app-server's model/list method. */
@@ -161,10 +175,22 @@ export interface AiProviderMeta {
 
 /** Image generation / media analysis backends (separate from the chat provider) */
 export type AiMediaProviderId =
-  'openai' | 'gemini' | 'doubao' | 'glm' | 'xai' | 'qwen' | 'minimax' | 'deepseek' | 'custom'
+  | 'openai'
+  | 'gemini'
+  | 'doubao'
+  | 'glm'
+  | 'xai'
+  | 'qwen'
+  | 'minimax'
+  | 'deepseek'
+  | 'stability'
+  | 'bfl'
+  | 'microsoft'
+  | 'custom'
 
 /** wire shape of the image endpoint */
-export type AiImageProtocol = 'openai-images' | 'gemini' | 'dashscope' | 'minimax'
+export type AiImageProtocol =
+  'openai-images' | 'gemini' | 'dashscope' | 'minimax' | 'stability' | 'bfl' | 'mai'
 /** wire shape of the understanding endpoint */
 export type AiAnalysisProtocol = 'openai-chat' | 'gemini'
 
@@ -213,7 +239,15 @@ export interface AiMediaSettings {
 
 /** web/image search backends; 'free' is the keyless built-in chain, Parallel and Keenable take a user key or run keyless */
 export type AiSearchProviderId =
-  'free' | 'serper' | 'serply' | 'tavily' | 'parallel' | 'exa' | 'firecrawl' | 'keenable'
+  | 'free'
+  | 'serper'
+  | 'serply'
+  | 'searchapi'
+  | 'tavily'
+  | 'parallel'
+  | 'exa'
+  | 'firecrawl'
+  | 'keenable'
 
 export interface AiSearchProviderMeta {
   id: AiSearchProviderId

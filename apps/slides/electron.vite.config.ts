@@ -63,6 +63,7 @@ export default defineConfig({
           '@selfoffice/pipelines',
           '@selfoffice/ai-search',
           '@selfoffice/file-parse',
+          '@selfoffice/xlsx-gateway',
           '@selfoffice/electron-utils',
           'opentype.js',
         ],

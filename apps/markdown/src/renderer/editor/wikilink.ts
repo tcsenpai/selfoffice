@@ -1,5 +1,6 @@
 import { Mark, Extension } from '@tiptap/core'
 import { Plugin, PluginKey } from '@tiptap/pm/state'
+import type { Selection } from '@tiptap/pm/state'
 import { Decoration, DecorationSet } from '@tiptap/pm/view'
 import type { EditorView } from '@tiptap/pm/view'
 import type { Node as PmNode } from '@tiptap/pm/model'
@@ -21,7 +22,7 @@ import { resolveImageSrc } from './localImage'
  * The target may hold anything but a bracket, pipe or newline; the alias runs
  * to the closing brackets. `[[]]` carries no name and is not a link.
  */
-const WIKI_LINK_RE = /^\[\[([^[\]|\n]+?)(?:\|([^[\]\n]+))?\]\]/
+export const WIKI_LINK_RE = /^\[\[([^[\]|\n]+?)(?:\|([^[\]\n]+))?\]\]/
 
 /**
  * Index of the first unescaped `[[`. The stock link tokenizer opens on a
@@ -58,10 +59,15 @@ interface WikiSpan {
 function wikiLiterals(text: string): { start: number; end: number; raw: string }[] {
   const out: { start: number; end: number; raw: string }[] = []
   for (let at = 0; at < text.length;) {
-    const match = WIKI_LINK_RE.exec(text.slice(at))
-    if (!match) break
-    out.push({ start: at, end: at + match[0].length, raw: match[0] })
-    at += match[0].length
+    const idx = text.indexOf('[[', at)
+    if (idx < 0) break
+    const match = WIKI_LINK_RE.exec(text.slice(idx))
+    if (!match) {
+      at = idx + 2
+      continue
+    }
+    out.push({ start: idx, end: idx + match[0].length, raw: match[0] })
+    at = idx + match[0].length
   }
   return out
 }
@@ -154,14 +160,23 @@ export function wikiFragmentPosition(doc: PmNode, fragment: string): number | nu
 /** The textblock whose text ends with `^blockid`, as Obsidian writes it.
  *  `descendants`, not `forEach`: a list item's marker sits inside the item's
  *  paragraph, and resolving to the list would land the reader on the wrong
- *  line. Case-insensitive because the fragment was lower-cased above. */
+ *  line. Case-insensitive because the fragment was lower-cased above. A marker
+ *  alone on its line is Obsidian's form for a table or code block, and names
+ *  the block before it rather than the line it stands on. */
 function blockRefPosition(doc: PmNode, id: string): number | null {
   let found: number | null = null
   const re = new RegExp(`(?:^|\\s)\\^${escapeRegex(id)}\\s*$`, 'i')
+  const lone = new RegExp(`^\\s*\\^${escapeRegex(id)}\\s*$`, 'i')
   doc.descendants((node, pos) => {
     if (found !== null) return false
-    if (node.isTextblock && re.test(node.textContent)) found = pos + 1
-    return true
+    if (!node.isTextblock || !re.test(node.textContent)) return true
+    const $pos = doc.resolve(pos)
+    if (lone.test(node.textContent) && $pos.index() > 0) {
+      found = pos - $pos.parent.child($pos.index() - 1).nodeSize + 1
+    } else {
+      found = pos + 1
+    }
+    return false
   })
   return found
 }
@@ -425,10 +440,18 @@ export const WikiLink = Mark.create({
 })
 
 interface WikiAliasState {
+  /** hidden ranges per aliased link, recomputed on every document change */
+  links: HiddenLink[]
   decorations: DecorationSet
 }
 
-const aliasEmpty: WikiAliasState = { decorations: DecorationSet.empty }
+interface HiddenLink {
+  from: number
+  to: number
+  hidden: [number, number][]
+}
+
+const aliasEmpty: WikiAliasState = { links: [], decorations: DecorationSet.empty }
 
 /** exported for tests: the alias display pass owns this slice of plugin state */
 export const wikiAliasDisplayKey = new PluginKey<WikiAliasState>('wikiAliasDisplay')
@@ -439,8 +462,8 @@ export const wikiAliasDisplayKey = new PluginKey<WikiAliasState>('wikiAliasDispl
  * mark inside the brackets) is left visible — no segment spans the whole
  * literal, so hiding part of one segment could clip text the next one carries.
  */
-function aliasDecorations(doc: PmNode): Decoration[] {
-  const out: Decoration[] = []
+function hiddenLinks(doc: PmNode): HiddenLink[] {
+  const out: HiddenLink[] = []
   for (const span of wikiSpans(doc)) {
     // positions come from the literal match, so a mark the edit grew past its
     // brackets contributes nothing
@@ -449,18 +472,39 @@ function aliasDecorations(doc: PmNode): Decoration[] {
     if (pipe < 0) continue
     // `[[Note|]]` never matches the link regex, so a matched pipe always has
     // alias text after it
-    out.push(Decoration.inline(span.from, span.from + pipe + 1, { class: 'wiki-alias-hidden' }))
-    out.push(Decoration.inline(span.to - 2, span.to, { class: 'wiki-alias-hidden' }))
+    out.push({
+      from: span.from,
+      to: span.to,
+      hidden: [
+        [span.from, span.from + pipe + 1],
+        [span.to - 2, span.to],
+      ],
+    })
   }
   return out
+}
+
+/**
+ * A link the selection touches shows its whole literal, as Obsidian's live
+ * preview does: hidden text is otherwise still caret-reachable, and arrow keys
+ * or Backspace would edit syntax the user cannot see.
+ */
+function aliasDecorations(doc: PmNode, links: HiddenLink[], sel: Selection): DecorationSet {
+  const out: Decoration[] = []
+  for (const link of links) {
+    if (sel.from <= link.to && sel.to >= link.from) continue
+    for (const [from, to] of link.hidden)
+      out.push(Decoration.inline(from, to, { class: 'wiki-alias-hidden' }))
+  }
+  return DecorationSet.create(doc, out)
 }
 
 /**
  * Obsidian shows `[[Note|Alias]]` as `Alias`. This pass hides the syntax of an
  * aliased link in the view only: the document text keeps the whole literal, so
  * the save, the block source map and the resolver all read what was written.
- * It waits on nothing async — what to hide follows from the document alone,
- * recomputed whole on every change to it.
+ * It waits on nothing async — what to hide follows from the document and the
+ * selection alone.
  */
 export const WikiAliasDisplay = Extension.create({
   name: 'wikiAliasDisplay',
@@ -470,13 +514,15 @@ export const WikiAliasDisplay = Extension.create({
       new Plugin<WikiAliasState>({
         key: wikiAliasDisplayKey,
         state: {
-          init: (_config, state) => ({
-            decorations: DecorationSet.create(state.doc, aliasDecorations(state.doc)),
-          }),
-          apply: (tr, old) =>
-            tr.docChanged
-              ? { decorations: DecorationSet.create(tr.doc, aliasDecorations(tr.doc)) }
-              : old,
+          init: (_config, state) => {
+            const links = hiddenLinks(state.doc)
+            return { links, decorations: aliasDecorations(state.doc, links, state.selection) }
+          },
+          apply: (tr, old) => {
+            if (!tr.docChanged && !tr.selectionSet) return old
+            const links = tr.docChanged ? hiddenLinks(tr.doc) : old.links
+            return { links, decorations: aliasDecorations(tr.doc, links, tr.selection) }
+          },
         },
         props: {
           decorations: (state) => (wikiAliasDisplayKey.getState(state) ?? aliasEmpty).decorations,

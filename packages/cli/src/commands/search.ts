@@ -7,7 +7,7 @@ import { CliError, EXIT } from '../result'
 export const searchCommand: CommandDef = {
   name: 'search',
   summary:
-    'Web or image search through the provider configured in SelfOffice (free chain, Serper, Serply, Tavily, Parallel).',
+    'Web or image search through the provider configured in SelfOffice (free chain, Serper, Serply, SearchApi, Tavily, Parallel).',
   usage: 'search <query> [--images] [--max <n>]',
   options: [
     { name: 'images', description: 'search images instead of web pages' },

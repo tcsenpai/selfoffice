@@ -10,6 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@selfoffice/docx-engine/lazy-media': local('../../packages/docx-engine/src/lazy-media.ts'),
+      '@selfoffice/docx-engine/zip-splice': local('../../packages/docx-engine/src/zip-splice.ts'),
       '@selfoffice/docx-engine': local('../../packages/docx-engine/src/index.ts'),
       '@selfoffice/font-metrics/resolve': local('../../packages/font-metrics/src/resolve.ts'),
       '@selfoffice/font-metrics/word-faces.json': local(
@@ -26,10 +27,30 @@ export default defineConfig({
       '@selfoffice/electron-utils/safe-external-url': local(
         '../../packages/electron-utils/src/safe-external-url.ts',
       ),
+      '@selfoffice/electron-utils/print-cups': local(
+        '../../packages/electron-utils/src/print-cups.ts',
+      ),
       '@selfoffice/electron-utils/print-job': local(
         '../../packages/electron-utils/src/print-job.ts',
       ),
+      '@selfoffice/electron-utils/generated-images': local(
+        '../../packages/electron-utils/src/generated-images.ts',
+      ),
+      '@selfoffice/electron-utils/remote-image': local(
+        '../../packages/electron-utils/src/remote-image.ts',
+      ),
+      '@selfoffice/electron-utils/safe-remote-url': local(
+        '../../packages/electron-utils/src/safe-remote-url.ts',
+      ),
+      '@selfoffice/electron-utils/odf-hook': local('../../packages/electron-utils/src/odf-hook.ts'),
       '@selfoffice/electron-utils': local('../../packages/electron-utils/src/index.ts'),
+      '@selfoffice/ai-provider/codex-app-server': local(
+        '../../packages/ai-provider/src/codex-app-server.ts',
+      ),
+      '@selfoffice/ai-provider/trace': local('../../packages/ai-provider/src/trace.ts'),
+      '@selfoffice/ai-provider/custom-models': local(
+        '../../packages/ai-provider/src/custom-models.ts',
+      ),
       '@selfoffice/ai-provider/browser': local('../../packages/ai-provider/src/browser.ts'),
       '@selfoffice/ai-provider': local('../../packages/ai-provider/src/index.ts'),
       '@selfoffice/i18n': local('../../packages/i18n/src/index.ts'),

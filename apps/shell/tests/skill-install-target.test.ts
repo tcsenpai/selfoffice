@@ -50,6 +50,9 @@ vi.mock('@selfoffice/cli/agent-skills', () => {
     uninstallSkill: () => false,
     ledgerFromSettings: () => ({ version: '1.0.0', installs: {} }),
     readInstallState: (dir: string) => ({ status: 'missing', path: `${dir}/selfoffice/SKILL.md` }),
+    findLegacySkillCopies: () => [],
+    sweepLegacySkillCopies: () => ({ removed: [], kept: [] }),
+    currentSkillInstalled: () => false,
   }
 })
 

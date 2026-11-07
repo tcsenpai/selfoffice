@@ -20,6 +20,7 @@ export function searchOptionsFromSettings(settings: AiSettings): SearchOptions {
   const key = settings.search!.providers?.[provider]?.apiKey?.trim() ?? ''
   if (provider === 'parallel') return { parallelKey: key, prefer: 'parallel' }
   if (provider === 'serply') return { serplyKey: key, prefer: 'serply' }
+  if (provider === 'searchapi') return { searchapiKey: key, prefer: 'searchapi' }
   if (provider === 'exa') return { exaKey: key, prefer: 'exa' }
   if (provider === 'firecrawl') return { firecrawlKey: key, prefer: 'firecrawl' }
   if (provider === 'keenable') return { keenableKey: key, prefer: 'keenable' }
@@ -46,6 +47,7 @@ export async function testSearchProvider(
   const options: SearchOptions = {
     serperKey: provider === 'serper' ? apiKey : '',
     serplyKey: provider === 'serply' ? apiKey : '',
+    searchapiKey: provider === 'searchapi' ? apiKey : '',
     tavilyKey: provider === 'tavily' ? apiKey : '',
     parallelKey: provider === 'parallel' ? apiKey : '',
     exaKey: provider === 'exa' ? apiKey : '',

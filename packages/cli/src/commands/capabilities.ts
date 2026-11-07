@@ -25,7 +25,8 @@ export const capabilitiesCommand: CommandDef = {
     const settings = readAiSettingsFile(aiSettingsPath(ctx.env))
     const searchProvider = activeSearchProvider(settings)
     const search = searchProvider !== 'free'
-    const keyedImageSearch = searchProvider === 'serper' || searchProvider === 'serply'
+    const keyedImageSearch =
+      searchProvider === 'serper' || searchProvider === 'serply' || searchProvider === 'searchapi'
     const imageGeneration = imageGenerationAvailable(settings)
     const mediaAnalysis = mediaAnalysisAvailable(settings)
     const detail = {

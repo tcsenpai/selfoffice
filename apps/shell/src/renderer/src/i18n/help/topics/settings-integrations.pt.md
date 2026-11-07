@@ -2,31 +2,31 @@
 
 ## Abrir as configurações
 
-A linha da conta no canto inferior esquerdo do ecrã Início abre o painel de configurações (mostra Entrar quando não tem sessão iniciada). O painel tem seis secções: Conta, Modelo de IA, Mídia e busca de IA, Geral, Integrações e Sobre.
+A linha da conta no canto inferior esquerdo da tela Início abre o painel de configurações (mostra Entrar quando não tem sessão iniciada). O painel tem seis seções: Conta, Modelo de IA, Mídia e busca de IA, Geral, Integrações e Sobre.
 
-![Configurações ▸ Geral, onde vivem o idioma, o tema, a guardado automático e o interruptor das estatísticas de utilização](img/settings-general.png)
+![Configurações ▸ Geral, onde vivem o idioma, o tema, o salvamento automático e o interruptor das estatísticas de utilização](img/settings-general.png)
 
 A configuração dos modelos tem o seu próprio artigo; em **Mídia e busca de IA** liga, por cada fornecedor, a geração de imagens, a análise de imagens, a análise de vídeo, a busca na web e a pesquisa de arquivos locais.
 
 ## Idioma
 
-- As configurações oferecem **22 idiomas de interface**: inglês, chinês simplificado, japonês, coreano, francês, alemão, espanhol, tailandês, indonésio, russo, árabe, português, italiano, polaco, tcheco, neerlandês, malaio, hebraico, híndi, chinês tradicional, vietnamita e turco.
+- As configurações oferecem **22 idiomas de interface**: inglês, chinês simplificado, japonês, coreano, francês, alemão, espanhol, tailandês, indonésio, russo, árabe, português, italiano, polonês, tcheco, neerlandês, malaio, hebraico, híndi, chinês tradicional, vietnamita e turco.
 - A troca aplica-se de imediato e persiste; e a barra de menus do sistema é reconstruída com o novo idioma.
 
 ## Tema
 
-Claro / Escuro / Seguir o Sistema. O modo Seguir o Sistema acompanha o aspeto do sistema operativo, e os editores mudam de aspeto em sincronia sem cintilação.
+Claro / Escuro / Seguir o Sistema. O modo Seguir o Sistema acompanha a aparência do sistema operacional, e os editores mudam de aparência em sincronia sem cintilação.
 
 ## Geral
 
 - **Posição da barra lateral de IA** (esquerda ou direita), **Tamanho do texto do painel de IA** e **Verificação ortográfica no chat de IA**.
 - **Abrir o painel de IA em novos documentos** — desativado, um novo documento começa com o painel recolhido, a um clique de distância.
-- **Salvar automaticamente todos os documentos** ativa a gravação automática por predefinição em todos os editores; continua a poder desativá-la para uma janela.
+- **Salvar automaticamente todos os documentos** ativa a gravação automática por padrão em todos os editores; continua a poder desativá-la para uma janela.
 - **Local de salvamento** com o botão **Alterar** e **App padrão para documentos do Office** para reservar .docx / .xlsx / .pptx ao SelfOffice.
 
 ## Mídia e busca de IA
 
-Não são interruptores — cada capacidade escolhe o fornecedor que a serve, e a chave e o URL base de um fornecedor são introduzidos uma vez e partilhados:
+Não são interruptores — cada capacidade escolhe o fornecedor que a serve, e a chave e o URL base de um fornecedor são introduzidos uma vez e compartilhados:
 
 - **Busca na web**, **Geração de imagens**, **Análise de imagens** e **Análise de vídeo**, cada uma com um fornecedor, um modelo, uma chave e um URL base.
 - A **busca de arquivos local** roda nesta máquina. Abaixo dela, o **reranking de busca Jev** vem **desligado por padrão**. Ao ligar, os trechos dos 20 primeiros acertos locais — até 1.200 caracteres por documento, mais nomes de arquivos e pastas — vão para o endpoint de decisão escolhido (Jev via OpenRouter ou TypeSafe, Perplexity, Liquid AI d1, Cloudflare, um motor local ou URL própria) para reordenar por relevância. Desligado, nada sai do aparelho.
@@ -36,22 +36,22 @@ Não são interruptores — cada capacidade escolhe o fornecedor que a serve, e 
 - **Versão**, a ligação do projeto ao GitHub e um botão **Dar uma estrela no GitHub**.
 - **Canal de atualização**: Estável ou Beta. Alterá-lo tem efeito imediato e verifica se existe uma atualização; não reverte uma instalação Beta para Estável.
 
-## Associações de aplicações predefinidas
+## Associações de aplicativos padrão
 
-As Configurações podem registar o SelfOffice como a aplicação que abre ficheiros .docx / .xlsx / .pptx / .pdf e semelhantes (registo de aplicação predefinida ao nível do sistema; confirme quando for solicitado).
+As Configurações podem registrar o SelfOffice como o aplicativo que abre arquivos .docx / .xlsx / .pptx / .pdf e semelhantes (registro de aplicativo padrão no sistema; confirme quando for solicitado).
 
 ## Avisos de software de terceiros e atualizações
 
-- Ajuda ▸ Avisos de software de terceiros: o inventário completo das licenças de código aberto que acompanha a aplicação.
+- Ajuda ▸ Avisos de software de terceiros: o inventário completo das licenças de código aberto que acompanha o aplicativo.
 - Ajuda ▸ Procurar atualizações…: inicia uma verificação manual; e se houver uma versão mais recente, o SelfOffice propõe a instalação.
 
 ## Integração MCP (para utilizadores avançados / clientes de IA)
 
-**Integrações** é o painel que liga o SelfOffice a um agente de programação, e tem o seu próprio artigo: Ligar um agente de programação. A versão curta — escolha um caminho (a linha de comandos, ou MCP), siga essa secção e depois inicie uma conversa nova e pergunte.
+**Integrações** é o painel que liga o SelfOffice a um agente de programação, e tem o seu próprio artigo: Ligar um agente de programação. A versão curta — escolha um caminho (a linha de comandos, ou MCP), siga essa seção e depois inicie uma conversa nova e pergunte.
 
 ![Configurações ▸ Integrações: os três passos, depois as linhas de competências e as opções de MCP](img/settings-integrations.png)
 
-Em **Servidor HTTP local**, a aplicação também pode arrancar o servidor por si — um interruptor de ativação e uma porta —, enquanto **Avançado** acrescenta o URL de verificação de integridade e o arquivo de registro, em vez de o deixar ao assistente. Escuta apenas em localhost.
+Em **Servidor HTTP local**, o aplicativo também pode arrancar o servidor por si — um interruptor de ativação e uma porta —, enquanto **Avançado** acrescenta o URL de verificação de integridade e o arquivo de registro, em vez de o deixar ao assistente. Escuta apenas em localhost.
 
 ## Folha de referência da linha de comandos
 

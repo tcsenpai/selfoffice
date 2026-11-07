@@ -53,17 +53,17 @@ Settings → AI lets you pick one of:
 - **Codex CLI**: your ChatGPT/Codex login through the Codex app-server.
 - **Bring your own key**: Claude, OpenAI, Gemini, DeepSeek, Kimi, GLM, Qwen,
   Doubao, MiniMax, Grok, Mistral, OpenRouter, Requesty, Opper, Cheaper
-  Inference, Atlas Cloud and OpenCode Zen/Go.
+  Inference, Atlas Cloud, SiliconFlow, PPIO, Command Code and OpenCode Zen/Go.
 - **Custom**: any OpenAI-compatible endpoint (base URL + optional key),
   including local servers such as Ollama, LM Studio or vLLM.
 
 Search and media have their own per-capability providers under **AI Media &
 Search**. Web search works out of the box (free keyless chain: Parallel Search
-MCP, then DuckDuckGo); Serper, Serply, Tavily, Parallel, Keenable, Exa or
-Firecrawl are optional keyed upgrades. Image generation and image/video
+MCP, then DuckDuckGo); Serper, Serply, SearchApi, Tavily, Parallel, Keenable,
+Exa or Firecrawl are optional keyed upgrades. Image generation and image/video
 analysis are **off until you configure a provider** (OpenAI, Gemini,
-Doubao/Seedream, GLM, Grok, Qwen, MiniMax or any OpenAI-compatible images
-endpoint).
+Doubao/Seedream, GLM, Grok, Qwen, MiniMax, Stability, FLUX or any
+OpenAI-compatible images endpoint).
 
 The whole suite ships light, dark and system themes. Themes only change what
 is on screen: exports, prints and saved files always keep the document's own
@@ -85,7 +85,9 @@ report, an NDA, a lesson plan. SelfOffice ships a set of them and takes your own
 in the same format coding agents use.
 
 - **Settings → Skills.** **Install** a recommended skill, or **Import** a
-  folder, a zip or a single `SKILL.md`. Nothing runs on import.
+  folder, a zip or a single `SKILL.md`. Nothing runs on import. The **All** tab
+  lists the whole recommended catalog in one place, with descriptions that
+  follow the app language.
 - **In a chat.** Open the **+** menu next to the composer of any AI panel,
   pick **Skills**, tick one, send. The skill goes along with that message only.
 
@@ -122,7 +124,7 @@ check its own work.
 ```bash
 selfoffice --version
 selfoffice info report.docx --json                  # headings and blocks; or sheets, slides, pages
-selfoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx and docx/xlsx/pptx → odt/ods/odp, …
+selfoffice convert report.md --to pdf               # md/html/docx/xlsx/pptx → pdf, pdf → docx/xlsx/pptx/md/html, odt/ods/odp → docx/xlsx/pptx and docx/xlsx/pptx → odt/ods/odp, doc/dot → docx, …
 selfoffice create --type docx --from notes.md --out notes.docx
 selfoffice create --type xlsx --from table.json --out sales.xlsx   # "=SUM(B2:B9)" cells stay live formulas
 selfoffice docs read report.docx --range 0-9 --json # then `docs apply --ops edits.json` edits in place
@@ -254,6 +256,27 @@ save      ─► dirty blocks → OOXML fragments (referencing existing styles o
 The package-by-package tour (docx/pptx engines, `pdf2docx`, `html2docx`, the
 agent core and providers) lives in [CONTRIBUTING.md](CONTRIBUTING.md#engine-packages).
 
+### Legacy files open as converted copies
+
+Formats SelfOffice cannot write back — legacy Word `.doc`/`.dot`, Hancom
+`.hwp`/`.hwpx`, Excel 97 `.xls`, `.tsv` and legacy PowerPoint `.ppt` — are
+imports, not native files (the OpenDocument family is different: it opens and
+saves in place, see [OpenDocument (ODF)](#opendocument-odf)).
+Opening one converts it on your machine into a `.docx`, `.xlsx` or `.pptx`
+copy and opens that copy; the original is never read again and never written.
+
+- Docs and Slides ask where to put the copy first (the sibling `.docx`/`.pptx`
+  next to the original by default), so every later Save lands there. A `.ppt`
+  converts with its text as editable boxes in the original slide order and
+  size; shape geometry, images and text formatting are not carried over yet.
+- Sheets opens the converted workbook straight away and routes the first Save
+  through Save As to a fresh `.xlsx`. `.csv` is the exception: it keeps its
+  identity and Save writes values back to the `.csv`, as Excel does.
+- The conversion is one-way and can drop features the source format carries
+  but OOXML does not. `.doc` and `.hwp` show a confirmation
+  dialog saying so; tick "Convert without asking next time" to skip it, and
+  "Ask before converting legacy files" in Settings → General turns it back on.
+
 ## Development
 
 ```bash
@@ -304,6 +327,11 @@ SelfOffice would not be possible without these open-source projects:
   of the Rust xlsx sidecar.
 - [libeot](https://github.com/umanwizard/libeot) (MPL-2.0) — the MicroType
   Express decoder for embedded PowerPoint fonts, ported to TypeScript.
+- [rhwp](https://github.com/edwardkim/rhwp) (MIT) — reads binary `.hwp`
+  documents into HWPX for the Hancom import; its WebAssembly build carries the
+  Rust crates and the Volexity hwp-extract port listed in the third-party
+  notices. "한글", "한컴", "HWP" and "HWPX" are registered trademarks of Hancom
+  Inc.; SelfOffice is not affiliated with Hancom.
 - [React](https://react.dev/) (MIT) — the UI layer of every app.
 - [Mermaid](https://mermaid.js.org/) (MIT) and [KaTeX](https://katex.org/)
   (MIT) — diagrams and math in Markdown and Docs.
