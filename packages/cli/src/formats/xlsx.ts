@@ -1,11 +1,11 @@
 import JSZip from 'jszip'
 import * as numfmt from 'numfmt'
 import {
-  blankXlsxBuffer,
   decodeCsvBuffer,
   isNumericCell,
   parseCsv,
 } from '@selfoffice/xlsx-gateway/gateway/csv-import'
+import { blankXlsxBuffer } from '@selfoffice/xlsx-gateway/gateway/csv-import-xlsx'
 import { columnLabel, parseAddress } from '@selfoffice/xlsx-gateway/domain/cell-address'
 import {
   assembleWithJsZip,
