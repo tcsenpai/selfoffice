@@ -10,7 +10,7 @@ import JSZip from 'jszip'
 import { z } from 'zod'
 
 import { decryptOoxml, encryptOoxml, isEncryptedOoxml } from '@selfoffice/electron-utils'
-import { blankXlsxBuffer } from '@selfoffice/xlsx-gateway/gateway/csv-import'
+import { blankXlsxBuffer } from '@selfoffice/xlsx-gateway/gateway/csv-import-xlsx'
 import { saveWorkbookViaSidecar } from '@selfoffice/xlsx-gateway/gateway/xlsx-package-io'
 import { XlsxSidecarClient } from '../src/main/xlsx-sidecar-client'
 import { workbookRangeResultSchema } from '../src/shared/desktop-api'

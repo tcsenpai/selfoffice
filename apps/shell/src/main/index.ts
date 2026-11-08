@@ -161,7 +161,7 @@ import {
   uniquePathIn,
   authorizeMcpDocWrite,
 } from '../../../docs/src/main/docs-main'
-import { blankXlsxBuffer } from '@selfoffice/xlsx-gateway/gateway/csv-import'
+import { blankXlsxBuffer } from '@selfoffice/xlsx-gateway/gateway/csv-import-xlsx'
 import { blankPdfBuffer } from '../../../pdf/src/main/blank-pdf'
 import {
   applyMcpSettings,
@@ -301,7 +301,7 @@ import {
   matchesExtFamily,
   normalizeRecentQuery,
   pageRecentPaths,
-  statPathEntries,
+  statPathEntriesAsync,
 } from './recent-files'
 import { isMoveSource, isUserVisibleFile, type FileTargetSources } from './file-targets'
 import {
@@ -4789,14 +4789,14 @@ function startQueuedWorkbookNudge(): void {
 
 // ---- home IPC ----
 
-function statEntries(paths: string[]): RecentEntry[] {
-  return statPathEntries(paths, new Set(readStarredFiles()))
+function statEntries(paths: string[]): Promise<RecentEntry[]> {
+  return statPathEntriesAsync(paths, new Set(readStarredFiles()))
 }
 
 function registerHomeIpc(): void {
   ipcMain.handle(HOME_CHANNELS.getAppVersion, (): string => app.getVersion())
 
-  ipcMain.handle(HOME_CHANNELS.recents, (_event, query: unknown): RecentPage =>
+  ipcMain.handle(HOME_CHANNELS.recents, (_event, query: unknown): Promise<RecentPage> =>
     pageRecentPaths(readRecentFiles(), query, new Set(readStarredFiles())),
   )
 
@@ -4953,7 +4953,7 @@ function registerHomeIpc(): void {
   )
 
   // Starred files sort by mtime, which requires stat-ing them all first; they are hand-picked and few, so this is fine
-  ipcMain.handle(HOME_CHANNELS.starred, (_event, query: unknown): RecentPage => {
+  ipcMain.handle(HOME_CHANNELS.starred, async (_event, query: unknown): Promise<RecentPage> => {
     const { offset, limit, ext } = normalizeRecentQuery(query)
     // the Starred view's group pills scope the whole query (totals included)
     const raw = (query && typeof query === 'object' ? query : {}) as { group?: unknown }
@@ -4961,7 +4961,7 @@ function registerHomeIpc(): void {
     const groupOf = readStarredGroupMap()
     const paths = readStarredFiles()
     const scoped = group ? paths.filter((p) => groupOf.get(p) === group) : paths
-    const all = statEntries(scoped)
+    const all = (await statEntries(scoped))
       .sort((a, b) => b.mtimeMs - a.mtimeMs)
       .map((entry) => {
         const g = groupOf.get(entry.path)
@@ -4981,7 +4981,7 @@ function registerHomeIpc(): void {
     setStarredGroup(stringPaths(paths), typeof group === 'string' && group ? group : null)
   })
 
-  ipcMain.handle(HOME_CHANNELS.statPaths, (_event, paths: unknown): RecentEntry[] =>
+  ipcMain.handle(HOME_CHANNELS.statPaths, (_event, paths: unknown): Promise<RecentEntry[]> =>
     statEntries(capStatPaths(stringPaths(paths))),
   )
 
