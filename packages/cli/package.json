@@ -30,6 +30,7 @@
     "@selfoffice/hwp2docx": "*",
     "@selfoffice/odf2ooxml": "*",
     "@selfoffice/pdf2docx": "*",
+    "@selfoffice/ppt2pptx": "*",
     "@selfoffice/pipelines": "*",
     "@selfoffice/pptx-engine": "*",
     "@selfoffice/pptx-ops": "*",

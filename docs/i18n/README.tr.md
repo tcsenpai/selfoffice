@@ -285,6 +285,12 @@ belgesi oluşturmasına izin verir.
 </tr>
 </table>
 
+### 11 · Eski dosyalar — 2000'lerden kalma `.doc`, `.xls` ve `.ppt` dosyaları da açılır
+
+Word 97–2003 `.doc`, Excel `.xls` veya PowerPoint `.ppt` dosyası, bilgisayarınızda oluşturulan dönüştürülmüş bir `.docx`, `.xlsx` veya `.pptx` kopyası olarak açılır; özgün dosya hiçbir zaman değiştirilmez. Görseller, tablolar, formüller, sayı biçimleri, dolgular ve düzen aktarılır.
+
+<img src="../assets/readme/legacy-formats-motion.webp" alt="SelfOffice'in kurgusal bir 2004 faaliyet raporuna ait .ppt, .doc ve .xls dosyalarını açtığı hızlandırılmış görüntü; ardından bir slayt PowerPoint'te, yanında SelfOffice'te dönüştürülmüş sunu" width="100%">
+
 ## Neden SelfOffice
 
 - **Açık kaynak**, Apache-2.0, GitHub'da açıkta geliştiriliyor.
