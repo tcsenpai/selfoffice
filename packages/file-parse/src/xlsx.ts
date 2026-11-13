@@ -26,10 +26,10 @@ const parser = new XMLParser({
   parseTagValue: false,
   removeNSPrefix: false,
   transformTagName: stripNamespacePrefix,
-  // trimValues also governs attributes; nothing read here (r:id, Target, cell ref, sheet
-  // name) carries meaningful edge whitespace, and an untrimmed Target builds the wrong zip
-  // path, which silently drops the whole sheet
-  attributeValueProcessor: (_name, value) => value.trim(),
+  // trimValues also governs attributes. Preserve worksheet names, but trim relationship
+  // IDs, targets and cell references: an untrimmed Target builds the wrong zip path,
+  // which silently drops the whole sheet.
+  attributeValueProcessor: (name, value) => (name === 'name' ? value : value.trim()),
 })
 
 function asArray<T>(value: T | T[] | undefined): T[] {
@@ -319,6 +319,7 @@ export function clipSheetXml(xml: string, budgetChars: number, truncated = false
 /** extract sheet text from an xlsx: one "# SheetName" section per sheet, cells joined with " | " */
 export async function xlsxToText(bytes: Uint8Array, opts: XlsxTextOptions = {}): Promise<string> {
   const maxChars = opts.maxChars ?? Infinity
+  if (maxChars <= 0) return ''
   let used = 0
   // The declared-size pass below is advisory; this metered gate is the one that
   // holds when a part lies about its size (GH #759).
@@ -340,6 +341,7 @@ export async function xlsxToText(bytes: Uint8Array, opts: XlsxTextOptions = {}):
   if (relsXml) {
     const rels = parser.parse(relsXml) as Record<string, any>
     for (const rel of asArray(rels.Relationships?.Relationship) as Array<Record<string, unknown>>) {
+      if (String(rel['@_TargetMode'] ?? '').toLowerCase() === 'external') continue
       const id = String(rel['@_Id'] ?? '')
       const target = String(rel['@_Target'] ?? '')
       const resolved = target.trim() === '' ? '' : resolveTarget('xl/workbook.xml', target)
@@ -374,7 +376,7 @@ export async function xlsxToText(bytes: Uint8Array, opts: XlsxTextOptions = {}):
     const sheetXml =
       maxChars === Infinity ? raw.text : clipSheetXml(raw.text, budget, raw.truncated)
     const worksheet = parser.parse(sheetXml) as Record<string, any>
-    const lines: string[] = [`# ${String(sheet['@_name'] ?? '')}`]
+    const lines: string[] = [`# ${decodeXlsxEscapes(String(sheet['@_name'] ?? ''))}`]
     let sheetChars = lines[0].length
     const rows = asArray(worksheet.worksheet?.sheetData?.row) as Array<Record<string, unknown>>
     let hasData = false

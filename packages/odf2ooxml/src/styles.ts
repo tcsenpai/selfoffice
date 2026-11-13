@@ -107,7 +107,9 @@ export class OdfStyles {
     const family = attr(node, 'style:family')
     if (!name || !family) return
     if (family === 'table-column') {
-      const properties = firstChild(node, 'style:column-properties')
+      const properties =
+        firstChild(node, 'style:table-column-properties') ??
+        firstChild(node, 'style:column-properties')
       const width = properties ? odfLengthToEmu(attr(properties, 'style:column-width')) : null
       if (width !== null && width > 0) this.columnWidths.set(name, width)
       return
@@ -153,8 +155,10 @@ export class OdfStyles {
   private readTextProps(node: XNode): OdfTextProps | undefined {
     const a = nodeAttrs(node)
     const out: OdfTextProps = {}
-    if (a['fo:font-weight'] === 'bold') out.bold = true
-    if (a['fo:font-style'] === 'italic') out.italic = true
+    if (a['fo:font-weight'] === 'bold' || a['fo:font-weight'] === 'normal')
+      out.bold = a['fo:font-weight'] === 'bold'
+    if (a['fo:font-style'] === 'italic' || a['fo:font-style'] === 'normal')
+      out.italic = a['fo:font-style'] === 'italic'
     if (a['style:text-underline-type'] !== undefined) {
       out.underline = a['style:text-underline-type'] !== 'none'
     } else if (a['style:text-underline-style'] !== undefined) {
@@ -173,6 +177,7 @@ export class OdfStyles {
     if (shading) out.shading = shading
     const fontName = a['style:font-name']
     if (fontName) out.font = this.fonts.get(fontName) ?? fontName
+    else if (a['fo:font-family']) out.font = a['fo:font-family'].replace(/^['"]|['"]$/g, '')
     const position = a['style:text-position']
     if (position) {
       if (/^super/i.test(position.trim())) out.vertAlign = 'superscript'
@@ -194,9 +199,9 @@ export class OdfStyles {
     else if (align === 'center') out.align = 'center'
     else if (align === 'end' || align === 'right') out.align = 'right'
     else if (align === 'justify') out.align = 'justify'
-    const before = odfLengthToEmu(a['fo:margin-top'])
+    const before = odfLengthToEmu(a['fo:margin-top'] ?? a['fo:margin'])
     if (before !== null) out.spaceBeforeTw = emuToTwips(before)
-    const after = odfLengthToEmu(a['fo:margin-bottom'])
+    const after = odfLengthToEmu(a['fo:margin-bottom'] ?? a['fo:margin'])
     if (after !== null) out.spaceAfterTw = emuToTwips(after)
     const lineHeight = a['fo:line-height']
     if (lineHeight) {
@@ -215,9 +220,9 @@ export class OdfStyles {
     if (atLeast !== null) out.lineAtLeastTw = emuToTwips(atLeast)
     const exact = odfLengthToEmu(a['style:line-spacing'])
     if (exact !== null) out.lineExactTw = emuToTwips(exact)
-    const left = odfLengthToEmu(a['fo:margin-left'])
+    const left = odfLengthToEmu(a['fo:margin-left'] ?? a['fo:margin'])
     if (left !== null) out.indentLeftTw = emuToTwips(left)
-    const right = odfLengthToEmu(a['fo:margin-right'])
+    const right = odfLengthToEmu(a['fo:margin-right'] ?? a['fo:margin'])
     if (right !== null) out.indentRightTw = emuToTwips(right)
     const first = odfLengthToEmu(a['fo:text-indent'])
     if (first !== null) out.indentFirstLineTw = emuToTwips(first)
@@ -236,7 +241,7 @@ export class OdfStyles {
       if (childName === 'text:list-level-style-bullet') {
         levels.set(level, {
           kind: 'bullet',
-          bulletChar: attr(child, 'style:bullet-char') ?? '•',
+          bulletChar: attr(child, 'text:bullet-char') ?? attr(child, 'style:bullet-char') ?? '•',
           ...listLevelIndent(child),
         })
       } else if (
@@ -370,6 +375,18 @@ export class OdfStyles {
 function listLevelIndent(node: XNode): { indentLeftTw?: number; hangingTw?: number } {
   const properties = firstChild(node, 'style:list-level-properties')
   if (!properties) return {}
+  const alignment = firstChild(properties, 'style:list-level-label-alignment')
+  if (
+    attr(properties, 'text:list-level-position-and-space-mode') === 'label-alignment' &&
+    alignment
+  ) {
+    const left = odfLengthToEmu(attr(alignment, 'fo:margin-left'))
+    const first = odfLengthToEmu(attr(alignment, 'fo:text-indent'))
+    return {
+      ...(left !== null ? { indentLeftTw: emuToTwips(left) } : {}),
+      ...(first !== null && first <= 0 ? { hangingTw: emuToTwips(-first) } : {}),
+    }
+  }
   const a = nodeAttrs(properties)
   const spaceBefore = odfLengthToEmu(a['text:space-before'])
   const minWidth = odfLengthToEmu(a['text:min-label-width'])
