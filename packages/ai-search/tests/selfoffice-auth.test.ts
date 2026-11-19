@@ -8,6 +8,7 @@ import {
   invalidateSelfofficeKey,
   recoverFromRejectedGskKey,
   setSelfofficeLoginOpener,
+  setSelfofficeLoginSuccessListener,
   selfofficeApiKey,
   selfofficeAuthPath,
   selfofficeLoginInFlight,
@@ -121,6 +122,26 @@ async function loginAndCollect(): Promise<GskLoginProgress[]> {
 }
 
 describe('startSelfofficeLogin', () => {
+  it('fires the login-success listener after a browser-approved login, not on failure', async () => {
+    const landed = vi.fn()
+    setSelfofficeLoginSuccessListener(landed)
+    try {
+      stubFlow({ pendingPolls: 1 })
+      const events = await loginAndCollect()
+      expect(events.at(-1)?.phase).toBe('success')
+      expect(landed).toHaveBeenCalledTimes(1)
+
+      // a failing mint emits 'error' and must not fire the listener again
+      resetSelfofficeAuthCache()
+      stubFlow({ createResponse: { status: 1, message: 'nope' } })
+      const failed = await loginAndCollect()
+      expect(failed.at(-1)?.phase).toBe('error')
+      expect(landed).toHaveBeenCalledTimes(1)
+    } finally {
+      setSelfofficeLoginSuccessListener(null)
+    }
+  })
+
   it('by default signs the cookie mint only and preserves Bearer session exchange', async () => {
     delete process.env.SELFOFFICE_NATIVE_WAF
     const token = `${Math.floor(Date.now() / 1000)}-${'a'.repeat(43)}`
