@@ -14,6 +14,7 @@ import '@selfoffice/ui/ribbon-collapse.css'
 import '@selfoffice/ui/markdown.css'
 import '@selfoffice/ui/ai-panel-prefs.css'
 import '@selfoffice/ui/ai-scope-quote.css'
+import '@selfoffice/ui/image-viewer.css'
 import '@univerjs/preset-sheets-core/lib/index.css'
 
 import { App } from './App'

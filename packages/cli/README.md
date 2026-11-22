@@ -40,7 +40,7 @@ selfoffice convert report.docx --to html               # the Word editor's stand
 selfoffice convert page.html --to docx                 # html2docx, same as the HTML app's Export as Word
 selfoffice convert report.docx --to md                 # GFM via the markdown editor's serializer
 selfoffice convert letter.doc --to docx                # Word 97-2003 .doc/.dot through the in-process doc2docx importer
-selfoffice convert book.xlsx --to csv [--sheet Data]   # one sheet, cell text as displayed, UTF-8 BOM, CRLF
+selfoffice convert book.xlsx --to csv [--sheet Data] [--neutralize-formulas]   # one sheet, cell text as displayed, UTF-8 BOM, CRLF; --neutralize-formulas prefixes formula-like cells (=, @/+/- function calls, DDE) with an apostrophe — off by default so ordinary data keeps its bytes
 selfoffice capabilities --json                        # which cloud features SelfOffice has configured (no network call)
 selfoffice search "electron headless export" [--images] [--max 6] --json
 selfoffice image "isometric office, soft light" --aspect 16:9 --out hero.png
