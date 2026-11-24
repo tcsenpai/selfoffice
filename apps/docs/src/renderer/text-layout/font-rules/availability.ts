@@ -30,6 +30,7 @@ export const BUNDLED_FONTS = new Set([
   'GenOffice Gothic KR',
   'SelfOffice Poppins',
   'SelfOffice DM Sans',
+  'SelfOffice Barlow',
   'SelfOffice Tamil',
   'SelfOffice Cordia',
   'SelfOffice Sarabun',

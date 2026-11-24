@@ -20,6 +20,7 @@ import '@selfoffice/ui/ai-panel-prefs.css'
 import '@selfoffice/ui/ai-scope-quote.css'
 import './styles.css'
 import { applyAiPanelPrefs, installScreenTips } from '@selfoffice/ui'
+import { connectMeasurementUnit } from './measurement-unit'
 
 installCanvasKerning()
 
@@ -65,6 +66,12 @@ async function bootstrap(): Promise<void> {
   if (mode !== 'audience') {
     applyTheme(theme)
     window.slidesApi?.onThemeChanged(applyTheme)
+    const api = window.slidesApi
+    if (api?.getMeasurementUnit && api.onMeasurementUnitChanged)
+      connectMeasurementUnit({
+        get: api.getMeasurementUnit,
+        onChanged: api.onMeasurementUnitChanged,
+      })
     await window.slidesApi
       ?.getAiPanelPrefs?.()
       .then(applyAiPanelPrefs)
