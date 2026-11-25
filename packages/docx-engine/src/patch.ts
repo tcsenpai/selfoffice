@@ -805,7 +805,7 @@ function replaceAbstractNumLevel(
   )
   let body = abs[0]
   const existing = lvlRe.exec(body)?.[0]
-  if (existing) body = body.replace(existing, mergeLevelXml(existing, level, ilvl))
+  if (existing) body = body.replace(existing, () => mergeLevelXml(existing, level, ilvl))
   else {
     const lvlXml = customLevelXml(level, ilvl)
     const later = new RegExp(`<w:lvl [^>]*w:ilvl="(\\d)"`, 'g')
@@ -818,7 +818,7 @@ function replaceAbstractNumLevel(
     }
     body = body.slice(0, insertAt) + lvlXml + body.slice(insertAt)
   }
-  return xml.replace(abs[0], body)
+  return xml.replace(abs[0], () => body)
 }
 
 /**
@@ -1561,12 +1561,13 @@ export async function saveDocx(
     }
     const linked = resolvePictureLinkTokens(xml, () => '') !== xml
     if (!linked && !xml.includes(NEW_PICTURE_TOKEN_PREFIX)) return xml
-    const relsPath = partPath.replace(/^word\/([^/]+)$/, 'word/_rels/$1.rels')
+    const relsPath = partPath.replace(/([^/]+)$/, '_rels/$1.rels')
     let relsXml =
       hfRelsOut.get(relsPath) ??
       (await zip.file(relsPath)?.async('string')) ??
       '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n' +
         '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"></Relationships>'
+    relsXml = relsXml.replace(/<Relationships\b([^>]*)\/>/, '<Relationships$1></Relationships>')
     const rIds = new Map<string, string>()
     const docPrIds = new Map<string, number>()
     const relate = (key: string, mediaPath: string): string => {
